@@ -1,0 +1,13 @@
+
+
+1397/10/19 17:44:24 :
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at DevTracker.DevTrackerToolWinControl.DocumentEvents_DocumentClosing(Document document) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinDteEvents.cs:line 489
+
+1397/10/19 17:44:24 :
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at DevTracker.DevTrackerToolWinControl.DocumentEvents_DocumentClosing(Document document) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinDteEvents.cs:line 489
+
+1397/10/19 17:44:24 :
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at DevTracker.DevTrackerToolWinControl.DocumentEvents_DocumentClosing(Document document) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinDteEvents.cs:line 489
