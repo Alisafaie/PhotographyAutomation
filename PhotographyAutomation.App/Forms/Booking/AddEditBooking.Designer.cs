@@ -1,6 +1,6 @@
-﻿namespace PhotographyAutomation.App
+﻿namespace PhotographyAutomation.App.Forms.Booking
 {
-    partial class Form1
+    partial class AddEditBooking
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // AddEditBooking
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(919, 567);
+            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.Name = "AddEditBooking";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "ثبت / ویرایش نوبت";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
     }
 }
-

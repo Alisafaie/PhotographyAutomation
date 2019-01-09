@@ -8,13 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PhotographyAutomation.App
+namespace PhotographyAutomation.App.Forms.Booking
 {
-    public partial class Form1 : Form
+    public partial class FrmAddEditCustomerInfo : Form
     {
-        public Form1()
+        public FrmAddEditCustomerInfo()
         {
             InitializeComponent();
+        }
+
+        private void buttonX3_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+
         }
     }
 }

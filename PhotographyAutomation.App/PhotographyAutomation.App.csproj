@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar2, Version=14.1.0.0, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,14 +47,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Forms\Booking\AddEditBooking.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Forms\Booking\AddEditBooking.Designer.cs">
+      <DependentUpon>AddEditBooking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Booking\FrmAddEditCustomerInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Booking\FrmAddEditCustomerInfo.Designer.cs">
+      <DependentUpon>FrmAddEditCustomerInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Booking\AddEditBooking.resx">
+      <DependentUpon>AddEditBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Booking\FrmAddEditCustomerInfo.resx">
+      <DependentUpon>FrmAddEditCustomerInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -62,6 +84,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -75,6 +98,99 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PhotographyAutomation.Business\PhotographyAutomation.Business.csproj">
+      <Project>{40d8ed83-8f3c-4037-ab7c-ad9e92079cbf}</Project>
+      <Name>PhotographyAutomation.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PhotographyAutomation.DateLayer\PhotographyAutomation.DateLayer.csproj">
+      <Project>{15c4c48f-e04a-4e31-8622-fb8b304e888d}</Project>
+      <Name>PhotographyAutomation.DateLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PhotographyAutomation.Utilities\PhotographyAutomation.Utilities.csproj">
+      <Project>{fe58899a-20e0-4523-9a3b-b3757594f8cf}</Project>
+      <Name>PhotographyAutomation.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PhotographyAutomation.ViewModels\PhotographyAutomation.ViewModels.csproj">
+      <Project>{6a3f14d0-c6d3-4b55-a7eb-5f8af2eaf6f0}</Project>
+      <Name>PhotographyAutomation.ViewModels</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1371476368_Synchronize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1371476394_refresh red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1371476468_preferences-contact-list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1371476499_todo-list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_application-pgp-signature_24736.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Artboard_9_3030695.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Configuration-01_1976051.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_settings_1167993.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\list2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\no-profile-image.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\servicesCosts.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Untitled-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Users.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1370791030_credit-card.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1371475930_filenew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1371475973_document_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1371476007_Close_Box_Red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1371476049_fork3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1371476070_self1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1371476120_fingerprint_reader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1371476143_deliverables.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1371476193_printers-&amp;-Faxes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1371476276_Print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1371476342_Refresh.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

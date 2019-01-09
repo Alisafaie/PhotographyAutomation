@@ -5,6 +5,14 @@ VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotographyAutomation.App", "PhotographyAutomation.App\PhotographyAutomation.App.csproj", "{36DE565C-6DDF-4947-B699-B66D8A2334B7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotographyAutomation.DateLayer", "PhotographyAutomation.DateLayer\PhotographyAutomation.DateLayer.csproj", "{15C4C48F-E04A-4E31-8622-FB8B304E888D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotographyAutomation.ViewModels", "PhotographyAutomation.ViewModels\PhotographyAutomation.ViewModels.csproj", "{6A3F14D0-C6D3-4B55-A7EB-5F8AF2EAF6F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotographyAutomation.Business", "PhotographyAutomation.Business\PhotographyAutomation.Business.csproj", "{40D8ED83-8F3C-4037-AB7C-AD9E92079CBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotographyAutomation.Utilities", "PhotographyAutomation.Utilities\PhotographyAutomation.Utilities.csproj", "{FE58899A-20E0-4523-9A3B-B3757594F8CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +23,22 @@ Global
 		{36DE565C-6DDF-4947-B699-B66D8A2334B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36DE565C-6DDF-4947-B699-B66D8A2334B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36DE565C-6DDF-4947-B699-B66D8A2334B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15C4C48F-E04A-4E31-8622-FB8B304E888D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15C4C48F-E04A-4E31-8622-FB8B304E888D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15C4C48F-E04A-4E31-8622-FB8B304E888D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15C4C48F-E04A-4E31-8622-FB8B304E888D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A3F14D0-C6D3-4B55-A7EB-5F8AF2EAF6F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A3F14D0-C6D3-4B55-A7EB-5F8AF2EAF6F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A3F14D0-C6D3-4B55-A7EB-5F8AF2EAF6F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A3F14D0-C6D3-4B55-A7EB-5F8AF2EAF6F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40D8ED83-8F3C-4037-AB7C-AD9E92079CBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40D8ED83-8F3C-4037-AB7C-AD9E92079CBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40D8ED83-8F3C-4037-AB7C-AD9E92079CBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40D8ED83-8F3C-4037-AB7C-AD9E92079CBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE58899A-20E0-4523-9A3B-B3757594F8CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE58899A-20E0-4523-9A3B-B3757594F8CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE58899A-20E0-4523-9A3B-B3757594F8CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE58899A-20E0-4523-9A3B-B3757594F8CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
