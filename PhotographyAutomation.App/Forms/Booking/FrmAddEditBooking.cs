@@ -10,11 +10,22 @@ using System.Windows.Forms;
 
 namespace PhotographyAutomation.App.Forms.Booking
 {
-    public partial class AddEditBooking : Form
+    public partial class FrmAddEditBooking : Form
     {
-        public AddEditBooking()
+        public FrmAddEditBooking()
         {
             InitializeComponent();
+        }
+
+        private void FrmAddEditBooking_Load(object sender, EventArgs e)
+        {
+
+        }
+        
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
         }
     }
 }

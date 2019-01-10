@@ -17,10 +17,15 @@ namespace PhotographyAutomation.App.Forms.Booking
             InitializeComponent();
         }
 
-        private void buttonX3_Click(object sender, EventArgs e)
+        private void btnOk_Click_1(object sender, EventArgs e)
+        {
+            FrmAddEditBooking frm=new FrmAddEditBooking();
+            frm.ShowDialog();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
-
         }
     }
 }

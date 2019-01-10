@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.maskedTextBoxAdv6 = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
-            this.btnSearchCustomoer = new DevComponents.DotNetBar.ButtonX();
-            this.btnCheckNumber = new DevComponents.DotNetBar.ButtonX();
-            this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnOk = new Telerik.WinControls.UI.RadButton();
+            this.btnCancel = new Telerik.WinControls.UI.RadButton();
+            this.radThemeManager1 = new Telerik.WinControls.RadThemeManager();
+            this.office2010SilverTheme1 = new Telerik.WinControls.Themes.Office2010SilverTheme();
+            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
+            this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
+            this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.comboBoxEx5 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.Green = new DevComponents.Editors.ComboItem();
@@ -80,86 +82,94 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnCancel = new DevComponents.DotNetBar.ButtonX();
-            this.btnOK = new DevComponents.DotNetBar.ButtonX();
-            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.groupBox1.SuspendLayout();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnSearchCustomer = new Telerik.WinControls.UI.RadButton();
+            this.btnCheckNumber = new Telerik.WinControls.UI.RadButton();
+            this.maskedTextBoxAdv6 = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnOk)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).BeginInit();
+            this.panelEx1.SuspendLayout();
+            this.panelEx2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearchCustomer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCheckNumber)).BeginInit();
             this.SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.maskedTextBoxAdv6);
-            this.groupBox1.Controls.Add(this.btnSearchCustomoer);
-            this.groupBox1.Controls.Add(this.btnCheckNumber);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(180, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(436, 81);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "بررسی مشتری";
-            // 
-            // maskedTextBoxAdv6
-            // 
-            this.maskedTextBoxAdv6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.maskedTextBoxAdv6.BackgroundStyle.Class = "TextBoxBorder";
-            this.maskedTextBoxAdv6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.maskedTextBoxAdv6.ButtonClear.Visible = true;
-            this.maskedTextBoxAdv6.Location = new System.Drawing.Point(243, 33);
-            this.maskedTextBoxAdv6.Mask = "000 000 0000";
-            this.maskedTextBoxAdv6.Name = "maskedTextBoxAdv6";
-            this.maskedTextBoxAdv6.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.maskedTextBoxAdv6.Size = new System.Drawing.Size(107, 20);
-            this.maskedTextBoxAdv6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.maskedTextBoxAdv6.TabIndex = 0;
-            this.maskedTextBoxAdv6.Text = "";
-            // 
-            // btnSearchCustomoer
-            // 
-            this.btnSearchCustomoer.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnSearchCustomoer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearchCustomoer.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSearchCustomoer.Location = new System.Drawing.Point(6, 30);
-            this.btnSearchCustomoer.Name = "btnSearchCustomoer";
-            this.btnSearchCustomoer.Size = new System.Drawing.Size(75, 23);
-            this.btnSearchCustomoer.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnSearchCustomoer.TabIndex = 2;
-            this.btnSearchCustomoer.Text = "جستجو";
-            // 
-            // btnCheckNumber
-            // 
-            this.btnCheckNumber.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnCheckNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCheckNumber.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnCheckNumber.Location = new System.Drawing.Point(87, 30);
-            this.btnCheckNumber.Name = "btnCheckNumber";
-            this.btnCheckNumber.Size = new System.Drawing.Size(109, 23);
-            this.btnCheckNumber.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnCheckNumber.TabIndex = 1;
-            this.btnCheckNumber.Text = "بررسی شماره همراه";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(356, 37);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "تلفن همراه :";
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // btnOk
+            // 
+            this.btnOk.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.btnOk.Location = new System.Drawing.Point(506, 12);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(110, 36);
+            this.btnOk.TabIndex = 0;
+            this.btnOk.Text = "ثبت نوبت";
+            this.btnOk.ThemeName = "Office2010Silver";
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click_1);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.btnCancel.Location = new System.Drawing.Point(390, 12);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(110, 36);
+            this.btnCancel.TabIndex = 1;
+            this.btnCancel.Text = "انصراف";
+            this.btnCancel.ThemeName = "Office2010Silver";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // styleManager1
+            // 
+            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2010Silver;
+            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255))))), System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199))))));
+            // 
+            // panelEx1
+            // 
+            this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx1.Controls.Add(this.btnOk);
+            this.panelEx1.Controls.Add(this.btnCancel);
+            this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelEx1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelEx1.Location = new System.Drawing.Point(0, 435);
+            this.panelEx1.Name = "panelEx1";
+            this.panelEx1.Size = new System.Drawing.Size(628, 60);
+            this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelEx1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelEx1.Style.GradientAngle = 90;
+            this.panelEx1.TabIndex = 1;
+            // 
+            // panelEx2
+            // 
+            this.panelEx2.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelEx2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx2.Controls.Add(this.groupBox2);
+            this.panelEx2.Controls.Add(this.groupBox1);
+            this.panelEx2.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelEx2.Location = new System.Drawing.Point(0, 0);
+            this.panelEx2.Name = "panelEx2";
+            this.panelEx2.Size = new System.Drawing.Size(628, 435);
+            this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelEx2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.panelEx2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelEx2.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelEx2.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelEx2.Style.GradientAngle = 90;
+            this.panelEx2.TabIndex = 0;
             // 
             // groupBox2
             // 
@@ -192,7 +202,7 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.textBoxX1);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(12, 99);
+            this.groupBox2.Location = new System.Drawing.Point(12, 101);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(604, 320);
             this.groupBox2.TabIndex = 1;
@@ -236,6 +246,8 @@
             this.maskedTextBoxAdv5.BackgroundStyle.Class = "TextBoxBorder";
             this.maskedTextBoxAdv5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.maskedTextBoxAdv5.ButtonClear.Visible = true;
+            this.maskedTextBoxAdv5.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.maskedTextBoxAdv5.FocusHighlightEnabled = true;
             this.maskedTextBoxAdv5.Location = new System.Drawing.Point(211, 83);
             this.maskedTextBoxAdv5.Mask = "900 000 00 00";
             this.maskedTextBoxAdv5.Name = "maskedTextBoxAdv5";
@@ -254,6 +266,8 @@
             this.maskedTextBoxAdv4.BackgroundStyle.Class = "TextBoxBorder";
             this.maskedTextBoxAdv4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.maskedTextBoxAdv4.ButtonClear.Visible = true;
+            this.maskedTextBoxAdv4.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.maskedTextBoxAdv4.FocusHighlightEnabled = true;
             this.maskedTextBoxAdv4.Location = new System.Drawing.Point(418, 83);
             this.maskedTextBoxAdv4.Mask = "313 000 00 00";
             this.maskedTextBoxAdv4.Name = "maskedTextBoxAdv4";
@@ -287,6 +301,8 @@
             this.textBoxX13.Border.Class = "TextBoxBorder";
             this.textBoxX13.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX13.DisabledBackColor = System.Drawing.Color.White;
+            this.textBoxX13.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.textBoxX13.FocusHighlightEnabled = true;
             this.textBoxX13.Location = new System.Drawing.Point(19, 63);
             this.textBoxX13.MaxLength = 200;
             this.textBoxX13.Name = "textBoxX13";
@@ -314,6 +330,8 @@
             this.textBoxX15.Border.Class = "TextBoxBorder";
             this.textBoxX15.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX15.DisabledBackColor = System.Drawing.Color.White;
+            this.textBoxX15.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.textBoxX15.FocusHighlightEnabled = true;
             this.textBoxX15.Location = new System.Drawing.Point(19, 107);
             this.textBoxX15.Name = "textBoxX15";
             this.textBoxX15.PreventEnterBeep = true;
@@ -340,6 +358,8 @@
             this.textBoxX16.Border.Class = "TextBoxBorder";
             this.textBoxX16.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX16.DisabledBackColor = System.Drawing.Color.White;
+            this.textBoxX16.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.textBoxX16.FocusHighlightEnabled = true;
             this.textBoxX16.Location = new System.Drawing.Point(19, 19);
             this.textBoxX16.MaxLength = 200;
             this.textBoxX16.Name = "textBoxX16";
@@ -395,6 +415,8 @@
             this.maskedTextBoxAdv3.BackgroundStyle.Class = "TextBoxBorder";
             this.maskedTextBoxAdv3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.maskedTextBoxAdv3.ButtonClear.Visible = true;
+            this.maskedTextBoxAdv3.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.maskedTextBoxAdv3.FocusHighlightEnabled = true;
             this.maskedTextBoxAdv3.Location = new System.Drawing.Point(211, 171);
             this.maskedTextBoxAdv3.Mask = "1300/00/00";
             this.maskedTextBoxAdv3.Name = "maskedTextBoxAdv3";
@@ -413,6 +435,8 @@
             this.maskedTextBoxAdv2.BackgroundStyle.Class = "TextBoxBorder";
             this.maskedTextBoxAdv2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.maskedTextBoxAdv2.ButtonClear.Visible = true;
+            this.maskedTextBoxAdv2.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.maskedTextBoxAdv2.FocusHighlightEnabled = true;
             this.maskedTextBoxAdv2.Location = new System.Drawing.Point(418, 127);
             this.maskedTextBoxAdv2.Mask = "1300/00/00";
             this.maskedTextBoxAdv2.Name = "maskedTextBoxAdv2";
@@ -490,6 +514,8 @@
             this.comboBoxEx1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxEx1.DisplayMember = "Text";
             this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx1.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.comboBoxEx1.FocusHighlightEnabled = true;
             this.comboBoxEx1.FormattingEnabled = true;
             this.comboBoxEx1.ItemHeight = 16;
             this.comboBoxEx1.Items.AddRange(new object[] {
@@ -522,6 +548,8 @@
             this.maskedTextBoxAdv1.BackgroundStyle.Class = "TextBoxBorder";
             this.maskedTextBoxAdv1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.maskedTextBoxAdv1.ButtonClear.Visible = true;
+            this.maskedTextBoxAdv1.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.maskedTextBoxAdv1.FocusHighlightEnabled = true;
             this.maskedTextBoxAdv1.Location = new System.Drawing.Point(418, 215);
             this.maskedTextBoxAdv1.Mask = "000-000-00-00";
             this.maskedTextBoxAdv1.Name = "maskedTextBoxAdv1";
@@ -540,11 +568,13 @@
             this.textBoxX11.Border.Class = "TextBoxBorder";
             this.textBoxX11.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX11.DisabledBackColor = System.Drawing.Color.White;
-            this.textBoxX11.Location = new System.Drawing.Point(28, 261);
+            this.textBoxX11.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.textBoxX11.FocusHighlightEnabled = true;
+            this.textBoxX11.Location = new System.Drawing.Point(21, 261);
             this.textBoxX11.Multiline = true;
             this.textBoxX11.Name = "textBoxX11";
             this.textBoxX11.PreventEnterBeep = true;
-            this.textBoxX11.Size = new System.Drawing.Size(495, 53);
+            this.textBoxX11.Size = new System.Drawing.Size(504, 53);
             this.textBoxX11.TabIndex = 12;
             // 
             // label14
@@ -626,6 +656,8 @@
             this.textBoxX6.Border.Class = "TextBoxBorder";
             this.textBoxX6.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX6.DisabledBackColor = System.Drawing.Color.White;
+            this.textBoxX6.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.textBoxX6.FocusHighlightEnabled = true;
             this.textBoxX6.Location = new System.Drawing.Point(211, 39);
             this.textBoxX6.MaxLength = 200;
             this.textBoxX6.Name = "textBoxX6";
@@ -693,6 +725,8 @@
             this.textBoxX1.Border.Class = "TextBoxBorder";
             this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX1.DisabledBackColor = System.Drawing.Color.White;
+            this.textBoxX1.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.textBoxX1.FocusHighlightEnabled = true;
             this.textBoxX1.Location = new System.Drawing.Point(418, 39);
             this.textBoxX1.MaxLength = 200;
             this.textBoxX1.Name = "textBoxX1";
@@ -711,56 +745,79 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "نام";
             // 
-            // panel2
+            // groupBox1
             // 
-            this.panel2.Controls.Add(this.btnCancel);
-            this.panel2.Controls.Add(this.btnOK);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 429);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(628, 57);
-            this.panel2.TabIndex = 2;
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btnSearchCustomer);
+            this.groupBox1.Controls.Add(this.btnCheckNumber);
+            this.groupBox1.Controls.Add(this.maskedTextBoxAdv6);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(12, 14);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(604, 81);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "بررسی مشتری";
             // 
-            // btnCancel
+            // btnSearchCustomer
             // 
-            this.btnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(460, 3);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 42);
-            this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnCancel.TabIndex = 1;
-            this.btnCancel.Text = "انصراف";
-            this.btnCancel.Click += new System.EventHandler(this.buttonX3_Click);
+            this.btnSearchCustomer.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnSearchCustomer.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.btnSearchCustomer.Location = new System.Drawing.Point(6, 27);
+            this.btnSearchCustomer.Name = "btnSearchCustomer";
+            this.btnSearchCustomer.Size = new System.Drawing.Size(110, 36);
+            this.btnSearchCustomer.TabIndex = 2;
+            this.btnSearchCustomer.Text = "جستجوی پیشرفته";
+            this.btnSearchCustomer.ThemeName = "Office2010Silver";
             // 
-            // btnOK
+            // btnCheckNumber
             // 
-            this.btnOK.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnOK.Location = new System.Drawing.Point(541, 3);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 42);
-            this.btnOK.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnOK.TabIndex = 0;
-            this.btnOK.Text = "ثبت نوبت";
+            this.btnCheckNumber.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.btnCheckNumber.Location = new System.Drawing.Point(122, 27);
+            this.btnCheckNumber.Name = "btnCheckNumber";
+            this.btnCheckNumber.Size = new System.Drawing.Size(110, 36);
+            this.btnCheckNumber.TabIndex = 1;
+            this.btnCheckNumber.Text = "بررسی شماره همراه";
+            this.btnCheckNumber.ThemeName = "Office2010Silver";
             // 
-            // styleManager1
+            // maskedTextBoxAdv6
             // 
-            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Windows7Blue;
-            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(87)))), ((int)(((byte)(154))))));
+            this.maskedTextBoxAdv6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.maskedTextBoxAdv6.BackgroundStyle.Class = "TextBoxBorder";
+            this.maskedTextBoxAdv6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.maskedTextBoxAdv6.ButtonClear.Visible = true;
+            this.maskedTextBoxAdv6.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.maskedTextBoxAdv6.FocusHighlightEnabled = true;
+            this.maskedTextBoxAdv6.Location = new System.Drawing.Point(411, 33);
+            this.maskedTextBoxAdv6.Mask = "000 000 0000";
+            this.maskedTextBoxAdv6.Name = "maskedTextBoxAdv6";
+            this.maskedTextBoxAdv6.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.maskedTextBoxAdv6.Size = new System.Drawing.Size(107, 20);
+            this.maskedTextBoxAdv6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.maskedTextBoxAdv6.TabIndex = 0;
+            this.maskedTextBoxAdv6.Text = "";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(524, 37);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "تلفن همراه :";
             // 
             // FrmAddEditCustomerInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(628, 486);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(628, 495);
+            this.Controls.Add(this.panelEx2);
+            this.Controls.Add(this.panelEx1);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -771,26 +828,63 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ثبت / ویرایش رزرو";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnOk)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).EndInit();
+            this.panelEx1.ResumeLayout(false);
+            this.panelEx2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearchCustomer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCheckNumber)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private DevComponents.DotNetBar.ButtonX btnCheckNumber;
+        private Telerik.WinControls.UI.RadButton btnOk;
+        private Telerik.WinControls.UI.RadButton btnCancel;
+        private Telerik.WinControls.RadThemeManager radThemeManager1;
+        private Telerik.WinControls.Themes.Office2010SilverTheme office2010SilverTheme1;
+        private DevComponents.DotNetBar.PanelEx panelEx1;
+        private DevComponents.DotNetBar.StyleManager styleManager1;
+        private DevComponents.DotNetBar.PanelEx panelEx2;
         private System.Windows.Forms.GroupBox groupBox2;
-        private DevComponents.DotNetBar.ButtonX btnSearchCustomoer;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx5;
+        private DevComponents.Editors.ComboItem Green;
+        private DevComponents.Editors.ComboItem Red;
+        private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv maskedTextBoxAdv5;
+        private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv maskedTextBoxAdv4;
+        private System.Windows.Forms.Panel panel1;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX13;
+        private System.Windows.Forms.Label label17;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX15;
+        private System.Windows.Forms.Label label19;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX16;
+        private System.Windows.Forms.Label label20;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx4;
+        private DevComponents.Editors.ComboItem Customer;
+        private DevComponents.Editors.ComboItem Employee;
+        private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv maskedTextBoxAdv3;
+        private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv maskedTextBoxAdv2;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx3;
+        private DevComponents.Editors.ComboItem Enable;
+        private DevComponents.Editors.ComboItem Disable;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx2;
+        private DevComponents.Editors.ComboItem Single;
+        private DevComponents.Editors.ComboItem Married;
+        private DevComponents.Editors.ComboItem Unknown;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
+        private DevComponents.Editors.ComboItem Male;
+        private DevComponents.Editors.ComboItem Female;
+        private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv maskedTextBoxAdv1;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX11;
+        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
@@ -805,40 +899,10 @@
         private System.Windows.Forms.Label label3;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel1;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX13;
-        private System.Windows.Forms.Label label17;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX15;
-        private System.Windows.Forms.Label label19;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX16;
-        private System.Windows.Forms.Label label20;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx4;
-        private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv maskedTextBoxAdv3;
-        private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv maskedTextBoxAdv2;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx3;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx2;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
-        private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv maskedTextBoxAdv1;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX11;
-        private System.Windows.Forms.Label label14;
-        private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv maskedTextBoxAdv5;
-        private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv maskedTextBoxAdv4;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private Telerik.WinControls.UI.RadButton btnSearchCustomer;
+        private Telerik.WinControls.UI.RadButton btnCheckNumber;
         private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv maskedTextBoxAdv6;
-        private System.Windows.Forms.Panel panel2;
-        private DevComponents.DotNetBar.ButtonX btnCancel;
-        private DevComponents.DotNetBar.ButtonX btnOK;
-        private DevComponents.DotNetBar.StyleManager styleManager1;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx5;
-        private DevComponents.Editors.ComboItem Green;
-        private DevComponents.Editors.ComboItem Red;
-        private DevComponents.Editors.ComboItem Customer;
-        private DevComponents.Editors.ComboItem Employee;
-        private DevComponents.Editors.ComboItem Enable;
-        private DevComponents.Editors.ComboItem Disable;
-        private DevComponents.Editors.ComboItem Single;
-        private DevComponents.Editors.ComboItem Married;
-        private DevComponents.Editors.ComboItem Unknown;
-        private DevComponents.Editors.ComboItem Male;
-        private DevComponents.Editors.ComboItem Female;
+        private System.Windows.Forms.Label label1;
     }
 }
