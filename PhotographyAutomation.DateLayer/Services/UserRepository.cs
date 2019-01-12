@@ -21,10 +21,11 @@ namespace PhotographyAutomation.DateLayer.Services
         {
             try
             {
-                return db.TblUser.SingleOrDefault(x => x.Mobile.Contains(mobileNumber));
+                return db.TblUser.Where(x => x.Mobile.Contains(mobileNumber)).SingleOrDefault();
             }
-            catch
+            catch(Exception exception)
             {
+                Console.WriteLine(exception.Message);
                 return null;
             }
         }

@@ -17,24 +17,24 @@ namespace PhotographyAutomation.DateLayer.Models
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public byte Gender { get; set; }
+        public Nullable<byte> Gender { get; set; }
         public string Address { get; set; }
         public string Tell { get; set; }
         public string Mobile { get; set; }
         public string Email { get; set; }
         public string NationalId { get; set; }
-        public byte CustomerType { get; set; }
-        public byte IsMarried { get; set; }
-        public System.DateTime BirthDate { get; set; }
-        public System.DateTime WeddingDate { get; set; }
-        public byte UserType { get; set; }
+        public Nullable<byte> CustomerType { get; set; }
+        public Nullable<byte> IsMarried { get; set; }
+        public Nullable<System.DateTime> BirthDate { get; set; }
+        public Nullable<System.DateTime> WeddingDate { get; set; }
+        public Nullable<byte> UserType { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public Nullable<int> EmployeeTypeId { get; set; }
-        public int IsActive { get; set; }
-        public int IsDeleted { get; set; }
-        public int Submitter { get; set; }
-        public System.DateTime CreatedDate { get; set; }
+        public Nullable<int> IsActive { get; set; }
+        public Nullable<int> IsDeleted { get; set; }
+        public Nullable<int> Submitter { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
     
         public virtual TblEmployeeType TblEmployeeType { get; set; }

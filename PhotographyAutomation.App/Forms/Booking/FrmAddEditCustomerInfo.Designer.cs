@@ -38,11 +38,11 @@
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.groupBoxCustomerInfo = new System.Windows.Forms.GroupBox();
+            this.cmbRole = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.cmbUserType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.Customer = new DevComponents.Editors.ComboItem();
             this.Employee = new DevComponents.Editors.ComboItem();
             this.label14 = new System.Windows.Forms.Label();
-            this.txtRole = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.cmbCustomerType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.Green = new DevComponents.Editors.ComboItem();
             this.Red = new DevComponents.Editors.ComboItem();
@@ -84,6 +84,8 @@
             this.btnCheckNumber = new Telerik.WinControls.UI.RadButton();
             this.txtMobileSearch = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
             this.label1 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtEmail = new DevComponents.DotNetBar.Controls.TextBoxX();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnOk)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).BeginInit();
@@ -110,7 +112,7 @@
             this.btnOk.TabIndex = 0;
             this.btnOk.Text = "ثبت اطلاعات مشتری";
             this.btnOk.ThemeName = "Office2010Silver";
-            this.btnOk.Click += new System.EventHandler(this.btnOk_Click_1);
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // btnCancel
             // 
@@ -174,9 +176,11 @@
             // 
             this.groupBoxCustomerInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxCustomerInfo.Controls.Add(this.txtEmail);
+            this.groupBoxCustomerInfo.Controls.Add(this.label15);
+            this.groupBoxCustomerInfo.Controls.Add(this.cmbRole);
             this.groupBoxCustomerInfo.Controls.Add(this.cmbUserType);
             this.groupBoxCustomerInfo.Controls.Add(this.label14);
-            this.groupBoxCustomerInfo.Controls.Add(this.txtRole);
             this.groupBoxCustomerInfo.Controls.Add(this.cmbCustomerType);
             this.groupBoxCustomerInfo.Controls.Add(this.label19);
             this.groupBoxCustomerInfo.Controls.Add(this.txtMobile);
@@ -211,6 +215,19 @@
             this.groupBoxCustomerInfo.TabStop = false;
             this.groupBoxCustomerInfo.Text = "اطلاعات مشتری";
             // 
+            // cmbRole
+            // 
+            this.cmbRole.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbRole.DisplayMember = "Text";
+            this.cmbRole.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbRole.FormattingEnabled = true;
+            this.cmbRole.ItemHeight = 16;
+            this.cmbRole.Location = new System.Drawing.Point(21, 154);
+            this.cmbRole.Name = "cmbRole";
+            this.cmbRole.Size = new System.Drawing.Size(107, 22);
+            this.cmbRole.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cmbRole.TabIndex = 13;
+            // 
             // cmbUserType
             // 
             this.cmbUserType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -221,11 +238,11 @@
             this.cmbUserType.Items.AddRange(new object[] {
             this.Customer,
             this.Employee});
-            this.cmbUserType.Location = new System.Drawing.Point(21, 24);
+            this.cmbUserType.Location = new System.Drawing.Point(21, 66);
             this.cmbUserType.Name = "cmbUserType";
             this.cmbUserType.Size = new System.Drawing.Size(107, 22);
             this.cmbUserType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cmbUserType.TabIndex = 10;
+            this.cmbUserType.TabIndex = 11;
             // 
             // Customer
             // 
@@ -243,29 +260,11 @@
             // 
             this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(134, 27);
+            this.label14.Location = new System.Drawing.Point(134, 71);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(56, 13);
             this.label14.TabIndex = 25;
             this.label14.Text = "نوع شخص";
-            // 
-            // txtRole
-            // 
-            this.txtRole.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.txtRole.Border.Class = "TextBoxBorder";
-            this.txtRole.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtRole.DisabledBackColor = System.Drawing.Color.White;
-            this.txtRole.FocusHighlightColor = System.Drawing.SystemColors.Info;
-            this.txtRole.FocusHighlightEnabled = true;
-            this.txtRole.Location = new System.Drawing.Point(21, 111);
-            this.txtRole.Name = "txtRole";
-            this.txtRole.PreventEnterBeep = true;
-            this.txtRole.Size = new System.Drawing.Size(107, 21);
-            this.txtRole.TabIndex = 13;
-            this.txtRole.WatermarkText = "حوزه فعالیت";
             // 
             // cmbCustomerType
             // 
@@ -277,11 +276,11 @@
             this.cmbCustomerType.Items.AddRange(new object[] {
             this.Green,
             this.Red});
-            this.cmbCustomerType.Location = new System.Drawing.Point(247, 198);
+            this.cmbCustomerType.Location = new System.Drawing.Point(21, 22);
             this.cmbCustomerType.Name = "cmbCustomerType";
             this.cmbCustomerType.Size = new System.Drawing.Size(107, 22);
             this.cmbCustomerType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cmbCustomerType.TabIndex = 9;
+            this.cmbCustomerType.TabIndex = 10;
             // 
             // Green
             // 
@@ -299,7 +298,7 @@
             // 
             this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(134, 115);
+            this.label19.Location = new System.Drawing.Point(134, 159);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(51, 13);
             this.label19.TabIndex = 26;
@@ -336,12 +335,12 @@
             this.txtUserName.DisabledBackColor = System.Drawing.Color.White;
             this.txtUserName.FocusHighlightColor = System.Drawing.SystemColors.Info;
             this.txtUserName.FocusHighlightEnabled = true;
-            this.txtUserName.Location = new System.Drawing.Point(21, 69);
+            this.txtUserName.Location = new System.Drawing.Point(21, 111);
             this.txtUserName.MaxLength = 200;
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.PreventEnterBeep = true;
             this.txtUserName.Size = new System.Drawing.Size(107, 21);
-            this.txtUserName.TabIndex = 11;
+            this.txtUserName.TabIndex = 12;
             this.txtUserName.WatermarkText = "نام کاربری";
             // 
             // txtTell
@@ -368,7 +367,7 @@
             // 
             this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(134, 71);
+            this.label20.Location = new System.Drawing.Point(134, 115);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(53, 13);
             this.label20.TabIndex = 24;
@@ -422,9 +421,9 @@
             this.cmbActiveStatus.FormattingEnabled = true;
             this.cmbActiveStatus.ItemHeight = 16;
             this.cmbActiveStatus.Items.AddRange(new object[] {
-            this.Enable,
-            this.Disable});
-            this.cmbActiveStatus.Location = new System.Drawing.Point(21, 154);
+            this.Disable,
+            this.Enable});
+            this.cmbActiveStatus.Location = new System.Drawing.Point(21, 198);
             this.cmbActiveStatus.Name = "cmbActiveStatus";
             this.cmbActiveStatus.Size = new System.Drawing.Size(107, 22);
             this.cmbActiveStatus.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -487,8 +486,8 @@
             this.cmbGender.FormattingEnabled = true;
             this.cmbGender.ItemHeight = 16;
             this.cmbGender.Items.AddRange(new object[] {
-            this.Male,
-            this.Female});
+            this.Female,
+            this.Male});
             this.cmbGender.Location = new System.Drawing.Point(473, 110);
             this.cmbGender.Name = "cmbGender";
             this.cmbGender.Size = new System.Drawing.Size(107, 22);
@@ -549,7 +548,7 @@
             // 
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(134, 159);
+            this.label13.Location = new System.Drawing.Point(134, 203);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(75, 13);
             this.label13.TabIndex = 22;
@@ -559,7 +558,7 @@
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(360, 203);
+            this.label12.Location = new System.Drawing.Point(134, 27);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(62, 13);
             this.label12.TabIndex = 20;
@@ -769,6 +768,36 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "تلفن همراه :";
             // 
+            // label15
+            // 
+            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(360, 203);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(32, 13);
+            this.label15.TabIndex = 28;
+            this.label15.Text = "ایمیل";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.txtEmail.Border.Class = "TextBoxBorder";
+            this.txtEmail.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtEmail.DisabledBackColor = System.Drawing.Color.White;
+            this.txtEmail.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.txtEmail.FocusHighlightEnabled = true;
+            this.txtEmail.Location = new System.Drawing.Point(247, 199);
+            this.txtEmail.MaxLength = 200;
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.PreventEnterBeep = true;
+            this.txtEmail.Size = new System.Drawing.Size(107, 21);
+            this.txtEmail.TabIndex = 9;
+            this.txtEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtEmail.WatermarkText = "test@test.coom";
+            // 
             // FrmAddEditCustomerInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -818,7 +847,6 @@
         private DevComponents.Editors.ComboItem Red;
         private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv txtMobile;
         private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv txtTell;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtRole;
         private System.Windows.Forms.Label label19;
         private DevComponents.DotNetBar.Controls.TextBoxX txtUserName;
         private System.Windows.Forms.Label label20;
@@ -859,5 +887,8 @@
         private DevComponents.Editors.ComboItem Customer;
         private DevComponents.Editors.ComboItem Employee;
         private System.Windows.Forms.Label label14;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbRole;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtEmail;
+        private System.Windows.Forms.Label label15;
     }
 }

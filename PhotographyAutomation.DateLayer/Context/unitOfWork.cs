@@ -1,10 +1,6 @@
 ﻿using PhotographyAutomation.DateLayer.Models;
 using PhotographyAutomation.DateLayer.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using PhotographyAutomation.DateLayer.Repositories;
 
 namespace PhotographyAutomation.DateLayer.Context
@@ -60,9 +56,18 @@ namespace PhotographyAutomation.DateLayer.Context
             }
         }
 
-        public void Save()
+        public bool Save()
         {
-            _db.SaveChanges();
+            try
+            {
+                _db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            
         }
 
         public void Dispose()

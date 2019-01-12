@@ -50,9 +50,10 @@ namespace PhotographyAutomation.DateLayer.Services
             {
                 _dbSet.Add(entity);
             }
-            catch
+            catch(Exception exception)
             {
-                // ignored
+                Console.WriteLine(exception.Message);
+                Console.ReadKey();
             }
         }
 
