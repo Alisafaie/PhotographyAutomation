@@ -67,9 +67,11 @@
             this.qatCustomizeItem1 = new DevComponents.DotNetBar.QatCustomizeItem();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
+            this.persianMonthCalendar1 = new FreeControls.PersianMonthCalendar();
             this.toolStripTopMenu.SuspendLayout();
             this.ribbonControl1.SuspendLayout();
             this.ribbonPanel1.SuspendLayout();
+            this.panelEx1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripTopMenu
@@ -543,12 +545,13 @@
             // styleManager1
             // 
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2010Silver;
-            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(87)))), ((int)(((byte)(154))))));
+            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255))))), System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199))))));
             // 
             // panelEx1
             // 
             this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx1.Controls.Add(this.persianMonthCalendar1);
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx1.Location = new System.Drawing.Point(0, 145);
@@ -562,6 +565,23 @@
             this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx1.Style.GradientAngle = 90;
             this.panelEx1.TabIndex = 4;
+            // 
+            // persianMonthCalendar1
+            // 
+            this.persianMonthCalendar1.BackColor = System.Drawing.Color.White;
+            this.persianMonthCalendar1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.persianMonthCalendar1.Location = new System.Drawing.Point(12, 6);
+            this.persianMonthCalendar1.MarkColor = System.Drawing.Color.Green;
+            this.persianMonthCalendar1.MaximumSize = new System.Drawing.Size(325, 172);
+            this.persianMonthCalendar1.MinimumSize = new System.Drawing.Size(325, 172);
+            this.persianMonthCalendar1.Name = "persianMonthCalendar1";
+            this.persianMonthCalendar1.ShowToday = true;
+            this.persianMonthCalendar1.Size = new System.Drawing.Size(325, 172);
+            this.persianMonthCalendar1.TabIndex = 0;
+            this.persianMonthCalendar1.Text = "persianMonthCalendar1";
+            this.persianMonthCalendar1.TitleBackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.persianMonthCalendar1.TitleForeColor = System.Drawing.Color.White;
+            this.persianMonthCalendar1.Value = ((FreeControls.PersianDate)(resources.GetObject("persianMonthCalendar1.Value")));
             // 
             // FrmMain
             // 
@@ -584,6 +604,7 @@
             this.ribbonControl1.ResumeLayout(false);
             this.ribbonControl1.PerformLayout();
             this.ribbonPanel1.ResumeLayout(false);
+            this.panelEx1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -628,5 +649,6 @@
         private DevComponents.DotNetBar.PanelEx panelEx1;
         private DevComponents.DotNetBar.RibbonBar ribbonBar2;
         private DevComponents.DotNetBar.ButtonItem buttonItem14;
+        private FreeControls.PersianMonthCalendar persianMonthCalendar1;
     }
 }

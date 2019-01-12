@@ -138,14 +138,15 @@
             // 
             // radTimePicker1
             // 
-            this.radTimePicker1.ClockPosition = Telerik.WinControls.UI.ClockPosition.ClockAboveTables;
             this.radTimePicker1.CloseButtonText = "بستن";
-            this.radTimePicker1.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.radTimePicker1.Location = new System.Drawing.Point(437, 46);
+            this.radTimePicker1.Culture = new System.Globalization.CultureInfo("en-US");
+            this.radTimePicker1.EnableKeyMap = true;
+            this.radTimePicker1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.radTimePicker1.Location = new System.Drawing.Point(437, 41);
             this.radTimePicker1.MaxValue = new System.DateTime(9999, 12, 31, 23, 59, 59, 0);
             this.radTimePicker1.MinValue = new System.DateTime(((long)(0)));
             this.radTimePicker1.Name = "radTimePicker1";
-            this.radTimePicker1.Size = new System.Drawing.Size(100, 19);
+            this.radTimePicker1.Size = new System.Drawing.Size(100, 21);
             this.radTimePicker1.TabIndex = 10;
             this.radTimePicker1.TabStop = false;
             this.radTimePicker1.Value = new System.DateTime(2019, 1, 10, 20, 15, 58, 785);
@@ -165,6 +166,7 @@
             this.persianDateTimePicker1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.persianDateTimePicker1.Location = new System.Drawing.Point(682, 48);
             this.persianDateTimePicker1.Name = "persianDateTimePicker1";
+            this.persianDateTimePicker1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.persianDateTimePicker1.ShowTime = false;
             this.persianDateTimePicker1.Size = new System.Drawing.Size(109, 18);
             this.persianDateTimePicker1.TabIndex = 7;
