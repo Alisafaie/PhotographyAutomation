@@ -14,6 +14,12 @@ namespace PhotographyAutomation.DateLayer.Models
     
     public partial class TblUser
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TblUser()
+        {
+            this.TblBooking = new HashSet<TblBooking>();
+        }
+    
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -38,5 +44,7 @@ namespace PhotographyAutomation.DateLayer.Models
         public Nullable<System.DateTime> ModifiedDate { get; set; }
     
         public virtual TblEmployeeType TblEmployeeType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblBooking> TblBooking { get; set; }
     }
 }

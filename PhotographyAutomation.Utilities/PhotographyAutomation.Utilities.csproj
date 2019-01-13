@@ -43,7 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Convertor\DateConvertor.cs" />
+    <Compile Include="ExtentionMethods\NationalIdHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Regex\EmailChecker.cs" />
     <Compile Include="RtlMessageBox.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

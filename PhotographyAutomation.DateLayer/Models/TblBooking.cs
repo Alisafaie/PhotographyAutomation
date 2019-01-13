@@ -17,7 +17,7 @@ namespace PhotographyAutomation.DateLayer.Models
         public int Id { get; set; }
         public int UserId { get; set; }
         public System.DateTime Date { get; set; }
-        public System.DateTime Time { get; set; }
+        public System.TimeSpan Time { get; set; }
         public byte PhotographerGender { get; set; }
         public int PhotographyTypeId { get; set; }
         public Nullable<int> AtelierTypeId { get; set; }
@@ -27,5 +27,7 @@ namespace PhotographyAutomation.DateLayer.Models
         public int StatusId { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
+    
+        public virtual TblUser TblUser { get; set; }
     }
 }

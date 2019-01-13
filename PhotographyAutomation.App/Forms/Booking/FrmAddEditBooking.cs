@@ -1,14 +1,10 @@
-﻿using DevComponents.DotNetBar.Controls;
+﻿using FreeControls;
 using PhotographyAutomation.DateLayer.Context;
+using PhotographyAutomation.DateLayer.Models;
 using PhotographyAutomation.Utilities;
 using PhotographyAutomation.ViewModels.User;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PhotographyAutomation.App.Forms.Booking
@@ -25,6 +21,16 @@ namespace PhotographyAutomation.App.Forms.Booking
 
         private void FrmAddEditBooking_Load(object sender, EventArgs e)
         {
+            datePickerBookingDate.Value = PersianDate.Now;
+            datePickerPayment.Value = PersianDate.Now;
+
+            timePickerBookingTime.Value = DateTime.Now;
+            timePickerPayment.Value = DateTime.Now;
+
+            txtPersonCount.Value = 1;
+
+            txtBookingStatus.Text = @"در انتظار پرداخت";
+
             using (var db = new UnitOfWork())
             {
                 UserInfoBookingViewModel userInfo = db.UserRepository.GetCustomerInfoBooking(UserId);
@@ -54,15 +60,11 @@ namespace PhotographyAutomation.App.Forms.Booking
 
         private void PopulateComboBoxes()
         {
-            using (var db=new UnitOfWork())
+            using (var db = new UnitOfWork())
             {
                 cmbAtelierTypes.DataSource = db.AtelierTypesGenericRepository.Get().OrderBy(x => x.Code).ToList();
                 cmbAtelierTypes.DisplayMember = "AtelierName";
                 cmbAtelierTypes.ValueMember = "Id";
-
-                cmbBookingStatus.DataSource = db.BookingStatusGenericRepository.Get().OrderBy(x => x.Code).ToList();
-                cmbBookingStatus.DisplayMember = "StatusName";
-                cmbBookingStatus.ValueMember = "Id";
 
                 cmbPhotographyTypes.DataSource =
                     db.PhotographyTypesGenericRepository.Get().OrderBy(x => x.Code).ToList();
@@ -75,6 +77,107 @@ namespace PhotographyAutomation.App.Forms.Booking
                 cmbPhotographyTypes.DisplayMember = "TypeName";
                 cmbPhotographyTypes.ValueMember = "Id";
             }
+        }
+
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+            if (CheckInputs())
+            {
+                if (timePickerPayment.Value != null)
+                {
+                    var booking = new TblBooking
+                    {
+                        UserId = UserId,
+                        AtelierTypeId = (int)cmbAtelierTypes.SelectedValue,
+                        CreatedDate = DateTime.Now,
+                        Date = datePickerBookingDate.Value,
+                        PersonCount = (int)txtPersonCount.Value,
+                        PhotographyTypeId = (int)cmbPhotographyTypes.SelectedValue,
+                        Time = TimeSpan.Parse(timePickerPayment.Value.Value.ToShortTimeString()),
+                        PrepaymentIsOk = 0
+                    };
+
+                    if (rbFemalePhotographer.Checked)
+                    {
+                        booking.PhotographerGender = 0;
+                    }
+                    else if (rbMalePhotographer.Checked)
+                    {
+                        booking.PhotographerGender = 1;
+                    }
+                    else
+                    {
+                        booking.PhotographerGender = 2;
+                    }
+
+
+                    using (var db = new UnitOfWork())
+                    {
+                        if (BookingId == 0)
+                        {
+                            db.BookingRepository.Insert(booking);
+                        }
+                        else
+                        {
+                            booking.Id = BookingId;
+                            db.BookingRepository.Update(booking);
+                        }
+
+                        int result = db.Save();
+                        if (result > 0)
+                        {
+                            RtlMessageBox.Show("نوبت مشتری با موفقیت در سیستم ثبت گردید.", "ثبت اطلاعات در سیستم",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            DialogResult = DialogResult.OK;
+                        }
+                    }
+                }
+            }
+        }
+
+        private bool CheckInputs()
+        {
+            if (datePickerBookingDate.Value.Year != PersianDate.Now.Year)
+            {
+                return false;
+            }
+            if (datePickerBookingDate.Value.Month < PersianDate.Now.Month)
+            {
+                return false;
+            }
+            if (datePickerBookingDate.Value.Month == PersianDate.Now.Month &&
+                     datePickerBookingDate.Value.Day < PersianDate.Now.Day)
+            {
+                return false;
+            }
+
+            if (timePickerBookingTime.Value != null &&
+                (timePickerBookingTime.Value.Value.Hour < 9))
+            {
+                return false;
+            }
+
+            if (timePickerBookingTime.Value != null &&
+                (timePickerBookingTime.Value.Value.Hour >= 20))
+                if (timePickerBookingTime.Value.Value.Hour >= 21)
+                    return false;
+                else if (timePickerBookingTime.Value != null && timePickerBookingTime.Value.Value.Minute >= 30)
+                    return false;
+
+
+            if (txtPersonCount.Value == 0)
+            {
+                return false;
+            }
+
+            if (!rbFemalePhotographer.Checked && !rbMalePhotographer.Checked && !rbNoMatterPhotographer.Checked)
+            {
+                return false;
+            }
+
+
+
+            return true;
         }
     }
 }

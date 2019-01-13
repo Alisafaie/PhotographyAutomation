@@ -21,5 +21,14 @@ namespace PhotographyAutomation.App.Forms
             FrmAddEditCustomerInfo customer=new FrmAddEditCustomerInfo();
             customer.ShowDialog();
         }
+
+        private void buttonItem15_Click(object sender, EventArgs e)
+        {
+            FrmAddEditBooking f = new FrmAddEditBooking
+            {
+                UserId = 13
+            };
+            f.ShowDialog();
+        }
     }
 }

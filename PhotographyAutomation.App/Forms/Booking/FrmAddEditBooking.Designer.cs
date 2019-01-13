@@ -29,56 +29,72 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAddEditBooking));
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAddEditBooking));
             this.office2010SilverTheme1 = new Telerik.WinControls.Themes.Office2010SilverTheme();
             this.btnOk = new Telerik.WinControls.UI.RadButton();
             this.btnCancel = new Telerik.WinControls.UI.RadButton();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dgvBookingHistory = new Telerik.WinControls.UI.RadGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtPersonCount = new Telerik.WinControls.UI.RadSpinEditor();
+            this.cmbAtelierTypes = new Telerik.WinControls.UI.RadDropDownList();
+            this.cmbPhotographyTypes = new Telerik.WinControls.UI.RadDropDownList();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.panelPhotographerTypes = new System.Windows.Forms.Panel();
+            this.rbNoMatterPhotographer = new System.Windows.Forms.RadioButton();
+            this.rbMalePhotographer = new System.Windows.Forms.RadioButton();
+            this.rbFemalePhotographer = new System.Windows.Forms.RadioButton();
+            this.label6 = new System.Windows.Forms.Label();
             this.timePickerBookingTime = new Telerik.WinControls.UI.RadTimePicker();
             this.label5 = new System.Windows.Forms.Label();
-            this.dateTimePickerBookingDate = new FreeControls.PersianDateTimePicker();
+            this.datePickerBookingDate = new FreeControls.PersianDateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtMobile = new System.Windows.Forms.MaskedTextBox();
+            this.txtTell = new System.Windows.Forms.MaskedTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtFirstNameLastName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.label1 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.panelPhotographerTypes = new System.Windows.Forms.Panel();
-            this.rbFemalePhotographer = new System.Windows.Forms.RadioButton();
-            this.rbMalePhotographer = new System.Windows.Forms.RadioButton();
-            this.rbNoMatterPhotographer = new System.Windows.Forms.RadioButton();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.dgvBookingHistory = new Telerik.WinControls.UI.RadGridView();
-            this.txtTell = new System.Windows.Forms.MaskedTextBox();
-            this.txtMobile = new System.Windows.Forms.MaskedTextBox();
-            this.cmbPhotographyTypes = new Telerik.WinControls.UI.RadDropDownList();
-            this.cmbAtelierTypes = new Telerik.WinControls.UI.RadDropDownList();
-            this.cmbBookingStatus = new Telerik.WinControls.UI.RadDropDownList();
-            this.txtPersonCount = new Telerik.WinControls.UI.RadSpinEditor();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.radThemeManager1 = new Telerik.WinControls.RadThemeManager();
+            this.txtBookingStatus = new Telerik.WinControls.UI.RadTextBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtPaymentAmount = new Telerik.WinControls.UI.RadSpinEditor();
+            this.datePickerPayment = new FreeControls.PersianDateTimePicker();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtPaymentDescription = new Telerik.WinControls.UI.RadTextBox();
+            this.timePickerPayment = new Telerik.WinControls.UI.RadTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.btnOk)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).BeginInit();
             this.panelEx1.SuspendLayout();
             this.panelEx2.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.timePickerBookingTime)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.panelPhotographerTypes.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookingHistory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookingHistory.MasterTemplate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbPhotographyTypes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbAtelierTypes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbBookingStatus)).BeginInit();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPersonCount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbAtelierTypes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbPhotographyTypes)).BeginInit();
+            this.panelPhotographerTypes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.timePickerBookingTime)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBookingStatus)).BeginInit();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPaymentAmount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPaymentDescription)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timePickerPayment)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOk
@@ -90,6 +106,7 @@
             this.btnOk.TabIndex = 0;
             this.btnOk.Text = "ثبت نوبت";
             this.btnOk.ThemeName = "Office2010Silver";
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // btnCancel
             // 
@@ -111,7 +128,7 @@
             this.panelEx1.Controls.Add(this.btnCancel);
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelEx1.Location = new System.Drawing.Point(0, 507);
+            this.panelEx1.Location = new System.Drawing.Point(0, 588);
             this.panelEx1.Name = "panelEx1";
             this.panelEx1.Size = new System.Drawing.Size(919, 60);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -132,6 +149,7 @@
             // 
             this.panelEx2.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx2.Controls.Add(this.groupBox4);
             this.panelEx2.Controls.Add(this.groupBox3);
             this.panelEx2.Controls.Add(this.groupBox2);
             this.panelEx2.Controls.Add(this.groupBox1);
@@ -139,7 +157,7 @@
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx2.Location = new System.Drawing.Point(0, 0);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(919, 507);
+            this.panelEx2.Size = new System.Drawing.Size(919, 588);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -149,10 +167,35 @@
             this.panelEx2.Style.GradientAngle = 90;
             this.panelEx2.TabIndex = 0;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.dgvBookingHistory);
+            this.groupBox3.Location = new System.Drawing.Point(12, 385);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(895, 200);
+            this.groupBox3.TabIndex = 2;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "تاریخچه نوبت های قبلی";
+            // 
+            // dgvBookingHistory
+            // 
+            this.dgvBookingHistory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvBookingHistory.Location = new System.Drawing.Point(3, 17);
+            // 
+            // 
+            // 
+            this.dgvBookingHistory.MasterTemplate.AllowAddNewRow = false;
+            this.dgvBookingHistory.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            this.dgvBookingHistory.Name = "dgvBookingHistory";
+            this.dgvBookingHistory.ReadOnly = true;
+            this.dgvBookingHistory.Size = new System.Drawing.Size(889, 180);
+            this.dgvBookingHistory.TabIndex = 0;
+            this.dgvBookingHistory.ThemeName = "Office2010Silver";
+            // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtBookingStatus);
             this.groupBox2.Controls.Add(this.txtPersonCount);
-            this.groupBox2.Controls.Add(this.cmbBookingStatus);
             this.groupBox2.Controls.Add(this.cmbAtelierTypes);
             this.groupBox2.Controls.Add(this.cmbPhotographyTypes);
             this.groupBox2.Controls.Add(this.label10);
@@ -163,14 +206,147 @@
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.timePickerBookingTime);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.dateTimePickerBookingDate);
+            this.groupBox2.Controls.Add(this.datePickerBookingDate);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Location = new System.Drawing.Point(12, 118);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(895, 147);
-            this.groupBox2.TabIndex = 1;
+            this.groupBox2.Size = new System.Drawing.Size(895, 117);
+            this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "اطلاعات رزرواسیون";
+            // 
+            // txtPersonCount
+            // 
+            this.txtPersonCount.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.txtPersonCount.Location = new System.Drawing.Point(260, 82);
+            this.txtPersonCount.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.txtPersonCount.Name = "txtPersonCount";
+            this.txtPersonCount.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtPersonCount.Size = new System.Drawing.Size(111, 20);
+            this.txtPersonCount.TabIndex = 5;
+            this.txtPersonCount.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPersonCount.ThemeName = "Office2010Silver";
+            // 
+            // cmbAtelierTypes
+            // 
+            this.cmbAtelierTypes.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
+            this.cmbAtelierTypes.EnableAlternatingItemColor = true;
+            this.cmbAtelierTypes.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.cmbAtelierTypes.Location = new System.Drawing.Point(470, 82);
+            this.cmbAtelierTypes.Name = "cmbAtelierTypes";
+            this.cmbAtelierTypes.Size = new System.Drawing.Size(111, 20);
+            this.cmbAtelierTypes.TabIndex = 4;
+            this.cmbAtelierTypes.ThemeName = "Office2010Silver";
+            // 
+            // cmbPhotographyTypes
+            // 
+            this.cmbPhotographyTypes.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
+            this.cmbPhotographyTypes.EnableAlternatingItemColor = true;
+            this.cmbPhotographyTypes.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.cmbPhotographyTypes.Location = new System.Drawing.Point(670, 82);
+            this.cmbPhotographyTypes.Name = "cmbPhotographyTypes";
+            this.cmbPhotographyTypes.Size = new System.Drawing.Size(111, 20);
+            this.cmbPhotographyTypes.TabIndex = 3;
+            this.cmbPhotographyTypes.ThemeName = "Office2010Silver";
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(145, 84);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(65, 13);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "وضعیت نوبت";
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(377, 84);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(30, 13);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "تعداد";
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(587, 84);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(27, 13);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "آتلیه";
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(787, 84);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(52, 13);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "نوع عکس";
+            // 
+            // panelPhotographerTypes
+            // 
+            this.panelPhotographerTypes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelPhotographerTypes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelPhotographerTypes.Controls.Add(this.rbNoMatterPhotographer);
+            this.panelPhotographerTypes.Controls.Add(this.rbMalePhotographer);
+            this.panelPhotographerTypes.Controls.Add(this.rbFemalePhotographer);
+            this.panelPhotographerTypes.Location = new System.Drawing.Point(166, 23);
+            this.panelPhotographerTypes.Name = "panelPhotographerTypes";
+            this.panelPhotographerTypes.Size = new System.Drawing.Size(205, 32);
+            this.panelPhotographerTypes.TabIndex = 2;
+            // 
+            // rbNoMatterPhotographer
+            // 
+            this.rbNoMatterPhotographer.AutoSize = true;
+            this.rbNoMatterPhotographer.Location = new System.Drawing.Point(3, 6);
+            this.rbNoMatterPhotographer.Name = "rbNoMatterPhotographer";
+            this.rbNoMatterPhotographer.Size = new System.Drawing.Size(75, 17);
+            this.rbNoMatterPhotographer.TabIndex = 2;
+            this.rbNoMatterPhotographer.TabStop = true;
+            this.rbNoMatterPhotographer.Text = "فرقی ندارد";
+            this.rbNoMatterPhotographer.UseVisualStyleBackColor = true;
+            // 
+            // rbMalePhotographer
+            // 
+            this.rbMalePhotographer.AutoSize = true;
+            this.rbMalePhotographer.Location = new System.Drawing.Point(98, 6);
+            this.rbMalePhotographer.Name = "rbMalePhotographer";
+            this.rbMalePhotographer.Size = new System.Drawing.Size(36, 17);
+            this.rbMalePhotographer.TabIndex = 1;
+            this.rbMalePhotographer.TabStop = true;
+            this.rbMalePhotographer.Text = "آقا";
+            this.rbMalePhotographer.UseVisualStyleBackColor = true;
+            // 
+            // rbFemalePhotographer
+            // 
+            this.rbFemalePhotographer.AutoSize = true;
+            this.rbFemalePhotographer.Location = new System.Drawing.Point(151, 6);
+            this.rbFemalePhotographer.Name = "rbFemalePhotographer";
+            this.rbFemalePhotographer.Size = new System.Drawing.Size(46, 17);
+            this.rbFemalePhotographer.TabIndex = 0;
+            this.rbFemalePhotographer.TabStop = true;
+            this.rbFemalePhotographer.Text = "خانم";
+            this.rbFemalePhotographer.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(377, 33);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(36, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "عکاس";
             // 
             // timePickerBookingTime
             // 
@@ -179,10 +355,11 @@
             this.timePickerBookingTime.Culture = new System.Globalization.CultureInfo("en-US");
             this.timePickerBookingTime.EnableKeyMap = true;
             this.timePickerBookingTime.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.timePickerBookingTime.Location = new System.Drawing.Point(470, 36);
+            this.timePickerBookingTime.Location = new System.Drawing.Point(470, 29);
             this.timePickerBookingTime.MaxValue = new System.DateTime(9999, 12, 31, 23, 59, 59, 0);
             this.timePickerBookingTime.MinValue = new System.DateTime(((long)(0)));
             this.timePickerBookingTime.Name = "timePickerBookingTime";
+            this.timePickerBookingTime.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.timePickerBookingTime.Size = new System.Drawing.Size(111, 21);
             this.timePickerBookingTime.TabIndex = 1;
             this.timePickerBookingTime.TabStop = false;
@@ -193,31 +370,31 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(587, 40);
+            this.label5.Location = new System.Drawing.Point(587, 33);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(38, 13);
             this.label5.TabIndex = 8;
             this.label5.Text = "ساعت";
             // 
-            // dateTimePickerBookingDate
+            // datePickerBookingDate
             // 
-            this.dateTimePickerBookingDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePickerBookingDate.BackColor = System.Drawing.Color.White;
-            this.dateTimePickerBookingDate.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.dateTimePickerBookingDate.Location = new System.Drawing.Point(670, 38);
-            this.dateTimePickerBookingDate.Name = "dateTimePickerBookingDate";
-            this.dateTimePickerBookingDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.dateTimePickerBookingDate.ShowTime = false;
-            this.dateTimePickerBookingDate.Size = new System.Drawing.Size(111, 18);
-            this.dateTimePickerBookingDate.TabIndex = 0;
-            this.dateTimePickerBookingDate.Text = "persianDateTimePicker1";
-            this.dateTimePickerBookingDate.Value = ((FreeControls.PersianDate)(resources.GetObject("dateTimePickerBookingDate.Value")));
+            this.datePickerBookingDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.datePickerBookingDate.BackColor = System.Drawing.Color.White;
+            this.datePickerBookingDate.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.datePickerBookingDate.Location = new System.Drawing.Point(670, 31);
+            this.datePickerBookingDate.Name = "datePickerBookingDate";
+            this.datePickerBookingDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.datePickerBookingDate.ShowTime = false;
+            this.datePickerBookingDate.Size = new System.Drawing.Size(111, 18);
+            this.datePickerBookingDate.TabIndex = 0;
+            this.datePickerBookingDate.Text = "persianDateTimePicker1";
+            this.datePickerBookingDate.Value = ((FreeControls.PersianDate)(resources.GetObject("datePickerBookingDate.Value")));
             // 
             // label4
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(787, 40);
+            this.label4.Location = new System.Drawing.Point(787, 33);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(28, 13);
             this.label4.TabIndex = 6;
@@ -237,6 +414,26 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "اطلاعات مشتری";
+            // 
+            // txtMobile
+            // 
+            this.txtMobile.Location = new System.Drawing.Point(260, 40);
+            this.txtMobile.Mask = "(9999) 000 0000";
+            this.txtMobile.Name = "txtMobile";
+            this.txtMobile.ReadOnly = true;
+            this.txtMobile.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtMobile.Size = new System.Drawing.Size(111, 21);
+            this.txtMobile.TabIndex = 2;
+            // 
+            // txtTell
+            // 
+            this.txtTell.Location = new System.Drawing.Point(470, 39);
+            this.txtTell.Mask = "(9999) 000 00 00";
+            this.txtTell.Name = "txtTell";
+            this.txtTell.ReadOnly = true;
+            this.txtTell.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtTell.Size = new System.Drawing.Size(111, 21);
+            this.txtTell.TabIndex = 1;
             // 
             // label3
             // 
@@ -280,193 +477,141 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "نام و نام خانوادگی";
             // 
-            // label6
+            // errorProvider1
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(377, 40);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(36, 13);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "عکاس";
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.RightToLeft = true;
             // 
-            // panelPhotographerTypes
+            // txtBookingStatus
             // 
-            this.panelPhotographerTypes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelPhotographerTypes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelPhotographerTypes.Controls.Add(this.rbNoMatterPhotographer);
-            this.panelPhotographerTypes.Controls.Add(this.rbMalePhotographer);
-            this.panelPhotographerTypes.Controls.Add(this.rbFemalePhotographer);
-            this.panelPhotographerTypes.Location = new System.Drawing.Point(168, 32);
-            this.panelPhotographerTypes.Name = "panelPhotographerTypes";
-            this.panelPhotographerTypes.Size = new System.Drawing.Size(205, 32);
-            this.panelPhotographerTypes.TabIndex = 2;
+            this.txtBookingStatus.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.txtBookingStatus.Location = new System.Drawing.Point(28, 81);
+            this.txtBookingStatus.Name = "txtBookingStatus";
+            this.txtBookingStatus.ReadOnly = true;
+            this.txtBookingStatus.Size = new System.Drawing.Size(111, 19);
+            this.txtBookingStatus.TabIndex = 6;
             // 
-            // rbFemalePhotographer
+            // groupBox4
             // 
-            this.rbFemalePhotographer.AutoSize = true;
-            this.rbFemalePhotographer.Location = new System.Drawing.Point(151, 6);
-            this.rbFemalePhotographer.Name = "rbFemalePhotographer";
-            this.rbFemalePhotographer.Size = new System.Drawing.Size(46, 17);
-            this.rbFemalePhotographer.TabIndex = 0;
-            this.rbFemalePhotographer.TabStop = true;
-            this.rbFemalePhotographer.Text = "خانم";
-            this.rbFemalePhotographer.UseVisualStyleBackColor = true;
+            this.groupBox4.Controls.Add(this.timePickerPayment);
+            this.groupBox4.Controls.Add(this.txtPaymentDescription);
+            this.groupBox4.Controls.Add(this.label14);
+            this.groupBox4.Controls.Add(this.datePickerPayment);
+            this.groupBox4.Controls.Add(this.txtPaymentAmount);
+            this.groupBox4.Controls.Add(this.label13);
+            this.groupBox4.Controls.Add(this.label12);
+            this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Location = new System.Drawing.Point(12, 241);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(895, 138);
+            this.groupBox4.TabIndex = 1;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "اطلاعات پرداخت";
             // 
-            // rbMalePhotographer
+            // label11
             // 
-            this.rbMalePhotographer.AutoSize = true;
-            this.rbMalePhotographer.Location = new System.Drawing.Point(98, 6);
-            this.rbMalePhotographer.Name = "rbMalePhotographer";
-            this.rbMalePhotographer.Size = new System.Drawing.Size(36, 17);
-            this.rbMalePhotographer.TabIndex = 1;
-            this.rbMalePhotographer.TabStop = true;
-            this.rbMalePhotographer.Text = "آقا";
-            this.rbMalePhotographer.UseVisualStyleBackColor = true;
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(787, 32);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(28, 13);
+            this.label11.TabIndex = 7;
+            this.label11.Text = "تاریخ";
             // 
-            // rbNoMatterPhotographer
+            // label12
             // 
-            this.rbNoMatterPhotographer.AutoSize = true;
-            this.rbNoMatterPhotographer.Location = new System.Drawing.Point(3, 6);
-            this.rbNoMatterPhotographer.Name = "rbNoMatterPhotographer";
-            this.rbNoMatterPhotographer.Size = new System.Drawing.Size(75, 17);
-            this.rbNoMatterPhotographer.TabIndex = 2;
-            this.rbNoMatterPhotographer.TabStop = true;
-            this.rbNoMatterPhotographer.Text = "فرقی ندارد";
-            this.rbNoMatterPhotographer.UseVisualStyleBackColor = true;
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(587, 32);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(38, 13);
+            this.label12.TabIndex = 22;
+            this.label12.Text = "ساعت";
             // 
-            // label7
+            // label13
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(787, 93);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(52, 13);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "نوع عکس";
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(377, 32);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(27, 13);
+            this.label13.TabIndex = 21;
+            this.label13.Text = "مبلغ";
             // 
-            // label8
+            // txtPaymentAmount
             // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(587, 93);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(27, 13);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "آتلیه";
-            // 
-            // label9
-            // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(377, 93);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(30, 13);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "تعداد";
-            // 
-            // label10
-            // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(145, 93);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(65, 13);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "وضعیت نوبت";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.dgvBookingHistory);
-            this.groupBox3.Location = new System.Drawing.Point(12, 271);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(895, 233);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "تاریخچه نوبت های قبلی";
-            // 
-            // dgvBookingHistory
-            // 
-            this.dgvBookingHistory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvBookingHistory.Location = new System.Drawing.Point(3, 17);
-            // 
-            // 
-            // 
-            this.dgvBookingHistory.MasterTemplate.AllowAddNewRow = false;
-            this.dgvBookingHistory.MasterTemplate.ViewDefinition = tableViewDefinition1;
-            this.dgvBookingHistory.Name = "dgvBookingHistory";
-            this.dgvBookingHistory.ReadOnly = true;
-            this.dgvBookingHistory.Size = new System.Drawing.Size(889, 213);
-            this.dgvBookingHistory.TabIndex = 0;
-            this.dgvBookingHistory.ThemeName = "Office2010Silver";
-            // 
-            // txtTell
-            // 
-            this.txtTell.Location = new System.Drawing.Point(470, 39);
-            this.txtTell.Mask = "(9999) 000 00 00";
-            this.txtTell.Name = "txtTell";
-            this.txtTell.ReadOnly = true;
-            this.txtTell.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtTell.Size = new System.Drawing.Size(111, 21);
-            this.txtTell.TabIndex = 1;
-            // 
-            // txtMobile
-            // 
-            this.txtMobile.Location = new System.Drawing.Point(262, 39);
-            this.txtMobile.Mask = "(9999) 000 0000";
-            this.txtMobile.Name = "txtMobile";
-            this.txtMobile.ReadOnly = true;
-            this.txtMobile.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtMobile.Size = new System.Drawing.Size(111, 21);
-            this.txtMobile.TabIndex = 2;
-            // 
-            // cmbPhotographyTypes
-            // 
-            this.cmbPhotographyTypes.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
-            this.cmbPhotographyTypes.EnableAlternatingItemColor = true;
-            this.cmbPhotographyTypes.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.cmbPhotographyTypes.Location = new System.Drawing.Point(670, 90);
-            this.cmbPhotographyTypes.Name = "cmbPhotographyTypes";
-            this.cmbPhotographyTypes.Size = new System.Drawing.Size(111, 20);
-            this.cmbPhotographyTypes.TabIndex = 3;
-            this.cmbPhotographyTypes.ThemeName = "Office2010Silver";
-            // 
-            // cmbAtelierTypes
-            // 
-            this.cmbAtelierTypes.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
-            this.cmbAtelierTypes.EnableAlternatingItemColor = true;
-            this.cmbAtelierTypes.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.cmbAtelierTypes.Location = new System.Drawing.Point(470, 90);
-            this.cmbAtelierTypes.Name = "cmbAtelierTypes";
-            this.cmbAtelierTypes.Size = new System.Drawing.Size(111, 20);
-            this.cmbAtelierTypes.TabIndex = 4;
-            this.cmbAtelierTypes.ThemeName = "Office2010Silver";
-            // 
-            // cmbBookingStatus
-            // 
-            this.cmbBookingStatus.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
-            this.cmbBookingStatus.EnableAlternatingItemColor = true;
-            this.cmbBookingStatus.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.cmbBookingStatus.Location = new System.Drawing.Point(30, 90);
-            this.cmbBookingStatus.Name = "cmbBookingStatus";
-            this.cmbBookingStatus.Size = new System.Drawing.Size(111, 20);
-            this.cmbBookingStatus.TabIndex = 6;
-            this.cmbBookingStatus.ThemeName = "Office2010Silver";
-            // 
-            // txtPersonCount
-            // 
-            this.txtPersonCount.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtPersonCount.Location = new System.Drawing.Point(262, 90);
-            this.txtPersonCount.Maximum = new decimal(new int[] {
-            20,
-            0,
+            this.txtPaymentAmount.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.txtPaymentAmount.Location = new System.Drawing.Point(260, 30);
+            this.txtPaymentAmount.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
             0,
             0});
-            this.txtPersonCount.Name = "txtPersonCount";
-            this.txtPersonCount.Size = new System.Drawing.Size(111, 20);
-            this.txtPersonCount.TabIndex = 5;
-            this.txtPersonCount.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtPersonCount.ThemeName = "Office2010Silver";
+            this.txtPaymentAmount.Name = "txtPaymentAmount";
+            this.txtPaymentAmount.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtPaymentAmount.ShowUpDownButtons = false;
+            this.txtPaymentAmount.Size = new System.Drawing.Size(111, 20);
+            this.txtPaymentAmount.TabIndex = 2;
+            this.txtPaymentAmount.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPaymentAmount.ThemeName = "Office2010Silver";
+            this.txtPaymentAmount.ThousandsSeparator = true;
+            // 
+            // datePickerPayment
+            // 
+            this.datePickerPayment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.datePickerPayment.BackColor = System.Drawing.Color.White;
+            this.datePickerPayment.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.datePickerPayment.Location = new System.Drawing.Point(670, 31);
+            this.datePickerPayment.Name = "datePickerPayment";
+            this.datePickerPayment.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.datePickerPayment.ShowTime = false;
+            this.datePickerPayment.Size = new System.Drawing.Size(111, 18);
+            this.datePickerPayment.TabIndex = 0;
+            this.datePickerPayment.Text = "persianDateTimePicker1";
+            this.datePickerPayment.Value = ((FreeControls.PersianDate)(resources.GetObject("datePickerPayment.Value")));
+            // 
+            // label14
+            // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(787, 78);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(47, 13);
+            this.label14.TabIndex = 23;
+            this.label14.Text = "توضیحات";
+            // 
+            // txtPaymentDescription
+            // 
+            this.txtPaymentDescription.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.txtPaymentDescription.Location = new System.Drawing.Point(28, 76);
+            this.txtPaymentDescription.Multiline = true;
+            this.txtPaymentDescription.Name = "txtPaymentDescription";
+            this.txtPaymentDescription.ReadOnly = true;
+            // 
+            // 
+            // 
+            this.txtPaymentDescription.RootElement.StretchVertically = true;
+            this.txtPaymentDescription.Size = new System.Drawing.Size(753, 54);
+            this.txtPaymentDescription.TabIndex = 3;
+            // 
+            // timePickerPayment
+            // 
+            this.timePickerPayment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.timePickerPayment.ClockPosition = Telerik.WinControls.UI.ClockPosition.HideClock;
+            this.timePickerPayment.CloseButtonText = "بستن";
+            this.timePickerPayment.Culture = new System.Globalization.CultureInfo("en-US");
+            this.timePickerPayment.EnableKeyMap = true;
+            this.timePickerPayment.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.timePickerPayment.Location = new System.Drawing.Point(470, 30);
+            this.timePickerPayment.MaxValue = new System.DateTime(9999, 12, 31, 23, 59, 59, 0);
+            this.timePickerPayment.MinValue = new System.DateTime(((long)(0)));
+            this.timePickerPayment.Name = "timePickerPayment";
+            this.timePickerPayment.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.timePickerPayment.Size = new System.Drawing.Size(111, 21);
+            this.timePickerPayment.TabIndex = 1;
+            this.timePickerPayment.TabStop = false;
+            this.timePickerPayment.ThemeName = "Office2010Silver";
+            this.timePickerPayment.Value = new System.DateTime(2019, 1, 10, 20, 15, 58, 785);
             // 
             // FrmAddEditBooking
             // 
@@ -474,7 +619,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(919, 567);
+            this.ClientSize = new System.Drawing.Size(919, 648);
             this.Controls.Add(this.panelEx2);
             this.Controls.Add(this.panelEx1);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
@@ -491,20 +636,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).EndInit();
             this.panelEx1.ResumeLayout(false);
             this.panelEx2.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.timePickerBookingTime)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.panelPhotographerTypes.ResumeLayout(false);
-            this.panelPhotographerTypes.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookingHistory.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookingHistory)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbPhotographyTypes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbAtelierTypes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbBookingStatus)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPersonCount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbAtelierTypes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbPhotographyTypes)).EndInit();
+            this.panelPhotographerTypes.ResumeLayout(false);
+            this.panelPhotographerTypes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.timePickerBookingTime)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBookingStatus)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPaymentAmount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPaymentDescription)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timePickerPayment)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -519,7 +670,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private Telerik.WinControls.UI.RadTimePicker timePickerBookingTime;
         private System.Windows.Forms.Label label5;
-        private FreeControls.PersianDateTimePicker dateTimePickerBookingDate;
+        private FreeControls.PersianDateTimePicker datePickerBookingDate;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
@@ -540,8 +691,19 @@
         private System.Windows.Forms.MaskedTextBox txtMobile;
         private System.Windows.Forms.MaskedTextBox txtTell;
         private Telerik.WinControls.UI.RadDropDownList cmbPhotographyTypes;
-        private Telerik.WinControls.UI.RadDropDownList cmbBookingStatus;
         private Telerik.WinControls.UI.RadDropDownList cmbAtelierTypes;
         private Telerik.WinControls.UI.RadSpinEditor txtPersonCount;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private Telerik.WinControls.RadThemeManager radThemeManager1;
+        private Telerik.WinControls.UI.RadTextBox txtBookingStatus;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private Telerik.WinControls.UI.RadTextBox txtPaymentDescription;
+        private System.Windows.Forms.Label label14;
+        private FreeControls.PersianDateTimePicker datePickerPayment;
+        private Telerik.WinControls.UI.RadSpinEditor txtPaymentAmount;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private Telerik.WinControls.UI.RadTimePicker timePickerPayment;
     }
 }

@@ -2,6 +2,8 @@
 using PhotographyAutomation.DateLayer.Models;
 using PhotographyAutomation.Utilities;
 using PhotographyAutomation.Utilities.Convertor;
+using PhotographyAutomation.Utilities.ExtentionMethods;
+using PhotographyAutomation.Utilities.Regex;
 using System;
 using System.Windows.Forms;
 
@@ -83,6 +85,11 @@ namespace PhotographyAutomation.App.Forms.Booking
 
                             cmbActiveStatus.SelectedIndex = user.IsActive == 0 ? 0 : 1;
                         }
+
+                        txtEmail.Text = user.Email;
+                        txtAddress.Text = user.Address;
+                        
+                        cmbActiveStatus.SelectedIndex = user.IsActive == 0 ? 0 : 1;
                     }
                     else
                     {
@@ -186,6 +193,73 @@ namespace PhotographyAutomation.App.Forms.Booking
                 return false;
             }
 
+            if (cmbGender.SelectedIndex < 0)
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(cmbGender, "جنسیت مشتری مشتری مشخص نشده است.");
+                cmbGender.DroppedDown = true;
+                cmbGender.Focus();
+                return false;
+            }
+
+            if (txtTell.Text.Trim() == @"313")
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtTell, "تلفن ثابت مشتری وارد نشده است.");
+                txtTell.Focus();
+                return false;
+            }
+
+            if (txtTell.Text.Trim().Length > 3 && txtTell.Text.Trim().Length < 11)
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtTell, "تلفن ثابت مشتری به درستی وارد نشده است.");
+                txtTell.Focus();
+                return false;
+            }
+
+            if (txtMobile.Text.Length < 13 || !txtMobile.Text.StartsWith("9"))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtMobile, "تلفن همراه مشتری به درستی وارد نشده است.");
+                txtMobile.Focus();
+                return false;
+            }
+
+            if (cmbMarriedStatus.SelectedIndex == 1 && txtWeddingDate.Text.Replace(" ", "").Length < 10)
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtWeddingDate, "تاریخ ازدواج مشتری به درستی وارد نشده است.");
+                txtWeddingDate.Focus();
+                return false;
+            }
+
+            if (!string.IsNullOrEmpty(txtEmail.Text.Trim()) && !txtEmail.Text.IsValidEmail())
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtEmail, "ایمیل مشتری به درستی وارد نشده است.");
+                txtEmail.Focus();
+                return false;
+            }
+
+            try
+            {
+                if (!string.IsNullOrEmpty(txtNationalId.Text.Replace("-","").Trim()) &&
+                    !txtNationalId.Text.Replace("-","").Trim().IsValidNationalCode())
+                {
+                    errorProvider1.Clear();
+                    errorProvider1.SetError(txtNationalId, "کد ملی مشتری به درستی وارد نشده است.");
+                    txtNationalId.Focus();
+                    return false;
+                }
+            }
+            catch (Exception exception)
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtNationalId, exception.Message);
+                //RtlMessageBox.Show(exception.Message, "خطا در ورود اطلاعات");
+                return false;
+            }
 
 
             return true;
