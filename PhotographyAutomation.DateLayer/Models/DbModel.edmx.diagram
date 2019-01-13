@@ -5,14 +5,14 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="3ba53e0e227141cabc318842782cf9fa" Name="Diagram1">
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblAtelierType" Width="1.5" PointX="5.75" PointY="2.125" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblBooking" Width="1.5" PointX="5.75" PointY="9.125" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblBookingStatus" Width="1.5" PointX="7.75" PointY="2.125" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblEmployeeType" Width="1.5" PointX="0.75" PointY="5.625" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblEmpRole" Width="1.5" PointX="6" PointY="5.625" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPhotographyType" Width="1.5" PointX="7.75" PointY="9.125" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblRoleType" Width="1.5" PointX="3.75" PointY="0.75" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblUser" Width="1.5" PointX="3" PointY="3.875" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblAtelierType" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblBooking" Width="1.5" PointX="5.75" PointY="3.75" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblBookingStatus" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblEmployeeType" Width="1.5" PointX="0.75" PointY="4.375" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblEmpRole" Width="1.5" PointX="3" PointY="2.375" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPhotographyType" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblRoleType" Width="1.5" PointX="0.75" PointY="1.375" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblUser" Width="1.5" PointX="3" PointY="5.375" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_tblEmp_Role_tblEmployeeType" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_tblUser_tblEmployeeType" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_tblEmp_Role_tblRoleType" />

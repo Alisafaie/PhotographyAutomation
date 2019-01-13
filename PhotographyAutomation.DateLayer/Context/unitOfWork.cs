@@ -20,7 +20,6 @@ namespace PhotographyAutomation.DateLayer.Context
                 {
                     _userRepository=new UserRepository(_db);
                 }
-
                 return _userRepository;
             }
         }
@@ -36,11 +35,11 @@ namespace PhotographyAutomation.DateLayer.Context
                 {
                     _userGenericRepository = new GenericRepository<TblUser>(_db);
                 }
-
                 return _userGenericRepository;
             }
         }
 
+        
         private GenericRepository<TblBooking> _bookingRepository;
 
         public GenericRepository<TblBooking> BookingRepository
@@ -56,24 +55,74 @@ namespace PhotographyAutomation.DateLayer.Context
             }
         }
 
-        public bool Save()
+        private GenericRepository<TblAtelierType> _atelierTypesGenericRepository;
+
+        public GenericRepository<TblAtelierType> AtelierTypesGenericRepository
+        {
+            get
+            {
+                if (_atelierTypesGenericRepository == null)
+                {
+                    _atelierTypesGenericRepository=new GenericRepository<TblAtelierType>(_db);
+                }
+
+                return _atelierTypesGenericRepository;
+            }
+        }
+
+
+
+        private GenericRepository<TblBookingStatus> _bookingStatusGenericRepository;
+
+        public GenericRepository<TblBookingStatus> BookingStatusGenericRepository
+        {
+            get
+            {
+                if (_bookingStatusGenericRepository == null)
+                {
+                    _bookingStatusGenericRepository=new GenericRepository<TblBookingStatus>(_db);
+                }
+                return _bookingStatusGenericRepository;
+            }
+        }
+
+
+
+        private GenericRepository<TblPhotographyType> _photographyTypesGenericRepository;
+
+        public GenericRepository<TblPhotographyType> PhotographyTypesGenericRepository
+        {
+            get
+            {
+                if (_photographyTypesGenericRepository==null)
+                {
+                    _photographyTypesGenericRepository=new GenericRepository<TblPhotographyType>(_db);
+                }
+
+                return _photographyTypesGenericRepository;
+            }
+        }
+
+
+
+
+
+        public int Save()
         {
             try
             {
-                _db.SaveChanges();
-                return true;
+                int result=_db.SaveChanges();
+                return result;
             }
             catch
             {
-                return false;
+                return -1;
             }
-            
         }
 
         public void Dispose()
         {
             _db.Dispose();
         }
-
     }
 }

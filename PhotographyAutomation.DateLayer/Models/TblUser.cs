@@ -30,9 +30,9 @@ namespace PhotographyAutomation.DateLayer.Models
         public Nullable<byte> UserType { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        public Nullable<int> EmployeeTypeId { get; set; }
-        public Nullable<int> IsActive { get; set; }
-        public Nullable<int> IsDeleted { get; set; }
+        public Nullable<byte> EmployeeTypeId { get; set; }
+        public Nullable<byte> IsActive { get; set; }
+        public Nullable<byte> IsDeleted { get; set; }
         public Nullable<int> Submitter { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }

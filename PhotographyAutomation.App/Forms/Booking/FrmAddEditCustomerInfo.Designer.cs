@@ -38,6 +38,8 @@
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.groupBoxCustomerInfo = new System.Windows.Forms.GroupBox();
+            this.txtEmail = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label15 = new System.Windows.Forms.Label();
             this.cmbRole = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.cmbUserType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.Customer = new DevComponents.Editors.ComboItem();
@@ -54,15 +56,15 @@
             this.txtWeddingDate = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
             this.txtBirthDate = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
             this.cmbActiveStatus = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.Enable = new DevComponents.Editors.ComboItem();
             this.Disable = new DevComponents.Editors.ComboItem();
+            this.Enable = new DevComponents.Editors.ComboItem();
             this.cmbMarriedStatus = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.Single = new DevComponents.Editors.ComboItem();
             this.Married = new DevComponents.Editors.ComboItem();
             this.Unknown = new DevComponents.Editors.ComboItem();
             this.cmbGender = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.Male = new DevComponents.Editors.ComboItem();
             this.Female = new DevComponents.Editors.ComboItem();
+            this.Male = new DevComponents.Editors.ComboItem();
             this.txtNationalId = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
             this.txtAddress = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.label13 = new System.Windows.Forms.Label();
@@ -84,8 +86,6 @@
             this.btnCheckNumber = new Telerik.WinControls.UI.RadButton();
             this.txtMobileSearch = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
             this.label1 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtEmail = new DevComponents.DotNetBar.Controls.TextBoxX();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnOk)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).BeginInit();
@@ -214,6 +214,36 @@
             this.groupBoxCustomerInfo.TabIndex = 1;
             this.groupBoxCustomerInfo.TabStop = false;
             this.groupBoxCustomerInfo.Text = "اطلاعات مشتری";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.txtEmail.Border.Class = "TextBoxBorder";
+            this.txtEmail.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtEmail.DisabledBackColor = System.Drawing.Color.White;
+            this.txtEmail.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.txtEmail.FocusHighlightEnabled = true;
+            this.txtEmail.Location = new System.Drawing.Point(247, 199);
+            this.txtEmail.MaxLength = 200;
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.PreventEnterBeep = true;
+            this.txtEmail.Size = new System.Drawing.Size(107, 21);
+            this.txtEmail.TabIndex = 9;
+            this.txtEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtEmail.WatermarkText = "test@test.coom";
+            // 
+            // label15
+            // 
+            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(360, 203);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(32, 13);
+            this.label15.TabIndex = 28;
+            this.label15.Text = "ایمیل";
             // 
             // cmbRole
             // 
@@ -429,17 +459,17 @@
             this.cmbActiveStatus.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cmbActiveStatus.TabIndex = 14;
             // 
-            // Enable
-            // 
-            this.Enable.Text = "فعال";
-            this.Enable.TextAlignment = System.Drawing.StringAlignment.Far;
-            this.Enable.TextLineAlignment = System.Drawing.StringAlignment.Far;
-            // 
             // Disable
             // 
             this.Disable.Text = "غیر فعال";
             this.Disable.TextAlignment = System.Drawing.StringAlignment.Far;
             this.Disable.TextLineAlignment = System.Drawing.StringAlignment.Far;
+            // 
+            // Enable
+            // 
+            this.Enable.Text = "فعال";
+            this.Enable.TextAlignment = System.Drawing.StringAlignment.Far;
+            this.Enable.TextLineAlignment = System.Drawing.StringAlignment.Far;
             // 
             // cmbMarriedStatus
             // 
@@ -494,17 +524,17 @@
             this.cmbGender.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cmbGender.TabIndex = 2;
             // 
-            // Male
-            // 
-            this.Male.Text = "مرد";
-            this.Male.TextAlignment = System.Drawing.StringAlignment.Far;
-            this.Male.TextLineAlignment = System.Drawing.StringAlignment.Far;
-            // 
             // Female
             // 
             this.Female.Text = "زن";
             this.Female.TextAlignment = System.Drawing.StringAlignment.Far;
             this.Female.TextLineAlignment = System.Drawing.StringAlignment.Far;
+            // 
+            // Male
+            // 
+            this.Male.Text = "مرد";
+            this.Male.TextAlignment = System.Drawing.StringAlignment.Far;
+            this.Male.TextLineAlignment = System.Drawing.StringAlignment.Far;
             // 
             // txtNationalId
             // 
@@ -768,38 +798,9 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "تلفن همراه :";
             // 
-            // label15
-            // 
-            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(360, 203);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(32, 13);
-            this.label15.TabIndex = 28;
-            this.label15.Text = "ایمیل";
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.txtEmail.Border.Class = "TextBoxBorder";
-            this.txtEmail.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtEmail.DisabledBackColor = System.Drawing.Color.White;
-            this.txtEmail.FocusHighlightColor = System.Drawing.SystemColors.Info;
-            this.txtEmail.FocusHighlightEnabled = true;
-            this.txtEmail.Location = new System.Drawing.Point(247, 199);
-            this.txtEmail.MaxLength = 200;
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.PreventEnterBeep = true;
-            this.txtEmail.Size = new System.Drawing.Size(107, 21);
-            this.txtEmail.TabIndex = 9;
-            this.txtEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtEmail.WatermarkText = "test@test.coom";
-            // 
             // FrmAddEditCustomerInfo
             // 
+            this.AcceptButton = this.btnCheckNumber;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;

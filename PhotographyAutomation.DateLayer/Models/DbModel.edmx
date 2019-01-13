@@ -43,7 +43,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Code" Type="int" Nullable="false" />
           <Property Name="PositionName" Type="nvarchar" MaxLength="200" Nullable="false" />
         </EntityType>
@@ -52,7 +52,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="EmpTypeId" Type="int" />
+          <Property Name="EmpTypeId" Type="tinyint" />
           <Property Name="RoleTypeId" Type="int" />
         </EntityType>
         <EntityType Name="TblPhotographyType">
@@ -80,23 +80,23 @@
           <Property Name="LastName" Type="nvarchar" MaxLength="200" />
           <Property Name="Gender" Type="tinyint" />
           <Property Name="Address" Type="nvarchar" MaxLength="1000" />
-          <Property Name="Tell" Type="varchar" MaxLength="50" />
-          <Property Name="Mobile" Type="varchar" MaxLength="50" />
+          <Property Name="Tell" Type="char" MaxLength="10" />
+          <Property Name="Mobile" Type="char" MaxLength="10" />
           <Property Name="Email" Type="varchar" MaxLength="200" />
           <Property Name="NationalId" Type="char" MaxLength="11" />
           <Property Name="CustomerType" Type="tinyint" />
           <Property Name="IsMarried" Type="tinyint" />
-          <Property Name="BirthDate" Type="datetime2" Precision="7" />
-          <Property Name="WeddingDate" Type="datetime2" Precision="7" />
+          <Property Name="BirthDate" Type="date" />
+          <Property Name="WeddingDate" Type="date" />
           <Property Name="UserType" Type="tinyint" />
           <Property Name="Username" Type="nvarchar" MaxLength="200" />
           <Property Name="Password" Type="nvarchar" MaxLength="200" />
-          <Property Name="EmployeeTypeId" Type="int" />
-          <Property Name="IsActive" Type="int" />
-          <Property Name="IsDeleted" Type="int" />
+          <Property Name="EmployeeTypeId" Type="tinyint" />
+          <Property Name="IsActive" Type="tinyint" />
+          <Property Name="IsDeleted" Type="tinyint" />
           <Property Name="Submitter" Type="int" />
-          <Property Name="CreatedDate" Type="datetime2" Precision="7" />
-          <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
         </EntityType>
         <Association Name="FK_tblEmp_Role_tblEmployeeType">
           <End Role="TblEmployeeType" Type="Self.TblEmployeeType" Multiplicity="0..1" />
@@ -220,7 +220,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Code" Type="Int32" Nullable="false" />
           <Property Name="PositionName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TblEmpRole" Relationship="PhotographyAutomationDBModel.FK_tblEmp_Role_tblEmployeeType" FromRole="TblEmployeeType" ToRole="TblEmpRole" />
@@ -231,7 +231,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EmpTypeId" Type="Int32" />
+          <Property Name="EmpTypeId" Type="Byte" />
           <Property Name="RoleTypeId" Type="Int32" />
           <NavigationProperty Name="TblEmployeeType" Relationship="PhotographyAutomationDBModel.FK_tblEmp_Role_tblEmployeeType" FromRole="TblEmpRole" ToRole="TblEmployeeType" />
           <NavigationProperty Name="TblRoleType" Relationship="PhotographyAutomationDBModel.FK_tblEmp_Role_tblRoleType" FromRole="TblEmpRole" ToRole="TblRoleType" />
@@ -262,23 +262,23 @@
           <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Gender" Type="Byte" />
           <Property Name="Address" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Tell" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tell" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="NationalId" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
           <Property Name="CustomerType" Type="Byte" />
           <Property Name="IsMarried" Type="Byte" />
-          <Property Name="BirthDate" Type="DateTime" Precision="7" />
-          <Property Name="WeddingDate" Type="DateTime" Precision="7" />
+          <Property Name="BirthDate" Type="DateTime" Precision="0" />
+          <Property Name="WeddingDate" Type="DateTime" Precision="0" />
           <Property Name="UserType" Type="Byte" />
           <Property Name="Username" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="EmployeeTypeId" Type="Int32" />
-          <Property Name="IsActive" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" />
+          <Property Name="EmployeeTypeId" Type="Byte" />
+          <Property Name="IsActive" Type="Byte" />
+          <Property Name="IsDeleted" Type="Byte" />
           <Property Name="Submitter" Type="Int32" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
-          <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="TblEmployeeType" Relationship="PhotographyAutomationDBModel.FK_tblUser_tblEmployeeType" FromRole="TblUser" ToRole="TblEmployeeType" />
         </EntityType>
         <Association Name="FK_tblEmp_Role_tblEmployeeType">

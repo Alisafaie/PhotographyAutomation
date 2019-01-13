@@ -15,7 +15,7 @@ namespace PhotographyAutomation.DateLayer.Models
     public partial class TblEmpRole
     {
         public int Id { get; set; }
-        public Nullable<int> EmpTypeId { get; set; }
+        public Nullable<byte> EmpTypeId { get; set; }
         public Nullable<int> RoleTypeId { get; set; }
     
         public virtual TblEmployeeType TblEmployeeType { get; set; }

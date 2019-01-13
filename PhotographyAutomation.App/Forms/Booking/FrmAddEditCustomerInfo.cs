@@ -47,9 +47,8 @@ namespace PhotographyAutomation.App.Forms.Booking
             {
                 errorProvider1.Clear();
 
-                using (UnitOfWork db = new UnitOfWork())
+                using (var db = new UnitOfWork())
                 {
-                    //string mobile = txtMobileSearch.Text.Replace(" ", "");
                     var user = db.UserRepository.FindUserByMobile(txtMobileSearch.Text.Replace(" ", ""));
 
                     if (user != null)
@@ -90,9 +89,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                         RtlMessageBox.Show("متاسفانه کاربری با شماره همراه داده شده یافت نگردید.", "عدم وجود کاربر",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                        groupBoxCustomerInfo.Enabled = true;
                         txtMobile.Text = txtMobileSearch.Text;
-                        txtFirstName.Focus();
 
                         cmbUserType.SelectedIndex = 0;
                         cmbActiveStatus.SelectedIndex = 1;
@@ -101,36 +98,41 @@ namespace PhotographyAutomation.App.Forms.Booking
                         cmbMarriedStatus.SelectedIndex = 0;
                     }
 
+                    groupBoxCustomerInfo.Enabled = true;
+                    groupBoxSearchCustomer.Enabled = false;
+
+                    AcceptButton = btnOk;
+
                     btnOk.Enabled = true;
+
+                    txtFirstName.Focus();
                 }
             }
-
         }
-
 
 
         private void btnOk_Click(object sender, EventArgs e)
         {
             if (CheckInputs())
             {
-                TblUser user = new TblUser
+                var user = new TblUser
                 {
                     FirstName = txtFirstName.Text.Trim(),
                     LastName = txtLastName.Text.Trim(),
-                    Mobile = txtMobile.Text.Replace(" ","").Trim(),
-                    Tell = txtTell.Text.Replace(" ","").Trim(),
+                    Mobile = txtMobile.Text.Replace(" ", "").Trim(),
+                    Tell = txtTell.Text.Replace(" ", "").Trim(),
                     Gender = Convert.ToByte(cmbGender.SelectedIndex == 0 ? 0 : 1),
                     BirthDate = txtBirthDate.Text.ToMiladiDate(),
-                    NationalId = txtNationalId.Text.Replace("-","").Trim(),
+                    NationalId = txtNationalId.Text.Replace("-", "").Trim(),
                     IsMarried = Convert.ToByte(cmbMarriedStatus.SelectedIndex == 0 ? 0 : 1),
                     CustomerType = Convert.ToByte(cmbCustomerType.SelectedIndex == 0 ? 0 : 1),
                     UserType = Convert.ToByte(cmbUserType.SelectedIndex == 0 ? 0 : 1),
                     Address = txtAddress.Text.Trim(),
                     Email = txtEmail.Text.Trim(),
-                    IsActive = Convert.ToByte(cmbActiveStatus.SelectedIndex==0?0:1),
+                    IsActive = Convert.ToByte(cmbActiveStatus.SelectedIndex == 0 ? 0 : 1),
                     CreatedDate = DateTime.Now,
                     IsDeleted = 0
-                    };
+                };
 
                 if (cmbMarriedStatus.SelectedIndex == 1)
                     user.WeddingDate = txtWeddingDate.Text.ToMiladiDate();
@@ -138,7 +140,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                 if (cmbUserType.SelectedIndex == 1)
                     user.Username = txtUserName.Text;
 
-                using (UnitOfWork db = new UnitOfWork())
+                using (var db = new UnitOfWork())
                 {
                     if (UserId == 0)
                     {
@@ -150,11 +152,12 @@ namespace PhotographyAutomation.App.Forms.Booking
                         db.UserGenericRepository.Update(user);
                     }
 
-                    bool result = db.Save();
-                    if (result)
+                    int result = db.Save();
+                    if (result > 0)
                     {
-                        FrmAddEditBooking f = new FrmAddEditBooking();
+                        var f = new FrmAddEditBooking { UserId = user.Id };
                         f.ShowDialog();
+                        DialogResult = DialogResult.OK;
                     }
                     else
                     {
@@ -167,6 +170,24 @@ namespace PhotographyAutomation.App.Forms.Booking
 
         private bool CheckInputs()
         {
+            if (string.IsNullOrEmpty(txtFirstName.Text.Trim()))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtFirstName, "نام مشتری وارد نشده است.");
+                txtFirstName.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(txtLastName.Text.Trim()))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtLastName, "نام خانوادگی مشتری وارد نشده است.");
+                txtLastName.Focus();
+                return false;
+            }
+
+
+
             return true;
         }
 

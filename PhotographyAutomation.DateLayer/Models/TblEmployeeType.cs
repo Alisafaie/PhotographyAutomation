@@ -21,7 +21,7 @@ namespace PhotographyAutomation.DateLayer.Models
             this.TblUser = new HashSet<TblUser>();
         }
     
-        public int Id { get; set; }
+        public byte Id { get; set; }
         public int Code { get; set; }
         public string PositionName { get; set; }
     
