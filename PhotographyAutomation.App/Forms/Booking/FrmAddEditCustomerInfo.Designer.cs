@@ -29,6 +29,20 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem7 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem8 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem5 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem6 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem17 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem3 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem4 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem1 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem2 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem14 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem15 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem16 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem12 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem13 = new Telerik.WinControls.UI.RadListDataItem();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnOk = new Telerik.WinControls.UI.RadButton();
             this.btnCancel = new Telerik.WinControls.UI.RadButton();
@@ -38,16 +52,17 @@
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.groupBoxCustomerInfo = new System.Windows.Forms.GroupBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.txtEmail = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.label15 = new System.Windows.Forms.Label();
-            this.cmbRole = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.cmbUserType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.Customer = new DevComponents.Editors.ComboItem();
-            this.Employee = new DevComponents.Editors.ComboItem();
             this.label14 = new System.Windows.Forms.Label();
-            this.cmbCustomerType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.Green = new DevComponents.Editors.ComboItem();
-            this.Red = new DevComponents.Editors.ComboItem();
             this.label19 = new System.Windows.Forms.Label();
             this.txtMobile = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
             this.txtUserName = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -55,16 +70,6 @@
             this.label20 = new System.Windows.Forms.Label();
             this.txtWeddingDate = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
             this.txtBirthDate = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
-            this.cmbActiveStatus = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.Disable = new DevComponents.Editors.ComboItem();
-            this.Enable = new DevComponents.Editors.ComboItem();
-            this.cmbMarriedStatus = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.Single = new DevComponents.Editors.ComboItem();
-            this.Married = new DevComponents.Editors.ComboItem();
-            this.Unknown = new DevComponents.Editors.ComboItem();
-            this.cmbGender = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.Female = new DevComponents.Editors.ComboItem();
-            this.Male = new DevComponents.Editors.ComboItem();
             this.txtNationalId = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
             this.txtAddress = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.label13 = new System.Windows.Forms.Label();
@@ -86,14 +91,12 @@
             this.btnCheckNumber = new Telerik.WinControls.UI.RadButton();
             this.txtMobileSearch = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
             this.label1 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
+            this.cmbGender = new Telerik.WinControls.UI.RadDropDownList();
+            this.cmbMarriedStatus = new Telerik.WinControls.UI.RadDropDownList();
+            this.cmbCustomerType = new Telerik.WinControls.UI.RadDropDownList();
+            this.cmbUserType = new Telerik.WinControls.UI.RadDropDownList();
+            this.cmbRole = new Telerik.WinControls.UI.RadDropDownList();
+            this.cmbActiveStatus = new Telerik.WinControls.UI.RadDropDownList();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnOk)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).BeginInit();
@@ -103,6 +106,12 @@
             this.groupBoxSearchCustomer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearchCustomer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCheckNumber)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbGender)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbMarriedStatus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbCustomerType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbUserType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbRole)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbActiveStatus)).BeginInit();
             this.SuspendLayout();
             // 
             // errorProvider1
@@ -184,6 +193,12 @@
             // 
             this.groupBoxCustomerInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxCustomerInfo.Controls.Add(this.cmbActiveStatus);
+            this.groupBoxCustomerInfo.Controls.Add(this.cmbRole);
+            this.groupBoxCustomerInfo.Controls.Add(this.cmbUserType);
+            this.groupBoxCustomerInfo.Controls.Add(this.cmbCustomerType);
+            this.groupBoxCustomerInfo.Controls.Add(this.cmbMarriedStatus);
+            this.groupBoxCustomerInfo.Controls.Add(this.cmbGender);
             this.groupBoxCustomerInfo.Controls.Add(this.label25);
             this.groupBoxCustomerInfo.Controls.Add(this.label24);
             this.groupBoxCustomerInfo.Controls.Add(this.label23);
@@ -194,10 +209,7 @@
             this.groupBoxCustomerInfo.Controls.Add(this.label16);
             this.groupBoxCustomerInfo.Controls.Add(this.txtEmail);
             this.groupBoxCustomerInfo.Controls.Add(this.label15);
-            this.groupBoxCustomerInfo.Controls.Add(this.cmbRole);
-            this.groupBoxCustomerInfo.Controls.Add(this.cmbUserType);
             this.groupBoxCustomerInfo.Controls.Add(this.label14);
-            this.groupBoxCustomerInfo.Controls.Add(this.cmbCustomerType);
             this.groupBoxCustomerInfo.Controls.Add(this.label19);
             this.groupBoxCustomerInfo.Controls.Add(this.txtMobile);
             this.groupBoxCustomerInfo.Controls.Add(this.txtUserName);
@@ -205,9 +217,6 @@
             this.groupBoxCustomerInfo.Controls.Add(this.label20);
             this.groupBoxCustomerInfo.Controls.Add(this.txtWeddingDate);
             this.groupBoxCustomerInfo.Controls.Add(this.txtBirthDate);
-            this.groupBoxCustomerInfo.Controls.Add(this.cmbActiveStatus);
-            this.groupBoxCustomerInfo.Controls.Add(this.cmbMarriedStatus);
-            this.groupBoxCustomerInfo.Controls.Add(this.cmbGender);
             this.groupBoxCustomerInfo.Controls.Add(this.txtNationalId);
             this.groupBoxCustomerInfo.Controls.Add(this.txtAddress);
             this.groupBoxCustomerInfo.Controls.Add(this.label13);
@@ -230,6 +239,102 @@
             this.groupBoxCustomerInfo.TabIndex = 1;
             this.groupBoxCustomerInfo.TabStop = false;
             this.groupBoxCustomerInfo.Text = "اطلاعات مشتری";
+            // 
+            // label25
+            // 
+            this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label25.ForeColor = System.Drawing.Color.Red;
+            this.label25.Location = new System.Drawing.Point(6, 203);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(13, 13);
+            this.label25.TabIndex = 36;
+            this.label25.Text = "x";
+            // 
+            // label24
+            // 
+            this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label24.ForeColor = System.Drawing.Color.Red;
+            this.label24.Location = new System.Drawing.Point(6, 71);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(13, 13);
+            this.label24.TabIndex = 35;
+            this.label24.Text = "x";
+            // 
+            // label23
+            // 
+            this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label23.ForeColor = System.Drawing.Color.Red;
+            this.label23.Location = new System.Drawing.Point(6, 27);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(13, 13);
+            this.label23.TabIndex = 34;
+            this.label23.Text = "x";
+            // 
+            // label22
+            // 
+            this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label22.ForeColor = System.Drawing.Color.Red;
+            this.label22.Location = new System.Drawing.Point(228, 71);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(13, 13);
+            this.label22.TabIndex = 33;
+            this.label22.Text = "x";
+            // 
+            // label21
+            // 
+            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label21.ForeColor = System.Drawing.Color.Red;
+            this.label21.Location = new System.Drawing.Point(228, 27);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(13, 13);
+            this.label21.TabIndex = 32;
+            this.label21.Text = "x";
+            // 
+            // label18
+            // 
+            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label18.ForeColor = System.Drawing.Color.Red;
+            this.label18.Location = new System.Drawing.Point(457, 115);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(13, 13);
+            this.label18.TabIndex = 31;
+            this.label18.Text = "x";
+            // 
+            // label17
+            // 
+            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label17.ForeColor = System.Drawing.Color.Red;
+            this.label17.Location = new System.Drawing.Point(457, 71);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(13, 13);
+            this.label17.TabIndex = 30;
+            this.label17.Text = "x";
+            // 
+            // label16
+            // 
+            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label16.ForeColor = System.Drawing.Color.Red;
+            this.label16.Location = new System.Drawing.Point(457, 27);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(13, 13);
+            this.label16.TabIndex = 29;
+            this.label16.Text = "x";
             // 
             // txtEmail
             // 
@@ -261,47 +366,6 @@
             this.label15.TabIndex = 28;
             this.label15.Text = "ایمیل";
             // 
-            // cmbRole
-            // 
-            this.cmbRole.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbRole.DisplayMember = "Text";
-            this.cmbRole.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbRole.FormattingEnabled = true;
-            this.cmbRole.ItemHeight = 16;
-            this.cmbRole.Location = new System.Drawing.Point(21, 154);
-            this.cmbRole.Name = "cmbRole";
-            this.cmbRole.Size = new System.Drawing.Size(107, 22);
-            this.cmbRole.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cmbRole.TabIndex = 13;
-            // 
-            // cmbUserType
-            // 
-            this.cmbUserType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbUserType.DisplayMember = "Text";
-            this.cmbUserType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbUserType.FormattingEnabled = true;
-            this.cmbUserType.ItemHeight = 16;
-            this.cmbUserType.Items.AddRange(new object[] {
-            this.Customer,
-            this.Employee});
-            this.cmbUserType.Location = new System.Drawing.Point(21, 66);
-            this.cmbUserType.Name = "cmbUserType";
-            this.cmbUserType.Size = new System.Drawing.Size(107, 22);
-            this.cmbUserType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cmbUserType.TabIndex = 11;
-            // 
-            // Customer
-            // 
-            this.Customer.Text = "مشتری";
-            this.Customer.TextAlignment = System.Drawing.StringAlignment.Far;
-            this.Customer.TextLineAlignment = System.Drawing.StringAlignment.Far;
-            // 
-            // Employee
-            // 
-            this.Employee.Text = "کارمند";
-            this.Employee.TextAlignment = System.Drawing.StringAlignment.Far;
-            this.Employee.TextLineAlignment = System.Drawing.StringAlignment.Far;
-            // 
             // label14
             // 
             this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -311,34 +375,6 @@
             this.label14.Size = new System.Drawing.Size(56, 13);
             this.label14.TabIndex = 25;
             this.label14.Text = "نوع شخص";
-            // 
-            // cmbCustomerType
-            // 
-            this.cmbCustomerType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbCustomerType.DisplayMember = "Text";
-            this.cmbCustomerType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbCustomerType.FormattingEnabled = true;
-            this.cmbCustomerType.ItemHeight = 16;
-            this.cmbCustomerType.Items.AddRange(new object[] {
-            this.Green,
-            this.Red});
-            this.cmbCustomerType.Location = new System.Drawing.Point(21, 22);
-            this.cmbCustomerType.Name = "cmbCustomerType";
-            this.cmbCustomerType.Size = new System.Drawing.Size(107, 22);
-            this.cmbCustomerType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cmbCustomerType.TabIndex = 10;
-            // 
-            // Green
-            // 
-            this.Green.Text = "سبز";
-            this.Green.TextAlignment = System.Drawing.StringAlignment.Far;
-            this.Green.TextLineAlignment = System.Drawing.StringAlignment.Far;
-            // 
-            // Red
-            // 
-            this.Red.Text = "قرمز";
-            this.Red.TextAlignment = System.Drawing.StringAlignment.Far;
-            this.Red.TextLineAlignment = System.Drawing.StringAlignment.Far;
             // 
             // label19
             // 
@@ -385,9 +421,11 @@
             this.txtUserName.MaxLength = 200;
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.PreventEnterBeep = true;
+            this.txtUserName.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtUserName.Size = new System.Drawing.Size(107, 21);
             this.txtUserName.TabIndex = 12;
             this.txtUserName.WatermarkText = "نام کاربری";
+            this.txtUserName.Enter += new System.EventHandler(this.txtUserName_Enter);
             // 
             // txtTell
             // 
@@ -459,99 +497,6 @@
             this.txtBirthDate.TabIndex = 3;
             this.txtBirthDate.Text = "";
             // 
-            // cmbActiveStatus
-            // 
-            this.cmbActiveStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbActiveStatus.DisplayMember = "Text";
-            this.cmbActiveStatus.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbActiveStatus.FormattingEnabled = true;
-            this.cmbActiveStatus.ItemHeight = 16;
-            this.cmbActiveStatus.Items.AddRange(new object[] {
-            this.Disable,
-            this.Enable});
-            this.cmbActiveStatus.Location = new System.Drawing.Point(21, 198);
-            this.cmbActiveStatus.Name = "cmbActiveStatus";
-            this.cmbActiveStatus.Size = new System.Drawing.Size(107, 22);
-            this.cmbActiveStatus.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cmbActiveStatus.TabIndex = 14;
-            // 
-            // Disable
-            // 
-            this.Disable.Text = "غیر فعال";
-            this.Disable.TextAlignment = System.Drawing.StringAlignment.Far;
-            this.Disable.TextLineAlignment = System.Drawing.StringAlignment.Far;
-            // 
-            // Enable
-            // 
-            this.Enable.Text = "فعال";
-            this.Enable.TextAlignment = System.Drawing.StringAlignment.Far;
-            this.Enable.TextLineAlignment = System.Drawing.StringAlignment.Far;
-            // 
-            // cmbMarriedStatus
-            // 
-            this.cmbMarriedStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbMarriedStatus.DisplayMember = "Text";
-            this.cmbMarriedStatus.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbMarriedStatus.FormattingEnabled = true;
-            this.cmbMarriedStatus.ItemHeight = 16;
-            this.cmbMarriedStatus.Items.AddRange(new object[] {
-            this.Single,
-            this.Married,
-            this.Unknown});
-            this.cmbMarriedStatus.Location = new System.Drawing.Point(247, 110);
-            this.cmbMarriedStatus.Name = "cmbMarriedStatus";
-            this.cmbMarriedStatus.Size = new System.Drawing.Size(107, 22);
-            this.cmbMarriedStatus.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cmbMarriedStatus.TabIndex = 7;
-            // 
-            // Single
-            // 
-            this.Single.Text = "مجرد";
-            this.Single.TextAlignment = System.Drawing.StringAlignment.Far;
-            this.Single.TextLineAlignment = System.Drawing.StringAlignment.Far;
-            // 
-            // Married
-            // 
-            this.Married.Text = "متاهل";
-            this.Married.TextAlignment = System.Drawing.StringAlignment.Far;
-            this.Married.TextLineAlignment = System.Drawing.StringAlignment.Far;
-            // 
-            // Unknown
-            // 
-            this.Unknown.Text = "نامشخص";
-            this.Unknown.TextAlignment = System.Drawing.StringAlignment.Far;
-            this.Unknown.TextLineAlignment = System.Drawing.StringAlignment.Far;
-            // 
-            // cmbGender
-            // 
-            this.cmbGender.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbGender.DisplayMember = "Text";
-            this.cmbGender.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbGender.FocusHighlightColor = System.Drawing.SystemColors.Info;
-            this.cmbGender.FocusHighlightEnabled = true;
-            this.cmbGender.FormattingEnabled = true;
-            this.cmbGender.ItemHeight = 16;
-            this.cmbGender.Items.AddRange(new object[] {
-            this.Female,
-            this.Male});
-            this.cmbGender.Location = new System.Drawing.Point(473, 110);
-            this.cmbGender.Name = "cmbGender";
-            this.cmbGender.Size = new System.Drawing.Size(107, 22);
-            this.cmbGender.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cmbGender.TabIndex = 2;
-            // 
-            // Female
-            // 
-            this.Female.Text = "زن";
-            this.Female.TextAlignment = System.Drawing.StringAlignment.Far;
-            this.Female.TextLineAlignment = System.Drawing.StringAlignment.Far;
-            // 
-            // Male
-            // 
-            this.Male.Text = "مرد";
-            this.Male.TextAlignment = System.Drawing.StringAlignment.Far;
-            this.Male.TextLineAlignment = System.Drawing.StringAlignment.Far;
-            // 
             // txtNationalId
             // 
             this.txtNationalId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -589,6 +534,8 @@
             this.txtAddress.PreventEnterBeep = true;
             this.txtAddress.Size = new System.Drawing.Size(554, 53);
             this.txtAddress.TabIndex = 15;
+            this.txtAddress.Enter += new System.EventHandler(this.txtFirstName_Enter);
+            this.txtAddress.Leave += new System.EventHandler(this.txtFirstName_Leave);
             // 
             // label13
             // 
@@ -668,6 +615,8 @@
             this.txtLastName.Size = new System.Drawing.Size(107, 21);
             this.txtLastName.TabIndex = 1;
             this.txtLastName.WatermarkText = "نام خانوادگی مشتری";
+            this.txtLastName.Enter += new System.EventHandler(this.txtFirstName_Enter);
+            this.txtLastName.Leave += new System.EventHandler(this.txtFirstName_Leave);
             // 
             // label7
             // 
@@ -737,6 +686,8 @@
             this.txtFirstName.Size = new System.Drawing.Size(107, 21);
             this.txtFirstName.TabIndex = 0;
             this.txtFirstName.WatermarkText = "نام مشتری";
+            this.txtFirstName.Enter += new System.EventHandler(this.txtFirstName_Enter);
+            this.txtFirstName.Leave += new System.EventHandler(this.txtFirstName_Leave);
             // 
             // label2
             // 
@@ -815,101 +766,113 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "تلفن همراه :";
             // 
-            // label16
+            // cmbGender
             // 
-            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label16.ForeColor = System.Drawing.Color.Red;
-            this.label16.Location = new System.Drawing.Point(457, 27);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(13, 13);
-            this.label16.TabIndex = 29;
-            this.label16.Text = "x";
+            this.cmbGender.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
+            this.cmbGender.EnableAlternatingItemColor = true;
+            this.cmbGender.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            radListDataItem7.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem7.Text = "خانم";
+            radListDataItem8.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem8.Text = "آقا";
+            this.cmbGender.Items.Add(radListDataItem7);
+            this.cmbGender.Items.Add(radListDataItem8);
+            this.cmbGender.Location = new System.Drawing.Point(473, 111);
+            this.cmbGender.Name = "cmbGender";
+            this.cmbGender.Size = new System.Drawing.Size(107, 20);
+            this.cmbGender.TabIndex = 2;
+            this.cmbGender.ThemeName = "Office2010Silver";
             // 
-            // label17
+            // cmbMarriedStatus
             // 
-            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label17.ForeColor = System.Drawing.Color.Red;
-            this.label17.Location = new System.Drawing.Point(457, 71);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(13, 13);
-            this.label17.TabIndex = 30;
-            this.label17.Text = "x";
+            this.cmbMarriedStatus.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
+            this.cmbMarriedStatus.EnableAlternatingItemColor = true;
+            this.cmbMarriedStatus.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            radListDataItem5.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem5.Text = "مجرد";
+            radListDataItem6.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem6.Text = "متاهل";
+            radListDataItem17.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem17.Text = "نامشخص";
+            this.cmbMarriedStatus.Items.Add(radListDataItem5);
+            this.cmbMarriedStatus.Items.Add(radListDataItem6);
+            this.cmbMarriedStatus.Items.Add(radListDataItem17);
+            this.cmbMarriedStatus.Location = new System.Drawing.Point(247, 111);
+            this.cmbMarriedStatus.Name = "cmbMarriedStatus";
+            this.cmbMarriedStatus.Size = new System.Drawing.Size(107, 20);
+            this.cmbMarriedStatus.TabIndex = 7;
+            this.cmbMarriedStatus.ThemeName = "Office2010Silver";
             // 
-            // label18
+            // cmbCustomerType
             // 
-            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label18.ForeColor = System.Drawing.Color.Red;
-            this.label18.Location = new System.Drawing.Point(457, 115);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(13, 13);
-            this.label18.TabIndex = 31;
-            this.label18.Text = "x";
+            this.cmbCustomerType.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
+            this.cmbCustomerType.EnableAlternatingItemColor = true;
+            this.cmbCustomerType.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            radListDataItem3.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem3.Text = "سبز";
+            radListDataItem4.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem4.Text = "قرمز";
+            this.cmbCustomerType.Items.Add(radListDataItem3);
+            this.cmbCustomerType.Items.Add(radListDataItem4);
+            this.cmbCustomerType.Location = new System.Drawing.Point(21, 23);
+            this.cmbCustomerType.Name = "cmbCustomerType";
+            this.cmbCustomerType.Size = new System.Drawing.Size(107, 20);
+            this.cmbCustomerType.TabIndex = 10;
+            this.cmbCustomerType.ThemeName = "Office2010Silver";
             // 
-            // label21
+            // cmbUserType
             // 
-            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label21.ForeColor = System.Drawing.Color.Red;
-            this.label21.Location = new System.Drawing.Point(228, 27);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(13, 13);
-            this.label21.TabIndex = 32;
-            this.label21.Text = "x";
+            this.cmbUserType.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
+            this.cmbUserType.EnableAlternatingItemColor = true;
+            this.cmbUserType.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            radListDataItem1.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem1.Text = "مشتری";
+            radListDataItem2.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem2.Text = "کارمند";
+            this.cmbUserType.Items.Add(radListDataItem1);
+            this.cmbUserType.Items.Add(radListDataItem2);
+            this.cmbUserType.Location = new System.Drawing.Point(21, 67);
+            this.cmbUserType.Name = "cmbUserType";
+            this.cmbUserType.Size = new System.Drawing.Size(107, 20);
+            this.cmbUserType.TabIndex = 11;
+            this.cmbUserType.ThemeName = "Office2010Silver";
             // 
-            // label22
+            // cmbRole
             // 
-            this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label22.ForeColor = System.Drawing.Color.Red;
-            this.label22.Location = new System.Drawing.Point(228, 71);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(13, 13);
-            this.label22.TabIndex = 33;
-            this.label22.Text = "x";
+            this.cmbRole.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
+            this.cmbRole.EnableAlternatingItemColor = true;
+            this.cmbRole.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            radListDataItem14.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem14.Text = "مجرد";
+            radListDataItem15.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem15.Text = "متاهل";
+            radListDataItem16.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem16.Text = "نامشخص";
+            this.cmbRole.Items.Add(radListDataItem14);
+            this.cmbRole.Items.Add(radListDataItem15);
+            this.cmbRole.Items.Add(radListDataItem16);
+            this.cmbRole.Location = new System.Drawing.Point(21, 155);
+            this.cmbRole.Name = "cmbRole";
+            this.cmbRole.Size = new System.Drawing.Size(107, 20);
+            this.cmbRole.TabIndex = 13;
+            this.cmbRole.ThemeName = "Office2010Silver";
             // 
-            // label23
+            // cmbActiveStatus
             // 
-            this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label23.ForeColor = System.Drawing.Color.Red;
-            this.label23.Location = new System.Drawing.Point(6, 27);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(13, 13);
-            this.label23.TabIndex = 34;
-            this.label23.Text = "x";
-            // 
-            // label24
-            // 
-            this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label24.ForeColor = System.Drawing.Color.Red;
-            this.label24.Location = new System.Drawing.Point(6, 71);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(13, 13);
-            this.label24.TabIndex = 35;
-            this.label24.Text = "x";
-            // 
-            // label25
-            // 
-            this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label25.ForeColor = System.Drawing.Color.Red;
-            this.label25.Location = new System.Drawing.Point(2, 203);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(13, 13);
-            this.label25.TabIndex = 36;
-            this.label25.Text = "x";
+            this.cmbActiveStatus.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
+            this.cmbActiveStatus.EnableAlternatingItemColor = true;
+            this.cmbActiveStatus.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            radListDataItem12.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem12.Text = "غیرفعال";
+            radListDataItem13.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem13.Text = "فعال";
+            this.cmbActiveStatus.Items.Add(radListDataItem12);
+            this.cmbActiveStatus.Items.Add(radListDataItem13);
+            this.cmbActiveStatus.Location = new System.Drawing.Point(21, 199);
+            this.cmbActiveStatus.Name = "cmbActiveStatus";
+            this.cmbActiveStatus.Size = new System.Drawing.Size(107, 20);
+            this.cmbActiveStatus.TabIndex = 14;
+            this.cmbActiveStatus.ThemeName = "Office2010Silver";
             // 
             // FrmAddEditCustomerInfo
             // 
@@ -942,6 +905,12 @@
             this.groupBoxSearchCustomer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearchCustomer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCheckNumber)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbGender)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbMarriedStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbCustomerType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbUserType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbRole)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbActiveStatus)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -956,9 +925,6 @@
         private DevComponents.DotNetBar.StyleManager styleManager1;
         private DevComponents.DotNetBar.PanelEx panelEx2;
         private System.Windows.Forms.GroupBox groupBoxCustomerInfo;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbCustomerType;
-        private DevComponents.Editors.ComboItem Green;
-        private DevComponents.Editors.ComboItem Red;
         private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv txtMobile;
         private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv txtTell;
         private System.Windows.Forms.Label label19;
@@ -966,16 +932,6 @@
         private System.Windows.Forms.Label label20;
         private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv txtWeddingDate;
         private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv txtBirthDate;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbActiveStatus;
-        private DevComponents.Editors.ComboItem Enable;
-        private DevComponents.Editors.ComboItem Disable;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbMarriedStatus;
-        private DevComponents.Editors.ComboItem Single;
-        private DevComponents.Editors.ComboItem Married;
-        private DevComponents.Editors.ComboItem Unknown;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbGender;
-        private DevComponents.Editors.ComboItem Male;
-        private DevComponents.Editors.ComboItem Female;
         private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv txtNationalId;
         private DevComponents.DotNetBar.Controls.TextBoxX txtAddress;
         private System.Windows.Forms.Label label13;
@@ -997,11 +953,7 @@
         private Telerik.WinControls.UI.RadButton btnCheckNumber;
         private DevComponents.DotNetBar.Controls.MaskedTextBoxAdv txtMobileSearch;
         private System.Windows.Forms.Label label1;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbUserType;
-        private DevComponents.Editors.ComboItem Customer;
-        private DevComponents.Editors.ComboItem Employee;
         private System.Windows.Forms.Label label14;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbRole;
         private DevComponents.DotNetBar.Controls.TextBoxX txtEmail;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label25;
@@ -1012,5 +964,11 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
+        private Telerik.WinControls.UI.RadDropDownList cmbGender;
+        private Telerik.WinControls.UI.RadDropDownList cmbMarriedStatus;
+        private Telerik.WinControls.UI.RadDropDownList cmbActiveStatus;
+        private Telerik.WinControls.UI.RadDropDownList cmbRole;
+        private Telerik.WinControls.UI.RadDropDownList cmbUserType;
+        private Telerik.WinControls.UI.RadDropDownList cmbCustomerType;
     }
 }

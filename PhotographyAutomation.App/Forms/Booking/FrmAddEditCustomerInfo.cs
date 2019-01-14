@@ -197,7 +197,7 @@ namespace PhotographyAutomation.App.Forms.Booking
             {
                 errorProvider1.Clear();
                 errorProvider1.SetError(cmbGender, "جنسیت مشتری مشتری مشخص نشده است.");
-                cmbGender.DroppedDown = true;
+                cmbGender.ShowDropDown();
                 cmbGender.Focus();
                 return false;
             }
@@ -268,6 +268,24 @@ namespace PhotographyAutomation.App.Forms.Booking
         private void btnCancel_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
+        }
+
+        private void txtFirstName_Enter(object sender, EventArgs e)
+        {
+            System.Globalization.CultureInfo language = new System.Globalization.CultureInfo("fa-IR");
+            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
+        }
+
+        private void txtFirstName_Leave(object sender, EventArgs e)
+        {
+            System.Globalization.CultureInfo language = new System.Globalization.CultureInfo("en-US");
+            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
+        }
+
+        private void txtUserName_Enter(object sender, EventArgs e)
+        {
+            System.Globalization.CultureInfo language = new System.Globalization.CultureInfo("en-US");
+            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
         }
     }
 }

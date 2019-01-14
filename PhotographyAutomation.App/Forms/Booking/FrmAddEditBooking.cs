@@ -139,45 +139,82 @@ namespace PhotographyAutomation.App.Forms.Booking
         {
             if (datePickerBookingDate.Value.Year != PersianDate.Now.Year)
             {
+                errorProvider1.Clear();
+                errorProvider1.SetError(datePickerBookingDate, "نوبت مورد مورد نظر می بایست در سال جاری باشد.");
+                datePickerBookingDate.Focus();
                 return false;
             }
             if (datePickerBookingDate.Value.Month < PersianDate.Now.Month)
             {
+                errorProvider1.Clear();
+                errorProvider1.SetError(datePickerBookingDate, "تاریخ نوبت انتخابی می بایست ماه جاری و یا آینده باشد.");
+                datePickerBookingDate.Focus();
                 return false;
             }
             if (datePickerBookingDate.Value.Month == PersianDate.Now.Month &&
                      datePickerBookingDate.Value.Day < PersianDate.Now.Day)
             {
+                errorProvider1.Clear();
+                errorProvider1.SetError(datePickerBookingDate, "روز نوبت انتخاب شده نمی تواند قبل از روز جاری باشد.");
                 return false;
             }
 
             if (timePickerBookingTime.Value != null &&
                 (timePickerBookingTime.Value.Value.Hour < 9))
             {
+                errorProvider1.Clear();
+                errorProvider1.SetError(timePickerBookingTime, "زمان نوبت انتخابی قبل از شروع به کار مجموعه است.");
+                timePickerBookingTime.Focus();
                 return false;
             }
 
             if (timePickerBookingTime.Value != null &&
                 (timePickerBookingTime.Value.Value.Hour >= 20))
                 if (timePickerBookingTime.Value.Value.Hour >= 21)
+                {
+                    errorProvider1.Clear();
+                    errorProvider1.SetError(timePickerBookingTime, "زمان نوبت انتخابی بعد از ساعت کاری مجموعه است.");
+                    timePickerBookingTime.Focus();
                     return false;
+                }
                 else if (timePickerBookingTime.Value != null && timePickerBookingTime.Value.Value.Minute >= 30)
+                {
+                    errorProvider1.Clear();
+                    errorProvider1.SetError(timePickerBookingTime, "امکان ثبت زمان نوبت بعد از ساعت 20:30 امکان پذیر نمی باشد.");
+                    timePickerBookingTime.Focus();
                     return false;
+                }
 
 
             if (txtPersonCount.Value == 0)
             {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtPersonCount,"تعداد نفرات مربوط به نوبت، می بایست حداقل یک نفر باشد.");
+                txtPersonCount.Focus();
                 return false;
             }
 
             if (!rbFemalePhotographer.Checked && !rbMalePhotographer.Checked && !rbNoMatterPhotographer.Checked)
             {
+                errorProvider1.Clear();
+                errorProvider1.SetError(panelPhotographerTypes,"نوع عکاس نوبت انتخاب نشده است.");
+                panelPhotographerTypes.Focus();
                 return false;
             }
 
-
-
             return true;
+        }
+
+        private void txtPaymentDescription_Enter(object sender, EventArgs e)
+        {
+            System.Globalization.CultureInfo language = new System.Globalization.CultureInfo("fa-IR");
+            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
+        }
+
+        private void txtPaymentDescription_Leave(object sender, EventArgs e)
+        {
+            System.Globalization.CultureInfo language = new System.Globalization.CultureInfo("en-us");
+            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
         }
     }
 }
