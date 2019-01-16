@@ -85,6 +85,12 @@
     <Compile Include="Forms\Users\FrmSearchUser.Designer.cs">
       <DependentUpon>FrmSearchUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Users\FrmShowUserInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Users\FrmShowUserInfo.Designer.cs">
+      <DependentUpon>FrmShowUserInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\Booking\FrmAddEditBooking.resx">
@@ -98,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Users\FrmSearchUser.resx">
       <DependentUpon>FrmSearchUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Users\FrmShowUserInfo.resx">
+      <DependentUpon>FrmShowUserInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

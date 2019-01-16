@@ -9,6 +9,9 @@ namespace PhotographyAutomation.App.Forms.Users
 {
     public partial class FrmSearchUser : Form
     {
+        public bool FromFrmAddEditBooking = false;
+
+
         public FrmSearchUser()
         {
             InitializeComponent();
@@ -29,8 +32,12 @@ namespace PhotographyAutomation.App.Forms.Users
         private void txtSpecialSearch_Enter(object sender, EventArgs e)
         {
             var language = new System.Globalization.CultureInfo("en-US");
+
             InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
         }
+
+
+
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -38,10 +45,15 @@ namespace PhotographyAutomation.App.Forms.Users
 
             using (var db = new UnitOfWork())
             {
-                List<TblUser> users = db.UserGenericRepository.Get(x =>
-                    x.FirstName.Contains(txtFirstName.Text) || x.LastName.Contains(txtLastName.Text) ||
-                    x.Tell.Contains(txtTell.Text) || x.Mobile.Contains(txtTell.Text)).ToList();
+                List<TblUser> users = db.UserGenericRepository.Get(
+                    x =>
+                        x.FirstName.Contains(txtFirstName.Text) || 
+                        x.LastName.Contains(txtLastName.Text) ||
+                        x.Tell.Contains(txtTell.Text) || 
+                        x.Mobile.Contains(txtTell.Text)).ToList();
+
                 dgvUsers.AutoGenerateColumns = false;
+                
                 if (users.Any())
                 {
                     dgvUsers.RowCount = users.Count;
@@ -52,19 +64,57 @@ namespace PhotographyAutomation.App.Forms.Users
                         dgvUsers.Rows[i].Cells["FirstName"].Value = users[i].FirstName;
                         dgvUsers.Rows[i].Cells["LastName"].Value = users[i].LastName;
                         dgvUsers.Rows[i].Cells["Tell"].Value = users[i].Tell;
+                        dgvUsers.Rows[i].Cells["Tell"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+
                         dgvUsers.Rows[i].Cells["Mobile"].Value = "0" + users[i].Mobile;
+                        dgvUsers.Rows[i].Cells["Mobile"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+
                         dgvUsers.Rows[i].Cells["Email"].Value = users[i].Email;
                         dgvUsers.Rows[i].Cells["Email"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+
                         dgvUsers.Rows[i].Cells["NationalId"].Value = users[i].NationalId;
+                        dgvUsers.Rows[i].Cells["NationalId"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+
                         dgvUsers.Rows[i].Cells["UserType"].Value = users[i].UserType == 0 ? "مشتری" : "کارمند";
-                        dgvUsers.Rows[i].Cells["CreatedDate"].Value = users[i].CreatedDate;
-                        dgvUsers.Rows[i].Cells["ModifiedDate"].Value = users[i].ModifiedDate;
+
+                        var createdDate = users[i].CreatedDate;
+                        if (createdDate != null)
+                            dgvUsers.Rows[i].Cells["CreatedDate"].Value =
+                                createdDate.Value.ToString("HH:mm") + "   " +
+                                createdDate.Value.Date.ToShortDateString();
+
+                        dgvUsers.Rows[i].Cells["CreatedDate"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+                        var modifiedDate = users[i].ModifiedDate;
+                        if (modifiedDate != null)
+                            dgvUsers.Rows[i].Cells["CreatedDate"].Value =
+                                modifiedDate.Value.ToString("HH:mm") + "   " +
+                                modifiedDate.Value.Date.ToShortDateString();
+
+                        dgvUsers.Rows[i].Cells["CreatedDate"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+
                         dgvUsers.Rows[i].Cells["MoreInfo"].Value = "...";
-
-                        
-
                     }
+                }
+            }
+        }
 
+        private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvUsers.CurrentRow != null)
+            {
+                int moreInfoCellIndex = dgvUsers.CurrentRow.Cells["MoreInfo"].ColumnIndex;
+                if (dgvUsers.CurrentCell.ColumnIndex.Equals(moreInfoCellIndex) && e.RowIndex != -1)
+                {
+                    if (dgvUsers.CurrentCell != null && dgvUsers.CurrentCell.Value != null)
+                    {
+                        var userId = (int) dgvUsers.CurrentRow.Cells["Id"].Value;
+                        var frmShowUserInfo = new FrmShowUserInfo
+                        {
+                            UserId = userId
+                        };
+                        frmShowUserInfo.ShowDialog();
+                    }
                 }
             }
         }
