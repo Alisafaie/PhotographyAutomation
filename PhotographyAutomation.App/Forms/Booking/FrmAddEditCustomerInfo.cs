@@ -1,4 +1,5 @@
-﻿using PhotographyAutomation.DateLayer.Context;
+﻿using PhotographyAutomation.App.Forms.Users;
+using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.DateLayer.Models;
 using PhotographyAutomation.Utilities;
 using PhotographyAutomation.Utilities.Convertor;
@@ -88,7 +89,7 @@ namespace PhotographyAutomation.App.Forms.Booking
 
                         txtEmail.Text = user.Email;
                         txtAddress.Text = user.Address;
-                        
+
                         cmbActiveStatus.SelectedIndex = user.IsActive == 0 ? 0 : 1;
                     }
                     else
@@ -105,8 +106,8 @@ namespace PhotographyAutomation.App.Forms.Booking
                         cmbMarriedStatus.SelectedIndex = 0;
                     }
 
-                    groupBoxCustomerInfo.Enabled = true;
-                    groupBoxSearchCustomer.Enabled = false;
+                    //groupBoxCustomerInfo.Enabled = true;
+                    //groupBoxSearchCustomer.Enabled = false;
 
                     AcceptButton = btnOk;
 
@@ -244,8 +245,8 @@ namespace PhotographyAutomation.App.Forms.Booking
 
             try
             {
-                if (!string.IsNullOrEmpty(txtNationalId.Text.Replace("-","").Trim()) &&
-                    !txtNationalId.Text.Replace("-","").Trim().IsValidNationalCode())
+                if (!string.IsNullOrEmpty(txtNationalId.Text.Replace("-", "").Trim()) &&
+                    !txtNationalId.Text.Replace("-", "").Trim().IsValidNationalCode())
                 {
                     errorProvider1.Clear();
                     errorProvider1.SetError(txtNationalId, "کد ملی مشتری به درستی وارد نشده است.");
@@ -286,6 +287,12 @@ namespace PhotographyAutomation.App.Forms.Booking
         {
             System.Globalization.CultureInfo language = new System.Globalization.CultureInfo("en-US");
             InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
+        }
+
+        private void btnSearchCustomer_Click(object sender, EventArgs e)
+        {
+            FrmSearchUser searchUser = new FrmSearchUser();
+            searchUser.ShowDialog();
         }
     }
 }

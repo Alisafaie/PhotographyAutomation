@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem7 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem8 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem5 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem6 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem15 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem16 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem1 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem2 = new Telerik.WinControls.UI.RadListDataItem();
             Telerik.WinControls.UI.RadListDataItem radListDataItem17 = new Telerik.WinControls.UI.RadListDataItem();
             Telerik.WinControls.UI.RadListDataItem radListDataItem3 = new Telerik.WinControls.UI.RadListDataItem();
             Telerik.WinControls.UI.RadListDataItem radListDataItem4 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem1 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem2 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem14 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem15 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem16 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem12 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem13 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem5 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem6 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem7 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem8 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem9 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem10 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem11 = new Telerik.WinControls.UI.RadListDataItem();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnOk = new Telerik.WinControls.UI.RadButton();
             this.btnCancel = new Telerik.WinControls.UI.RadButton();
@@ -52,6 +52,12 @@
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.groupBoxCustomerInfo = new System.Windows.Forms.GroupBox();
+            this.cmbActiveStatus = new Telerik.WinControls.UI.RadDropDownList();
+            this.cmbRole = new Telerik.WinControls.UI.RadDropDownList();
+            this.cmbUserType = new Telerik.WinControls.UI.RadDropDownList();
+            this.cmbCustomerType = new Telerik.WinControls.UI.RadDropDownList();
+            this.cmbMarriedStatus = new Telerik.WinControls.UI.RadDropDownList();
+            this.cmbGender = new Telerik.WinControls.UI.RadDropDownList();
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
@@ -91,27 +97,21 @@
             this.btnCheckNumber = new Telerik.WinControls.UI.RadButton();
             this.txtMobileSearch = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
             this.label1 = new System.Windows.Forms.Label();
-            this.cmbGender = new Telerik.WinControls.UI.RadDropDownList();
-            this.cmbMarriedStatus = new Telerik.WinControls.UI.RadDropDownList();
-            this.cmbCustomerType = new Telerik.WinControls.UI.RadDropDownList();
-            this.cmbUserType = new Telerik.WinControls.UI.RadDropDownList();
-            this.cmbRole = new Telerik.WinControls.UI.RadDropDownList();
-            this.cmbActiveStatus = new Telerik.WinControls.UI.RadDropDownList();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnOk)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).BeginInit();
             this.panelEx1.SuspendLayout();
             this.panelEx2.SuspendLayout();
             this.groupBoxCustomerInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbActiveStatus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbRole)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbUserType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbCustomerType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbMarriedStatus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbGender)).BeginInit();
             this.groupBoxSearchCustomer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearchCustomer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCheckNumber)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbGender)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbMarriedStatus)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbCustomerType)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbUserType)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbRole)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbActiveStatus)).BeginInit();
             this.SuspendLayout();
             // 
             // errorProvider1
@@ -239,6 +239,114 @@
             this.groupBoxCustomerInfo.TabIndex = 1;
             this.groupBoxCustomerInfo.TabStop = false;
             this.groupBoxCustomerInfo.Text = "اطلاعات مشتری";
+            // 
+            // cmbActiveStatus
+            // 
+            this.cmbActiveStatus.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
+            this.cmbActiveStatus.EnableAlternatingItemColor = true;
+            this.cmbActiveStatus.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            radListDataItem15.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem15.Text = "غیرفعال";
+            radListDataItem16.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem16.Text = "فعال";
+            this.cmbActiveStatus.Items.Add(radListDataItem15);
+            this.cmbActiveStatus.Items.Add(radListDataItem16);
+            this.cmbActiveStatus.Location = new System.Drawing.Point(21, 199);
+            this.cmbActiveStatus.Name = "cmbActiveStatus";
+            this.cmbActiveStatus.Size = new System.Drawing.Size(107, 20);
+            this.cmbActiveStatus.TabIndex = 14;
+            this.cmbActiveStatus.ThemeName = "Office2010Silver";
+            // 
+            // cmbRole
+            // 
+            this.cmbRole.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
+            this.cmbRole.EnableAlternatingItemColor = true;
+            this.cmbRole.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            radListDataItem1.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem1.Text = "مجرد";
+            radListDataItem2.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem2.Text = "متاهل";
+            radListDataItem17.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem17.Text = "نامشخص";
+            this.cmbRole.Items.Add(radListDataItem1);
+            this.cmbRole.Items.Add(radListDataItem2);
+            this.cmbRole.Items.Add(radListDataItem17);
+            this.cmbRole.Location = new System.Drawing.Point(21, 155);
+            this.cmbRole.Name = "cmbRole";
+            this.cmbRole.Size = new System.Drawing.Size(107, 20);
+            this.cmbRole.TabIndex = 13;
+            this.cmbRole.ThemeName = "Office2010Silver";
+            // 
+            // cmbUserType
+            // 
+            this.cmbUserType.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
+            this.cmbUserType.EnableAlternatingItemColor = true;
+            this.cmbUserType.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            radListDataItem3.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem3.Text = "مشتری";
+            radListDataItem4.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem4.Text = "کارمند";
+            this.cmbUserType.Items.Add(radListDataItem3);
+            this.cmbUserType.Items.Add(radListDataItem4);
+            this.cmbUserType.Location = new System.Drawing.Point(21, 67);
+            this.cmbUserType.Name = "cmbUserType";
+            this.cmbUserType.Size = new System.Drawing.Size(107, 20);
+            this.cmbUserType.TabIndex = 11;
+            this.cmbUserType.ThemeName = "Office2010Silver";
+            // 
+            // cmbCustomerType
+            // 
+            this.cmbCustomerType.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
+            this.cmbCustomerType.EnableAlternatingItemColor = true;
+            this.cmbCustomerType.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            radListDataItem5.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem5.Text = "سبز";
+            radListDataItem6.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem6.Text = "قرمز";
+            this.cmbCustomerType.Items.Add(radListDataItem5);
+            this.cmbCustomerType.Items.Add(radListDataItem6);
+            this.cmbCustomerType.Location = new System.Drawing.Point(21, 23);
+            this.cmbCustomerType.Name = "cmbCustomerType";
+            this.cmbCustomerType.Size = new System.Drawing.Size(107, 20);
+            this.cmbCustomerType.TabIndex = 10;
+            this.cmbCustomerType.ThemeName = "Office2010Silver";
+            // 
+            // cmbMarriedStatus
+            // 
+            this.cmbMarriedStatus.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
+            this.cmbMarriedStatus.EnableAlternatingItemColor = true;
+            this.cmbMarriedStatus.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            radListDataItem7.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem7.Text = "مجرد";
+            radListDataItem8.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem8.Text = "متاهل";
+            radListDataItem9.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem9.Text = "نامشخص";
+            this.cmbMarriedStatus.Items.Add(radListDataItem7);
+            this.cmbMarriedStatus.Items.Add(radListDataItem8);
+            this.cmbMarriedStatus.Items.Add(radListDataItem9);
+            this.cmbMarriedStatus.Location = new System.Drawing.Point(247, 111);
+            this.cmbMarriedStatus.Name = "cmbMarriedStatus";
+            this.cmbMarriedStatus.Size = new System.Drawing.Size(107, 20);
+            this.cmbMarriedStatus.TabIndex = 7;
+            this.cmbMarriedStatus.ThemeName = "Office2010Silver";
+            // 
+            // cmbGender
+            // 
+            this.cmbGender.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
+            this.cmbGender.EnableAlternatingItemColor = true;
+            this.cmbGender.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            radListDataItem10.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem10.Text = "خانم";
+            radListDataItem11.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem11.Text = "آقا";
+            this.cmbGender.Items.Add(radListDataItem10);
+            this.cmbGender.Items.Add(radListDataItem11);
+            this.cmbGender.Location = new System.Drawing.Point(473, 111);
+            this.cmbGender.Name = "cmbGender";
+            this.cmbGender.Size = new System.Drawing.Size(107, 20);
+            this.cmbGender.TabIndex = 2;
+            this.cmbGender.ThemeName = "Office2010Silver";
             // 
             // label25
             // 
@@ -716,7 +824,6 @@
             // btnSearchCustomer
             // 
             this.btnSearchCustomer.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnSearchCustomer.Enabled = false;
             this.btnSearchCustomer.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.btnSearchCustomer.Location = new System.Drawing.Point(6, 27);
             this.btnSearchCustomer.Name = "btnSearchCustomer";
@@ -724,6 +831,7 @@
             this.btnSearchCustomer.TabIndex = 2;
             this.btnSearchCustomer.Text = "جستجوی پیشرفته";
             this.btnSearchCustomer.ThemeName = "Office2010Silver";
+            this.btnSearchCustomer.Click += new System.EventHandler(this.btnSearchCustomer_Click);
             // 
             // btnCheckNumber
             // 
@@ -766,114 +874,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "تلفن همراه :";
             // 
-            // cmbGender
-            // 
-            this.cmbGender.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
-            this.cmbGender.EnableAlternatingItemColor = true;
-            this.cmbGender.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            radListDataItem7.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem7.Text = "خانم";
-            radListDataItem8.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem8.Text = "آقا";
-            this.cmbGender.Items.Add(radListDataItem7);
-            this.cmbGender.Items.Add(radListDataItem8);
-            this.cmbGender.Location = new System.Drawing.Point(473, 111);
-            this.cmbGender.Name = "cmbGender";
-            this.cmbGender.Size = new System.Drawing.Size(107, 20);
-            this.cmbGender.TabIndex = 2;
-            this.cmbGender.ThemeName = "Office2010Silver";
-            // 
-            // cmbMarriedStatus
-            // 
-            this.cmbMarriedStatus.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
-            this.cmbMarriedStatus.EnableAlternatingItemColor = true;
-            this.cmbMarriedStatus.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            radListDataItem5.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem5.Text = "مجرد";
-            radListDataItem6.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem6.Text = "متاهل";
-            radListDataItem17.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem17.Text = "نامشخص";
-            this.cmbMarriedStatus.Items.Add(radListDataItem5);
-            this.cmbMarriedStatus.Items.Add(radListDataItem6);
-            this.cmbMarriedStatus.Items.Add(radListDataItem17);
-            this.cmbMarriedStatus.Location = new System.Drawing.Point(247, 111);
-            this.cmbMarriedStatus.Name = "cmbMarriedStatus";
-            this.cmbMarriedStatus.Size = new System.Drawing.Size(107, 20);
-            this.cmbMarriedStatus.TabIndex = 7;
-            this.cmbMarriedStatus.ThemeName = "Office2010Silver";
-            // 
-            // cmbCustomerType
-            // 
-            this.cmbCustomerType.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
-            this.cmbCustomerType.EnableAlternatingItemColor = true;
-            this.cmbCustomerType.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            radListDataItem3.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem3.Text = "سبز";
-            radListDataItem4.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem4.Text = "قرمز";
-            this.cmbCustomerType.Items.Add(radListDataItem3);
-            this.cmbCustomerType.Items.Add(radListDataItem4);
-            this.cmbCustomerType.Location = new System.Drawing.Point(21, 23);
-            this.cmbCustomerType.Name = "cmbCustomerType";
-            this.cmbCustomerType.Size = new System.Drawing.Size(107, 20);
-            this.cmbCustomerType.TabIndex = 10;
-            this.cmbCustomerType.ThemeName = "Office2010Silver";
-            // 
-            // cmbUserType
-            // 
-            this.cmbUserType.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
-            this.cmbUserType.EnableAlternatingItemColor = true;
-            this.cmbUserType.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            radListDataItem1.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem1.Text = "مشتری";
-            radListDataItem2.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem2.Text = "کارمند";
-            this.cmbUserType.Items.Add(radListDataItem1);
-            this.cmbUserType.Items.Add(radListDataItem2);
-            this.cmbUserType.Location = new System.Drawing.Point(21, 67);
-            this.cmbUserType.Name = "cmbUserType";
-            this.cmbUserType.Size = new System.Drawing.Size(107, 20);
-            this.cmbUserType.TabIndex = 11;
-            this.cmbUserType.ThemeName = "Office2010Silver";
-            // 
-            // cmbRole
-            // 
-            this.cmbRole.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
-            this.cmbRole.EnableAlternatingItemColor = true;
-            this.cmbRole.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            radListDataItem14.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem14.Text = "مجرد";
-            radListDataItem15.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem15.Text = "متاهل";
-            radListDataItem16.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem16.Text = "نامشخص";
-            this.cmbRole.Items.Add(radListDataItem14);
-            this.cmbRole.Items.Add(radListDataItem15);
-            this.cmbRole.Items.Add(radListDataItem16);
-            this.cmbRole.Location = new System.Drawing.Point(21, 155);
-            this.cmbRole.Name = "cmbRole";
-            this.cmbRole.Size = new System.Drawing.Size(107, 20);
-            this.cmbRole.TabIndex = 13;
-            this.cmbRole.ThemeName = "Office2010Silver";
-            // 
-            // cmbActiveStatus
-            // 
-            this.cmbActiveStatus.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
-            this.cmbActiveStatus.EnableAlternatingItemColor = true;
-            this.cmbActiveStatus.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            radListDataItem12.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem12.Text = "غیرفعال";
-            radListDataItem13.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem13.Text = "فعال";
-            this.cmbActiveStatus.Items.Add(radListDataItem12);
-            this.cmbActiveStatus.Items.Add(radListDataItem13);
-            this.cmbActiveStatus.Location = new System.Drawing.Point(21, 199);
-            this.cmbActiveStatus.Name = "cmbActiveStatus";
-            this.cmbActiveStatus.Size = new System.Drawing.Size(107, 20);
-            this.cmbActiveStatus.TabIndex = 14;
-            this.cmbActiveStatus.ThemeName = "Office2010Silver";
-            // 
             // FrmAddEditCustomerInfo
             // 
             this.AcceptButton = this.btnCheckNumber;
@@ -901,16 +901,16 @@
             this.panelEx2.ResumeLayout(false);
             this.groupBoxCustomerInfo.ResumeLayout(false);
             this.groupBoxCustomerInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbActiveStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbRole)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbUserType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbCustomerType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbMarriedStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbGender)).EndInit();
             this.groupBoxSearchCustomer.ResumeLayout(false);
             this.groupBoxSearchCustomer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearchCustomer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCheckNumber)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbGender)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbMarriedStatus)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbCustomerType)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbUserType)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbRole)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbActiveStatus)).EndInit();
             this.ResumeLayout(false);
 
         }
