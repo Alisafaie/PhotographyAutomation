@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FreeControls;
 using PhotographyAutomation.App.Forms.Booking;
 using PhotographyAutomation.App.Forms.Users;
 
@@ -43,15 +44,15 @@ namespace PhotographyAutomation.App.Forms
             frmShowUserInfo.ShowDialog();
         }
 
-        private void btnSearchCustomer_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnSearchUser_Click(object sender, EventArgs e)
         {
             FrmSearchUser searchUser=new FrmSearchUser();
             searchUser.ShowDialog();
+        }
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            persianMonthCalendar.Value=PersianDate.Now;
         }
     }
 }

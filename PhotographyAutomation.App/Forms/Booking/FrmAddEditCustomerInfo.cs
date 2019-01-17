@@ -20,7 +20,7 @@ namespace PhotographyAutomation.App.Forms.Booking
 
         private void FrmAddEditCustomerInfo_Load(object sender, EventArgs e)
         {
-            groupBoxCustomerInfo.Enabled = false;
+            //groupBoxCustomerInfo.Enabled = false;
             btnOk.Enabled = false;
         }
 
@@ -28,22 +28,22 @@ namespace PhotographyAutomation.App.Forms.Booking
         private void btnCheckNumber_Click(object sender, EventArgs e)
         {
             errorProvider1.Clear();
-            if (string.IsNullOrEmpty(txtMobileSearch.Text.Trim()))
+            if (string.IsNullOrEmpty(txtMobileSearch.Text.Replace(" ", "")))
             {
                 errorProvider1.Clear();
                 errorProvider1.SetError(txtMobileSearch, "شماره موبایل وارد نشده است.");
-                txtMobileSearch.Focus();
-            }
-            else if (txtMobileSearch.Text.Length < 10)
-            {
-                errorProvider1.Clear();
-                errorProvider1.SetError(txtMobileSearch, "شماره موبایل باید به صورت 10 رقمی (7890 345 912) وارد گردد.");
                 txtMobileSearch.Focus();
             }
             else if (!txtMobileSearch.Text.StartsWith("9", StringComparison.InvariantCulture))
             {
                 errorProvider1.Clear();
                 errorProvider1.SetError(txtMobileSearch, "شماره موبایل باید با عدد 9 شروع گردد.");
+                txtMobileSearch.Focus();
+            }
+            else if (txtMobileSearch.Text.Replace(" ", "").Length < 10)
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtMobileSearch, "شماره موبایل باید به صورت 10 رقمی (7890 345 912) وارد گردد.");
                 txtMobileSearch.Focus();
             }
             else
@@ -123,24 +123,24 @@ namespace PhotographyAutomation.App.Forms.Booking
         {
             if (CheckInputs())
             {
-                var user = new TblUser
-                {
-                    FirstName = txtFirstName.Text.Trim(),
-                    LastName = txtLastName.Text.Trim(),
-                    Mobile = txtMobile.Text.Replace(" ", "").Trim(),
-                    Tell = txtTell.Text.Replace(" ", "").Trim(),
-                    Gender = Convert.ToByte(cmbGender.SelectedIndex == 0 ? 0 : 1),
-                    BirthDate = txtBirthDate.Text.ToMiladiDate(),
-                    NationalId = txtNationalId.Text.Replace("-", "").Trim(),
-                    IsMarried = Convert.ToByte(cmbMarriedStatus.SelectedIndex == 0 ? 0 : 1),
-                    CustomerType = Convert.ToByte(cmbCustomerType.SelectedIndex == 0 ? 0 : 1),
-                    UserType = Convert.ToByte(cmbUserType.SelectedIndex == 0 ? 0 : 1),
-                    Address = txtAddress.Text.Trim(),
-                    Email = txtEmail.Text.Trim(),
-                    IsActive = Convert.ToByte(cmbActiveStatus.SelectedIndex == 0 ? 0 : 1),
-                    CreatedDate = DateTime.Now,
-                    IsDeleted = 0
-                };
+                TblUser user = new TblUser();
+
+                user.FirstName = txtFirstName.Text.Trim();
+                user.LastName = txtLastName.Text.Trim();
+                user.Mobile = txtMobile.Text.Replace(" ", "").Trim();
+                user.Tell = txtTell.Text.Replace(" ", "").Trim();
+                user.Gender = Convert.ToByte(cmbGender.SelectedIndex == 0 ? 0 : 1);
+                user.BirthDate = txtBirthDate.Text.ToMiladiDate();
+                user.NationalId = txtNationalId.Text.Replace("-", "").Trim();
+                user.IsMarried = Convert.ToByte(cmbMarriedStatus.SelectedIndex == 0 ? 0 : 1);
+                user.CustomerType = Convert.ToByte(cmbCustomerType.SelectedIndex == 0 ? 0 : 1);
+                user.UserType = Convert.ToByte(cmbUserType.SelectedIndex == 0 ? 0 : 1);
+                user.Address = txtAddress.Text.Trim();
+                user.Email = txtEmail.Text.Trim();
+                user.IsActive = Convert.ToByte(cmbActiveStatus.SelectedIndex == 0 ? 0 : 1);
+                user.CreatedDate = DateTime.Now;
+                user.IsDeleted = 0;
+
 
                 if (cmbMarriedStatus.SelectedIndex == 1)
                     user.WeddingDate = txtWeddingDate.Text.ToMiladiDate();
@@ -203,7 +203,20 @@ namespace PhotographyAutomation.App.Forms.Booking
                 return false;
             }
 
-            if (txtTell.Text.Trim() == @"313")
+
+            if (txtBirthDate.Text != @"13  /  /  ")
+            {
+                if (DateTime.TryParse(txtBirthDate.Text, out var dtBirthDate) == false)
+                {
+                    errorProvider1.Clear();
+                    errorProvider1.SetError(txtBirthDate, "تاریخ تولد مشتری به درستی وارد نشده است.");
+                    txtBirthDate.Focus();
+                    return false;
+                }
+            }
+
+
+            if (txtTell.Text.Replace(" ", "") == @"313")
             {
                 errorProvider1.Clear();
                 errorProvider1.SetError(txtTell, "تلفن ثابت مشتری وارد نشده است.");
@@ -211,7 +224,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                 return false;
             }
 
-            if (txtTell.Text.Trim().Length > 3 && txtTell.Text.Trim().Length < 11)
+            if (txtTell.Text.Replace(" ", "").Length > 3 && txtTell.Text.Replace(" ", "").Length < 10)
             {
                 errorProvider1.Clear();
                 errorProvider1.SetError(txtTell, "تلفن ثابت مشتری به درستی وارد نشده است.");
@@ -219,7 +232,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                 return false;
             }
 
-            if (txtMobile.Text.Length < 13 || !txtMobile.Text.StartsWith("9"))
+            if (txtMobile.Text.Replace(" ", "").Length < 10 || !txtMobile.Text.StartsWith("9"))
             {
                 errorProvider1.Clear();
                 errorProvider1.SetError(txtMobile, "تلفن همراه مشتری به درستی وارد نشده است.");
@@ -227,12 +240,18 @@ namespace PhotographyAutomation.App.Forms.Booking
                 return false;
             }
 
-            if (cmbMarriedStatus.SelectedIndex == 1 && txtWeddingDate.Text.Replace(" ", "").Length < 10)
+            if (cmbMarriedStatus.SelectedIndex == 1)
             {
-                errorProvider1.Clear();
-                errorProvider1.SetError(txtWeddingDate, "تاریخ ازدواج مشتری به درستی وارد نشده است.");
-                txtWeddingDate.Focus();
-                return false;
+                if (txtWeddingDate.Text != @"13  /  /")
+                {
+                    if (DateTime.TryParse(txtWeddingDate.Text, out var dtWedding) == false)
+                    {
+                        errorProvider1.Clear();
+                        errorProvider1.SetError(txtWeddingDate, "تاریخ ازدواج مشتری به درستی وارد نشده است.");
+                        txtWeddingDate.Focus();
+                        return false;
+                    }
+                }
             }
 
             if (!string.IsNullOrEmpty(txtEmail.Text.Trim()) && !txtEmail.Text.IsValidEmail())
@@ -246,6 +265,8 @@ namespace PhotographyAutomation.App.Forms.Booking
             try
             {
                 if (!string.IsNullOrEmpty(txtNationalId.Text.Replace("-", "").Trim()) &&
+                    txtNationalId.Text.Replace("-", "").Trim().Length > 1 &&
+                    txtNationalId.Text.Replace("-", "").Trim().Length < 10 &&
                     !txtNationalId.Text.Replace("-", "").Trim().IsValidNationalCode())
                 {
                     errorProvider1.Clear();
@@ -261,8 +282,6 @@ namespace PhotographyAutomation.App.Forms.Booking
                 //RtlMessageBox.Show(exception.Message, "خطا در ورود اطلاعات");
                 return false;
             }
-
-
             return true;
         }
 

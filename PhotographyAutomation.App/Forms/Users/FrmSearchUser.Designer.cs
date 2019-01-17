@@ -33,10 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem1 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem2 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem3 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem4 = new Telerik.WinControls.UI.RadListDataItem();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.radThemeManager1 = new Telerik.WinControls.RadThemeManager();
             this.office2010SilverTheme1 = new Telerik.WinControls.Themes.Office2010SilverTheme();
@@ -44,16 +40,6 @@
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvUsers = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtTell = new Telerik.WinControls.UI.RadMaskedEditBox();
-            this.cmbSpecialSearch = new Telerik.WinControls.UI.RadDropDownList();
-            this.txtSpecialSearch = new Telerik.WinControls.UI.RadTextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtLastName = new Telerik.WinControls.UI.RadTextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnSearch = new Telerik.WinControls.UI.RadButton();
-            this.txtFirstName = new Telerik.WinControls.UI.RadTextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,18 +55,24 @@
             this.ثبتنوبتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ویرایشاطلاعاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ثبتفاکتورToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtTell = new Telerik.WinControls.UI.RadMaskedEditBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtLastName = new Telerik.WinControls.UI.RadTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnSearch = new Telerik.WinControls.UI.RadButton();
+            this.txtFirstName = new Telerik.WinControls.UI.RadTextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panelEx1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
+            this.menuDgvUsers.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtTell)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbSpecialSearch)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSpecialSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLastName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFirstName)).BeginInit();
-            this.menuDgvUsers.SuspendLayout();
             this.SuspendLayout();
             // 
             // errorProvider1
@@ -155,6 +147,7 @@
             this.CreatedDate,
             this.ModifiedDate,
             this.MoreInfo});
+            this.dgvUsers.ContextMenuStrip = this.menuDgvUsers;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F);
@@ -182,136 +175,7 @@
             this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUsers.Size = new System.Drawing.Size(1009, 343);
             this.dgvUsers.TabIndex = 0;
-            this.dgvUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellClick);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.txtTell);
-            this.groupBox1.Controls.Add(this.cmbSpecialSearch);
-            this.groupBox1.Controls.Add(this.txtSpecialSearch);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtLastName);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.btnSearch);
-            this.groupBox1.Controls.Add(this.txtFirstName);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1015, 89);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "اطلاعات مشتری";
-            // 
-            // txtTell
-            // 
-            this.txtTell.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTell.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.txtTell.Location = new System.Drawing.Point(441, 34);
-            this.txtTell.MaskType = Telerik.WinControls.UI.MaskType.Numeric;
-            this.txtTell.Name = "txtTell";
-            this.txtTell.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtTell.Size = new System.Drawing.Size(100, 19);
-            this.txtTell.TabIndex = 6;
-            this.txtTell.TabStop = false;
-            this.txtTell.Text = "0";
-            this.txtTell.ThemeName = "Office2010Silver";
-            // 
-            // cmbSpecialSearch
-            // 
-            this.cmbSpecialSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbSpecialSearch.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem1.Text = "کد ملی";
-            radListDataItem2.Text = "تاریخ تولد";
-            radListDataItem3.Text = "تاریخ ازدواج";
-            radListDataItem4.Text = "ایمیل";
-            this.cmbSpecialSearch.Items.Add(radListDataItem1);
-            this.cmbSpecialSearch.Items.Add(radListDataItem2);
-            this.cmbSpecialSearch.Items.Add(radListDataItem3);
-            this.cmbSpecialSearch.Items.Add(radListDataItem4);
-            this.cmbSpecialSearch.Location = new System.Drawing.Point(300, 34);
-            this.cmbSpecialSearch.Name = "cmbSpecialSearch";
-            this.cmbSpecialSearch.Size = new System.Drawing.Size(100, 19);
-            this.cmbSpecialSearch.TabIndex = 3;
-            this.cmbSpecialSearch.Text = "موارد خاص";
-            // 
-            // txtSpecialSearch
-            // 
-            this.txtSpecialSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSpecialSearch.Enabled = false;
-            this.txtSpecialSearch.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.txtSpecialSearch.Location = new System.Drawing.Point(145, 35);
-            this.txtSpecialSearch.Name = "txtSpecialSearch";
-            this.txtSpecialSearch.Size = new System.Drawing.Size(149, 19);
-            this.txtSpecialSearch.TabIndex = 4;
-            this.txtSpecialSearch.ThemeName = "Office2010Silver";
-            this.txtSpecialSearch.Enter += new System.EventHandler(this.txtSpecialSearch_Enter);
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(547, 37);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "تلفن (ثابت یا همراه)";
-            // 
-            // txtLastName
-            // 
-            this.txtLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLastName.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.txtLastName.Location = new System.Drawing.Point(674, 35);
-            this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(100, 19);
-            this.txtLastName.TabIndex = 1;
-            this.txtLastName.ThemeName = "Office2010Silver";
-            this.txtLastName.Enter += new System.EventHandler(this.txtFirstName_Enter);
-            this.txtLastName.Leave += new System.EventHandler(this.txtFirstName_Leave);
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(780, 37);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "نام خانوادگی";
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.btnSearch.Location = new System.Drawing.Point(6, 26);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(110, 36);
-            this.btnSearch.TabIndex = 5;
-            this.btnSearch.Text = "جستجو";
-            this.btnSearch.ThemeName = "Office2010Silver";
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // txtFirstName
-            // 
-            this.txtFirstName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFirstName.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.txtFirstName.Location = new System.Drawing.Point(873, 35);
-            this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(100, 19);
-            this.txtFirstName.TabIndex = 0;
-            this.txtFirstName.ThemeName = "Office2010Silver";
-            this.txtFirstName.Enter += new System.EventHandler(this.txtFirstName_Enter);
-            this.txtFirstName.Leave += new System.EventHandler(this.txtFirstName_Leave);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(980, 37);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(20, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "نام";
+            this.dgvUsers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellDoubleClick);
             // 
             // Id
             // 
@@ -432,6 +296,104 @@
             this.ثبتفاکتورToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.ثبتفاکتورToolStripMenuItem.Text = "ثبت فاکتور";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.txtTell);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.txtLastName);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.btnSearch);
+            this.groupBox1.Controls.Add(this.txtFirstName);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1015, 89);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "اطلاعات مشتری";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // txtTell
+            // 
+            this.txtTell.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTell.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.txtTell.Location = new System.Drawing.Point(441, 34);
+            this.txtTell.MaskType = Telerik.WinControls.UI.MaskType.Numeric;
+            this.txtTell.Name = "txtTell";
+            this.txtTell.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtTell.Size = new System.Drawing.Size(100, 19);
+            this.txtTell.TabIndex = 6;
+            this.txtTell.TabStop = false;
+            this.txtTell.Text = "0";
+            this.txtTell.ThemeName = "Office2010Silver";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(547, 37);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(98, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "تلفن (ثابت یا همراه)";
+            // 
+            // txtLastName
+            // 
+            this.txtLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLastName.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.txtLastName.Location = new System.Drawing.Point(674, 35);
+            this.txtLastName.Name = "txtLastName";
+            this.txtLastName.Size = new System.Drawing.Size(100, 19);
+            this.txtLastName.TabIndex = 1;
+            this.txtLastName.ThemeName = "Office2010Silver";
+            this.txtLastName.Enter += new System.EventHandler(this.txtFirstName_Enter);
+            this.txtLastName.Leave += new System.EventHandler(this.txtFirstName_Leave);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(780, 37);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "نام خانوادگی";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.btnSearch.Location = new System.Drawing.Point(6, 26);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(110, 36);
+            this.btnSearch.TabIndex = 5;
+            this.btnSearch.Text = "جستجو";
+            this.btnSearch.ThemeName = "Office2010Silver";
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // txtFirstName
+            // 
+            this.txtFirstName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFirstName.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.txtFirstName.Location = new System.Drawing.Point(873, 35);
+            this.txtFirstName.Name = "txtFirstName";
+            this.txtFirstName.Size = new System.Drawing.Size(100, 19);
+            this.txtFirstName.TabIndex = 0;
+            this.txtFirstName.ThemeName = "Office2010Silver";
+            this.txtFirstName.Enter += new System.EventHandler(this.txtFirstName_Enter);
+            this.txtFirstName.Leave += new System.EventHandler(this.txtFirstName_Leave);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(980, 37);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(20, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "نام";
+            // 
             // FrmSearchUser
             // 
             this.AcceptButton = this.btnSearch;
@@ -451,15 +413,13 @@
             this.panelEx1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
+            this.menuDgvUsers.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtTell)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbSpecialSearch)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSpecialSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLastName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFirstName)).EndInit();
-            this.menuDgvUsers.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -479,8 +439,6 @@
         private System.Windows.Forms.Label label3;
         private Telerik.WinControls.UI.RadTextBox txtLastName;
         private System.Windows.Forms.Label label2;
-        private Telerik.WinControls.UI.RadDropDownList cmbSpecialSearch;
-        private Telerik.WinControls.UI.RadTextBox txtSpecialSearch;
         private Telerik.WinControls.UI.RadMaskedEditBox txtTell;
         private DevComponents.DotNetBar.Controls.DataGridViewX dgvUsers;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;

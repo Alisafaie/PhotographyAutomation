@@ -22,10 +22,8 @@ namespace PhotographyAutomation.App.Forms.Booking
         private void FrmAddEditBooking_Load(object sender, EventArgs e)
         {
             datePickerBookingDate.Value = PersianDate.Now;
-            datePickerPayment.Value = PersianDate.Now;
-
             timePickerBookingTime.Value = DateTime.Now;
-            timePickerPayment.Value = DateTime.Now;
+
 
             txtPersonCount.Value = 1;
 
@@ -46,9 +44,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     DialogResult = DialogResult.Cancel;
                 }
-
                 PopulateComboBoxes();
-
             }
         }
 
@@ -83,19 +79,24 @@ namespace PhotographyAutomation.App.Forms.Booking
         {
             if (CheckInputs())
             {
-                if (timePickerPayment.Value != null)
+                if (timePickerBookingTime.Value != null)
                 {
-                    var booking = new TblBooking
+                    TblBooking booking = new TblBooking
                     {
                         UserId = UserId,
                         AtelierTypeId = (int)cmbAtelierTypes.SelectedValue,
                         CreatedDate = DateTime.Now,
                         Date = datePickerBookingDate.Value,
                         PersonCount = (int)txtPersonCount.Value,
-                        PhotographyTypeId = (int)cmbPhotographyTypes.SelectedValue,
-                        Time = TimeSpan.Parse(timePickerPayment.Value.Value.ToShortTimeString()),
-                        PrepaymentIsOk = 0
+                        PhotographyTypeId = (int)cmbPhotographyTypes.SelectedValue
                     };
+
+                    if (timePickerBookingTime.Value != null)
+                        booking.Time =
+                            new TimeSpan(0, timePickerBookingTime.Value.Value.Hour, timePickerBookingTime.Value.Value.Minute, 0);
+
+                    booking.PrepaymentIsOk = 0;
+
 
                     if (rbFemalePhotographer.Checked)
                     {
@@ -189,15 +190,15 @@ namespace PhotographyAutomation.App.Forms.Booking
             if (txtPersonCount.Value == 0)
             {
                 errorProvider1.Clear();
-                errorProvider1.SetError(txtPersonCount,"تعداد نفرات مربوط به نوبت، می بایست حداقل یک نفر باشد.");
+                errorProvider1.SetError(txtPersonCount, "تعداد نفرات مربوط به نوبت، می بایست حداقل یک نفر باشد.");
                 txtPersonCount.Focus();
                 return false;
             }
 
-            if (!rbFemalePhotographer.Checked && !rbMalePhotographer.Checked && !rbNoMatterPhotographer.Checked)
+            if (rbFemalePhotographer.Checked == false && rbMalePhotographer.Checked == false && rbNoMatterPhotographer.Checked == false)
             {
                 errorProvider1.Clear();
-                errorProvider1.SetError(panelPhotographerTypes,"نوع عکاس نوبت انتخاب نشده است.");
+                errorProvider1.SetError(panelPhotographerTypes, "نوع عکاس نوبت انتخاب نشده است.");
                 panelPhotographerTypes.Focus();
                 return false;
             }
@@ -205,16 +206,37 @@ namespace PhotographyAutomation.App.Forms.Booking
             return true;
         }
 
-        private void txtPaymentDescription_Enter(object sender, EventArgs e)
+        private void cmbPhotographyTypes_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
         {
-            System.Globalization.CultureInfo language = new System.Globalization.CultureInfo("fa-IR");
-            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
-        }
+            //1	10	پرسنلی
+            //2	20	کودک
+            //3	30	خانوادگی
+            //4	40	نامزدی
+            //5	50	جشن
 
-        private void txtPaymentDescription_Leave(object sender, EventArgs e)
-        {
-            System.Globalization.CultureInfo language = new System.Globalization.CultureInfo("en-us");
-            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
+            //1	10	آتلیه پرسنلی
+            //2	20	آتلیه هنری
+            //3	30	آتلیه کودک
+            //4	40	فضای باز سرو
+
+            switch (cmbPhotographyTypes.SelectedValue)
+            {
+                case 1:
+                    cmbAtelierTypes.SelectedValue = 1;
+                    break;
+                case 2:
+                    cmbAtelierTypes.SelectedValue = 3;
+                    break;
+                case 3:
+                    cmbAtelierTypes.SelectedValue = 2;
+                    break;
+                case 4:
+                    cmbAtelierTypes.SelectedValue = 2;
+                    break;
+                case 5:
+                    cmbAtelierTypes.SelectedValue = 2;
+                    break;
+            }
         }
     }
 }

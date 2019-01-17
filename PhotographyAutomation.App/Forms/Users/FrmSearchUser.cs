@@ -99,7 +99,7 @@ namespace PhotographyAutomation.App.Forms.Users
             }
         }
 
-        private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvUsers_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvUsers.CurrentRow != null)
             {
@@ -117,6 +117,11 @@ namespace PhotographyAutomation.App.Forms.Users
                     }
                 }
             }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

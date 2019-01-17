@@ -114,7 +114,7 @@ namespace PhotographyAutomation.DateLayer.Context
                 int result=_db.SaveChanges();
                 return result;
             }
-            catch
+            catch(Exception exception)
             {
                 return -1;
             }

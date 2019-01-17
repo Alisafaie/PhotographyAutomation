@@ -29,23 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAddEditBooking));
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
             this.office2010SilverTheme1 = new Telerik.WinControls.Themes.Office2010SilverTheme();
             this.btnOk = new Telerik.WinControls.UI.RadButton();
             this.btnCancel = new Telerik.WinControls.UI.RadButton();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.timePickerPayment = new Telerik.WinControls.UI.RadTimePicker();
-            this.txtPaymentDescription = new Telerik.WinControls.UI.RadTextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.datePickerPayment = new FreeControls.PersianDateTimePicker();
-            this.txtPaymentAmount = new Telerik.WinControls.UI.RadSpinEditor();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgvBookingHistory = new Telerik.WinControls.UI.RadGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -79,10 +70,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).BeginInit();
             this.panelEx1.SuspendLayout();
             this.panelEx2.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.timePickerPayment)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPaymentDescription)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPaymentAmount)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookingHistory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookingHistory.MasterTemplate)).BeginInit();
@@ -128,7 +115,7 @@
             this.panelEx1.Controls.Add(this.btnCancel);
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelEx1.Location = new System.Drawing.Point(0, 588);
+            this.panelEx1.Location = new System.Drawing.Point(0, 530);
             this.panelEx1.Name = "panelEx1";
             this.panelEx1.Size = new System.Drawing.Size(919, 60);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -149,7 +136,6 @@
             // 
             this.panelEx2.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx2.Controls.Add(this.groupBox4);
             this.panelEx2.Controls.Add(this.groupBox3);
             this.panelEx2.Controls.Add(this.groupBox2);
             this.panelEx2.Controls.Add(this.groupBox1);
@@ -157,7 +143,7 @@
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx2.Location = new System.Drawing.Point(0, 0);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(919, 588);
+            this.panelEx2.Size = new System.Drawing.Size(919, 530);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -167,135 +153,12 @@
             this.panelEx2.Style.GradientAngle = 90;
             this.panelEx2.TabIndex = 0;
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.timePickerPayment);
-            this.groupBox4.Controls.Add(this.txtPaymentDescription);
-            this.groupBox4.Controls.Add(this.label14);
-            this.groupBox4.Controls.Add(this.datePickerPayment);
-            this.groupBox4.Controls.Add(this.txtPaymentAmount);
-            this.groupBox4.Controls.Add(this.label13);
-            this.groupBox4.Controls.Add(this.label12);
-            this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Location = new System.Drawing.Point(12, 241);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(895, 138);
-            this.groupBox4.TabIndex = 1;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "اطلاعات پرداخت";
-            // 
-            // timePickerPayment
-            // 
-            this.timePickerPayment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.timePickerPayment.ClockPosition = Telerik.WinControls.UI.ClockPosition.HideClock;
-            this.timePickerPayment.CloseButtonText = "بستن";
-            this.timePickerPayment.Culture = new System.Globalization.CultureInfo("en-US");
-            this.timePickerPayment.EnableKeyMap = true;
-            this.timePickerPayment.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.timePickerPayment.Location = new System.Drawing.Point(470, 30);
-            this.timePickerPayment.MaxValue = new System.DateTime(9999, 12, 31, 23, 59, 59, 0);
-            this.timePickerPayment.MinValue = new System.DateTime(((long)(0)));
-            this.timePickerPayment.Name = "timePickerPayment";
-            this.timePickerPayment.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.timePickerPayment.Size = new System.Drawing.Size(111, 21);
-            this.timePickerPayment.TabIndex = 1;
-            this.timePickerPayment.TabStop = false;
-            this.timePickerPayment.ThemeName = "Office2010Silver";
-            this.timePickerPayment.Value = new System.DateTime(2019, 1, 10, 20, 15, 58, 785);
-            // 
-            // txtPaymentDescription
-            // 
-            this.txtPaymentDescription.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtPaymentDescription.Location = new System.Drawing.Point(28, 76);
-            this.txtPaymentDescription.Multiline = true;
-            this.txtPaymentDescription.Name = "txtPaymentDescription";
-            // 
-            // 
-            // 
-            this.txtPaymentDescription.RootElement.StretchVertically = true;
-            this.txtPaymentDescription.Size = new System.Drawing.Size(753, 54);
-            this.txtPaymentDescription.TabIndex = 3;
-            this.txtPaymentDescription.Enter += new System.EventHandler(this.txtPaymentDescription_Enter);
-            this.txtPaymentDescription.Leave += new System.EventHandler(this.txtPaymentDescription_Leave);
-            // 
-            // label14
-            // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(787, 78);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(47, 13);
-            this.label14.TabIndex = 23;
-            this.label14.Text = "توضیحات";
-            // 
-            // datePickerPayment
-            // 
-            this.datePickerPayment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.datePickerPayment.BackColor = System.Drawing.Color.White;
-            this.datePickerPayment.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.datePickerPayment.Location = new System.Drawing.Point(670, 31);
-            this.datePickerPayment.Name = "datePickerPayment";
-            this.datePickerPayment.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.datePickerPayment.ShowTime = false;
-            this.datePickerPayment.Size = new System.Drawing.Size(111, 18);
-            this.datePickerPayment.TabIndex = 0;
-            this.datePickerPayment.Text = "persianDateTimePicker1";
-            this.datePickerPayment.Value = ((FreeControls.PersianDate)(resources.GetObject("datePickerPayment.Value")));
-            // 
-            // txtPaymentAmount
-            // 
-            this.txtPaymentAmount.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtPaymentAmount.Location = new System.Drawing.Point(260, 30);
-            this.txtPaymentAmount.Maximum = new decimal(new int[] {
-            1410065407,
-            2,
-            0,
-            0});
-            this.txtPaymentAmount.Name = "txtPaymentAmount";
-            this.txtPaymentAmount.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtPaymentAmount.ShowUpDownButtons = false;
-            this.txtPaymentAmount.Size = new System.Drawing.Size(111, 20);
-            this.txtPaymentAmount.TabIndex = 2;
-            this.txtPaymentAmount.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtPaymentAmount.ThemeName = "Office2010Silver";
-            this.txtPaymentAmount.ThousandsSeparator = true;
-            // 
-            // label13
-            // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(377, 32);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(27, 13);
-            this.label13.TabIndex = 21;
-            this.label13.Text = "مبلغ";
-            // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(587, 32);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(38, 13);
-            this.label12.TabIndex = 22;
-            this.label12.Text = "ساعت";
-            // 
-            // label11
-            // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(787, 32);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(28, 13);
-            this.label11.TabIndex = 7;
-            this.label11.Text = "تاریخ";
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.dgvBookingHistory);
-            this.groupBox3.Location = new System.Drawing.Point(12, 385);
+            this.groupBox3.Location = new System.Drawing.Point(12, 241);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(895, 200);
+            this.groupBox3.Size = new System.Drawing.Size(895, 275);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "تاریخچه نوبت های قبلی";
@@ -308,10 +171,10 @@
             // 
             // 
             this.dgvBookingHistory.MasterTemplate.AllowAddNewRow = false;
-            this.dgvBookingHistory.MasterTemplate.ViewDefinition = tableViewDefinition3;
+            this.dgvBookingHistory.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.dgvBookingHistory.Name = "dgvBookingHistory";
             this.dgvBookingHistory.ReadOnly = true;
-            this.dgvBookingHistory.Size = new System.Drawing.Size(889, 180);
+            this.dgvBookingHistory.Size = new System.Drawing.Size(889, 255);
             this.dgvBookingHistory.TabIndex = 0;
             this.dgvBookingHistory.ThemeName = "Office2010Silver";
             // 
@@ -384,6 +247,7 @@
             this.cmbPhotographyTypes.Size = new System.Drawing.Size(111, 20);
             this.cmbPhotographyTypes.TabIndex = 3;
             this.cmbPhotographyTypes.ThemeName = "Office2010Silver";
+            this.cmbPhotographyTypes.SelectedIndexChanged += new Telerik.WinControls.UI.Data.PositionChangedEventHandler(this.cmbPhotographyTypes_SelectedIndexChanged);
             // 
             // label10
             // 
@@ -620,7 +484,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(919, 648);
+            this.ClientSize = new System.Drawing.Size(919, 590);
             this.Controls.Add(this.panelEx2);
             this.Controls.Add(this.panelEx1);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
@@ -637,11 +501,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).EndInit();
             this.panelEx1.ResumeLayout(false);
             this.panelEx2.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.timePickerPayment)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPaymentDescription)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPaymentAmount)).EndInit();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookingHistory.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookingHistory)).EndInit();
@@ -697,14 +556,5 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private Telerik.WinControls.RadThemeManager radThemeManager1;
         private Telerik.WinControls.UI.RadTextBox txtBookingStatus;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private Telerik.WinControls.UI.RadTextBox txtPaymentDescription;
-        private System.Windows.Forms.Label label14;
-        private FreeControls.PersianDateTimePicker datePickerPayment;
-        private Telerik.WinControls.UI.RadSpinEditor txtPaymentAmount;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
-        private Telerik.WinControls.UI.RadTimePicker timePickerPayment;
     }
 }
