@@ -15,19 +15,22 @@ namespace PhotographyAutomation.DateLayer.Models
     public partial class TblBooking
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
+        public int CustomerId { get; set; }
         public System.DateTime Date { get; set; }
         public System.TimeSpan Time { get; set; }
         public byte PhotographerGender { get; set; }
         public int PhotographyTypeId { get; set; }
-        public Nullable<int> AtelierTypeId { get; set; }
-        public Nullable<int> PersonCount { get; set; }
+        public int AtelierTypeId { get; set; }
+        public int PersonCount { get; set; }
         public byte PrepaymentIsOk { get; set; }
         public int Submitter { get; set; }
         public int StatusId { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
     
-        public virtual TblUser TblUser { get; set; }
+        public virtual TblAtelierType TblAtelierType { get; set; }
+        public virtual TblBookingStatus TblBookingStatus { get; set; }
+        public virtual TblPhotographyType TblPhotographyType { get; set; }
+        public virtual TblCustomer TblCustomer { get; set; }
     }
 }

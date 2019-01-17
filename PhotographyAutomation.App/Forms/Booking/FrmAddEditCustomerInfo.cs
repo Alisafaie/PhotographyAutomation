@@ -74,18 +74,8 @@ namespace PhotographyAutomation.App.Forms.Booking
                                 txtWeddingDate.Text = user.WeddingDate.Value.ToShamsiDate();
 
                         cmbCustomerType.SelectedIndex = user.CustomerType == 0 ? 0 : 1;
+                        cmbActiveStatus.SelectedIndex = user.IsActive == 0 ? 0 : 1;
 
-                        cmbUserType.SelectedIndex = user.UserType == 0 ? 0 : 1;
-
-                        if (cmbUserType.SelectedIndex == 1)
-                        {
-                            txtUserName.Text = user.Username;
-
-                            // TO DO
-                            //txtRole.Text
-
-                            cmbActiveStatus.SelectedIndex = user.IsActive == 0 ? 0 : 1;
-                        }
 
                         txtEmail.Text = user.Email;
                         txtAddress.Text = user.Address;
@@ -123,7 +113,7 @@ namespace PhotographyAutomation.App.Forms.Booking
         {
             if (CheckInputs())
             {
-                TblUser user = new TblUser();
+                TblCustomer user = new TblCustomer();
 
                 user.FirstName = txtFirstName.Text.Trim();
                 user.LastName = txtLastName.Text.Trim();
@@ -134,7 +124,6 @@ namespace PhotographyAutomation.App.Forms.Booking
                 user.NationalId = txtNationalId.Text.Replace("-", "").Trim();
                 user.IsMarried = Convert.ToByte(cmbMarriedStatus.SelectedIndex == 0 ? 0 : 1);
                 user.CustomerType = Convert.ToByte(cmbCustomerType.SelectedIndex == 0 ? 0 : 1);
-                user.UserType = Convert.ToByte(cmbUserType.SelectedIndex == 0 ? 0 : 1);
                 user.Address = txtAddress.Text.Trim();
                 user.Email = txtEmail.Text.Trim();
                 user.IsActive = Convert.ToByte(cmbActiveStatus.SelectedIndex == 0 ? 0 : 1);
@@ -145,8 +134,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                 if (cmbMarriedStatus.SelectedIndex == 1)
                     user.WeddingDate = txtWeddingDate.Text.ToMiladiDate();
 
-                if (cmbUserType.SelectedIndex == 1)
-                    user.Username = txtUserName.Text;
+                
 
                 using (var db = new UnitOfWork())
                 {
@@ -163,7 +151,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                     int result = db.Save();
                     if (result > 0)
                     {
-                        var f = new FrmAddEditBooking { UserId = user.Id };
+                        var f = new FrmAddEditBooking { CustomerId = user.Id };
                         f.ShowDialog();
                         DialogResult = DialogResult.OK;
                     }

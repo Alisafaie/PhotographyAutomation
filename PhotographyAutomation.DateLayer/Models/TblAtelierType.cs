@@ -14,8 +14,17 @@ namespace PhotographyAutomation.DateLayer.Models
     
     public partial class TblAtelierType
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TblAtelierType()
+        {
+            this.TblBooking = new HashSet<TblBooking>();
+        }
+    
         public int Id { get; set; }
         public int Code { get; set; }
         public string AtelierName { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblBooking> TblBooking { get; set; }
     }
 }

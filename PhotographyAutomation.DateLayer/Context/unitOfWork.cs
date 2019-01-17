@@ -1,13 +1,14 @@
 ﻿using PhotographyAutomation.DateLayer.Models;
+using PhotographyAutomation.DateLayer.Repositories;
 using PhotographyAutomation.DateLayer.Services;
 using System;
-using PhotographyAutomation.DateLayer.Repositories;
+using System.Diagnostics;
 
 namespace PhotographyAutomation.DateLayer.Context
 {
-    public class UnitOfWork:IDisposable
+    public class UnitOfWork : IDisposable
     {
-        PhotographyAutomationDBEntities _db = new PhotographyAutomationDBEntities();
+        private readonly PhotographyAutomationDBEntities _db = new PhotographyAutomationDBEntities();
 
 
         private IUserRepository _userRepository;
@@ -18,40 +19,55 @@ namespace PhotographyAutomation.DateLayer.Context
             {
                 if (_userRepository == null)
                 {
-                    _userRepository=new UserRepository(_db);
+                    _userRepository = new UserRepository(_db);
                 }
                 return _userRepository;
             }
         }
 
+        private IBookingRepository _bookingRepository;
 
-        private GenericRepository<TblUser> _userGenericRepository;
+        public IBookingRepository BookingRepository
+        {
+            get
+            {
+                if (_bookingRepository==null)
+                {
+                    _bookingRepository=new BookingRepository(_db);
+                }
 
-        public GenericRepository<TblUser> UserGenericRepository
+                return _bookingRepository;
+            }
+        }
+
+
+        private GenericRepository<TblCustomer> _userGenericRepository;
+
+        public GenericRepository<TblCustomer> UserGenericRepository
         {
             get
             {
                 if (_userGenericRepository == null)
                 {
-                    _userGenericRepository = new GenericRepository<TblUser>(_db);
+                    _userGenericRepository = new GenericRepository<TblCustomer>(_db);
                 }
                 return _userGenericRepository;
             }
         }
 
-        
-        private GenericRepository<TblBooking> _bookingRepository;
 
-        public GenericRepository<TblBooking> BookingRepository
+        private GenericRepository<TblBooking> _bookingGenericRepository;
+
+        public GenericRepository<TblBooking> BookingGenericRepository
         {
             get
             {
-                if (_bookingRepository == null)
+                if (_bookingGenericRepository == null)
                 {
-                    _bookingRepository = new GenericRepository<TblBooking>(_db);
+                    _bookingGenericRepository = new GenericRepository<TblBooking>(_db);
                 }
 
-                return _bookingRepository;
+                return _bookingGenericRepository;
             }
         }
 
@@ -63,7 +79,7 @@ namespace PhotographyAutomation.DateLayer.Context
             {
                 if (_atelierTypesGenericRepository == null)
                 {
-                    _atelierTypesGenericRepository=new GenericRepository<TblAtelierType>(_db);
+                    _atelierTypesGenericRepository = new GenericRepository<TblAtelierType>(_db);
                 }
 
                 return _atelierTypesGenericRepository;
@@ -80,7 +96,7 @@ namespace PhotographyAutomation.DateLayer.Context
             {
                 if (_bookingStatusGenericRepository == null)
                 {
-                    _bookingStatusGenericRepository=new GenericRepository<TblBookingStatus>(_db);
+                    _bookingStatusGenericRepository = new GenericRepository<TblBookingStatus>(_db);
                 }
                 return _bookingStatusGenericRepository;
             }
@@ -94,9 +110,9 @@ namespace PhotographyAutomation.DateLayer.Context
         {
             get
             {
-                if (_photographyTypesGenericRepository==null)
+                if (_photographyTypesGenericRepository == null)
                 {
-                    _photographyTypesGenericRepository=new GenericRepository<TblPhotographyType>(_db);
+                    _photographyTypesGenericRepository = new GenericRepository<TblPhotographyType>(_db);
                 }
 
                 return _photographyTypesGenericRepository;
@@ -111,11 +127,17 @@ namespace PhotographyAutomation.DateLayer.Context
         {
             try
             {
-                int result=_db.SaveChanges();
+                int result = _db.SaveChanges();
                 return result;
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
+                Debug.WriteLine(exception.Message);
+                Debug.WriteLine(exception.InnerException);
+                Debug.WriteLine(exception.Source);
+                Debug.WriteLine(exception.Data);
+                Debug.WriteLine(exception.StackTrace);
+
                 return -1;
             }
         }

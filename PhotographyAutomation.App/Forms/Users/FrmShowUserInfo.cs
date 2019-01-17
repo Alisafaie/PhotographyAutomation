@@ -49,13 +49,7 @@ namespace PhotographyAutomation.App.Forms.Users
                         txtEmail.Text = user.Email;
 
                         cmbCustomerType.SelectedIndex = user.CustomerType == 0 ? 0 : 1;
-                        cmbUserType.SelectedIndex = user.UserType == 0 ? 0 : 1;
-                        if (cmbUserType.SelectedIndex == 1)
-                        {
-                            txtUserName.Text = user.Username;
-                            //TO DO
-                            //cmbRole.SelectedIndex
-                        }
+                        
 
                         if (user.IsActive != null) cmbActiveStatus.SelectedIndex = user.IsActive.Value;
                         txtAddress.Text = user.Address;

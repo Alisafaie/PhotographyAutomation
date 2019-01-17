@@ -18,13 +18,13 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
-          <Property Name="Time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Time" Type="time" Precision="0" Nullable="false" />
           <Property Name="PhotographerGender" Type="tinyint" Nullable="false" />
           <Property Name="PhotographyTypeId" Type="int" Nullable="false" />
-          <Property Name="AtelierTypeId" Type="int" />
-          <Property Name="PersonCount" Type="int" />
+          <Property Name="AtelierTypeId" Type="int" Nullable="false" />
+          <Property Name="PersonCount" Type="int" Nullable="false" />
           <Property Name="PrepaymentIsOk" Type="tinyint" Nullable="false" />
           <Property Name="Submitter" Type="int" Nullable="false" />
           <Property Name="StatusId" Type="int" Nullable="false" />
@@ -38,6 +38,29 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Code" Type="int" Nullable="false" />
           <Property Name="StatusName" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblCustomer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="200" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Gender" Type="tinyint" />
+          <Property Name="Address" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Tell" Type="char" MaxLength="10" />
+          <Property Name="Mobile" Type="char" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="200" />
+          <Property Name="NationalId" Type="char" MaxLength="11" />
+          <Property Name="CustomerType" Type="tinyint" />
+          <Property Name="IsMarried" Type="tinyint" />
+          <Property Name="BirthDate" Type="date" />
+          <Property Name="WeddingDate" Type="date" />
+          <Property Name="IsActive" Type="tinyint" />
+          <Property Name="IsDeleted" Type="tinyint" />
+          <Property Name="Submitter" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
         </EntityType>
         <EntityType Name="TblEmployeeType">
           <Key>
@@ -71,42 +94,51 @@
           <Property Name="Code" Type="int" Nullable="false" />
           <Property Name="RoleName" Type="nvarchar" MaxLength="200" Nullable="false" />
         </EntityType>
-        <EntityType Name="TblUser">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="200" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="200" />
-          <Property Name="Gender" Type="tinyint" />
-          <Property Name="Address" Type="nvarchar" MaxLength="1000" />
-          <Property Name="Tell" Type="char" MaxLength="10" />
-          <Property Name="Mobile" Type="char" MaxLength="10" />
-          <Property Name="Email" Type="varchar" MaxLength="200" />
-          <Property Name="NationalId" Type="char" MaxLength="11" />
-          <Property Name="CustomerType" Type="tinyint" />
-          <Property Name="IsMarried" Type="tinyint" />
-          <Property Name="BirthDate" Type="date" />
-          <Property Name="WeddingDate" Type="date" />
-          <Property Name="UserType" Type="tinyint" />
-          <Property Name="Username" Type="nvarchar" MaxLength="200" />
-          <Property Name="Password" Type="nvarchar" MaxLength="200" />
-          <Property Name="EmployeeTypeId" Type="tinyint" />
-          <Property Name="IsActive" Type="tinyint" />
-          <Property Name="IsDeleted" Type="tinyint" />
-          <Property Name="Submitter" Type="int" />
-          <Property Name="CreatedDate" Type="datetime" />
-          <Property Name="ModifiedDate" Type="datetime" />
-        </EntityType>
-        <Association Name="FK_TblBooking_TblUser">
-          <End Role="TblUser" Type="Self.TblUser" Multiplicity="1" />
+        <Association Name="FK_TblBooking_TblAtelierType">
+          <End Role="TblAtelierType" Type="Self.TblAtelierType" Multiplicity="1" />
           <End Role="TblBooking" Type="Self.TblBooking" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TblUser">
+            <Principal Role="TblAtelierType">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="TblBooking">
-              <PropertyRef Name="UserId" />
+              <PropertyRef Name="AtelierTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblBooking_TblBookingStatus">
+          <End Role="TblBookingStatus" Type="Self.TblBookingStatus" Multiplicity="1" />
+          <End Role="TblBooking" Type="Self.TblBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblBookingStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblBooking">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblBooking_TblPhotographyType">
+          <End Role="TblPhotographyType" Type="Self.TblPhotographyType" Multiplicity="1" />
+          <End Role="TblBooking" Type="Self.TblBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblPhotographyType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblBooking">
+              <PropertyRef Name="PhotographyTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblBooking_TblUser">
+          <End Role="TblCustomer" Type="Self.TblCustomer" Multiplicity="1" />
+          <End Role="TblBooking" Type="Self.TblBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCustomer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblBooking">
+              <PropertyRef Name="CustomerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -134,29 +166,29 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tblUser_tblEmployeeType">
-          <End Role="TblEmployeeType" Type="Self.TblEmployeeType" Multiplicity="0..1" />
-          <End Role="TblUser" Type="Self.TblUser" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblEmployeeType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TblUser">
-              <PropertyRef Name="EmployeeTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="StoreContainer">
           <EntitySet Name="TblAtelierType" EntityType="Self.TblAtelierType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblBooking" EntityType="Self.TblBooking" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblBookingStatus" EntityType="Self.TblBookingStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblCustomer" EntityType="Self.TblCustomer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblEmployeeType" EntityType="Self.TblEmployeeType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblEmpRole" EntityType="Self.TblEmpRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblPhotographyType" EntityType="Self.TblPhotographyType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblRoleType" EntityType="Self.TblRoleType" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TblUser" EntityType="Self.TblUser" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TblBooking_TblAtelierType" Association="Self.FK_TblBooking_TblAtelierType">
+            <End Role="TblAtelierType" EntitySet="TblAtelierType" />
+            <End Role="TblBooking" EntitySet="TblBooking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblBooking_TblBookingStatus" Association="Self.FK_TblBooking_TblBookingStatus">
+            <End Role="TblBookingStatus" EntitySet="TblBookingStatus" />
+            <End Role="TblBooking" EntitySet="TblBooking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblBooking_TblPhotographyType" Association="Self.FK_TblBooking_TblPhotographyType">
+            <End Role="TblPhotographyType" EntitySet="TblPhotographyType" />
+            <End Role="TblBooking" EntitySet="TblBooking" />
+          </AssociationSet>
           <AssociationSet Name="FK_TblBooking_TblUser" Association="Self.FK_TblBooking_TblUser">
-            <End Role="TblUser" EntitySet="TblUser" />
+            <End Role="TblCustomer" EntitySet="TblCustomer" />
             <End Role="TblBooking" EntitySet="TblBooking" />
           </AssociationSet>
           <AssociationSet Name="FK_tblEmp_Role_tblEmployeeType" Association="Self.FK_tblEmp_Role_tblEmployeeType">
@@ -167,49 +199,69 @@
             <End Role="TblRoleType" EntitySet="TblRoleType" />
             <End Role="TblEmpRole" EntitySet="TblEmpRole" />
           </AssociationSet>
-          <AssociationSet Name="FK_tblUser_tblEmployeeType" Association="Self.FK_tblUser_tblEmployeeType">
-            <End Role="TblEmployeeType" EntitySet="TblEmployeeType" />
-            <End Role="TblUser" EntitySet="TblUser" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PhotographyAutomationDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="PhotographyAutomationDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="TblAtelierType" EntityType="PhotographyAutomationDBModel.TblAtelierType" />
+          <EntitySet Name="TblCustomer" EntityType="PhotographyAutomationDBModel.TblCustomer" />
           <EntitySet Name="TblBookingStatus" EntityType="PhotographyAutomationDBModel.TblBookingStatus" />
           <EntitySet Name="TblEmployeeType" EntityType="PhotographyAutomationDBModel.TblEmployeeType" />
           <EntitySet Name="TblEmpRole" EntityType="PhotographyAutomationDBModel.TblEmpRole" />
           <EntitySet Name="TblPhotographyType" EntityType="PhotographyAutomationDBModel.TblPhotographyType" />
           <EntitySet Name="TblRoleType" EntityType="PhotographyAutomationDBModel.TblRoleType" />
-          <EntitySet Name="TblUser" EntityType="PhotographyAutomationDBModel.TblUser" />
           <AssociationSet Name="FK_tblEmp_Role_tblEmployeeType" Association="PhotographyAutomationDBModel.FK_tblEmp_Role_tblEmployeeType">
             <End Role="TblEmployeeType" EntitySet="TblEmployeeType" />
             <End Role="TblEmpRole" EntitySet="TblEmpRole" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblUser_tblEmployeeType" Association="PhotographyAutomationDBModel.FK_tblUser_tblEmployeeType">
-            <End Role="TblEmployeeType" EntitySet="TblEmployeeType" />
-            <End Role="TblUser" EntitySet="TblUser" />
           </AssociationSet>
           <AssociationSet Name="FK_tblEmp_Role_tblRoleType" Association="PhotographyAutomationDBModel.FK_tblEmp_Role_tblRoleType">
             <End Role="TblRoleType" EntitySet="TblRoleType" />
             <End Role="TblEmpRole" EntitySet="TblEmpRole" />
           </AssociationSet>
+          <EntitySet Name="TblAtelierType" EntityType="PhotographyAutomationDBModel.TblAtelierType" />
           <EntitySet Name="TblBooking" EntityType="PhotographyAutomationDBModel.TblBooking" />
+          <AssociationSet Name="FK_TblBooking_TblAtelierType" Association="PhotographyAutomationDBModel.FK_TblBooking_TblAtelierType">
+            <End Role="TblAtelierType" EntitySet="TblAtelierType" />
+            <End Role="TblBooking" EntitySet="TblBooking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblBooking_TblBookingStatus" Association="PhotographyAutomationDBModel.FK_TblBooking_TblBookingStatus">
+            <End Role="TblBookingStatus" EntitySet="TblBookingStatus" />
+            <End Role="TblBooking" EntitySet="TblBooking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblBooking_TblPhotographyType" Association="PhotographyAutomationDBModel.FK_TblBooking_TblPhotographyType">
+            <End Role="TblPhotographyType" EntitySet="TblPhotographyType" />
+            <End Role="TblBooking" EntitySet="TblBooking" />
+          </AssociationSet>
           <AssociationSet Name="FK_TblBooking_TblUser" Association="PhotographyAutomationDBModel.FK_TblBooking_TblUser">
-            <End Role="TblUser" EntitySet="TblUser" />
+            <End Role="TblCustomer" EntitySet="TblCustomer" />
             <End Role="TblBooking" EntitySet="TblBooking" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="TblAtelierType">
+        <EntityType Name="TblCustomer">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Code" Type="Int32" Nullable="false" />
-          <Property Name="AtelierName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-        </EntityType>
+          <Property Name="FirstName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="Byte" />
+          <Property Name="Address" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Tell" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="NationalId" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="CustomerType" Type="Byte" />
+          <Property Name="IsMarried" Type="Byte" />
+          <Property Name="BirthDate" Type="DateTime" Precision="0" />
+          <Property Name="WeddingDate" Type="DateTime" Precision="0" />
+          <Property Name="IsActive" Type="Byte" />
+          <Property Name="IsDeleted" Type="Byte" />
+          <Property Name="Submitter" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TblBooking" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblUser" FromRole="TblCustomer" ToRole="TblBooking" />
+          </EntityType>
         <EntityType Name="TblBookingStatus">
           <Key>
             <PropertyRef Name="Id" />
@@ -217,6 +269,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Code" Type="Int32" Nullable="false" />
           <Property Name="StatusName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblBooking" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblBookingStatus" FromRole="TblBookingStatus" ToRole="TblBooking" />
         </EntityType>
         <EntityType Name="TblEmployeeType">
           <Key>
@@ -226,7 +279,6 @@
           <Property Name="Code" Type="Int32" Nullable="false" />
           <Property Name="PositionName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TblEmpRole" Relationship="PhotographyAutomationDBModel.FK_tblEmp_Role_tblEmployeeType" FromRole="TblEmployeeType" ToRole="TblEmpRole" />
-          <NavigationProperty Name="TblUser" Relationship="PhotographyAutomationDBModel.FK_tblUser_tblEmployeeType" FromRole="TblEmployeeType" ToRole="TblUser" />
         </EntityType>
         <EntityType Name="TblEmpRole">
           <Key>
@@ -245,6 +297,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Code" Type="Int32" Nullable="false" />
           <Property Name="TypeName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblBooking" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblPhotographyType" FromRole="TblPhotographyType" ToRole="TblBooking" />
         </EntityType>
         <EntityType Name="TblRoleType">
           <Key>
@@ -255,35 +308,6 @@
           <Property Name="RoleName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TblEmpRole" Relationship="PhotographyAutomationDBModel.FK_tblEmp_Role_tblRoleType" FromRole="TblRoleType" ToRole="TblEmpRole" />
         </EntityType>
-        <EntityType Name="TblUser">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Gender" Type="Byte" />
-          <Property Name="Address" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Tell" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-          <Property Name="Mobile" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="NationalId" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
-          <Property Name="CustomerType" Type="Byte" />
-          <Property Name="IsMarried" Type="Byte" />
-          <Property Name="BirthDate" Type="DateTime" Precision="0" />
-          <Property Name="WeddingDate" Type="DateTime" Precision="0" />
-          <Property Name="UserType" Type="Byte" />
-          <Property Name="Username" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="EmployeeTypeId" Type="Byte" />
-          <Property Name="IsActive" Type="Byte" />
-          <Property Name="IsDeleted" Type="Byte" />
-          <Property Name="Submitter" Type="Int32" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="TblEmployeeType" Relationship="PhotographyAutomationDBModel.FK_tblUser_tblEmployeeType" FromRole="TblUser" ToRole="TblEmployeeType" />
-          <NavigationProperty Name="TblBooking" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblUser" FromRole="TblUser" ToRole="TblBooking" />
-        </EntityType>
         <Association Name="FK_tblEmp_Role_tblEmployeeType">
           <End Type="PhotographyAutomationDBModel.TblEmployeeType" Role="TblEmployeeType" Multiplicity="0..1" />
           <End Type="PhotographyAutomationDBModel.TblEmpRole" Role="TblEmpRole" Multiplicity="*" />
@@ -293,18 +317,6 @@
             </Principal>
             <Dependent Role="TblEmpRole">
               <PropertyRef Name="EmpTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblUser_tblEmployeeType">
-          <End Type="PhotographyAutomationDBModel.TblEmployeeType" Role="TblEmployeeType" Multiplicity="0..1" />
-          <End Type="PhotographyAutomationDBModel.TblUser" Role="TblUser" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblEmployeeType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TblUser">
-              <PropertyRef Name="EmployeeTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -320,34 +332,82 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TblAtelierType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="Int32" Nullable="false" />
+          <Property Name="AtelierName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblBooking" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblAtelierType" FromRole="TblAtelierType" ToRole="TblBooking" />
+        </EntityType>
         <EntityType Name="TblBooking">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Time" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Time" Type="Time" Nullable="false" Precision="0" />
           <Property Name="PhotographerGender" Type="Byte" Nullable="false" />
           <Property Name="PhotographyTypeId" Type="Int32" Nullable="false" />
-          <Property Name="AtelierTypeId" Type="Int32" />
-          <Property Name="PersonCount" Type="Int32" />
+          <Property Name="AtelierTypeId" Type="Int32" Nullable="false" />
+          <Property Name="PersonCount" Type="Int32" Nullable="false" />
           <Property Name="PrepaymentIsOk" Type="Byte" Nullable="false" />
           <Property Name="Submitter" Type="Int32" Nullable="false" />
           <Property Name="StatusId" Type="Int32" Nullable="false" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="TblUser" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblUser" FromRole="TblBooking" ToRole="TblUser" />
+          <NavigationProperty Name="TblAtelierType" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblAtelierType" FromRole="TblBooking" ToRole="TblAtelierType" />
+          <NavigationProperty Name="TblBookingStatus" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblBookingStatus" FromRole="TblBooking" ToRole="TblBookingStatus" />
+          <NavigationProperty Name="TblPhotographyType" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblPhotographyType" FromRole="TblBooking" ToRole="TblPhotographyType" />
+          <NavigationProperty Name="TblCustomer" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblUser" FromRole="TblBooking" ToRole="TblCustomer" />
         </EntityType>
-        <Association Name="FK_TblBooking_TblUser">
-          <End Type="PhotographyAutomationDBModel.TblUser" Role="TblUser" Multiplicity="1" />
+        <Association Name="FK_TblBooking_TblAtelierType">
+          <End Type="PhotographyAutomationDBModel.TblAtelierType" Role="TblAtelierType" Multiplicity="1" />
           <End Type="PhotographyAutomationDBModel.TblBooking" Role="TblBooking" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TblUser">
+            <Principal Role="TblAtelierType">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="TblBooking">
-              <PropertyRef Name="UserId" />
+              <PropertyRef Name="AtelierTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblBooking_TblBookingStatus">
+          <End Type="PhotographyAutomationDBModel.TblBookingStatus" Role="TblBookingStatus" Multiplicity="1" />
+          <End Type="PhotographyAutomationDBModel.TblBooking" Role="TblBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblBookingStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblBooking">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblBooking_TblPhotographyType">
+          <End Type="PhotographyAutomationDBModel.TblPhotographyType" Role="TblPhotographyType" Multiplicity="1" />
+          <End Type="PhotographyAutomationDBModel.TblBooking" Role="TblBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblPhotographyType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblBooking">
+              <PropertyRef Name="PhotographyTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblBooking_TblUser">
+          <End Type="PhotographyAutomationDBModel.TblCustomer" Role="TblCustomer" Multiplicity="1" />
+          <End Type="PhotographyAutomationDBModel.TblBooking" Role="TblBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCustomer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblBooking">
+              <PropertyRef Name="CustomerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -357,11 +417,26 @@
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="StoreContainer" CdmEntityContainer="PhotographyAutomationDBEntities" >
-          <EntitySetMapping Name="TblAtelierType">
-            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblAtelierType">
-              <MappingFragment StoreEntitySet="TblAtelierType">
-                <ScalarProperty Name="AtelierName" ColumnName="AtelierName" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
+          <EntitySetMapping Name="TblCustomer">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblCustomer">
+              <MappingFragment StoreEntitySet="TblCustomer">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Submitter" ColumnName="Submitter" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="WeddingDate" ColumnName="WeddingDate" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="IsMarried" ColumnName="IsMarried" />
+                <ScalarProperty Name="CustomerType" ColumnName="CustomerType" />
+                <ScalarProperty Name="NationalId" ColumnName="NationalId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Tell" ColumnName="Tell" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -411,30 +486,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TblUser">
-            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblUser">
-              <MappingFragment StoreEntitySet="TblUser">
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Submitter" ColumnName="Submitter" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="EmployeeTypeId" ColumnName="EmployeeTypeId" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="UserType" ColumnName="UserType" />
-                <ScalarProperty Name="WeddingDate" ColumnName="WeddingDate" />
-                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-                <ScalarProperty Name="IsMarried" ColumnName="IsMarried" />
-                <ScalarProperty Name="CustomerType" ColumnName="CustomerType" />
-                <ScalarProperty Name="NationalId" ColumnName="NationalId" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-                <ScalarProperty Name="Tell" ColumnName="Tell" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <EntitySetMapping Name="TblAtelierType">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblAtelierType">
+              <MappingFragment StoreEntitySet="TblAtelierType">
+                <ScalarProperty Name="AtelierName" ColumnName="AtelierName" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -453,7 +509,7 @@
                 <ScalarProperty Name="PhotographerGender" ColumnName="PhotographerGender" />
                 <ScalarProperty Name="Time" ColumnName="Time" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

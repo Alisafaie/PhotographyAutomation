@@ -18,7 +18,6 @@ namespace PhotographyAutomation.DateLayer.Models
         public TblEmployeeType()
         {
             this.TblEmpRole = new HashSet<TblEmpRole>();
-            this.TblUser = new HashSet<TblUser>();
         }
     
         public byte Id { get; set; }
@@ -27,7 +26,5 @@ namespace PhotographyAutomation.DateLayer.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblEmpRole> TblEmpRole { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblUser> TblUser { get; set; }
     }
 }

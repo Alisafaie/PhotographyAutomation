@@ -45,7 +45,7 @@ namespace PhotographyAutomation.App.Forms.Users
 
             using (var db = new UnitOfWork())
             {
-                List<TblUser> users = db.UserGenericRepository.Get(
+                List<TblCustomer> users = db.UserGenericRepository.Get(
                     x =>
                         x.FirstName.Contains(txtFirstName.Text) || 
                         x.LastName.Contains(txtLastName.Text) ||
@@ -74,8 +74,6 @@ namespace PhotographyAutomation.App.Forms.Users
 
                         dgvUsers.Rows[i].Cells["NationalId"].Value = users[i].NationalId;
                         dgvUsers.Rows[i].Cells["NationalId"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-                        dgvUsers.Rows[i].Cells["UserType"].Value = users[i].UserType == 0 ? "مشتری" : "کارمند";
 
                         var createdDate = users[i].CreatedDate;
                         if (createdDate != null)

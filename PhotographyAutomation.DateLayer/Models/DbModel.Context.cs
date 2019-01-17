@@ -25,13 +25,13 @@ namespace PhotographyAutomation.DateLayer.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<TblAtelierType> TblAtelierType { get; set; }
+        public virtual DbSet<TblCustomer> TblCustomer { get; set; }
         public virtual DbSet<TblBookingStatus> TblBookingStatus { get; set; }
         public virtual DbSet<TblEmployeeType> TblEmployeeType { get; set; }
         public virtual DbSet<TblEmpRole> TblEmpRole { get; set; }
         public virtual DbSet<TblPhotographyType> TblPhotographyType { get; set; }
         public virtual DbSet<TblRoleType> TblRoleType { get; set; }
-        public virtual DbSet<TblUser> TblUser { get; set; }
+        public virtual DbSet<TblAtelierType> TblAtelierType { get; set; }
         public virtual DbSet<TblBooking> TblBooking { get; set; }
     }
 }

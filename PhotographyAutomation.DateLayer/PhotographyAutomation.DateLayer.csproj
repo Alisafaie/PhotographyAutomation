@@ -75,6 +75,9 @@
     <Compile Include="Models\TblBookingStatus.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TblCustomer.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\TblEmployeeType.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
@@ -87,11 +90,10 @@
     <Compile Include="Models\TblRoleType.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TblUser.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IBookingRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="Services\BookingRepository.cs" />
     <Compile Include="Services\GenericRepository.cs" />
     <Compile Include="Services\UserRepository.cs" />
   </ItemGroup>

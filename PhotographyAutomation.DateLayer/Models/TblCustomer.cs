@@ -12,10 +12,10 @@ namespace PhotographyAutomation.DateLayer.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TblUser
+    public partial class TblCustomer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TblUser()
+        public TblCustomer()
         {
             this.TblBooking = new HashSet<TblBooking>();
         }
@@ -33,17 +33,12 @@ namespace PhotographyAutomation.DateLayer.Models
         public Nullable<byte> IsMarried { get; set; }
         public Nullable<System.DateTime> BirthDate { get; set; }
         public Nullable<System.DateTime> WeddingDate { get; set; }
-        public Nullable<byte> UserType { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public Nullable<byte> EmployeeTypeId { get; set; }
         public Nullable<byte> IsActive { get; set; }
         public Nullable<byte> IsDeleted { get; set; }
         public Nullable<int> Submitter { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
     
-        public virtual TblEmployeeType TblEmployeeType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblBooking> TblBooking { get; set; }
     }

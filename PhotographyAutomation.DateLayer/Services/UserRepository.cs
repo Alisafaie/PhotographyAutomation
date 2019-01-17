@@ -2,27 +2,23 @@
 using PhotographyAutomation.DateLayer.Repositories;
 using PhotographyAutomation.ViewModels.User;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PhotographyAutomation.DateLayer.Services
 {
     public class UserRepository : IUserRepository
     {
-        private PhotographyAutomationDBEntities db;
+        private readonly PhotographyAutomationDBEntities _db;
 
         public UserRepository(PhotographyAutomationDBEntities context)
         {
-            db = context;
+            _db = context;
         }
-        public TblUser FindUserByMobile(string mobileNumber)
+        public TblCustomer FindUserByMobile(string mobileNumber)
         {
             try
             {
-                return db.TblUser.SingleOrDefault(x => x.Mobile.Contains(mobileNumber));
+                return _db.TblCustomer.SingleOrDefault(x => x.Mobile.Contains(mobileNumber));
             }
             catch (Exception exception)
             {
@@ -35,7 +31,7 @@ namespace PhotographyAutomation.DateLayer.Services
         {
             try
             {
-                var userInfo = db.TblUser.Where(x => x.Id == userId).Select(x => new UserInfoBookingViewModel
+                var userInfo = _db.TblCustomer.Where(x => x.Id == userId).Select(x => new UserInfoBookingViewModel
                 {
                     UserId = userId,
                     FirstName = x.FirstName,

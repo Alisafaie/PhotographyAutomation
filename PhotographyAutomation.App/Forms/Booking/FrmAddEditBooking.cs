@@ -4,6 +4,7 @@ using PhotographyAutomation.DateLayer.Models;
 using PhotographyAutomation.Utilities;
 using PhotographyAutomation.ViewModels.User;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -11,7 +12,7 @@ namespace PhotographyAutomation.App.Forms.Booking
 {
     public partial class FrmAddEditBooking : Form
     {
-        public int UserId = 0;
+        public int CustomerId = 0;
         public int BookingId = 0;
 
         public FrmAddEditBooking()
@@ -31,7 +32,7 @@ namespace PhotographyAutomation.App.Forms.Booking
 
             using (var db = new UnitOfWork())
             {
-                UserInfoBookingViewModel userInfo = db.UserRepository.GetCustomerInfoBooking(UserId);
+                UserInfoBookingViewModel userInfo = db.UserRepository.GetCustomerInfoBooking(CustomerId);
                 if (userInfo != null)
                 {
                     txtFirstNameLastName.Text = userInfo.FirstName + @" " + userInfo.LastName;
@@ -45,6 +46,16 @@ namespace PhotographyAutomation.App.Forms.Booking
                     DialogResult = DialogResult.Cancel;
                 }
                 PopulateComboBoxes();
+
+                dgvBookingHistory.AutoGenerateColumns = false;
+                List<BookingHistoryAddEditBookingViewModel> bookingHistory =
+                    db.BookingRepository.GetCustomerBookingHistory(CustomerId);
+                if (bookingHistory.Count>0)
+                {
+                    dgvBookingHistory.RowCount = bookingHistory.Count;
+                    dgvBookingHistory.DataSource = bookingHistory;
+                }
+                
             }
         }
 
@@ -83,7 +94,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                 {
                     TblBooking booking = new TblBooking
                     {
-                        UserId = UserId,
+                        CustomerId = CustomerId,
                         AtelierTypeId = (int)cmbAtelierTypes.SelectedValue,
                         CreatedDate = DateTime.Now,
                         Date = datePickerBookingDate.Value,
@@ -116,12 +127,12 @@ namespace PhotographyAutomation.App.Forms.Booking
                     {
                         if (BookingId == 0)
                         {
-                            db.BookingRepository.Insert(booking);
+                            db.BookingGenericRepository.Insert(booking);
                         }
                         else
                         {
                             booking.Id = BookingId;
-                            db.BookingRepository.Update(booking);
+                            db.BookingGenericRepository.Update(booking);
                         }
 
                         int result = db.Save();

@@ -28,7 +28,7 @@ namespace PhotographyAutomation.App.Forms
         {
             FrmAddEditBooking f = new FrmAddEditBooking
             {
-                UserId = 13
+                CustomerId = 13
             };
             f.ShowDialog();
         }
