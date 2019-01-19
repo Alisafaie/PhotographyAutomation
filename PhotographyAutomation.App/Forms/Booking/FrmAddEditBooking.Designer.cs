@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAddEditBooking));
             this.office2010SilverTheme1 = new Telerik.WinControls.Themes.Office2010SilverTheme();
             this.btnOk = new Telerik.WinControls.UI.RadButton();
@@ -80,14 +80,14 @@
             this.datePickerBookingDate = new FreeControls.PersianDateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtMobile = new System.Windows.Forms.MaskedTextBox();
-            this.txtTell = new System.Windows.Forms.MaskedTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtFirstNameLastName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.radThemeManager1 = new Telerik.WinControls.RadThemeManager();
+            this.txtMobile = new Telerik.WinControls.UI.RadMaskedEditBox();
+            this.txtTell = new Telerik.WinControls.UI.RadMaskedEditBox();
+            this.txtFirstNameLastName = new Telerik.WinControls.UI.RadMaskedEditBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnOk)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).BeginInit();
             this.panelEx1.SuspendLayout();
@@ -103,6 +103,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.timePickerBookingTime)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMobile)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTell)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFirstNameLastName)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOk
@@ -189,18 +192,18 @@
             this.dgvBookingHistory.AllowUserToAddRows = false;
             this.dgvBookingHistory.AllowUserToDeleteRows = false;
             this.dgvBookingHistory.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvBookingHistory.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvBookingHistory.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
             this.dgvBookingHistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvBookingHistory.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBookingHistory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBookingHistory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
             this.dgvBookingHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBookingHistory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmId,
@@ -222,29 +225,29 @@
             this.clmStatusName,
             this.clmCreatedDateTime,
             this.clmModifiedDateTime});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBookingHistory.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBookingHistory.DefaultCellStyle = dataGridViewCellStyle23;
             this.dgvBookingHistory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvBookingHistory.EnableHeadersVisualStyles = false;
-            this.dgvBookingHistory.GridColor = System.Drawing.Color.White;
+            this.dgvBookingHistory.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.dgvBookingHistory.Location = new System.Drawing.Point(3, 17);
             this.dgvBookingHistory.MultiSelect = false;
             this.dgvBookingHistory.Name = "dgvBookingHistory";
             this.dgvBookingHistory.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBookingHistory.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBookingHistory.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
             this.dgvBookingHistory.RowHeadersVisible = false;
             this.dgvBookingHistory.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvBookingHistory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -445,6 +448,7 @@
             this.txtBookingStatus.ReadOnly = true;
             this.txtBookingStatus.Size = new System.Drawing.Size(111, 19);
             this.txtBookingStatus.TabIndex = 6;
+            this.txtBookingStatus.ThemeName = "Office2010Silver";
             // 
             // txtPersonCount
             // 
@@ -637,11 +641,11 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtMobile);
+            this.groupBox1.Controls.Add(this.txtFirstNameLastName);
             this.groupBox1.Controls.Add(this.txtTell);
+            this.groupBox1.Controls.Add(this.txtMobile);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txtFirstNameLastName);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
@@ -649,28 +653,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "اطلاعات مشتری";
-            // 
-            // txtMobile
-            // 
-            this.txtMobile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMobile.Location = new System.Drawing.Point(295, 40);
-            this.txtMobile.Mask = "(9999) 000 0000";
-            this.txtMobile.Name = "txtMobile";
-            this.txtMobile.ReadOnly = true;
-            this.txtMobile.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtMobile.Size = new System.Drawing.Size(111, 21);
-            this.txtMobile.TabIndex = 2;
-            // 
-            // txtTell
-            // 
-            this.txtTell.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTell.Location = new System.Drawing.Point(505, 39);
-            this.txtTell.Mask = "(9999) 000 00 00";
-            this.txtTell.Name = "txtTell";
-            this.txtTell.ReadOnly = true;
-            this.txtTell.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtTell.Size = new System.Drawing.Size(111, 21);
-            this.txtTell.TabIndex = 1;
             // 
             // label3
             // 
@@ -692,22 +674,6 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "تلفن ثابت";
             // 
-            // txtFirstNameLastName
-            // 
-            this.txtFirstNameLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.txtFirstNameLastName.Border.Class = "TextBoxBorder";
-            this.txtFirstNameLastName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtFirstNameLastName.DisabledBackColor = System.Drawing.Color.White;
-            this.txtFirstNameLastName.Location = new System.Drawing.Point(705, 39);
-            this.txtFirstNameLastName.Name = "txtFirstNameLastName";
-            this.txtFirstNameLastName.PreventEnterBeep = true;
-            this.txtFirstNameLastName.ReadOnly = true;
-            this.txtFirstNameLastName.Size = new System.Drawing.Size(111, 21);
-            this.txtFirstNameLastName.TabIndex = 0;
-            // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -722,6 +688,47 @@
             // 
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.RightToLeft = true;
+            // 
+            // txtMobile
+            // 
+            this.txtMobile.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.txtMobile.Location = new System.Drawing.Point(295, 41);
+            this.txtMobile.Mask = "(9990) 000 00 00";
+            this.txtMobile.MaskType = Telerik.WinControls.UI.MaskType.Standard;
+            this.txtMobile.Name = "txtMobile";
+            this.txtMobile.ReadOnly = true;
+            this.txtMobile.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtMobile.Size = new System.Drawing.Size(111, 19);
+            this.txtMobile.TabIndex = 5;
+            this.txtMobile.TabStop = false;
+            this.txtMobile.Text = "(____) ___ __ __";
+            this.txtMobile.ThemeName = "Office2010Silver";
+            // 
+            // txtTell
+            // 
+            this.txtTell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.txtTell.Location = new System.Drawing.Point(505, 41);
+            this.txtTell.Mask = "(9999) 000 00 00";
+            this.txtTell.MaskType = Telerik.WinControls.UI.MaskType.Standard;
+            this.txtTell.Name = "txtTell";
+            this.txtTell.ReadOnly = true;
+            this.txtTell.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtTell.Size = new System.Drawing.Size(111, 19);
+            this.txtTell.TabIndex = 5;
+            this.txtTell.TabStop = false;
+            this.txtTell.Text = "(____) ___ __ __";
+            this.txtTell.ThemeName = "Office2010Silver";
+            // 
+            // txtFirstNameLastName
+            // 
+            this.txtFirstNameLastName.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.txtFirstNameLastName.Location = new System.Drawing.Point(705, 41);
+            this.txtFirstNameLastName.Name = "txtFirstNameLastName";
+            this.txtFirstNameLastName.ReadOnly = true;
+            this.txtFirstNameLastName.Size = new System.Drawing.Size(111, 19);
+            this.txtFirstNameLastName.TabIndex = 5;
+            this.txtFirstNameLastName.TabStop = false;
+            this.txtFirstNameLastName.ThemeName = "Office2010Silver";
             // 
             // FrmAddEditBooking
             // 
@@ -761,6 +768,9 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMobile)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTell)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFirstNameLastName)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -780,7 +790,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtFirstNameLastName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panelPhotographerTypes;
@@ -792,8 +801,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.MaskedTextBox txtMobile;
-        private System.Windows.Forms.MaskedTextBox txtTell;
         private Telerik.WinControls.UI.RadDropDownList cmbPhotographyTypes;
         private Telerik.WinControls.UI.RadDropDownList cmbAtelierTypes;
         private Telerik.WinControls.UI.RadSpinEditor txtPersonCount;
@@ -820,5 +827,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmStatusName;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmCreatedDateTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmModifiedDateTime;
+        private Telerik.WinControls.UI.RadMaskedEditBox txtFirstNameLastName;
+        private Telerik.WinControls.UI.RadMaskedEditBox txtTell;
+        private Telerik.WinControls.UI.RadMaskedEditBox txtMobile;
     }
 }

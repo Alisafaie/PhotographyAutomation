@@ -55,6 +55,7 @@ namespace PhotographyAutomation.App.Forms.Booking
 
                 if (bookingHistory.Count > 0)
                 {
+                    dgvBookingHistory.Rows.Clear();
                     dgvBookingHistory.RowCount = bookingHistory.Count;
                     dgvBookingHistory.DataSource = bookingHistory;
 

@@ -30,34 +30,35 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmShowBookings));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.office2010SilverTheme1 = new Telerik.WinControls.Themes.Office2010SilverTheme();
             this.radThemeManager1 = new Telerik.WinControls.RadThemeManager();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.radTextBox1 = new Telerik.WinControls.UI.RadTextBox();
+            this.btnSearch = new Telerik.WinControls.UI.RadButton();
+            this.txtTell = new Telerik.WinControls.UI.RadTextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtFamily = new Telerik.WinControls.UI.RadTextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtName = new Telerik.WinControls.UI.RadTextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.persianDateTimePicker1 = new FreeControls.PersianDateTimePicker();
+            this.dateTimePickerBookingDateSearch = new FreeControls.PersianDateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmbBookinsStatus = new Telerik.WinControls.UI.RadDropDownList();
+            this.chkSpecialBookings = new Telerik.WinControls.UI.RadCheckBox();
             this.datePickerBookingDate = new FreeControls.PersianDateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.radRadioButton3 = new Telerik.WinControls.UI.RadRadioButton();
-            this.radRadioButton2 = new Telerik.WinControls.UI.RadRadioButton();
-            this.radRadioButton1 = new Telerik.WinControls.UI.RadRadioButton();
+            this.rbCurrentmonth = new Telerik.WinControls.UI.RadRadioButton();
+            this.rbCurrentWeek = new Telerik.WinControls.UI.RadRadioButton();
+            this.rbCurrentDay = new Telerik.WinControls.UI.RadRadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radTextBox2 = new Telerik.WinControls.UI.RadTextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.radTextBox3 = new Telerik.WinControls.UI.RadTextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btnSearch = new Telerik.WinControls.UI.RadButton();
-            this.dgvBookingHistory = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.dgvBookings = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.clmId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmUserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmCustomerFullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,16 +81,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panelEx2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radRadioButton3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radRadioButton2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radRadioButton1)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBookingHistory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTell)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFamily)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtName)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbBookinsStatus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkSpecialBookings)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rbCurrentmonth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rbCurrentWeek)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rbCurrentDay)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBookings)).BeginInit();
             this.SuspendLayout();
             // 
             // styleManager1
@@ -102,24 +105,6 @@
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.RightToLeft = true;
             // 
-            // panelEx1
-            // 
-            this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelEx1.Location = new System.Drawing.Point(0, 620);
-            this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(1076, 60);
-            this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx1.Style.GradientAngle = 90;
-            this.panelEx1.TabIndex = 1;
-            // 
             // panelEx2
             // 
             this.panelEx2.CanvasColor = System.Drawing.SystemColors.Control;
@@ -131,7 +116,7 @@
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx2.Location = new System.Drawing.Point(0, 0);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(1076, 620);
+            this.panelEx2.Size = new System.Drawing.Size(1076, 673);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -144,29 +129,81 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btnSearch);
-            this.groupBox3.Controls.Add(this.radTextBox3);
+            this.groupBox3.Controls.Add(this.txtTell);
             this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.radTextBox2);
+            this.groupBox3.Controls.Add(this.txtFamily);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.radTextBox1);
+            this.groupBox3.Controls.Add(this.txtName);
             this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.persianDateTimePicker1);
+            this.groupBox3.Controls.Add(this.dateTimePickerBookingDateSearch);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Location = new System.Drawing.Point(12, 108);
+            this.groupBox3.Location = new System.Drawing.Point(12, 133);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(1052, 90);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "جستجوی نوبت";
             // 
-            // radTextBox1
+            // btnSearch
             // 
-            this.radTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radTextBox1.Location = new System.Drawing.Point(893, 37);
-            this.radTextBox1.Name = "radTextBox1";
-            this.radTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.radTextBox1.TabIndex = 0;
-            this.radTextBox1.ThemeName = "Office2010Silver";
+            this.btnSearch.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.btnSearch.Location = new System.Drawing.Point(6, 29);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(110, 36);
+            this.btnSearch.TabIndex = 4;
+            this.btnSearch.Text = "جستجوی مشتری";
+            this.btnSearch.ThemeName = "Office2010Silver";
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // txtTell
+            // 
+            this.txtTell.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.txtTell.Location = new System.Drawing.Point(460, 37);
+            this.txtTell.Name = "txtTell";
+            this.txtTell.Size = new System.Drawing.Size(100, 19);
+            this.txtTell.TabIndex = 2;
+            this.txtTell.ThemeName = "Office2010Silver";
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(566, 40);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(98, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "تلفن (ثابت یا همراه)";
+            // 
+            // txtFamily
+            // 
+            this.txtFamily.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFamily.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.txtFamily.Location = new System.Drawing.Point(693, 37);
+            this.txtFamily.Name = "txtFamily";
+            this.txtFamily.Size = new System.Drawing.Size(100, 19);
+            this.txtFamily.TabIndex = 1;
+            this.txtFamily.ThemeName = "Office2010Silver";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(799, 40);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "نام خانوادگی";
+            // 
+            // txtName
+            // 
+            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtName.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.txtName.Location = new System.Drawing.Point(893, 37);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(100, 19);
+            this.txtName.TabIndex = 0;
+            this.txtName.ThemeName = "Office2010Silver";
             // 
             // label3
             // 
@@ -178,19 +215,19 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "نام";
             // 
-            // persianDateTimePicker1
+            // dateTimePickerBookingDateSearch
             // 
-            this.persianDateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.persianDateTimePicker1.BackColor = System.Drawing.Color.White;
-            this.persianDateTimePicker1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.persianDateTimePicker1.Location = new System.Drawing.Point(286, 38);
-            this.persianDateTimePicker1.Name = "persianDateTimePicker1";
-            this.persianDateTimePicker1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.persianDateTimePicker1.ShowTime = false;
-            this.persianDateTimePicker1.Size = new System.Drawing.Size(111, 18);
-            this.persianDateTimePicker1.TabIndex = 3;
-            this.persianDateTimePicker1.Text = "persianDateTimePicker1";
-            this.persianDateTimePicker1.Value = ((FreeControls.PersianDate)(resources.GetObject("persianDateTimePicker1.Value")));
+            this.dateTimePickerBookingDateSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimePickerBookingDateSearch.BackColor = System.Drawing.Color.White;
+            this.dateTimePickerBookingDateSearch.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.dateTimePickerBookingDateSearch.Location = new System.Drawing.Point(286, 38);
+            this.dateTimePickerBookingDateSearch.Name = "dateTimePickerBookingDateSearch";
+            this.dateTimePickerBookingDateSearch.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.dateTimePickerBookingDateSearch.ShowTime = false;
+            this.dateTimePickerBookingDateSearch.Size = new System.Drawing.Size(111, 18);
+            this.dateTimePickerBookingDateSearch.TabIndex = 3;
+            this.dateTimePickerBookingDateSearch.Text = "persianDateTimePicker1";
+            this.dateTimePickerBookingDateSearch.Value = ((FreeControls.PersianDate)(resources.GetObject("dateTimePickerBookingDateSearch.Value")));
             // 
             // label2
             // 
@@ -204,17 +241,43 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cmbBookinsStatus);
+            this.groupBox2.Controls.Add(this.chkSpecialBookings);
             this.groupBox2.Controls.Add(this.datePickerBookingDate);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.radRadioButton3);
-            this.groupBox2.Controls.Add(this.radRadioButton2);
-            this.groupBox2.Controls.Add(this.radRadioButton1);
-            this.groupBox2.Location = new System.Drawing.Point(12, 12);
+            this.groupBox2.Controls.Add(this.rbCurrentmonth);
+            this.groupBox2.Controls.Add(this.rbCurrentWeek);
+            this.groupBox2.Controls.Add(this.rbCurrentDay);
+            this.groupBox2.Location = new System.Drawing.Point(12, 37);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1052, 90);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "مشاهده نوبت ها بر اساس";
+            // 
+            // cmbBookinsStatus
+            // 
+            this.cmbBookinsStatus.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
+            this.cmbBookinsStatus.EnableAlternatingItemColor = true;
+            this.cmbBookinsStatus.Enabled = false;
+            this.cmbBookinsStatus.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.cmbBookinsStatus.Location = new System.Drawing.Point(338, 36);
+            this.cmbBookinsStatus.Name = "cmbBookinsStatus";
+            this.cmbBookinsStatus.Size = new System.Drawing.Size(125, 20);
+            this.cmbBookinsStatus.TabIndex = 5;
+            this.cmbBookinsStatus.ThemeName = "Office2010Silver";
+            this.cmbBookinsStatus.SelectedIndexChanged += new Telerik.WinControls.UI.Data.PositionChangedEventHandler(this.cmbBookinsStatus_SelectedIndexChanged);
+            // 
+            // chkSpecialBookings
+            // 
+            this.chkSpecialBookings.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.chkSpecialBookings.Location = new System.Drawing.Point(469, 37);
+            this.chkSpecialBookings.Name = "chkSpecialBookings";
+            this.chkSpecialBookings.Size = new System.Drawing.Size(71, 17);
+            this.chkSpecialBookings.TabIndex = 4;
+            this.chkSpecialBookings.Text = "موارد خاص";
+            this.chkSpecialBookings.ThemeName = "Office2010Silver";
+            this.chkSpecialBookings.ToggleStateChanged += new Telerik.WinControls.UI.StateChangedEventHandler(this.chkSpecialBookings_ToggleStateChanged);
             // 
             // datePickerBookingDate
             // 
@@ -240,118 +303,73 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "تاریخ";
             // 
-            // radRadioButton3
+            // rbCurrentmonth
             // 
-            this.radRadioButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radRadioButton3.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.radRadioButton3.Location = new System.Drawing.Point(772, 38);
-            this.radRadioButton3.Name = "radRadioButton3";
-            this.radRadioButton3.Size = new System.Drawing.Size(63, 17);
-            this.radRadioButton3.TabIndex = 2;
-            this.radRadioButton3.Text = "ماه جاری";
-            this.radRadioButton3.ThemeName = "Office2010Silver";
+            this.rbCurrentmonth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rbCurrentmonth.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.rbCurrentmonth.Location = new System.Drawing.Point(772, 38);
+            this.rbCurrentmonth.Name = "rbCurrentmonth";
+            this.rbCurrentmonth.Size = new System.Drawing.Size(63, 17);
+            this.rbCurrentmonth.TabIndex = 2;
+            this.rbCurrentmonth.Text = "ماه جاری";
+            this.rbCurrentmonth.ThemeName = "Office2010Silver";
+            this.rbCurrentmonth.ToggleStateChanged += new Telerik.WinControls.UI.StateChangedEventHandler(this.rbCurrentmonth_ToggleStateChanged);
             // 
-            // radRadioButton2
+            // rbCurrentWeek
             // 
-            this.radRadioButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radRadioButton2.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.radRadioButton2.Location = new System.Drawing.Point(859, 38);
-            this.radRadioButton2.Name = "radRadioButton2";
-            this.radRadioButton2.Size = new System.Drawing.Size(72, 17);
-            this.radRadioButton2.TabIndex = 1;
-            this.radRadioButton2.Text = "هفته جاری";
-            this.radRadioButton2.ThemeName = "Office2010Silver";
+            this.rbCurrentWeek.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rbCurrentWeek.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.rbCurrentWeek.Location = new System.Drawing.Point(859, 38);
+            this.rbCurrentWeek.Name = "rbCurrentWeek";
+            this.rbCurrentWeek.Size = new System.Drawing.Size(72, 17);
+            this.rbCurrentWeek.TabIndex = 1;
+            this.rbCurrentWeek.Text = "هفته جاری";
+            this.rbCurrentWeek.ThemeName = "Office2010Silver";
+            this.rbCurrentWeek.ToggleStateChanged += new Telerik.WinControls.UI.StateChangedEventHandler(this.rbCurrentWeek_ToggleStateChanged);
             // 
-            // radRadioButton1
+            // rbCurrentDay
             // 
-            this.radRadioButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radRadioButton1.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.radRadioButton1.Location = new System.Drawing.Point(955, 38);
-            this.radRadioButton1.Name = "radRadioButton1";
-            this.radRadioButton1.Size = new System.Drawing.Size(61, 17);
-            this.radRadioButton1.TabIndex = 0;
-            this.radRadioButton1.Text = "روز جاری";
-            this.radRadioButton1.ThemeName = "Office2010Silver";
+            this.rbCurrentDay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rbCurrentDay.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.rbCurrentDay.Location = new System.Drawing.Point(955, 38);
+            this.rbCurrentDay.Name = "rbCurrentDay";
+            this.rbCurrentDay.Size = new System.Drawing.Size(61, 17);
+            this.rbCurrentDay.TabIndex = 0;
+            this.rbCurrentDay.Text = "روز جاری";
+            this.rbCurrentDay.ThemeName = "Office2010Silver";
+            this.rbCurrentDay.ToggleStateChanged += new Telerik.WinControls.UI.StateChangedEventHandler(this.rbCurrentDay_ToggleStateChanged);
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.dgvBookingHistory);
-            this.groupBox1.Location = new System.Drawing.Point(12, 204);
+            this.groupBox1.Controls.Add(this.dgvBookings);
+            this.groupBox1.Location = new System.Drawing.Point(12, 233);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1052, 434);
+            this.groupBox1.Size = new System.Drawing.Size(1052, 428);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "لیست نوبت ها";
             // 
-            // radTextBox2
+            // dgvBookings
             // 
-            this.radTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radTextBox2.Location = new System.Drawing.Point(693, 37);
-            this.radTextBox2.Name = "radTextBox2";
-            this.radTextBox2.Size = new System.Drawing.Size(100, 20);
-            this.radTextBox2.TabIndex = 1;
-            this.radTextBox2.ThemeName = "Office2010Silver";
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(799, 40);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "نام خانوادگی";
-            // 
-            // radTextBox3
-            // 
-            this.radTextBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radTextBox3.Location = new System.Drawing.Point(460, 37);
-            this.radTextBox3.Name = "radTextBox3";
-            this.radTextBox3.Size = new System.Drawing.Size(100, 20);
-            this.radTextBox3.TabIndex = 2;
-            this.radTextBox3.ThemeName = "Office2010Silver";
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(566, 40);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(98, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "تلفن (ثابت یا همراه)";
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.btnSearch.Location = new System.Drawing.Point(6, 29);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(110, 36);
-            this.btnSearch.TabIndex = 4;
-            this.btnSearch.Text = "جستجو";
-            this.btnSearch.ThemeName = "Office2010Silver";
-            // 
-            // dgvBookingHistory
-            // 
-            this.dgvBookingHistory.AllowUserToAddRows = false;
-            this.dgvBookingHistory.AllowUserToDeleteRows = false;
-            this.dgvBookingHistory.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvBookingHistory.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvBookingHistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dgvBookingHistory.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBookingHistory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvBookingHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBookingHistory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvBookings.AllowUserToAddRows = false;
+            this.dgvBookings.AllowUserToDeleteRows = false;
+            this.dgvBookings.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvBookings.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            this.dgvBookings.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvBookings.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBookings.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            this.dgvBookings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBookings.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmId,
             this.clmUserId,
             this.clmCustomerFullName,
@@ -371,35 +389,35 @@
             this.clmStatusName,
             this.clmCreatedDateTime,
             this.clmModifiedDateTime});
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBookingHistory.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dgvBookingHistory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvBookingHistory.EnableHeadersVisualStyles = false;
-            this.dgvBookingHistory.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.dgvBookingHistory.Location = new System.Drawing.Point(3, 17);
-            this.dgvBookingHistory.MultiSelect = false;
-            this.dgvBookingHistory.Name = "dgvBookingHistory";
-            this.dgvBookingHistory.ReadOnly = true;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBookingHistory.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvBookingHistory.RowHeadersVisible = false;
-            this.dgvBookingHistory.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvBookingHistory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBookingHistory.ShowEditingIcon = false;
-            this.dgvBookingHistory.Size = new System.Drawing.Size(1046, 414);
-            this.dgvBookingHistory.TabIndex = 0;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBookings.DefaultCellStyle = dataGridViewCellStyle15;
+            this.dgvBookings.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvBookings.EnableHeadersVisualStyles = false;
+            this.dgvBookings.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.dgvBookings.Location = new System.Drawing.Point(3, 17);
+            this.dgvBookings.MultiSelect = false;
+            this.dgvBookings.Name = "dgvBookings";
+            this.dgvBookings.ReadOnly = true;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBookings.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            this.dgvBookings.RowHeadersVisible = false;
+            this.dgvBookings.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvBookings.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvBookings.ShowEditingIcon = false;
+            this.dgvBookings.Size = new System.Drawing.Size(1046, 408);
+            this.dgvBookings.TabIndex = 0;
             // 
             // clmId
             // 
@@ -566,9 +584,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1076, 680);
+            this.ClientSize = new System.Drawing.Size(1076, 673);
             this.Controls.Add(this.panelEx2);
-            this.Controls.Add(this.panelEx1);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -579,21 +596,24 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "مشاهده لیست نوبت ها";
+            this.Load += new System.EventHandler(this.FrmShowBookings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.panelEx2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTell)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFamily)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtName)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radRadioButton3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radRadioButton2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radRadioButton1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbBookinsStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkSpecialBookings)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rbCurrentmonth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rbCurrentWeek)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rbCurrentDay)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBookingHistory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBookings)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -606,24 +626,23 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private DevComponents.DotNetBar.PanelEx panelEx2;
         private System.Windows.Forms.GroupBox groupBox3;
-        private Telerik.WinControls.UI.RadTextBox radTextBox1;
+        private Telerik.WinControls.UI.RadTextBox txtName;
         private System.Windows.Forms.Label label3;
-        private FreeControls.PersianDateTimePicker persianDateTimePicker1;
+        private FreeControls.PersianDateTimePicker dateTimePickerBookingDateSearch;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox2;
         private FreeControls.PersianDateTimePicker datePickerBookingDate;
         private System.Windows.Forms.Label label1;
-        private Telerik.WinControls.UI.RadRadioButton radRadioButton3;
-        private Telerik.WinControls.UI.RadRadioButton radRadioButton2;
-        private Telerik.WinControls.UI.RadRadioButton radRadioButton1;
+        private Telerik.WinControls.UI.RadRadioButton rbCurrentmonth;
+        private Telerik.WinControls.UI.RadRadioButton rbCurrentWeek;
+        private Telerik.WinControls.UI.RadRadioButton rbCurrentDay;
         private System.Windows.Forms.GroupBox groupBox1;
-        private DevComponents.DotNetBar.PanelEx panelEx1;
-        private Telerik.WinControls.UI.RadTextBox radTextBox3;
+        private Telerik.WinControls.UI.RadTextBox txtTell;
         private System.Windows.Forms.Label label5;
-        private Telerik.WinControls.UI.RadTextBox radTextBox2;
+        private Telerik.WinControls.UI.RadTextBox txtFamily;
         private System.Windows.Forms.Label label4;
         private Telerik.WinControls.UI.RadButton btnSearch;
-        private DevComponents.DotNetBar.Controls.DataGridViewX dgvBookingHistory;
+        private DevComponents.DotNetBar.Controls.DataGridViewX dgvBookings;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmId;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmUserId;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmCustomerFullName;
@@ -643,5 +662,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmStatusName;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmCreatedDateTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmModifiedDateTime;
+        private Telerik.WinControls.UI.RadDropDownList cmbBookinsStatus;
+        private Telerik.WinControls.UI.RadCheckBox chkSpecialBookings;
     }
 }

@@ -85,17 +85,17 @@
     <Compile Include="Forms\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Users\FrmSearchUser.cs">
+    <Compile Include="Forms\Customers\FrmSearchCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Users\FrmSearchUser.Designer.cs">
-      <DependentUpon>FrmSearchUser.cs</DependentUpon>
+    <Compile Include="Forms\Customers\FrmSearchCustomer.Designer.cs">
+      <DependentUpon>FrmSearchCustomer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Users\FrmShowUserInfo.cs">
+    <Compile Include="Forms\Customers\FrmShowCustomerInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Users\FrmShowUserInfo.Designer.cs">
-      <DependentUpon>FrmShowUserInfo.cs</DependentUpon>
+    <Compile Include="Forms\Customers\FrmShowCustomerInfo.Designer.cs">
+      <DependentUpon>FrmShowCustomerInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -111,11 +111,11 @@
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Users\FrmSearchUser.resx">
-      <DependentUpon>FrmSearchUser.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Customers\FrmSearchCustomer.resx">
+      <DependentUpon>FrmSearchCustomer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Users\FrmShowUserInfo.resx">
-      <DependentUpon>FrmShowUserInfo.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Customers\FrmShowCustomerInfo.resx">
+      <DependentUpon>FrmShowCustomerInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
