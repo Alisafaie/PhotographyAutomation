@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAddEditBooking));
             this.office2010SilverTheme1 = new Telerik.WinControls.Themes.Office2010SilverTheme();
             this.btnOk = new Telerik.WinControls.UI.RadButton();
@@ -40,6 +42,25 @@
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgvBookingHistory = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.clmId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmUserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmCustomerFullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPhotographerGender = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPhotographerGenderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPhotographyTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPhotographyTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmAtelierTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmAtelierTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPersonCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPaymentIsOK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmSubmitter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmSubmitterName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmStatusId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmStatusName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmCreatedDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmModifiedDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtBookingStatus = new Telerik.WinControls.UI.RadTextBox();
             this.txtPersonCount = new Telerik.WinControls.UI.RadSpinEditor();
@@ -67,25 +88,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.radThemeManager1 = new Telerik.WinControls.RadThemeManager();
-            this.clmId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmUserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmCustomerFullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPhotographerGender = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPhotographerGenderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPhotographyTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPhotographyTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmAtelierTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmAtelierTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPersonCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPaymentIsOK = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmSubmitter = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmSubmitterName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmStatusId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmStatusName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmCreatedDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmModifiedDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.btnOk)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).BeginInit();
             this.panelEx1.SuspendLayout();
@@ -190,8 +192,15 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvBookingHistory.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvBookingHistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dgvBookingHistory.BackgroundColor = System.Drawing.Color.White;
             this.dgvBookingHistory.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBookingHistory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvBookingHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBookingHistory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmId,
@@ -213,26 +222,196 @@
             this.clmStatusName,
             this.clmCreatedDateTime,
             this.clmModifiedDateTime});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBookingHistory.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBookingHistory.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvBookingHistory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvBookingHistory.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.dgvBookingHistory.EnableHeadersVisualStyles = false;
+            this.dgvBookingHistory.GridColor = System.Drawing.Color.White;
             this.dgvBookingHistory.Location = new System.Drawing.Point(3, 17);
             this.dgvBookingHistory.MultiSelect = false;
             this.dgvBookingHistory.Name = "dgvBookingHistory";
             this.dgvBookingHistory.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBookingHistory.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvBookingHistory.RowHeadersVisible = false;
             this.dgvBookingHistory.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvBookingHistory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBookingHistory.ShowEditingIcon = false;
             this.dgvBookingHistory.Size = new System.Drawing.Size(924, 255);
             this.dgvBookingHistory.TabIndex = 0;
+            // 
+            // clmId
+            // 
+            this.clmId.DataPropertyName = "Id";
+            this.clmId.HeaderText = "clmId";
+            this.clmId.Name = "clmId";
+            this.clmId.ReadOnly = true;
+            this.clmId.Visible = false;
+            this.clmId.Width = 38;
+            // 
+            // clmUserId
+            // 
+            this.clmUserId.DataPropertyName = "UserId";
+            this.clmUserId.HeaderText = "clmUserId";
+            this.clmUserId.Name = "clmUserId";
+            this.clmUserId.ReadOnly = true;
+            this.clmUserId.Visible = false;
+            this.clmUserId.Width = 60;
+            // 
+            // clmCustomerFullName
+            // 
+            this.clmCustomerFullName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmCustomerFullName.DataPropertyName = "CustomerFullName";
+            this.clmCustomerFullName.HeaderText = "نام مشتری";
+            this.clmCustomerFullName.Name = "clmCustomerFullName";
+            this.clmCustomerFullName.ReadOnly = true;
+            // 
+            // clmDate
+            // 
+            this.clmDate.DataPropertyName = "Date";
+            this.clmDate.HeaderText = "تاریخ";
+            this.clmDate.Name = "clmDate";
+            this.clmDate.ReadOnly = true;
+            this.clmDate.Width = 53;
+            // 
+            // clmTime
+            // 
+            this.clmTime.DataPropertyName = "Time";
+            this.clmTime.HeaderText = "ساعت";
+            this.clmTime.Name = "clmTime";
+            this.clmTime.ReadOnly = true;
+            this.clmTime.Width = 63;
+            // 
+            // clmPhotographerGender
+            // 
+            this.clmPhotographerGender.DataPropertyName = "PhotographerGender";
+            this.clmPhotographerGender.HeaderText = "clmPhotographerGender";
+            this.clmPhotographerGender.Name = "clmPhotographerGender";
+            this.clmPhotographerGender.ReadOnly = true;
+            this.clmPhotographerGender.Visible = false;
+            this.clmPhotographerGender.Width = 148;
+            // 
+            // clmPhotographerGenderName
+            // 
+            this.clmPhotographerGenderName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmPhotographerGenderName.DataPropertyName = "PhotographerGenderName";
+            this.clmPhotographerGenderName.HeaderText = "نوع عکاس";
+            this.clmPhotographerGenderName.Name = "clmPhotographerGenderName";
+            this.clmPhotographerGenderName.ReadOnly = true;
+            // 
+            // clmPhotographyTypeId
+            // 
+            this.clmPhotographyTypeId.DataPropertyName = "PhotographyTypeId";
+            this.clmPhotographyTypeId.HeaderText = "clmPhotographyTypeId";
+            this.clmPhotographyTypeId.Name = "clmPhotographyTypeId";
+            this.clmPhotographyTypeId.ReadOnly = true;
+            this.clmPhotographyTypeId.Visible = false;
+            this.clmPhotographyTypeId.Width = 143;
+            // 
+            // clmPhotographyTypeName
+            // 
+            this.clmPhotographyTypeName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmPhotographyTypeName.DataPropertyName = "PhotographyTypeName";
+            this.clmPhotographyTypeName.HeaderText = "نوع عکس";
+            this.clmPhotographyTypeName.Name = "clmPhotographyTypeName";
+            this.clmPhotographyTypeName.ReadOnly = true;
+            // 
+            // clmAtelierTypeId
+            // 
+            this.clmAtelierTypeId.DataPropertyName = "AtelierTypeId";
+            this.clmAtelierTypeId.HeaderText = "clmAtelierTypeId";
+            this.clmAtelierTypeId.Name = "clmAtelierTypeId";
+            this.clmAtelierTypeId.ReadOnly = true;
+            this.clmAtelierTypeId.Visible = false;
+            this.clmAtelierTypeId.Width = 112;
+            // 
+            // clmAtelierTypeName
+            // 
+            this.clmAtelierTypeName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmAtelierTypeName.DataPropertyName = "AtelierTypeName";
+            this.clmAtelierTypeName.HeaderText = "نوع آتلیه";
+            this.clmAtelierTypeName.Name = "clmAtelierTypeName";
+            this.clmAtelierTypeName.ReadOnly = true;
+            // 
+            // clmPersonCount
+            // 
+            this.clmPersonCount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmPersonCount.DataPropertyName = "PersonCount";
+            this.clmPersonCount.HeaderText = "تعداد نفرات";
+            this.clmPersonCount.Name = "clmPersonCount";
+            this.clmPersonCount.ReadOnly = true;
+            // 
+            // clmPaymentIsOK
+            // 
+            this.clmPaymentIsOK.DataPropertyName = "PaymentIsOK";
+            this.clmPaymentIsOK.HeaderText = "وضعیت پرداخت";
+            this.clmPaymentIsOK.Name = "clmPaymentIsOK";
+            this.clmPaymentIsOK.ReadOnly = true;
+            this.clmPaymentIsOK.Width = 102;
+            // 
+            // clmSubmitter
+            // 
+            this.clmSubmitter.DataPropertyName = "Submitter";
+            this.clmSubmitter.HeaderText = "clmSubmitter";
+            this.clmSubmitter.Name = "clmSubmitter";
+            this.clmSubmitter.ReadOnly = true;
+            this.clmSubmitter.Visible = false;
+            this.clmSubmitter.Width = 93;
+            // 
+            // clmSubmitterName
+            // 
+            this.clmSubmitterName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmSubmitterName.DataPropertyName = "SubmitterName";
+            this.clmSubmitterName.HeaderText = "ثبت کننده";
+            this.clmSubmitterName.Name = "clmSubmitterName";
+            this.clmSubmitterName.ReadOnly = true;
+            // 
+            // clmStatusId
+            // 
+            this.clmStatusId.DataPropertyName = "StatusId";
+            this.clmStatusId.HeaderText = "clmStatusId";
+            this.clmStatusId.Name = "clmStatusId";
+            this.clmStatusId.ReadOnly = true;
+            this.clmStatusId.Visible = false;
+            this.clmStatusId.Width = 88;
+            // 
+            // clmStatusName
+            // 
+            this.clmStatusName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmStatusName.DataPropertyName = "StatusName";
+            this.clmStatusName.HeaderText = "وضعیت نوبت";
+            this.clmStatusName.Name = "clmStatusName";
+            this.clmStatusName.ReadOnly = true;
+            // 
+            // clmCreatedDateTime
+            // 
+            this.clmCreatedDateTime.DataPropertyName = "CreatedDateTime";
+            this.clmCreatedDateTime.HeaderText = "تاریخ ثبت";
+            this.clmCreatedDateTime.Name = "clmCreatedDateTime";
+            this.clmCreatedDateTime.ReadOnly = true;
+            this.clmCreatedDateTime.Visible = false;
+            this.clmCreatedDateTime.Width = 73;
+            // 
+            // clmModifiedDateTime
+            // 
+            this.clmModifiedDateTime.DataPropertyName = "ModifiedDateTime";
+            this.clmModifiedDateTime.HeaderText = "تاریخ ویرایش";
+            this.clmModifiedDateTime.Name = "clmModifiedDateTime";
+            this.clmModifiedDateTime.ReadOnly = true;
+            this.clmModifiedDateTime.Visible = false;
+            this.clmModifiedDateTime.Width = 89;
             // 
             // groupBox2
             // 
@@ -543,167 +722,6 @@
             // 
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.RightToLeft = true;
-            // 
-            // clmId
-            // 
-            this.clmId.DataPropertyName = "Id";
-            this.clmId.HeaderText = "clmId";
-            this.clmId.Name = "clmId";
-            this.clmId.ReadOnly = true;
-            this.clmId.Visible = false;
-            this.clmId.Width = 38;
-            // 
-            // clmUserId
-            // 
-            this.clmUserId.DataPropertyName = "UserId";
-            this.clmUserId.HeaderText = "clmUserId";
-            this.clmUserId.Name = "clmUserId";
-            this.clmUserId.ReadOnly = true;
-            this.clmUserId.Visible = false;
-            this.clmUserId.Width = 60;
-            // 
-            // clmCustomerFullName
-            // 
-            this.clmCustomerFullName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmCustomerFullName.DataPropertyName = "CustomerFullName";
-            this.clmCustomerFullName.HeaderText = "نام مشتری";
-            this.clmCustomerFullName.Name = "clmCustomerFullName";
-            this.clmCustomerFullName.ReadOnly = true;
-            // 
-            // clmDate
-            // 
-            this.clmDate.DataPropertyName = "Date";
-            this.clmDate.HeaderText = "تاریخ";
-            this.clmDate.Name = "clmDate";
-            this.clmDate.ReadOnly = true;
-            this.clmDate.Width = 53;
-            // 
-            // clmTime
-            // 
-            this.clmTime.DataPropertyName = "Time";
-            this.clmTime.HeaderText = "ساعت";
-            this.clmTime.Name = "clmTime";
-            this.clmTime.ReadOnly = true;
-            this.clmTime.Width = 63;
-            // 
-            // clmPhotographerGender
-            // 
-            this.clmPhotographerGender.DataPropertyName = "PhotographerGender";
-            this.clmPhotographerGender.HeaderText = "clmPhotographerGender";
-            this.clmPhotographerGender.Name = "clmPhotographerGender";
-            this.clmPhotographerGender.ReadOnly = true;
-            this.clmPhotographerGender.Visible = false;
-            this.clmPhotographerGender.Width = 148;
-            // 
-            // clmPhotographerGenderName
-            // 
-            this.clmPhotographerGenderName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmPhotographerGenderName.DataPropertyName = "PhotographerGenderName";
-            this.clmPhotographerGenderName.HeaderText = "نوع عکاس";
-            this.clmPhotographerGenderName.Name = "clmPhotographerGenderName";
-            this.clmPhotographerGenderName.ReadOnly = true;
-            // 
-            // clmPhotographyTypeId
-            // 
-            this.clmPhotographyTypeId.DataPropertyName = "PhotographyTypeId";
-            this.clmPhotographyTypeId.HeaderText = "clmPhotographyTypeId";
-            this.clmPhotographyTypeId.Name = "clmPhotographyTypeId";
-            this.clmPhotographyTypeId.ReadOnly = true;
-            this.clmPhotographyTypeId.Visible = false;
-            this.clmPhotographyTypeId.Width = 143;
-            // 
-            // clmPhotographyTypeName
-            // 
-            this.clmPhotographyTypeName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmPhotographyTypeName.DataPropertyName = "PhotographyTypeName";
-            this.clmPhotographyTypeName.HeaderText = "نوع عکس";
-            this.clmPhotographyTypeName.Name = "clmPhotographyTypeName";
-            this.clmPhotographyTypeName.ReadOnly = true;
-            // 
-            // clmAtelierTypeId
-            // 
-            this.clmAtelierTypeId.DataPropertyName = "AtelierTypeId";
-            this.clmAtelierTypeId.HeaderText = "clmAtelierTypeId";
-            this.clmAtelierTypeId.Name = "clmAtelierTypeId";
-            this.clmAtelierTypeId.ReadOnly = true;
-            this.clmAtelierTypeId.Visible = false;
-            this.clmAtelierTypeId.Width = 112;
-            // 
-            // clmAtelierTypeName
-            // 
-            this.clmAtelierTypeName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmAtelierTypeName.DataPropertyName = "AtelierTypeName";
-            this.clmAtelierTypeName.HeaderText = "نوع آتلیه";
-            this.clmAtelierTypeName.Name = "clmAtelierTypeName";
-            this.clmAtelierTypeName.ReadOnly = true;
-            // 
-            // clmPersonCount
-            // 
-            this.clmPersonCount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmPersonCount.DataPropertyName = "PersonCount";
-            this.clmPersonCount.HeaderText = "تعداد نفرات";
-            this.clmPersonCount.Name = "clmPersonCount";
-            this.clmPersonCount.ReadOnly = true;
-            // 
-            // clmPaymentIsOK
-            // 
-            this.clmPaymentIsOK.DataPropertyName = "PaymentIsOK";
-            this.clmPaymentIsOK.HeaderText = "وضعیت پرداخت";
-            this.clmPaymentIsOK.Name = "clmPaymentIsOK";
-            this.clmPaymentIsOK.ReadOnly = true;
-            this.clmPaymentIsOK.Width = 102;
-            // 
-            // clmSubmitter
-            // 
-            this.clmSubmitter.DataPropertyName = "Submitter";
-            this.clmSubmitter.HeaderText = "clmSubmitter";
-            this.clmSubmitter.Name = "clmSubmitter";
-            this.clmSubmitter.ReadOnly = true;
-            this.clmSubmitter.Visible = false;
-            this.clmSubmitter.Width = 93;
-            // 
-            // clmSubmitterName
-            // 
-            this.clmSubmitterName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmSubmitterName.DataPropertyName = "SubmitterName";
-            this.clmSubmitterName.HeaderText = "ثبت کننده";
-            this.clmSubmitterName.Name = "clmSubmitterName";
-            this.clmSubmitterName.ReadOnly = true;
-            // 
-            // clmStatusId
-            // 
-            this.clmStatusId.DataPropertyName = "StatusId";
-            this.clmStatusId.HeaderText = "clmStatusId";
-            this.clmStatusId.Name = "clmStatusId";
-            this.clmStatusId.ReadOnly = true;
-            this.clmStatusId.Visible = false;
-            this.clmStatusId.Width = 88;
-            // 
-            // clmStatusName
-            // 
-            this.clmStatusName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmStatusName.DataPropertyName = "StatusName";
-            this.clmStatusName.HeaderText = "وضعیت نوبت";
-            this.clmStatusName.Name = "clmStatusName";
-            this.clmStatusName.ReadOnly = true;
-            // 
-            // clmCreatedDateTime
-            // 
-            this.clmCreatedDateTime.DataPropertyName = "CreatedDateTime";
-            this.clmCreatedDateTime.HeaderText = "تاریخ ثبت";
-            this.clmCreatedDateTime.Name = "clmCreatedDateTime";
-            this.clmCreatedDateTime.ReadOnly = true;
-            this.clmCreatedDateTime.Visible = false;
-            this.clmCreatedDateTime.Width = 73;
-            // 
-            // clmModifiedDateTime
-            // 
-            this.clmModifiedDateTime.DataPropertyName = "ModifiedDateTime";
-            this.clmModifiedDateTime.HeaderText = "تاریخ ویرایش";
-            this.clmModifiedDateTime.Name = "clmModifiedDateTime";
-            this.clmModifiedDateTime.ReadOnly = true;
-            this.clmModifiedDateTime.Visible = false;
-            this.clmModifiedDateTime.Width = 89;
             // 
             // FrmAddEditBooking
             // 

@@ -54,5 +54,17 @@ namespace PhotographyAutomation.App.Forms
         {
             persianMonthCalendar.Value=PersianDate.Now;
         }
+
+        private void btnEditBooking_Click(object sender, EventArgs e)
+        {
+            FrmSearchUser searchUser=new FrmSearchUser();
+            searchUser.ShowDialog();
+        }
+
+        private void btnShowBookings_Click(object sender, EventArgs e)
+        {
+            FrmShowBookings frmShowBookings=new FrmShowBookings();
+            frmShowBookings.ShowDialog();
+        }
     }
 }

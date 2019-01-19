@@ -3,6 +3,7 @@ using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.DateLayer.Models;
 using PhotographyAutomation.Utilities;
 using PhotographyAutomation.Utilities.Convertor;
+using PhotographyAutomation.ViewModels.User;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -31,7 +32,9 @@ namespace PhotographyAutomation.App.Forms.Booking
 
             using (var db = new UnitOfWork())
             {
-                var userInfo = db.UserRepository.GetCustomerInfoBooking(CustomerId);
+                UserInfoBookingViewModel userInfo = new UserInfoBookingViewModel();
+                if (CustomerId > 0)
+                    userInfo = db.UserRepository.GetCustomerInfoBooking(CustomerId);
                 if (userInfo != null)
                 {
                     txtFirstNameLastName.Text = userInfo.FirstName + @" " + userInfo.LastName;
@@ -188,9 +191,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                     using (var db = new UnitOfWork())
                     {
                         if (BookingId == 0)
-                        {
                             db.BookingGenericRepository.Insert(booking);
-                        }
                         else
                         {
                             booking.Id = BookingId;
@@ -276,8 +277,8 @@ namespace PhotographyAutomation.App.Forms.Booking
                 return false;
             }
 
-            
-            
+
+
             return true;
         }
 

@@ -73,6 +73,12 @@
     <Compile Include="Forms\Booking\FrmAddEditCustomerInfo.Designer.cs">
       <DependentUpon>FrmAddEditCustomerInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Booking\FrmShowBookings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Booking\FrmShowBookings.Designer.cs">
+      <DependentUpon>FrmShowBookings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Booking\FrmAddEditCustomerInfo.resx">
       <DependentUpon>FrmAddEditCustomerInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Booking\FrmShowBookings.resx">
+      <DependentUpon>FrmShowBookings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>

@@ -29,16 +29,6 @@ namespace PhotographyAutomation.App.Forms.Users
             InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
         }
 
-        private void txtSpecialSearch_Enter(object sender, EventArgs e)
-        {
-            var language = new System.Globalization.CultureInfo("en-US");
-
-            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
-        }
-
-
-
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             dgvUsers.Rows.Clear();
@@ -115,11 +105,6 @@ namespace PhotographyAutomation.App.Forms.Users
                     }
                 }
             }
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }
