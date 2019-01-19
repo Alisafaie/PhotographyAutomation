@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAddEditBooking));
             this.office2010SilverTheme1 = new Telerik.WinControls.Themes.Office2010SilverTheme();
             this.btnOk = new Telerik.WinControls.UI.RadButton();
@@ -39,25 +40,6 @@
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgvBookingHistory = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.clmId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmUserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmCustomerFullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPhotographerGender = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPhotographerGenderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPhotographyTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPhotographyTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmAtelierTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmAtelierTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPersonCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPaymentIsOK = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmSubmitter = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmSubmitterName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmStatusId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmStatusName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmCreatedDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmModifiedDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtBookingStatus = new Telerik.WinControls.UI.RadTextBox();
             this.txtPersonCount = new Telerik.WinControls.UI.RadSpinEditor();
@@ -85,6 +67,25 @@
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.radThemeManager1 = new Telerik.WinControls.RadThemeManager();
+            this.clmId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmUserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmCustomerFullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPhotographerGender = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPhotographerGenderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPhotographyTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPhotographyTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmAtelierTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmAtelierTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPersonCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPaymentIsOK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmSubmitter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmSubmitterName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmStatusId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmStatusName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmCreatedDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmModifiedDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.btnOk)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).BeginInit();
             this.panelEx1.SuspendLayout();
@@ -135,7 +136,7 @@
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelEx1.Location = new System.Drawing.Point(0, 530);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(919, 60);
+            this.panelEx1.Size = new System.Drawing.Size(954, 60);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -161,7 +162,7 @@
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx2.Location = new System.Drawing.Point(0, 0);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(919, 530);
+            this.panelEx2.Size = new System.Drawing.Size(954, 530);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -176,7 +177,7 @@
             this.groupBox3.Controls.Add(this.dgvBookingHistory);
             this.groupBox3.Location = new System.Drawing.Point(12, 241);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(895, 275);
+            this.groupBox3.Size = new System.Drawing.Size(930, 275);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "تاریخچه نوبت های قبلی";
@@ -186,7 +187,9 @@
             this.dgvBookingHistory.AllowUserToAddRows = false;
             this.dgvBookingHistory.AllowUserToDeleteRows = false;
             this.dgvBookingHistory.AllowUserToOrderColumns = true;
-            this.dgvBookingHistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvBookingHistory.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvBookingHistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvBookingHistory.BackgroundColor = System.Drawing.Color.White;
             this.dgvBookingHistory.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvBookingHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -210,14 +213,14 @@
             this.clmStatusName,
             this.clmCreatedDateTime,
             this.clmModifiedDateTime});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBookingHistory.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBookingHistory.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvBookingHistory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvBookingHistory.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.dgvBookingHistory.Location = new System.Drawing.Point(3, 17);
@@ -228,152 +231,8 @@
             this.dgvBookingHistory.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvBookingHistory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBookingHistory.ShowEditingIcon = false;
-            this.dgvBookingHistory.Size = new System.Drawing.Size(889, 255);
+            this.dgvBookingHistory.Size = new System.Drawing.Size(924, 255);
             this.dgvBookingHistory.TabIndex = 0;
-            // 
-            // clmId
-            // 
-            this.clmId.DataPropertyName = "Id";
-            this.clmId.HeaderText = "clmId";
-            this.clmId.Name = "clmId";
-            this.clmId.ReadOnly = true;
-            this.clmId.Visible = false;
-            // 
-            // clmUserId
-            // 
-            this.clmUserId.DataPropertyName = "UserId";
-            this.clmUserId.HeaderText = "clmUserId";
-            this.clmUserId.Name = "clmUserId";
-            this.clmUserId.ReadOnly = true;
-            this.clmUserId.Visible = false;
-            // 
-            // clmCustomerFullName
-            // 
-            this.clmCustomerFullName.DataPropertyName = "CustomerFullName";
-            this.clmCustomerFullName.HeaderText = "نام مشتری";
-            this.clmCustomerFullName.Name = "clmCustomerFullName";
-            this.clmCustomerFullName.ReadOnly = true;
-            // 
-            // clmDate
-            // 
-            this.clmDate.DataPropertyName = "Date";
-            this.clmDate.HeaderText = "تاریخ";
-            this.clmDate.Name = "clmDate";
-            this.clmDate.ReadOnly = true;
-            // 
-            // clmTime
-            // 
-            this.clmTime.DataPropertyName = "Time";
-            this.clmTime.HeaderText = "ساعت";
-            this.clmTime.Name = "clmTime";
-            this.clmTime.ReadOnly = true;
-            // 
-            // clmPhotographerGender
-            // 
-            this.clmPhotographerGender.DataPropertyName = "PhotographerGender";
-            this.clmPhotographerGender.HeaderText = "clmPhotographerGender";
-            this.clmPhotographerGender.Name = "clmPhotographerGender";
-            this.clmPhotographerGender.ReadOnly = true;
-            this.clmPhotographerGender.Visible = false;
-            // 
-            // clmPhotographerGenderName
-            // 
-            this.clmPhotographerGenderName.DataPropertyName = "PhotographerGenderName";
-            this.clmPhotographerGenderName.HeaderText = "نوع عکاس";
-            this.clmPhotographerGenderName.Name = "clmPhotographerGenderName";
-            this.clmPhotographerGenderName.ReadOnly = true;
-            // 
-            // clmPhotographyTypeId
-            // 
-            this.clmPhotographyTypeId.DataPropertyName = "PhotographyTypeId";
-            this.clmPhotographyTypeId.HeaderText = "clmPhotographyTypeId";
-            this.clmPhotographyTypeId.Name = "clmPhotographyTypeId";
-            this.clmPhotographyTypeId.ReadOnly = true;
-            this.clmPhotographyTypeId.Visible = false;
-            // 
-            // clmPhotographyTypeName
-            // 
-            this.clmPhotographyTypeName.DataPropertyName = "PhotographyTypeName";
-            this.clmPhotographyTypeName.HeaderText = "نوع عکس";
-            this.clmPhotographyTypeName.Name = "clmPhotographyTypeName";
-            this.clmPhotographyTypeName.ReadOnly = true;
-            // 
-            // clmAtelierTypeId
-            // 
-            this.clmAtelierTypeId.DataPropertyName = "AtelierTypeId";
-            this.clmAtelierTypeId.HeaderText = "clmAtelierTypeId";
-            this.clmAtelierTypeId.Name = "clmAtelierTypeId";
-            this.clmAtelierTypeId.ReadOnly = true;
-            this.clmAtelierTypeId.Visible = false;
-            // 
-            // clmAtelierTypeName
-            // 
-            this.clmAtelierTypeName.DataPropertyName = "AtelierTypeName";
-            this.clmAtelierTypeName.HeaderText = "نوع آتلیه";
-            this.clmAtelierTypeName.Name = "clmAtelierTypeName";
-            this.clmAtelierTypeName.ReadOnly = true;
-            // 
-            // clmPersonCount
-            // 
-            this.clmPersonCount.DataPropertyName = "PersonCount";
-            this.clmPersonCount.HeaderText = "تعداد";
-            this.clmPersonCount.Name = "clmPersonCount";
-            this.clmPersonCount.ReadOnly = true;
-            this.clmPersonCount.Visible = false;
-            // 
-            // clmPaymentIsOK
-            // 
-            this.clmPaymentIsOK.DataPropertyName = "PaymentIsOK";
-            this.clmPaymentIsOK.HeaderText = "وضعیت پرداخت";
-            this.clmPaymentIsOK.Name = "clmPaymentIsOK";
-            this.clmPaymentIsOK.ReadOnly = true;
-            this.clmPaymentIsOK.Visible = false;
-            // 
-            // clmSubmitter
-            // 
-            this.clmSubmitter.DataPropertyName = "Submitter";
-            this.clmSubmitter.HeaderText = "clmSubmitter";
-            this.clmSubmitter.Name = "clmSubmitter";
-            this.clmSubmitter.ReadOnly = true;
-            this.clmSubmitter.Visible = false;
-            // 
-            // clmSubmitterName
-            // 
-            this.clmSubmitterName.DataPropertyName = "SubmitterName";
-            this.clmSubmitterName.HeaderText = "کاربر ثبت کننده";
-            this.clmSubmitterName.Name = "clmSubmitterName";
-            this.clmSubmitterName.ReadOnly = true;
-            // 
-            // clmStatusId
-            // 
-            this.clmStatusId.DataPropertyName = "StatusId";
-            this.clmStatusId.HeaderText = "clmStatusId";
-            this.clmStatusId.Name = "clmStatusId";
-            this.clmStatusId.ReadOnly = true;
-            this.clmStatusId.Visible = false;
-            // 
-            // clmStatusName
-            // 
-            this.clmStatusName.DataPropertyName = "StatusName";
-            this.clmStatusName.HeaderText = "وضعیت نوبت";
-            this.clmStatusName.Name = "clmStatusName";
-            this.clmStatusName.ReadOnly = true;
-            // 
-            // clmCreatedDateTime
-            // 
-            this.clmCreatedDateTime.DataPropertyName = "CreatedDateTime";
-            this.clmCreatedDateTime.HeaderText = "تاریخ ثبت";
-            this.clmCreatedDateTime.Name = "clmCreatedDateTime";
-            this.clmCreatedDateTime.ReadOnly = true;
-            this.clmCreatedDateTime.Visible = false;
-            // 
-            // clmModifiedDateTime
-            // 
-            this.clmModifiedDateTime.DataPropertyName = "ModifiedDateTime";
-            this.clmModifiedDateTime.HeaderText = "تاریخ ویرایش";
-            this.clmModifiedDateTime.Name = "clmModifiedDateTime";
-            this.clmModifiedDateTime.ReadOnly = true;
-            this.clmModifiedDateTime.Visible = false;
             // 
             // groupBox2
             // 
@@ -393,15 +252,16 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Location = new System.Drawing.Point(12, 118);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(895, 117);
+            this.groupBox2.Size = new System.Drawing.Size(930, 117);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "اطلاعات رزرواسیون";
             // 
             // txtBookingStatus
             // 
+            this.txtBookingStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBookingStatus.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtBookingStatus.Location = new System.Drawing.Point(28, 81);
+            this.txtBookingStatus.Location = new System.Drawing.Point(63, 81);
             this.txtBookingStatus.Name = "txtBookingStatus";
             this.txtBookingStatus.ReadOnly = true;
             this.txtBookingStatus.Size = new System.Drawing.Size(111, 19);
@@ -409,8 +269,9 @@
             // 
             // txtPersonCount
             // 
+            this.txtPersonCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPersonCount.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtPersonCount.Location = new System.Drawing.Point(260, 82);
+            this.txtPersonCount.Location = new System.Drawing.Point(295, 82);
             this.txtPersonCount.Maximum = new decimal(new int[] {
             20,
             0,
@@ -425,10 +286,11 @@
             // 
             // cmbAtelierTypes
             // 
+            this.cmbAtelierTypes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbAtelierTypes.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.cmbAtelierTypes.EnableAlternatingItemColor = true;
             this.cmbAtelierTypes.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.cmbAtelierTypes.Location = new System.Drawing.Point(470, 82);
+            this.cmbAtelierTypes.Location = new System.Drawing.Point(505, 82);
             this.cmbAtelierTypes.Name = "cmbAtelierTypes";
             this.cmbAtelierTypes.Size = new System.Drawing.Size(111, 20);
             this.cmbAtelierTypes.TabIndex = 4;
@@ -436,10 +298,11 @@
             // 
             // cmbPhotographyTypes
             // 
+            this.cmbPhotographyTypes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbPhotographyTypes.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.cmbPhotographyTypes.EnableAlternatingItemColor = true;
             this.cmbPhotographyTypes.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.cmbPhotographyTypes.Location = new System.Drawing.Point(670, 82);
+            this.cmbPhotographyTypes.Location = new System.Drawing.Point(705, 82);
             this.cmbPhotographyTypes.Name = "cmbPhotographyTypes";
             this.cmbPhotographyTypes.Size = new System.Drawing.Size(111, 20);
             this.cmbPhotographyTypes.TabIndex = 3;
@@ -450,7 +313,7 @@
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(145, 84);
+            this.label10.Location = new System.Drawing.Point(180, 84);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(65, 13);
             this.label10.TabIndex = 19;
@@ -460,7 +323,7 @@
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(377, 84);
+            this.label9.Location = new System.Drawing.Point(412, 84);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(30, 13);
             this.label9.TabIndex = 17;
@@ -470,7 +333,7 @@
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(587, 84);
+            this.label8.Location = new System.Drawing.Point(622, 84);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(27, 13);
             this.label8.TabIndex = 15;
@@ -480,7 +343,7 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(787, 84);
+            this.label7.Location = new System.Drawing.Point(822, 84);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(52, 13);
             this.label7.TabIndex = 13;
@@ -493,7 +356,7 @@
             this.panelPhotographerTypes.Controls.Add(this.rbNoMatterPhotographer);
             this.panelPhotographerTypes.Controls.Add(this.rbMalePhotographer);
             this.panelPhotographerTypes.Controls.Add(this.rbFemalePhotographer);
-            this.panelPhotographerTypes.Location = new System.Drawing.Point(166, 23);
+            this.panelPhotographerTypes.Location = new System.Drawing.Point(201, 23);
             this.panelPhotographerTypes.Name = "panelPhotographerTypes";
             this.panelPhotographerTypes.Size = new System.Drawing.Size(205, 32);
             this.panelPhotographerTypes.TabIndex = 2;
@@ -535,7 +398,7 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(377, 33);
+            this.label6.Location = new System.Drawing.Point(412, 33);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(36, 13);
             this.label6.TabIndex = 11;
@@ -548,7 +411,7 @@
             this.timePickerBookingTime.Culture = new System.Globalization.CultureInfo("en-US");
             this.timePickerBookingTime.EnableKeyMap = true;
             this.timePickerBookingTime.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.timePickerBookingTime.Location = new System.Drawing.Point(470, 29);
+            this.timePickerBookingTime.Location = new System.Drawing.Point(505, 29);
             this.timePickerBookingTime.MaxValue = new System.DateTime(9999, 12, 31, 23, 59, 59, 0);
             this.timePickerBookingTime.MinValue = new System.DateTime(((long)(0)));
             this.timePickerBookingTime.Name = "timePickerBookingTime";
@@ -563,7 +426,7 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(587, 33);
+            this.label5.Location = new System.Drawing.Point(622, 33);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(38, 13);
             this.label5.TabIndex = 8;
@@ -574,7 +437,7 @@
             this.datePickerBookingDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.datePickerBookingDate.BackColor = System.Drawing.Color.White;
             this.datePickerBookingDate.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.datePickerBookingDate.Location = new System.Drawing.Point(670, 31);
+            this.datePickerBookingDate.Location = new System.Drawing.Point(705, 31);
             this.datePickerBookingDate.Name = "datePickerBookingDate";
             this.datePickerBookingDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.datePickerBookingDate.ShowTime = false;
@@ -587,7 +450,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(787, 33);
+            this.label4.Location = new System.Drawing.Point(822, 33);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(28, 13);
             this.label4.TabIndex = 6;
@@ -603,14 +466,15 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(895, 100);
+            this.groupBox1.Size = new System.Drawing.Size(930, 100);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "اطلاعات مشتری";
             // 
             // txtMobile
             // 
-            this.txtMobile.Location = new System.Drawing.Point(260, 40);
+            this.txtMobile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMobile.Location = new System.Drawing.Point(295, 40);
             this.txtMobile.Mask = "(9999) 000 0000";
             this.txtMobile.Name = "txtMobile";
             this.txtMobile.ReadOnly = true;
@@ -620,7 +484,8 @@
             // 
             // txtTell
             // 
-            this.txtTell.Location = new System.Drawing.Point(470, 39);
+            this.txtTell.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTell.Location = new System.Drawing.Point(505, 39);
             this.txtTell.Mask = "(9999) 000 00 00";
             this.txtTell.Name = "txtTell";
             this.txtTell.ReadOnly = true;
@@ -630,8 +495,9 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(377, 43);
+            this.label3.Location = new System.Drawing.Point(412, 43);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 13);
             this.label3.TabIndex = 4;
@@ -639,8 +505,9 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(587, 43);
+            this.label2.Location = new System.Drawing.Point(622, 43);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 13);
             this.label2.TabIndex = 2;
@@ -648,13 +515,14 @@
             // 
             // txtFirstNameLastName
             // 
+            this.txtFirstNameLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
             this.txtFirstNameLastName.Border.Class = "TextBoxBorder";
             this.txtFirstNameLastName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtFirstNameLastName.DisabledBackColor = System.Drawing.Color.White;
-            this.txtFirstNameLastName.Location = new System.Drawing.Point(670, 39);
+            this.txtFirstNameLastName.Location = new System.Drawing.Point(705, 39);
             this.txtFirstNameLastName.Name = "txtFirstNameLastName";
             this.txtFirstNameLastName.PreventEnterBeep = true;
             this.txtFirstNameLastName.ReadOnly = true;
@@ -663,8 +531,9 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(787, 43);
+            this.label1.Location = new System.Drawing.Point(822, 43);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 13);
             this.label1.TabIndex = 0;
@@ -675,13 +544,174 @@
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.RightToLeft = true;
             // 
+            // clmId
+            // 
+            this.clmId.DataPropertyName = "Id";
+            this.clmId.HeaderText = "clmId";
+            this.clmId.Name = "clmId";
+            this.clmId.ReadOnly = true;
+            this.clmId.Visible = false;
+            this.clmId.Width = 38;
+            // 
+            // clmUserId
+            // 
+            this.clmUserId.DataPropertyName = "UserId";
+            this.clmUserId.HeaderText = "clmUserId";
+            this.clmUserId.Name = "clmUserId";
+            this.clmUserId.ReadOnly = true;
+            this.clmUserId.Visible = false;
+            this.clmUserId.Width = 60;
+            // 
+            // clmCustomerFullName
+            // 
+            this.clmCustomerFullName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmCustomerFullName.DataPropertyName = "CustomerFullName";
+            this.clmCustomerFullName.HeaderText = "نام مشتری";
+            this.clmCustomerFullName.Name = "clmCustomerFullName";
+            this.clmCustomerFullName.ReadOnly = true;
+            // 
+            // clmDate
+            // 
+            this.clmDate.DataPropertyName = "Date";
+            this.clmDate.HeaderText = "تاریخ";
+            this.clmDate.Name = "clmDate";
+            this.clmDate.ReadOnly = true;
+            this.clmDate.Width = 53;
+            // 
+            // clmTime
+            // 
+            this.clmTime.DataPropertyName = "Time";
+            this.clmTime.HeaderText = "ساعت";
+            this.clmTime.Name = "clmTime";
+            this.clmTime.ReadOnly = true;
+            this.clmTime.Width = 63;
+            // 
+            // clmPhotographerGender
+            // 
+            this.clmPhotographerGender.DataPropertyName = "PhotographerGender";
+            this.clmPhotographerGender.HeaderText = "clmPhotographerGender";
+            this.clmPhotographerGender.Name = "clmPhotographerGender";
+            this.clmPhotographerGender.ReadOnly = true;
+            this.clmPhotographerGender.Visible = false;
+            this.clmPhotographerGender.Width = 148;
+            // 
+            // clmPhotographerGenderName
+            // 
+            this.clmPhotographerGenderName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmPhotographerGenderName.DataPropertyName = "PhotographerGenderName";
+            this.clmPhotographerGenderName.HeaderText = "نوع عکاس";
+            this.clmPhotographerGenderName.Name = "clmPhotographerGenderName";
+            this.clmPhotographerGenderName.ReadOnly = true;
+            // 
+            // clmPhotographyTypeId
+            // 
+            this.clmPhotographyTypeId.DataPropertyName = "PhotographyTypeId";
+            this.clmPhotographyTypeId.HeaderText = "clmPhotographyTypeId";
+            this.clmPhotographyTypeId.Name = "clmPhotographyTypeId";
+            this.clmPhotographyTypeId.ReadOnly = true;
+            this.clmPhotographyTypeId.Visible = false;
+            this.clmPhotographyTypeId.Width = 143;
+            // 
+            // clmPhotographyTypeName
+            // 
+            this.clmPhotographyTypeName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmPhotographyTypeName.DataPropertyName = "PhotographyTypeName";
+            this.clmPhotographyTypeName.HeaderText = "نوع عکس";
+            this.clmPhotographyTypeName.Name = "clmPhotographyTypeName";
+            this.clmPhotographyTypeName.ReadOnly = true;
+            // 
+            // clmAtelierTypeId
+            // 
+            this.clmAtelierTypeId.DataPropertyName = "AtelierTypeId";
+            this.clmAtelierTypeId.HeaderText = "clmAtelierTypeId";
+            this.clmAtelierTypeId.Name = "clmAtelierTypeId";
+            this.clmAtelierTypeId.ReadOnly = true;
+            this.clmAtelierTypeId.Visible = false;
+            this.clmAtelierTypeId.Width = 112;
+            // 
+            // clmAtelierTypeName
+            // 
+            this.clmAtelierTypeName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmAtelierTypeName.DataPropertyName = "AtelierTypeName";
+            this.clmAtelierTypeName.HeaderText = "نوع آتلیه";
+            this.clmAtelierTypeName.Name = "clmAtelierTypeName";
+            this.clmAtelierTypeName.ReadOnly = true;
+            // 
+            // clmPersonCount
+            // 
+            this.clmPersonCount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmPersonCount.DataPropertyName = "PersonCount";
+            this.clmPersonCount.HeaderText = "تعداد نفرات";
+            this.clmPersonCount.Name = "clmPersonCount";
+            this.clmPersonCount.ReadOnly = true;
+            // 
+            // clmPaymentIsOK
+            // 
+            this.clmPaymentIsOK.DataPropertyName = "PaymentIsOK";
+            this.clmPaymentIsOK.HeaderText = "وضعیت پرداخت";
+            this.clmPaymentIsOK.Name = "clmPaymentIsOK";
+            this.clmPaymentIsOK.ReadOnly = true;
+            this.clmPaymentIsOK.Width = 102;
+            // 
+            // clmSubmitter
+            // 
+            this.clmSubmitter.DataPropertyName = "Submitter";
+            this.clmSubmitter.HeaderText = "clmSubmitter";
+            this.clmSubmitter.Name = "clmSubmitter";
+            this.clmSubmitter.ReadOnly = true;
+            this.clmSubmitter.Visible = false;
+            this.clmSubmitter.Width = 93;
+            // 
+            // clmSubmitterName
+            // 
+            this.clmSubmitterName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmSubmitterName.DataPropertyName = "SubmitterName";
+            this.clmSubmitterName.HeaderText = "ثبت کننده";
+            this.clmSubmitterName.Name = "clmSubmitterName";
+            this.clmSubmitterName.ReadOnly = true;
+            // 
+            // clmStatusId
+            // 
+            this.clmStatusId.DataPropertyName = "StatusId";
+            this.clmStatusId.HeaderText = "clmStatusId";
+            this.clmStatusId.Name = "clmStatusId";
+            this.clmStatusId.ReadOnly = true;
+            this.clmStatusId.Visible = false;
+            this.clmStatusId.Width = 88;
+            // 
+            // clmStatusName
+            // 
+            this.clmStatusName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmStatusName.DataPropertyName = "StatusName";
+            this.clmStatusName.HeaderText = "وضعیت نوبت";
+            this.clmStatusName.Name = "clmStatusName";
+            this.clmStatusName.ReadOnly = true;
+            // 
+            // clmCreatedDateTime
+            // 
+            this.clmCreatedDateTime.DataPropertyName = "CreatedDateTime";
+            this.clmCreatedDateTime.HeaderText = "تاریخ ثبت";
+            this.clmCreatedDateTime.Name = "clmCreatedDateTime";
+            this.clmCreatedDateTime.ReadOnly = true;
+            this.clmCreatedDateTime.Visible = false;
+            this.clmCreatedDateTime.Width = 73;
+            // 
+            // clmModifiedDateTime
+            // 
+            this.clmModifiedDateTime.DataPropertyName = "ModifiedDateTime";
+            this.clmModifiedDateTime.HeaderText = "تاریخ ویرایش";
+            this.clmModifiedDateTime.Name = "clmModifiedDateTime";
+            this.clmModifiedDateTime.ReadOnly = true;
+            this.clmModifiedDateTime.Visible = false;
+            this.clmModifiedDateTime.Width = 89;
+            // 
             // FrmAddEditBooking
             // 
             this.AcceptButton = this.btnOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(919, 590);
+            this.ClientSize = new System.Drawing.Size(954, 590);
             this.Controls.Add(this.panelEx2);
             this.Controls.Add(this.panelEx1);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));

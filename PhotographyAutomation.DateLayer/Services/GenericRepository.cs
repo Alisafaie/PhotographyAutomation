@@ -9,8 +9,8 @@ namespace PhotographyAutomation.DateLayer.Services
 {
     public class GenericRepository<TEntity> where TEntity : class
     {
-        private PhotographyAutomationDBEntities _db;
-        private DbSet<TEntity> _dbSet;
+        private readonly PhotographyAutomationDBEntities _db;
+        private readonly DbSet<TEntity> _dbSet;
 
         public GenericRepository(PhotographyAutomationDBEntities db)
         {

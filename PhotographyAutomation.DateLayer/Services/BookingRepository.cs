@@ -22,7 +22,7 @@ namespace PhotographyAutomation.DateLayer.Services
         {
             try
             {
-                return 
+                return
                     _db.TblBooking
                     .Include(x => x.TblCustomer)
                     .Include(x => x.TblAtelierType)
@@ -35,11 +35,11 @@ namespace PhotographyAutomation.DateLayer.Services
                             Id = x.Id,
                             Date = x.Date,
                             UserId = x.CustomerId,
-                            Time = x.Time,
+                            Time = x.Time.Hours.ToString() + ":" + x.Time.Minutes.ToString(),
                             CreatedDateTime = x.CreatedDate,
-                            ModifiedDateTime = x.ModifiedDate.Value,
                             AtelierTypeId = x.AtelierTypeId,
                             AtelierTypeName = x.TblAtelierType.AtelierName,
+                            CustomerGender = x.TblCustomer.Gender,
                             CustomerFirstName = x.TblCustomer.FirstName,
                             CustomerLastName = x.TblCustomer.LastName,
                             PaymentIsOk = x.PrepaymentIsOk,
@@ -52,7 +52,7 @@ namespace PhotographyAutomation.DateLayer.Services
                             //Submitter = 
                             //SubmitterName = 
                             //PhotographerGenderName = 
-
+                            ModifiedDateTime = x.ModifiedDate
                         })
                     .OrderByDescending(x => x.Date)
                     .ThenByDescending(x => x.Time)
