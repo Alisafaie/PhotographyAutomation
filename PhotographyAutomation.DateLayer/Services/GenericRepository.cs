@@ -1,9 +1,10 @@
-﻿using System;
+﻿using PhotographyAutomation.DateLayer.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
-using PhotographyAutomation.DateLayer.Models;
 
 namespace PhotographyAutomation.DateLayer.Services
 {
@@ -21,13 +22,25 @@ namespace PhotographyAutomation.DateLayer.Services
 
         public virtual IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> where = null)
         {
-            IQueryable<TEntity> query = _dbSet;
-            if (where!=null)
+            try
             {
-                query = query.Where(where);
-            }
+                IQueryable<TEntity> query = _dbSet;
+                if (where != null)
+                {
+                    query = query.Where(where);
+                }
 
-            return query.ToList();
+                return query.ToList();
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine(exception.Message);
+                Debug.WriteLine(exception.Data);
+                Debug.WriteLine(exception.InnerException);
+                Debug.WriteLine(exception.Source);
+                Debug.WriteLine(exception.StackTrace);
+                return null;
+            }
         }
 
         public virtual TEntity GetById(object id)
@@ -36,8 +49,13 @@ namespace PhotographyAutomation.DateLayer.Services
             {
                 return _dbSet.Find(id);
             }
-            catch
+            catch (Exception exception)
             {
+                Debug.WriteLine(exception.Message);
+                Debug.WriteLine(exception.Data);
+                Debug.WriteLine(exception.InnerException);
+                Debug.WriteLine(exception.Source);
+                Debug.WriteLine(exception.StackTrace);
                 return null;
             }
         }
@@ -48,10 +66,13 @@ namespace PhotographyAutomation.DateLayer.Services
             {
                 _dbSet.Add(entity);
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
-                Console.WriteLine(exception.Message);
-                Console.ReadKey();
+                Debug.WriteLine(exception.Message);
+                Debug.WriteLine(exception.Data);
+                Debug.WriteLine(exception.InnerException);
+                Debug.WriteLine(exception.Source);
+                Debug.WriteLine(exception.StackTrace);
             }
         }
 
@@ -61,9 +82,13 @@ namespace PhotographyAutomation.DateLayer.Services
             {
                 _db.Entry(entity).State = EntityState.Modified;
             }
-            catch
+            catch (Exception exception)
             {
-                // ignored
+                Debug.WriteLine(exception.Message);
+                Debug.WriteLine(exception.Data);
+                Debug.WriteLine(exception.InnerException);
+                Debug.WriteLine(exception.Source);
+                Debug.WriteLine(exception.StackTrace);
             }
         }
 
@@ -78,9 +103,13 @@ namespace PhotographyAutomation.DateLayer.Services
 
                 _dbSet.Remove(entity);
             }
-            catch
+            catch (Exception exception)
             {
-                // ignored
+                Debug.WriteLine(exception.Message);
+                Debug.WriteLine(exception.Data);
+                Debug.WriteLine(exception.InnerException);
+                Debug.WriteLine(exception.Source);
+                Debug.WriteLine(exception.StackTrace);
             }
         }
 
@@ -91,9 +120,13 @@ namespace PhotographyAutomation.DateLayer.Services
                 var entity = GetById(id);
                 Delete(entity);
             }
-            catch
+            catch (Exception exception)
             {
-                // ignored
+                Debug.WriteLine(exception.Message);
+                Debug.WriteLine(exception.Data);
+                Debug.WriteLine(exception.InnerException);
+                Debug.WriteLine(exception.Source);
+                Debug.WriteLine(exception.StackTrace);
             }
         }
     }

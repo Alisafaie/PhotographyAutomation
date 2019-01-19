@@ -62,28 +62,19 @@ namespace PhotographyAutomation.App.Forms.Booking
 
                         if (bookingHistory[i].CustomerGender == 0)
                         {
-                            dgvBookingHistory.Rows[i].Cells["clmCustomerFullName"].Value = "خانم " +
-                                                                                           bookingHistory[i]
-                                                                                               .CustomerFirstName +
-                                                                                           " " +
-                                                                                           bookingHistory[i]
-                                                                                               .CustomerLastName;
+                            dgvBookingHistory.Rows[i].Cells["clmCustomerFullName"].Value =
+                                "خانم " + bookingHistory[i].CustomerFullName;
+
                         }
                         else if (bookingHistory[i].CustomerGender == 1)
                         {
-                            dgvBookingHistory.Rows[i].Cells["clmCustomerFullName"].Value = "آقای " +
-                                                                                           bookingHistory[i]
-                                                                                               .CustomerFirstName +
-                                                                                           " " +
-                                                                                           bookingHistory[i]
-                                                                                               .CustomerLastName;
+                            dgvBookingHistory.Rows[i].Cells["clmCustomerFullName"].Value =
+                                "آقای " + bookingHistory[i].CustomerFullName;
                         }
                         else
                         {
                             dgvBookingHistory.Rows[i].Cells["clmCustomerFullName"].Value =
-                                bookingHistory[i].CustomerFirstName +
-                                " " +
-                                bookingHistory[i].CustomerLastName;
+                                bookingHistory[i].CustomerFullName;
                         }
 
                         dgvBookingHistory.Rows[i].Cells["clmDate"].Value = bookingHistory[i].Date.ToShamsiDate();
@@ -243,7 +234,7 @@ namespace PhotographyAutomation.App.Forms.Booking
             }
 
             if (timePickerBookingTime.Value != null &&
-                (timePickerBookingTime.Value.Value.Hour < 9))
+                timePickerBookingTime.Value.Value.Hour < 9)
             {
                 errorProvider1.Clear();
                 errorProvider1.SetError(timePickerBookingTime, "زمان نوبت انتخابی قبل از شروع به کار مجموعه است.");
@@ -252,7 +243,7 @@ namespace PhotographyAutomation.App.Forms.Booking
             }
 
             if (timePickerBookingTime.Value != null &&
-                (timePickerBookingTime.Value.Value.Hour >= 20))
+                timePickerBookingTime.Value.Value.Hour >= 20)
                 if (timePickerBookingTime.Value.Value.Hour >= 21)
                 {
                     errorProvider1.Clear();
@@ -285,6 +276,8 @@ namespace PhotographyAutomation.App.Forms.Booking
                 return false;
             }
 
+            
+            
             return true;
         }
 

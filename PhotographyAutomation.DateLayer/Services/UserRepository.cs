@@ -2,6 +2,7 @@
 using PhotographyAutomation.DateLayer.Repositories;
 using PhotographyAutomation.ViewModels.User;
 using System;
+using System.Diagnostics;
 using System.Linq;
 
 namespace PhotographyAutomation.DateLayer.Services
@@ -22,7 +23,11 @@ namespace PhotographyAutomation.DateLayer.Services
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception.Message);
+                Debug.WriteLine(exception.Message);
+                Debug.WriteLine(exception.Data);
+                Debug.WriteLine(exception.InnerException);
+                Debug.WriteLine(exception.Source);
+                Debug.WriteLine(exception.StackTrace);
                 return null;
             }
         }
@@ -43,7 +48,11 @@ namespace PhotographyAutomation.DateLayer.Services
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception);
+                Debug.WriteLine(exception.Message);
+                Debug.WriteLine(exception.Data);
+                Debug.WriteLine(exception.InnerException);
+                Debug.WriteLine(exception.Source);
+                Debug.WriteLine(exception.StackTrace);
                 return null;
             }
         }

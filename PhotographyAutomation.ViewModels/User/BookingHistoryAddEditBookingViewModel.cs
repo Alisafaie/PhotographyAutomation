@@ -7,12 +7,10 @@ namespace PhotographyAutomation.ViewModels.User
         public int Id { get; set; }
         public int UserId { get; set; }
         public byte? CustomerGender { get; set; }
-        public string CustomerFirstName { get; set; }
-        public string CustomerLastName { get; set; }
+        public string CustomerFullName { get; set; }
         public DateTime Date { get; set; }
         public string Time { get; set; }
         public int PhotographerGender { get; set; }
-        //public string PhotographerGenderName { get; set; }
         public int PhotographyTypeId { get; set; }
         public string PhotographyTypeName { get; set; }
         public int AtelierTypeId { get; set; }
