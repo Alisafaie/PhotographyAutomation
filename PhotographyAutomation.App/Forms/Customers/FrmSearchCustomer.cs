@@ -1,11 +1,11 @@
 ﻿using PhotographyAutomation.App.Forms.Booking;
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.DateLayer.Models;
+using PhotographyAutomation.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using PhotographyAutomation.Utilities;
 
 namespace PhotographyAutomation.App.Forms.Customers
 {
@@ -20,17 +20,12 @@ namespace PhotographyAutomation.App.Forms.Customers
             InitializeComponent();
         }
 
-        private void txtFirstName_Enter(object sender, EventArgs e)
+        private void FrmSearchCustomer_Load(object sender, EventArgs e)
         {
-            var language = new System.Globalization.CultureInfo("fa-IR");
-            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
+            AddContextMenuToTxtTell();
         }
 
-        private void txtFirstName_Leave(object sender, EventArgs e)
-        {
-            var language = new System.Globalization.CultureInfo("en-US");
-            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
-        }
+
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -99,6 +94,9 @@ namespace PhotographyAutomation.App.Forms.Customers
             }
         }
 
+
+
+
         private void dgvUsers_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvUsers.CurrentRow != null)
@@ -119,12 +117,32 @@ namespace PhotographyAutomation.App.Forms.Customers
             }
         }
 
+
+        private void txtFirstName_Enter(object sender, EventArgs e)
+        {
+            var language = new System.Globalization.CultureInfo("fa-IR");
+            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
+        }
+        private void txtFirstName_Leave(object sender, EventArgs e)
+        {
+            var language = new System.Globalization.CultureInfo("en-US");
+            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
+        }
         private void txtTell_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)))
             {
                 e.Handled = true;
             }
+        }
+
+
+
+        private void AddContextMenuToTxtTell()
+        {
+            var menu = new ContextMenuStrip();
+            menu.Items.Add("لطفا اعداد را به صورت دستی وارد کنید.");
+            txtTell.TextBoxElement.TextBoxItem.HostedControl.ContextMenuStrip = menu;
         }
     }
 }
