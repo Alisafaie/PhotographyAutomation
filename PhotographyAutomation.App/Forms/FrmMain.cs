@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using FreeControls;
+﻿using FreeControls;
 using PhotographyAutomation.App.Forms.Booking;
-using PhotographyAutomation.App.Forms.Users;
+using PhotographyAutomation.App.Forms.Customers;
+using System;
+using System.Windows.Forms;
 
 namespace PhotographyAutomation.App.Forms
 {
@@ -20,7 +15,7 @@ namespace PhotographyAutomation.App.Forms
 
         private void btnAddEditBooking_Click(object sender, EventArgs e)
         {
-            FrmAddEditCustomerInfo customer=new FrmAddEditCustomerInfo();
+            FrmAddEditCustomerInfo customer = new FrmAddEditCustomerInfo();
             customer.ShowDialog();
         }
 
@@ -33,37 +28,37 @@ namespace PhotographyAutomation.App.Forms
             f.ShowDialog();
         }
 
-        
+
 
         private void buttonItem17_Click_1(object sender, EventArgs e)
         {
-            FrmShowUserInfo frmShowUserInfo = new FrmShowUserInfo
+            FrmShowCustomerInfo frmShowUserInfo = new FrmShowCustomerInfo
             {
-                UserId = 13
+                CustomerId = 13
             };
             frmShowUserInfo.ShowDialog();
         }
 
         private void btnSearchUser_Click(object sender, EventArgs e)
         {
-            FrmSearchUser searchUser=new FrmSearchUser();
+            FrmSearchCustomer searchUser = new FrmSearchCustomer();
             searchUser.ShowDialog();
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            persianMonthCalendar.Value=PersianDate.Now;
+            persianMonthCalendar.Value = PersianDate.Now;
         }
 
         private void btnEditBooking_Click(object sender, EventArgs e)
         {
-            FrmSearchUser searchUser=new FrmSearchUser();
+            FrmSearchCustomer searchUser = new FrmSearchCustomer();
             searchUser.ShowDialog();
         }
 
         private void btnShowBookings_Click(object sender, EventArgs e)
         {
-            FrmShowBookings frmShowBookings=new FrmShowBookings();
+            FrmShowBookings frmShowBookings = new FrmShowBookings();
             frmShowBookings.ShowDialog();
         }
     }

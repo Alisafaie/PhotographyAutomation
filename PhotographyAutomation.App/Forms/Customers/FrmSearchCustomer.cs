@@ -1,18 +1,21 @@
-﻿using PhotographyAutomation.DateLayer.Context;
+﻿using PhotographyAutomation.App.Forms.Booking;
+using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.DateLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using PhotographyAutomation.Utilities;
 
-namespace PhotographyAutomation.App.Forms.Users
+namespace PhotographyAutomation.App.Forms.Customers
 {
-    public partial class FrmSearchUser : Form
+    public partial class FrmSearchCustomer : Form
     {
         public bool FromFrmAddEditBooking = false;
+        public bool FromFrmShowBookings = false;
+        public int CustomerId = 0;
 
-
-        public FrmSearchUser()
+        public FrmSearchCustomer()
         {
             InitializeComponent();
         }
@@ -37,15 +40,18 @@ namespace PhotographyAutomation.App.Forms.Users
             {
                 List<TblCustomer> users = db.UserGenericRepository.Get(
                     x =>
-                        x.FirstName.Contains(txtFirstName.Text) || 
-                        x.LastName.Contains(txtLastName.Text) ||
-                        x.Tell.Contains(txtTell.Text) || 
-                        x.Mobile.Contains(txtTell.Text)).ToList();
+                        x.FirstName.Contains(txtFirstName.Text.Trim()) ||
+                        x.LastName.Contains(txtLastName.Text.Trim()) ||
+                        x.Tell.Contains(txtTell.Text.Trim()) ||
+                        x.Mobile.Contains(txtTell.Text.Trim())
+                        )
+                    .ToList();
 
                 dgvUsers.AutoGenerateColumns = false;
-                
+
                 if (users.Any())
                 {
+                    dgvUsers.Rows.Clear();
                     dgvUsers.RowCount = users.Count;
 
                     for (int i = 0; i < users.Count; i++)
@@ -84,6 +90,12 @@ namespace PhotographyAutomation.App.Forms.Users
                         dgvUsers.Rows[i].Cells["MoreInfo"].Value = "...";
                     }
                 }
+                else
+                {
+                    RtlMessageBox.Show("متاسفانه جستجوی شما در سیستم نتیجه ای در بر نداشت.", "", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    dgvUsers.Rows.Clear();
+                }
             }
         }
 
@@ -96,14 +108,22 @@ namespace PhotographyAutomation.App.Forms.Users
                 {
                     if (dgvUsers.CurrentCell != null && dgvUsers.CurrentCell.Value != null)
                     {
-                        var userId = (int) dgvUsers.CurrentRow.Cells["Id"].Value;
-                        var frmShowUserInfo = new FrmShowUserInfo
+                        var customerId = (int)dgvUsers.CurrentRow.Cells["Id"].Value;
+                        if (FromFrmShowBookings)
                         {
-                            UserId = userId
-                        };
-                        frmShowUserInfo.ShowDialog();
+                            FrmShowBookings.CustomerId = customerId;
+                            DialogResult = DialogResult.OK;
+                        }
                     }
                 }
+            }
+        }
+
+        private void txtTell_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)))
+            {
+                e.Handled = true;
             }
         }
     }

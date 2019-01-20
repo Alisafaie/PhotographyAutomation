@@ -1,6 +1,6 @@
-﻿namespace PhotographyAutomation.App.Forms.Users
+﻿namespace PhotographyAutomation.App.Forms.Customers
 {
-    partial class FrmSearchUser
+    partial class FrmSearchCustomer
     {
         /// <summary>
         /// Required designer variable.
@@ -56,23 +56,23 @@
             this.ویرایشاطلاعاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ثبتفاکتورToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtTell = new Telerik.WinControls.UI.RadMaskedEditBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtLastName = new Telerik.WinControls.UI.RadTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnSearch = new Telerik.WinControls.UI.RadButton();
             this.txtFirstName = new Telerik.WinControls.UI.RadTextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtTell = new Telerik.WinControls.UI.RadTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panelEx1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.menuDgvUsers.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTell)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLastName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFirstName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTell)).BeginInit();
             this.SuspendLayout();
             // 
             // errorProvider1
@@ -153,7 +153,7 @@
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvUsers.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvUsers.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -314,20 +314,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "اطلاعات مشتری";
             // 
-            // txtTell
-            // 
-            this.txtTell.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtTell.Location = new System.Drawing.Point(441, 34);
-            this.txtTell.MaskType = Telerik.WinControls.UI.MaskType.Numeric;
-            this.txtTell.Name = "txtTell";
-            this.txtTell.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtTell.Size = new System.Drawing.Size(100, 19);
-            this.txtTell.TabIndex = 6;
-            this.txtTell.TabStop = false;
-            this.txtTell.Text = "0";
-            this.txtTell.ThemeName = "Office2010Silver";
-            // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -363,10 +349,10 @@
             // btnSearch
             // 
             this.btnSearch.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.btnSearch.Location = new System.Drawing.Point(6, 26);
+            this.btnSearch.Location = new System.Drawing.Point(6, 27);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(110, 36);
-            this.btnSearch.TabIndex = 5;
+            this.btnSearch.TabIndex = 3;
             this.btnSearch.Text = "جستجو";
             this.btnSearch.ThemeName = "Office2010Silver";
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -393,7 +379,17 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "نام";
             // 
-            // FrmSearchUser
+            // txtTell
+            // 
+            this.txtTell.Location = new System.Drawing.Point(441, 35);
+            this.txtTell.MaxLength = 11;
+            this.txtTell.Name = "txtTell";
+            this.txtTell.Size = new System.Drawing.Size(100, 20);
+            this.txtTell.TabIndex = 2;
+            this.txtTell.ThemeName = "Office2010Silver";
+            this.txtTell.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTell_KeyPress);
+            // 
+            // FrmSearchCustomer
             // 
             this.AcceptButton = this.btnSearch;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -402,7 +398,7 @@
             this.Controls.Add(this.panelEx1);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.MinimizeBox = false;
-            this.Name = "FrmSearchUser";
+            this.Name = "FrmSearchCustomer";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -415,10 +411,10 @@
             this.menuDgvUsers.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTell)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLastName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFirstName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTell)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -438,7 +434,6 @@
         private System.Windows.Forms.Label label3;
         private Telerik.WinControls.UI.RadTextBox txtLastName;
         private System.Windows.Forms.Label label2;
-        private Telerik.WinControls.UI.RadMaskedEditBox txtTell;
         private DevComponents.DotNetBar.Controls.DataGridViewX dgvUsers;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
@@ -455,5 +450,6 @@
         private System.Windows.Forms.ToolStripMenuItem ثبتنوبتToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ویرایشاطلاعاتToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ثبتفاکتورToolStripMenuItem;
+        private Telerik.WinControls.UI.RadTextBox txtTell;
     }
 }

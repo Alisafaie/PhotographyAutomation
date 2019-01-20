@@ -1,6 +1,6 @@
-﻿namespace PhotographyAutomation.App.Forms.Users
+﻿namespace PhotographyAutomation.App.Forms.Customers
 {
-    partial class FrmShowUserInfo
+    partial class FrmShowCustomerInfo
     {
         /// <summary>
         /// Required designer variable.

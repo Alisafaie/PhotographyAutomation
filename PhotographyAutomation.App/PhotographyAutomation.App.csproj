@@ -235,5 +235,362 @@
   <ItemGroup>
     <None Include="Resources\1371476342_Refresh.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\readletter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\remember.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\setjob.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\signature.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User group.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\adduser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AdminIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\administrator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bayegani.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\defaultuserpic.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e_mail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e_mail2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\En Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\En Logo-01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\En Logo-01-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\En Logo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Farsi Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Farsi Logo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if__2ui_2303107.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if__73ui_2303178.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if__79ui_2303184.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_31_486131.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_178_Download_183297.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_About_132628.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Add_27831.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Alert_132779.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Apply_132742.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Archive_2_778097.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Archive_box_data_file_storage_1886362.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Arrow_41_2104136.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_attachment red_10379.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_attachment red_10379-.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_attachment_add_17326.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_attachment_add_17326-.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_BT_binder_905575.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Cancel_27836.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Cancel_132620.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Cancel_132620-BW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_chart_organisation_delete_35855 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_chart_organisation_delete_35855.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_check_1930264.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_choose_2_job_seeker_employee_unemployee_work_2620528 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_choose_2_job_seeker_employee_unemployee_work_2620528.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_clip_115756.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_clip_1814096.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Create_132699.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Cross_2001870.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Danger_132574.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Database_132580.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_delete_35972.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Delete_132746.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_dialog-warning_118940.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Disaster_132765.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_document-new_9241.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_download_14411.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Download_132678.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_dropbox_334620.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_edit_103539.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_edit_173002.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_email__mail__attachment__document__2568274.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Error_132716.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_exit_1736.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_exit_3226 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_exit_3226.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Exit_132751.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Favorites_27846.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_f-check_256_282474.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Find_132785.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_folder__security__secret__locked_2536784.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_folder__security__secret__locked_2538761.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_folder__security__secret__locked_2542017.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_folder_370080.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_gnome-searchtool_23273.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Home_132621.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_icon-21-eye-hidden_314753.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_icon-22-eye_314277.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_icon-111-search_314689.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Information_27854.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_light-bulb_299054.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Lightning_132668.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_list-add_118777.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_list-alt_173045.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Lock_132673.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_lock_318582.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_lock_locked_66818.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Magnifier2_34229.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_move_alt1_118638.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_OK_132710.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_pencil_285638.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Play_27865.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_print_1608799.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_profile-filled_299075.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Redo_27872.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Send_27878.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Settings_27879.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Share_2638313.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_sign-add_299068.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_sign-check_299110.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_sign-error_299045.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_sign-info_299086.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Stop_sign_132778.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Sync_132655.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Synchronize_27883 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Synchronize_27883.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_system-search_118797.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_system-search_118797-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_target_job_seeker_employee_unemployee_work_2620498.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Text_preview_132630.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_thefreeforty_chronometer_1243674.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_User_27887.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_view_tree_1874.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_view_tree_18974.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Warning_132616.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jobmanagment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jobs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LogoText.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mail_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\message.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,4 @@
-﻿using PhotographyAutomation.App.Forms.Users;
+﻿using PhotographyAutomation.App.Forms.Customers;
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.DateLayer.Models;
 using PhotographyAutomation.Utilities;
@@ -113,7 +113,7 @@ namespace PhotographyAutomation.App.Forms.Booking
         {
             if (CheckInputs())
             {
-                TblCustomer user = new TblCustomer();
+                var user = new TblCustomer();
 
                 user.FirstName = txtFirstName.Text.Trim();
                 user.LastName = txtLastName.Text.Trim();
@@ -134,7 +134,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                 if (cmbMarriedStatus.SelectedIndex == 1)
                     user.WeddingDate = txtWeddingDate.Text.ToMiladiDate();
 
-                
+
 
                 using (var db = new UnitOfWork())
                 {
@@ -194,7 +194,7 @@ namespace PhotographyAutomation.App.Forms.Booking
 
             if (txtBirthDate.Text != @"13  /  /  ")
             {
-                if (DateTime.TryParse(txtBirthDate.Text, out var dtBirthDate) == false)
+                if (DateTime.TryParse(txtBirthDate.Text, out _) == false)
                 {
                     errorProvider1.Clear();
                     errorProvider1.SetError(txtBirthDate, "تاریخ تولد مشتری به درستی وارد نشده است.");
@@ -232,7 +232,7 @@ namespace PhotographyAutomation.App.Forms.Booking
             {
                 if (txtWeddingDate.Text != @"13  /  /")
                 {
-                    if (DateTime.TryParse(txtWeddingDate.Text, out var dtWedding) == false)
+                    if (DateTime.TryParse(txtWeddingDate.Text, out _) == false)
                     {
                         errorProvider1.Clear();
                         errorProvider1.SetError(txtWeddingDate, "تاریخ ازدواج مشتری به درستی وارد نشده است.");
@@ -280,25 +280,25 @@ namespace PhotographyAutomation.App.Forms.Booking
 
         private void txtFirstName_Enter(object sender, EventArgs e)
         {
-            System.Globalization.CultureInfo language = new System.Globalization.CultureInfo("fa-IR");
+            var language = new System.Globalization.CultureInfo("fa-IR");
             InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
         }
 
         private void txtFirstName_Leave(object sender, EventArgs e)
         {
-            System.Globalization.CultureInfo language = new System.Globalization.CultureInfo("en-US");
+            var language = new System.Globalization.CultureInfo("en-US");
             InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
         }
 
         private void txtUserName_Enter(object sender, EventArgs e)
         {
-            System.Globalization.CultureInfo language = new System.Globalization.CultureInfo("en-US");
+            var language = new System.Globalization.CultureInfo("en-US");
             InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
         }
 
         private void btnSearchCustomer_Click(object sender, EventArgs e)
         {
-            FrmSearchUser searchUser = new FrmSearchUser();
+            FrmSearchCustomer searchUser = new FrmSearchCustomer();
             searchUser.ShowDialog();
         }
     }

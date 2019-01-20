@@ -1,35 +1,28 @@
 ﻿using PhotographyAutomation.DateLayer.Context;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PhotographyAutomation.App.Forms.Users
+namespace PhotographyAutomation.App.Forms.Customers
 {
-    public partial class FrmShowUserInfo : Form
+    public partial class FrmShowCustomerInfo : Form
     {
-        public int UserId = 0;
+        public int CustomerId = 0;
 
-        public FrmShowUserInfo()
+        public FrmShowCustomerInfo()
         {
-            
-            
+
+
             InitializeComponent();
             btnEdit.Enabled = false;
         }
 
         private void FrmShowUserInfo_Load(object sender, EventArgs e)
         {
-            if (UserId > 0)
+            if (CustomerId > 0)
             {
                 using (var db = new UnitOfWork())
                 {
-                    var user = db.UserGenericRepository.GetById(UserId);
+                    var user = db.UserGenericRepository.GetById(CustomerId);
                     if (user != null)
                     {
                         txtFirstName.Text = user.FirstName;
@@ -49,7 +42,7 @@ namespace PhotographyAutomation.App.Forms.Users
                         txtEmail.Text = user.Email;
 
                         cmbCustomerType.SelectedIndex = user.CustomerType == 0 ? 0 : 1;
-                        
+
 
                         if (user.IsActive != null) cmbActiveStatus.SelectedIndex = user.IsActive.Value;
                         txtAddress.Text = user.Address;
