@@ -25,6 +25,8 @@ namespace PhotographyAutomation.DateLayer.Context
             }
         }
 
+        
+        
         private IBookingRepository _bookingRepository;
 
         public IBookingRepository BookingRepository
@@ -40,7 +42,24 @@ namespace PhotographyAutomation.DateLayer.Context
             }
         }
 
+        private IDocumentRepository _documentRepository;
 
+        public IDocumentRepository DocumentRepository
+        {
+            get
+            {
+                if (_documentRepository == null)
+                {
+                    _documentRepository=new DocumentRepository(_db);
+                }
+
+                return _documentRepository;
+            }
+        }
+
+
+        
+        
         private GenericRepository<TblCustomer> _userGenericRepository;
 
         public GenericRepository<TblCustomer> UserGenericRepository
@@ -54,6 +73,9 @@ namespace PhotographyAutomation.DateLayer.Context
                 return _userGenericRepository;
             }
         }
+
+
+
 
 
         private GenericRepository<TblBooking> _bookingGenericRepository;
@@ -71,6 +93,24 @@ namespace PhotographyAutomation.DateLayer.Context
             }
         }
 
+
+        private GenericRepository<DocumentsView> _documentsGenericRepository;
+
+        public GenericRepository<DocumentsView> DocumentsGenericRepository
+        {
+            get
+            {
+                if (_documentsGenericRepository == null)
+                {
+                    _documentsGenericRepository=new GenericRepository<DocumentsView>(_db);
+                }
+
+                return _documentsGenericRepository;
+            }
+        }
+
+
+
         private GenericRepository<TblAtelierType> _atelierTypesGenericRepository;
 
         public GenericRepository<TblAtelierType> AtelierTypesGenericRepository
@@ -85,6 +125,8 @@ namespace PhotographyAutomation.DateLayer.Context
                 return _atelierTypesGenericRepository;
             }
         }
+
+
 
 
 
@@ -123,6 +165,8 @@ namespace PhotographyAutomation.DateLayer.Context
 
 
 
+
+
         public int Save()
         {
             try
@@ -141,6 +185,8 @@ namespace PhotographyAutomation.DateLayer.Context
                 return -1;
             }
         }
+
+        
 
         public void Dispose()
         {

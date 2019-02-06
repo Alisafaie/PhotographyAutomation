@@ -94,6 +94,20 @@
           <Property Name="Code" Type="int" Nullable="false" />
           <Property Name="RoleName" Type="nvarchar" MaxLength="200" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PhotographyAutomationDB.dbo.DocumentsView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DocumentsView">
+          <Key>
+            <PropertyRef Name="stream_id" />
+            <PropertyRef Name="NAME" />
+            <PropertyRef Name="is_directory" />
+          </Key>
+          <Property Name="stream_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="file_stream" Type="varbinary(max)" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="is_directory" Type="bit" Nullable="false" />
+          <Property Name="unc_path" Type="nvarchar" MaxLength="4000" />
+        </EntityType>
         <Association Name="FK_TblBooking_TblAtelierType">
           <End Role="TblAtelierType" Type="Self.TblAtelierType" Multiplicity="1" />
           <End Role="TblBooking" Type="Self.TblBooking" Multiplicity="*" />
@@ -166,6 +180,58 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="Documents_Add" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="filename" Type="nvarchar" Mode="In" />
+          <Parameter Name="filedata" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="Documents_Del" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="docId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="DocumentViewByGUID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="docId" Type="uniqueidentifier" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="stream_id" Type="uniqueidentifier" Nullable="false" />
+                <Property Name="file_stream" Type="varbinary(max)" />
+                <Property Name="NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
+                <Property Name="is_directory" Type="bit" Nullable="false" />
+                <Property Name="unc_path" Type="nvarchar" MaxLength="4000" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="StoreContainer">
           <EntitySet Name="TblAtelierType" EntityType="Self.TblAtelierType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblBooking" EntityType="Self.TblBooking" Schema="dbo" store:Type="Tables" />
@@ -175,6 +241,15 @@
           <EntitySet Name="TblEmpRole" EntityType="Self.TblEmpRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblPhotographyType" EntityType="Self.TblPhotographyType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblRoleType" EntityType="Self.TblRoleType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DocumentsView" EntityType="Self.DocumentsView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DocumentsView].[stream_id] AS [stream_id], 
+    [DocumentsView].[file_stream] AS [file_stream], 
+    [DocumentsView].[NAME] AS [NAME], 
+    [DocumentsView].[is_directory] AS [is_directory], 
+    [DocumentsView].[unc_path] AS [unc_path]
+    FROM [dbo].[DocumentsView] AS [DocumentsView]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_TblBooking_TblAtelierType" Association="Self.FK_TblBooking_TblAtelierType">
             <End Role="TblAtelierType" EntitySet="TblAtelierType" />
             <End Role="TblBooking" EntitySet="TblBooking" />
@@ -205,22 +280,44 @@
     <edmx:ConceptualModels>
       <Schema Namespace="PhotographyAutomationDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="PhotographyAutomationDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="TblCustomer" EntityType="PhotographyAutomationDBModel.TblCustomer" />
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(PhotographyAutomationDBModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(PhotographyAutomationDBModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="TblAtelierType" EntityType="PhotographyAutomationDBModel.TblAtelierType" />
+          <EntitySet Name="TblBooking" EntityType="PhotographyAutomationDBModel.TblBooking" />
           <EntitySet Name="TblBookingStatus" EntityType="PhotographyAutomationDBModel.TblBookingStatus" />
+          <EntitySet Name="TblCustomer" EntityType="PhotographyAutomationDBModel.TblCustomer" />
           <EntitySet Name="TblEmployeeType" EntityType="PhotographyAutomationDBModel.TblEmployeeType" />
           <EntitySet Name="TblEmpRole" EntityType="PhotographyAutomationDBModel.TblEmpRole" />
           <EntitySet Name="TblPhotographyType" EntityType="PhotographyAutomationDBModel.TblPhotographyType" />
           <EntitySet Name="TblRoleType" EntityType="PhotographyAutomationDBModel.TblRoleType" />
-          <AssociationSet Name="FK_tblEmp_Role_tblEmployeeType" Association="PhotographyAutomationDBModel.FK_tblEmp_Role_tblEmployeeType">
-            <End Role="TblEmployeeType" EntitySet="TblEmployeeType" />
-            <End Role="TblEmpRole" EntitySet="TblEmpRole" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblEmp_Role_tblRoleType" Association="PhotographyAutomationDBModel.FK_tblEmp_Role_tblRoleType">
-            <End Role="TblRoleType" EntitySet="TblRoleType" />
-            <End Role="TblEmpRole" EntitySet="TblEmpRole" />
-          </AssociationSet>
-          <EntitySet Name="TblAtelierType" EntityType="PhotographyAutomationDBModel.TblAtelierType" />
-          <EntitySet Name="TblBooking" EntityType="PhotographyAutomationDBModel.TblBooking" />
           <AssociationSet Name="FK_TblBooking_TblAtelierType" Association="PhotographyAutomationDBModel.FK_TblBooking_TblAtelierType">
             <End Role="TblAtelierType" EntitySet="TblAtelierType" />
             <End Role="TblBooking" EntitySet="TblBooking" />
@@ -237,7 +334,77 @@
             <End Role="TblCustomer" EntitySet="TblCustomer" />
             <End Role="TblBooking" EntitySet="TblBooking" />
           </AssociationSet>
+          <AssociationSet Name="FK_tblEmp_Role_tblEmployeeType" Association="PhotographyAutomationDBModel.FK_tblEmp_Role_tblEmployeeType">
+            <End Role="TblEmployeeType" EntitySet="TblEmployeeType" />
+            <End Role="TblEmpRole" EntitySet="TblEmpRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEmp_Role_tblRoleType" Association="PhotographyAutomationDBModel.FK_tblEmp_Role_tblRoleType">
+            <End Role="TblRoleType" EntitySet="TblRoleType" />
+            <End Role="TblEmpRole" EntitySet="TblEmpRole" />
+          </AssociationSet>
+          <EntitySet Name="DocumentsView" EntityType="PhotographyAutomationDBModel.DocumentsView" />
+          <FunctionImport Name="Documents_Add" ReturnType="Collection(PhotographyAutomationDBModel.Documents_Add_Result)">
+            <Parameter Name="filename" Mode="In" Type="String" />
+            <Parameter Name="filedata" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="Documents_Del">
+          <Parameter Name="docId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="DocumentViewByGUID" IsComposable="true" EntitySet="DocumentsView" ReturnType="Collection(PhotographyAutomationDBModel.DocumentsView)">
+            <Parameter Name="docId" Mode="In" Type="Guid" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="TblAtelierType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="Int32" Nullable="false" />
+          <Property Name="AtelierName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblBooking" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblAtelierType" FromRole="TblAtelierType" ToRole="TblBooking" />
+        </EntityType>
+        <EntityType Name="TblBooking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Time" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="PhotographerGender" Type="Byte" Nullable="false" />
+          <Property Name="PhotographyTypeId" Type="Int32" Nullable="false" />
+          <Property Name="AtelierTypeId" Type="Int32" Nullable="false" />
+          <Property Name="PersonCount" Type="Int32" Nullable="false" />
+          <Property Name="PrepaymentIsOk" Type="Byte" Nullable="false" />
+          <Property Name="Submitter" Type="Int32" Nullable="false" />
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TblAtelierType" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblAtelierType" FromRole="TblBooking" ToRole="TblAtelierType" />
+          <NavigationProperty Name="TblBookingStatus" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblBookingStatus" FromRole="TblBooking" ToRole="TblBookingStatus" />
+          <NavigationProperty Name="TblPhotographyType" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblPhotographyType" FromRole="TblBooking" ToRole="TblPhotographyType" />
+          <NavigationProperty Name="TblCustomer" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblUser" FromRole="TblBooking" ToRole="TblCustomer" />
+        </EntityType>
+        <EntityType Name="TblBookingStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="Int32" Nullable="false" />
+          <Property Name="StatusName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblBooking" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblBookingStatus" FromRole="TblBookingStatus" ToRole="TblBooking" />
+        </EntityType>
         <EntityType Name="TblCustomer">
           <Key>
             <PropertyRef Name="Id" />
@@ -261,15 +428,6 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="TblBooking" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblUser" FromRole="TblCustomer" ToRole="TblBooking" />
-          </EntityType>
-        <EntityType Name="TblBookingStatus">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Code" Type="Int32" Nullable="false" />
-          <Property Name="StatusName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="TblBooking" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblBookingStatus" FromRole="TblBookingStatus" ToRole="TblBooking" />
         </EntityType>
         <EntityType Name="TblEmployeeType">
           <Key>
@@ -307,61 +465,6 @@
           <Property Name="Code" Type="Int32" Nullable="false" />
           <Property Name="RoleName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TblEmpRole" Relationship="PhotographyAutomationDBModel.FK_tblEmp_Role_tblRoleType" FromRole="TblRoleType" ToRole="TblEmpRole" />
-        </EntityType>
-        <Association Name="FK_tblEmp_Role_tblEmployeeType">
-          <End Type="PhotographyAutomationDBModel.TblEmployeeType" Role="TblEmployeeType" Multiplicity="0..1" />
-          <End Type="PhotographyAutomationDBModel.TblEmpRole" Role="TblEmpRole" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblEmployeeType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TblEmpRole">
-              <PropertyRef Name="EmpTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblEmp_Role_tblRoleType">
-          <End Type="PhotographyAutomationDBModel.TblRoleType" Role="TblRoleType" Multiplicity="0..1" />
-          <End Type="PhotographyAutomationDBModel.TblEmpRole" Role="TblEmpRole" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblRoleType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TblEmpRole">
-              <PropertyRef Name="RoleTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="TblAtelierType">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Code" Type="Int32" Nullable="false" />
-          <Property Name="AtelierName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="TblBooking" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblAtelierType" FromRole="TblAtelierType" ToRole="TblBooking" />
-        </EntityType>
-        <EntityType Name="TblBooking">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CustomerId" Type="Int32" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Time" Type="Time" Nullable="false" Precision="0" />
-          <Property Name="PhotographerGender" Type="Byte" Nullable="false" />
-          <Property Name="PhotographyTypeId" Type="Int32" Nullable="false" />
-          <Property Name="AtelierTypeId" Type="Int32" Nullable="false" />
-          <Property Name="PersonCount" Type="Int32" Nullable="false" />
-          <Property Name="PrepaymentIsOk" Type="Byte" Nullable="false" />
-          <Property Name="Submitter" Type="Int32" Nullable="false" />
-          <Property Name="StatusId" Type="Int32" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="TblAtelierType" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblAtelierType" FromRole="TblBooking" ToRole="TblAtelierType" />
-          <NavigationProperty Name="TblBookingStatus" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblBookingStatus" FromRole="TblBooking" ToRole="TblBookingStatus" />
-          <NavigationProperty Name="TblPhotographyType" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblPhotographyType" FromRole="TblBooking" ToRole="TblPhotographyType" />
-          <NavigationProperty Name="TblCustomer" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblUser" FromRole="TblBooking" ToRole="TblCustomer" />
         </EntityType>
         <Association Name="FK_TblBooking_TblAtelierType">
           <End Type="PhotographyAutomationDBModel.TblAtelierType" Role="TblAtelierType" Multiplicity="1" />
@@ -411,12 +514,120 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblEmp_Role_tblEmployeeType">
+          <End Type="PhotographyAutomationDBModel.TblEmployeeType" Role="TblEmployeeType" Multiplicity="0..1" />
+          <End Type="PhotographyAutomationDBModel.TblEmpRole" Role="TblEmpRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblEmployeeType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblEmpRole">
+              <PropertyRef Name="EmpTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEmp_Role_tblRoleType">
+          <End Type="PhotographyAutomationDBModel.TblRoleType" Role="TblRoleType" Multiplicity="0..1" />
+          <End Type="PhotographyAutomationDBModel.TblEmpRole" Role="TblEmpRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblRoleType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblEmpRole">
+              <PropertyRef Name="RoleTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DocumentsView">
+          <Key>
+            <PropertyRef Name="stream_id" />
+            <PropertyRef Name="NAME" />
+            <PropertyRef Name="is_directory" />
+          </Key>
+          <Property Name="stream_id" Type="Guid" Nullable="false" />
+          <Property Name="file_stream" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="is_directory" Type="Boolean" Nullable="false" />
+          <Property Name="unc_path" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="Documents_Add_Result">
+          <Property Type="Guid" Name="stream_id" Nullable="false" />
+          <Property Type="String" Name="unc_path" Nullable="true" MaxLength="4000" />
+        </ComplexType>
+        <ComplexType Name="DocumentViewByGUID_Result">
+          <Property Type="Guid" Name="stream_id" Nullable="false" />
+          <Property Type="Binary" Name="file_stream" Nullable="true" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="255" />
+          <Property Type="Boolean" Name="is_directory" Nullable="false" />
+          <Property Type="String" Name="unc_path" Nullable="true" MaxLength="4000" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="StoreContainer" CdmEntityContainer="PhotographyAutomationDBEntities" >
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PhotographyAutomationDBModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PhotographyAutomationDBModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="TblAtelierType">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblAtelierType">
+              <MappingFragment StoreEntitySet="TblAtelierType">
+                <ScalarProperty Name="AtelierName" ColumnName="AtelierName" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblBooking">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblBooking">
+              <MappingFragment StoreEntitySet="TblBooking">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Submitter" ColumnName="Submitter" />
+                <ScalarProperty Name="PrepaymentIsOk" ColumnName="PrepaymentIsOk" />
+                <ScalarProperty Name="PersonCount" ColumnName="PersonCount" />
+                <ScalarProperty Name="AtelierTypeId" ColumnName="AtelierTypeId" />
+                <ScalarProperty Name="PhotographyTypeId" ColumnName="PhotographyTypeId" />
+                <ScalarProperty Name="PhotographerGender" ColumnName="PhotographerGender" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblBookingStatus">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblBookingStatus">
+              <MappingFragment StoreEntitySet="TblBookingStatus">
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TblCustomer">
             <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblCustomer">
               <MappingFragment StoreEntitySet="TblCustomer">
@@ -437,15 +648,6 @@
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TblBookingStatus">
-            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblBookingStatus">
-              <MappingFragment StoreEntitySet="TblBookingStatus">
-                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -486,34 +688,41 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TblAtelierType">
-            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblAtelierType">
-              <MappingFragment StoreEntitySet="TblAtelierType">
-                <ScalarProperty Name="AtelierName" ColumnName="AtelierName" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
+          <EntitySetMapping Name="DocumentsView">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.DocumentsView">
+              <MappingFragment StoreEntitySet="DocumentsView">
+                <ScalarProperty Name="unc_path" ColumnName="unc_path" />
+                <ScalarProperty Name="is_directory" ColumnName="is_directory" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="file_stream" ColumnName="file_stream" />
+                <ScalarProperty Name="stream_id" ColumnName="stream_id" />
               </MappingFragment>
             </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TblBooking">
-            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblBooking">
-              <MappingFragment StoreEntitySet="TblBooking">
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
-                <ScalarProperty Name="Submitter" ColumnName="Submitter" />
-                <ScalarProperty Name="PrepaymentIsOk" ColumnName="PrepaymentIsOk" />
-                <ScalarProperty Name="PersonCount" ColumnName="PersonCount" />
-                <ScalarProperty Name="AtelierTypeId" ColumnName="AtelierTypeId" />
-                <ScalarProperty Name="PhotographyTypeId" ColumnName="PhotographyTypeId" />
-                <ScalarProperty Name="PhotographerGender" ColumnName="PhotographerGender" />
-                <ScalarProperty Name="Time" ColumnName="Time" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.DocumentsView">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="Store.Documents_Add" >
+                  <ScalarProperty Name="file_stream" ParameterName="filedata" />
+                  <ScalarProperty Name="NAME" ParameterName="filename" />
+                  <ResultBinding Name="stream_id" ColumnName="stream_id" />
+                  <ResultBinding Name="unc_path" ColumnName="unc_path" />
+                </InsertFunction>
+                <DeleteFunction FunctionName="Store.Documents_Del" >
+                  <ScalarProperty Name="stream_id" ParameterName="docId" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Documents_Add" FunctionName="Store.Documents_Add">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PhotographyAutomationDBModel.Documents_Add_Result">
+                <ScalarProperty Name="stream_id" ColumnName="stream_id" />
+                <ScalarProperty Name="unc_path" ColumnName="unc_path" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Documents_Del" FunctionName="Store.Documents_Del" />
+          <FunctionImportMapping FunctionImportName="DocumentViewByGUID" FunctionName="Store.DocumentViewByGUID">
+          </FunctionImportMapping>
         </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
