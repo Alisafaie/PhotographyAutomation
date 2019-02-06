@@ -1,4 +1,8 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Linq;
+using System.Windows.Forms;
+using PhotographyAutomation.DateLayer.Context;
+using PhotographyAutomation.ViewModels.Booking;
 
 namespace PhotographyAutomation.App.Forms.Documents
 {
@@ -11,7 +15,12 @@ namespace PhotographyAutomation.App.Forms.Documents
 
         private void btnGetDocumentInfo_Click(object sender, System.EventArgs e)
         {
+            using (var db = new UnitOfWork())
+            {
+                Guid guid=new Guid("1E305159-242A-E911-AACE-742F68C6E6E6");
 
+                var document=db.DocumentRepository.GetDocumentByGuid(guid);
+            }
         }
     }
 }

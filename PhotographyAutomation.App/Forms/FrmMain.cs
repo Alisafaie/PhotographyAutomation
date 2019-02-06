@@ -69,3 +69,4 @@ namespace PhotographyAutomation.App.Forms
             f.ShowDialog();
         }
     }
+}
