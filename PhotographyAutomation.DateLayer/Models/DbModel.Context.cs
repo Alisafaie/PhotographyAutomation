@@ -163,13 +163,13 @@ namespace PhotographyAutomation.DateLayer.Models
         }
     
         [DbFunction("PhotographyAutomationDBEntities", "DocumentViewByGUID")]
-        public virtual IQueryable<DocumentsView> DocumentViewByGUID(Nullable<System.Guid> docId)
+        public virtual IQueryable<DocumentViewByGUID_Result> DocumentViewByGUID(Nullable<System.Guid> docId)
         {
             var docIdParameter = docId.HasValue ?
                 new ObjectParameter("docId", docId) :
                 new ObjectParameter("docId", typeof(System.Guid));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<DocumentsView>("[PhotographyAutomationDBEntities].[DocumentViewByGUID](@docId)", docIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<DocumentViewByGUID_Result>("[PhotographyAutomationDBEntities].[DocumentViewByGUID](@docId)", docIdParameter);
         }
     }
 }

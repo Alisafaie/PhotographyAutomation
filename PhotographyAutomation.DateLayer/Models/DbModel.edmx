@@ -350,7 +350,7 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.DocumentsView' does no
           <FunctionImport Name="Documents_Del">
           <Parameter Name="docId" Mode="In" Type="Guid" />
           </FunctionImport>
-          <FunctionImport Name="DocumentViewByGUID" IsComposable="true" EntitySet="DocumentsView" ReturnType="Collection(PhotographyAutomationDBModel.DocumentsView)">
+          <FunctionImport Name="DocumentViewByGUID" IsComposable="true" ReturnType="Collection(PhotographyAutomationDBModel.DocumentViewByGUID_Result)">
             <Parameter Name="docId" Mode="In" Type="Guid" />
           </FunctionImport>
         </EntityContainer>
@@ -722,6 +722,15 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.DocumentsView' does no
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Documents_Del" FunctionName="Store.Documents_Del" />
           <FunctionImportMapping FunctionImportName="DocumentViewByGUID" FunctionName="Store.DocumentViewByGUID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PhotographyAutomationDBModel.DocumentViewByGUID_Result">
+                <ScalarProperty Name="stream_id" ColumnName="stream_id" />
+                <ScalarProperty Name="file_stream" ColumnName="file_stream" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="is_directory" ColumnName="is_directory" />
+                <ScalarProperty Name="unc_path" ColumnName="unc_path" />
+              </ComplexTypeMapping>
+            </ResultMapping>
           </FunctionImportMapping>
         </EntityContainerMapping>
 </Mapping></edmx:Mappings>
