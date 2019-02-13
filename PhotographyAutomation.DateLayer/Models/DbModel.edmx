@@ -5,6 +5,18 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="FileDescriptions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="255" />
+          <Property Name="FileId" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="ContentType" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="TblAtelierType">
           <Key>
             <PropertyRef Name="Id" />
@@ -99,14 +111,52 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.DocumentsView' does no
         <EntityType Name="DocumentsView">
           <Key>
             <PropertyRef Name="stream_id" />
-            <PropertyRef Name="NAME" />
-            <PropertyRef Name="is_directory" />
+            
+            
           </Key>
           <Property Name="stream_id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="file_stream" Type="varbinary(max)" />
           <Property Name="NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="is_directory" Type="bit" Nullable="false" />
           <Property Name="unc_path" Type="nvarchar" MaxLength="4000" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetAllDocumentsAndFolders' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_GetAllDocumentsAndFolders">
+          <Key>
+            <PropertyRef Name="StreamId" />
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </Key>
+          <Property Name="StreamId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FileStream" Type="varbinary(max)" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="PathLocator" Type="varchar" MaxLength="4000" />
+          <Property Name="ParentPathLocator" Type="varchar" MaxLength="4000" />
+          <Property Name="UncPath" Type="nvarchar" MaxLength="4000" />
+          <Property Name="RelativePath" Type="nvarchar(max)" />
+          <Property Name="FullUncPath" Type="nvarchar(max)" />
+          <Property Name="Level" Type="smallint" />
+          <Property Name="FileType" Type="nvarchar" MaxLength="255" />
+          <Property Name="FileSize" Type="bigint" />
+          <Property Name="CreationTime" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="LastWriteTime" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="LastAccessTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="IsDirectory" Type="bit" Nullable="false" />
+          <Property Name="IsOffline" Type="bit" Nullable="false" />
+          <Property Name="IsHidden" Type="bit" Nullable="false" />
+          <Property Name="IsReadonly" Type="bit" Nullable="false" />
+          <Property Name="IsArchive" Type="bit" Nullable="false" />
+          <Property Name="IsSystem" Type="bit" Nullable="false" />
+          <Property Name="IsTemporary" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_TblBooking_TblAtelierType">
           <End Role="TblAtelierType" Type="Self.TblAtelierType" Multiplicity="1" />
@@ -180,6 +230,19 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.DocumentsView' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="AddFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="stream_id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="file_stream" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="filename" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="CreateFileTableFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="parent_name" Type="nvarchar" Mode="In" />
+          <Parameter Name="parent_level" Type="tinyint" Mode="In" />
+        </Function>
+        <Function Name="DeleteFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="stream_id" Type="uniqueidentifier" Mode="In" />
+        </Function>
         <Function Name="Documents_Add" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="filename" Type="nvarchar" Mode="In" />
           <Parameter Name="filedata" Type="varbinary(max)" Mode="In" />
@@ -202,6 +265,9 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.DocumentsView' does no
           </ReturnType>
         </Function>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="GetFileByStreamId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="stream_id" Type="uniqueidentifier" Mode="In" />
+        </Function>
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -226,6 +292,9 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.DocumentsView' does no
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="sp_NewSequentialId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="uniqueidentifier" Mode="InOut" />
+        </Function>
         <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -233,6 +302,7 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.DocumentsView' does no
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="StoreContainer">
+          <EntitySet Name="FileDescriptions" EntityType="Self.FileDescriptions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblAtelierType" EntityType="Self.TblAtelierType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblBooking" EntityType="Self.TblBooking" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblBookingStatus" EntityType="Self.TblBookingStatus" Schema="dbo" store:Type="Tables" />
@@ -249,6 +319,31 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.DocumentsView' does no
     [DocumentsView].[is_directory] AS [is_directory], 
     [DocumentsView].[unc_path] AS [unc_path]
     FROM [dbo].[DocumentsView] AS [DocumentsView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_GetAllDocumentsAndFolders" EntityType="Self.View_GetAllDocumentsAndFolders" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_GetAllDocumentsAndFolders].[StreamId] AS [StreamId], 
+    [View_GetAllDocumentsAndFolders].[FileStream] AS [FileStream], 
+    [View_GetAllDocumentsAndFolders].[FileName] AS [FileName], 
+    [View_GetAllDocumentsAndFolders].[PathLocator] AS [PathLocator], 
+    [View_GetAllDocumentsAndFolders].[ParentPathLocator] AS [ParentPathLocator], 
+    [View_GetAllDocumentsAndFolders].[UncPath] AS [UncPath], 
+    [View_GetAllDocumentsAndFolders].[RelativePath] AS [RelativePath], 
+    [View_GetAllDocumentsAndFolders].[FullUncPath] AS [FullUncPath], 
+    [View_GetAllDocumentsAndFolders].[Level] AS [Level], 
+    [View_GetAllDocumentsAndFolders].[FileType] AS [FileType], 
+    [View_GetAllDocumentsAndFolders].[FileSize] AS [FileSize], 
+    [View_GetAllDocumentsAndFolders].[CreationTime] AS [CreationTime], 
+    [View_GetAllDocumentsAndFolders].[LastWriteTime] AS [LastWriteTime], 
+    [View_GetAllDocumentsAndFolders].[LastAccessTime] AS [LastAccessTime], 
+    [View_GetAllDocumentsAndFolders].[IsDirectory] AS [IsDirectory], 
+    [View_GetAllDocumentsAndFolders].[IsOffline] AS [IsOffline], 
+    [View_GetAllDocumentsAndFolders].[IsHidden] AS [IsHidden], 
+    [View_GetAllDocumentsAndFolders].[IsReadonly] AS [IsReadonly], 
+    [View_GetAllDocumentsAndFolders].[IsArchive] AS [IsArchive], 
+    [View_GetAllDocumentsAndFolders].[IsSystem] AS [IsSystem], 
+    [View_GetAllDocumentsAndFolders].[IsTemporary] AS [IsTemporary]
+    FROM [dbo].[View_GetAllDocumentsAndFolders] AS [View_GetAllDocumentsAndFolders]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_TblBooking_TblAtelierType" Association="Self.FK_TblBooking_TblAtelierType">
             <End Role="TblAtelierType" EntitySet="TblAtelierType" />
@@ -342,7 +437,6 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.DocumentsView' does no
             <End Role="TblRoleType" EntitySet="TblRoleType" />
             <End Role="TblEmpRole" EntitySet="TblEmpRole" />
           </AssociationSet>
-          <EntitySet Name="DocumentsView" EntityType="PhotographyAutomationDBModel.DocumentsView" />
           <FunctionImport Name="Documents_Add" ReturnType="Collection(PhotographyAutomationDBModel.Documents_Add_Result)">
             <Parameter Name="filename" Mode="In" Type="String" />
             <Parameter Name="filedata" Mode="In" Type="Binary" />
@@ -351,7 +445,29 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.DocumentsView' does no
           <Parameter Name="docId" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="DocumentViewByGUID" IsComposable="true" ReturnType="Collection(PhotographyAutomationDBModel.DocumentViewByGUID_Result)">
-            <Parameter Name="docId" Mode="In" Type="Guid" />
+          <Parameter Name="docId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="CreateFileTableFile">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="parent_name" Mode="In" Type="String" />
+            <Parameter Name="parent_level" Mode="In" Type="Byte" />
+          </FunctionImport>
+          <FunctionImport Name="sp_NewSequentialId">
+          <Parameter Name="Id" Mode="InOut" Type="Guid" />
+          </FunctionImport>
+          <EntitySet Name="View_GetAllDocumentsAndFolders" EntityType="PhotographyAutomationDBModel.View_GetAllDocumentsAndFolders" />
+          <EntitySet Name="DocumentsView" EntityType="PhotographyAutomationDBModel.DocumentsView" />
+          <EntitySet Name="FileDescriptions" EntityType="PhotographyAutomationDBModel.FileDescriptions" />
+          <FunctionImport Name="AddFile">
+            <Parameter Name="stream_id" Mode="In" Type="Guid" />
+            <Parameter Name="file_stream" Mode="In" Type="Binary" />
+            <Parameter Name="filename" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteFile">
+            <Parameter Name="stream_id" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="GetFileByStreamId" ReturnType="Collection(PhotographyAutomationDBModel.GetFileByStreamId_Result)">
+            <Parameter Name="stream_id" Mode="In" Type="Guid" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -538,18 +654,6 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.DocumentsView' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="DocumentsView">
-          <Key>
-            <PropertyRef Name="stream_id" />
-            <PropertyRef Name="NAME" />
-            <PropertyRef Name="is_directory" />
-          </Key>
-          <Property Name="stream_id" Type="Guid" Nullable="false" />
-          <Property Name="file_stream" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="NAME" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="is_directory" Type="Boolean" Nullable="false" />
-          <Property Name="unc_path" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-        </EntityType>
         <ComplexType Name="Documents_Add_Result">
           <Property Type="Guid" Name="stream_id" Nullable="false" />
           <Property Type="String" Name="unc_path" Nullable="true" MaxLength="4000" />
@@ -560,6 +664,58 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.DocumentsView' does no
           <Property Type="String" Name="NAME" Nullable="false" MaxLength="255" />
           <Property Type="Boolean" Name="is_directory" Nullable="false" />
           <Property Type="String" Name="unc_path" Nullable="true" MaxLength="4000" />
+        </ComplexType>
+        <EntityType Name="View_GetAllDocumentsAndFolders">
+          <Key>
+            <PropertyRef Name="StreamId" />
+          </Key>
+          <Property Name="StreamId" Type="Guid" Nullable="false" />
+          <Property Name="FileStream" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PathLocator" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="ParentPathLocator" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="UncPath" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="RelativePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FullUncPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Level" Type="Int16" />
+          <Property Name="FileType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FileSize" Type="Int64" />
+          <Property Name="CreationTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="LastWriteTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="LastAccessTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="IsDirectory" Type="Boolean" Nullable="false" />
+          <Property Name="IsOffline" Type="Boolean" Nullable="false" />
+          <Property Name="IsHidden" Type="Boolean" Nullable="false" />
+          <Property Name="IsReadonly" Type="Boolean" Nullable="false" />
+          <Property Name="IsArchive" Type="Boolean" Nullable="false" />
+          <Property Name="IsSystem" Type="Boolean" Nullable="false" />
+          <Property Name="IsTemporary" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DocumentsView">
+          <Key>
+            <PropertyRef Name="stream_id" />
+          </Key>
+          <Property Name="stream_id" Type="Guid" Nullable="false" />
+          <Property Name="file_stream" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="is_directory" Type="Boolean" Nullable="false" />
+          <Property Name="unc_path" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FileDescriptions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FileId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ContentType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="GetFileByStreamId_Result">
+          <Property Type="Guid" Name="stream_id" Nullable="false" />
+          <Property Type="Binary" Name="file_stream" Nullable="true" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -688,30 +844,6 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.DocumentsView' does no
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DocumentsView">
-            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.DocumentsView">
-              <MappingFragment StoreEntitySet="DocumentsView">
-                <ScalarProperty Name="unc_path" ColumnName="unc_path" />
-                <ScalarProperty Name="is_directory" ColumnName="is_directory" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="file_stream" ColumnName="file_stream" />
-                <ScalarProperty Name="stream_id" ColumnName="stream_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.DocumentsView">
-              <ModificationFunctionMapping>
-                <InsertFunction FunctionName="Store.Documents_Add" >
-                  <ScalarProperty Name="file_stream" ParameterName="filedata" />
-                  <ScalarProperty Name="NAME" ParameterName="filename" />
-                  <ResultBinding Name="stream_id" ColumnName="stream_id" />
-                  <ResultBinding Name="unc_path" ColumnName="unc_path" />
-                </InsertFunction>
-                <DeleteFunction FunctionName="Store.Documents_Del" >
-                  <ScalarProperty Name="stream_id" ParameterName="docId" />
-                </DeleteFunction>
-              </ModificationFunctionMapping>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="Documents_Add" FunctionName="Store.Documents_Add">
             <ResultMapping>
               <ComplexTypeMapping TypeName="PhotographyAutomationDBModel.Documents_Add_Result">
@@ -729,6 +861,69 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.DocumentsView' does no
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
                 <ScalarProperty Name="is_directory" ColumnName="is_directory" />
                 <ScalarProperty Name="unc_path" ColumnName="unc_path" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CreateFileTableFile" FunctionName="Store.CreateFileTableFile" />
+          <FunctionImportMapping FunctionImportName="sp_NewSequentialId" FunctionName="Store.sp_NewSequentialId" />
+          <EntitySetMapping Name="View_GetAllDocumentsAndFolders">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.View_GetAllDocumentsAndFolders">
+              <MappingFragment StoreEntitySet="View_GetAllDocumentsAndFolders">
+                <ScalarProperty Name="IsTemporary" ColumnName="IsTemporary" />
+                <ScalarProperty Name="IsSystem" ColumnName="IsSystem" />
+                <ScalarProperty Name="IsArchive" ColumnName="IsArchive" />
+                <ScalarProperty Name="IsReadonly" ColumnName="IsReadonly" />
+                <ScalarProperty Name="IsHidden" ColumnName="IsHidden" />
+                <ScalarProperty Name="IsOffline" ColumnName="IsOffline" />
+                <ScalarProperty Name="IsDirectory" ColumnName="IsDirectory" />
+                <ScalarProperty Name="LastAccessTime" ColumnName="LastAccessTime" />
+                <ScalarProperty Name="LastWriteTime" ColumnName="LastWriteTime" />
+                <ScalarProperty Name="CreationTime" ColumnName="CreationTime" />
+                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="FullUncPath" ColumnName="FullUncPath" />
+                <ScalarProperty Name="RelativePath" ColumnName="RelativePath" />
+                <ScalarProperty Name="UncPath" ColumnName="UncPath" />
+                <ScalarProperty Name="ParentPathLocator" ColumnName="ParentPathLocator" />
+                <ScalarProperty Name="PathLocator" ColumnName="PathLocator" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FileStream" ColumnName="FileStream" />
+                <ScalarProperty Name="StreamId" ColumnName="StreamId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocumentsView">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.DocumentsView">
+              <MappingFragment StoreEntitySet="DocumentsView">
+                <ScalarProperty Name="unc_path" ColumnName="unc_path" />
+                <ScalarProperty Name="is_directory" ColumnName="is_directory" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="file_stream" ColumnName="file_stream" />
+                <ScalarProperty Name="stream_id" ColumnName="stream_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FileDescriptions">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.FileDescriptions">
+              <MappingFragment StoreEntitySet="FileDescriptions">
+                <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+                <ScalarProperty Name="UpdatedTimestamp" ColumnName="UpdatedTimestamp" />
+                <ScalarProperty Name="CreatedTimestamp" ColumnName="CreatedTimestamp" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FileId" ColumnName="FileId" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AddFile" FunctionName="Store.AddFile" />
+          <FunctionImportMapping FunctionImportName="DeleteFile" FunctionName="Store.DeleteFile" />
+          <FunctionImportMapping FunctionImportName="GetFileByStreamId" FunctionName="Store.GetFileByStreamId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PhotographyAutomationDBModel.GetFileByStreamId_Result">
+                <ScalarProperty Name="stream_id" ColumnName="stream_id" />
+                <ScalarProperty Name="file_stream" ColumnName="file_stream" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

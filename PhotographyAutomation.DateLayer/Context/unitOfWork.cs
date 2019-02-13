@@ -25,17 +25,17 @@ namespace PhotographyAutomation.DateLayer.Context
             }
         }
 
-        
-        
+
+
         private IBookingRepository _bookingRepository;
 
         public IBookingRepository BookingRepository
         {
             get
             {
-                if (_bookingRepository==null)
+                if (_bookingRepository == null)
                 {
-                    _bookingRepository=new BookingRepository(_db);
+                    _bookingRepository = new BookingRepository(_db);
                 }
 
                 return _bookingRepository;
@@ -50,7 +50,7 @@ namespace PhotographyAutomation.DateLayer.Context
             {
                 if (_documentRepository == null)
                 {
-                    _documentRepository=new DocumentRepository(_db);
+                    _documentRepository = new DocumentRepository(_db);
                 }
 
                 return _documentRepository;
@@ -58,8 +58,8 @@ namespace PhotographyAutomation.DateLayer.Context
         }
 
 
-        
-        
+
+
         private GenericRepository<TblCustomer> _userGenericRepository;
 
         public GenericRepository<TblCustomer> UserGenericRepository
@@ -102,7 +102,7 @@ namespace PhotographyAutomation.DateLayer.Context
             {
                 if (_documentsGenericRepository == null)
                 {
-                    _documentsGenericRepository=new GenericRepository<DocumentsView>(_db);
+                    _documentsGenericRepository = new GenericRepository<DocumentsView>(_db);
                 }
 
                 return _documentsGenericRepository;
@@ -186,7 +186,7 @@ namespace PhotographyAutomation.DateLayer.Context
             }
         }
 
-        
+
 
         public void Dispose()
         {

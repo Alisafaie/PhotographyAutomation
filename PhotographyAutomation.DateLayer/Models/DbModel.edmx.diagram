@@ -19,7 +19,9 @@
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblBooking_TblUser" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_tblEmp_Role_tblEmployeeType" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_tblEmp_Role_tblRoleType" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.DocumentsView" Width="1.5" PointX="10.375" PointY="1" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.View_GetAllDocumentsAndFolders" Width="1.5" PointX="3.375" PointY="6.75" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.DocumentsView" Width="1.5" PointX="5.375" PointY="6.75" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.FileDescriptions" Width="1.5" PointX="7.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

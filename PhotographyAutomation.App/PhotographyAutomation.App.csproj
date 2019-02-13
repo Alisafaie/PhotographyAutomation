@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -40,37 +41,21 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="ExtensionDate">
-      <HintPath>..\Components\ExtensionDate.dll</HintPath>
-    </Reference>
-    <Reference Include="GlassButton">
-      <HintPath>..\Components\GlassButton.dll</HintPath>
-    </Reference>
     <Reference Include="PersianDate">
       <HintPath>..\..\Automation\Automation\PersianDate\PersianDate.dll</HintPath>
     </Reference>
-    <Reference Include="PopupControl">
+    <Reference Include="PopupControl, Version=1.4.0.968, Culture=neutral, PublicKeyToken=04c10344d6495b18, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\PopupControl.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
-    <Reference Include="System.Xml" />
     <Reference Include="Telerik.WinControls, Version=2018.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
-    <Reference Include="Telerik.WinControls.GridView, Version=2018.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
-    <Reference Include="Telerik.WinControls.RichTextEditor, Version=2018.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.Themes.Office2010Silver, Version=2018.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.UI, Version=2018.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
-    <Reference Include="TelerikCommon, Version=2018.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
-    <Reference Include="TxtProNetV3">
-      <HintPath>..\Components\TxtProNetV3.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Forms\Booking\FrmAddEditBooking.cs">
@@ -162,24 +147,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PhotographyAutomation.Business\PhotographyAutomation.Business.csproj">
-      <Project>{40d8ed83-8f3c-4037-ab7c-ad9e92079cbf}</Project>
-      <Name>PhotographyAutomation.Business</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PhotographyAutomation.DateLayer\PhotographyAutomation.DateLayer.csproj">
-      <Project>{15c4c48f-e04a-4e31-8622-fb8b304e888d}</Project>
-      <Name>PhotographyAutomation.DateLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PhotographyAutomation.Utilities\PhotographyAutomation.Utilities.csproj">
-      <Project>{fe58899a-20e0-4523-9a3b-b3757594f8cf}</Project>
-      <Name>PhotographyAutomation.Utilities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PhotographyAutomation.ViewModels\PhotographyAutomation.ViewModels.csproj">
-      <Project>{6a3f14d0-c6d3-4b55-a7eb-5f8af2eaf6f0}</Project>
-      <Name>PhotographyAutomation.ViewModels</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\1371476368_Synchronize.png" />
@@ -612,6 +579,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\message.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PhotographyAutomation.Business\PhotographyAutomation.Business.csproj">
+      <Project>{40d8ed83-8f3c-4037-ab7c-ad9e92079cbf}</Project>
+      <Name>PhotographyAutomation.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PhotographyAutomation.DateLayer\PhotographyAutomation.DateLayer.csproj">
+      <Project>{15c4c48f-e04a-4e31-8622-fb8b304e888d}</Project>
+      <Name>PhotographyAutomation.DateLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PhotographyAutomation.Utilities\PhotographyAutomation.Utilities.csproj">
+      <Project>{fe58899a-20e0-4523-9a3b-b3757594f8cf}</Project>
+      <Name>PhotographyAutomation.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PhotographyAutomation.ViewModels\PhotographyAutomation.ViewModels.csproj">
+      <Project>{6a3f14d0-c6d3-4b55-a7eb-5f8af2eaf6f0}</Project>
+      <Name>PhotographyAutomation.ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
