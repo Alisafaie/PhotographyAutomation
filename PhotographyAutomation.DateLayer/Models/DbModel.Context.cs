@@ -35,146 +35,45 @@ namespace PhotographyAutomation.DateLayer.Models
         public virtual DbSet<TblEmpRole> TblEmpRole { get; set; }
         public virtual DbSet<TblPhotographyType> TblPhotographyType { get; set; }
         public virtual DbSet<TblRoleType> TblRoleType { get; set; }
-        public virtual DbSet<View_GetAllDocumentsAndFolders> View_GetAllDocumentsAndFolders { get; set; }
-        public virtual DbSet<DocumentsView> DocumentsView { get; set; }
-        public virtual DbSet<FileDescriptions> FileDescriptions { get; set; }
+        public virtual DbSet<TblDocumentPhotos> TblDocumentPhotos { get; set; }
+        public virtual DbSet<TblDocuments> TblDocuments { get; set; }
+        public virtual DbSet<View_GetAllPhotos> View_GetAllPhotos { get; set; }
     
-        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        public virtual int usp_CreateCustomerFinancialDirectory(string customerFinancialNumber, string monthNumber, Nullable<byte> parent_level)
         {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
+            var customerFinancialNumberParameter = customerFinancialNumber != null ?
+                new ObjectParameter("customerFinancialNumber", customerFinancialNumber) :
+                new ObjectParameter("customerFinancialNumber", typeof(string));
     
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
+            var monthNumberParameter = monthNumber != null ?
+                new ObjectParameter("monthNumber", monthNumber) :
+                new ObjectParameter("monthNumber", typeof(string));
     
-            var versionParameter = version.HasValue ?
-                new ObjectParameter("version", version) :
-                new ObjectParameter("version", typeof(int));
+            var parent_levelParameter = parent_level.HasValue ?
+                new ObjectParameter("parent_level", parent_level) :
+                new ObjectParameter("parent_level", typeof(byte));
     
-            var definitionParameter = definition != null ?
-                new ObjectParameter("definition", definition) :
-                new ObjectParameter("definition", typeof(byte[]));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_CreateCustomerFinancialDirectory", customerFinancialNumberParameter, monthNumberParameter, parent_levelParameter);
         }
     
-        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        public virtual int usp_CreateMonthFolder(string monthName, string year, Nullable<byte> parent_level)
         {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
+            var monthNameParameter = monthName != null ?
+                new ObjectParameter("monthName", monthName) :
+                new ObjectParameter("monthName", typeof(string));
     
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
+            var yearParameter = year != null ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(string));
     
-            var versionParameter = version.HasValue ?
-                new ObjectParameter("version", version) :
-                new ObjectParameter("version", typeof(int));
+            var parent_levelParameter = parent_level.HasValue ?
+                new ObjectParameter("parent_level", parent_level) :
+                new ObjectParameter("parent_level", typeof(byte));
     
-            var definitionParameter = definition != null ?
-                new ObjectParameter("definition", definition) :
-                new ObjectParameter("definition", typeof(byte[]));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_CreateMonthFolder", monthNameParameter, yearParameter, parent_levelParameter);
         }
     
-        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var new_diagramnameParameter = new_diagramname != null ?
-                new ObjectParameter("new_diagramname", new_diagramname) :
-                new ObjectParameter("new_diagramname", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
-        }
-    
-        public virtual int sp_upgraddiagrams()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
-        }
-    
-        public virtual ObjectResult<Documents_Add_Result> Documents_Add(string filename, byte[] filedata)
-        {
-            var filenameParameter = filename != null ?
-                new ObjectParameter("filename", filename) :
-                new ObjectParameter("filename", typeof(string));
-    
-            var filedataParameter = filedata != null ?
-                new ObjectParameter("filedata", filedata) :
-                new ObjectParameter("filedata", typeof(byte[]));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Documents_Add_Result>("Documents_Add", filenameParameter, filedataParameter);
-        }
-    
-        public virtual int Documents_Del(Nullable<System.Guid> docId)
-        {
-            var docIdParameter = docId.HasValue ?
-                new ObjectParameter("docId", docId) :
-                new ObjectParameter("docId", typeof(System.Guid));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Documents_Del", docIdParameter);
-        }
-    
-        [DbFunction("PhotographyAutomationDBEntities", "DocumentViewByGUID")]
-        public virtual IQueryable<DocumentViewByGUID_Result> DocumentViewByGUID(Nullable<System.Guid> docId)
-        {
-            var docIdParameter = docId.HasValue ?
-                new ObjectParameter("docId", docId) :
-                new ObjectParameter("docId", typeof(System.Guid));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<DocumentViewByGUID_Result>("[PhotographyAutomationDBEntities].[DocumentViewByGUID](@docId)", docIdParameter);
-        }
-    
-        public virtual int CreateFileTableFile(string name, string parent_name, Nullable<byte> parent_level)
+        public virtual int usp_CreateYearFolder(string name, string parent_name, Nullable<byte> parent_level)
         {
             var nameParameter = name != null ?
                 new ObjectParameter("name", name) :
@@ -188,47 +87,7 @@ namespace PhotographyAutomation.DateLayer.Models
                 new ObjectParameter("parent_level", parent_level) :
                 new ObjectParameter("parent_level", typeof(byte));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CreateFileTableFile", nameParameter, parent_nameParameter, parent_levelParameter);
-        }
-    
-        public virtual int sp_NewSequentialId(ObjectParameter id)
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_NewSequentialId", id);
-        }
-    
-        public virtual int AddFile(Nullable<System.Guid> stream_id, byte[] file_stream, string filename)
-        {
-            var stream_idParameter = stream_id.HasValue ?
-                new ObjectParameter("stream_id", stream_id) :
-                new ObjectParameter("stream_id", typeof(System.Guid));
-    
-            var file_streamParameter = file_stream != null ?
-                new ObjectParameter("file_stream", file_stream) :
-                new ObjectParameter("file_stream", typeof(byte[]));
-    
-            var filenameParameter = filename != null ?
-                new ObjectParameter("filename", filename) :
-                new ObjectParameter("filename", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddFile", stream_idParameter, file_streamParameter, filenameParameter);
-        }
-    
-        public virtual int DeleteFile(Nullable<System.Guid> stream_id)
-        {
-            var stream_idParameter = stream_id.HasValue ?
-                new ObjectParameter("stream_id", stream_id) :
-                new ObjectParameter("stream_id", typeof(System.Guid));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteFile", stream_idParameter);
-        }
-    
-        public virtual ObjectResult<GetFileByStreamId_Result> GetFileByStreamId(Nullable<System.Guid> stream_id)
-        {
-            var stream_idParameter = stream_id.HasValue ?
-                new ObjectParameter("stream_id", stream_id) :
-                new ObjectParameter("stream_id", typeof(System.Guid));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetFileByStreamId_Result>("GetFileByStreamId", stream_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_CreateYearFolder", nameParameter, parent_nameParameter, parent_levelParameter);
         }
     }
 }

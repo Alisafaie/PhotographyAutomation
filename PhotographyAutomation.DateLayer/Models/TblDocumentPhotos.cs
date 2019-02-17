@@ -10,10 +10,16 @@
 namespace PhotographyAutomation.DateLayer.Models
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class sp_helpdiagramdefinition_Result
+    public partial class TblDocumentPhotos
     {
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int Id { get; set; }
+        public int DocumentId { get; set; }
+        public System.Guid StreamId { get; set; }
+        public int CustomerId { get; set; }
+        public bool IsSelected { get; set; }
+    
+        public virtual TblDocuments TblDocuments { get; set; }
     }
 }

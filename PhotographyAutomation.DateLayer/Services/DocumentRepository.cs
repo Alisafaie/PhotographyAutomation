@@ -22,32 +22,32 @@ namespace PhotographyAutomation.DateLayer.Services
         }
 
         //[EdmFunction("DbModel.Store","DocumentViewByGUID")]
-        public DocumentInfoViewModel GetDocumentByGuid(Guid documentGuid)
+        public DocumentInfoViewModel GetPhotoByGuid(Guid documentGuid)
         {
-
-            try
-            {
-                var returnResult = _db.DocumentViewByGUID(documentGuid).SingleOrDefault();
-                if (returnResult == null) return null;
-                var vm = new DocumentInfoViewModel
-                {
-                    FileName = returnResult.NAME,
-                    FileStream = returnResult.file_stream,
-                    IsDirectory = returnResult.is_directory,
-                    StreamId = returnResult.stream_id,
-                    UncPath = returnResult.unc_path
-                };
-                return vm;
-            }
-            catch (Exception exception)
-            {
-                Debug.WriteLine(exception.Message);
-                Debug.WriteLine(exception.Data);
-                Debug.WriteLine(exception.InnerException);
-                Debug.WriteLine(exception.Source);
-                Debug.WriteLine(exception.StackTrace);
-                return null;
-            }
+            //try
+            //{
+            //    var returnResult = _db.(documentGuid).SingleOrDefault();
+            //    if (returnResult == null) return null;
+            //    var vm = new DocumentInfoViewModel
+            //    {
+            //        FileName = returnResult.NAME,
+            //        FileStream = returnResult.file_stream,
+            //        IsDirectory = returnResult.is_directory,
+            //        StreamId = returnResult.stream_id,
+            //        UncPath = returnResult.unc_path
+            //    };
+            //    return vm;
+            //}
+            //catch (Exception exception)
+            //{
+            //    Debug.WriteLine(exception.Message);
+            //    Debug.WriteLine(exception.Data);
+            //    Debug.WriteLine(exception.InnerException);
+            //    Debug.WriteLine(exception.Source);
+            //    Debug.WriteLine(exception.StackTrace);
+            //    return null;
+            //}
+            throw new NotImplementedException();
         }
 
         public List<DocumentInfoViewModel> GetDocuments()

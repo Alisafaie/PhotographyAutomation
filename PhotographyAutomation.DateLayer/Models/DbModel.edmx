@@ -5,18 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="FileDescriptions">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FileName" Type="nvarchar" MaxLength="255" />
-          <Property Name="FileId" Type="nvarchar" MaxLength="50" />
-          <Property Name="Description" Type="nvarchar" MaxLength="500" />
-          <Property Name="CreatedTimestamp" Type="datetime" Nullable="false" />
-          <Property Name="UpdatedTimestamp" Type="datetime" Nullable="false" />
-          <Property Name="ContentType" Type="nvarchar(max)" />
-        </EntityType>
         <EntityType Name="TblAtelierType">
           <Key>
             <PropertyRef Name="Id" />
@@ -74,6 +62,34 @@
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="ModifiedDate" Type="datetime" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PhotographyAutomationDB.dbo.TblCustomerDocuments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TblCustomerDocuments">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+            <PropertyRef Name="DocumentId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="DocumentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblDocumentPhotos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="DocumentId" Type="int" Nullable="false" />
+          <Property Name="StreamId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="IsSelected" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblDocuments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="DocumentNumber" Type="int" />
+          <Property Name="FinacialDescription" Type="nvarchar" MaxLength="500" />
+        </EntityType>
         <EntityType Name="TblEmployeeType">
           <Key>
             <PropertyRef Name="Id" />
@@ -107,25 +123,10 @@
           <Property Name="RoleName" Type="nvarchar" MaxLength="200" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'PhotographyAutomationDB.dbo.DocumentsView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="DocumentsView">
-          <Key>
-            <PropertyRef Name="stream_id" />
-            
-            
-          </Key>
-          <Property Name="stream_id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="file_stream" Type="varbinary(max)" />
-          <Property Name="NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="is_directory" Type="bit" Nullable="false" />
-          <Property Name="unc_path" Type="nvarchar" MaxLength="4000" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetAllDocumentsAndFolders' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="View_GetAllDocumentsAndFolders">
+warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetAllPhotos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_GetAllPhotos">
           <Key>
             <PropertyRef Name="StreamId" />
-            
             
             
             
@@ -150,7 +151,6 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetAllDocumentsAn
           <Property Name="CreationTime" Type="datetimeoffset" Precision="7" Nullable="false" />
           <Property Name="LastWriteTime" Type="datetimeoffset" Precision="7" Nullable="false" />
           <Property Name="LastAccessTime" Type="datetimeoffset" Precision="7" />
-          <Property Name="IsDirectory" Type="bit" Nullable="false" />
           <Property Name="IsOffline" Type="bit" Nullable="false" />
           <Property Name="IsHidden" Type="bit" Nullable="false" />
           <Property Name="IsReadonly" Type="bit" Nullable="false" />
@@ -158,6 +158,42 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetAllDocumentsAn
           <Property Name="IsSystem" Type="bit" Nullable="false" />
           <Property Name="IsTemporary" Type="bit" Nullable="false" />
         </EntityType>
+        <Association Name="FK_CustomerDocuments_Documents">
+          <End Role="TblDocuments" Type="Self.TblDocuments" Multiplicity="1" />
+          <End Role="TblCustomerDocuments" Type="Self.TblCustomerDocuments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblDocuments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblCustomerDocuments">
+              <PropertyRef Name="DocumentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerDocuments_TblCustomer">
+          <End Role="TblCustomer" Type="Self.TblCustomer" Multiplicity="1" />
+          <End Role="TblCustomerDocuments" Type="Self.TblCustomerDocuments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCustomer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblCustomerDocuments">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DocumentPhotos_Documents">
+          <End Role="TblDocuments" Type="Self.TblDocuments" Multiplicity="1" />
+          <End Role="TblDocumentPhotos" Type="Self.TblDocumentPhotos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblDocuments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblDocumentPhotos">
+              <PropertyRef Name="DocumentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TblBooking_TblAtelierType">
           <End Role="TblAtelierType" Type="Self.TblAtelierType" Multiplicity="1" />
           <End Role="TblBooking" Type="Self.TblBooking" Multiplicity="*" />
@@ -230,121 +266,74 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetAllDocumentsAn
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="AddFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="stream_id" Type="uniqueidentifier" Mode="In" />
-          <Parameter Name="file_stream" Type="varbinary(max)" Mode="In" />
-          <Parameter Name="filename" Type="nvarchar" Mode="In" />
+        <Function Name="usp_CreateCustomerFinancialDirectory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="customerFinancialNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="monthNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="parent_level" Type="tinyint" Mode="In" />
         </Function>
-        <Function Name="CreateFileTableFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="usp_CreateMonthFolder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="monthName" Type="nvarchar" Mode="In" />
+          <Parameter Name="year" Type="nvarchar" Mode="In" />
+          <Parameter Name="parent_level" Type="tinyint" Mode="In" />
+        </Function>
+        <Function Name="usp_CreateYearFolder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="name" Type="nvarchar" Mode="In" />
           <Parameter Name="parent_name" Type="nvarchar" Mode="In" />
           <Parameter Name="parent_level" Type="tinyint" Mode="In" />
         </Function>
-        <Function Name="DeleteFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="stream_id" Type="uniqueidentifier" Mode="In" />
-        </Function>
-        <Function Name="Documents_Add" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="filename" Type="nvarchar" Mode="In" />
-          <Parameter Name="filedata" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="Documents_Del" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="docId" Type="uniqueidentifier" Mode="In" />
-        </Function>
-        <Function Name="DocumentViewByGUID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="docId" Type="uniqueidentifier" Mode="In" />
-          <ReturnType>
-            <CollectionType>
-              <RowType>
-                <Property Name="stream_id" Type="uniqueidentifier" Nullable="false" />
-                <Property Name="file_stream" Type="varbinary(max)" />
-                <Property Name="NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
-                <Property Name="is_directory" Type="bit" Nullable="false" />
-                <Property Name="unc_path" Type="nvarchar" MaxLength="4000" />
-              </RowType>
-            </CollectionType>
-          </ReturnType>
-        </Function>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-        <Function Name="GetFileByStreamId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="stream_id" Type="uniqueidentifier" Mode="In" />
-        </Function>
-        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_NewSequentialId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Id" Type="uniqueidentifier" Mode="InOut" />
-        </Function>
-        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="StoreContainer">
-          <EntitySet Name="FileDescriptions" EntityType="Self.FileDescriptions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblAtelierType" EntityType="Self.TblAtelierType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblBooking" EntityType="Self.TblBooking" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblBookingStatus" EntityType="Self.TblBookingStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblCustomer" EntityType="Self.TblCustomer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblDocumentPhotos" EntityType="Self.TblDocumentPhotos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblDocuments" EntityType="Self.TblDocuments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblEmployeeType" EntityType="Self.TblEmployeeType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblEmpRole" EntityType="Self.TblEmpRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblPhotographyType" EntityType="Self.TblPhotographyType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblRoleType" EntityType="Self.TblRoleType" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DocumentsView" EntityType="Self.DocumentsView" store:Type="Views" store:Schema="dbo">
+          <EntitySet Name="TblCustomerDocuments" EntityType="Self.TblCustomerDocuments" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [DocumentsView].[stream_id] AS [stream_id], 
-    [DocumentsView].[file_stream] AS [file_stream], 
-    [DocumentsView].[NAME] AS [NAME], 
-    [DocumentsView].[is_directory] AS [is_directory], 
-    [DocumentsView].[unc_path] AS [unc_path]
-    FROM [dbo].[DocumentsView] AS [DocumentsView]</DefiningQuery>
+    [TblCustomerDocuments].[CustomerId] AS [CustomerId], 
+    [TblCustomerDocuments].[DocumentId] AS [DocumentId]
+    FROM [dbo].[TblCustomerDocuments] AS [TblCustomerDocuments]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="View_GetAllDocumentsAndFolders" EntityType="Self.View_GetAllDocumentsAndFolders" store:Type="Views" store:Schema="dbo">
+          <EntitySet Name="View_GetAllPhotos" EntityType="Self.View_GetAllPhotos" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [View_GetAllDocumentsAndFolders].[StreamId] AS [StreamId], 
-    [View_GetAllDocumentsAndFolders].[FileStream] AS [FileStream], 
-    [View_GetAllDocumentsAndFolders].[FileName] AS [FileName], 
-    [View_GetAllDocumentsAndFolders].[PathLocator] AS [PathLocator], 
-    [View_GetAllDocumentsAndFolders].[ParentPathLocator] AS [ParentPathLocator], 
-    [View_GetAllDocumentsAndFolders].[UncPath] AS [UncPath], 
-    [View_GetAllDocumentsAndFolders].[RelativePath] AS [RelativePath], 
-    [View_GetAllDocumentsAndFolders].[FullUncPath] AS [FullUncPath], 
-    [View_GetAllDocumentsAndFolders].[Level] AS [Level], 
-    [View_GetAllDocumentsAndFolders].[FileType] AS [FileType], 
-    [View_GetAllDocumentsAndFolders].[FileSize] AS [FileSize], 
-    [View_GetAllDocumentsAndFolders].[CreationTime] AS [CreationTime], 
-    [View_GetAllDocumentsAndFolders].[LastWriteTime] AS [LastWriteTime], 
-    [View_GetAllDocumentsAndFolders].[LastAccessTime] AS [LastAccessTime], 
-    [View_GetAllDocumentsAndFolders].[IsDirectory] AS [IsDirectory], 
-    [View_GetAllDocumentsAndFolders].[IsOffline] AS [IsOffline], 
-    [View_GetAllDocumentsAndFolders].[IsHidden] AS [IsHidden], 
-    [View_GetAllDocumentsAndFolders].[IsReadonly] AS [IsReadonly], 
-    [View_GetAllDocumentsAndFolders].[IsArchive] AS [IsArchive], 
-    [View_GetAllDocumentsAndFolders].[IsSystem] AS [IsSystem], 
-    [View_GetAllDocumentsAndFolders].[IsTemporary] AS [IsTemporary]
-    FROM [dbo].[View_GetAllDocumentsAndFolders] AS [View_GetAllDocumentsAndFolders]</DefiningQuery>
+    [View_GetAllPhotos].[StreamId] AS [StreamId], 
+    [View_GetAllPhotos].[FileStream] AS [FileStream], 
+    [View_GetAllPhotos].[FileName] AS [FileName], 
+    [View_GetAllPhotos].[PathLocator] AS [PathLocator], 
+    [View_GetAllPhotos].[ParentPathLocator] AS [ParentPathLocator], 
+    [View_GetAllPhotos].[UncPath] AS [UncPath], 
+    [View_GetAllPhotos].[RelativePath] AS [RelativePath], 
+    [View_GetAllPhotos].[FullUncPath] AS [FullUncPath], 
+    [View_GetAllPhotos].[Level] AS [Level], 
+    [View_GetAllPhotos].[FileType] AS [FileType], 
+    [View_GetAllPhotos].[FileSize] AS [FileSize], 
+    [View_GetAllPhotos].[CreationTime] AS [CreationTime], 
+    [View_GetAllPhotos].[LastWriteTime] AS [LastWriteTime], 
+    [View_GetAllPhotos].[LastAccessTime] AS [LastAccessTime], 
+    [View_GetAllPhotos].[IsOffline] AS [IsOffline], 
+    [View_GetAllPhotos].[IsHidden] AS [IsHidden], 
+    [View_GetAllPhotos].[IsReadonly] AS [IsReadonly], 
+    [View_GetAllPhotos].[IsArchive] AS [IsArchive], 
+    [View_GetAllPhotos].[IsSystem] AS [IsSystem], 
+    [View_GetAllPhotos].[IsTemporary] AS [IsTemporary]
+    FROM [dbo].[View_GetAllPhotos] AS [View_GetAllPhotos]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK_CustomerDocuments_Documents" Association="Self.FK_CustomerDocuments_Documents">
+            <End Role="TblDocuments" EntitySet="TblDocuments" />
+            <End Role="TblCustomerDocuments" EntitySet="TblCustomerDocuments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerDocuments_TblCustomer" Association="Self.FK_CustomerDocuments_TblCustomer">
+            <End Role="TblCustomer" EntitySet="TblCustomer" />
+            <End Role="TblCustomerDocuments" EntitySet="TblCustomerDocuments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DocumentPhotos_Documents" Association="Self.FK_DocumentPhotos_Documents">
+            <End Role="TblDocuments" EntitySet="TblDocuments" />
+            <End Role="TblDocumentPhotos" EntitySet="TblDocumentPhotos" />
+          </AssociationSet>
           <AssociationSet Name="FK_TblBooking_TblAtelierType" Association="Self.FK_TblBooking_TblAtelierType">
             <End Role="TblAtelierType" EntitySet="TblAtelierType" />
             <End Role="TblBooking" EntitySet="TblBooking" />
@@ -375,36 +364,6 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetAllDocumentsAn
     <edmx:ConceptualModels>
       <Schema Namespace="PhotographyAutomationDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="PhotographyAutomationDBEntities" annotation:LazyLoadingEnabled="true">
-          <FunctionImport Name="sp_alterdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_creatediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_dropdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(PhotographyAutomationDBModel.sp_helpdiagramdefinition_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(PhotographyAutomationDBModel.sp_helpdiagrams_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_renamediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="new_diagramname" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
           <EntitySet Name="TblAtelierType" EntityType="PhotographyAutomationDBModel.TblAtelierType" />
           <EntitySet Name="TblBooking" EntityType="PhotographyAutomationDBModel.TblBooking" />
           <EntitySet Name="TblBookingStatus" EntityType="PhotographyAutomationDBModel.TblBookingStatus" />
@@ -437,50 +396,33 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetAllDocumentsAn
             <End Role="TblRoleType" EntitySet="TblRoleType" />
             <End Role="TblEmpRole" EntitySet="TblEmpRole" />
           </AssociationSet>
-          <FunctionImport Name="Documents_Add" ReturnType="Collection(PhotographyAutomationDBModel.Documents_Add_Result)">
-            <Parameter Name="filename" Mode="In" Type="String" />
-            <Parameter Name="filedata" Mode="In" Type="Binary" />
+          <EntitySet Name="TblDocumentPhotos" EntityType="PhotographyAutomationDBModel.TblDocumentPhotos" />
+          <EntitySet Name="TblDocuments" EntityType="PhotographyAutomationDBModel.TblDocuments" />
+          <AssociationSet Name="FK_DocumentPhotos_Documents" Association="PhotographyAutomationDBModel.FK_DocumentPhotos_Documents">
+            <End Role="TblDocuments" EntitySet="TblDocuments" />
+            <End Role="TblDocumentPhotos" EntitySet="TblDocumentPhotos" />
+          </AssociationSet>
+          <AssociationSet Name="TblCustomerDocuments" Association="PhotographyAutomationDBModel.TblCustomerDocuments">
+            <End Role="TblDocuments" EntitySet="TblDocuments" />
+            <End Role="TblCustomer" EntitySet="TblCustomer" />
+          </AssociationSet>
+          <EntitySet Name="View_GetAllPhotos" EntityType="PhotographyAutomationDBModel.View_GetAllPhotos" />
+          <FunctionImport Name="usp_CreateCustomerFinancialDirectory">
+            <Parameter Name="customerFinancialNumber" Mode="In" Type="String" />
+            <Parameter Name="monthNumber" Mode="In" Type="String" />
+            <Parameter Name="parent_level" Mode="In" Type="Byte" />
           </FunctionImport>
-          <FunctionImport Name="Documents_Del">
-          <Parameter Name="docId" Mode="In" Type="Guid" />
+          <FunctionImport Name="usp_CreateMonthFolder">
+            <Parameter Name="monthName" Mode="In" Type="String" />
+            <Parameter Name="year" Mode="In" Type="String" />
+            <Parameter Name="parent_level" Mode="In" Type="Byte" />
           </FunctionImport>
-          <FunctionImport Name="DocumentViewByGUID" IsComposable="true" ReturnType="Collection(PhotographyAutomationDBModel.DocumentViewByGUID_Result)">
-          <Parameter Name="docId" Mode="In" Type="Guid" />
-          </FunctionImport>
-          <FunctionImport Name="CreateFileTableFile">
+          <FunctionImport Name="usp_CreateYearFolder">
             <Parameter Name="name" Mode="In" Type="String" />
             <Parameter Name="parent_name" Mode="In" Type="String" />
             <Parameter Name="parent_level" Mode="In" Type="Byte" />
           </FunctionImport>
-          <FunctionImport Name="sp_NewSequentialId">
-          <Parameter Name="Id" Mode="InOut" Type="Guid" />
-          </FunctionImport>
-          <EntitySet Name="View_GetAllDocumentsAndFolders" EntityType="PhotographyAutomationDBModel.View_GetAllDocumentsAndFolders" />
-          <EntitySet Name="DocumentsView" EntityType="PhotographyAutomationDBModel.DocumentsView" />
-          <EntitySet Name="FileDescriptions" EntityType="PhotographyAutomationDBModel.FileDescriptions" />
-          <FunctionImport Name="AddFile">
-            <Parameter Name="stream_id" Mode="In" Type="Guid" />
-            <Parameter Name="file_stream" Mode="In" Type="Binary" />
-            <Parameter Name="filename" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="DeleteFile">
-            <Parameter Name="stream_id" Mode="In" Type="Guid" />
-          </FunctionImport>
-          <FunctionImport Name="GetFileByStreamId" ReturnType="Collection(PhotographyAutomationDBModel.GetFileByStreamId_Result)">
-            <Parameter Name="stream_id" Mode="In" Type="Guid" />
-          </FunctionImport>
         </EntityContainer>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
         <EntityType Name="TblAtelierType">
           <Key>
             <PropertyRef Name="Id" />
@@ -544,6 +486,7 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetAllDocumentsAn
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="TblBooking" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblUser" FromRole="TblCustomer" ToRole="TblBooking" />
+          <NavigationProperty Name="TblDocuments" Relationship="PhotographyAutomationDBModel.TblCustomerDocuments" FromRole="TblCustomer" ToRole="TblDocuments" />
         </EntityType>
         <EntityType Name="TblEmployeeType">
           <Key>
@@ -654,18 +597,44 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetAllDocumentsAn
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="Documents_Add_Result">
-          <Property Type="Guid" Name="stream_id" Nullable="false" />
-          <Property Type="String" Name="unc_path" Nullable="true" MaxLength="4000" />
-        </ComplexType>
-        <ComplexType Name="DocumentViewByGUID_Result">
-          <Property Type="Guid" Name="stream_id" Nullable="false" />
-          <Property Type="Binary" Name="file_stream" Nullable="true" />
-          <Property Type="String" Name="NAME" Nullable="false" MaxLength="255" />
-          <Property Type="Boolean" Name="is_directory" Nullable="false" />
-          <Property Type="String" Name="unc_path" Nullable="true" MaxLength="4000" />
-        </ComplexType>
-        <EntityType Name="View_GetAllDocumentsAndFolders">
+        <EntityType Name="TblDocumentPhotos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="DocumentId" Type="Int32" Nullable="false" />
+          <Property Name="StreamId" Type="Guid" Nullable="false" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="IsSelected" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TblDocuments" Relationship="PhotographyAutomationDBModel.FK_DocumentPhotos_Documents" FromRole="TblDocumentPhotos" ToRole="TblDocuments" />
+        </EntityType>
+        <EntityType Name="TblDocuments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="DocumentNumber" Type="Int32" />
+          <Property Name="FinacialDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblDocumentPhotos" Relationship="PhotographyAutomationDBModel.FK_DocumentPhotos_Documents" FromRole="TblDocuments" ToRole="TblDocumentPhotos" />
+          <NavigationProperty Name="TblCustomer" Relationship="PhotographyAutomationDBModel.TblCustomerDocuments" FromRole="TblDocuments" ToRole="TblCustomer" />
+        </EntityType>
+        <Association Name="FK_DocumentPhotos_Documents">
+          <End Type="PhotographyAutomationDBModel.TblDocuments" Role="TblDocuments" Multiplicity="1" />
+          <End Type="PhotographyAutomationDBModel.TblDocumentPhotos" Role="TblDocumentPhotos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblDocuments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblDocumentPhotos">
+              <PropertyRef Name="DocumentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TblCustomerDocuments">
+          <End Type="PhotographyAutomationDBModel.TblDocuments" Role="TblDocuments" Multiplicity="*" />
+          <End Type="PhotographyAutomationDBModel.TblCustomer" Role="TblCustomer" Multiplicity="*" />
+        </Association>
+        <EntityType Name="View_GetAllPhotos">
           <Key>
             <PropertyRef Name="StreamId" />
           </Key>
@@ -683,7 +652,6 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetAllDocumentsAn
           <Property Name="CreationTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
           <Property Name="LastWriteTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
           <Property Name="LastAccessTime" Type="DateTimeOffset" Precision="7" />
-          <Property Name="IsDirectory" Type="Boolean" Nullable="false" />
           <Property Name="IsOffline" Type="Boolean" Nullable="false" />
           <Property Name="IsHidden" Type="Boolean" Nullable="false" />
           <Property Name="IsReadonly" Type="Boolean" Nullable="false" />
@@ -691,62 +659,12 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetAllDocumentsAn
           <Property Name="IsSystem" Type="Boolean" Nullable="false" />
           <Property Name="IsTemporary" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityType Name="DocumentsView">
-          <Key>
-            <PropertyRef Name="stream_id" />
-          </Key>
-          <Property Name="stream_id" Type="Guid" Nullable="false" />
-          <Property Name="file_stream" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="NAME" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="is_directory" Type="Boolean" Nullable="false" />
-          <Property Name="unc_path" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="FileDescriptions">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FileName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="FileId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedTimestamp" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ContentType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <ComplexType Name="GetFileByStreamId_Result">
-          <Property Type="Guid" Name="stream_id" Nullable="false" />
-          <Property Type="Binary" Name="file_stream" Nullable="true" />
-        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="StoreContainer" CdmEntityContainer="PhotographyAutomationDBEntities" >
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="PhotographyAutomationDBModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="PhotographyAutomationDBModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Store.sp_upgraddiagrams" />
           <EntitySetMapping Name="TblAtelierType">
             <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblAtelierType">
               <MappingFragment StoreEntitySet="TblAtelierType">
@@ -844,38 +762,43 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetAllDocumentsAn
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="Documents_Add" FunctionName="Store.Documents_Add">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="PhotographyAutomationDBModel.Documents_Add_Result">
-                <ScalarProperty Name="stream_id" ColumnName="stream_id" />
-                <ScalarProperty Name="unc_path" ColumnName="unc_path" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Documents_Del" FunctionName="Store.Documents_Del" />
-          <FunctionImportMapping FunctionImportName="DocumentViewByGUID" FunctionName="Store.DocumentViewByGUID">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="PhotographyAutomationDBModel.DocumentViewByGUID_Result">
-                <ScalarProperty Name="stream_id" ColumnName="stream_id" />
-                <ScalarProperty Name="file_stream" ColumnName="file_stream" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="is_directory" ColumnName="is_directory" />
-                <ScalarProperty Name="unc_path" ColumnName="unc_path" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="CreateFileTableFile" FunctionName="Store.CreateFileTableFile" />
-          <FunctionImportMapping FunctionImportName="sp_NewSequentialId" FunctionName="Store.sp_NewSequentialId" />
-          <EntitySetMapping Name="View_GetAllDocumentsAndFolders">
-            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.View_GetAllDocumentsAndFolders">
-              <MappingFragment StoreEntitySet="View_GetAllDocumentsAndFolders">
+          <EntitySetMapping Name="TblDocumentPhotos">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblDocumentPhotos">
+              <MappingFragment StoreEntitySet="TblDocumentPhotos">
+                <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="StreamId" ColumnName="StreamId" />
+                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblDocuments">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblDocuments">
+              <MappingFragment StoreEntitySet="TblDocuments">
+                <ScalarProperty Name="FinacialDescription" ColumnName="FinacialDescription" />
+                <ScalarProperty Name="DocumentNumber" ColumnName="DocumentNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="TblCustomerDocuments" TypeName="PhotographyAutomationDBModel.TblCustomerDocuments" StoreEntitySet="TblCustomerDocuments">
+            <EndProperty Name="TblCustomer">
+              <ScalarProperty Name="Id" ColumnName="CustomerId" />
+            </EndProperty>
+            <EndProperty Name="TblDocuments">
+              <ScalarProperty Name="Id" ColumnName="DocumentId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="View_GetAllPhotos">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.View_GetAllPhotos">
+              <MappingFragment StoreEntitySet="View_GetAllPhotos">
                 <ScalarProperty Name="IsTemporary" ColumnName="IsTemporary" />
                 <ScalarProperty Name="IsSystem" ColumnName="IsSystem" />
                 <ScalarProperty Name="IsArchive" ColumnName="IsArchive" />
                 <ScalarProperty Name="IsReadonly" ColumnName="IsReadonly" />
                 <ScalarProperty Name="IsHidden" ColumnName="IsHidden" />
                 <ScalarProperty Name="IsOffline" ColumnName="IsOffline" />
-                <ScalarProperty Name="IsDirectory" ColumnName="IsDirectory" />
                 <ScalarProperty Name="LastAccessTime" ColumnName="LastAccessTime" />
                 <ScalarProperty Name="LastWriteTime" ColumnName="LastWriteTime" />
                 <ScalarProperty Name="CreationTime" ColumnName="CreationTime" />
@@ -893,41 +816,10 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetAllDocumentsAn
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DocumentsView">
-            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.DocumentsView">
-              <MappingFragment StoreEntitySet="DocumentsView">
-                <ScalarProperty Name="unc_path" ColumnName="unc_path" />
-                <ScalarProperty Name="is_directory" ColumnName="is_directory" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="file_stream" ColumnName="file_stream" />
-                <ScalarProperty Name="stream_id" ColumnName="stream_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="FileDescriptions">
-            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.FileDescriptions">
-              <MappingFragment StoreEntitySet="FileDescriptions">
-                <ScalarProperty Name="ContentType" ColumnName="ContentType" />
-                <ScalarProperty Name="UpdatedTimestamp" ColumnName="UpdatedTimestamp" />
-                <ScalarProperty Name="CreatedTimestamp" ColumnName="CreatedTimestamp" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="FileId" ColumnName="FileId" />
-                <ScalarProperty Name="FileName" ColumnName="FileName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="AddFile" FunctionName="Store.AddFile" />
-          <FunctionImportMapping FunctionImportName="DeleteFile" FunctionName="Store.DeleteFile" />
-          <FunctionImportMapping FunctionImportName="GetFileByStreamId" FunctionName="Store.GetFileByStreamId">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="PhotographyAutomationDBModel.GetFileByStreamId_Result">
-                <ScalarProperty Name="stream_id" ColumnName="stream_id" />
-                <ScalarProperty Name="file_stream" ColumnName="file_stream" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-        </EntityContainerMapping>
+          <FunctionImportMapping FunctionImportName="usp_CreateCustomerFinancialDirectory" FunctionName="Store.usp_CreateCustomerFinancialDirectory" />
+          <FunctionImportMapping FunctionImportName="usp_CreateMonthFolder" FunctionName="Store.usp_CreateMonthFolder" />
+          <FunctionImportMapping FunctionImportName="usp_CreateYearFolder" FunctionName="Store.usp_CreateYearFolder" />
+          </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->

@@ -18,6 +18,7 @@ namespace PhotographyAutomation.DateLayer.Models
         public TblCustomer()
         {
             this.TblBooking = new HashSet<TblBooking>();
+            this.TblDocuments = new HashSet<TblDocuments>();
         }
     
         public int Id { get; set; }
@@ -41,5 +42,7 @@ namespace PhotographyAutomation.DateLayer.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblBooking> TblBooking { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblDocuments> TblDocuments { get; set; }
     }
 }

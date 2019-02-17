@@ -94,20 +94,20 @@ namespace PhotographyAutomation.DateLayer.Context
         }
 
 
-        private GenericRepository<DocumentsView> _documentsGenericRepository;
+        //private GenericRepository<DocumentsView> _documentsGenericRepository;
 
-        public GenericRepository<DocumentsView> DocumentsGenericRepository
-        {
-            get
-            {
-                if (_documentsGenericRepository == null)
-                {
-                    _documentsGenericRepository = new GenericRepository<DocumentsView>(_db);
-                }
+        //public GenericRepository<DocumentsView> DocumentsGenericRepository
+        //{
+        //    get
+        //    {
+        //        if (_documentsGenericRepository == null)
+        //        {
+        //            _documentsGenericRepository = new GenericRepository<DocumentsView>(_db);
+        //        }
 
-                return _documentsGenericRepository;
-            }
-        }
+        //        return _documentsGenericRepository;
+        //    }
+        //}
 
 
 

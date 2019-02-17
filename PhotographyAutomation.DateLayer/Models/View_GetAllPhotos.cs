@@ -12,7 +12,7 @@ namespace PhotographyAutomation.DateLayer.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class View_GetAllDocumentsAndFolders
+    public partial class View_GetAllPhotos
     {
         public System.Guid StreamId { get; set; }
         public byte[] FileStream { get; set; }
@@ -28,7 +28,6 @@ namespace PhotographyAutomation.DateLayer.Models
         public System.DateTimeOffset CreationTime { get; set; }
         public System.DateTimeOffset LastWriteTime { get; set; }
         public Nullable<System.DateTimeOffset> LastAccessTime { get; set; }
-        public bool IsDirectory { get; set; }
         public bool IsOffline { get; set; }
         public bool IsHidden { get; set; }
         public bool IsReadonly { get; set; }
