@@ -8,5 +8,11 @@ namespace PhotographyAutomation.DateLayer.Repositories
     {
         DocumentInfoViewModel GetPhotoByGuid(Guid documentGuid);
         List<DocumentInfoViewModel> GetDocuments();
+        string CheckPhotoYearFolderIsCreatedReturnsPath(int year);
+        string CheckPhotoMonthFolderIsCreatedReturnsPath(int month);
+        string CheckCustomerFinancialFolderIsCreatedReturnsPath(int financialNumber);
+        string CreateYearFolderOfPhotos(int year);
+        string CreateMonthFolderOfPhotos(int month,int year);
+        string CreateCustomerFinancialFolder(int finacialNumber,int month);
     }
 }

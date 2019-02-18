@@ -35,45 +35,12 @@ namespace PhotographyAutomation.DateLayer.Models
         public virtual DbSet<TblEmpRole> TblEmpRole { get; set; }
         public virtual DbSet<TblPhotographyType> TblPhotographyType { get; set; }
         public virtual DbSet<TblRoleType> TblRoleType { get; set; }
-        public virtual DbSet<TblDocumentPhotos> TblDocumentPhotos { get; set; }
         public virtual DbSet<TblDocuments> TblDocuments { get; set; }
         public virtual DbSet<View_GetAllPhotos> View_GetAllPhotos { get; set; }
+        public virtual DbSet<View_GetDocumentsFolders> View_GetDocumentsFolders { get; set; }
+        public virtual DbSet<TblDocumentPhotos> TblDocumentPhotos { get; set; }
     
-        public virtual int usp_CreateCustomerFinancialDirectory(string customerFinancialNumber, string monthNumber, Nullable<byte> parent_level)
-        {
-            var customerFinancialNumberParameter = customerFinancialNumber != null ?
-                new ObjectParameter("customerFinancialNumber", customerFinancialNumber) :
-                new ObjectParameter("customerFinancialNumber", typeof(string));
-    
-            var monthNumberParameter = monthNumber != null ?
-                new ObjectParameter("monthNumber", monthNumber) :
-                new ObjectParameter("monthNumber", typeof(string));
-    
-            var parent_levelParameter = parent_level.HasValue ?
-                new ObjectParameter("parent_level", parent_level) :
-                new ObjectParameter("parent_level", typeof(byte));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_CreateCustomerFinancialDirectory", customerFinancialNumberParameter, monthNumberParameter, parent_levelParameter);
-        }
-    
-        public virtual int usp_CreateMonthFolder(string monthName, string year, Nullable<byte> parent_level)
-        {
-            var monthNameParameter = monthName != null ?
-                new ObjectParameter("monthName", monthName) :
-                new ObjectParameter("monthName", typeof(string));
-    
-            var yearParameter = year != null ?
-                new ObjectParameter("year", year) :
-                new ObjectParameter("year", typeof(string));
-    
-            var parent_levelParameter = parent_level.HasValue ?
-                new ObjectParameter("parent_level", parent_level) :
-                new ObjectParameter("parent_level", typeof(byte));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_CreateMonthFolder", monthNameParameter, yearParameter, parent_levelParameter);
-        }
-    
-        public virtual int usp_CreateYearFolder(string name, string parent_name, Nullable<byte> parent_level)
+        public virtual ObjectResult<string> usp_CreateYearFolder(string name, string parent_name, Nullable<byte> parent_level, ObjectParameter returnValue)
         {
             var nameParameter = name != null ?
                 new ObjectParameter("name", name) :
@@ -87,7 +54,41 @@ namespace PhotographyAutomation.DateLayer.Models
                 new ObjectParameter("parent_level", parent_level) :
                 new ObjectParameter("parent_level", typeof(byte));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_CreateYearFolder", nameParameter, parent_nameParameter, parent_levelParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("usp_CreateYearFolder", nameParameter, parent_nameParameter, parent_levelParameter, returnValue);
+        }
+    
+        public virtual ObjectResult<string> usp_CreateCustomerFinancialDirectory(string customerFinancialNumber, string monthNumber, Nullable<byte> parent_level, ObjectParameter returnValue)
+        {
+            var customerFinancialNumberParameter = customerFinancialNumber != null ?
+                new ObjectParameter("customerFinancialNumber", customerFinancialNumber) :
+                new ObjectParameter("customerFinancialNumber", typeof(string));
+    
+            var monthNumberParameter = monthNumber != null ?
+                new ObjectParameter("monthNumber", monthNumber) :
+                new ObjectParameter("monthNumber", typeof(string));
+    
+            var parent_levelParameter = parent_level.HasValue ?
+                new ObjectParameter("parent_level", parent_level) :
+                new ObjectParameter("parent_level", typeof(byte));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("usp_CreateCustomerFinancialDirectory", customerFinancialNumberParameter, monthNumberParameter, parent_levelParameter, returnValue);
+        }
+    
+        public virtual ObjectResult<string> usp_CreateMonthFolder(string monthName, string year, Nullable<byte> parent_level, ObjectParameter returnValue)
+        {
+            var monthNameParameter = monthName != null ?
+                new ObjectParameter("monthName", monthName) :
+                new ObjectParameter("monthName", typeof(string));
+    
+            var yearParameter = year != null ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(string));
+    
+            var parent_levelParameter = parent_level.HasValue ?
+                new ObjectParameter("parent_level", parent_level) :
+                new ObjectParameter("parent_level", typeof(byte));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("usp_CreateMonthFolder", monthNameParameter, yearParameter, parent_levelParameter, returnValue);
         }
     }
 }

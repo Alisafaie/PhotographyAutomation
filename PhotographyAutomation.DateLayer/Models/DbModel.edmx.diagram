@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3ba53e0e227141cabc318842782cf9fa" Name="Diagram1">
+      <Diagram DiagramId="3ba53e0e227141cabc318842782cf9fa" Name="Diagram_Tables">
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblAtelierType" Width="1.5" PointX="0.625" PointY="4.5" />
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblBooking" Width="1.5" PointX="3" PointY="1" />
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblBookingStatus" Width="1.5" PointX="0.625" PointY="0.5" />
@@ -19,11 +19,14 @@
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblBooking_TblUser" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_tblEmp_Role_tblEmployeeType" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_tblEmp_Role_tblRoleType" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblDocumentPhotos" Width="1.875" PointX="8.375" PointY="6.25" />
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblDocuments" Width="1.5" PointX="5.5" PointY="6.25" />
-        <AssociationConnector Association="PhotographyAutomationDBModel.FK_DocumentPhotos_Documents" />
         <AssociationConnector Association="PhotographyAutomationDBModel.TblCustomerDocuments" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.View_GetAllPhotos" Width="2.25" PointX="12" PointY="6.25" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblDocumentPhotos" Width="1.875" PointX="7.625" PointY="6.25" IsExpanded="true" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblDocumentPhotos_TblDocuments" />
+      </Diagram>
+      <Diagram DiagramId="84e77d99d2594f74b1b11cf36b56576c" Name="Diagram_Views" >
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.View_GetDocumentsFolders" Width="2.375" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.View_GetAllPhotos" Width="2" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

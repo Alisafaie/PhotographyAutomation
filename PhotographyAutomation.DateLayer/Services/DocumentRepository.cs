@@ -3,12 +3,9 @@ using PhotographyAutomation.DateLayer.Repositories;
 using PhotographyAutomation.ViewModels.Document;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Core.Objects.DataClasses;
+using System.Data.Entity.Core.Objects;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PhotographyAutomation.DateLayer.Services
 {
@@ -53,6 +50,145 @@ namespace PhotographyAutomation.DateLayer.Services
         public List<DocumentInfoViewModel> GetDocuments()
         {
             throw new NotImplementedException();
+        }
+
+        public string CheckPhotoYearFolderIsCreatedReturnsPath(int year)
+        {
+            try
+            {
+                var result = _db.View_GetDocumentsFolders.FirstOrDefault(x => x.FolderName == year.ToString());
+                if (result != null)
+                    return result.FullUncPath;
+                return null;
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine(exception.Message);
+                Debug.WriteLine(exception.Data);
+                Debug.WriteLine(exception.InnerException);
+                Debug.WriteLine(exception.Source);
+                Debug.WriteLine(exception.StackTrace);
+                return null;
+            }
+        }
+
+        public string CheckPhotoMonthFolderIsCreatedReturnsPath(int month)
+        {
+            try
+            {
+                var result = _db.View_GetDocumentsFolders.Where(x => x.FolderName == month.ToString()).ToList();
+                return result.Count > 0 ? result[0].FullUncPath : null;
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine(exception.Message);
+                Debug.WriteLine(exception.Data);
+                Debug.WriteLine(exception.InnerException);
+                Debug.WriteLine(exception.Source);
+                Debug.WriteLine(exception.StackTrace);
+                return null;
+            }
+        }
+
+        public string CheckCustomerFinancialFolderIsCreatedReturnsPath(int financialNumber)
+        {
+            try
+            {
+                var result = _db.View_GetDocumentsFolders.Where(
+                        x => x.FolderName == financialNumber.ToString()).ToList();
+                return result.Count > 0 ? result[0].FullUncPath : null;
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine(exception.Message);
+                Debug.WriteLine(exception.Data);
+                Debug.WriteLine(exception.InnerException);
+                Debug.WriteLine(exception.Source);
+                Debug.WriteLine(exception.StackTrace);
+                return null;
+            }
+        }
+
+        public string CreateYearFolderOfPhotos(int year)
+        {
+            try
+            {
+
+                ObjectParameter returnValue = new ObjectParameter("returnValue", typeof(string));
+                var result = _db.usp_CreateYearFolder(year.ToString("####"), "Root", 1, returnValue).ToList();
+
+                if (result.Count > 0)
+                {
+                    return result[0];
+                }
+
+                return null;
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine(exception.Message);
+                Debug.WriteLine(exception.Data);
+                Debug.WriteLine(exception.InnerException);
+                Debug.WriteLine(exception.Source);
+                Debug.WriteLine(exception.StackTrace);
+                return null;
+            }
+        }
+
+        public string CreateMonthFolderOfPhotos(int month, int year)
+        {
+            try
+            {
+                string strMonth = month.ToString("##");
+                string strYear = year.ToString("####");
+
+                ObjectParameter returnValue = new ObjectParameter("returnValue", typeof(string));
+                var result = _db.usp_CreateMonthFolder(strMonth, strYear, 2, returnValue).ToList();
+
+                if (result.Count > 0)
+                {
+                    return result[0];
+                }
+
+                return null;
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine(exception.Message);
+                Debug.WriteLine(exception.Data);
+                Debug.WriteLine(exception.InnerException);
+                Debug.WriteLine(exception.Source);
+                Debug.WriteLine(exception.StackTrace);
+                return null;
+            }
+        }
+
+        public string CreateCustomerFinancialFolder(int finacialNumber, int month)
+        {
+            try
+            {
+                string strMonth = month.ToString("##");
+
+
+                ObjectParameter returnValue = new ObjectParameter("returnValue", typeof(string));
+                var result = _db.usp_CreateCustomerFinancialDirectory(finacialNumber.ToString(), strMonth, 3, returnValue).ToList();
+
+                if (result.Count > 0)
+                {
+                    return result[0];
+                }
+
+                return null;
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine(exception.Message);
+                Debug.WriteLine(exception.Data);
+                Debug.WriteLine(exception.InnerException);
+                Debug.WriteLine(exception.Source);
+                Debug.WriteLine(exception.StackTrace);
+                return null;
+            }
         }
     }
 }

@@ -17,8 +17,8 @@ namespace PhotographyAutomation.DateLayer.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TblDocuments()
         {
-            this.TblDocumentPhotos = new HashSet<TblDocumentPhotos>();
             this.TblCustomer = new HashSet<TblCustomer>();
+            this.TblDocumentPhotos = new HashSet<TblDocumentPhotos>();
         }
     
         public int Id { get; set; }
@@ -26,8 +26,8 @@ namespace PhotographyAutomation.DateLayer.Models
         public string FinacialDescription { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblDocumentPhotos> TblDocumentPhotos { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblCustomer> TblCustomer { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblDocumentPhotos> TblDocumentPhotos { get; set; }
     }
 }

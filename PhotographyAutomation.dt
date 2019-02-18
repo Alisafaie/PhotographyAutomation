@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-16"?>
-<DevTrackerData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SolutionTotalEditTime="PT10H21M50.8427626S" SolutionTotalViewTime="PT23H24M57.0176568S" SolutionTotalDebugTime="PT1H55.7835785S">
+<DevTrackerData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SolutionTotalEditTime="PT10H30M16.1296516S" SolutionTotalViewTime="P1DT18M51.5369081S" SolutionTotalDebugTime="PT1H55.7835785S">
   <FileVersion>
     <Major>1</Major>
     <Minor>0</Minor>
@@ -7,15 +7,98 @@
   <SolutionFolder>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation</SolutionFolder>
   <SessionTimeList />
   <LastSessionTimeList>
-    <DevTrackerDataItem ViewActiveTime="PT5H50M31.2605642S" EditActiveTime="PT2M19.5065434S">
-      <ModifiedDate>2019-02-14T13:04:45.9756241+03:30</ModifiedDate>
+    <DevTrackerDataItem ViewActiveTime="PT15.921189S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\Services\BookingRepository.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\PhotographyAutomation.DateLayer.csproj</ProjectName>
+      <CreatedDate>2019-02-17T20:11:59.3845867+03:30</CreatedDate>
+      <ViewedBy>Ali-Laptop</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT31M56.1297594S" EditActiveTime="PT7M12.5846907S">
+      <ModifiedDate>2019-02-17T20:10:34.4878975+03:30</ModifiedDate>
       <ModifiedBy>Ali-Laptop</ModifiedBy>
       <EditedCount>1</EditedCount>
       <ViewedCount>1</ViewedCount>
       <Item>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\Models\DbModel.edmx</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\PhotographyAutomation.DateLayer.csproj</ProjectName>
-      <CreatedDate>2019-02-14T12:34:47.0139389+03:30</CreatedDate>
+      <CreatedDate>2019-02-17T19:25:03.8199522+03:30</CreatedDate>
+      <ViewedBy>Ali-Laptop</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT20M30.2894305S" EditActiveTime="PT34.9474636S">
+      <ModifiedDate>2019-02-17T20:35:31.2452391+03:30</ModifiedDate>
+      <ModifiedBy>Ali-Laptop</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\Services\DocumentRepository.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\PhotographyAutomation.DateLayer.csproj</ProjectName>
+      <CreatedDate>2019-02-17T20:12:02.54464+03:30</CreatedDate>
+      <ViewedBy>Ali-Laptop</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT10.3546172S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\Services\GenericRepository.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\PhotographyAutomation.DateLayer.csproj</ProjectName>
+      <CreatedDate>2019-02-17T20:13:08.8507844+03:30</CreatedDate>
+      <ViewedBy>Ali-Laptop</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT3.8616194S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\Repositories\IBookingRepository.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\PhotographyAutomation.DateLayer.csproj</ProjectName>
+      <CreatedDate>2019-02-17T20:11:34.9906175+03:30</CreatedDate>
+      <ViewedBy>Ali-Laptop</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT31.4216395S" EditActiveTime="PT24.1511161S">
+      <ModifiedDate>2019-02-17T20:22:17.1860884+03:30</ModifiedDate>
+      <ModifiedBy>Ali-Laptop</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\Repositories\IDocumentRepository.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\PhotographyAutomation.DateLayer.csproj</ProjectName>
+      <CreatedDate>2019-02-17T20:11:39.1010847+03:30</CreatedDate>
+      <ViewedBy>Ali-Laptop</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT3.4978446S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\Repositories\IUserRepository.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\PhotographyAutomation.DateLayer.csproj</ProjectName>
+      <CreatedDate>2019-02-17T20:11:37.4790843+03:30</CreatedDate>
+      <ViewedBy>Ali-Laptop</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT16.6211054S" EditActiveTime="PT13.6026193S">
+      <ModifiedDate>2019-02-17T20:11:57.0909983+03:30</ModifiedDate>
+      <ModifiedBy>Ali-Laptop</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\Context\UnitOfWork.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\PhotographyAutomation.DateLayer.csproj</ProjectName>
+      <CreatedDate>2019-02-17T20:11:11.5740454+03:30</CreatedDate>
+      <ViewedBy>Ali-Laptop</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT6.4220439S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\Services\UserRepository.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\PhotographyAutomation.DateLayer.csproj</ProjectName>
+      <CreatedDate>2019-02-17T20:13:15.0389705+03:30</CreatedDate>
       <ViewedBy>Ali-Laptop</ViewedBy>
     </DevTrackerDataItem>
   </LastSessionTimeList>
@@ -53,11 +136,11 @@
       <CreatedDate>2019-01-17T19:21:40.9826616+03:30</CreatedDate>
       <ViewedBy>Ali-Laptop</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT12M23.9579682S" EditActiveTime="PT22M54.5633694S">
+    <DevTrackerDataItem ViewActiveTime="PT12M39.8791572S" EditActiveTime="PT22M54.5633694S">
       <ModifiedDate>2019-01-20T11:58:28.7372181+03:30</ModifiedDate>
       <ModifiedBy>Ali-Laptop</ModifiedBy>
       <EditedCount>4</EditedCount>
-      <ViewedCount>6</ViewedCount>
+      <ViewedCount>7</ViewedCount>
       <Item>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\Services\BookingRepository.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\PhotographyAutomation.DateLayer.csproj</ProjectName>
@@ -251,11 +334,11 @@
       <CreatedDate>2019-01-10T23:13:42.6471616+03:30</CreatedDate>
       <ViewedBy>Ali-Laptop</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT6H47M41.7183073S" EditActiveTime="PT15M26.0845972S">
-      <ModifiedDate>2019-02-14T13:04:45.9756241+03:30</ModifiedDate>
+    <DevTrackerDataItem ViewActiveTime="PT7H19M37.8480667S" EditActiveTime="PT22M38.6692879S">
+      <ModifiedDate>2019-02-17T20:10:34.4878975+03:30</ModifiedDate>
       <ModifiedBy>Ali-Laptop</ModifiedBy>
-      <EditedCount>9</EditedCount>
-      <ViewedCount>13</ViewedCount>
+      <EditedCount>10</EditedCount>
+      <ViewedCount>14</ViewedCount>
       <Item>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\Models\DbModel.edmx</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\PhotographyAutomation.DateLayer.csproj</ProjectName>
@@ -323,11 +406,11 @@
       <CreatedDate>2019-02-12T00:23:58.8213426+03:30</CreatedDate>
       <ViewedBy>Ali-Laptop</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT4M0.643013S" EditActiveTime="PT2.9961578S">
-      <ModifiedDate>2019-02-06T20:23:45.7873752+03:30</ModifiedDate>
+    <DevTrackerDataItem ViewActiveTime="PT24M30.9324435S" EditActiveTime="PT37.9436214S">
+      <ModifiedDate>2019-02-17T20:35:31.2452391+03:30</ModifiedDate>
       <ModifiedBy>Ali-Laptop</ModifiedBy>
-      <EditedCount>1</EditedCount>
-      <ViewedCount>2</ViewedCount>
+      <EditedCount>2</EditedCount>
+      <ViewedCount>3</ViewedCount>
       <Item>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\Services\DocumentRepository.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName />
@@ -515,32 +598,33 @@
       <CreatedDate>2019-01-16T20:16:28.4512318+03:30</CreatedDate>
       <ViewedBy>Ali-Laptop</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT11M35.1057719S" EditActiveTime="PT19M12.8795617S">
+    <DevTrackerDataItem ViewActiveTime="PT11M45.4603891S" EditActiveTime="PT19M12.8795617S">
       <ModifiedDate>2019-01-19T19:09:07.4661914+03:30</ModifiedDate>
       <ModifiedBy>Ali-Laptop</ModifiedBy>
       <EditedCount>5</EditedCount>
-      <ViewedCount>10</ViewedCount>
+      <ViewedCount>11</ViewedCount>
       <Item>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\Services\GenericRepository.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\PhotographyAutomation.DateLayer.csproj</ProjectName>
       <CreatedDate>2019-01-12T11:23:50.3355294+03:30</CreatedDate>
       <ViewedBy>Ali-Laptop</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT1M43.7408284S" EditActiveTime="PT2M10.1028118S">
+    <DevTrackerDataItem ViewActiveTime="PT1M47.6024478S" EditActiveTime="PT2M10.1028118S">
       <ModifiedDate>2019-01-20T12:08:47.5800222+03:30</ModifiedDate>
       <ModifiedBy>Ali-Laptop</ModifiedBy>
       <EditedCount>3</EditedCount>
-      <ViewedCount>4</ViewedCount>
+      <ViewedCount>5</ViewedCount>
       <Item>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\Repositories\IBookingRepository.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\PhotographyAutomation.DateLayer.csproj</ProjectName>
       <CreatedDate>2019-01-17T19:29:15.3643409+03:30</CreatedDate>
       <ViewedBy>Ali-Laptop</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT31M41.6995907S" EditActiveTime="PT0S">
-      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
-      <EditedCount>0</EditedCount>
-      <ViewedCount>2</ViewedCount>
+    <DevTrackerDataItem ViewActiveTime="PT32M13.1212302S" EditActiveTime="PT24.1511161S">
+      <ModifiedDate>2019-02-17T20:22:17.1860884+03:30</ModifiedDate>
+      <ModifiedBy>Ali-Laptop</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>3</ViewedCount>
       <Item>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\Repositories\IDocumentRepository.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName />
@@ -557,11 +641,11 @@
       <CreatedDate>2019-01-20T13:11:48.6740146+03:30</CreatedDate>
       <ViewedBy>Ali-Laptop</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT2M33.0505065S" EditActiveTime="PT7M41.9844919S">
+    <DevTrackerDataItem ViewActiveTime="PT2M36.5483511S" EditActiveTime="PT7M41.9844919S">
       <ModifiedDate>2019-01-17T20:08:43.1414937+03:30</ModifiedDate>
       <ModifiedBy>Ali-Laptop</ModifiedBy>
       <EditedCount>3</EditedCount>
-      <ViewedCount>5</ViewedCount>
+      <ViewedCount>6</ViewedCount>
       <Item>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\Repositories\IUserRepository.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\PhotographyAutomation.DateLayer.csproj</ProjectName>
@@ -742,11 +826,11 @@
       <CreatedDate>2019-01-12T11:40:04.671889+03:30</CreatedDate>
       <ViewedBy>Ali-Laptop</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT59M30.604458S" EditActiveTime="PT23M3.317748S">
-      <ModifiedDate>2019-02-13T20:56:14.5288294+03:30</ModifiedDate>
+    <DevTrackerDataItem ViewActiveTime="PT59M47.2255634S" EditActiveTime="PT23M16.9203673S">
+      <ModifiedDate>2019-02-17T20:11:57.0909983+03:30</ModifiedDate>
       <ModifiedBy>Ali-Laptop</ModifiedBy>
-      <EditedCount>9</EditedCount>
-      <ViewedCount>11</ViewedCount>
+      <EditedCount>10</EditedCount>
+      <ViewedCount>12</ViewedCount>
       <Item>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\Context\UnitOfWork.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\PhotographyAutomation.DateLayer.csproj</ProjectName>
@@ -764,11 +848,11 @@
       <CreatedDate>2019-01-13T11:03:03.2519539+03:30</CreatedDate>
       <ViewedBy>Ali-Laptop</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT8M39.7017425S" EditActiveTime="PT6M54.347349S">
+    <DevTrackerDataItem ViewActiveTime="PT8M46.1237864S" EditActiveTime="PT6M54.347349S">
       <ModifiedDate>2019-01-19T12:33:22.6175894+03:30</ModifiedDate>
       <ModifiedBy>Ali-Laptop</ModifiedBy>
       <EditedCount>5</EditedCount>
-      <ViewedCount>8</ViewedCount>
+      <ViewedCount>9</ViewedCount>
       <Item>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\Services\UserRepository.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\PhotographyAutomation.DateLayer.csproj</ProjectName>
@@ -799,6 +883,100 @@
     </DevTrackerDataItem>
   </TotalTimeList>
   <HistoryTimeList>
+    <DevTrackerDataItem ViewActiveTime="PT6.4220439S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\Services\UserRepository.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\PhotographyAutomation.DateLayer.csproj</ProjectName>
+      <CreatedDate>2019-02-17T20:13:15.0389705+03:30</CreatedDate>
+      <ViewedBy>Ali-Laptop</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT10.3546172S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\Services\GenericRepository.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\PhotographyAutomation.DateLayer.csproj</ProjectName>
+      <CreatedDate>2019-02-17T20:13:08.8507844+03:30</CreatedDate>
+      <ViewedBy>Ali-Laptop</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT20M30.2894305S" EditActiveTime="PT34.9474636S">
+      <ModifiedDate>2019-02-17T20:35:31.2452391+03:30</ModifiedDate>
+      <ModifiedBy>Ali-Laptop</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\Services\DocumentRepository.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\PhotographyAutomation.DateLayer.csproj</ProjectName>
+      <CreatedDate>2019-02-17T20:12:02.54464+03:30</CreatedDate>
+      <ViewedBy>Ali-Laptop</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT15.921189S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\Services\BookingRepository.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\PhotographyAutomation.DateLayer.csproj</ProjectName>
+      <CreatedDate>2019-02-17T20:11:59.3845867+03:30</CreatedDate>
+      <ViewedBy>Ali-Laptop</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT31.4216395S" EditActiveTime="PT24.1511161S">
+      <ModifiedDate>2019-02-17T20:22:17.1860884+03:30</ModifiedDate>
+      <ModifiedBy>Ali-Laptop</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\Repositories\IDocumentRepository.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\PhotographyAutomation.DateLayer.csproj</ProjectName>
+      <CreatedDate>2019-02-17T20:11:39.1010847+03:30</CreatedDate>
+      <ViewedBy>Ali-Laptop</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT3.4978446S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\Repositories\IUserRepository.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\PhotographyAutomation.DateLayer.csproj</ProjectName>
+      <CreatedDate>2019-02-17T20:11:37.4790843+03:30</CreatedDate>
+      <ViewedBy>Ali-Laptop</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT3.8616194S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\Repositories\IBookingRepository.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\PhotographyAutomation.DateLayer.csproj</ProjectName>
+      <CreatedDate>2019-02-17T20:11:34.9906175+03:30</CreatedDate>
+      <ViewedBy>Ali-Laptop</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT16.6211054S" EditActiveTime="PT13.6026193S">
+      <ModifiedDate>2019-02-17T20:11:57.0909983+03:30</ModifiedDate>
+      <ModifiedBy>Ali-Laptop</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\Context\UnitOfWork.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\PhotographyAutomation.DateLayer.csproj</ProjectName>
+      <CreatedDate>2019-02-17T20:11:11.5740454+03:30</CreatedDate>
+      <ViewedBy>Ali-Laptop</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT31M56.1297594S" EditActiveTime="PT7M12.5846907S">
+      <ModifiedDate>2019-02-17T20:10:34.4878975+03:30</ModifiedDate>
+      <ModifiedBy>Ali-Laptop</ModifiedBy>
+      <EditedCount>1</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\Models\DbModel.edmx</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>C:\Users\Ali-Laptop\source\git-master\PhotographyAutomation\PhotographyAutomation\PhotographyAutomation.DateLayer\PhotographyAutomation.DateLayer.csproj</ProjectName>
+      <CreatedDate>2019-02-17T19:25:03.8199522+03:30</CreatedDate>
+      <ViewedBy>Ali-Laptop</ViewedBy>
+    </DevTrackerDataItem>
     <DevTrackerDataItem ViewActiveTime="PT5H50M31.2535697S" EditActiveTime="PT2M19.5065434S">
       <ModifiedDate>2019-02-14T13:04:45.9756241+03:30</ModifiedDate>
       <ModifiedBy>Ali-Laptop</ModifiedBy>

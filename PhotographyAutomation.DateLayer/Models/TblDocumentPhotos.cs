@@ -19,6 +19,8 @@ namespace PhotographyAutomation.DateLayer.Models
         public System.Guid StreamId { get; set; }
         public int CustomerId { get; set; }
         public bool IsSelected { get; set; }
+        public string path_locator { get; set; }
+        public string parent_path_locator { get; set; }
     
         public virtual TblDocuments TblDocuments { get; set; }
     }
