@@ -3,6 +3,7 @@ using PhotographyAutomation.DateLayer.Repositories;
 using PhotographyAutomation.ViewModels.Document;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Diagnostics;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace PhotographyAutomation.DateLayer.Services
 {
     public class DocumentRepository : IDocumentRepository
     {
-        private readonly PhotographyAutomationDBEntities _db;
+        private PhotographyAutomationDBEntities _db;
 
         public DocumentRepository(PhotographyAutomationDBEntities context)
         {
@@ -95,7 +96,7 @@ namespace PhotographyAutomation.DateLayer.Services
             try
             {
                 var result = _db.View_GetDocumentsFolders.Where(
-                        x => x.FolderName == financialNumber.ToString()).ToList();
+                    x => x.FolderName == financialNumber.ToString()).ToList();
                 return result.Count > 0 ? result[0].FullUncPath : null;
             }
             catch (Exception exception)
@@ -171,7 +172,8 @@ namespace PhotographyAutomation.DateLayer.Services
 
 
                 ObjectParameter returnValue = new ObjectParameter("returnValue", typeof(string));
-                var result = _db.usp_CreateCustomerFinancialDirectory(finacialNumber.ToString(), strMonth, 3, returnValue).ToList();
+                var result = _db
+                    .usp_CreateCustomerFinancialDirectory(finacialNumber.ToString(), strMonth, 3, returnValue).ToList();
 
                 if (result.Count > 0)
                 {
@@ -188,6 +190,36 @@ namespace PhotographyAutomation.DateLayer.Services
                 Debug.WriteLine(exception.Source);
                 Debug.WriteLine(exception.StackTrace);
                 return null;
+            }
+        }
+
+        public CreateFileViewModel CreateFileTableFile(string name, string parent, byte level)
+        {
+            //using (var context=new PhotographyAutomationDBEntities())
+            //{
+            using (DbContextTransaction dbTransaction = _db.Database.BeginTransaction())
+            {
+                try
+                {
+                    var result = _db.usp_CreateFileTableFile(name, parent, level).ToList();
+                    dbTransaction.Commit();
+
+                    var returnList = new CreateFileViewModel
+                    {
+                        name = result[0].name,
+                        streamId = result[0].streamId,
+                        path_locator_str = result[0].path_locator_str,
+                        parent_locator = result[0].parent_locator,
+                        path_name = result[0].path_name,
+                        filestreamTxn = result[0].filestreamTxn
+                    };
+                    return returnList;
+                }
+                catch (Exception ex)
+                {
+                    dbTransaction.Rollback();
+                    return null;
+                }
             }
         }
     }

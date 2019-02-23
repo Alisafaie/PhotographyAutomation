@@ -90,5 +90,26 @@ namespace PhotographyAutomation.DateLayer.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("usp_CreateMonthFolder", monthNameParameter, yearParameter, parent_levelParameter, returnValue);
         }
+    
+        public virtual ObjectResult<usp_CreateFileTableFile_Result> usp_CreateFileTableFile(string name, string parent_name, Nullable<byte> parent_level, byte[] file_content)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            var parent_nameParameter = parent_name != null ?
+                new ObjectParameter("parent_name", parent_name) :
+                new ObjectParameter("parent_name", typeof(string));
+    
+            var parent_levelParameter = parent_level.HasValue ?
+                new ObjectParameter("parent_level", parent_level) :
+                new ObjectParameter("parent_level", typeof(byte));
+    
+            var file_contentParameter = file_content != null ?
+                new ObjectParameter("file_content", file_content) :
+                new ObjectParameter("file_content", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_CreateFileTableFile_Result>("usp_CreateFileTableFile", nameParameter, parent_nameParameter, parent_levelParameter, file_contentParameter);
+        }
     }
 }

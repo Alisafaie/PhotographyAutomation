@@ -1,7 +1,11 @@
 ﻿using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.Utilities;
+using PhotographyAutomation.ViewModels.Document;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
+using System.Linq.Expressions;
 using System.Windows.Forms;
 
 namespace PhotographyAutomation.App.Forms.Documents
@@ -114,6 +118,141 @@ namespace PhotographyAutomation.App.Forms.Documents
                         }
                     }
                 }
+            }
+        }
+
+        private void btnSendPhotos_Click(object sender, EventArgs e)
+        {
+            string uploadPath = string.Empty;
+            int customerFinancialNumber = int.Parse(txtFinancialNumber.Text);
+            if (customerFinancialNumber <= 0)
+            {
+                RtlMessageBox.Show("مقدار فاکترو مشتری صحیح نمی باشد.", "");
+                txtFinancialNumber.Focus();
+                return;
+            }
+
+
+            try
+            {
+                using (var db = new UnitOfWork())
+                {
+                    PersianCalendar pc = new PersianCalendar();
+                    int year = pc.GetYear(DateTime.Now);
+                    int month = pc.GetMonth(DateTime.Now);
+
+                    var resultCheckPhotoYearFolder =
+                        db.DocumentRepository.CheckPhotoYearFolderIsCreatedReturnsPath(year);
+                    if (resultCheckPhotoYearFolder != null)
+                    {
+                        MessageBox.Show(@"فولدر سال جاری در سیستم وجود دارد.");
+                    }
+                    else
+                    {
+                        DialogResult dr =
+                            RtlMessageBox.Show("فولدر سال جاری وجود ندارد. آیا می خواهید آن را ایجاد کنید؟",
+                                "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+
+                        if (dr == DialogResult.Yes)
+                        {
+                            var resultCreateYearFolder = db.DocumentRepository.CreateYearFolderOfPhotos(year);
+                            if (resultCreateYearFolder != null)
+                            {
+                                RtlMessageBox.Show("فولدر سال جاری ایجاد شد.");
+                            }
+                        }
+                    }
+
+
+                    var resultCheckPhotoMonthFolder =
+                        db.DocumentRepository.CheckPhotoMonthFolderIsCreatedReturnsPath(month);
+                    if (resultCheckPhotoMonthFolder != null)
+                    {
+                        MessageBox.Show(@"فولدر ماه عکس برداری در سیستم وجود دارد.");
+                    }
+                    else
+                    {
+                        DialogResult dr =
+                            RtlMessageBox.Show("فولدر ماه عکس برداری وجود ندارد. آیا می خواهید آن را ایجاد کنید؟",
+                                "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+
+                        if (dr == DialogResult.Yes)
+                        {
+                            var resultCreateYearFolder = db.DocumentRepository.CreateMonthFolderOfPhotos(month, year);
+                            if (resultCreateYearFolder != null)
+                            {
+                                RtlMessageBox.Show("فولدر ماه عکس برداری ایجاد شد.");
+                            }
+                        }
+                    }
+
+
+
+
+                    var resultCheckCustomerFinancialFolder =
+                        db.DocumentRepository.CheckCustomerFinancialFolderIsCreatedReturnsPath(
+                            (int)txtFinancialNumber.Value);
+                    if (resultCheckCustomerFinancialFolder != null)
+                    {
+                        MessageBox.Show(@"فولدر فاکتور مشتری در سیستم وجود دارد.");
+                    }
+                    else
+                    {
+                        DialogResult dr =
+                            RtlMessageBox.Show("فولدر فاکتور مشتری وجود ندارد. آیا می خواهید آن را ایجاد کنید؟",
+                                "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+
+                        if (dr == DialogResult.Yes)
+                        {
+                            var resultCreateYearFolder =
+                                db.DocumentRepository.CreateCustomerFinancialFolder((int)txtFinancialNumber.Value,
+                                    month);
+                            if (resultCreateYearFolder != null)
+                            {
+                                RtlMessageBox.Show("فولدر فاکتور مشتری ایجاد شد.");
+                                uploadPath = resultCreateYearFolder;
+                            }
+                        }
+                    }
+
+                    string parentPathName = txtFinancialNumber.Text;
+
+                    var list = db.DocumentRepository.CreateFileTableFile("1.jpg", parentPathName, 4);
+
+                    MessageBox.Show("name: " + list.name + Environment.NewLine + Environment.NewLine +
+                                    "stream_id: " + list.streamId + Environment.NewLine + Environment.NewLine +
+                                    "path_name: " + list.path_name + Environment.NewLine + Environment.NewLine +
+                                    "parent_locator: " + list.parent_locator + Environment.NewLine +
+                                    Environment.NewLine +
+                                    "path_locator_str: " + list.path_locator_str + Environment.NewLine +
+                                    Environment.NewLine);
+
+
+
+                }
+
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine(exception.Message);
+                Debug.WriteLine(exception.Data);
+                Debug.WriteLine(exception.InnerException);
+                Debug.WriteLine(exception.Source);
+                Debug.WriteLine(exception.StackTrace);
+            }
+
+        }
+
+        private void btnBrowsePictureFolder_Click(object sender, EventArgs e)
+        {
+            if (openFileDialogBrowsePictures.ShowDialog()==DialogResult.OK)
+            {
+                //نمایش لیست فایل ها در لیست باکس
+                //تبدیل کردن محتوای فایل به باینری
+                //ارسال به سرو
+                //تایید ثبت در سرو
+                //ثبت مشخصات فایل ثبت شده در جدول مخصوص
+
             }
         }
     }

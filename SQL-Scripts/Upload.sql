@@ -4,12 +4,14 @@
  ************************************************************/
 
 CREATE PROCEDURE uspUploadAnalystReport
-	@filename NVARCHAR(150),
+	@filename NVARCHAR(255),
 	@ext NVARCHAR(50)
 AS
 BEGIN
 	SET NOCOUNT ON;
-	SET XACT_ABORT ON;
+	SET XACT_ABORT ON;	--When SET XACT_ABORT is ON, if a Transact-SQL statement raises a run-time error, 
+	                  	--the entire transaction is terminated and rolled back.
+						--https://docs.microsoft.com/en-us/sql/t-sql/statements/set-xact-abort-transact-sql?view=sql-server-2017
 	DECLARE @name NVARCHAR(255) = @filename + @ext;
 	IF @@TRANCOUNT = 0
 	BEGIN

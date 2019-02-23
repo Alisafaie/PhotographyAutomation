@@ -312,6 +312,12 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           <Parameter Name="parent_level" Type="tinyint" Mode="In" />
           <Parameter Name="returnValue" Type="nvarchar(max)" Mode="InOut" />
         </Function>
+        <Function Name="usp_CreateFileTableFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="parent_name" Type="nvarchar" Mode="In" />
+          <Parameter Name="parent_level" Type="tinyint" Mode="In" />
+          <Parameter Name="file_content" Type="varbinary(max)" Mode="In" />
+        </Function>
         <Function Name="usp_CreateMonthFolder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="monthName" Type="nvarchar" Mode="In" />
           <Parameter Name="year" Type="nvarchar" Mode="In" />
@@ -494,6 +500,12 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
             <End Role="TblDocuments" EntitySet="TblDocuments" />
             <End Role="TblDocumentPhotos" EntitySet="TblDocumentPhotos" />
           </AssociationSet>
+          <FunctionImport Name="usp_CreateFileTableFile" ReturnType="Collection(PhotographyAutomationDBModel.usp_CreateFileTableFile_Result)">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="parent_name" Mode="In" Type="String" />
+            <Parameter Name="parent_level" Mode="In" Type="Byte" />
+            <Parameter Name="file_content" Mode="In" Type="Binary" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="TblAtelierType">
           <Key>
@@ -769,6 +781,14 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="usp_CreateFileTableFile_Result">
+          <Property Type="String" Name="streamId" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="parent_locator" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="path_name" Nullable="true" />
+          <Property Type="Binary" Name="filestreamTxn" Nullable="true" />
+          <Property Type="String" Name="path_locator_str" Nullable="true" MaxLength="4000" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -958,6 +978,18 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_CreateFileTableFile" FunctionName="Store.usp_CreateFileTableFile">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PhotographyAutomationDBModel.usp_CreateFileTableFile_Result">
+                <ScalarProperty Name="streamId" ColumnName="streamId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="parent_locator" ColumnName="parent_locator" />
+                <ScalarProperty Name="path_name" ColumnName="path_name" />
+                <ScalarProperty Name="filestreamTxn" ColumnName="filestreamTxn" />
+                <ScalarProperty Name="path_locator_str" ColumnName="path_locator_str" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
