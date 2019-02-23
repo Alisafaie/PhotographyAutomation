@@ -1,6 +1,6 @@
-﻿using System;
+﻿using PhotographyAutomation.ViewModels.Document;
+using System;
 using System.Collections.Generic;
-using PhotographyAutomation.ViewModels.Document;
 
 namespace PhotographyAutomation.DateLayer.Repositories
 {
@@ -12,8 +12,8 @@ namespace PhotographyAutomation.DateLayer.Repositories
         string CheckPhotoMonthFolderIsCreatedReturnsPath(int month);
         string CheckCustomerFinancialFolderIsCreatedReturnsPath(int financialNumber);
         string CreateYearFolderOfPhotos(int year);
-        string CreateMonthFolderOfPhotos(int month,int year);
-        string CreateCustomerFinancialFolder(int finacialNumber,int month);
-        CreateFileViewModel CreateFileTableFile(string name, string parent,byte level);
+        string CreateMonthFolderOfPhotos(int month, int year);
+        string CreateCustomerFinancialFolder(int finacialNumber, int month);
+        bool CreateFileTableFile(string name, string parent, byte level,string localFilePath);
     }
 }

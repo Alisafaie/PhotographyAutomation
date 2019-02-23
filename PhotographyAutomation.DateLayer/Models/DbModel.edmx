@@ -316,7 +316,6 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           <Parameter Name="name" Type="nvarchar" Mode="In" />
           <Parameter Name="parent_name" Type="nvarchar" Mode="In" />
           <Parameter Name="parent_level" Type="tinyint" Mode="In" />
-          <Parameter Name="file_content" Type="varbinary(max)" Mode="In" />
         </Function>
         <Function Name="usp_CreateMonthFolder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="monthName" Type="nvarchar" Mode="In" />
@@ -504,7 +503,6 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
             <Parameter Name="name" Mode="In" Type="String" />
             <Parameter Name="parent_name" Mode="In" Type="String" />
             <Parameter Name="parent_level" Mode="In" Type="Byte" />
-            <Parameter Name="file_content" Mode="In" Type="Binary" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="TblAtelierType">

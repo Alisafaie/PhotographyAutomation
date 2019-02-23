@@ -34,10 +34,9 @@
             this.btnCheckFinancialFolder = new System.Windows.Forms.Button();
             this.txtFinancialNumber = new System.Windows.Forms.NumericUpDown();
             this.btnSendPhotos = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBoxPictures = new System.Windows.Forms.ListBox();
             this.btnBrowsePictureFolder = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.openFileDialogBrowsePictures = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.txtFinancialNumber)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,13 +106,13 @@
             this.btnSendPhotos.UseVisualStyleBackColor = true;
             this.btnSendPhotos.Click += new System.EventHandler(this.btnSendPhotos_Click);
             // 
-            // listBox1
+            // listBoxPictures
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(569, 41);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(219, 290);
-            this.listBox1.TabIndex = 1;
+            this.listBoxPictures.FormattingEnabled = true;
+            this.listBoxPictures.Location = new System.Drawing.Point(569, 41);
+            this.listBoxPictures.Name = "listBoxPictures";
+            this.listBoxPictures.Size = new System.Drawing.Size(219, 290);
+            this.listBoxPictures.TabIndex = 1;
             // 
             // btnBrowsePictureFolder
             // 
@@ -134,10 +133,6 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "شماره فاکتور مشتری";
             // 
-            // openFileDialogBrowsePictures
-            // 
-            this.openFileDialogBrowsePictures.FileName = "openFileDialog1";
-            // 
             // ViewDocumentInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -145,7 +140,7 @@
             this.ClientSize = new System.Drawing.Size(800, 495);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnBrowsePictureFolder);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.listBoxPictures);
             this.Controls.Add(this.btnSendPhotos);
             this.Controls.Add(this.txtFinancialNumber);
             this.Controls.Add(this.btnCheckFinancialFolder);
@@ -170,9 +165,8 @@
         private System.Windows.Forms.Button btnCheckFinancialFolder;
         private System.Windows.Forms.NumericUpDown txtFinancialNumber;
         private System.Windows.Forms.Button btnSendPhotos;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBoxPictures;
         private System.Windows.Forms.Button btnBrowsePictureFolder;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.OpenFileDialog openFileDialogBrowsePictures;
     }
 }

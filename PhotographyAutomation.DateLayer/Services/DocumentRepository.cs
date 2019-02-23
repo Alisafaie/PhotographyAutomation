@@ -5,7 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
+using System.Data.SqlTypes;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 
 namespace PhotographyAutomation.DateLayer.Services
@@ -193,18 +195,16 @@ namespace PhotographyAutomation.DateLayer.Services
             }
         }
 
-        public CreateFileViewModel CreateFileTableFile(string name, string parent, byte level)
+        public bool CreateFileTableFile(string name, string parent, byte level, string localFilePath)
         {
-            //using (var context=new PhotographyAutomationDBEntities())
-            //{
             using (DbContextTransaction dbTransaction = _db.Database.BeginTransaction())
             {
                 try
                 {
                     var result = _db.usp_CreateFileTableFile(name, parent, level).ToList();
-                    dbTransaction.Commit();
 
-                    var returnList = new CreateFileViewModel
+
+                    var info = new CreateFileViewModel
                     {
                         name = result[0].name,
                         streamId = result[0].streamId,
@@ -213,12 +213,21 @@ namespace PhotographyAutomation.DateLayer.Services
                         path_name = result[0].path_name,
                         filestreamTxn = result[0].filestreamTxn
                     };
-                    return returnList;
+
+                    using (SqlFileStream fs = new SqlFileStream(info.path_name, info.filestreamTxn, FileAccess.Write, FileOptions.WriteThrough, 0L))
+                    using (FileStream local = new FileStream(localFilePath, FileMode.Open, FileAccess.Read))
+                    {
+                        local.CopyTo(fs);
+                    }
+
+
+                    dbTransaction.Commit();
+                    return true;
                 }
                 catch (Exception ex)
                 {
                     dbTransaction.Rollback();
-                    return null;
+                    return false;
                 }
             }
         }
