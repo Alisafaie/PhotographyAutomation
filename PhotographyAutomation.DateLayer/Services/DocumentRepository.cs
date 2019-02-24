@@ -224,9 +224,14 @@ namespace PhotographyAutomation.DateLayer.Services
                     dbTransaction.Commit();
                     return true;
                 }
-                catch (Exception ex)
+                catch (Exception exception)
                 {
                     dbTransaction.Rollback();
+                    Debug.WriteLine(exception.Message);
+                    Debug.WriteLine(exception.Data);
+                    Debug.WriteLine(exception.InnerException);
+                    Debug.WriteLine(exception.Source);
+                    Debug.WriteLine(exception.StackTrace);
                     return false;
                 }
             }

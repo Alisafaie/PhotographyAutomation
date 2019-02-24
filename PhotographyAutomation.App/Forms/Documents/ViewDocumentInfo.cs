@@ -3,8 +3,9 @@ using PhotographyAutomation.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Globalization;
-using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -15,10 +16,23 @@ namespace PhotographyAutomation.App.Forms.Documents
         private readonly List<string> _fileNamesList = new List<string>();
         private readonly List<string> _fileNamesAndPathsList = new List<string>();
 
+        private int _locX = 20;
+        private int _locY = 10;
+        private int _sizeWidth = 128;
+        private int _sizeHeight = 128;
+
 
         public ViewDocumentInfo()
         {
             InitializeComponent();
+        }
+
+        private void ViewDocumentInfo_Load(object sender, EventArgs e)
+        {
+            _locX = 20;
+            _locY = 10;
+            _sizeWidth = 128;
+            _sizeHeight = 128;
         }
 
         private void btnGetDocumentInfo_Click(object sender, EventArgs e)
@@ -33,102 +47,15 @@ namespace PhotographyAutomation.App.Forms.Documents
             //}
         }
 
-        private void btnCheckYear_Click(object sender, EventArgs e)
-        {
-            using (var db = new UnitOfWork())
-            {
-                PersianCalendar pc = new PersianCalendar();
-                int year = pc.GetYear(DateTime.Now);
-
-                var result = db.DocumentRepository.CheckPhotoYearFolderIsCreatedReturnsPath(year);
-                if (result != null)
-                {
-                    MessageBox.Show(@"فولدر سال جاری در سیستم وجود دارد.");
-                }
-                else
-                {
-                    DialogResult dr =
-                        RtlMessageBox.Show("فولدر سال جاری وجود ندارد. آیا می خواهید آن را ایجاد کنید؟",
-                        "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-
-                    if (dr == DialogResult.Yes)
-                    {
-                        var resultCreateYearFolder = db.DocumentRepository.CreateYearFolderOfPhotos(year);
-                        if (resultCreateYearFolder != null)
-                        {
-                            RtlMessageBox.Show("فولدر سال جاری ایجاد شد.");
-                        }
-                    }
-                }
-            }
-        }
-
-        private void btnCheckMonth_Click(object sender, EventArgs e)
-        {
-            using (var db = new UnitOfWork())
-            {
-                PersianCalendar pc = new PersianCalendar();
-                int month = pc.GetMonth(DateTime.Now);
-                int year = pc.GetYear(DateTime.Now);
-
-                var result = db.DocumentRepository.CheckPhotoMonthFolderIsCreatedReturnsPath(month);
-                if (result != null)
-                {
-                    MessageBox.Show(@"فولدر ماه عکس برداری در سیستم وجود دارد.");
-                }
-                else
-                {
-                    DialogResult dr =
-                        RtlMessageBox.Show("فولدر ماه عکس برداری وجود ندارد. آیا می خواهید آن را ایجاد کنید؟",
-                            "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-
-                    if (dr == DialogResult.Yes)
-                    {
-                        var resultCreateYearFolder = db.DocumentRepository.CreateMonthFolderOfPhotos(month, year);
-                        if (resultCreateYearFolder != null)
-                        {
-                            RtlMessageBox.Show("فولدر ماه عکس برداری ایجاد شد.");
-                        }
-                    }
-                }
-            }
-        }
-
-        private void btnCheckFinancialFolder_Click(object sender, EventArgs e)
-        {
-            using (var db = new UnitOfWork())
-            {
-                var result =
-                    db.DocumentRepository.CheckCustomerFinancialFolderIsCreatedReturnsPath((int)txtFinancialNumber.Value);
-                if (result != null)
-                {
-                    MessageBox.Show(@"فولدر فاکتور مشتری در سیستم وجود دارد.");
-                }
-                else
-                {
-                    DialogResult dr =
-                        RtlMessageBox.Show("فولدر فاکتور مشتری وجود ندارد. آیا می خواهید آن را ایجاد کنید؟",
-                            "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-
-                    if (dr == DialogResult.Yes)
-                    {
-                        PersianCalendar pc = new PersianCalendar();
-                        int month = pc.GetMonth(DateTime.Now);
-                        var resultCreateYearFolder =
-                            db.DocumentRepository.CreateCustomerFinancialFolder((int)txtFinancialNumber.Value, month);
-                        if (resultCreateYearFolder != null)
-                        {
-                            RtlMessageBox.Show("فولدر فاکتور مشتری ایجاد شد.");
-                        }
-                    }
-                }
-            }
-        }
 
 
 
 
-
+        //نمایش لیست فایل ها در لیست باکس
+        //تبدیل کردن محتوای فایل به باینری
+        //ارسال به سرو
+        //تایید ثبت در سرو
+        //ثبت مشخصات فایل ثبت شده در جدول مخصوص
 
         private void btnBrowsePictureFolder_Click(object sender, EventArgs e)
         {
@@ -145,37 +72,25 @@ namespace PhotographyAutomation.App.Forms.Documents
                 //ShowReadOnly = true
             };
 
-
-
-
             if (openFileDialogBrowsePictures.ShowDialog() == DialogResult.OK)
             {
-                //نمایش لیست فایل ها در لیست باکس
-                //تبدیل کردن محتوای فایل به باینری
-                //ارسال به سرو
-                //تایید ثبت در سرو
-                //ثبت مشخصات فایل ثبت شده در جدول مخصوص
-
                 listBoxPictures.Items.Clear();
+                panelPreviewPictures.Controls.Clear();
 
-                foreach (string fullFileName in openFileDialogBrowsePictures.FileNames)
+                int locnewX = _locX;
+                int locnewY = _locY;
+
+
+                for (int i = 0; i < openFileDialogBrowsePictures.SafeFileNames.Length; i++)
                 {
                     try
                     {
-                        listBoxPictures.Items.Add(fullFileName);
-                        _fileNamesAndPathsList.Add(fullFileName);
-                    }
-                    catch (Exception exception)
-                    {
-                        RtlMessageBox.Show(exception.Message);
-                    }
-                }
+                        listBoxPictures.Items.Add(openFileDialogBrowsePictures.FileNames[i]);
+                        _fileNamesAndPathsList.Add(openFileDialogBrowsePictures.FileNames[i]);
+                        _fileNamesList.Add(openFileDialogBrowsePictures.SafeFileNames[i]);
 
-                foreach (string fileName in openFileDialogBrowsePictures.SafeFileNames)
-                {
-                    try
-                    {
-                        _fileNamesList.Add(fileName);
+
+                        locnewX = ShowImagePreview(locnewX, openFileDialogBrowsePictures, i);
                     }
                     catch (Exception exception)
                     {
@@ -184,6 +99,107 @@ namespace PhotographyAutomation.App.Forms.Documents
                 }
             }
         }
+
+        private int ShowImagePreview(int locnewX, OpenFileDialog openFileDialogBrowsePictures, int i)
+        {
+            int locnewY;
+            if (locnewX >= panelPreviewPictures.Width - _sizeWidth - 10)
+            {
+                locnewX = _locX;
+                _locY = _locY + _sizeHeight + 30;
+                locnewY = _locY;
+            }
+            else
+            {
+                locnewY = _locY;
+            }
+
+            LoadImagestoPanel(openFileDialogBrowsePictures.SafeFileNames[i],
+                openFileDialogBrowsePictures.FileNames[i], locnewX, locnewY);
+
+            locnewY = _locY + _sizeHeight + 10;
+            locnewX = locnewX + _sizeWidth + 10;
+            return locnewX;
+        }
+
+        private void LoadImagestoPanel(string imageName, string imageFullName, int newLocX, int newLocY)
+        {
+            PictureBox pictureBoxControl = new PictureBox
+            {
+                Image = Image.FromFile(imageFullName),
+                BackColor = SystemColors.Control,
+                Location = new Point(newLocX, newLocY + 10),
+                Size = new Size(_sizeWidth, _sizeHeight),
+                SizeMode = PictureBoxSizeMode.Zoom,
+                BorderStyle = BorderStyle.Fixed3D,
+                Tag = imageName
+
+            };
+
+            Label picturBoxLabel = new Label
+            {
+                BackColor = SystemColors.Control,
+                ForeColor = SystemColors.ControlText,
+                Font = SystemFonts.DefaultFont,
+                Location = new Point(newLocX + 5, newLocY + 140),
+                Text = imageName,
+                AutoSize = true,
+                MaximumSize = new Size(_sizeWidth, 30),
+                ClientSize = new Size(_sizeWidth, 30)
+            };
+
+            var pictureBoxCheckBox = new DevComponents.DotNetBar.Controls.CheckBoxX
+            {
+                BackColor = Color.Transparent,
+                Font = SystemFonts.DefaultFont,
+                Location = new Point(newLocX + 3, newLocY + 13),
+                CheckState = CheckState.Unchecked,
+                Checked = false,
+                Tag = imageName,
+                Text = "",
+                AutoSize = false,
+                Size = new Size(17,17),
+                MaximumSize = new Size(13,13),
+                Parent = pictureBoxControl
+            };
+
+            
+            
+
+
+            pictureBoxControl.MouseClick += control_MouseClick;
+            pictureBoxControl.DoubleClick += pictureBox_DoubleClick;
+
+            panelPreviewPictures.Controls.Add(picturBoxLabel);
+            panelPreviewPictures.Controls.Add(pictureBoxCheckBox);
+            panelPreviewPictures.Controls.Add(pictureBoxControl);
+
+        }
+
+        private void control_MouseClick(object sender, MouseEventArgs e)
+        {
+            Control control = (Control)sender;
+            PictureBox pic = (PictureBox)control;
+            pictureBoxPreview.Image = pic.Image;
+            labelPicturePreviewName.Text = pic.Tag.ToString();
+        }
+
+
+
+        private void pictureBox_DoubleClick(object sender, EventArgs e)
+        {
+            Control control = (Control) sender;
+            
+            foreach(var checkBox in panelPreviewPictures.Controls.OfType<DevComponents.DotNetBar.Controls.CheckBoxX>())
+            {
+                if (control.Tag == checkBox.Tag)
+                {
+                    checkBox.CheckState = CheckState.Checked;
+                }
+            }
+        }
+
+
 
         private void btnSendPhotos_Click(object sender, EventArgs e)
         {
@@ -207,30 +223,20 @@ namespace PhotographyAutomation.App.Forms.Documents
 
                     var resultCheckPhotoYearFolder =
                         db.DocumentRepository.CheckPhotoYearFolderIsCreatedReturnsPath(year);
-                    //if (resultCheckPhotoYearFolder != null)
-                    //{
-                    //    MessageBox.Show(@"فولدر سال جاری در سیستم وجود دارد.");
-                    //}
+
                     if (resultCheckPhotoYearFolder == null)
                     {
-                        //DialogResult dr =
-                        //    RtlMessageBox.Show("فولدر سال جاری وجود ندارد. آیا می خواهید آن را ایجاد کنید؟",
-                        //        "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
                         var resultCreateYearFolder = db.DocumentRepository.CreateYearFolderOfPhotos(year);
                         if (resultCreateYearFolder != null)
                         {
                             RtlMessageBox.Show("فولدر سال جاری ایجاد شد.");
                         }
-
                     }
 
 
                     var resultCheckPhotoMonthFolder =
                         db.DocumentRepository.CheckPhotoMonthFolderIsCreatedReturnsPath(month);
-                    //if (resultCheckPhotoMonthFolder != null)
-                    //{
-                    //    MessageBox.Show(@"فولدر ماه عکس برداری در سیستم وجود دارد.");
-                    //}
+
                     if (resultCheckPhotoMonthFolder == null)
                     {
                         var resultCreateYearFolder = db.DocumentRepository.CreateMonthFolderOfPhotos(month, year);
@@ -238,14 +244,6 @@ namespace PhotographyAutomation.App.Forms.Documents
                         {
                             RtlMessageBox.Show("فولدر ماه عکس برداری ایجاد شد.");
                         }
-                        //DialogResult dr =
-                        //    RtlMessageBox.Show("فولدر ماه عکس برداری وجود ندارد. آیا می خواهید آن را ایجاد کنید؟",
-                        //        "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-
-                        //if (dr == DialogResult.Yes)
-                        //{
-
-                        //}
                     }
 
 
@@ -254,10 +252,10 @@ namespace PhotographyAutomation.App.Forms.Documents
                     var resultCheckCustomerFinancialFolder =
                         db.DocumentRepository.CheckCustomerFinancialFolderIsCreatedReturnsPath(
                             (int)txtFinancialNumber.Value);
-                    //if (resultCheckCustomerFinancialFolder != null)
-                    //{
-                    //    MessageBox.Show(@"فولدر فاکتور مشتری در سیستم وجود دارد.");
-                    //}
+                    if (resultCheckCustomerFinancialFolder != null)
+                    {
+                        MessageBox.Show(@"فولدر فاکتور مشتری در سیستم وجود دارد.");
+                    }
                     if (resultCheckCustomerFinancialFolder == null)
                     {
                         var resultCreateYearFolder =
@@ -268,35 +266,17 @@ namespace PhotographyAutomation.App.Forms.Documents
                             RtlMessageBox.Show("فولدر فاکتور مشتری ایجاد شد.");
                             //uploadPath = resultCreateYearFolder;
                         }
-
-
-                        //DialogResult dr =
-                        //    RtlMessageBox.Show("فولدر فاکتور مشتری وجود ندارد. آیا می خواهید آن را ایجاد کنید؟",
-                        //        "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-
-                        //if (dr == DialogResult.Yes)
-                        //{
-
-                        //}
                     }
 
                     string parentPathName = txtFinancialNumber.Text;
 
-                    //var list = db.DocumentRepository.CreateFileTableFile("1.jpg", parentPathName, 4);
 
-                    //MessageBox.Show("name: " + list.name + Environment.NewLine + Environment.NewLine +
-                    //                "stream_id: " + list.streamId + Environment.NewLine + Environment.NewLine +
-                    //                "path_name: " + list.path_name + Environment.NewLine + Environment.NewLine +
-                    //                "parent_locator: " + list.parent_locator + Environment.NewLine +
-                    //                Environment.NewLine +
-                    //                "path_locator_str: " + list.path_locator_str + Environment.NewLine +
-                    //                Environment.NewLine);
                     int resultUploads = 0;
-                    List<string> errorInUpload=new List<string>();
+                    List<string> errorInUpload = new List<string>();
                     for (int i = 0; i < listBoxPictures.Items.Count; i++)
                     {
                         var fileUploadResult = db.DocumentRepository.CreateFileTableFile(
-                            _fileNamesList[i], parentPathName, 4,_fileNamesAndPathsList[i]);
+                            _fileNamesList[i], parentPathName, 4, _fileNamesAndPathsList[i]);
 
                         if (fileUploadResult)
                             resultUploads++;
@@ -315,9 +295,9 @@ namespace PhotographyAutomation.App.Forms.Documents
                     }
                     else
                     {
-                        StringBuilder sb=new StringBuilder();
+                        StringBuilder sb = new StringBuilder();
                         sb.Append("ارسال فایل (های) زیر با مشکل مواجه شد.");
-                        sb.Append("\n");
+                        sb.Append("---------------------------------------\n");
                         sb.Append("\n");
 
                         foreach (var item in errorInUpload)
@@ -331,7 +311,7 @@ namespace PhotographyAutomation.App.Forms.Documents
 
                     DialogResult dr = RtlMessageBox.Show("آیا بازهم عکسی برای ارسال دارید؟", "",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                        
+
                     if (dr == DialogResult.Yes)
                     {
                         listBoxPictures.Items.Clear();
@@ -356,5 +336,42 @@ namespace PhotographyAutomation.App.Forms.Documents
             }
 
         }
+
+
+
+
+
+
+
+
+
+
+        //private void LoadControls()
+        //{
+        //    int locnewX = _locX;
+        //    int locnewY = _locY;
+
+        //    foreach (Control p in panelPreviewPictures.Controls)
+        //    {
+        //        if (locnewX >= panelPreviewPictures.Width - _sizeWidth - 10)
+        //        {
+        //            locnewX = _locX;
+        //            _locY = _locY + _sizeHeight + 30;
+        //            locnewY = _locY;
+        //        }
+        //        else
+        //        {
+
+        //            locnewY = _locY;
+        //        }
+        //        p.Location = new Point(locnewX, locnewY);
+        //        p.Size = new System.Drawing.Size(_sizeWidth, _sizeHeight);
+
+        //        locnewY = _locY + _sizeHeight + 10;
+        //        locnewX = locnewX + _sizeWidth + 10;
+        //    }
+        //}
+
+        
     }
 }
