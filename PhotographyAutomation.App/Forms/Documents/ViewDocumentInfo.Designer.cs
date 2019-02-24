@@ -37,6 +37,7 @@
             this.panelPreviewPictures = new System.Windows.Forms.Panel();
             this.pictureBoxPreview = new System.Windows.Forms.PictureBox();
             this.labelPicturePreviewName = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.txtFinancialNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).BeginInit();
             this.SuspendLayout();
@@ -127,6 +128,7 @@
             this.pictureBoxPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxPreview.TabIndex = 10;
             this.pictureBoxPreview.TabStop = false;
+            this.pictureBoxPreview.DoubleClick += new System.EventHandler(this.pictureBoxPreview_DoubleClick);
             // 
             // labelPicturePreviewName
             // 
@@ -135,13 +137,24 @@
             this.labelPicturePreviewName.Name = "labelPicturePreviewName";
             this.labelPicturePreviewName.Size = new System.Drawing.Size(321, 48);
             this.labelPicturePreviewName.TabIndex = 11;
-            this.labelPicturePreviewName.Text = "label2";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(758, 22);
+            this.label2.Name = "label2";
+            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label2.Size = new System.Drawing.Size(270, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "برای نمایش عکس در اندازه بزرگتر روی آن دوبار کلیک کنید.";
             // 
             // ViewDocumentInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1265, 569);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.labelPicturePreviewName);
             this.Controls.Add(this.pictureBoxPreview);
             this.Controls.Add(this.panelPreviewPictures);
@@ -175,5 +188,6 @@
         private System.Windows.Forms.Panel panelPreviewPictures;
         private System.Windows.Forms.PictureBox pictureBoxPreview;
         private System.Windows.Forms.Label labelPicturePreviewName;
+        private System.Windows.Forms.Label label2;
     }
 }

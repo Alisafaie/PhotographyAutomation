@@ -2,9 +2,9 @@
 
 namespace PhotographyAutomation.Utilities.Convertor
 {
-    public class FileConvertor
+    public static class FileConvertor
     {
-        public static byte[] FileToByteArray(string fileName)
+        public static byte[] FileToByteArray(this string fileName)
         {
             byte[] fileData;
 

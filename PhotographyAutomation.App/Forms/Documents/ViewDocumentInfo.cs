@@ -1,5 +1,7 @@
 ﻿using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.Utilities;
+using PhotographyAutomation.Utilities.Convertor;
+using PhotographyAutomation.Utilities.ExtentionMethods;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -20,7 +22,6 @@ namespace PhotographyAutomation.App.Forms.Documents
         private int _locY = 10;
         private int _sizeWidth = 128;
         private int _sizeHeight = 128;
-
 
         public ViewDocumentInfo()
         {
@@ -78,6 +79,7 @@ namespace PhotographyAutomation.App.Forms.Documents
                 panelPreviewPictures.Controls.Clear();
 
                 int locnewX = _locX;
+                // ReSharper disable once UnusedVariable
                 int locnewY = _locY;
 
 
@@ -117,6 +119,7 @@ namespace PhotographyAutomation.App.Forms.Documents
             LoadImagestoPanel(openFileDialogBrowsePictures.SafeFileNames[i],
                 openFileDialogBrowsePictures.FileNames[i], locnewX, locnewY);
 
+            // ReSharper disable once RedundantAssignment
             locnewY = _locY + _sizeHeight + 10;
             locnewX = locnewX + _sizeWidth + 10;
             return locnewX;
@@ -124,17 +127,24 @@ namespace PhotographyAutomation.App.Forms.Documents
 
         private void LoadImagestoPanel(string imageName, string imageFullName, int newLocX, int newLocY)
         {
+
             PictureBox pictureBoxControl = new PictureBox
             {
-                Image = Image.FromFile(imageFullName),
                 BackColor = SystemColors.Control,
                 Location = new Point(newLocX, newLocY + 10),
                 Size = new Size(_sizeWidth, _sizeHeight),
                 SizeMode = PictureBoxSizeMode.Zoom,
-                BorderStyle = BorderStyle.Fixed3D,
-                Tag = imageName
-
+                BorderStyle = BorderStyle.FixedSingle,
+                Tag = imageName,
+                AccessibleDescription = imageFullName
             };
+
+            byte[] originalPhotoBytes = imageFullName.FileToByteArray();
+            pictureBoxControl.Image = originalPhotoBytes.GetPhotoAndRotateIt();
+
+
+
+
 
             Label picturBoxLabel = new Label
             {
@@ -158,13 +168,10 @@ namespace PhotographyAutomation.App.Forms.Documents
                 Tag = imageName,
                 Text = "",
                 AutoSize = false,
-                Size = new Size(17,17),
-                MaximumSize = new Size(13,13),
+                Size = new Size(17, 17),
+                MaximumSize = new Size(13, 13),
                 Parent = pictureBoxControl
             };
-
-            
-            
 
 
             pictureBoxControl.MouseClick += control_MouseClick;
@@ -181,6 +188,11 @@ namespace PhotographyAutomation.App.Forms.Documents
             Control control = (Control)sender;
             PictureBox pic = (PictureBox)control;
             pictureBoxPreview.Image = pic.Image;
+
+            // File Location
+            pictureBoxPreview.Tag = pic.AccessibleDescription;
+
+            //File Name
             labelPicturePreviewName.Text = pic.Tag.ToString();
         }
 
@@ -188,9 +200,9 @@ namespace PhotographyAutomation.App.Forms.Documents
 
         private void pictureBox_DoubleClick(object sender, EventArgs e)
         {
-            Control control = (Control) sender;
-            
-            foreach(var checkBox in panelPreviewPictures.Controls.OfType<DevComponents.DotNetBar.Controls.CheckBoxX>())
+            Control control = (Control)sender;
+
+            foreach (var checkBox in panelPreviewPictures.Controls.OfType<DevComponents.DotNetBar.Controls.CheckBoxX>())
             {
                 if (control.Tag == checkBox.Tag)
                 {
@@ -337,6 +349,17 @@ namespace PhotographyAutomation.App.Forms.Documents
 
         }
 
+        private void pictureBoxPreview_DoubleClick(object sender, EventArgs e)
+        {
+            PhotoViewer pv = new PhotoViewer
+            {
+                ImagesList = _fileNamesAndPathsList,
+                SelectedImageFilePath = pictureBoxPreview.Tag.ToString()
+            };
+
+            pv.ShowDialog();
+        }
+
 
 
 
@@ -372,6 +395,6 @@ namespace PhotographyAutomation.App.Forms.Documents
         //    }
         //}
 
-        
+
     }
 }

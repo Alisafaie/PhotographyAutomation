@@ -14,7 +14,7 @@ namespace PhotographyAutomation.DateLayer.Services
 {
     public class DocumentRepository : IDocumentRepository
     {
-        private PhotographyAutomationDBEntities _db;
+        private readonly PhotographyAutomationDBEntities _db;
 
         public DocumentRepository(PhotographyAutomationDBEntities context)
         {

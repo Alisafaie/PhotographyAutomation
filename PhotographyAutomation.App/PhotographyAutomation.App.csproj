@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevComponents.DotNetBar2, Version=14.1.0.0, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.Instrumentation, Version=14.1.0.0, Culture=neutral, PublicKeyToken=f90dc37c26666a67, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -54,6 +55,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
     <Reference Include="Telerik.WinControls, Version=2018.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
     <Reference Include="Telerik.WinControls.Themes.Office2010Silver, Version=2018.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.UI, Version=2018.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
@@ -76,6 +78,12 @@
     </Compile>
     <Compile Include="Forms\Booking\FrmShowBookings.Designer.cs">
       <DependentUpon>FrmShowBookings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Documents\PhotoViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Documents\PhotoViewer.Designer.cs">
+      <DependentUpon>PhotoViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Documents\ViewDocumentInfo.cs">
       <SubType>Form</SubType>
@@ -111,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Booking\FrmShowBookings.resx">
       <DependentUpon>FrmShowBookings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Documents\PhotoViewer.resx">
+      <DependentUpon>PhotoViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Documents\ViewDocumentInfo.resx">
       <DependentUpon>ViewDocumentInfo.cs</DependentUpon>
