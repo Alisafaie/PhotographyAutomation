@@ -217,13 +217,19 @@ namespace PhotographyAutomation.App.Forms.Documents
         {
             //string uploadPath = string.Empty;
             int customerFinancialNumber = int.Parse(txtFinancialNumber.Text);
+
+            if (listBoxPictures.Items.Count == 0)
+            {
+                RtlMessageBox.Show("عکسی برای ارسال انتخاب نشده است.", "", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                btnBrowsePictureFolder.Focus();
+                return;
+            }
             if (customerFinancialNumber <= 0)
             {
-                RtlMessageBox.Show("مقدار فاکترو مشتری صحیح نمی باشد.", "");
+                RtlMessageBox.Show("مقدار فاکترو مشتری صحیح نمی باشد.", "", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 txtFinancialNumber.Focus();
                 return;
             }
-
 
             try
             {
@@ -271,8 +277,7 @@ namespace PhotographyAutomation.App.Forms.Documents
                     if (resultCheckCustomerFinancialFolder == null)
                     {
                         var resultCreateYearFolder =
-                            db.DocumentRepository.CreateCustomerFinancialFolder((int)txtFinancialNumber.Value,
-                                month);
+                            db.DocumentRepository.CreateCustomerFinancialFolder((int) txtFinancialNumber.Value, month);
                         if (resultCreateYearFolder != null)
                         {
                             RtlMessageBox.Show("فولدر فاکتور مشتری ایجاد شد.");
@@ -285,6 +290,7 @@ namespace PhotographyAutomation.App.Forms.Documents
 
                     int resultUploads = 0;
                     List<string> errorInUpload = new List<string>();
+                    
                     for (int i = 0; i < listBoxPictures.Items.Count; i++)
                     {
                         var fileUploadResult = db.DocumentRepository.CreateFileTableFile(
@@ -353,7 +359,7 @@ namespace PhotographyAutomation.App.Forms.Documents
         {
             PhotoViewer pv = new PhotoViewer
             {
-                ImagesList = _fileNamesAndPathsList,
+                MyImageList = _fileNamesAndPathsList,
                 SelectedImageFilePath = pictureBoxPreview.Tag.ToString()
             };
 

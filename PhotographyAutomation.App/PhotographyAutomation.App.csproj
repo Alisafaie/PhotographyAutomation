@@ -610,5 +610,662 @@
       <Name>PhotographyAutomation.ViewModels</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132574 - danger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132575 - sound.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132576 - arrow audio go last last page last record last tra.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132577 - forbidden.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132578 - cd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132579 - briefcase.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132580 - database.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132581 - authentication clef clue hidden key lock locked lo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132582 - calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132583 - blue bookmark favorite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132584 - about book help mark question support.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132585 - about help how interrogatory mark question support.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132586 - sum.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132587 - bookmark favorite green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132588 - movie.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132589 - alarm clock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132590 - bsd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132591 - attach attachement caption green jetton label name.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132592 - previous.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132593 - number phone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132594 - play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132595 - music play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132596 - display.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132597 - fast forward.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132598 - about help mark question support.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132599 - banking cent coin coins currency dollar finance fi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132600 - back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132601 - arrow down download downloads.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132602 - audio music record sound video.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132603 - mobile phone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132604 - blog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132605 - tune.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132606 - left right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132607 - save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132608 - marker pin push.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132609 - downloads folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132610 - about bubble chat help hint mark message question .png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132611 - bubble chat comment forum message messages messeng.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132612 - heart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132613 - attach attachement blue caption jetton label name .png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132614 - stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132615 - explore eye find glass loop magnifier magnifying m.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132616 - warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132617 - bar chart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132618 - expand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132619 - group user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132620 - cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132621 - building home house real estate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132622 - message.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132623 - playback.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132624 - bookmark red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132625 - shield.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132626 - audio music mute off sound speaker.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132627 - disk hard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132628 - about.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132629 - attach attachement blue caption jetton label name .png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132630 - preview text.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132631 - blue marker pin push.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132632 - go.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132633 - bookmark favorite favorites favourites hit like lo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132634 - arrow down download downloads up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132635 - arrow go move push up update upload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132636 - problem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132637 - computer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132638 - component.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132639 - audio button control eject media multimedia out pl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132640 - off turn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132641 - percent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132642 - schedule.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132643 - info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132644 - bookmark favorite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132645 - trackback.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132646 - chart pie.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132647 - marker pin push yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132648 - report.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132649 - smile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132650 - copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132651 - arrow go move push raise up update upload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132652 - communication connection earth global globe intern.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132653 - sad.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132654 - authentication blue clef clue hidden key lock lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132655 - sync.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132656 - delete entry exit negative no no entry remove vote.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132657 - bookmark favorite favorites favourites hit like lo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132658 - arrow audio go last last page last record last tra.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132659 - e mail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132660 - arrow down download downloads fall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132661 - drive flash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132662 - color flag map marker.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132663 - euro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132664 - forward.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132665 - mail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132666 - marker pin push red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132667 - abort alert ban block blocked cancel caution dange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132668 - bolt charge electric electricity light lightning p.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132669 - bookmark favorite favorites favourites hit like lo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132670 - calculator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132671 - arrow up upload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132672 - anchor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132673 - lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132674 - communication connection earth global globe intern.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132675 - move.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132676 - music.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132677 - brush.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132678 - arrow down download downloads.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132679 - unlock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132680 - company.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132681 - authentication clef clue hidden key lock locked lo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132682 - thumbs up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132683 - cart shopping.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132684 - search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132685 - modify.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132686 - arrow go move push up update upload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132687 - undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132688 - boss.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132689 - notes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132690 - bird cmd linux mat cuts penguin tux.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132691 - radiation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132692 - accounting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132693 - yes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132694 - film.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132695 - bad dislike down hand mark thumb thumbs thumbs dow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132696 - diagram.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132697 - clock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132698 - bookmark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132699 - create.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132700 - buy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132701 - compass east geolocation navigation north orientat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132702 - alien.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132703 - phone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132704 - about book help mark question support.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132705 - hungup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132706 - application applications configuration contact con.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132707 - folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132708 - about help mark question support.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132709 - list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132710 - ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132711 - aero aeroplane aeroport aircraft airliner airlines.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132712 - remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132713 - bookmark favorite favorites favourites hit like lo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132714 - adult chick erotics female lady sexual sexy venera.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132715 - config configuration control desktop equip equipme.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132716 - error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132717 - bubble chat comment forum message messages messeng.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132718 - redo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132719 - audio music mute no audio no sound silence sound v.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132720 - audio button control first media multimedia player.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132721 - adult male man mars martian power sexual sexy stro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132722 - toolbox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132723 - good mark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132724 - dial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132725 - eye look retina see view visible watch zoom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132726 - document new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132727 - cut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132728 - arrow back glossy previous record track.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132729 - volume.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132730 - person.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132731 - mark red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132732 - paste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132733 - address book.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132734 - business office paper print printer printing sheet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132735 - table.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132736 - code document documents file paper roll script scr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132737 - application applications configuration contact con.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132738 - bottom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132739 - retort.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132740 - refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132741 - arrow down download downloads load loading.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132742 - apply.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132743 - .png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132744 - rewind.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132745 - stopwatch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132746 - delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132747 - bookmark favorite yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132748 - delivery.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132749 - arrow audio go last last page last record last tra.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132750 - help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132751 - exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132752 - attach attachement blue caption jetton label name .png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132753 - billfold notecase pocketbook pouch purse wallet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132754 - bad dislike down hand mark thumb thumbs thumbs dow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132755 - history.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132756 - bin delete editor recycle trash trashcan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132757 - alert bomb caution danger explosive military war w.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132758 - gift.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132759 - taxi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132760 - arrow back first glossy previous record track.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132761 - zoom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132762 - abort alert ban block blocked cancel caution dange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132763 - text.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132764 - communication connection internet social social me.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132765 - bolt charge disaster electric electricity light li.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132766 - female.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132767 - in yang.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132768 - new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132769 - back go.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132770 - attach attachement blue caption green jetton label.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132771 - bee.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132772 - filter filters funnel mail sort sorting stock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132773 - application applications configuration contact con.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132774 - clipboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132775 - people.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132776 - brick cancel closed entry forbid forbidden glossy .png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132777 - connection network.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132778 - sign stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132779 - alert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132780 - alarm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132781 - hour hourglass loading minute sand watch time.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132782 - green marker pin push.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132783 - next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132784 - erase.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132785 - find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132786 - application applications configuration contact con.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132787 - male.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132788 - magic wand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132789 - target.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132790 - arrow top up upload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132791 - audio pause player sound video.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132792 - forward go.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

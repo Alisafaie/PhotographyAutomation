@@ -174,8 +174,8 @@ namespace PhotographyAutomation.DateLayer.Services
 
 
                 ObjectParameter returnValue = new ObjectParameter("returnValue", typeof(string));
-                var result = _db
-                    .usp_CreateCustomerFinancialDirectory(finacialNumber.ToString(), strMonth, 3, returnValue).ToList();
+                var result = _db.usp_CreateCustomerFinancialDirectory(finacialNumber.ToString(), strMonth, 3, returnValue)
+                                .ToList();
 
                 if (result.Count > 0)
                 {
@@ -215,9 +215,11 @@ namespace PhotographyAutomation.DateLayer.Services
                     };
 
                     using (SqlFileStream fs = new SqlFileStream(info.path_name, info.filestreamTxn, FileAccess.Write, FileOptions.WriteThrough, 0L))
-                    using (FileStream local = new FileStream(localFilePath, FileMode.Open, FileAccess.Read))
                     {
-                        local.CopyTo(fs);
+                        using (FileStream local = new FileStream(localFilePath, FileMode.Open, FileAccess.Read))
+                        {
+                            local.CopyTo(fs);
+                        }
                     }
 
 
