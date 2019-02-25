@@ -3,13 +3,12 @@ using PhotographyAutomation.Utilities.ExtentionMethods;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace PhotographyAutomation.App.Forms.Documents
+namespace PhotographyAutomation.App.Forms.Photos
 {
-    public partial class PhotoViewer : Form
+    public partial class FrmPhotoViewer : Form
     {
         public Image MyImage = null;
         public List<string> MyImageList = new List<string>();
@@ -20,7 +19,7 @@ namespace PhotographyAutomation.App.Forms.Documents
         private int currentPhotoIndex = 0;
         private int lastPhotoIndex = 0;
 
-        public PhotoViewer()
+        public FrmPhotoViewer()
         {
             InitializeComponent();
         }

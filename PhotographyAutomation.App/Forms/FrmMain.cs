@@ -2,6 +2,7 @@
 using PhotographyAutomation.App.Forms.Booking;
 using PhotographyAutomation.App.Forms.Customers;
 using PhotographyAutomation.App.Forms.Documents;
+using PhotographyAutomation.App.Forms.Photos;
 using System;
 using System.Windows.Forms;
 
@@ -65,7 +66,7 @@ namespace PhotographyAutomation.App.Forms
 
         private void buttonItem18_Click(object sender, EventArgs e)
         {
-            ViewDocumentInfo f = new ViewDocumentInfo();
+            FrmUploadPhotos f = new FrmUploadPhotos();
             f.ShowDialog();
         }
     }

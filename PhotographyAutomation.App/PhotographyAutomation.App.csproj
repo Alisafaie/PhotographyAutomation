@@ -79,17 +79,11 @@
     <Compile Include="Forms\Booking\FrmShowBookings.Designer.cs">
       <DependentUpon>FrmShowBookings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Documents\PhotoViewer.cs">
+    <Compile Include="Forms\Photos\FrmPhotoViewer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Documents\PhotoViewer.Designer.cs">
-      <DependentUpon>PhotoViewer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Documents\ViewDocumentInfo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Documents\ViewDocumentInfo.Designer.cs">
-      <DependentUpon>ViewDocumentInfo.cs</DependentUpon>
+    <Compile Include="Forms\Photos\FrmPhotoViewer.Designer.cs">
+      <DependentUpon>FrmPhotoViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmMain.cs">
       <SubType>Form</SubType>
@@ -109,6 +103,12 @@
     <Compile Include="Forms\Customers\FrmShowCustomerInfo.Designer.cs">
       <DependentUpon>FrmShowCustomerInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Photos\FrmUploadPhotos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Photos\FrmUploadPhotos.Designer.cs">
+      <DependentUpon>FrmUploadPhotos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\Booking\FrmAddEditBooking.resx">
@@ -120,11 +120,8 @@
     <EmbeddedResource Include="Forms\Booking\FrmShowBookings.resx">
       <DependentUpon>FrmShowBookings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Documents\PhotoViewer.resx">
-      <DependentUpon>PhotoViewer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Documents\ViewDocumentInfo.resx">
-      <DependentUpon>ViewDocumentInfo.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Photos\FrmPhotoViewer.resx">
+      <DependentUpon>FrmPhotoViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
@@ -134,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Customers\FrmShowCustomerInfo.resx">
       <DependentUpon>FrmShowCustomerInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Photos\FrmUploadPhotos.resx">
+      <DependentUpon>FrmUploadPhotos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

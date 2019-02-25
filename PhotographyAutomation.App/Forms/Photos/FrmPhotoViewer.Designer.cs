@@ -1,6 +1,6 @@
-﻿namespace PhotographyAutomation.App.Forms.Documents
+﻿namespace PhotographyAutomation.App.Forms.Photos
 {
-    partial class PhotoViewer
+    partial class FrmPhotoViewer
     {
         /// <summary>
         /// Required designer variable.
@@ -76,7 +76,6 @@
             // 
             // btnReload
             // 
-            this.btnReload.Checked = true;
             this.btnReload.Image = global::PhotographyAutomation.App.Properties.Resources._1371476394_refresh_red;
             this.btnReload.ImageFixedSize = new System.Drawing.Size(16, 16);
             this.btnReload.Name = "btnReload";
@@ -94,7 +93,6 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Checked = true;
             this.btnDelete.Image = global::PhotographyAutomation.App.Properties.Resources._132776___brick_cancel_closed_entry_forbid_forbidden_glossy;
             this.btnDelete.ImageFixedSize = new System.Drawing.Size(16, 16);
             this.btnDelete.Name = "btnDelete";
@@ -114,7 +112,6 @@
             // 
             // btnNextPhoto
             // 
-            this.btnNextPhoto.Checked = true;
             this.btnNextPhoto.Image = global::PhotographyAutomation.App.Properties.Resources._132623___playback;
             this.btnNextPhoto.ImageFixedSize = new System.Drawing.Size(16, 16);
             this.btnNextPhoto.Name = "btnNextPhoto";
@@ -124,7 +121,6 @@
             // 
             // btnPreviousPhoto
             // 
-            this.btnPreviousPhoto.Checked = true;
             this.btnPreviousPhoto.Image = global::PhotographyAutomation.App.Properties.Resources._132594___play;
             this.btnPreviousPhoto.ImageFixedSize = new System.Drawing.Size(16, 16);
             this.btnPreviousPhoto.Name = "btnPreviousPhoto";
@@ -134,7 +130,6 @@
             // 
             // btnFisrtPhoto
             // 
-            this.btnFisrtPhoto.Checked = true;
             this.btnFisrtPhoto.Image = global::PhotographyAutomation.App.Properties.Resources._132658___arrow_audio_go_last_last_page_last_record_last_tra;
             this.btnFisrtPhoto.ImageFixedSize = new System.Drawing.Size(16, 16);
             this.btnFisrtPhoto.Name = "btnFisrtPhoto";
@@ -190,7 +185,7 @@
             this.panelEx1.Style.GradientAngle = 90;
             this.panelEx1.TabIndex = 0;
             // 
-            // PhotoViewer
+            // FrmPhotoViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -199,7 +194,9 @@
             this.Controls.Add(this.navigationBar1);
             this.Controls.Add(this.panelEx1);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.Name = "PhotoViewer";
+            this.MinimizeBox = false;
+            this.Name = "FrmPhotoViewer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = " ";
             this.Load += new System.EventHandler(this.PhotoViewer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.navigationBar1)).EndInit();

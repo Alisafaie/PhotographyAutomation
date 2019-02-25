@@ -144,5 +144,65 @@ namespace PhotographyAutomation.App.Forms.Customers
             menu.Items.Add("لطفا اعداد را به صورت دستی وارد کنید.");
             txtTell.TextBoxElement.TextBoxItem.HostedControl.ContextMenuStrip = menu;
         }
+
+        private void btnShowAllCustomers_Click(object sender, EventArgs e)
+        {
+            dgvUsers.Rows.Clear();
+
+            using (var db = new UnitOfWork())
+            {
+                List<TblCustomer> users = db.UserGenericRepository.Get().ToList();
+
+                dgvUsers.AutoGenerateColumns = false;
+
+                if (users.Any())
+                {
+                    dgvUsers.Rows.Clear();
+                    dgvUsers.RowCount = users.Count;
+
+                    for (int i = 0; i < users.Count; i++)
+                    {
+                        dgvUsers.Rows[i].Cells["Id"].Value = users[i].Id;
+                        dgvUsers.Rows[i].Cells["FirstName"].Value = users[i].FirstName;
+                        dgvUsers.Rows[i].Cells["LastName"].Value = users[i].LastName;
+                        dgvUsers.Rows[i].Cells["Tell"].Value = users[i].Tell;
+                        dgvUsers.Rows[i].Cells["Tell"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+                        dgvUsers.Rows[i].Cells["Mobile"].Value = "0" + users[i].Mobile;
+                        dgvUsers.Rows[i].Cells["Mobile"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+                        dgvUsers.Rows[i].Cells["Email"].Value = users[i].Email;
+                        dgvUsers.Rows[i].Cells["Email"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+                        dgvUsers.Rows[i].Cells["NationalId"].Value = users[i].NationalId;
+                        dgvUsers.Rows[i].Cells["NationalId"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+                        var createdDate = users[i].CreatedDate;
+                        if (createdDate != null)
+                            dgvUsers.Rows[i].Cells["CreatedDate"].Value =
+                                createdDate.Value.ToString("HH:mm") + "   " +
+                                createdDate.Value.Date.ToShortDateString();
+
+                        dgvUsers.Rows[i].Cells["CreatedDate"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+                        var modifiedDate = users[i].ModifiedDate;
+                        if (modifiedDate != null)
+                            dgvUsers.Rows[i].Cells["CreatedDate"].Value =
+                                modifiedDate.Value.ToString("HH:mm") + "   " +
+                                modifiedDate.Value.Date.ToShortDateString();
+
+                        dgvUsers.Rows[i].Cells["CreatedDate"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+                        dgvUsers.Rows[i].Cells["MoreInfo"].Value = "...";
+                    }
+                }
+                else
+                {
+                    RtlMessageBox.Show("متاسفانه جستجوی شما در سیستم نتیجه ای در بر نداشت.", "", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    dgvUsers.Rows.Clear();
+                }
+            }
+        }
     }
 }
