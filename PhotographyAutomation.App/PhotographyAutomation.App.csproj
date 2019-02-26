@@ -1267,5 +1267,14 @@
   <ItemGroup>
     <None Include="Resources\132792 - forward go.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\27812 - options settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\27877 - find magnifying glass search zoom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_folder_up_11288.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -68,5 +68,10 @@ namespace PhotographyAutomation.App.Forms
             FrmUploadPhotos f = new FrmUploadPhotos();
             f.ShowDialog();
         }
+
+        private void buttonItem14_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

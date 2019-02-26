@@ -35,12 +35,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.office2010SilverTheme1 = new Telerik.WinControls.Themes.Office2010SilverTheme();
-            this.radThemeManager1 = new Telerik.WinControls.RadThemeManager();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnSearchCustomer = new Telerik.WinControls.UI.RadButton();
+            this.btnUploadPhotos = new DevComponents.DotNetBar.ButtonX();
             this.btnShowBookings = new System.Windows.Forms.Button();
             this.cmbBookinsStatus = new Telerik.WinControls.UI.RadDropDownList();
             this.chkEnableDatePickerBookingDate = new Telerik.WinControls.UI.RadCheckBox();
@@ -75,10 +73,11 @@
             this.ویرایشاطلاعاتمشتریToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ویرایشاطلاعاتنوبتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تبدیلبهسفارشToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.radThemeManager1 = new Telerik.WinControls.RadThemeManager();
+            this.office2010SilverTheme1 = new Telerik.WinControls.Themes.Office2010SilverTheme();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panelEx2.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSearchCustomer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbBookinsStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEnableDatePickerBookingDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSpecialBookings)).BeginInit();
@@ -124,7 +123,7 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.btnSearchCustomer);
+            this.groupBox2.Controls.Add(this.btnUploadPhotos);
             this.groupBox2.Controls.Add(this.btnShowBookings);
             this.groupBox2.Controls.Add(this.cmbBookinsStatus);
             this.groupBox2.Controls.Add(this.chkEnableDatePickerBookingDate);
@@ -141,25 +140,27 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "مشاهده نوبت ها بر اساس";
             // 
-            // btnSearchCustomer
+            // btnUploadPhotos
             // 
-            this.btnSearchCustomer.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.btnSearchCustomer.Location = new System.Drawing.Point(6, 30);
-            this.btnSearchCustomer.Name = "btnSearchCustomer";
-            this.btnSearchCustomer.Size = new System.Drawing.Size(110, 36);
-            this.btnSearchCustomer.TabIndex = 4;
-            this.btnSearchCustomer.Text = "جستجوی مشتری";
-            this.btnSearchCustomer.ThemeName = "Office2010Silver";
-            this.btnSearchCustomer.Click += new System.EventHandler(this.btnSearchCustomer_Click);
+            this.btnUploadPhotos.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnUploadPhotos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUploadPhotos.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnUploadPhotos.Location = new System.Drawing.Point(6, 26);
+            this.btnUploadPhotos.Name = "btnUploadPhotos";
+            this.btnUploadPhotos.Size = new System.Drawing.Size(115, 36);
+            this.btnUploadPhotos.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnUploadPhotos.TabIndex = 15;
+            this.btnUploadPhotos.Text = "جستجوی مشتری";
+            this.btnUploadPhotos.Click += new System.EventHandler(this.btnSearchCustomer_Click);
             // 
             // btnShowBookings
             // 
             this.btnShowBookings.FlatAppearance.BorderSize = 0;
             this.btnShowBookings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnShowBookings.Image = global::PhotographyAutomation.App.Properties.Resources.if_Find_132785;
-            this.btnShowBookings.Location = new System.Drawing.Point(312, 36);
+            this.btnShowBookings.Image = global::PhotographyAutomation.App.Properties.Resources._27877___find_magnifying_glass_search_zoom;
+            this.btnShowBookings.Location = new System.Drawing.Point(300, 28);
             this.btnShowBookings.Name = "btnShowBookings";
-            this.btnShowBookings.Size = new System.Drawing.Size(20, 20);
+            this.btnShowBookings.Size = new System.Drawing.Size(32, 32);
             this.btnShowBookings.TabIndex = 14;
             this.btnShowBookings.UseVisualStyleBackColor = true;
             this.btnShowBookings.Click += new System.EventHandler(this.btnShowBookings_Click);
@@ -171,7 +172,7 @@
             this.cmbBookinsStatus.EnableAlternatingItemColor = true;
             this.cmbBookinsStatus.Enabled = false;
             this.cmbBookinsStatus.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.cmbBookinsStatus.Location = new System.Drawing.Point(338, 36);
+            this.cmbBookinsStatus.Location = new System.Drawing.Point(338, 37);
             this.cmbBookinsStatus.Name = "cmbBookinsStatus";
             this.cmbBookinsStatus.Size = new System.Drawing.Size(125, 20);
             this.cmbBookinsStatus.TabIndex = 5;
@@ -193,7 +194,7 @@
             // 
             this.chkSpecialBookings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkSpecialBookings.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.chkSpecialBookings.Location = new System.Drawing.Point(469, 37);
+            this.chkSpecialBookings.Location = new System.Drawing.Point(469, 38);
             this.chkSpecialBookings.Name = "chkSpecialBookings";
             this.chkSpecialBookings.Size = new System.Drawing.Size(71, 17);
             this.chkSpecialBookings.TabIndex = 4;
@@ -324,7 +325,7 @@
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvBookings.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvBookings.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -348,6 +349,7 @@
             this.dgvBookings.ShowEditingIcon = false;
             this.dgvBookings.Size = new System.Drawing.Size(1046, 430);
             this.dgvBookings.TabIndex = 0;
+            this.dgvBookings.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dgvBookings_MouseUp);
             // 
             // clmId
             // 
@@ -558,7 +560,6 @@
             this.panelEx2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSearchCustomer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbBookinsStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEnableDatePickerBookingDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSpecialBookings)).EndInit();
@@ -575,8 +576,6 @@
         #endregion
 
         private DevComponents.DotNetBar.StyleManager styleManager1;
-        private Telerik.WinControls.Themes.Office2010SilverTheme office2010SilverTheme1;
-        private Telerik.WinControls.RadThemeManager radThemeManager1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private DevComponents.DotNetBar.PanelEx panelEx2;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -586,7 +585,6 @@
         private Telerik.WinControls.UI.RadRadioButton rbCurrentWeek;
         private Telerik.WinControls.UI.RadRadioButton rbCurrentDay;
         private System.Windows.Forms.GroupBox groupBox1;
-        private Telerik.WinControls.UI.RadButton btnSearchCustomer;
         private DevComponents.DotNetBar.Controls.DataGridViewX dgvBookings;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmId;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmUserId;
@@ -615,5 +613,8 @@
         private System.Windows.Forms.ToolStripMenuItem ویرایشاطلاعاتمشتریToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ویرایشاطلاعاتنوبتToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem تبدیلبهسفارشToolStripMenuItem;
+        private DevComponents.DotNetBar.ButtonX btnUploadPhotos;
+        private Telerik.WinControls.RadThemeManager radThemeManager1;
+        private Telerik.WinControls.Themes.Office2010SilverTheme office2010SilverTheme1;
     }
 }

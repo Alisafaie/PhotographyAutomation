@@ -28,7 +28,7 @@ namespace PhotographyAutomation.App.Forms.Booking
 
             txtPersonCount.Value = 1;
 
-            txtBookingStatus.Text = @"در انتظار پرداخت";
+            txtBookingStatus.Text = @"در انتظار بیعانه";
 
             using (var db = new UnitOfWork())
             {
@@ -135,20 +135,14 @@ namespace PhotographyAutomation.App.Forms.Booking
         {
             using (var db = new UnitOfWork())
             {
+                cmbPhotographyTypes.DataSource =
+                    db.PhotographyTypesGenericRepository.Get().OrderBy(x => x.Code).ToList();
+                cmbPhotographyTypes.DisplayMember = "TypeName";
+                cmbPhotographyTypes.ValueMember = "Id";
+
                 cmbAtelierTypes.DataSource = db.AtelierTypesGenericRepository.Get().OrderBy(x => x.Code).ToList();
                 cmbAtelierTypes.DisplayMember = "AtelierName";
                 cmbAtelierTypes.ValueMember = "Id";
-
-                cmbPhotographyTypes.DataSource =
-                    db.PhotographyTypesGenericRepository.Get().OrderBy(x => x.Code).ToList();
-                cmbPhotographyTypes.DisplayMember = "TypeName";
-                cmbPhotographyTypes.ValueMember = "Id";
-
-
-                cmbPhotographyTypes.DataSource =
-                    db.PhotographyTypesGenericRepository.Get().OrderBy(x => x.Code).ToList();
-                cmbPhotographyTypes.DisplayMember = "TypeName";
-                cmbPhotographyTypes.ValueMember = "Id";
             }
         }
 
@@ -165,7 +159,8 @@ namespace PhotographyAutomation.App.Forms.Booking
                         CreatedDate = DateTime.Now,
                         Date = datePickerBookingDate.Value,
                         PersonCount = (int)txtPersonCount.Value,
-                        PhotographyTypeId = (int)cmbPhotographyTypes.SelectedValue
+                        PhotographyTypeId = (int)cmbPhotographyTypes.SelectedValue,
+                        StatusId = 6
                     };
 
                     if (timePickerBookingTime.Value != null)
@@ -184,9 +179,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                         booking.PhotographerGender = 1;
                     }
                     else
-                    {
                         booking.PhotographerGender = 2;
-                    }
 
 
                     using (var db = new UnitOfWork())

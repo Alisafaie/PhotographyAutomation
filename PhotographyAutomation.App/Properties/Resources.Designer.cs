@@ -2403,6 +2403,26 @@ namespace PhotographyAutomation.App.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _27812___options_settings {
+            get {
+                object obj = ResourceManager.GetObject("_27812___options_settings", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _27877___find_magnifying_glass_search_zoom {
+            get {
+                object obj = ResourceManager.GetObject("_27877___find_magnifying_glass_search_zoom", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap adduser {
             get {
                 object obj = ResourceManager.GetObject("adduser", resourceCulture);
@@ -2556,6 +2576,16 @@ namespace PhotographyAutomation.App.Properties {
         internal static System.Drawing.Bitmap iconfinder_Configuration_01_1976051 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_Configuration_01_1976051", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_folder_up_11288 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_folder_up_11288", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

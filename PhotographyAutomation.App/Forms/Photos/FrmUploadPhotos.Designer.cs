@@ -31,9 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmUploadPhotos));
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.office2010SilverTheme1 = new Telerik.WinControls.Themes.Office2010SilverTheme();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.btnUploadPhotos = new DevComponents.DotNetBar.ButtonX();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -47,44 +44,33 @@
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.txtFinancialNumber = new System.Windows.Forms.ToolStripTextBox();
-            this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
+            this.toolTipPictureBoxPreview = new System.Windows.Forms.ToolTip(this.components);
             this.collapsibleSplitContainer1 = new DevComponents.DotNetBar.Controls.CollapsibleSplitContainer();
-            this.panelEx5 = new DevComponents.DotNetBar.PanelEx();
-            this.pictureBoxPreview = new System.Windows.Forms.PictureBox();
             this.panelEx4 = new DevComponents.DotNetBar.PanelEx();
             this.labelPicturePreviewName = new DevComponents.DotNetBar.LabelX();
-            this.toolTipPictureBoxPreview = new System.Windows.Forms.ToolTip(this.components);
+            this.panelEx5 = new DevComponents.DotNetBar.PanelEx();
+            this.pictureBoxPreview = new System.Windows.Forms.PictureBox();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
-            this.panelPreviewPictures = new DevComponents.DotNetBar.PanelEx();
             this.checkBoxSelectAll = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.panelPreviewPictures = new DevComponents.DotNetBar.PanelEx();
+            this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            this.panelEx3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.collapsibleSplitContainer1)).BeginInit();
             this.collapsibleSplitContainer1.Panel1.SuspendLayout();
             this.collapsibleSplitContainer1.Panel2.SuspendLayout();
             this.collapsibleSplitContainer1.SuspendLayout();
+            this.panelEx4.SuspendLayout();
             this.panelEx5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).BeginInit();
-            this.panelEx4.SuspendLayout();
             this.panelEx2.SuspendLayout();
+            this.panelEx3.SuspendLayout();
             this.SuspendLayout();
             // 
             // styleManager1
             // 
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2010Silver;
             this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255))))), System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199))))));
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            this.errorProvider1.RightToLeft = true;
-            // 
-            // highlighter1
-            // 
-            this.highlighter1.ContainerControl = this;
-            this.highlighter1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F";
             // 
             // panelEx1
             // 
@@ -209,25 +195,6 @@
             this.txtFinancialNumber.Name = "txtFinancialNumber";
             this.txtFinancialNumber.Size = new System.Drawing.Size(100, 23);
             // 
-            // panelEx3
-            // 
-            this.panelEx3.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx3.Controls.Add(this.collapsibleSplitContainer1);
-            this.panelEx3.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx3.Location = new System.Drawing.Point(0, 27);
-            this.panelEx3.Name = "panelEx3";
-            this.panelEx3.Size = new System.Drawing.Size(1034, 596);
-            this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx3.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx3.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.panelEx3.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx3.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelEx3.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx3.Style.GradientAngle = 90;
-            this.panelEx3.TabIndex = 19;
-            // 
             // collapsibleSplitContainer1
             // 
             this.collapsibleSplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -249,38 +216,6 @@
             this.collapsibleSplitContainer1.SplitterDistance = 761;
             this.collapsibleSplitContainer1.SplitterWidth = 20;
             this.collapsibleSplitContainer1.TabIndex = 4;
-            // 
-            // panelEx5
-            // 
-            this.panelEx5.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx5.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx5.Controls.Add(this.pictureBoxPreview);
-            this.panelEx5.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx5.Location = new System.Drawing.Point(0, 0);
-            this.panelEx5.Name = "panelEx5";
-            this.panelEx5.Size = new System.Drawing.Size(253, 563);
-            this.panelEx5.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx5.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx5.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.panelEx5.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx5.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelEx5.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx5.Style.GradientAngle = 90;
-            this.panelEx5.TabIndex = 4;
-            this.panelEx5.Text = "panelEx5";
-            // 
-            // pictureBoxPreview
-            // 
-            this.pictureBoxPreview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxPreview.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxPreview.Name = "pictureBoxPreview";
-            this.pictureBoxPreview.Size = new System.Drawing.Size(253, 563);
-            this.pictureBoxPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxPreview.TabIndex = 0;
-            this.pictureBoxPreview.TabStop = false;
-            this.toolTipPictureBoxPreview.SetToolTip(this.pictureBoxPreview, "برای نمایش عکس در اندازه بزرگتر روی عکس دابل کلیک کنید.");
-            this.pictureBoxPreview.DoubleClick += new System.EventHandler(this.pictureBoxPreview_DoubleClick);
             // 
             // panelEx4
             // 
@@ -317,6 +252,38 @@
             this.labelPicturePreviewName.TabIndex = 2;
             this.labelPicturePreviewName.WordWrap = true;
             // 
+            // panelEx5
+            // 
+            this.panelEx5.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelEx5.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx5.Controls.Add(this.pictureBoxPreview);
+            this.panelEx5.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelEx5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelEx5.Location = new System.Drawing.Point(0, 0);
+            this.panelEx5.Name = "panelEx5";
+            this.panelEx5.Size = new System.Drawing.Size(253, 563);
+            this.panelEx5.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelEx5.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelEx5.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.panelEx5.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelEx5.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelEx5.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelEx5.Style.GradientAngle = 90;
+            this.panelEx5.TabIndex = 4;
+            this.panelEx5.Text = "panelEx5";
+            // 
+            // pictureBoxPreview
+            // 
+            this.pictureBoxPreview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxPreview.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxPreview.Name = "pictureBoxPreview";
+            this.pictureBoxPreview.Size = new System.Drawing.Size(253, 563);
+            this.pictureBoxPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxPreview.TabIndex = 0;
+            this.pictureBoxPreview.TabStop = false;
+            this.toolTipPictureBoxPreview.SetToolTip(this.pictureBoxPreview, "برای نمایش عکس در اندازه بزرگتر روی عکس دابل کلیک کنید.");
+            this.pictureBoxPreview.DoubleClick += new System.EventHandler(this.pictureBoxPreview_DoubleClick);
+            // 
             // panelEx2
             // 
             this.panelEx2.CanvasColor = System.Drawing.SystemColors.Control;
@@ -335,6 +302,21 @@
             this.panelEx2.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx2.Style.GradientAngle = 90;
             this.panelEx2.TabIndex = 4;
+            // 
+            // checkBoxSelectAll
+            // 
+            this.checkBoxSelectAll.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxSelectAll.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxSelectAll.Location = new System.Drawing.Point(673, 9);
+            this.checkBoxSelectAll.Name = "checkBoxSelectAll";
+            this.checkBoxSelectAll.Size = new System.Drawing.Size(76, 16);
+            this.checkBoxSelectAll.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxSelectAll.TabIndex = 0;
+            this.checkBoxSelectAll.Text = "انتخاب همه";
+            this.checkBoxSelectAll.CheckedChanged += new System.EventHandler(this.checkBoxSelectAll_CheckedChanged);
             // 
             // panelPreviewPictures
             // 
@@ -355,20 +337,24 @@
             this.panelPreviewPictures.Style.GradientAngle = 90;
             this.panelPreviewPictures.TabIndex = 11;
             // 
-            // checkBoxSelectAll
+            // panelEx3
             // 
-            this.checkBoxSelectAll.AutoSize = true;
-            // 
-            // 
-            // 
-            this.checkBoxSelectAll.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxSelectAll.Location = new System.Drawing.Point(673, 9);
-            this.checkBoxSelectAll.Name = "checkBoxSelectAll";
-            this.checkBoxSelectAll.Size = new System.Drawing.Size(76, 16);
-            this.checkBoxSelectAll.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxSelectAll.TabIndex = 0;
-            this.checkBoxSelectAll.Text = "انتخاب همه";
-            this.checkBoxSelectAll.CheckedChanged += new System.EventHandler(this.checkBoxSelectAll_CheckedChanged);
+            this.panelEx3.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelEx3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx3.Controls.Add(this.collapsibleSplitContainer1);
+            this.panelEx3.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelEx3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelEx3.Location = new System.Drawing.Point(0, 27);
+            this.panelEx3.Name = "panelEx3";
+            this.panelEx3.Size = new System.Drawing.Size(1034, 596);
+            this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelEx3.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelEx3.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.panelEx3.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelEx3.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelEx3.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelEx3.Style.GradientAngle = 90;
+            this.panelEx3.TabIndex = 19;
             // 
             // FrmUploadPhotos
             // 
@@ -379,26 +365,27 @@
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panelEx1);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmUploadPhotos";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ارسال عکس ها به سرور";
             this.Load += new System.EventHandler(this.FrmUploadPhotos_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.panelEx1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.panelEx3.ResumeLayout(false);
             this.collapsibleSplitContainer1.Panel1.ResumeLayout(false);
             this.collapsibleSplitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.collapsibleSplitContainer1)).EndInit();
             this.collapsibleSplitContainer1.ResumeLayout(false);
+            this.panelEx4.ResumeLayout(false);
             this.panelEx5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).EndInit();
-            this.panelEx4.ResumeLayout(false);
             this.panelEx2.ResumeLayout(false);
             this.panelEx2.PerformLayout();
+            this.panelEx3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -407,13 +394,7 @@
         #endregion
 
         private DevComponents.DotNetBar.StyleManager styleManager1;
-        private Telerik.WinControls.Themes.Office2010SilverTheme office2010SilverTheme1;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
-        private DevComponents.DotNetBar.Validator.Highlighter highlighter1;
         private DevComponents.DotNetBar.PanelEx panelEx1;
-        private DevComponents.DotNetBar.PanelEx panelEx3;
-        private DevComponents.DotNetBar.Controls.CollapsibleSplitContainer collapsibleSplitContainer1;
-        private System.Windows.Forms.PictureBox pictureBoxPreview;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
@@ -424,14 +405,17 @@
         private System.Windows.Forms.ToolStripMenuItem customizeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private DevComponents.DotNetBar.ButtonX btnUploadPhotos;
-        private DevComponents.DotNetBar.PanelEx panelEx5;
-        private DevComponents.DotNetBar.PanelEx panelEx4;
-        private DevComponents.DotNetBar.LabelX labelPicturePreviewName;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripTextBox txtFinancialNumber;
         private System.Windows.Forms.ToolTip toolTipPictureBoxPreview;
+        private DevComponents.DotNetBar.Controls.CollapsibleSplitContainer collapsibleSplitContainer1;
         private DevComponents.DotNetBar.PanelEx panelPreviewPictures;
         private DevComponents.DotNetBar.PanelEx panelEx2;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxSelectAll;
+        private DevComponents.DotNetBar.PanelEx panelEx5;
+        private System.Windows.Forms.PictureBox pictureBoxPreview;
+        private DevComponents.DotNetBar.PanelEx panelEx4;
+        private DevComponents.DotNetBar.LabelX labelPicturePreviewName;
+        private DevComponents.DotNetBar.PanelEx panelEx3;
     }
 }

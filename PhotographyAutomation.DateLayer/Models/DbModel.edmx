@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="PhotographyAutomationDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="TblAtelierType">
           <Key>
             <PropertyRef Name="Id" />
@@ -129,15 +129,15 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetAllPhotos' doe
         <EntityType Name="View_GetAllPhotos">
           <Key>
             <PropertyRef Name="StreamId" />
-            
-            
-            
-            
-            
-            
-            
-            
-            
+            <PropertyRef Name="FileName" />
+            <PropertyRef Name="CreationTime" />
+            <PropertyRef Name="LastWriteTime" />
+            <PropertyRef Name="IsOffline" />
+            <PropertyRef Name="IsHidden" />
+            <PropertyRef Name="IsReadonly" />
+            <PropertyRef Name="IsArchive" />
+            <PropertyRef Name="IsSystem" />
+            <PropertyRef Name="IsTemporary" />
           </Key>
           <Property Name="StreamId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="FileStream" Type="varbinary(max)" />
@@ -329,7 +329,7 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           <Parameter Name="parent_level" Type="tinyint" Mode="In" />
           <Parameter Name="returnValue" Type="nvarchar(max)" Mode="InOut" />
         </Function>
-        <EntityContainer Name="StoreContainer">
+        <EntityContainer Name="PhotographyAutomationDBModelStoreContainer">
           <EntitySet Name="TblAtelierType" EntityType="Self.TblAtelierType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblBooking" EntityType="Self.TblBooking" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblBookingStatus" EntityType="Self.TblBookingStatus" Schema="dbo" store:Type="Tables" />
@@ -432,87 +432,19 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
             <End Role="TblEmpRole" EntitySet="TblEmpRole" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PhotographyAutomationDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="PhotographyAutomationDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="TblAtelierType" EntityType="PhotographyAutomationDBModel.TblAtelierType" />
-          <EntitySet Name="TblBooking" EntityType="PhotographyAutomationDBModel.TblBooking" />
-          <EntitySet Name="TblBookingStatus" EntityType="PhotographyAutomationDBModel.TblBookingStatus" />
-          <EntitySet Name="TblCustomer" EntityType="PhotographyAutomationDBModel.TblCustomer" />
-          <EntitySet Name="TblEmployeeType" EntityType="PhotographyAutomationDBModel.TblEmployeeType" />
-          <EntitySet Name="TblEmpRole" EntityType="PhotographyAutomationDBModel.TblEmpRole" />
-          <EntitySet Name="TblPhotographyType" EntityType="PhotographyAutomationDBModel.TblPhotographyType" />
-          <EntitySet Name="TblRoleType" EntityType="PhotographyAutomationDBModel.TblRoleType" />
-          <AssociationSet Name="FK_TblBooking_TblAtelierType" Association="PhotographyAutomationDBModel.FK_TblBooking_TblAtelierType">
-            <End Role="TblAtelierType" EntitySet="TblAtelierType" />
-            <End Role="TblBooking" EntitySet="TblBooking" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblBooking_TblBookingStatus" Association="PhotographyAutomationDBModel.FK_TblBooking_TblBookingStatus">
-            <End Role="TblBookingStatus" EntitySet="TblBookingStatus" />
-            <End Role="TblBooking" EntitySet="TblBooking" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblBooking_TblPhotographyType" Association="PhotographyAutomationDBModel.FK_TblBooking_TblPhotographyType">
-            <End Role="TblPhotographyType" EntitySet="TblPhotographyType" />
-            <End Role="TblBooking" EntitySet="TblBooking" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblBooking_TblUser" Association="PhotographyAutomationDBModel.FK_TblBooking_TblUser">
-            <End Role="TblCustomer" EntitySet="TblCustomer" />
-            <End Role="TblBooking" EntitySet="TblBooking" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblEmp_Role_tblEmployeeType" Association="PhotographyAutomationDBModel.FK_tblEmp_Role_tblEmployeeType">
-            <End Role="TblEmployeeType" EntitySet="TblEmployeeType" />
-            <End Role="TblEmpRole" EntitySet="TblEmpRole" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblEmp_Role_tblRoleType" Association="PhotographyAutomationDBModel.FK_tblEmp_Role_tblRoleType">
-            <End Role="TblRoleType" EntitySet="TblRoleType" />
-            <End Role="TblEmpRole" EntitySet="TblEmpRole" />
-          </AssociationSet>
-          <EntitySet Name="TblDocuments" EntityType="PhotographyAutomationDBModel.TblDocuments" />
-          <AssociationSet Name="TblCustomerDocuments" Association="PhotographyAutomationDBModel.TblCustomerDocuments">
-            <End Role="TblDocuments" EntitySet="TblDocuments" />
-            <End Role="TblCustomer" EntitySet="TblCustomer" />
-          </AssociationSet>
-          <EntitySet Name="View_GetAllPhotos" EntityType="PhotographyAutomationDBModel.View_GetAllPhotos" />
-          <EntitySet Name="View_GetDocumentsFolders" EntityType="PhotographyAutomationDBModel.View_GetDocumentsFolders" />
-          <FunctionImport Name="usp_CreateYearFolder" ReturnType="Collection(String)">
-            <Parameter Name="name" Mode="In" Type="String" />
-            <Parameter Name="parent_name" Mode="In" Type="String" />
-            <Parameter Name="parent_level" Mode="In" Type="Byte" />
-            <Parameter Name="returnValue" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="usp_CreateCustomerFinancialDirectory" ReturnType="Collection(String)">
-            <Parameter Name="customerFinancialNumber" Mode="In" Type="String" />
-            <Parameter Name="monthNumber" Mode="In" Type="String" />
-            <Parameter Name="parent_level" Mode="In" Type="Byte" />
-            <Parameter Name="returnValue" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="usp_CreateMonthFolder" ReturnType="Collection(String)">
-            <Parameter Name="monthName" Mode="In" Type="String" />
-            <Parameter Name="year" Mode="In" Type="String" />
-            <Parameter Name="parent_level" Mode="In" Type="Byte" />
-            <Parameter Name="returnValue" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <EntitySet Name="TblDocumentPhotos" EntityType="PhotographyAutomationDBModel.TblDocumentPhotos" />
-          <AssociationSet Name="FK_TblDocumentPhotos_TblDocuments" Association="PhotographyAutomationDBModel.FK_TblDocumentPhotos_TblDocuments">
-            <End Role="TblDocuments" EntitySet="TblDocuments" />
-            <End Role="TblDocumentPhotos" EntitySet="TblDocumentPhotos" />
-          </AssociationSet>
-          <FunctionImport Name="usp_CreateFileTableFile" ReturnType="Collection(PhotographyAutomationDBModel.usp_CreateFileTableFile_Result)">
-            <Parameter Name="name" Mode="In" Type="String" />
-            <Parameter Name="parent_name" Mode="In" Type="String" />
-            <Parameter Name="parent_level" Mode="In" Type="Byte" />
-          </FunctionImport>
-        </EntityContainer>
         <EntityType Name="TblAtelierType">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Code" Type="Int32" Nullable="false" />
-          <Property Name="AtelierName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="TblBooking" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblAtelierType" FromRole="TblAtelierType" ToRole="TblBooking" />
+          <Property Name="AtelierName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TblBooking" Relationship="Self.FK_TblBooking_TblAtelierType" FromRole="TblAtelierType" ToRole="TblBooking" />
         </EntityType>
         <EntityType Name="TblBooking">
           <Key>
@@ -531,10 +463,10 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           <Property Name="StatusId" Type="Int32" Nullable="false" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="TblAtelierType" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblAtelierType" FromRole="TblBooking" ToRole="TblAtelierType" />
-          <NavigationProperty Name="TblBookingStatus" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblBookingStatus" FromRole="TblBooking" ToRole="TblBookingStatus" />
-          <NavigationProperty Name="TblPhotographyType" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblPhotographyType" FromRole="TblBooking" ToRole="TblPhotographyType" />
-          <NavigationProperty Name="TblCustomer" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblUser" FromRole="TblBooking" ToRole="TblCustomer" />
+          <NavigationProperty Name="TblAtelierType" Relationship="Self.FK_TblBooking_TblAtelierType" FromRole="TblBooking" ToRole="TblAtelierType" />
+          <NavigationProperty Name="TblBookingStatus" Relationship="Self.FK_TblBooking_TblBookingStatus" FromRole="TblBooking" ToRole="TblBookingStatus" />
+          <NavigationProperty Name="TblPhotographyType" Relationship="Self.FK_TblBooking_TblPhotographyType" FromRole="TblBooking" ToRole="TblPhotographyType" />
+          <NavigationProperty Name="TblCustomer" Relationship="Self.FK_TblBooking_TblUser" FromRole="TblBooking" ToRole="TblCustomer" />
         </EntityType>
         <EntityType Name="TblBookingStatus">
           <Key>
@@ -542,8 +474,8 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Code" Type="Int32" Nullable="false" />
-          <Property Name="StatusName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="TblBooking" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblBookingStatus" FromRole="TblBookingStatus" ToRole="TblBooking" />
+          <Property Name="StatusName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TblBooking" Relationship="Self.FK_TblBooking_TblBookingStatus" FromRole="TblBookingStatus" ToRole="TblBooking" />
         </EntityType>
         <EntityType Name="TblCustomer">
           <Key>
@@ -567,8 +499,31 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           <Property Name="Submitter" Type="Int32" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="TblBooking" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblUser" FromRole="TblCustomer" ToRole="TblBooking" />
-          <NavigationProperty Name="TblDocuments" Relationship="PhotographyAutomationDBModel.TblCustomerDocuments" FromRole="TblCustomer" ToRole="TblDocuments" />
+          <NavigationProperty Name="TblBooking" Relationship="Self.FK_TblBooking_TblUser" FromRole="TblCustomer" ToRole="TblBooking" />
+          <NavigationProperty Name="TblDocuments" Relationship="Self.TblCustomerDocuments" FromRole="TblCustomer" ToRole="TblDocuments" />
+        </EntityType>
+        <EntityType Name="TblDocumentPhotos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="DocumentId" Type="Int32" Nullable="false" />
+          <Property Name="StreamId" Type="Guid" Nullable="false" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="IsSelected" Type="Boolean" Nullable="false" />
+          <Property Name="path_locator" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="parent_path_locator" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblDocuments" Relationship="Self.FK_TblDocumentPhotos_TblDocuments" FromRole="TblDocumentPhotos" ToRole="TblDocuments" />
+        </EntityType>
+        <EntityType Name="TblDocuments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="DocumentNumber" Type="Int32" />
+          <Property Name="FinacialDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblDocumentPhotos" Relationship="Self.FK_TblDocumentPhotos_TblDocuments" FromRole="TblDocuments" ToRole="TblDocumentPhotos" />
+          <NavigationProperty Name="TblCustomer" Relationship="Self.TblCustomerDocuments" FromRole="TblDocuments" ToRole="TblCustomer" />
         </EntityType>
         <EntityType Name="TblEmployeeType">
           <Key>
@@ -576,8 +531,8 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           </Key>
           <Property Name="Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Code" Type="Int32" Nullable="false" />
-          <Property Name="PositionName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="TblEmpRole" Relationship="PhotographyAutomationDBModel.FK_tblEmp_Role_tblEmployeeType" FromRole="TblEmployeeType" ToRole="TblEmpRole" />
+          <Property Name="PositionName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TblEmpRole" Relationship="Self.FK_tblEmp_Role_tblEmployeeType" FromRole="TblEmployeeType" ToRole="TblEmpRole" />
         </EntityType>
         <EntityType Name="TblEmpRole">
           <Key>
@@ -586,8 +541,8 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EmpTypeId" Type="Byte" />
           <Property Name="RoleTypeId" Type="Int32" />
-          <NavigationProperty Name="TblEmployeeType" Relationship="PhotographyAutomationDBModel.FK_tblEmp_Role_tblEmployeeType" FromRole="TblEmpRole" ToRole="TblEmployeeType" />
-          <NavigationProperty Name="TblRoleType" Relationship="PhotographyAutomationDBModel.FK_tblEmp_Role_tblRoleType" FromRole="TblEmpRole" ToRole="TblRoleType" />
+          <NavigationProperty Name="TblEmployeeType" Relationship="Self.FK_tblEmp_Role_tblEmployeeType" FromRole="TblEmpRole" ToRole="TblEmployeeType" />
+          <NavigationProperty Name="TblRoleType" Relationship="Self.FK_tblEmp_Role_tblRoleType" FromRole="TblEmpRole" ToRole="TblRoleType" />
         </EntityType>
         <EntityType Name="TblPhotographyType">
           <Key>
@@ -595,8 +550,8 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Code" Type="Int32" Nullable="false" />
-          <Property Name="TypeName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="TblBooking" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblPhotographyType" FromRole="TblPhotographyType" ToRole="TblBooking" />
+          <Property Name="TypeName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TblBooking" Relationship="Self.FK_TblBooking_TblPhotographyType" FromRole="TblPhotographyType" ToRole="TblBooking" />
         </EntityType>
         <EntityType Name="TblRoleType">
           <Key>
@@ -604,102 +559,25 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Code" Type="Int32" Nullable="false" />
-          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="TblEmpRole" Relationship="PhotographyAutomationDBModel.FK_tblEmp_Role_tblRoleType" FromRole="TblRoleType" ToRole="TblEmpRole" />
+          <Property Name="RoleName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TblEmpRole" Relationship="Self.FK_tblEmp_Role_tblRoleType" FromRole="TblRoleType" ToRole="TblEmpRole" />
         </EntityType>
-        <Association Name="FK_TblBooking_TblAtelierType">
-          <End Type="PhotographyAutomationDBModel.TblAtelierType" Role="TblAtelierType" Multiplicity="1" />
-          <End Type="PhotographyAutomationDBModel.TblBooking" Role="TblBooking" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblAtelierType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TblBooking">
-              <PropertyRef Name="AtelierTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblBooking_TblBookingStatus">
-          <End Type="PhotographyAutomationDBModel.TblBookingStatus" Role="TblBookingStatus" Multiplicity="1" />
-          <End Type="PhotographyAutomationDBModel.TblBooking" Role="TblBooking" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblBookingStatus">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TblBooking">
-              <PropertyRef Name="StatusId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblBooking_TblPhotographyType">
-          <End Type="PhotographyAutomationDBModel.TblPhotographyType" Role="TblPhotographyType" Multiplicity="1" />
-          <End Type="PhotographyAutomationDBModel.TblBooking" Role="TblBooking" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblPhotographyType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TblBooking">
-              <PropertyRef Name="PhotographyTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblBooking_TblUser">
-          <End Type="PhotographyAutomationDBModel.TblCustomer" Role="TblCustomer" Multiplicity="1" />
-          <End Type="PhotographyAutomationDBModel.TblBooking" Role="TblBooking" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblCustomer">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TblBooking">
-              <PropertyRef Name="CustomerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblEmp_Role_tblEmployeeType">
-          <End Type="PhotographyAutomationDBModel.TblEmployeeType" Role="TblEmployeeType" Multiplicity="0..1" />
-          <End Type="PhotographyAutomationDBModel.TblEmpRole" Role="TblEmpRole" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblEmployeeType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TblEmpRole">
-              <PropertyRef Name="EmpTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblEmp_Role_tblRoleType">
-          <End Type="PhotographyAutomationDBModel.TblRoleType" Role="TblRoleType" Multiplicity="0..1" />
-          <End Type="PhotographyAutomationDBModel.TblEmpRole" Role="TblEmpRole" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblRoleType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TblEmpRole">
-              <PropertyRef Name="RoleTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="TblDocuments">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="DocumentNumber" Type="Int32" />
-          <Property Name="FinacialDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="TblCustomer" Relationship="PhotographyAutomationDBModel.TblCustomerDocuments" FromRole="TblDocuments" ToRole="TblCustomer" />
-          <NavigationProperty Name="TblDocumentPhotos" Relationship="PhotographyAutomationDBModel.FK_TblDocumentPhotos_TblDocuments" FromRole="TblDocuments" ToRole="TblDocumentPhotos" />
-        </EntityType>
-        <Association Name="TblCustomerDocuments">
-          <End Type="PhotographyAutomationDBModel.TblDocuments" Role="TblDocuments" Multiplicity="*" />
-          <End Type="PhotographyAutomationDBModel.TblCustomer" Role="TblCustomer" Multiplicity="*" />
-        </Association>
         <EntityType Name="View_GetAllPhotos">
           <Key>
             <PropertyRef Name="StreamId" />
+            <PropertyRef Name="FileName" />
+            <PropertyRef Name="CreationTime" />
+            <PropertyRef Name="LastWriteTime" />
+            <PropertyRef Name="IsOffline" />
+            <PropertyRef Name="IsHidden" />
+            <PropertyRef Name="IsReadonly" />
+            <PropertyRef Name="IsArchive" />
+            <PropertyRef Name="IsSystem" />
+            <PropertyRef Name="IsTemporary" />
           </Key>
           <Property Name="StreamId" Type="Guid" Nullable="false" />
           <Property Name="FileStream" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="FileName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PathLocator" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
           <Property Name="ParentPathLocator" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
           <Property Name="UncPath" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
@@ -734,7 +612,7 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           </Key>
           <Property Name="StreamId" Type="Guid" Nullable="false" />
           <Property Name="FileStream" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="FolderName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FolderName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PathLocator" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
           <Property Name="ParentPathLocator" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
           <Property Name="UncPath" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
@@ -754,22 +632,57 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           <Property Name="IsTemporary" Type="Boolean" Nullable="false" />
           <Property Name="IsDirectory" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityType Name="TblDocumentPhotos">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="DocumentId" Type="Int32" Nullable="false" />
-          <Property Name="StreamId" Type="Guid" Nullable="false" />
-          <Property Name="CustomerId" Type="Int32" Nullable="false" />
-          <Property Name="IsSelected" Type="Boolean" Nullable="false" />
-          <Property Name="path_locator" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="parent_path_locator" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="TblDocuments" Relationship="PhotographyAutomationDBModel.FK_TblDocumentPhotos_TblDocuments" FromRole="TblDocumentPhotos" ToRole="TblDocuments" />
-        </EntityType>
+        <Association Name="FK_TblBooking_TblAtelierType">
+          <End Role="TblAtelierType" Type="Self.TblAtelierType" Multiplicity="1" />
+          <End Role="TblBooking" Type="Self.TblBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblAtelierType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblBooking">
+              <PropertyRef Name="AtelierTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblBooking_TblBookingStatus">
+          <End Role="TblBookingStatus" Type="Self.TblBookingStatus" Multiplicity="1" />
+          <End Role="TblBooking" Type="Self.TblBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblBookingStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblBooking">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblBooking_TblPhotographyType">
+          <End Role="TblPhotographyType" Type="Self.TblPhotographyType" Multiplicity="1" />
+          <End Role="TblBooking" Type="Self.TblBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblPhotographyType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblBooking">
+              <PropertyRef Name="PhotographyTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblBooking_TblUser">
+          <End Role="TblCustomer" Type="Self.TblCustomer" Multiplicity="1" />
+          <End Role="TblBooking" Type="Self.TblBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCustomer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblBooking">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TblDocumentPhotos_TblDocuments">
-          <End Type="PhotographyAutomationDBModel.TblDocuments" Role="TblDocuments" Multiplicity="1" />
-          <End Type="PhotographyAutomationDBModel.TblDocumentPhotos" Role="TblDocumentPhotos" Multiplicity="*" />
+          <End Role="TblDocuments" Type="Self.TblDocuments" Multiplicity="1" />
+          <End Role="TblDocumentPhotos" Type="Self.TblDocumentPhotos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TblDocuments">
               <PropertyRef Name="Id" />
@@ -779,6 +692,103 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblEmp_Role_tblEmployeeType">
+          <End Role="TblEmployeeType" Type="Self.TblEmployeeType" Multiplicity="0..1" />
+          <End Role="TblEmpRole" Type="Self.TblEmpRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblEmployeeType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblEmpRole">
+              <PropertyRef Name="EmpTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEmp_Role_tblRoleType">
+          <End Role="TblRoleType" Type="Self.TblRoleType" Multiplicity="0..1" />
+          <End Role="TblEmpRole" Type="Self.TblEmpRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblRoleType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblEmpRole">
+              <PropertyRef Name="RoleTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TblCustomerDocuments">
+          <End Role="TblDocuments" Type="Self.TblDocuments" Multiplicity="*" />
+          <End Role="TblCustomer" Type="Self.TblCustomer" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="PhotographyAutomationDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TblAtelierType" EntityType="Self.TblAtelierType" />
+          <EntitySet Name="TblBooking" EntityType="Self.TblBooking" />
+          <EntitySet Name="TblBookingStatus" EntityType="Self.TblBookingStatus" />
+          <EntitySet Name="TblCustomer" EntityType="Self.TblCustomer" />
+          <EntitySet Name="TblDocumentPhotos" EntityType="Self.TblDocumentPhotos" />
+          <EntitySet Name="TblDocuments" EntityType="Self.TblDocuments" />
+          <EntitySet Name="TblEmployeeType" EntityType="Self.TblEmployeeType" />
+          <EntitySet Name="TblEmpRole" EntityType="Self.TblEmpRole" />
+          <EntitySet Name="TblPhotographyType" EntityType="Self.TblPhotographyType" />
+          <EntitySet Name="TblRoleType" EntityType="Self.TblRoleType" />
+          <EntitySet Name="View_GetAllPhotos" EntityType="Self.View_GetAllPhotos" />
+          <EntitySet Name="View_GetDocumentsFolders" EntityType="Self.View_GetDocumentsFolders" />
+          <AssociationSet Name="FK_TblBooking_TblAtelierType" Association="Self.FK_TblBooking_TblAtelierType">
+            <End Role="TblAtelierType" EntitySet="TblAtelierType" />
+            <End Role="TblBooking" EntitySet="TblBooking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblBooking_TblBookingStatus" Association="Self.FK_TblBooking_TblBookingStatus">
+            <End Role="TblBookingStatus" EntitySet="TblBookingStatus" />
+            <End Role="TblBooking" EntitySet="TblBooking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblBooking_TblPhotographyType" Association="Self.FK_TblBooking_TblPhotographyType">
+            <End Role="TblPhotographyType" EntitySet="TblPhotographyType" />
+            <End Role="TblBooking" EntitySet="TblBooking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblBooking_TblUser" Association="Self.FK_TblBooking_TblUser">
+            <End Role="TblCustomer" EntitySet="TblCustomer" />
+            <End Role="TblBooking" EntitySet="TblBooking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblDocumentPhotos_TblDocuments" Association="Self.FK_TblDocumentPhotos_TblDocuments">
+            <End Role="TblDocuments" EntitySet="TblDocuments" />
+            <End Role="TblDocumentPhotos" EntitySet="TblDocumentPhotos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEmp_Role_tblEmployeeType" Association="Self.FK_tblEmp_Role_tblEmployeeType">
+            <End Role="TblEmployeeType" EntitySet="TblEmployeeType" />
+            <End Role="TblEmpRole" EntitySet="TblEmpRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEmp_Role_tblRoleType" Association="Self.FK_tblEmp_Role_tblRoleType">
+            <End Role="TblRoleType" EntitySet="TblRoleType" />
+            <End Role="TblEmpRole" EntitySet="TblEmpRole" />
+          </AssociationSet>
+          <AssociationSet Name="TblCustomerDocuments" Association="Self.TblCustomerDocuments">
+            <End Role="TblDocuments" EntitySet="TblDocuments" />
+            <End Role="TblCustomer" EntitySet="TblCustomer" />
+          </AssociationSet>
+          <FunctionImport Name="usp_CreateCustomerFinancialDirectory" ReturnType="Collection(String)">
+            <Parameter Name="customerFinancialNumber" Mode="In" Type="String" />
+            <Parameter Name="monthNumber" Mode="In" Type="String" />
+            <Parameter Name="parent_level" Mode="In" Type="Byte" />
+            <Parameter Name="returnValue" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_CreateFileTableFile" ReturnType="Collection(PhotographyAutomationDBModel.usp_CreateFileTableFile_Result)">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="parent_name" Mode="In" Type="String" />
+            <Parameter Name="parent_level" Mode="In" Type="Byte" />
+          </FunctionImport>
+          <FunctionImport Name="usp_CreateMonthFolder" ReturnType="Collection(String)">
+            <Parameter Name="monthName" Mode="In" Type="String" />
+            <Parameter Name="year" Mode="In" Type="String" />
+            <Parameter Name="parent_level" Mode="In" Type="Byte" />
+            <Parameter Name="returnValue" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_CreateYearFolder" ReturnType="Collection(String)">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="parent_name" Mode="In" Type="String" />
+            <Parameter Name="parent_level" Mode="In" Type="Byte" />
+            <Parameter Name="returnValue" Mode="InOut" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
         <ComplexType Name="usp_CreateFileTableFile_Result">
           <Property Type="String" Name="streamId" Nullable="true" MaxLength="4000" />
           <Property Type="String" Name="name" Nullable="true" MaxLength="255" />
@@ -787,196 +797,194 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           <Property Type="Binary" Name="filestreamTxn" Nullable="true" />
           <Property Type="String" Name="path_locator_str" Nullable="true" MaxLength="4000" />
         </ComplexType>
-        </Schema>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="StoreContainer" CdmEntityContainer="PhotographyAutomationDBEntities" >
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PhotographyAutomationDBModelStoreContainer" CdmEntityContainer="PhotographyAutomationDBEntities">
           <EntitySetMapping Name="TblAtelierType">
             <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblAtelierType">
               <MappingFragment StoreEntitySet="TblAtelierType">
-                <ScalarProperty Name="AtelierName" ColumnName="AtelierName" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="AtelierName" ColumnName="AtelierName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblBooking">
             <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblBooking">
               <MappingFragment StoreEntitySet="TblBooking">
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
-                <ScalarProperty Name="Submitter" ColumnName="Submitter" />
-                <ScalarProperty Name="PrepaymentIsOk" ColumnName="PrepaymentIsOk" />
-                <ScalarProperty Name="PersonCount" ColumnName="PersonCount" />
-                <ScalarProperty Name="AtelierTypeId" ColumnName="AtelierTypeId" />
-                <ScalarProperty Name="PhotographyTypeId" ColumnName="PhotographyTypeId" />
-                <ScalarProperty Name="PhotographerGender" ColumnName="PhotographerGender" />
-                <ScalarProperty Name="Time" ColumnName="Time" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="PhotographerGender" ColumnName="PhotographerGender" />
+                <ScalarProperty Name="PhotographyTypeId" ColumnName="PhotographyTypeId" />
+                <ScalarProperty Name="AtelierTypeId" ColumnName="AtelierTypeId" />
+                <ScalarProperty Name="PersonCount" ColumnName="PersonCount" />
+                <ScalarProperty Name="PrepaymentIsOk" ColumnName="PrepaymentIsOk" />
+                <ScalarProperty Name="Submitter" ColumnName="Submitter" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblBookingStatus">
             <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblBookingStatus">
               <MappingFragment StoreEntitySet="TblBookingStatus">
-                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblCustomer">
             <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblCustomer">
               <MappingFragment StoreEntitySet="TblCustomer">
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Submitter" ColumnName="Submitter" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="WeddingDate" ColumnName="WeddingDate" />
-                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-                <ScalarProperty Name="IsMarried" ColumnName="IsMarried" />
-                <ScalarProperty Name="CustomerType" ColumnName="CustomerType" />
-                <ScalarProperty Name="NationalId" ColumnName="NationalId" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-                <ScalarProperty Name="Tell" ColumnName="Tell" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Tell" ColumnName="Tell" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="NationalId" ColumnName="NationalId" />
+                <ScalarProperty Name="CustomerType" ColumnName="CustomerType" />
+                <ScalarProperty Name="IsMarried" ColumnName="IsMarried" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="WeddingDate" ColumnName="WeddingDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Submitter" ColumnName="Submitter" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TblEmployeeType">
-            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblEmployeeType">
-              <MappingFragment StoreEntitySet="TblEmployeeType">
-                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
+          <EntitySetMapping Name="TblDocumentPhotos">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblDocumentPhotos">
+              <MappingFragment StoreEntitySet="TblDocumentPhotos">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TblEmpRole">
-            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblEmpRole">
-              <MappingFragment StoreEntitySet="TblEmpRole">
-                <ScalarProperty Name="RoleTypeId" ColumnName="RoleTypeId" />
-                <ScalarProperty Name="EmpTypeId" ColumnName="EmpTypeId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TblPhotographyType">
-            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblPhotographyType">
-              <MappingFragment StoreEntitySet="TblPhotographyType">
-                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TblRoleType">
-            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblRoleType">
-              <MappingFragment StoreEntitySet="TblRoleType">
-                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+                <ScalarProperty Name="StreamId" ColumnName="StreamId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
+                <ScalarProperty Name="path_locator" ColumnName="path_locator" />
+                <ScalarProperty Name="parent_path_locator" ColumnName="parent_path_locator" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblDocuments">
             <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblDocuments">
               <MappingFragment StoreEntitySet="TblDocuments">
-                <ScalarProperty Name="FinacialDescription" ColumnName="FinacialDescription" />
-                <ScalarProperty Name="DocumentNumber" ColumnName="DocumentNumber" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DocumentNumber" ColumnName="DocumentNumber" />
+                <ScalarProperty Name="FinacialDescription" ColumnName="FinacialDescription" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="TblCustomerDocuments" TypeName="PhotographyAutomationDBModel.TblCustomerDocuments" StoreEntitySet="TblCustomerDocuments">
-            <EndProperty Name="TblCustomer">
-              <ScalarProperty Name="Id" ColumnName="CustomerId" />
-            </EndProperty>
-            <EndProperty Name="TblDocuments">
-              <ScalarProperty Name="Id" ColumnName="DocumentId" />
-            </EndProperty>
-          </AssociationSetMapping>
+          <EntitySetMapping Name="TblEmployeeType">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblEmployeeType">
+              <MappingFragment StoreEntitySet="TblEmployeeType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblEmpRole">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblEmpRole">
+              <MappingFragment StoreEntitySet="TblEmpRole">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EmpTypeId" ColumnName="EmpTypeId" />
+                <ScalarProperty Name="RoleTypeId" ColumnName="RoleTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblPhotographyType">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblPhotographyType">
+              <MappingFragment StoreEntitySet="TblPhotographyType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblRoleType">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblRoleType">
+              <MappingFragment StoreEntitySet="TblRoleType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="View_GetAllPhotos">
             <EntityTypeMapping TypeName="PhotographyAutomationDBModel.View_GetAllPhotos">
               <MappingFragment StoreEntitySet="View_GetAllPhotos">
-                <ScalarProperty Name="IsTemporary" ColumnName="IsTemporary" />
-                <ScalarProperty Name="IsSystem" ColumnName="IsSystem" />
-                <ScalarProperty Name="IsArchive" ColumnName="IsArchive" />
-                <ScalarProperty Name="IsReadonly" ColumnName="IsReadonly" />
-                <ScalarProperty Name="IsHidden" ColumnName="IsHidden" />
-                <ScalarProperty Name="IsOffline" ColumnName="IsOffline" />
-                <ScalarProperty Name="LastAccessTime" ColumnName="LastAccessTime" />
-                <ScalarProperty Name="LastWriteTime" ColumnName="LastWriteTime" />
-                <ScalarProperty Name="CreationTime" ColumnName="CreationTime" />
-                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
-                <ScalarProperty Name="FileType" ColumnName="FileType" />
-                <ScalarProperty Name="Level" ColumnName="Level" />
-                <ScalarProperty Name="FullUncPath" ColumnName="FullUncPath" />
-                <ScalarProperty Name="RelativePath" ColumnName="RelativePath" />
-                <ScalarProperty Name="UncPath" ColumnName="UncPath" />
-                <ScalarProperty Name="ParentPathLocator" ColumnName="ParentPathLocator" />
-                <ScalarProperty Name="PathLocator" ColumnName="PathLocator" />
-                <ScalarProperty Name="FileName" ColumnName="FileName" />
-                <ScalarProperty Name="FileStream" ColumnName="FileStream" />
                 <ScalarProperty Name="StreamId" ColumnName="StreamId" />
+                <ScalarProperty Name="FileStream" ColumnName="FileStream" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="PathLocator" ColumnName="PathLocator" />
+                <ScalarProperty Name="ParentPathLocator" ColumnName="ParentPathLocator" />
+                <ScalarProperty Name="UncPath" ColumnName="UncPath" />
+                <ScalarProperty Name="RelativePath" ColumnName="RelativePath" />
+                <ScalarProperty Name="FullUncPath" ColumnName="FullUncPath" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+                <ScalarProperty Name="CreationTime" ColumnName="CreationTime" />
+                <ScalarProperty Name="LastWriteTime" ColumnName="LastWriteTime" />
+                <ScalarProperty Name="LastAccessTime" ColumnName="LastAccessTime" />
+                <ScalarProperty Name="IsOffline" ColumnName="IsOffline" />
+                <ScalarProperty Name="IsHidden" ColumnName="IsHidden" />
+                <ScalarProperty Name="IsReadonly" ColumnName="IsReadonly" />
+                <ScalarProperty Name="IsArchive" ColumnName="IsArchive" />
+                <ScalarProperty Name="IsSystem" ColumnName="IsSystem" />
+                <ScalarProperty Name="IsTemporary" ColumnName="IsTemporary" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="View_GetDocumentsFolders">
             <EntityTypeMapping TypeName="PhotographyAutomationDBModel.View_GetDocumentsFolders">
               <MappingFragment StoreEntitySet="View_GetDocumentsFolders">
-                <ScalarProperty Name="IsDirectory" ColumnName="IsDirectory" />
-                <ScalarProperty Name="IsTemporary" ColumnName="IsTemporary" />
-                <ScalarProperty Name="IsSystem" ColumnName="IsSystem" />
-                <ScalarProperty Name="IsArchive" ColumnName="IsArchive" />
-                <ScalarProperty Name="IsReadonly" ColumnName="IsReadonly" />
-                <ScalarProperty Name="IsHidden" ColumnName="IsHidden" />
-                <ScalarProperty Name="IsOffline" ColumnName="IsOffline" />
-                <ScalarProperty Name="LastAccessTime" ColumnName="LastAccessTime" />
-                <ScalarProperty Name="LastWriteTime" ColumnName="LastWriteTime" />
-                <ScalarProperty Name="CreationTime" ColumnName="CreationTime" />
-                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
-                <ScalarProperty Name="FileType" ColumnName="FileType" />
-                <ScalarProperty Name="Level" ColumnName="Level" />
-                <ScalarProperty Name="FullUncPath" ColumnName="FullUncPath" />
-                <ScalarProperty Name="RelativePath" ColumnName="RelativePath" />
-                <ScalarProperty Name="UncPath" ColumnName="UncPath" />
-                <ScalarProperty Name="ParentPathLocator" ColumnName="ParentPathLocator" />
-                <ScalarProperty Name="PathLocator" ColumnName="PathLocator" />
-                <ScalarProperty Name="FolderName" ColumnName="FolderName" />
+                <ScalarProperty Name="StreamId" ColumnName="StreamId" />
                 <ScalarProperty Name="FileStream" ColumnName="FileStream" />
-                <ScalarProperty Name="StreamId" ColumnName="StreamId" />
+                <ScalarProperty Name="FolderName" ColumnName="FolderName" />
+                <ScalarProperty Name="PathLocator" ColumnName="PathLocator" />
+                <ScalarProperty Name="ParentPathLocator" ColumnName="ParentPathLocator" />
+                <ScalarProperty Name="UncPath" ColumnName="UncPath" />
+                <ScalarProperty Name="RelativePath" ColumnName="RelativePath" />
+                <ScalarProperty Name="FullUncPath" ColumnName="FullUncPath" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+                <ScalarProperty Name="CreationTime" ColumnName="CreationTime" />
+                <ScalarProperty Name="LastWriteTime" ColumnName="LastWriteTime" />
+                <ScalarProperty Name="LastAccessTime" ColumnName="LastAccessTime" />
+                <ScalarProperty Name="IsOffline" ColumnName="IsOffline" />
+                <ScalarProperty Name="IsHidden" ColumnName="IsHidden" />
+                <ScalarProperty Name="IsReadonly" ColumnName="IsReadonly" />
+                <ScalarProperty Name="IsArchive" ColumnName="IsArchive" />
+                <ScalarProperty Name="IsSystem" ColumnName="IsSystem" />
+                <ScalarProperty Name="IsTemporary" ColumnName="IsTemporary" />
+                <ScalarProperty Name="IsDirectory" ColumnName="IsDirectory" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="usp_CreateYearFolder" FunctionName="Store.usp_CreateYearFolder" />
-          <FunctionImportMapping FunctionImportName="usp_CreateCustomerFinancialDirectory" FunctionName="Store.usp_CreateCustomerFinancialDirectory" />
-          <FunctionImportMapping FunctionImportName="usp_CreateMonthFolder" FunctionName="Store.usp_CreateMonthFolder" />
-          <EntitySetMapping Name="TblDocumentPhotos">
-            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblDocumentPhotos">
-              <MappingFragment StoreEntitySet="TblDocumentPhotos">
-                <ScalarProperty Name="parent_path_locator" ColumnName="parent_path_locator" />
-                <ScalarProperty Name="path_locator" ColumnName="path_locator" />
-                <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
-                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
-                <ScalarProperty Name="StreamId" ColumnName="StreamId" />
-                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="usp_CreateFileTableFile" FunctionName="Store.usp_CreateFileTableFile">
+          <AssociationSetMapping Name="TblCustomerDocuments" TypeName="PhotographyAutomationDBModel.TblCustomerDocuments" StoreEntitySet="TblCustomerDocuments">
+            <EndProperty Name="TblDocuments">
+              <ScalarProperty Name="Id" ColumnName="DocumentId" />
+            </EndProperty>
+            <EndProperty Name="TblCustomer">
+              <ScalarProperty Name="Id" ColumnName="CustomerId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="usp_CreateCustomerFinancialDirectory" FunctionName="PhotographyAutomationDBModel.Store.usp_CreateCustomerFinancialDirectory" />
+          <FunctionImportMapping FunctionImportName="usp_CreateFileTableFile" FunctionName="PhotographyAutomationDBModel.Store.usp_CreateFileTableFile">
             <ResultMapping>
               <ComplexTypeMapping TypeName="PhotographyAutomationDBModel.usp_CreateFileTableFile_Result">
                 <ScalarProperty Name="streamId" ColumnName="streamId" />
@@ -988,8 +996,11 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          </EntityContainerMapping>
-</Mapping></edmx:Mappings>
+          <FunctionImportMapping FunctionImportName="usp_CreateMonthFolder" FunctionName="PhotographyAutomationDBModel.Store.usp_CreateMonthFolder" />
+          <FunctionImportMapping FunctionImportName="usp_CreateYearFolder" FunctionName="PhotographyAutomationDBModel.Store.usp_CreateYearFolder" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -1003,7 +1014,7 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>

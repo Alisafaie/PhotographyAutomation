@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PersianDate">
+      <HintPath>..\PhotographyAutomation.App\bin\Debug\PersianDate.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -45,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Convertor\DateConvertor.cs" />
     <Compile Include="Convertor\FileConvertor.cs" />
+    <Compile Include="ExtentionMethods\DateHelper.cs" />
     <Compile Include="ExtentionMethods\ImageHelper.cs" />
     <Compile Include="ExtentionMethods\NationalIdHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

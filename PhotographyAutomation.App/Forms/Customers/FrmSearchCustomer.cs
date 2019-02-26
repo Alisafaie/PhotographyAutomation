@@ -84,6 +84,8 @@ namespace PhotographyAutomation.App.Forms.Customers
 
                         dgvUsers.Rows[i].Cells["MoreInfo"].Value = "...";
                     }
+
+                    dgvUsers.ClearSelection();
                 }
                 else
                 {
@@ -137,11 +139,11 @@ namespace PhotographyAutomation.App.Forms.Customers
         }
 
 
-
+        //جهت جلوگیری از کپی پیست و دور زدن قوانین برنامه
         private void AddContextMenuToTxtTell()
         {
             var menu = new ContextMenuStrip();
-            menu.Items.Add("لطفا اعداد را به صورت دستی وارد کنید.");
+            menu.Items.Add("لطفا اعداد را به صورت کپی پیست وارد نکنید.");
             txtTell.TextBoxElement.TextBoxItem.HostedControl.ContextMenuStrip = menu;
         }
 
@@ -201,6 +203,27 @@ namespace PhotographyAutomation.App.Forms.Customers
                     RtlMessageBox.Show("متاسفانه جستجوی شما در سیستم نتیجه ای در بر نداشت.", "", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     dgvUsers.Rows.Clear();
+                }
+            }
+        }
+
+        private void dgvUsers_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (dgvUsers.Rows.Count > 0)
+                {
+                    int currentMouseOverRow = dgvUsers.HitTest(e.X, e.Y).RowIndex;
+                    if (currentMouseOverRow > -1)
+                        dgvUsers.Rows[currentMouseOverRow].Selected = true;
+                    else
+                    {
+                        menuDgvUsers.Visible = false;
+                    }
+                }
+                else
+                {
+                    menuDgvUsers.Visible = false;
                 }
             }
         }

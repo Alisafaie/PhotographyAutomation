@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAddEditBooking));
             this.office2010SilverTheme1 = new Telerik.WinControls.Themes.Office2010SilverTheme();
             this.btnOk = new Telerik.WinControls.UI.RadButton();
@@ -80,14 +80,14 @@
             this.datePickerBookingDate = new FreeControls.PersianDateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtFirstNameLastName = new Telerik.WinControls.UI.RadMaskedEditBox();
+            this.txtTell = new Telerik.WinControls.UI.RadMaskedEditBox();
+            this.txtMobile = new Telerik.WinControls.UI.RadMaskedEditBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.radThemeManager1 = new Telerik.WinControls.RadThemeManager();
-            this.txtMobile = new Telerik.WinControls.UI.RadMaskedEditBox();
-            this.txtTell = new Telerik.WinControls.UI.RadMaskedEditBox();
-            this.txtFirstNameLastName = new Telerik.WinControls.UI.RadMaskedEditBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnOk)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).BeginInit();
             this.panelEx1.SuspendLayout();
@@ -102,16 +102,16 @@
             this.panelPhotographerTypes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.timePickerBookingTime)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMobile)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTell)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFirstNameLastName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTell)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMobile)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOk
             // 
             this.btnOk.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.btnOk.Location = new System.Drawing.Point(797, 12);
+            this.btnOk.Location = new System.Drawing.Point(829, 12);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(110, 36);
             this.btnOk.TabIndex = 0;
@@ -123,7 +123,7 @@
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.btnCancel.Location = new System.Drawing.Point(681, 12);
+            this.btnCancel.Location = new System.Drawing.Point(713, 12);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(110, 36);
             this.btnCancel.TabIndex = 1;
@@ -192,18 +192,18 @@
             this.dgvBookingHistory.AllowUserToAddRows = false;
             this.dgvBookingHistory.AllowUserToDeleteRows = false;
             this.dgvBookingHistory.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvBookingHistory.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvBookingHistory.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvBookingHistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvBookingHistory.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBookingHistory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBookingHistory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dgvBookingHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBookingHistory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmId,
@@ -225,14 +225,14 @@
             this.clmStatusName,
             this.clmCreatedDateTime,
             this.clmModifiedDateTime});
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBookingHistory.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBookingHistory.DefaultCellStyle = dataGridViewCellStyle15;
             this.dgvBookingHistory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvBookingHistory.EnableHeadersVisualStyles = false;
             this.dgvBookingHistory.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
@@ -240,14 +240,14 @@
             this.dgvBookingHistory.MultiSelect = false;
             this.dgvBookingHistory.Name = "dgvBookingHistory";
             this.dgvBookingHistory.ReadOnly = true;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBookingHistory.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBookingHistory.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvBookingHistory.RowHeadersVisible = false;
             this.dgvBookingHistory.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvBookingHistory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -443,7 +443,7 @@
             // 
             this.txtBookingStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBookingStatus.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtBookingStatus.Location = new System.Drawing.Point(63, 81);
+            this.txtBookingStatus.Location = new System.Drawing.Point(62, 82);
             this.txtBookingStatus.Name = "txtBookingStatus";
             this.txtBookingStatus.ReadOnly = true;
             this.txtBookingStatus.Size = new System.Drawing.Size(111, 19);
@@ -591,7 +591,6 @@
             // 
             this.timePickerBookingTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.timePickerBookingTime.CloseButtonText = "بستن";
-            this.timePickerBookingTime.Culture = new System.Globalization.CultureInfo("en-US");
             this.timePickerBookingTime.EnableKeyMap = true;
             this.timePickerBookingTime.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.timePickerBookingTime.Location = new System.Drawing.Point(505, 29);
@@ -654,6 +653,47 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "اطلاعات مشتری";
             // 
+            // txtFirstNameLastName
+            // 
+            this.txtFirstNameLastName.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.txtFirstNameLastName.Location = new System.Drawing.Point(705, 41);
+            this.txtFirstNameLastName.Name = "txtFirstNameLastName";
+            this.txtFirstNameLastName.ReadOnly = true;
+            this.txtFirstNameLastName.Size = new System.Drawing.Size(111, 19);
+            this.txtFirstNameLastName.TabIndex = 5;
+            this.txtFirstNameLastName.TabStop = false;
+            this.txtFirstNameLastName.ThemeName = "Office2010Silver";
+            // 
+            // txtTell
+            // 
+            this.txtTell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.txtTell.Location = new System.Drawing.Point(505, 41);
+            this.txtTell.Mask = "(9999) 000 00 00";
+            this.txtTell.MaskType = Telerik.WinControls.UI.MaskType.Standard;
+            this.txtTell.Name = "txtTell";
+            this.txtTell.ReadOnly = true;
+            this.txtTell.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtTell.Size = new System.Drawing.Size(111, 19);
+            this.txtTell.TabIndex = 5;
+            this.txtTell.TabStop = false;
+            this.txtTell.Text = "(____) ___ __ __";
+            this.txtTell.ThemeName = "Office2010Silver";
+            // 
+            // txtMobile
+            // 
+            this.txtMobile.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.txtMobile.Location = new System.Drawing.Point(295, 41);
+            this.txtMobile.Mask = "(9990) 000 00 00";
+            this.txtMobile.MaskType = Telerik.WinControls.UI.MaskType.Standard;
+            this.txtMobile.Name = "txtMobile";
+            this.txtMobile.ReadOnly = true;
+            this.txtMobile.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtMobile.Size = new System.Drawing.Size(111, 19);
+            this.txtMobile.TabIndex = 5;
+            this.txtMobile.TabStop = false;
+            this.txtMobile.Text = "(____) ___ __ __";
+            this.txtMobile.ThemeName = "Office2010Silver";
+            // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -688,47 +728,6 @@
             // 
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.RightToLeft = true;
-            // 
-            // txtMobile
-            // 
-            this.txtMobile.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtMobile.Location = new System.Drawing.Point(295, 41);
-            this.txtMobile.Mask = "(9990) 000 00 00";
-            this.txtMobile.MaskType = Telerik.WinControls.UI.MaskType.Standard;
-            this.txtMobile.Name = "txtMobile";
-            this.txtMobile.ReadOnly = true;
-            this.txtMobile.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtMobile.Size = new System.Drawing.Size(111, 19);
-            this.txtMobile.TabIndex = 5;
-            this.txtMobile.TabStop = false;
-            this.txtMobile.Text = "(____) ___ __ __";
-            this.txtMobile.ThemeName = "Office2010Silver";
-            // 
-            // txtTell
-            // 
-            this.txtTell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtTell.Location = new System.Drawing.Point(505, 41);
-            this.txtTell.Mask = "(9999) 000 00 00";
-            this.txtTell.MaskType = Telerik.WinControls.UI.MaskType.Standard;
-            this.txtTell.Name = "txtTell";
-            this.txtTell.ReadOnly = true;
-            this.txtTell.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtTell.Size = new System.Drawing.Size(111, 19);
-            this.txtTell.TabIndex = 5;
-            this.txtTell.TabStop = false;
-            this.txtTell.Text = "(____) ___ __ __";
-            this.txtTell.ThemeName = "Office2010Silver";
-            // 
-            // txtFirstNameLastName
-            // 
-            this.txtFirstNameLastName.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtFirstNameLastName.Location = new System.Drawing.Point(705, 41);
-            this.txtFirstNameLastName.Name = "txtFirstNameLastName";
-            this.txtFirstNameLastName.ReadOnly = true;
-            this.txtFirstNameLastName.Size = new System.Drawing.Size(111, 19);
-            this.txtFirstNameLastName.TabIndex = 5;
-            this.txtFirstNameLastName.TabStop = false;
-            this.txtFirstNameLastName.ThemeName = "Office2010Silver";
             // 
             // FrmAddEditBooking
             // 
@@ -767,10 +766,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.timePickerBookingTime)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMobile)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTell)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFirstNameLastName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTell)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMobile)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }

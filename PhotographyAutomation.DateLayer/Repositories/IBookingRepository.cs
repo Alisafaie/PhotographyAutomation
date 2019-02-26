@@ -8,6 +8,7 @@ namespace PhotographyAutomation.DateLayer.Repositories
     {
         List<BookingHistoryAddEditBookingViewModel> GetCustomerBookingHistory(int customerId);
         List<BookingHistoryAddEditBookingViewModel> GetBookingBetweenDates(DateTime dtFrom, DateTime dtTo, int statusCode);
+        List<BookingHistoryAddEditBookingViewModel> GetBookingBetweenDates(DateTime dtFrom, DateTime dtTo);
         List<BookingHistoryAddEditBookingViewModel> GetBookingOfCustomer(int customerId);
     }
 }

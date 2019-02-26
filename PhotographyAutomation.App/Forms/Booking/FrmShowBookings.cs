@@ -3,10 +3,10 @@ using PhotographyAutomation.App.Forms.Customers;
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.Utilities;
 using PhotographyAutomation.Utilities.Convertor;
+using PhotographyAutomation.Utilities.ExtentionMethods;
 using PhotographyAutomation.ViewModels.Booking;
 using System;
 using System.Drawing;
-using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -16,6 +16,8 @@ namespace PhotographyAutomation.App.Forms.Booking
     {
         private int _statusCode = 10;
         public static int CustomerId = 0;
+
+
         public FrmShowBookings()
         {
             InitializeComponent();
@@ -49,54 +51,10 @@ namespace PhotographyAutomation.App.Forms.Booking
         }
 
 
-        private static DateTime GetFridayDate(DateTime now)
-        {
-            while (true)
-            {
-                if (now.DayOfWeek == DayOfWeek.Friday) return now;
-
-                now = now.AddDays(1);
-            }
-        }
-        private static DateTime GetFirstDayOfWeek(DateTime dt)
-        {
-            while (true)
-            {
-                if (dt.DayOfWeek == DayOfWeek.Saturday) return dt;
-                dt = dt.AddDays(-1);
-            }
-        }
-
-        private static DateTime GetFirstDayOfMonth(PersianDate date)
-        {
-            PersianCalendar pc = new PersianCalendar();
-            int currentDayOfMonth = pc.GetDayOfMonth(date);
-            return date.AddDays(-currentDayOfMonth + 1);
-        }
-        private static DateTime GetLastDateOfMonth(PersianDate date)
-        {
-            PersianCalendar pc = new PersianCalendar();
-
-            int totalDayInCurrentMonth = pc.GetDaysInMonth(date.Year, date.Month);
-            int currentDayOfMonth = pc.GetDayOfMonth(date);
-            int delta = totalDayInCurrentMonth - currentDayOfMonth;
-            DateTime dtTo = DateTime.Now.AddDays(delta);
-            return dtTo;
-        }
-
-        private DateTime GetDateFromPersianDateTimePicker(PersianDate selectedDate)
-        {
-            PersianCalendar pc = new PersianCalendar();
-            DateTime dtSelectedDate = pc.ToDateTime(selectedDate.Year, selectedDate.Month, selectedDate.Day, 0, 0, 0, 0);
-            return dtSelectedDate;
-        }
-
-
-
-
         private void ShowBookings(DateTime dtFrom, DateTime dtTo, int statusCode)
         {
             dgvBookings.BackColor = Color.White;
+
             dtFrom = new DateTime(dtFrom.Year, dtFrom.Month, dtFrom.Day, 0, 0, 0);
             dtTo = new DateTime(dtTo.Year, dtTo.Month, dtTo.Day, 23, 59, 59);
 
@@ -179,6 +137,96 @@ namespace PhotographyAutomation.App.Forms.Booking
                 }
             }
             dgvBookings.BackColor = Color.White;
+            dgvBookings.ClearSelection();
+        }
+
+        private void ShowBookings(DateTime dtFrom, DateTime dtTo)
+        {
+            dgvBookings.BackColor = Color.White;
+
+            dtFrom = new DateTime(dtFrom.Year, dtFrom.Month, dtFrom.Day, 0, 0, 0);
+            dtTo = new DateTime(dtTo.Year, dtTo.Month, dtTo.Day, 23, 59, 59);
+
+            using (var db = new UnitOfWork())
+            {
+                var bookingsList = db.BookingRepository.GetBookingBetweenDates(dtFrom, dtTo);
+                if (bookingsList.Any())
+                {
+                    dgvBookings.Rows.Clear();
+                    dgvBookings.RowCount = bookingsList.Count;
+                    dgvBookings.AutoGenerateColumns = false;
+
+                    for (int i = 0; i < bookingsList.Count; i++)
+                    {
+                        dgvBookings.Rows[i].Cells["clmId"].Value = bookingsList[i].Id;
+                        dgvBookings.Rows[i].Cells["clmUserId"].Value = bookingsList[i].UserId;
+
+                        if (bookingsList[i].CustomerGender == 0)
+                        {
+                            dgvBookings.Rows[i].Cells["clmCustomerFullName"].Value =
+                                "خانم " + bookingsList[i].CustomerFullName;
+
+                        }
+                        else if (bookingsList[i].CustomerGender == 1)
+                        {
+                            dgvBookings.Rows[i].Cells["clmCustomerFullName"].Value =
+                                "آقای " + bookingsList[i].CustomerFullName;
+                        }
+                        else
+                        {
+                            dgvBookings.Rows[i].Cells["clmCustomerFullName"].Value =
+                                bookingsList[i].CustomerFullName;
+                        }
+
+                        dgvBookings.Rows[i].Cells["clmDate"].Value = bookingsList[i].Date.ToShamsiDate();
+                        dgvBookings.Rows[i].Cells["clmDate"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+                        dgvBookings.Rows[i].Cells["clmTime"].Value = bookingsList[i].Time;
+
+                        dgvBookings.Rows[i].Cells["clmTime"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+                        dgvBookings.Rows[i].Cells["clmPhotographerGender"].Value =
+                            bookingsList[i].PhotographerGender;
+
+                        switch (bookingsList[i].PhotographerGender)
+                        {
+                            case 0:
+                                dgvBookings.Rows[i].Cells["clmPhotographerGenderName"].Value = "خانم";
+                                break;
+                            case 1:
+                                dgvBookings.Rows[i].Cells["clmPhotographerGenderName"].Value = "آقا";
+                                break;
+                            default:
+                                dgvBookings.Rows[i].Cells["clmPhotographerGenderName"].Value = "فرقی ندارد";
+                                break;
+                        }
+
+                        dgvBookings.Rows[i].Cells["clmPhotographyTypeId"].Value =
+                            bookingsList[i].PhotographyTypeId;
+                        dgvBookings.Rows[i].Cells["clmPhotographyTypeName"].Value =
+                            bookingsList[i].PhotographyTypeName;
+                        dgvBookings.Rows[i].Cells["clmAtelierTypeId"].Value = bookingsList[i].AtelierTypeId;
+                        dgvBookings.Rows[i].Cells["clmAtelierTypeName"].Value = bookingsList[i].AtelierTypeName;
+                        dgvBookings.Rows[i].Cells["clmPersonCount"].Value = bookingsList[i].PersonCount;
+                        dgvBookings.Rows[i].Cells["clmPaymentIsOK"].Value = bookingsList[i].PaymentIsOk;
+                        dgvBookings.Rows[i].Cells["clmSubmitter"].Value = bookingsList[i].Submitter;
+                        dgvBookings.Rows[i].Cells["clmSubmitterName"].Value = bookingsList[i].SubmitterName;
+                        dgvBookings.Rows[i].Cells["clmStatusId"].Value = bookingsList[i].StatusId;
+                        dgvBookings.Rows[i].Cells["clmStatusName"].Value = bookingsList[i].StatusName;
+                        dgvBookings.Rows[i].Cells["clmCreatedDateTime"].Value = bookingsList[i].CreatedDateTime;
+                        dgvBookings.Rows[i].Cells["clmModifiedDateTime"].Value =
+                            bookingsList[i].ModifiedDateTime;
+                    }
+                }
+                else
+                {
+                    RtlMessageBox.Show("برای تاریخ مورد نظر نوبتی ثبت نگردیده است.", "", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    dgvBookings.Rows.Clear();
+                }
+            }
+            dgvBookings.BackColor = Color.White;
+            dgvBookings.ClearSelection();
         }
 
         private void ShowBookingsOfCustomer(int customerId)
@@ -273,7 +321,8 @@ namespace PhotographyAutomation.App.Forms.Booking
         {
             if (rbCurrentDay.CheckState == CheckState.Checked)
             {
-                ShowBookings(DateTime.Now, DateTime.Now, _statusCode);
+                //ShowBookings(DateTime.Now, DateTime.Now, _statusCode);
+                ShowBookings(DateTime.Now, DateTime.Now);
             }
         }
 
@@ -281,8 +330,9 @@ namespace PhotographyAutomation.App.Forms.Booking
         {
             if (rbCurrentWeek.CheckState == CheckState.Checked)
             {
-                DateTime dtTo = GetFridayDate(DateTime.Now);
-                ShowBookings(GetFirstDayOfWeek(DateTime.Now), dtTo, _statusCode);
+                DateTime fridayDate = DateTime.Now.GetFridayDate();
+                //ShowBookings(DateTime.Now.GetFirstDayOfWeek(), fridayDate, _statusCode);
+                ShowBookings(DateTime.Now.GetFirstDayOfWeek(), fridayDate);
             }
         }
 
@@ -290,9 +340,10 @@ namespace PhotographyAutomation.App.Forms.Booking
         {
             if (rbCurrentmonth.CheckState == CheckState.Checked)
             {
-                DateTime dtLastDayOfMonth = GetLastDateOfMonth(PersianDate.Now);
-                DateTime dtFirstDayOfMonth = GetFirstDayOfMonth(PersianDate.Now);
-                ShowBookings(dtFirstDayOfMonth, dtLastDayOfMonth, _statusCode);
+                DateTime dtLastDayOfMonth = PersianDate.Now.GetLastDateOfMonth();
+                DateTime dtFirstDayOfMonth = PersianDate.Now.GetFirstDayOfMonth();
+                //ShowBookings(dtFirstDayOfMonth, dtLastDayOfMonth, _statusCode);
+                ShowBookings(dtFirstDayOfMonth, dtLastDayOfMonth);
             }
         }
 
@@ -316,8 +367,9 @@ namespace PhotographyAutomation.App.Forms.Booking
 
         private void datePickerBookingDate_ValueChanged(object sender, PersianMonthCalendarEventArgs e)
         {
-            DateTime dtSelectedDate = GetDateFromPersianDateTimePicker(datePickerBookingDate.Value);
-            ShowBookings(dtSelectedDate, dtSelectedDate, _statusCode);
+            DateTime dtSelectedDate = datePickerBookingDate.Value.GetDateFromPersianDateTimePicker();
+            //ShowBookings(dtSelectedDate, dtSelectedDate, _statusCode);
+            ShowBookings(dtSelectedDate, dtSelectedDate);
         }
 
         private void btnShowBookings_Click(object sender, EventArgs e)
@@ -329,7 +381,7 @@ namespace PhotographyAutomation.App.Forms.Booking
 
             if (searchSpecialDate)
             {
-                DateTime dtSelectedDate = GetDateFromPersianDateTimePicker(datePickerBookingDate.Value);
+                DateTime dtSelectedDate = datePickerBookingDate.Value.GetDateFromPersianDateTimePicker();
                 ShowBookings(dtSelectedDate, dtSelectedDate, _statusCode);
             }
             else
@@ -340,11 +392,11 @@ namespace PhotographyAutomation.App.Forms.Booking
                 }
                 else if (currentWeek)
                 {
-                    ShowBookings(GetFirstDayOfWeek(DateTime.Now), GetFridayDate(DateTime.Now), _statusCode);
+                    ShowBookings(DateTime.Now.GetFirstDayOfWeek(), DateTime.Now.GetFridayDate(), _statusCode);
                 }
                 else if (currentMonth)
                 {
-                    ShowBookings(GetFirstDayOfMonth(DateTime.Now), GetLastDateOfMonth(PersianDate.Now), _statusCode);
+                    ShowBookings(PersianDate.Now.GetFirstDayOfMonth(), PersianDate.Now.GetLastDateOfMonth(), _statusCode);
                 }
             }
         }
@@ -377,6 +429,29 @@ namespace PhotographyAutomation.App.Forms.Booking
                 if (CustomerId > 0)
                 {
                     ShowBookingsOfCustomer(CustomerId);
+                }
+            }
+        }
+
+        
+        //پیاده سازی نمایش کانتکست منو روی قسمت هایی که مقدار دارند و انتخاب آن ردیف
+        private void dgvBookings_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (dgvBookings.Rows.Count > 0)
+                {
+                    int currentMouseOverRow = dgvBookings.HitTest(e.X, e.Y).RowIndex;
+                    if (currentMouseOverRow > -1)
+                        dgvBookings.Rows[currentMouseOverRow].Selected = true;
+                    else
+                    {
+                        contextMenuStripDgvBookings.Visible = false;
+                    }
+                }
+                else
+                {
+                    contextMenuStripDgvBookings.Visible = false;
                 }
             }
         }

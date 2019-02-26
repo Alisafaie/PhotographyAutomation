@@ -121,6 +121,57 @@ namespace PhotographyAutomation.DateLayer.Services
             }
         }
 
+        public List<BookingHistoryAddEditBookingViewModel> GetBookingBetweenDates(DateTime dtFrom, DateTime dtTo)
+        {
+            try
+            {
+                var returnValue = _db.TblBooking
+                    .Include(x => x.TblCustomer)
+                    .Include(x => x.TblAtelierType)
+                    .Include(x => x.TblBookingStatus)
+                    .Include(x => x.TblPhotographyType)
+                    .Where(x => x.Date >= dtFrom && x.Date <= dtTo)
+                    .Select(
+                        x => new BookingHistoryAddEditBookingViewModel
+                        {
+                            Id = x.Id,
+                            Date = x.Date,
+                            UserId = x.CustomerId,
+                            Time = x.Time.Hours.ToString() + ":" + x.Time.Minutes.ToString(),
+                            CreatedDateTime = x.CreatedDate,
+                            AtelierTypeId = x.AtelierTypeId,
+                            AtelierTypeName = x.TblAtelierType.AtelierName,
+                            CustomerGender = x.TblCustomer.Gender,
+                            CustomerFullName = x.TblCustomer.FirstName + " " + x.TblCustomer.LastName,
+                            PaymentIsOk = x.PrepaymentIsOk,
+                            PersonCount = x.PersonCount,
+                            PhotographerGender = x.PhotographerGender,
+                            PhotographyTypeId = x.PhotographyTypeId,
+                            PhotographyTypeName = x.TblPhotographyType.TypeName,
+                            StatusId = x.StatusId,
+                            StatusName = x.TblBookingStatus.StatusName,
+                            //Submitter = 
+                            //SubmitterName = 
+                            //PhotographerGenderName = 
+                            ModifiedDateTime = x.ModifiedDate
+                        })
+                    .OrderByDescending(x => x.Date)
+                    .ThenByDescending(x => x.Time)
+                    .ToList();
+
+                return returnValue;
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine(exception.Message);
+                Debug.WriteLine(exception.Data);
+                Debug.WriteLine(exception.InnerException);
+                Debug.WriteLine(exception.Source);
+                Debug.WriteLine(exception.StackTrace);
+                return null;
+            }
+        }
+
         public List<BookingHistoryAddEditBookingViewModel> GetBookingOfCustomer(int customerId)
         {
             try
