@@ -170,7 +170,7 @@ namespace PhotographyAutomation.DateLayer.Services
         {
             try
             {
-                string strMonth = month.ToString("##");
+                string strMonth = month.ToString();
 
 
                 ObjectParameter returnValue = new ObjectParameter("returnValue", typeof(string));
@@ -214,9 +214,9 @@ namespace PhotographyAutomation.DateLayer.Services
                         filestreamTxn = result[0].filestreamTxn
                     };
 
-                    using (SqlFileStream fs = new SqlFileStream(info.path_name, info.filestreamTxn, FileAccess.Write, FileOptions.WriteThrough, 0L))
+                    using (var fs = new SqlFileStream(info.path_name, info.filestreamTxn, FileAccess.Write, FileOptions.WriteThrough, 0L))
                     {
-                        using (FileStream local = new FileStream(localFilePath, FileMode.Open, FileAccess.Read))
+                        using (var local = new FileStream(localFilePath, FileMode.Open, FileAccess.Read))
                         {
                             local.CopyTo(fs);
                         }
