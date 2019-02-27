@@ -53,8 +53,8 @@ namespace PhotographyAutomation.App.Forms
 
         private void btnEditBooking_Click(object sender, EventArgs e)
         {
-            FrmSearchCustomer searchUser = new FrmSearchCustomer();
-            searchUser.ShowDialog();
+            FrmShowBookings frmShowBookings = new FrmShowBookings();
+            frmShowBookings.ShowDialog();
         }
 
         private void btnShowBookings_Click(object sender, EventArgs e)

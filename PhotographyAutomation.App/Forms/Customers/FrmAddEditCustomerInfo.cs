@@ -1,4 +1,4 @@
-﻿using PhotographyAutomation.App.Forms.Customers;
+﻿using PhotographyAutomation.App.Forms.Booking;
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.DateLayer.Models;
 using PhotographyAutomation.Utilities;
@@ -8,7 +8,7 @@ using PhotographyAutomation.Utilities.Regex;
 using System;
 using System.Windows.Forms;
 
-namespace PhotographyAutomation.App.Forms.Booking
+namespace PhotographyAutomation.App.Forms.Customers
 {
     public partial class FrmAddEditCustomerInfo : Form
     {

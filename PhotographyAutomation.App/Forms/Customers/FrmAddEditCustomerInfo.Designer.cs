@@ -1,4 +1,4 @@
-﻿namespace PhotographyAutomation.App.Forms.Booking
+﻿namespace PhotographyAutomation.App.Forms.Customers
 {
     partial class FrmAddEditCustomerInfo
     {

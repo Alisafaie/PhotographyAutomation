@@ -1,5 +1,4 @@
 ﻿using FreeControls;
-using PhotographyAutomation.App.Forms.Customers;
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.Utilities;
 using PhotographyAutomation.Utilities.Convertor;
@@ -229,14 +228,14 @@ namespace PhotographyAutomation.App.Forms.Booking
             dgvBookings.ClearSelection();
         }
 
-        private void ShowBookingsOfCustomer(int customerId)
+        private void ShowBookingsOfCustomer(string cucstomerInfo)
         {
             using (var db = new UnitOfWork())
             {
-                var bookingsList = db.BookingRepository.GetBookingOfCustomer(customerId);
+                var bookingsList = db.BookingRepository.GetBookingOfCustomer(cucstomerInfo);
                 {
                     dgvBookings.Rows.Clear();
-                    if (bookingsList.Any())
+                    if (bookingsList != null && bookingsList.Count > 0)
                     {
                         dgvBookings.Rows.Clear();
                         dgvBookings.RowCount = bookingsList.Count;
@@ -423,17 +422,30 @@ namespace PhotographyAutomation.App.Forms.Booking
 
         private void btnSearchCustomer_Click(object sender, EventArgs e)
         {
-            FrmSearchCustomer searchCustomer = new FrmSearchCustomer { FromFrmShowBookings = true };
-            if (searchCustomer.ShowDialog() == DialogResult.OK)
+            if (!string.IsNullOrEmpty(txtCustomerInfo.Text.Trim()))
             {
-                if (CustomerId > 0)
-                {
-                    ShowBookingsOfCustomer(CustomerId);
-                }
+                ShowBookingsOfCustomer(txtCustomerInfo.Text.Trim());
             }
+
+
+
+            //FrmSearchCustomer searchCustomer = new FrmSearchCustomer
+            //{
+            //    FromFrmShowBookings = true,
+
+            //};
+            //if (searchCustomer.ShowDialog() == DialogResult.OK)
+            //{
+            //    if (CustomerId > 0)
+            //    {
+            //        ShowBookingsOfCustomer(CustomerId);
+            //    }
+            //}
+
+
         }
 
-        
+
         //پیاده سازی نمایش کانتکست منو روی قسمت هایی که مقدار دارند و انتخاب آن ردیف
         private void dgvBookings_MouseUp(object sender, MouseEventArgs e)
         {

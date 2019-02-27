@@ -14,7 +14,7 @@ namespace PhotographyAutomation.App.Forms.Customers
         public bool FromFrmAddEditBooking = false;
         public bool FromFrmShowBookings = false;
         public int CustomerId = 0;
-
+        
         public FrmSearchCustomer()
         {
             InitializeComponent();
