@@ -266,7 +266,7 @@
             // 
             // clmUserId
             // 
-            this.clmUserId.DataPropertyName = "UserId";
+            this.clmUserId.DataPropertyName = "CustomerId";
             this.clmUserId.HeaderText = "clmUserId";
             this.clmUserId.Name = "clmUserId";
             this.clmUserId.ReadOnly = true;

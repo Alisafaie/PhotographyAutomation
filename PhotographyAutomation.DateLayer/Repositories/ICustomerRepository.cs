@@ -3,7 +3,7 @@ using PhotographyAutomation.ViewModels.User;
 
 namespace PhotographyAutomation.DateLayer.Repositories
 {
-    public interface IUserRepository
+    public interface ICustomerRepository
     {
         TblCustomer FindUserByMobile(string mobileNumber);
         UserInfoBookingViewModel GetCustomerInfoBooking(int userId);

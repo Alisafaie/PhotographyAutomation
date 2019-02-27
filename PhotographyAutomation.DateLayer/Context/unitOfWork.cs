@@ -11,17 +11,17 @@ namespace PhotographyAutomation.DateLayer.Context
         private readonly PhotographyAutomationDBEntities _db = new PhotographyAutomationDBEntities();
 
 
-        private IUserRepository _userRepository;
+        private ICustomerRepository _customerRepository;
 
-        public IUserRepository UserRepository
+        public ICustomerRepository CustomerRepository
         {
             get
             {
-                if (_userRepository == null)
+                if (_customerRepository == null)
                 {
-                    _userRepository = new UserRepository(_db);
+                    _customerRepository = new CustomerRepository(_db);
                 }
-                return _userRepository;
+                return _customerRepository;
             }
         }
 
@@ -60,17 +60,17 @@ namespace PhotographyAutomation.DateLayer.Context
 
 
 
-        private GenericRepository<TblCustomer> _userGenericRepository;
+        private GenericRepository<TblCustomer> _customerGenericRepository;
 
-        public GenericRepository<TblCustomer> UserGenericRepository
+        public GenericRepository<TblCustomer> CustomerGenericRepository
         {
             get
             {
-                if (_userGenericRepository == null)
+                if (_customerGenericRepository == null)
                 {
-                    _userGenericRepository = new GenericRepository<TblCustomer>(_db);
+                    _customerGenericRepository = new GenericRepository<TblCustomer>(_db);
                 }
-                return _userGenericRepository;
+                return _customerGenericRepository;
             }
         }
 

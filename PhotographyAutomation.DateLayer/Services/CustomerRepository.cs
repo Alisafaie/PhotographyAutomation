@@ -7,11 +7,11 @@ using System.Linq;
 
 namespace PhotographyAutomation.DateLayer.Services
 {
-    public class UserRepository : IUserRepository
+    public class CustomerRepository : ICustomerRepository
     {
         private readonly PhotographyAutomationDBEntities _db;
 
-        public UserRepository(PhotographyAutomationDBEntities context)
+        public CustomerRepository(PhotographyAutomationDBEntities context)
         {
             _db = context;
         }

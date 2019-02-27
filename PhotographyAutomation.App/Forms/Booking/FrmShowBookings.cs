@@ -1,4 +1,5 @@
 ﻿using FreeControls;
+using PhotographyAutomation.App.Forms.Customers;
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.Utilities;
 using PhotographyAutomation.Utilities.Convertor;
@@ -20,16 +21,16 @@ namespace PhotographyAutomation.App.Forms.Booking
         public FrmShowBookings()
         {
             InitializeComponent();
-
-            rbCurrentDay.CheckState = CheckState.Unchecked;
-            rbCurrentWeek.CheckState = CheckState.Unchecked;
-            rbCurrentmonth.CheckState = CheckState.Unchecked;
         }
 
         private void FrmShowBookings_Load(object sender, EventArgs e)
         {
             dgvBookings.BackColor = Color.White;
             GetBookingStatus();
+
+            rbCurrentDay.CheckState = CheckState.Unchecked;
+            rbCurrentWeek.CheckState = CheckState.Unchecked;
+            rbCurrentmonth.CheckState = CheckState.Unchecked;
         }
 
         private void GetBookingStatus()
@@ -69,7 +70,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                     for (int i = 0; i < bookingsList.Count; i++)
                     {
                         dgvBookings.Rows[i].Cells["clmId"].Value = bookingsList[i].Id;
-                        dgvBookings.Rows[i].Cells["clmUserId"].Value = bookingsList[i].UserId;
+                        dgvBookings.Rows[i].Cells["clmCustomerId"].Value = bookingsList[i].UserId;
 
                         if (bookingsList[i].CustomerGender == 0)
                         {
@@ -158,7 +159,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                     for (int i = 0; i < bookingsList.Count; i++)
                     {
                         dgvBookings.Rows[i].Cells["clmId"].Value = bookingsList[i].Id;
-                        dgvBookings.Rows[i].Cells["clmUserId"].Value = bookingsList[i].UserId;
+                        dgvBookings.Rows[i].Cells["clmCustomerId"].Value = bookingsList[i].UserId;
 
                         if (bookingsList[i].CustomerGender == 0)
                         {
@@ -244,7 +245,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                         for (int i = 0; i < bookingsList.Count; i++)
                         {
                             dgvBookings.Rows[i].Cells["clmId"].Value = bookingsList[i].Id;
-                            dgvBookings.Rows[i].Cells["clmUserId"].Value = bookingsList[i].UserId;
+                            dgvBookings.Rows[i].Cells["clmCustomerId"].Value = bookingsList[i].UserId;
 
                             if (bookingsList[i].CustomerGender == 0)
                             {
@@ -426,23 +427,6 @@ namespace PhotographyAutomation.App.Forms.Booking
             {
                 ShowBookingsOfCustomer(txtCustomerInfo.Text.Trim());
             }
-
-
-
-            //FrmSearchCustomer searchCustomer = new FrmSearchCustomer
-            //{
-            //    FromFrmShowBookings = true,
-
-            //};
-            //if (searchCustomer.ShowDialog() == DialogResult.OK)
-            //{
-            //    if (CustomerId > 0)
-            //    {
-            //        ShowBookingsOfCustomer(CustomerId);
-            //    }
-            //}
-
-
         }
 
 
@@ -455,7 +439,10 @@ namespace PhotographyAutomation.App.Forms.Booking
                 {
                     int currentMouseOverRow = dgvBookings.HitTest(e.X, e.Y).RowIndex;
                     if (currentMouseOverRow > -1)
+                    {
                         dgvBookings.Rows[currentMouseOverRow].Selected = true;
+                        DataGridViewRow row = dgvBookings.Rows[currentMouseOverRow];
+                    }
                     else
                     {
                         contextMenuStripDgvBookings.Visible = false;
@@ -466,6 +453,34 @@ namespace PhotographyAutomation.App.Forms.Booking
                     contextMenuStripDgvBookings.Visible = false;
                 }
             }
+        }
+
+        private void ویرایشاطلاعاتمشتریToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvBookings.CurrentRow != null)
+            {
+                var customerId = Convert.ToInt32(dgvBookings.CurrentRow.Cells["clmCustomerId"].Value);
+                var frmAddEditCustomerInfo = new FrmAddEditCustomerInfo
+                {
+                    CustomerId = customerId,
+                    JustSaveCustomerInfo = true,
+                    IsEditMode = true
+                };
+                frmAddEditCustomerInfo.ShowDialog();
+            }
+        }
+
+        private void txtCustomerInfo_Enter(object sender, EventArgs e)
+        {
+            var language = new System.Globalization.CultureInfo("fa-IR");
+            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
+        }
+
+        private void txtCustomerInfo_Leave(object sender, EventArgs e)
+        {
+
+            var language = new System.Globalization.CultureInfo("en-US");
+            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
         }
     }
 }

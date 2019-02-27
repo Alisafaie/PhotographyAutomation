@@ -12,7 +12,9 @@ namespace PhotographyAutomation.App.Forms.Customers
 {
     public partial class FrmAddEditCustomerInfo : Form
     {
-        public int UserId;
+        public int CustomerId;
+        public bool JustSaveCustomerInfo = false;
+        public bool IsEditMode = false;
         public FrmAddEditCustomerInfo()
         {
             InitializeComponent();
@@ -20,10 +22,37 @@ namespace PhotographyAutomation.App.Forms.Customers
 
         private void FrmAddEditCustomerInfo_Load(object sender, EventArgs e)
         {
-            //groupBoxCustomerInfo.Enabled = false;
+            if (IsEditMode)
+            {
+                GetCustomerInfo(CustomerId);
+                return;
+            }
             btnOk.Enabled = false;
         }
 
+        private void GetCustomerInfo(int customerId)
+        {
+            if (customerId > 0)
+            {
+                using (var db = new UnitOfWork())
+                {
+                    var customer = db.CustomerGenericRepository.GetById(customerId);
+                    if (customer != null)
+                    {
+                        txtFirstName.Text = customer.FirstName;
+                        txtLastName.Text = customer.LastName;
+                        txtMobile.Text = txtMobileSearch.Text = customer.Mobile;
+                        txtTell.Text = customer.Tell;
+                        cmbGender.SelectedIndex = customer.Gender == 0 ? 0 : 1;
+                        if (customer.BirthDate != null) txtBirthDate.Text = customer.BirthDate.Value.ToShamsiDate();
+                        txtNationalId.Text = customer.NationalId;
+                        cmbMarriedStatus.SelectedIndex = customer.IsMarried == 0 ? 0 : 1;
+                        txtAddress.Text = customer.Address;
+                        txtEmail.Text = customer.Email;
+                    }
+                }
+            }
+        }
 
         private void btnCheckNumber_Click(object sender, EventArgs e)
         {
@@ -52,11 +81,11 @@ namespace PhotographyAutomation.App.Forms.Customers
 
                 using (var db = new UnitOfWork())
                 {
-                    var user = db.UserRepository.FindUserByMobile(txtMobileSearch.Text.Replace(" ", ""));
+                    var user = db.CustomerRepository.FindUserByMobile(txtMobileSearch.Text.Replace(" ", ""));
 
                     if (user != null)
                     {
-                        UserId = user.Id;
+                        CustomerId = user.Id;
                         txtFirstName.Text = user.FirstName;
                         txtLastName.Text = user.LastName;
 
@@ -73,14 +102,8 @@ namespace PhotographyAutomation.App.Forms.Customers
                             if (user.WeddingDate != null)
                                 txtWeddingDate.Text = user.WeddingDate.Value.ToShamsiDate();
 
-                        cmbCustomerType.SelectedIndex = user.CustomerType == 0 ? 0 : 1;
-                        cmbActiveStatus.SelectedIndex = user.IsActive == 0 ? 0 : 1;
-
-
                         txtEmail.Text = user.Email;
                         txtAddress.Text = user.Address;
-
-                        cmbActiveStatus.SelectedIndex = user.IsActive == 0 ? 0 : 1;
                     }
                     else
                     {
@@ -89,9 +112,6 @@ namespace PhotographyAutomation.App.Forms.Customers
 
                         txtMobile.Text = txtMobileSearch.Text;
 
-                        cmbUserType.SelectedIndex = 0;
-                        cmbActiveStatus.SelectedIndex = 1;
-                        cmbCustomerType.SelectedIndex = 0;
                         cmbGender.SelectedIndex = 0;
                         cmbMarriedStatus.SelectedIndex = 0;
                     }
@@ -113,53 +133,53 @@ namespace PhotographyAutomation.App.Forms.Customers
         {
             if (CheckInputs())
             {
-                var user = new TblCustomer();
+                var customer = new TblCustomer
+                {
+                    FirstName = txtFirstName.Text.Trim(),
+                    LastName = txtLastName.Text.Trim(),
+                    Mobile = txtMobile.Text.Replace(" ", "").Trim(),
+                    Tell = txtTell.Text.Replace(" ", "").Trim(),
+                    Gender = Convert.ToByte(cmbGender.SelectedIndex == 0 ? 0 : 1),
+                    BirthDate = txtBirthDate.Text.ToMiladiDate(),
+                    NationalId = txtNationalId.Text.Replace("-", "").Trim(),
+                    IsMarried = Convert.ToByte(cmbMarriedStatus.SelectedIndex == 0 ? 0 : 1),
 
-                user.FirstName = txtFirstName.Text.Trim();
-                user.LastName = txtLastName.Text.Trim();
-                user.Mobile = txtMobile.Text.Replace(" ", "").Trim();
-                user.Tell = txtTell.Text.Replace(" ", "").Trim();
-                user.Gender = Convert.ToByte(cmbGender.SelectedIndex == 0 ? 0 : 1);
-                user.BirthDate = txtBirthDate.Text.ToMiladiDate();
-                user.NationalId = txtNationalId.Text.Replace("-", "").Trim();
-                user.IsMarried = Convert.ToByte(cmbMarriedStatus.SelectedIndex == 0 ? 0 : 1);
-                user.CustomerType = Convert.ToByte(cmbCustomerType.SelectedIndex == 0 ? 0 : 1);
-                user.Address = txtAddress.Text.Trim();
-                user.Email = txtEmail.Text.Trim();
-                user.IsActive = Convert.ToByte(cmbActiveStatus.SelectedIndex == 0 ? 0 : 1);
-                user.CreatedDate = DateTime.Now;
-                user.IsDeleted = 0;
+                    Address = txtAddress.Text.Trim(),
+                    Email = txtEmail.Text.Trim(),
 
+                    CreatedDate = DateTime.Now,
+                    IsDeleted = 0
+                };
 
                 if (cmbMarriedStatus.SelectedIndex == 1)
-                    user.WeddingDate = txtWeddingDate.Text.ToMiladiDate();
-
-
+                    customer.WeddingDate = txtWeddingDate.Text.ToMiladiDate();
 
                 using (var db = new UnitOfWork())
                 {
-                    if (UserId == 0)
+                    if (CustomerId == 0 && IsEditMode == false)
                     {
-                        db.UserGenericRepository.Insert(user);
+                        db.CustomerGenericRepository.Insert(customer);
                     }
                     else
                     {
-                        user.Id = UserId;
-                        db.UserGenericRepository.Update(user);
+                        customer.Id = CustomerId;
+                        db.CustomerGenericRepository.Update(customer);
                     }
 
                     int result = db.Save();
                     if (result > 0)
                     {
-                        var f = new FrmAddEditBooking { CustomerId = user.Id };
-                        f.ShowDialog();
+                        if (JustSaveCustomerInfo == false)
+                        {
+                            var f = new FrmAddEditBooking { CustomerId = customer.Id };
+                            f.ShowDialog();
+                        }
+
                         DialogResult = DialogResult.OK;
                     }
                     else
-                    {
                         RtlMessageBox.Show("خطا در ثبت اطلاعات کاربر", "خطا در ثبت اطلاعات", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
-                    }
                 }
             }
         }
@@ -285,12 +305,6 @@ namespace PhotographyAutomation.App.Forms.Customers
         }
 
         private void txtFirstName_Leave(object sender, EventArgs e)
-        {
-            var language = new System.Globalization.CultureInfo("en-US");
-            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
-        }
-
-        private void txtUserName_Enter(object sender, EventArgs e)
         {
             var language = new System.Globalization.CultureInfo("en-US");
             InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);

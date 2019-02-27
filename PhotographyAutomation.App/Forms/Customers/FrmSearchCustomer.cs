@@ -33,7 +33,7 @@ namespace PhotographyAutomation.App.Forms.Customers
 
             using (var db = new UnitOfWork())
             {
-                List<TblCustomer> users = db.UserGenericRepository.Get(
+                List<TblCustomer> users = db.CustomerGenericRepository.Get(
                     x =>
                         x.FirstName.Contains(txtFirstName.Text.Trim()) ||
                         x.LastName.Contains(txtLastName.Text.Trim()) ||
@@ -153,7 +153,7 @@ namespace PhotographyAutomation.App.Forms.Customers
 
             using (var db = new UnitOfWork())
             {
-                List<TblCustomer> users = db.UserGenericRepository.Get().ToList();
+                List<TblCustomer> users = db.CustomerGenericRepository.Get().ToList();
 
                 dgvUsers.AutoGenerateColumns = false;
 

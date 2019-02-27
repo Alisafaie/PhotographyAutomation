@@ -34,7 +34,7 @@ namespace PhotographyAutomation.App.Forms.Booking
             {
                 UserInfoBookingViewModel userInfo = new UserInfoBookingViewModel();
                 if (CustomerId > 0)
-                    userInfo = db.UserRepository.GetCustomerInfoBooking(CustomerId);
+                    userInfo = db.CustomerRepository.GetCustomerInfoBooking(CustomerId);
                 if (userInfo != null)
                 {
                     txtFirstNameLastName.Text = userInfo.FirstName + @" " + userInfo.LastName;
