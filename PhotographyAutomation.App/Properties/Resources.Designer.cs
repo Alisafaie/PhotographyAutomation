@@ -2453,9 +2453,29 @@ namespace PhotographyAutomation.App.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap advanced_Search {
+            get {
+                object obj = ResourceManager.GetObject("advanced_Search", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bayegani {
             get {
                 object obj = ResourceManager.GetObject("bayegani", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap check_MobileNumber {
+            get {
+                object obj = ResourceManager.GetObject("check_MobileNumber", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

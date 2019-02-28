@@ -455,20 +455,7 @@ namespace PhotographyAutomation.App.Forms.Booking
             }
         }
 
-        private void ویرایشاطلاعاتمشتریToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (dgvBookings.CurrentRow != null)
-            {
-                var customerId = Convert.ToInt32(dgvBookings.CurrentRow.Cells["clmCustomerId"].Value);
-                var frmAddEditCustomerInfo = new FrmAddEditCustomerInfo
-                {
-                    CustomerId = customerId,
-                    JustSaveCustomerInfo = true,
-                    IsEditMode = true
-                };
-                frmAddEditCustomerInfo.ShowDialog();
-            }
-        }
+        
 
         private void txtCustomerInfo_Enter(object sender, EventArgs e)
         {
@@ -481,6 +468,41 @@ namespace PhotographyAutomation.App.Forms.Booking
 
             var language = new System.Globalization.CultureInfo("en-US");
             InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
+        }
+
+        private void ویرایشاطلاعاتمشتریToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvBookings.SelectedRows.Count == 1)
+            {
+                int customerId = Convert.ToInt32(dgvBookings.SelectedRows[0].Cells["clmCustomerId"].Value);
+                var frmAddEditCustomerInfo = new FrmAddEditCustomerInfo
+                {
+                    CustomerId = customerId,
+                    JustSaveCustomerInfo = true,
+                    IsEditMode = true
+                };
+                frmAddEditCustomerInfo.ShowDialog();
+            }
+        }
+
+        private void ویرایشاطلاعاتنوبتToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvBookings.SelectedRows.Count == 1)
+            {
+                int bookingId = Convert.ToInt32(dgvBookings.SelectedRows[0].Cells["clmId"].Value);
+                int customerId = Convert.ToInt32(dgvBookings.SelectedRows[0].Cells["clmCustomerId"].Value);
+                var frmAddEditBooking = new FrmAddEditBooking()
+                {
+                    BookingId = bookingId,
+                    CustomerId = customerId
+                };
+                frmAddEditBooking.ShowDialog();
+            }
+        }
+
+        private void تبدیلبهسفارشToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

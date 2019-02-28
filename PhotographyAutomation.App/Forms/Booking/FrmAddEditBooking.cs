@@ -22,6 +22,9 @@ namespace PhotographyAutomation.App.Forms.Booking
 
         private void FrmAddEditBooking_Load(object sender, EventArgs e)
         {
+            Text = BookingId == 0 ? "ثبت نوبت" : "ویرایش نوبت";
+            btnOk.Text = BookingId == 0 ? "ثبت نوبت" : "ویرایش نوبت";
+
             datePickerBookingDate.Value = PersianDate.Now;
             timePickerBookingTime.Value = DateTime.Now;
 
@@ -47,6 +50,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     DialogResult = DialogResult.Cancel;
                 }
+
                 PopulateComboBoxes();
 
                 dgvBookingHistory.AutoGenerateColumns = false;
@@ -82,11 +86,13 @@ namespace PhotographyAutomation.App.Forms.Booking
                         }
 
                         dgvBookingHistory.Rows[i].Cells["clmDate"].Value = bookingHistory[i].Date.ToShamsiDate();
-                        dgvBookingHistory.Rows[i].Cells["clmDate"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                        dgvBookingHistory.Rows[i].Cells["clmDate"].Style.Alignment =
+                            DataGridViewContentAlignment.MiddleRight;
 
                         dgvBookingHistory.Rows[i].Cells["clmTime"].Value = bookingHistory[i].Time;
 
-                        dgvBookingHistory.Rows[i].Cells["clmTime"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                        dgvBookingHistory.Rows[i].Cells["clmTime"].Style.Alignment =
+                            DataGridViewContentAlignment.MiddleRight;
 
                         dgvBookingHistory.Rows[i].Cells["clmPhotographerGender"].Value =
                             bookingHistory[i].PhotographerGender;
@@ -109,20 +115,52 @@ namespace PhotographyAutomation.App.Forms.Booking
                         dgvBookingHistory.Rows[i].Cells["clmPhotographyTypeName"].Value =
                             bookingHistory[i].PhotographyTypeName;
                         dgvBookingHistory.Rows[i].Cells["clmAtelierTypeId"].Value = bookingHistory[i].AtelierTypeId;
-                        dgvBookingHistory.Rows[i].Cells["clmAtelierTypeName"].Value = bookingHistory[i].AtelierTypeName;
+                        dgvBookingHistory.Rows[i].Cells["clmAtelierTypeName"].Value =
+                            bookingHistory[i].AtelierTypeName;
                         dgvBookingHistory.Rows[i].Cells["clmPersonCount"].Value = bookingHistory[i].PersonCount;
                         dgvBookingHistory.Rows[i].Cells["clmPaymentIsOK"].Value = bookingHistory[i].PaymentIsOk;
                         dgvBookingHistory.Rows[i].Cells["clmSubmitter"].Value = bookingHistory[i].Submitter;
                         dgvBookingHistory.Rows[i].Cells["clmSubmitterName"].Value = bookingHistory[i].SubmitterName;
                         dgvBookingHistory.Rows[i].Cells["clmStatusId"].Value = bookingHistory[i].StatusId;
                         dgvBookingHistory.Rows[i].Cells["clmStatusName"].Value = bookingHistory[i].StatusName;
-                        dgvBookingHistory.Rows[i].Cells["clmCreatedDateTime"].Value = bookingHistory[i].CreatedDateTime;
+                        dgvBookingHistory.Rows[i].Cells["clmCreatedDateTime"].Value =
+                            bookingHistory[i].CreatedDateTime;
                         dgvBookingHistory.Rows[i].Cells["clmModifiedDateTime"].Value =
                             bookingHistory[i].ModifiedDateTime;
                     }
                 }
 
+                if (BookingId > 0)
+                {
+                    var booking = db.BookingGenericRepository.GetById(BookingId);
+                    if (booking != null)
+                    {
+                        switch (booking.PhotographerGender)
+                        {
+                            case 0:
+                                rbFemalePhotographer.Checked = true;
+                                break;
+                            case 1:
+                                rbMalePhotographer.Checked = true;
+                                break;
+                            case 2:
+                                rbNoMatterPhotographer.Checked = true;
+                                break;
+                        }
+
+
+                        datePickerBookingDate.Value = booking.Date.Date;
+                        DateTime dt = new DateTime(booking.Date.Year, booking.Date.Month, booking.Date.Day, booking.Time.Hours, booking.Time.Minutes, booking.Time.Seconds);
+                        timePickerBookingTime.Value = dt;
+                        cmbPhotographyTypes.SelectedValue = booking.PhotographyTypeId;
+                        cmbAtelierTypes.SelectedValue = booking.AtelierTypeId;
+                        txtPersonCount.Value = booking.PersonCount;
+                        txtBookingStatus.Text = booking.TblBookingStatus.StatusName;
+                    }
+                }
+
             }
+
         }
 
 
@@ -150,55 +188,53 @@ namespace PhotographyAutomation.App.Forms.Booking
         {
             if (CheckInputs())
             {
-                if (timePickerBookingTime.Value != null)
+                var booking = new TblBooking
                 {
-                    TblBooking booking = new TblBooking
-                    {
-                        CustomerId = CustomerId,
-                        AtelierTypeId = (int)cmbAtelierTypes.SelectedValue,
-                        CreatedDate = DateTime.Now,
-                        Date = datePickerBookingDate.Value,
-                        PersonCount = (int)txtPersonCount.Value,
-                        PhotographyTypeId = (int)cmbPhotographyTypes.SelectedValue,
-                        StatusId = 6
-                    };
+                    CustomerId = CustomerId,
+                    AtelierTypeId = (int)cmbAtelierTypes.SelectedValue,
+                    CreatedDate = DateTime.Now,
+                    Date = datePickerBookingDate.Value,
+                    PersonCount = (int)txtPersonCount.Value,
+                    PhotographyTypeId = (int)cmbPhotographyTypes.SelectedValue,
+                    StatusId = 6
+                };
 
-                    if (timePickerBookingTime.Value != null)
-                        booking.Time =
-                            new TimeSpan(0, timePickerBookingTime.Value.Value.Hour, timePickerBookingTime.Value.Value.Minute, 0);
+                if (timePickerBookingTime.Value != null)
+                    booking.Time = new TimeSpan(0, timePickerBookingTime.Value.Value.Hour,
+                        timePickerBookingTime.Value.Value.Minute, 0);
 
-                    booking.PrepaymentIsOk = 0;
+                booking.PrepaymentIsOk = 0;
 
 
-                    if (rbFemalePhotographer.Checked)
-                    {
-                        booking.PhotographerGender = 0;
-                    }
-                    else if (rbMalePhotographer.Checked)
-                    {
-                        booking.PhotographerGender = 1;
-                    }
+                if (rbFemalePhotographer.Checked) booking.PhotographerGender = 0;
+                else if (rbMalePhotographer.Checked) booking.PhotographerGender = 1;
+                else booking.PhotographerGender = 2;
+
+
+                using (var db = new UnitOfWork())
+                {
+                    if (BookingId == 0)
+                        db.BookingGenericRepository.Insert(booking);
                     else
-                        booking.PhotographerGender = 2;
+                    {
+                        booking.Id = BookingId;
+                        db.BookingGenericRepository.Update(booking);
+                    }
 
-
-                    using (var db = new UnitOfWork())
+                    int result = db.Save();
+                    if (result > 0)
                     {
                         if (BookingId == 0)
-                            db.BookingGenericRepository.Insert(booking);
-                        else
-                        {
-                            booking.Id = BookingId;
-                            db.BookingGenericRepository.Update(booking);
-                        }
-
-                        int result = db.Save();
-                        if (result > 0)
                         {
                             RtlMessageBox.Show("نوبت مشتری با موفقیت در سیستم ثبت گردید.", "ثبت اطلاعات در سیستم",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            DialogResult = DialogResult.OK;
                         }
+                        else
+                        {
+                            RtlMessageBox.Show("نوبت مشتری با موفقیت در سیستم ویرایش گردید.", "ويرایش اطلاعات در سیستم",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        DialogResult = DialogResult.OK;
                     }
                 }
             }

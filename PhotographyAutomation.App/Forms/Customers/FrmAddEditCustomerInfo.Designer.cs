@@ -29,22 +29,25 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem3 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem4 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem5 = new Telerik.WinControls.UI.RadListDataItem();
             Telerik.WinControls.UI.RadListDataItem radListDataItem6 = new Telerik.WinControls.UI.RadListDataItem();
             Telerik.WinControls.UI.RadListDataItem radListDataItem7 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem8 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem1 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem2 = new Telerik.WinControls.UI.RadListDataItem();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.radThemeManager1 = new Telerik.WinControls.RadThemeManager();
             this.office2010SilverTheme1 = new Telerik.WinControls.Themes.Office2010SilverTheme();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
+            this.btnCancel = new DevComponents.DotNetBar.ButtonX();
+            this.btnOk = new DevComponents.DotNetBar.ButtonX();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.groupBoxCustomerInfo = new System.Windows.Forms.GroupBox();
             this.cmbMarriedStatus = new Telerik.WinControls.UI.RadDropDownList();
             this.cmbGender = new Telerik.WinControls.UI.RadDropDownList();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -69,13 +72,10 @@
             this.txtFirstName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBoxSearchCustomer = new System.Windows.Forms.GroupBox();
+            this.btnSearchCustomer = new DevComponents.DotNetBar.ButtonX();
+            this.btnCheckNumber = new DevComponents.DotNetBar.ButtonX();
             this.txtMobileSearch = new DevComponents.DotNetBar.Controls.MaskedTextBoxAdv();
             this.label1 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.btnOk = new DevComponents.DotNetBar.ButtonX();
-            this.btnCancel = new DevComponents.DotNetBar.ButtonX();
-            this.btnCheckNumber = new DevComponents.DotNetBar.ButtonX();
-            this.btnSearchCustomer = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panelEx1.SuspendLayout();
             this.panelEx2.SuspendLayout();
@@ -103,7 +103,7 @@
             this.panelEx1.Controls.Add(this.btnOk);
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelEx1.Location = new System.Drawing.Point(0, 433);
+            this.panelEx1.Location = new System.Drawing.Point(0, 426);
             this.panelEx1.Name = "panelEx1";
             this.panelEx1.Size = new System.Drawing.Size(527, 60);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -115,6 +115,30 @@
             this.panelEx1.Style.GradientAngle = 90;
             this.panelEx1.TabIndex = 1;
             // 
+            // btnCancel
+            // 
+            this.btnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnCancel.Location = new System.Drawing.Point(288, 12);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(110, 36);
+            this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnCancel.TabIndex = 2;
+            this.btnCancel.Text = "انصراف";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnOk
+            // 
+            this.btnOk.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnOk.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnOk.Location = new System.Drawing.Point(404, 12);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(110, 36);
+            this.btnOk.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnOk.TabIndex = 2;
+            this.btnOk.Text = "ثبت اطلاعات مشتری";
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
+            // 
             // panelEx2
             // 
             this.panelEx2.CanvasColor = System.Drawing.SystemColors.Control;
@@ -125,7 +149,7 @@
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx2.Location = new System.Drawing.Point(0, 0);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(527, 433);
+            this.panelEx2.Size = new System.Drawing.Size(527, 426);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -178,15 +202,15 @@
             this.cmbMarriedStatus.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.cmbMarriedStatus.EnableAlternatingItemColor = true;
             this.cmbMarriedStatus.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            radListDataItem6.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem6.Text = "مجرد";
-            radListDataItem7.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem7.Text = "متاهل";
-            radListDataItem8.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem8.Text = "نامشخص";
-            this.cmbMarriedStatus.Items.Add(radListDataItem6);
-            this.cmbMarriedStatus.Items.Add(radListDataItem7);
-            this.cmbMarriedStatus.Items.Add(radListDataItem8);
+            radListDataItem3.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem3.Text = "مجرد";
+            radListDataItem4.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem4.Text = "متاهل";
+            radListDataItem5.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem5.Text = "نامشخص";
+            this.cmbMarriedStatus.Items.Add(radListDataItem3);
+            this.cmbMarriedStatus.Items.Add(radListDataItem4);
+            this.cmbMarriedStatus.Items.Add(radListDataItem5);
             this.cmbMarriedStatus.Location = new System.Drawing.Point(33, 111);
             this.cmbMarriedStatus.Name = "cmbMarriedStatus";
             this.cmbMarriedStatus.Size = new System.Drawing.Size(107, 20);
@@ -199,12 +223,12 @@
             this.cmbGender.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.cmbGender.EnableAlternatingItemColor = true;
             this.cmbGender.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            radListDataItem1.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem1.Text = "خانم";
-            radListDataItem2.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem2.Text = "آقا";
-            this.cmbGender.Items.Add(radListDataItem1);
-            this.cmbGender.Items.Add(radListDataItem2);
+            radListDataItem6.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem6.Text = "خانم";
+            radListDataItem7.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem7.Text = "آقا";
+            this.cmbGender.Items.Add(radListDataItem6);
+            this.cmbGender.Items.Add(radListDataItem7);
             this.cmbGender.Location = new System.Drawing.Point(310, 111);
             this.cmbGender.Name = "cmbGender";
             this.cmbGender.Size = new System.Drawing.Size(107, 20);
@@ -216,60 +240,72 @@
             this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label22.ForeColor = System.Drawing.Color.Red;
-            this.label22.Location = new System.Drawing.Point(14, 71);
+            this.label22.ForeColor = System.Drawing.Color.Black;
+            this.label22.Location = new System.Drawing.Point(18, 73);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(13, 13);
             this.label22.TabIndex = 33;
-            this.label22.Text = "x";
+            this.label22.Text = "*";
             // 
             // label21
             // 
             this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label21.ForeColor = System.Drawing.Color.Red;
-            this.label21.Location = new System.Drawing.Point(14, 27);
+            this.label21.ForeColor = System.Drawing.Color.Black;
+            this.label21.Location = new System.Drawing.Point(18, 29);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(13, 13);
             this.label21.TabIndex = 32;
-            this.label21.Text = "x";
+            this.label21.Text = "*";
+            // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(295, 161);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(13, 13);
+            this.label12.TabIndex = 31;
+            this.label12.Text = "*";
             // 
             // label18
             // 
             this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label18.ForeColor = System.Drawing.Color.Red;
-            this.label18.Location = new System.Drawing.Point(294, 115);
+            this.label18.ForeColor = System.Drawing.Color.Black;
+            this.label18.Location = new System.Drawing.Point(295, 117);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(13, 13);
             this.label18.TabIndex = 31;
-            this.label18.Text = "x";
+            this.label18.Text = "*";
             // 
             // label17
             // 
             this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label17.ForeColor = System.Drawing.Color.Red;
-            this.label17.Location = new System.Drawing.Point(294, 71);
+            this.label17.ForeColor = System.Drawing.Color.Black;
+            this.label17.Location = new System.Drawing.Point(295, 73);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(13, 13);
             this.label17.TabIndex = 30;
-            this.label17.Text = "x";
+            this.label17.Text = "*";
             // 
             // label16
             // 
             this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label16.ForeColor = System.Drawing.Color.Red;
-            this.label16.Location = new System.Drawing.Point(294, 27);
+            this.label16.ForeColor = System.Drawing.Color.Black;
+            this.label16.Location = new System.Drawing.Point(295, 29);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(13, 13);
             this.label16.TabIndex = 29;
-            this.label16.Text = "x";
+            this.label16.Text = "*";
             // 
             // txtEmail
             // 
@@ -576,6 +612,32 @@
             this.groupBoxSearchCustomer.TabStop = false;
             this.groupBoxSearchCustomer.Text = "بررسی مشتری";
             // 
+            // btnSearchCustomer
+            // 
+            this.btnSearchCustomer.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSearchCustomer.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSearchCustomer.Image = global::PhotographyAutomation.App.Properties.Resources.advanced_Search;
+            this.btnSearchCustomer.Location = new System.Drawing.Point(33, 25);
+            this.btnSearchCustomer.Name = "btnSearchCustomer";
+            this.btnSearchCustomer.Size = new System.Drawing.Size(47, 36);
+            this.btnSearchCustomer.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSearchCustomer.TabIndex = 2;
+            this.btnSearchCustomer.Tooltip = "جستجوی پیشرفته";
+            this.btnSearchCustomer.Click += new System.EventHandler(this.btnSearchCustomer_Click);
+            // 
+            // btnCheckNumber
+            // 
+            this.btnCheckNumber.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnCheckNumber.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnCheckNumber.Image = global::PhotographyAutomation.App.Properties.Resources.check_MobileNumber;
+            this.btnCheckNumber.Location = new System.Drawing.Point(86, 25);
+            this.btnCheckNumber.Name = "btnCheckNumber";
+            this.btnCheckNumber.Size = new System.Drawing.Size(47, 36);
+            this.btnCheckNumber.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnCheckNumber.TabIndex = 2;
+            this.btnCheckNumber.Tooltip = "بررسی شماره همراه";
+            this.btnCheckNumber.Click += new System.EventHandler(this.btnCheckNumber_Click);
+            // 
             // txtMobileSearch
             // 
             this.txtMobileSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -606,71 +668,13 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "تلفن همراه ";
             // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label12.ForeColor = System.Drawing.Color.Red;
-            this.label12.Location = new System.Drawing.Point(294, 159);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(13, 13);
-            this.label12.TabIndex = 31;
-            this.label12.Text = "x";
-            // 
-            // btnOk
-            // 
-            this.btnOk.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnOk.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnOk.Location = new System.Drawing.Point(404, 12);
-            this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(110, 36);
-            this.btnOk.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnOk.TabIndex = 2;
-            this.btnOk.Text = "ثبت اطلاعات مشتری";
-            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnCancel.Location = new System.Drawing.Point(288, 12);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(110, 36);
-            this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnCancel.TabIndex = 2;
-            this.btnCancel.Text = "انصراف";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // btnCheckNumber
-            // 
-            this.btnCheckNumber.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnCheckNumber.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnCheckNumber.Location = new System.Drawing.Point(130, 25);
-            this.btnCheckNumber.Name = "btnCheckNumber";
-            this.btnCheckNumber.Size = new System.Drawing.Size(110, 36);
-            this.btnCheckNumber.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnCheckNumber.TabIndex = 2;
-            this.btnCheckNumber.Text = "بررسی شماره همراه";
-            this.btnCheckNumber.Click += new System.EventHandler(this.btnCheckNumber_Click);
-            // 
-            // btnSearchCustomer
-            // 
-            this.btnSearchCustomer.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnSearchCustomer.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSearchCustomer.Location = new System.Drawing.Point(14, 25);
-            this.btnSearchCustomer.Name = "btnSearchCustomer";
-            this.btnSearchCustomer.Size = new System.Drawing.Size(110, 36);
-            this.btnSearchCustomer.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnSearchCustomer.TabIndex = 2;
-            this.btnSearchCustomer.Text = "جستجوی پیشرفته";
-            this.btnSearchCustomer.Click += new System.EventHandler(this.btnSearchCustomer_Click);
-            // 
             // FrmAddEditCustomerInfo
             // 
+            this.AcceptButton = this.btnOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(527, 493);
+            this.CancelButton = this.btnCancel;
+            this.ClientSize = new System.Drawing.Size(527, 486);
             this.Controls.Add(this.panelEx2);
             this.Controls.Add(this.panelEx1);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));

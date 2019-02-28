@@ -14,7 +14,7 @@ namespace PhotographyAutomation.App.Forms.Customers
         public bool FromFrmAddEditBooking = false;
         public bool FromFrmShowBookings = false;
         public int CustomerId = 0;
-        
+
         public FrmSearchCustomer()
         {
             InitializeComponent();
@@ -29,7 +29,7 @@ namespace PhotographyAutomation.App.Forms.Customers
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            dgvUsers.Rows.Clear();
+            dgvCustomers.Rows.Clear();
 
             using (var db = new UnitOfWork())
             {
@@ -42,56 +42,56 @@ namespace PhotographyAutomation.App.Forms.Customers
                         )
                     .ToList();
 
-                dgvUsers.AutoGenerateColumns = false;
+                dgvCustomers.AutoGenerateColumns = false;
 
                 if (users.Any())
                 {
-                    dgvUsers.Rows.Clear();
-                    dgvUsers.RowCount = users.Count;
+                    dgvCustomers.Rows.Clear();
+                    dgvCustomers.RowCount = users.Count;
 
                     for (int i = 0; i < users.Count; i++)
                     {
-                        dgvUsers.Rows[i].Cells["Id"].Value = users[i].Id;
-                        dgvUsers.Rows[i].Cells["FirstName"].Value = users[i].FirstName;
-                        dgvUsers.Rows[i].Cells["LastName"].Value = users[i].LastName;
-                        dgvUsers.Rows[i].Cells["Tell"].Value = users[i].Tell;
-                        dgvUsers.Rows[i].Cells["Tell"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                        dgvCustomers.Rows[i].Cells["Id"].Value = users[i].Id;
+                        dgvCustomers.Rows[i].Cells["FirstName"].Value = users[i].FirstName;
+                        dgvCustomers.Rows[i].Cells["LastName"].Value = users[i].LastName;
+                        dgvCustomers.Rows[i].Cells["Tell"].Value = users[i].Tell;
+                        dgvCustomers.Rows[i].Cells["Tell"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-                        dgvUsers.Rows[i].Cells["Mobile"].Value = "0" + users[i].Mobile;
-                        dgvUsers.Rows[i].Cells["Mobile"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                        dgvCustomers.Rows[i].Cells["Mobile"].Value = "0" + users[i].Mobile;
+                        dgvCustomers.Rows[i].Cells["Mobile"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-                        dgvUsers.Rows[i].Cells["Email"].Value = users[i].Email;
-                        dgvUsers.Rows[i].Cells["Email"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                        dgvCustomers.Rows[i].Cells["Email"].Value = users[i].Email;
+                        dgvCustomers.Rows[i].Cells["Email"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-                        dgvUsers.Rows[i].Cells["NationalId"].Value = users[i].NationalId;
-                        dgvUsers.Rows[i].Cells["NationalId"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                        dgvCustomers.Rows[i].Cells["NationalId"].Value = users[i].NationalId;
+                        dgvCustomers.Rows[i].Cells["NationalId"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 
                         var createdDate = users[i].CreatedDate;
                         if (createdDate != null)
-                            dgvUsers.Rows[i].Cells["CreatedDate"].Value =
+                            dgvCustomers.Rows[i].Cells["CreatedDate"].Value =
                                 createdDate.Value.ToString("HH:mm") + "   " +
                                 createdDate.Value.Date.ToShortDateString();
 
-                        dgvUsers.Rows[i].Cells["CreatedDate"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                        dgvCustomers.Rows[i].Cells["CreatedDate"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 
                         var modifiedDate = users[i].ModifiedDate;
                         if (modifiedDate != null)
-                            dgvUsers.Rows[i].Cells["CreatedDate"].Value =
+                            dgvCustomers.Rows[i].Cells["CreatedDate"].Value =
                                 modifiedDate.Value.ToString("HH:mm") + "   " +
                                 modifiedDate.Value.Date.ToShortDateString();
 
-                        dgvUsers.Rows[i].Cells["CreatedDate"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                        dgvCustomers.Rows[i].Cells["CreatedDate"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-                        dgvUsers.Rows[i].Cells["MoreInfo"].Value = "...";
+                        dgvCustomers.Rows[i].Cells["MoreInfo"].Value = "...";
                     }
 
-                    dgvUsers.ClearSelection();
+                    dgvCustomers.ClearSelection();
                 }
                 else
                 {
                     RtlMessageBox.Show("متاسفانه جستجوی شما در سیستم نتیجه ای در بر نداشت.", "", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
-                    dgvUsers.Rows.Clear();
+                    dgvCustomers.Rows.Clear();
                 }
             }
         }
@@ -101,14 +101,14 @@ namespace PhotographyAutomation.App.Forms.Customers
 
         private void dgvUsers_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvUsers.CurrentRow != null)
+            if (dgvCustomers.CurrentRow != null)
             {
-                int moreInfoCellIndex = dgvUsers.CurrentRow.Cells["MoreInfo"].ColumnIndex;
-                if (dgvUsers.CurrentCell.ColumnIndex.Equals(moreInfoCellIndex) && e.RowIndex != -1)
+                int moreInfoCellIndex = dgvCustomers.CurrentRow.Cells["MoreInfo"].ColumnIndex;
+                if (dgvCustomers.CurrentCell.ColumnIndex.Equals(moreInfoCellIndex) && e.RowIndex != -1)
                 {
-                    if (dgvUsers.CurrentCell != null && dgvUsers.CurrentCell.Value != null)
+                    if (dgvCustomers.CurrentCell != null && dgvCustomers.CurrentCell.Value != null)
                     {
-                        var customerId = (int)dgvUsers.CurrentRow.Cells["Id"].Value;
+                        var customerId = (int)dgvCustomers.CurrentRow.Cells["Id"].Value;
                         if (FromFrmShowBookings)
                         {
                             FrmShowBookings.CustomerId = customerId;
@@ -149,60 +149,60 @@ namespace PhotographyAutomation.App.Forms.Customers
 
         private void btnShowAllCustomers_Click(object sender, EventArgs e)
         {
-            dgvUsers.Rows.Clear();
+            dgvCustomers.Rows.Clear();
 
             using (var db = new UnitOfWork())
             {
                 List<TblCustomer> users = db.CustomerGenericRepository.Get().ToList();
 
-                dgvUsers.AutoGenerateColumns = false;
+                dgvCustomers.AutoGenerateColumns = false;
 
                 if (users.Any())
                 {
-                    dgvUsers.Rows.Clear();
-                    dgvUsers.RowCount = users.Count;
+                    dgvCustomers.Rows.Clear();
+                    dgvCustomers.RowCount = users.Count;
 
                     for (int i = 0; i < users.Count; i++)
                     {
-                        dgvUsers.Rows[i].Cells["Id"].Value = users[i].Id;
-                        dgvUsers.Rows[i].Cells["FirstName"].Value = users[i].FirstName;
-                        dgvUsers.Rows[i].Cells["LastName"].Value = users[i].LastName;
-                        dgvUsers.Rows[i].Cells["Tell"].Value = users[i].Tell;
-                        dgvUsers.Rows[i].Cells["Tell"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                        dgvCustomers.Rows[i].Cells["Id"].Value = users[i].Id;
+                        dgvCustomers.Rows[i].Cells["FirstName"].Value = users[i].FirstName;
+                        dgvCustomers.Rows[i].Cells["LastName"].Value = users[i].LastName;
+                        dgvCustomers.Rows[i].Cells["Tell"].Value = users[i].Tell;
+                        dgvCustomers.Rows[i].Cells["Tell"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-                        dgvUsers.Rows[i].Cells["Mobile"].Value = "0" + users[i].Mobile;
-                        dgvUsers.Rows[i].Cells["Mobile"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                        dgvCustomers.Rows[i].Cells["Mobile"].Value = "0" + users[i].Mobile;
+                        dgvCustomers.Rows[i].Cells["Mobile"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-                        dgvUsers.Rows[i].Cells["Email"].Value = users[i].Email;
-                        dgvUsers.Rows[i].Cells["Email"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                        dgvCustomers.Rows[i].Cells["Email"].Value = users[i].Email;
+                        dgvCustomers.Rows[i].Cells["Email"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-                        dgvUsers.Rows[i].Cells["NationalId"].Value = users[i].NationalId;
-                        dgvUsers.Rows[i].Cells["NationalId"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                        dgvCustomers.Rows[i].Cells["NationalId"].Value = users[i].NationalId;
+                        dgvCustomers.Rows[i].Cells["NationalId"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 
                         var createdDate = users[i].CreatedDate;
                         if (createdDate != null)
-                            dgvUsers.Rows[i].Cells["CreatedDate"].Value =
+                            dgvCustomers.Rows[i].Cells["CreatedDate"].Value =
                                 createdDate.Value.ToString("HH:mm") + "   " +
                                 createdDate.Value.Date.ToShortDateString();
 
-                        dgvUsers.Rows[i].Cells["CreatedDate"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                        dgvCustomers.Rows[i].Cells["CreatedDate"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 
                         var modifiedDate = users[i].ModifiedDate;
                         if (modifiedDate != null)
-                            dgvUsers.Rows[i].Cells["CreatedDate"].Value =
+                            dgvCustomers.Rows[i].Cells["CreatedDate"].Value =
                                 modifiedDate.Value.ToString("HH:mm") + "   " +
                                 modifiedDate.Value.Date.ToShortDateString();
 
-                        dgvUsers.Rows[i].Cells["CreatedDate"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                        dgvCustomers.Rows[i].Cells["CreatedDate"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-                        dgvUsers.Rows[i].Cells["MoreInfo"].Value = "...";
+                        dgvCustomers.Rows[i].Cells["MoreInfo"].Value = "...";
                     }
                 }
                 else
                 {
                     RtlMessageBox.Show("متاسفانه جستجوی شما در سیستم نتیجه ای در بر نداشت.", "", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
-                    dgvUsers.Rows.Clear();
+                    dgvCustomers.Rows.Clear();
                 }
             }
         }
@@ -211,11 +211,11 @@ namespace PhotographyAutomation.App.Forms.Customers
         {
             if (e.Button == MouseButtons.Right)
             {
-                if (dgvUsers.Rows.Count > 0)
+                if (dgvCustomers.Rows.Count > 0)
                 {
-                    int currentMouseOverRow = dgvUsers.HitTest(e.X, e.Y).RowIndex;
+                    int currentMouseOverRow = dgvCustomers.HitTest(e.X, e.Y).RowIndex;
                     if (currentMouseOverRow > -1)
-                        dgvUsers.Rows[currentMouseOverRow].Selected = true;
+                        dgvCustomers.Rows[currentMouseOverRow].Selected = true;
                     else
                     {
                         menuDgvUsers.Visible = false;
@@ -226,6 +226,33 @@ namespace PhotographyAutomation.App.Forms.Customers
                     menuDgvUsers.Visible = false;
                 }
             }
+        }
+        private void ویرایشاطلاعاتToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var customerId = Convert.ToInt32(dgvCustomers.SelectedRows[0].Cells["Id"].Value);
+            var frmAddEditCustomerInfo = new FrmAddEditCustomerInfo
+            {
+                CustomerId = customerId,
+                IsEditMode = true,
+                JustSaveCustomerInfo = true
+            };
+            frmAddEditCustomerInfo.ShowDialog();
+            btnSearch_Click(null, null);
+        }
+
+        private void ثبتنوبتToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var customerId = Convert.ToInt32(dgvCustomers.SelectedRows[0].Cells["Id"].Value);
+            var frmAddEditBooking = new FrmAddEditBooking
+            {
+                CustomerId = customerId
+            };
+            frmAddEditBooking.ShowDialog();
+        }
+
+        private void ثبتفاکتورToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

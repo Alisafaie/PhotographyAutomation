@@ -1294,5 +1294,11 @@
   <ItemGroup>
     <None Include="Resources\upload-.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check_MobileNumber.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\advanced_Search.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

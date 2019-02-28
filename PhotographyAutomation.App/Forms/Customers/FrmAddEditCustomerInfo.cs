@@ -25,6 +25,9 @@ namespace PhotographyAutomation.App.Forms.Customers
             if (IsEditMode)
             {
                 GetCustomerInfo(CustomerId);
+                txtMobileSearch.Enabled = false;
+                btnCheckNumber.Enabled = false;
+                
                 return;
             }
             btnOk.Enabled = false;
@@ -156,30 +159,41 @@ namespace PhotographyAutomation.App.Forms.Customers
 
                 using (var db = new UnitOfWork())
                 {
-                    if (CustomerId == 0 && IsEditMode == false)
+                    var checkCustomerMobileNumber =
+                        db.CustomerGenericRepository.Get(x => x.Mobile.Equals(customer.Mobile));
+                    if (checkCustomerMobileNumber == null)
                     {
-                        db.CustomerGenericRepository.Insert(customer);
-                    }
-                    else
-                    {
-                        customer.Id = CustomerId;
-                        db.CustomerGenericRepository.Update(customer);
-                    }
-
-                    int result = db.Save();
-                    if (result > 0)
-                    {
-                        if (JustSaveCustomerInfo == false)
+                        if (CustomerId == 0 && IsEditMode == false)
                         {
-                            var f = new FrmAddEditBooking { CustomerId = customer.Id };
-                            f.ShowDialog();
+                            db.CustomerGenericRepository.Insert(customer);
+                        }
+                        else
+                        {
+                            customer.Id = CustomerId;
+                            db.CustomerGenericRepository.Update(customer);
                         }
 
-                        DialogResult = DialogResult.OK;
+                        int result = db.Save();
+                        if (result > 0)
+                        {
+                            if (JustSaveCustomerInfo == false)
+                            {
+                                var f = new FrmAddEditBooking {CustomerId = customer.Id};
+                                f.ShowDialog();
+                            }
+
+                            DialogResult = DialogResult.OK;
+                        }
+                        else
+                            RtlMessageBox.Show("خطا در ثبت اطلاعات کاربر", "خطا در ثبت اطلاعات", MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
                     }
                     else
-                        RtlMessageBox.Show("خطا در ثبت اطلاعات کاربر", "خطا در ثبت اطلاعات", MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
+                    {
+                        RtlMessageBox.Show("این شماره موبایل قبلا برای کاربر دیگری ثبت شده است.", "خطا در ورود اطلاعات",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtMobile.Focus();
+                    }
                 }
             }
         }
