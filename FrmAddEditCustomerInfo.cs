@@ -6,6 +6,7 @@ using PhotographyAutomation.Utilities.Convertor;
 using PhotographyAutomation.Utilities.ExtentionMethods;
 using PhotographyAutomation.Utilities.Regex;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace PhotographyAutomation.App.Forms.Customers
@@ -15,6 +16,7 @@ namespace PhotographyAutomation.App.Forms.Customers
         public int CustomerId;
         public bool JustSaveCustomerInfo = false;
         public bool IsEditMode = false;
+        
         public FrmAddEditCustomerInfo()
         {
             InitializeComponent();
@@ -84,7 +86,7 @@ namespace PhotographyAutomation.App.Forms.Customers
 
                 using (var db = new UnitOfWork())
                 {
-                    var user = db.CustomerRepository.FindCustomersByMobile(txtMobileSearch.Text.Replace(" ", ""));
+                    var user = db.CustomerRepository.FindUserByMobile(txtMobileSearch.Text.Replace(" ", ""));
 
                     if (user != null)
                     {
@@ -119,9 +121,6 @@ namespace PhotographyAutomation.App.Forms.Customers
                         cmbMarriedStatus.SelectedIndex = 0;
                     }
 
-                    //groupBoxCustomerInfo.Enabled = true;
-                    //groupBoxSearchCustomer.Enabled = false;
-
                     AcceptButton = btnOk;
 
                     btnOk.Enabled = true;
@@ -135,69 +134,77 @@ namespace PhotographyAutomation.App.Forms.Customers
         private void btnOk_Click(object sender, EventArgs e)
         {
             if (!CheckInputs()) return;
-            var customer = new TblCustomer
-            {
-                FirstName = txtFirstName.Text.Trim(),
-                LastName = txtLastName.Text.Trim(),
-                Mobile = txtMobile.Text.Replace(" ", "").Trim(),
-                Tell = txtTell.Text.Replace(" ", "").Trim(),
-                Gender = Convert.ToByte(cmbGender.SelectedIndex == 0 ? 0 : 1),
-                BirthDate = txtBirthDate.Text.ToMiladiDate(),
-                NationalId = txtNationalId.Text.Replace("-", "").Trim(),
-                IsMarried = Convert.ToByte(cmbMarriedStatus.SelectedIndex == 0 ? 0 : 1),
-                Address = txtAddress.Text.Trim(),
-                Email = txtEmail.Text.Trim(),
-                IsDeleted = 0
-            };
 
-            if (CustomerId == 0)
-                customer.CreatedDate = DateTime.Now;
-            else
-                customer.ModifiedDate = DateTime.Now;
-
-
+            var customer = new TblCustomer();
+            customer.FirstName = txtFirstName.Text.Trim();
+            customer.LastName = txtLastName.Text.Trim();
+            customer.Mobile = txtMobile.Text.Replace(" ", "").Trim();
+            customer.Tell = txtTell.Text.Replace(" ", "").Trim();
+            customer.Gender = Convert.ToByte(cmbGender.SelectedIndex == 0 ? 0 : 1);
+            customer.BirthDate = txtBirthDate.Text.ToMiladiDate();
+            customer.NationalId = txtNationalId.Text.Replace("-", "").Trim();
+            customer.IsMarried = Convert.ToByte(cmbMarriedStatus.SelectedIndex == 0 ? 0 : 1);
+            customer.Address = txtAddress.Text.Trim();
+            customer.Email = txtEmail.Text.Trim();
+            customer.CreatedDate = DateTime.Now;
+            customer.IsDeleted = 0;
 
             if (cmbMarriedStatus.SelectedIndex == 1)
                 customer.WeddingDate = txtWeddingDate.Text.ToMiladiDate();
 
             using (var db = new UnitOfWork())
             {
-                var checkCustomerMobileNumber = db.CustomerRepository.GetCustomerByMobile(customer.Mobile);
-
-                if (CustomerId == 0 && IsEditMode == false)
+                var customerInDb = db.CustomerGenericRepository.Get(x => x.Mobile.Equals(customer.Mobile)).SingleOrDefault();
+                if (customerInDb != null)
                 {
-                    if (checkCustomerMobileNumber != null)
+                    if (CustomerId == 0 && IsEditMode == false)
                     {
-                        RtlMessageBox.Show("این شماره موبایل قبلا برای کاربر دیگری ثبت شده است.", "خطا در ورود اطلاعات",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        txtMobile.Focus();
+                        if (customer.Mobile != customerInDb.Mobile)
+                            db.CustomerGenericRepository.Insert(customer);
+                        else
+                        {
+                            RtlMessageBox.Show("این شماره موبایل قبلا برای کاربر دیگری ثبت شده است.", "خطا در ورود اطلاعات",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            txtMobile.Focus();
+                        }
                     }
-                    db.CustomerGenericRepository.Insert(customer);
+                    else
+                    {
+                        customer.Id = CustomerId;
+
+                        if (customer.Id == customerInDb.Id)
+                            db.CustomerGenericRepository.Update(customer);
+                        else
+                        {
+                            RtlMessageBox.Show("این شماره موبایل قبلا برای کاربر دیگری ثبت شده است.", "خطا در ورود اطلاعات",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            txtMobile.Focus();
+                        }
+                    }
                 }
                 else
                 {
-                    //customer.Id = CustomerId;
-
-                    if (checkCustomerMobileNumber.Id == CustomerId)
+                    if (CustomerId == 0 && IsEditMode == false)
+                    {
+                        db.CustomerGenericRepository.Insert(customer);
+                    }
+                    else
                     {
                         customer.Id = CustomerId;
                         db.CustomerGenericRepository.Update(customer);
                     }
-                    else
-                    {
-                        RtlMessageBox.Show("این شماره موبایل قبلا برای کاربر دیگری ثبت شده است.", "خطا در ورود اطلاعات",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        txtMobile.Focus();
-                    }
                 }
 
                 int result = db.Save();
-                if (result > 0)
+                if (result >-1)
                 {
                     if (JustSaveCustomerInfo == false)
                     {
-                        var f = new FrmAddEditBooking { CustomerId = customer.Id };
-                        f.ShowDialog();
+                        using (var f = new FrmAddEditBooking())
+                        {
+                            f.CustomerId = customer.Id;
+                            f.ShowDialog();
+                        }
                     }
 
                     DialogResult = DialogResult.OK;
@@ -205,7 +212,6 @@ namespace PhotographyAutomation.App.Forms.Customers
                 else
                     RtlMessageBox.Show("خطا در ثبت اطلاعات کاربر", "خطا در ثبت اطلاعات", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
-
             }
         }
 

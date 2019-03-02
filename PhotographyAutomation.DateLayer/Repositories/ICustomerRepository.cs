@@ -5,7 +5,8 @@ namespace PhotographyAutomation.DateLayer.Repositories
 {
     public interface ICustomerRepository
     {
-        TblCustomer FindUserByMobile(string mobileNumber);
+        TblCustomer FindCustomersByMobile(string mobileNumber);
+        TblCustomer GetCustomerByMobile(string mobileNumber);
         UserInfoBookingViewModel GetCustomerInfoBooking(int userId);
     }
 }

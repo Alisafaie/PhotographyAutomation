@@ -15,11 +15,28 @@ namespace PhotographyAutomation.DateLayer.Services
         {
             _db = context;
         }
-        public TblCustomer FindUserByMobile(string mobileNumber)
+        public TblCustomer FindCustomersByMobile(string mobileNumber)
         {
             try
             {
                 return _db.TblCustomer.SingleOrDefault(x => x.Mobile.Contains(mobileNumber));
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine(exception.Message);
+                Debug.WriteLine(exception.Data);
+                Debug.WriteLine(exception.InnerException);
+                Debug.WriteLine(exception.Source);
+                Debug.WriteLine(exception.StackTrace);
+                return null;
+            }
+        }
+
+        public TblCustomer GetCustomerByMobile(string mobileNumber)
+        {
+            try
+            {
+                return _db.TblCustomer.SingleOrDefault(x => x.Mobile.Equals(mobileNumber));
             }
             catch (Exception exception)
             {

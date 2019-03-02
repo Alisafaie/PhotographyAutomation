@@ -475,13 +475,15 @@ namespace PhotographyAutomation.App.Forms.Booking
             if (dgvBookings.SelectedRows.Count == 1)
             {
                 int customerId = Convert.ToInt32(dgvBookings.SelectedRows[0].Cells["clmCustomerId"].Value);
-                var frmAddEditCustomerInfo = new FrmAddEditCustomerInfo
+                using(var frmAddEditCustomerInfo = new FrmAddEditCustomerInfo())
                 {
-                    CustomerId = customerId,
-                    JustSaveCustomerInfo = true,
-                    IsEditMode = true
+                    frmAddEditCustomerInfo.CustomerId = customerId;
+                    frmAddEditCustomerInfo.JustSaveCustomerInfo = true;
+                    frmAddEditCustomerInfo.IsEditMode = true;
+
+                    frmAddEditCustomerInfo.ShowDialog();
                 };
-                frmAddEditCustomerInfo.ShowDialog();
+                
             }
         }
 

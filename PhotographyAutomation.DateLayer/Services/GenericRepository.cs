@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
@@ -80,7 +81,12 @@ namespace PhotographyAutomation.DateLayer.Services
         {
             try
             {
-                _db.Entry(entity).State = EntityState.Modified;
+                //_db.Entry(entity).State = System.Data.Entity.EntityState.Modified;
+
+                _db.Set<TEntity>().AddOrUpdate(entity);
+
+
+                //_db.Entry(entity).State = EntityState.Modified;
             }
             catch (Exception exception)
             {
