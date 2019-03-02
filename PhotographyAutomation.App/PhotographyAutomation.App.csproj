@@ -91,11 +91,11 @@
     <Compile Include="Forms\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Customers\FrmSearchCustomer.cs">
+    <Compile Include="Forms\Customers\FrmShowCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Customers\FrmSearchCustomer.Designer.cs">
-      <DependentUpon>FrmSearchCustomer.cs</DependentUpon>
+    <Compile Include="Forms\Customers\FrmShowCustomer.Designer.cs">
+      <DependentUpon>FrmShowCustomer.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Customers\FrmShowCustomerInfo.cs">
       <SubType>Form</SubType>
@@ -126,8 +126,8 @@
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Customers\FrmSearchCustomer.resx">
-      <DependentUpon>FrmSearchCustomer.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Customers\FrmShowCustomer.resx">
+      <DependentUpon>FrmShowCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Customers\FrmShowCustomerInfo.resx">
       <DependentUpon>FrmShowCustomerInfo.cs</DependentUpon>

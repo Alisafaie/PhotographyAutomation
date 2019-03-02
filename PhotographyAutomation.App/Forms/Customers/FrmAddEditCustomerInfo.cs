@@ -150,15 +150,15 @@ namespace PhotographyAutomation.App.Forms.Customers
                 IsDeleted = 0
             };
 
-            if (CustomerId == 0)
-                customer.CreatedDate = DateTime.Now;
-            else
-                customer.ModifiedDate = DateTime.Now;
-
-
 
             if (cmbMarriedStatus.SelectedIndex == 1)
-                customer.WeddingDate = txtWeddingDate.Text.ToMiladiDate();
+                if (txtWeddingDate.Text == @"13  /  /" || txtWeddingDate.Text.ToMiladiDate() == null)
+                {
+                    errorProvider1.Clear();
+                    errorProvider1.SetError(txtWeddingDate, "تاریخ ازدواج به درستی مشخص نشده است.");
+                    return;
+                }
+            customer.WeddingDate = txtWeddingDate.Text.ToMiladiDate();
 
             using (var db = new UnitOfWork())
             {
@@ -172,6 +172,8 @@ namespace PhotographyAutomation.App.Forms.Customers
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                         txtMobile.Focus();
                     }
+
+                    customer.CreatedDate = DateTime.Now;
                     db.CustomerGenericRepository.Insert(customer);
                 }
                 else
@@ -181,6 +183,7 @@ namespace PhotographyAutomation.App.Forms.Customers
                         if (checkCustomerMobileNumber.Id == CustomerId)
                         {
                             customer.Id = CustomerId;
+                            customer.ModifiedDate = DateTime.Now;
                             db.CustomerGenericRepository.Update(customer);
                         }
                         else
@@ -194,6 +197,7 @@ namespace PhotographyAutomation.App.Forms.Customers
                     else
                     {
                         customer.Id = CustomerId;
+                        customer.ModifiedDate = DateTime.Now;
                         db.CustomerGenericRepository.Update(customer);
                     }
                 }
@@ -203,8 +207,11 @@ namespace PhotographyAutomation.App.Forms.Customers
                 {
                     if (JustSaveCustomerInfo == false)
                     {
-                        var f = new FrmAddEditBooking { CustomerId = customer.Id };
-                        f.ShowDialog();
+                        using (var f = new FrmAddEditBooking())
+                        {
+                            f.CustomerId = customer.Id;
+                            f.ShowDialog();
+                        }
                     }
 
                     DialogResult = DialogResult.OK;
@@ -343,7 +350,7 @@ namespace PhotographyAutomation.App.Forms.Customers
 
         private void btnSearchCustomer_Click(object sender, EventArgs e)
         {
-            FrmSearchCustomer searchUser = new FrmSearchCustomer();
+            FrmShowCustomer searchUser = new FrmShowCustomer();
             searchUser.ShowDialog();
         }
     }

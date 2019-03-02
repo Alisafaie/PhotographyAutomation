@@ -9,13 +9,13 @@ using System.Windows.Forms;
 
 namespace PhotographyAutomation.App.Forms.Customers
 {
-    public partial class FrmSearchCustomer : Form
+    public partial class FrmShowCustomer : Form
     {
         public bool FromFrmAddEditBooking = false;
         public bool FromFrmShowBookings = false;
         public int CustomerId = 0;
 
-        public FrmSearchCustomer()
+        public FrmShowCustomer()
         {
             InitializeComponent();
         }
@@ -242,17 +242,86 @@ namespace PhotographyAutomation.App.Forms.Customers
 
         private void ثبتنوبتToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var customerId = Convert.ToInt32(dgvCustomers.SelectedRows[0].Cells["Id"].Value);
-            var frmAddEditBooking = new FrmAddEditBooking
+            if (dgvCustomers.SelectedRows.Count == 1 &&
+                int.TryParse(dgvCustomers.SelectedRows[0].Cells["Id"].Value.ToString(), out var customerId))
             {
-                CustomerId = customerId
-            };
-            frmAddEditBooking.ShowDialog();
+
+                using (var frmAddEditBooking = new FrmAddEditBooking())
+                {
+                    frmAddEditBooking.CustomerId = customerId;
+                    frmAddEditBooking.ShowDialog();
+                };
+            }
+            else
+            {
+                RtlMessageBox.Show("هیچ آیتمی برای ثبت رزرواسیون انتخاب نشده است.", "خطا - عدم انتخاب مشتری",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ثبتفاکتورToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var frmAddEditCustomer = new FrmAddEditCustomerInfo())
+            {
+                frmAddEditCustomer.IsEditMode = false;
+                frmAddEditCustomer.CustomerId = 0;
+                frmAddEditCustomer.JustSaveCustomerInfo = true;
+
+
+                frmAddEditCustomer.ShowDialog();
+            }
+        }
+
+        private void ویرایشاطلاعاتToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (dgvCustomers.SelectedRows.Count > 0)
+            {
+                if (int.TryParse(dgvCustomers.SelectedRows[0].Cells["Id"].Value.ToString(), out var customerId))
+                {
+                    using (var frmAddEditCustomerInfo = new FrmAddEditCustomerInfo())
+                    {
+                        frmAddEditCustomerInfo.CustomerId = customerId;
+                        frmAddEditCustomerInfo.IsEditMode = true;
+                        frmAddEditCustomerInfo.JustSaveCustomerInfo = true;
+                        if (frmAddEditCustomerInfo.ShowDialog() == DialogResult.OK)
+                            btnSearch_Click(null, null);
+                    }
+                }
+            }
+            else
+            {
+                RtlMessageBox.Show("هیچ آیتمی برای ویرایش انتخاب نشده است.", "خطا - عدم انتخاب مشتری",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void searchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtFirstName.Text.Trim()) || !string.IsNullOrEmpty(txtLastName.Text.Trim()) ||
+                !string.IsNullOrEmpty(txtTell.Text.Trim()))
+            {
+                btnSearch_Click(null, null);
+            }
+            else
+            {
+                RtlMessageBox.Show("هیچ اطلاعاتی برای جستجو وارد نشده است.", "خطا - عدم ورود اطلاعات مشتری",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ثبتنوبتToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ثبتنوبتToolStripMenuItem_Click(null, null);
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

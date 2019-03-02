@@ -16,34 +16,28 @@ namespace PhotographyAutomation.App.Forms
 
         private void btnAddEditBooking_Click(object sender, EventArgs e)
         {
-            FrmAddEditCustomerInfo customer = new FrmAddEditCustomerInfo();
-            customer.ShowDialog();
+            using (var customer = new FrmAddEditCustomerInfo())
+            {
+                customer.ShowDialog();
+            }
         }
 
         private void buttonItem15_Click(object sender, EventArgs e)
         {
-            FrmAddEditBooking f = new FrmAddEditBooking
+            using (var f = new FrmAddEditBooking())
             {
-                CustomerId = 18
+                f.CustomerId = 18;
+                f.ShowDialog();
             };
-            f.ShowDialog();
         }
 
 
-
-        private void buttonItem17_Click_1(object sender, EventArgs e)
+        private void btnShowCustomers_Click(object sender, EventArgs e)
         {
-            FrmShowCustomerInfo frmShowUserInfo = new FrmShowCustomerInfo
+            using (var showCustomers = new FrmShowCustomer())
             {
-                CustomerId = 13
-            };
-            frmShowUserInfo.ShowDialog();
-        }
-
-        private void btnSearchUser_Click(object sender, EventArgs e)
-        {
-            FrmSearchCustomer searchUser = new FrmSearchCustomer();
-            searchUser.ShowDialog();
+                showCustomers.ShowDialog();
+            }
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
@@ -51,27 +45,22 @@ namespace PhotographyAutomation.App.Forms
             persianMonthCalendar.Value = PersianDate.Now;
         }
 
-        private void btnEditBooking_Click(object sender, EventArgs e)
-        {
-            FrmShowBookings frmShowBookings = new FrmShowBookings();
-            frmShowBookings.ShowDialog();
-        }
+
 
         private void btnShowBookings_Click(object sender, EventArgs e)
         {
-            FrmShowBookings frmShowBookings = new FrmShowBookings();
-            frmShowBookings.ShowDialog();
+            using (var frmShowBookings = new FrmShowBookings())
+            {
+                frmShowBookings.ShowDialog();
+            }
         }
 
-        private void buttonItem18_Click(object sender, EventArgs e)
+        private void btnUpload_Click(object sender, EventArgs e)
         {
-            FrmUploadPhotos f = new FrmUploadPhotos();
-            f.ShowDialog();
-        }
-
-        private void buttonItem14_Click(object sender, EventArgs e)
-        {
-
+            using (var f = new FrmUploadPhotos())
+            {
+                f.ShowDialog();
+            }
         }
     }
 }
