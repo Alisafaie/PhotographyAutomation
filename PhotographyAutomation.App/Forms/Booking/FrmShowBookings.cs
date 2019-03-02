@@ -1,11 +1,14 @@
 ﻿using FreeControls;
 using PhotographyAutomation.App.Forms.Customers;
 using PhotographyAutomation.DateLayer.Context;
+using PhotographyAutomation.DateLayer.Models;
 using PhotographyAutomation.Utilities;
 using PhotographyAutomation.Utilities.Convertor;
 using PhotographyAutomation.Utilities.ExtentionMethods;
 using PhotographyAutomation.ViewModels.Booking;
+using PhotographyAutomation.ViewModels.User;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -61,73 +64,9 @@ namespace PhotographyAutomation.App.Forms.Booking
             using (var db = new UnitOfWork())
             {
                 var bookingsList = db.BookingRepository.GetBookingBetweenDates(dtFrom, dtTo, statusCode);
-                if (bookingsList.Any())
+                if (bookingsList != null && bookingsList.Count > 0)
                 {
-                    dgvBookings.Rows.Clear();
-                    dgvBookings.RowCount = bookingsList.Count;
-                    dgvBookings.AutoGenerateColumns = false;
-
-                    for (int i = 0; i < bookingsList.Count; i++)
-                    {
-                        dgvBookings.Rows[i].Cells["clmId"].Value = bookingsList[i].Id;
-                        dgvBookings.Rows[i].Cells["clmCustomerId"].Value = bookingsList[i].UserId;
-
-                        if (bookingsList[i].CustomerGender == 0)
-                        {
-                            dgvBookings.Rows[i].Cells["clmCustomerFullName"].Value =
-                                "خانم " + bookingsList[i].CustomerFullName;
-
-                        }
-                        else if (bookingsList[i].CustomerGender == 1)
-                        {
-                            dgvBookings.Rows[i].Cells["clmCustomerFullName"].Value =
-                                "آقای " + bookingsList[i].CustomerFullName;
-                        }
-                        else
-                        {
-                            dgvBookings.Rows[i].Cells["clmCustomerFullName"].Value =
-                                bookingsList[i].CustomerFullName;
-                        }
-
-                        dgvBookings.Rows[i].Cells["clmDate"].Value = bookingsList[i].Date.ToShamsiDate();
-                        dgvBookings.Rows[i].Cells["clmDate"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-                        dgvBookings.Rows[i].Cells["clmTime"].Value = bookingsList[i].Time;
-
-                        dgvBookings.Rows[i].Cells["clmTime"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-                        dgvBookings.Rows[i].Cells["clmPhotographerGender"].Value =
-                            bookingsList[i].PhotographerGender;
-
-                        switch (bookingsList[i].PhotographerGender)
-                        {
-                            case 0:
-                                dgvBookings.Rows[i].Cells["clmPhotographerGenderName"].Value = "خانم";
-                                break;
-                            case 1:
-                                dgvBookings.Rows[i].Cells["clmPhotographerGenderName"].Value = "آقا";
-                                break;
-                            default:
-                                dgvBookings.Rows[i].Cells["clmPhotographerGenderName"].Value = "فرقی ندارد";
-                                break;
-                        }
-
-                        dgvBookings.Rows[i].Cells["clmPhotographyTypeId"].Value =
-                            bookingsList[i].PhotographyTypeId;
-                        dgvBookings.Rows[i].Cells["clmPhotographyTypeName"].Value =
-                            bookingsList[i].PhotographyTypeName;
-                        dgvBookings.Rows[i].Cells["clmAtelierTypeId"].Value = bookingsList[i].AtelierTypeId;
-                        dgvBookings.Rows[i].Cells["clmAtelierTypeName"].Value = bookingsList[i].AtelierTypeName;
-                        dgvBookings.Rows[i].Cells["clmPersonCount"].Value = bookingsList[i].PersonCount;
-                        dgvBookings.Rows[i].Cells["clmPaymentIsOK"].Value = bookingsList[i].PaymentIsOk;
-                        dgvBookings.Rows[i].Cells["clmSubmitter"].Value = bookingsList[i].Submitter;
-                        dgvBookings.Rows[i].Cells["clmSubmitterName"].Value = bookingsList[i].SubmitterName;
-                        dgvBookings.Rows[i].Cells["clmStatusId"].Value = bookingsList[i].StatusId;
-                        dgvBookings.Rows[i].Cells["clmStatusName"].Value = bookingsList[i].StatusName;
-                        dgvBookings.Rows[i].Cells["clmCreatedDateTime"].Value = bookingsList[i].CreatedDateTime;
-                        dgvBookings.Rows[i].Cells["clmModifiedDateTime"].Value =
-                            bookingsList[i].ModifiedDateTime;
-                    }
+                    PopulateDataGridView(bookingsList);
                 }
                 else
                 {
@@ -150,73 +89,9 @@ namespace PhotographyAutomation.App.Forms.Booking
             using (var db = new UnitOfWork())
             {
                 var bookingsList = db.BookingRepository.GetBookingBetweenDates(dtFrom, dtTo);
-                if (bookingsList.Any())
+                if (bookingsList != null && bookingsList.Count > 0)
                 {
-                    dgvBookings.Rows.Clear();
-                    dgvBookings.RowCount = bookingsList.Count;
-                    dgvBookings.AutoGenerateColumns = false;
-
-                    for (int i = 0; i < bookingsList.Count; i++)
-                    {
-                        dgvBookings.Rows[i].Cells["clmId"].Value = bookingsList[i].Id;
-                        dgvBookings.Rows[i].Cells["clmCustomerId"].Value = bookingsList[i].UserId;
-
-                        if (bookingsList[i].CustomerGender == 0)
-                        {
-                            dgvBookings.Rows[i].Cells["clmCustomerFullName"].Value =
-                                "خانم " + bookingsList[i].CustomerFullName;
-
-                        }
-                        else if (bookingsList[i].CustomerGender == 1)
-                        {
-                            dgvBookings.Rows[i].Cells["clmCustomerFullName"].Value =
-                                "آقای " + bookingsList[i].CustomerFullName;
-                        }
-                        else
-                        {
-                            dgvBookings.Rows[i].Cells["clmCustomerFullName"].Value =
-                                bookingsList[i].CustomerFullName;
-                        }
-
-                        dgvBookings.Rows[i].Cells["clmDate"].Value = bookingsList[i].Date.ToShamsiDate();
-                        dgvBookings.Rows[i].Cells["clmDate"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-                        dgvBookings.Rows[i].Cells["clmTime"].Value = bookingsList[i].Time;
-
-                        dgvBookings.Rows[i].Cells["clmTime"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-                        dgvBookings.Rows[i].Cells["clmPhotographerGender"].Value =
-                            bookingsList[i].PhotographerGender;
-
-                        switch (bookingsList[i].PhotographerGender)
-                        {
-                            case 0:
-                                dgvBookings.Rows[i].Cells["clmPhotographerGenderName"].Value = "خانم";
-                                break;
-                            case 1:
-                                dgvBookings.Rows[i].Cells["clmPhotographerGenderName"].Value = "آقا";
-                                break;
-                            default:
-                                dgvBookings.Rows[i].Cells["clmPhotographerGenderName"].Value = "فرقی ندارد";
-                                break;
-                        }
-
-                        dgvBookings.Rows[i].Cells["clmPhotographyTypeId"].Value =
-                            bookingsList[i].PhotographyTypeId;
-                        dgvBookings.Rows[i].Cells["clmPhotographyTypeName"].Value =
-                            bookingsList[i].PhotographyTypeName;
-                        dgvBookings.Rows[i].Cells["clmAtelierTypeId"].Value = bookingsList[i].AtelierTypeId;
-                        dgvBookings.Rows[i].Cells["clmAtelierTypeName"].Value = bookingsList[i].AtelierTypeName;
-                        dgvBookings.Rows[i].Cells["clmPersonCount"].Value = bookingsList[i].PersonCount;
-                        dgvBookings.Rows[i].Cells["clmPaymentIsOK"].Value = bookingsList[i].PaymentIsOk;
-                        dgvBookings.Rows[i].Cells["clmSubmitter"].Value = bookingsList[i].Submitter;
-                        dgvBookings.Rows[i].Cells["clmSubmitterName"].Value = bookingsList[i].SubmitterName;
-                        dgvBookings.Rows[i].Cells["clmStatusId"].Value = bookingsList[i].StatusId;
-                        dgvBookings.Rows[i].Cells["clmStatusName"].Value = bookingsList[i].StatusName;
-                        dgvBookings.Rows[i].Cells["clmCreatedDateTime"].Value = bookingsList[i].CreatedDateTime;
-                        dgvBookings.Rows[i].Cells["clmModifiedDateTime"].Value =
-                            bookingsList[i].ModifiedDateTime;
-                    }
+                    PopulateDataGridView(bookingsList);
                 }
                 else
                 {
@@ -229,6 +104,74 @@ namespace PhotographyAutomation.App.Forms.Booking
             dgvBookings.ClearSelection();
         }
 
+        private void PopulateDataGridView(List<BookingHistoryAddEditBookingViewModel> bookingsList)
+        {
+            dgvBookings.Rows.Clear();
+            dgvBookings.RowCount = bookingsList.Count;
+            dgvBookings.AutoGenerateColumns = false;
+
+            for (int i = 0; i < bookingsList.Count; i++)
+            {
+                dgvBookings.Rows[i].Cells["clmId"].Value = bookingsList[i].Id;
+                dgvBookings.Rows[i].Cells["clmCustomerId"].Value = bookingsList[i].UserId;
+
+                if (bookingsList[i].CustomerGender == 0)
+                {
+                    dgvBookings.Rows[i].Cells["clmCustomerFullName"].Value =
+                        "خانم " + bookingsList[i].CustomerFullName;
+                }
+                else if (bookingsList[i].CustomerGender == 1)
+                {
+                    dgvBookings.Rows[i].Cells["clmCustomerFullName"].Value =
+                        "آقای " + bookingsList[i].CustomerFullName;
+                }
+                else
+                {
+                    dgvBookings.Rows[i].Cells["clmCustomerFullName"].Value =
+                        bookingsList[i].CustomerFullName;
+                }
+
+                dgvBookings.Rows[i].Cells["clmDate"].Value = bookingsList[i].Date.ToShamsiDate();
+                dgvBookings.Rows[i].Cells["clmDate"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+                dgvBookings.Rows[i].Cells["clmTime"].Value = bookingsList[i].Time;
+
+                dgvBookings.Rows[i].Cells["clmTime"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+                dgvBookings.Rows[i].Cells["clmPhotographerGender"].Value =
+                    bookingsList[i].PhotographerGender;
+
+                switch (bookingsList[i].PhotographerGender)
+                {
+                    case 0:
+                        dgvBookings.Rows[i].Cells["clmPhotographerGenderName"].Value = "خانم";
+                        break;
+                    case 1:
+                        dgvBookings.Rows[i].Cells["clmPhotographerGenderName"].Value = "آقا";
+                        break;
+                    default:
+                        dgvBookings.Rows[i].Cells["clmPhotographerGenderName"].Value = "فرقی ندارد";
+                        break;
+                }
+
+                dgvBookings.Rows[i].Cells["clmPhotographyTypeId"].Value =
+                    bookingsList[i].PhotographyTypeId;
+                dgvBookings.Rows[i].Cells["clmPhotographyTypeName"].Value =
+                    bookingsList[i].PhotographyTypeName;
+                dgvBookings.Rows[i].Cells["clmAtelierTypeId"].Value = bookingsList[i].AtelierTypeId;
+                dgvBookings.Rows[i].Cells["clmAtelierTypeName"].Value = bookingsList[i].AtelierTypeName;
+                dgvBookings.Rows[i].Cells["clmPersonCount"].Value = bookingsList[i].PersonCount;
+                dgvBookings.Rows[i].Cells["clmPaymentIsOK"].Value = bookingsList[i].PaymentIsOk;
+                dgvBookings.Rows[i].Cells["clmSubmitter"].Value = bookingsList[i].Submitter;
+                dgvBookings.Rows[i].Cells["clmSubmitterName"].Value = bookingsList[i].SubmitterName;
+                dgvBookings.Rows[i].Cells["clmStatusId"].Value = bookingsList[i].StatusId;
+                dgvBookings.Rows[i].Cells["clmStatusName"].Value = bookingsList[i].StatusName;
+                dgvBookings.Rows[i].Cells["clmCreatedDateTime"].Value = bookingsList[i].CreatedDateTime;
+                dgvBookings.Rows[i].Cells["clmModifiedDateTime"].Value =
+                    bookingsList[i].ModifiedDateTime;
+            }
+        }
+
         private void ShowBookingsOfCustomer(string cucstomerInfo)
         {
             using (var db = new UnitOfWork())
@@ -238,73 +181,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                     dgvBookings.Rows.Clear();
                     if (bookingsList != null && bookingsList.Count > 0)
                     {
-                        dgvBookings.Rows.Clear();
-                        dgvBookings.RowCount = bookingsList.Count;
-                        dgvBookings.AutoGenerateColumns = false;
-
-                        for (int i = 0; i < bookingsList.Count; i++)
-                        {
-                            dgvBookings.Rows[i].Cells["clmId"].Value = bookingsList[i].Id;
-                            dgvBookings.Rows[i].Cells["clmCustomerId"].Value = bookingsList[i].UserId;
-
-                            if (bookingsList[i].CustomerGender == 0)
-                            {
-                                dgvBookings.Rows[i].Cells["clmCustomerFullName"].Value =
-                                    "خانم " + bookingsList[i].CustomerFullName;
-
-                            }
-                            else if (bookingsList[i].CustomerGender == 1)
-                            {
-                                dgvBookings.Rows[i].Cells["clmCustomerFullName"].Value =
-                                    "آقای " + bookingsList[i].CustomerFullName;
-                            }
-                            else
-                            {
-                                dgvBookings.Rows[i].Cells["clmCustomerFullName"].Value =
-                                    bookingsList[i].CustomerFullName;
-                            }
-
-                            dgvBookings.Rows[i].Cells["clmDate"].Value = bookingsList[i].Date.ToShamsiDate();
-                            dgvBookings.Rows[i].Cells["clmDate"].Style.Alignment =
-                                DataGridViewContentAlignment.MiddleRight;
-
-                            dgvBookings.Rows[i].Cells["clmTime"].Value = bookingsList[i].Time;
-
-                            dgvBookings.Rows[i].Cells["clmTime"].Style.Alignment =
-                                DataGridViewContentAlignment.MiddleRight;
-
-                            dgvBookings.Rows[i].Cells["clmPhotographerGender"].Value =
-                                bookingsList[i].PhotographerGender;
-
-                            switch (bookingsList[i].PhotographerGender)
-                            {
-                                case 0:
-                                    dgvBookings.Rows[i].Cells["clmPhotographerGenderName"].Value = "خانم";
-                                    break;
-                                case 1:
-                                    dgvBookings.Rows[i].Cells["clmPhotographerGenderName"].Value = "آقا";
-                                    break;
-                                default:
-                                    dgvBookings.Rows[i].Cells["clmPhotographerGenderName"].Value = "فرقی ندارد";
-                                    break;
-                            }
-
-                            dgvBookings.Rows[i].Cells["clmPhotographyTypeId"].Value =
-                                bookingsList[i].PhotographyTypeId;
-                            dgvBookings.Rows[i].Cells["clmPhotographyTypeName"].Value =
-                                bookingsList[i].PhotographyTypeName;
-                            dgvBookings.Rows[i].Cells["clmAtelierTypeId"].Value = bookingsList[i].AtelierTypeId;
-                            dgvBookings.Rows[i].Cells["clmAtelierTypeName"].Value = bookingsList[i].AtelierTypeName;
-                            dgvBookings.Rows[i].Cells["clmPersonCount"].Value = bookingsList[i].PersonCount;
-                            dgvBookings.Rows[i].Cells["clmPaymentIsOK"].Value = bookingsList[i].PaymentIsOk;
-                            dgvBookings.Rows[i].Cells["clmSubmitter"].Value = bookingsList[i].Submitter;
-                            dgvBookings.Rows[i].Cells["clmSubmitterName"].Value = bookingsList[i].SubmitterName;
-                            dgvBookings.Rows[i].Cells["clmStatusId"].Value = bookingsList[i].StatusId;
-                            dgvBookings.Rows[i].Cells["clmStatusName"].Value = bookingsList[i].StatusName;
-                            dgvBookings.Rows[i].Cells["clmCreatedDateTime"].Value = bookingsList[i].CreatedDateTime;
-                            dgvBookings.Rows[i].Cells["clmModifiedDateTime"].Value =
-                                bookingsList[i].ModifiedDateTime;
-                        }
+                        PopulateDataGridView(bookingsList);
                     }
                     else
                     {
@@ -354,6 +231,7 @@ namespace PhotographyAutomation.App.Forms.Booking
             if (chkSpecialBookings.Checked)
             {
                 cmbBookinsStatus.Enabled = true;
+                cmbBookinsStatus.ShowDropDown();
             }
         }
 
@@ -441,7 +319,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                     if (currentMouseOverRow > -1)
                     {
                         dgvBookings.Rows[currentMouseOverRow].Selected = true;
-                        DataGridViewRow row = dgvBookings.Rows[currentMouseOverRow];
+                        //DataGridViewRow row = dgvBookings.Rows[currentMouseOverRow];
                     }
                     else
                     {
@@ -455,7 +333,7 @@ namespace PhotographyAutomation.App.Forms.Booking
             }
         }
 
-        
+
 
         private void txtCustomerInfo_Enter(object sender, EventArgs e)
         {
@@ -470,24 +348,22 @@ namespace PhotographyAutomation.App.Forms.Booking
             InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
         }
 
-        private void ویرایشاطلاعاتمشتریToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (dgvBookings.SelectedRows.Count == 1)
-            {
-                int customerId = Convert.ToInt32(dgvBookings.SelectedRows[0].Cells["clmCustomerId"].Value);
-                using(var frmAddEditCustomerInfo = new FrmAddEditCustomerInfo())
-                {
-                    frmAddEditCustomerInfo.CustomerId = customerId;
-                    frmAddEditCustomerInfo.JustSaveCustomerInfo = true;
-                    frmAddEditCustomerInfo.IsEditMode = true;
 
-                    frmAddEditCustomerInfo.ShowDialog();
-                };
-                
+        private void ویرایش_اطلاعات_مشتری_ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (dgvBookings.SelectedRows.Count != 1) return;
+            int customerId = Convert.ToInt32(dgvBookings.SelectedRows[0].Cells["clmCustomerId"].Value);
+            using (var frmAddEditCustomerInfo = new FrmAddEditCustomerInfo())
+            {
+                frmAddEditCustomerInfo.CustomerId = customerId;
+                frmAddEditCustomerInfo.JustSaveCustomerInfo = true;
+                frmAddEditCustomerInfo.IsEditMode = true;
+
+                frmAddEditCustomerInfo.ShowDialog();
             }
         }
 
-        private void ویرایشاطلاعاتنوبتToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ویرایش_اطلاعات_رزرو_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (dgvBookings.SelectedRows.Count == 1)
             {
@@ -502,9 +378,82 @@ namespace PhotographyAutomation.App.Forms.Booking
             }
         }
 
-        private void تبدیلبهسفارشToolStripMenuItem_Click(object sender, EventArgs e)
+        private void تبدیل_به_سفارش_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (dgvBookings.SelectedRows.Count == 1 &&
+                int.TryParse(dgvBookings.SelectedRows[0].Cells["clmId"].Value.ToString(), out var bookingId))
+            {
+                var dialogResult = RtlMessageBox.Show("آیا وضعیت رزرو مشتری به سفارش تغییر یابد؟",
+                    "تغییر وضعیت رزرو به سفارش", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+                if (dialogResult == DialogResult.Yes)
+                {
+                    using (var db = new UnitOfWork())
+                    {
+                        var booking = db.BookingGenericRepository.GetById(bookingId);
+                        List<TblBookingStatus> bookingStatusList = db.BookingStatusGenericRepository.Get().ToList();
+                        int bookingStatusToOrderId = 0;
+                        if (bookingStatusList.Any())
+                        {
+                            bookingStatusToOrderId =
+                                bookingStatusList.First(x => x.StatusName.Equals("تبدیل به سفارش")).Id;
+                        }
+
+                        if (booking != null && bookingStatusToOrderId != 0)
+                        {
+                            booking.StatusId = bookingStatusToOrderId;
+                            db.BookingGenericRepository.Update(booking);
+                            int result = db.Save();
+                            if (result > 0)
+                            {
+                                RtlMessageBox.Show("وضعیت رزرو مشتری با موفقیت به سفارش تغییر پیدا کرد.",
+                                    "تبدیل به سفارش رزرو", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                RtlMessageBox.Show("هیچ رزروی برای تبدیل به سفارش انتخاب نشده است.",
+                    "خطا - عدم  انتخاب رزرو برای تبدیل به سفارش", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dgvBookings.Focus();
+            }
+        }
+
+
+
+
+
+
+        private void رزروهای_امروزToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rbCurrentDay.CheckState = CheckState.Checked;
+            rbCurrentDay_ToggleStateChanged(null, null);
+        }
+
+        private void رزروهای_هفته_جاری_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rbCurrentWeek.CheckState = CheckState.Checked;
+            rbCurrentWeek_ToggleStateChanged(null, null);
+        }
+
+        private void _رزروهای_ماه_جاریToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rbCurrentmonth.CheckState = CheckState.Checked;
+            rbCurrentmonth_ToggleStateChanged(null, null);
+        }
+
+        private void _رزروهای_تاریخ_خاصToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            chkEnableDatePickerBookingDate.Checked = true;
+            chkEnableDatePickerBookingDate_ToggleStateChanged(null, null);
+        }
+
+        private void _رزروهای_ویژهToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            chkSpecialBookings.Checked = true;
+            chkSpecialBookings_ToggleStateChanged(null, null);
         }
     }
 }

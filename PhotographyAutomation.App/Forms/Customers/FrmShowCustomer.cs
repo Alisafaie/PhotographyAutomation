@@ -29,22 +29,29 @@ namespace PhotographyAutomation.App.Forms.Customers
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtFirstName.Text) && string.IsNullOrEmpty(txtLastName.Text) &&
+                string.IsNullOrEmpty(txtTell.Text))
+            {
+                RtlMessageBox.Show("مقداری برای جستجو وارد نشده است.", "خطا - عدم ورود اطلاعات برای جستجو",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             dgvCustomers.Rows.Clear();
 
             using (var db = new UnitOfWork())
             {
                 List<TblCustomer> users = db.CustomerGenericRepository.Get(
                     x =>
-                        x.FirstName.Contains(txtFirstName.Text.Trim()) ||
-                        x.LastName.Contains(txtLastName.Text.Trim()) ||
+                        x.FirstName.StartsWith(txtFirstName.Text.Trim()) ||
+                        x.LastName.StartsWith(txtLastName.Text.Trim()) ||
                         x.Tell.Contains(txtTell.Text.Trim()) ||
                         x.Mobile.Contains(txtTell.Text.Trim())
-                        )
-                    .ToList();
+                        ).ToList();
+
 
                 dgvCustomers.AutoGenerateColumns = false;
 
-                if (users.Any())
+                if (users.Count > 0)
                 {
                     dgvCustomers.Rows.Clear();
                     dgvCustomers.RowCount = users.Count;
@@ -145,66 +152,6 @@ namespace PhotographyAutomation.App.Forms.Customers
             var menu = new ContextMenuStrip();
             menu.Items.Add("لطفا اعداد را به صورت کپی پیست وارد نکنید.");
             txtTell.TextBoxElement.TextBoxItem.HostedControl.ContextMenuStrip = menu;
-        }
-
-        private void btnShowAllCustomers_Click(object sender, EventArgs e)
-        {
-            dgvCustomers.Rows.Clear();
-
-            using (var db = new UnitOfWork())
-            {
-                List<TblCustomer> users = db.CustomerGenericRepository.Get().ToList();
-
-                dgvCustomers.AutoGenerateColumns = false;
-
-                if (users.Any())
-                {
-                    dgvCustomers.Rows.Clear();
-                    dgvCustomers.RowCount = users.Count;
-
-                    for (int i = 0; i < users.Count; i++)
-                    {
-                        dgvCustomers.Rows[i].Cells["Id"].Value = users[i].Id;
-                        dgvCustomers.Rows[i].Cells["FirstName"].Value = users[i].FirstName;
-                        dgvCustomers.Rows[i].Cells["LastName"].Value = users[i].LastName;
-                        dgvCustomers.Rows[i].Cells["Tell"].Value = users[i].Tell;
-                        dgvCustomers.Rows[i].Cells["Tell"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-                        dgvCustomers.Rows[i].Cells["Mobile"].Value = "0" + users[i].Mobile;
-                        dgvCustomers.Rows[i].Cells["Mobile"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-                        dgvCustomers.Rows[i].Cells["Email"].Value = users[i].Email;
-                        dgvCustomers.Rows[i].Cells["Email"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-                        dgvCustomers.Rows[i].Cells["NationalId"].Value = users[i].NationalId;
-                        dgvCustomers.Rows[i].Cells["NationalId"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-                        var createdDate = users[i].CreatedDate;
-                        if (createdDate != null)
-                            dgvCustomers.Rows[i].Cells["CreatedDate"].Value =
-                                createdDate.Value.ToString("HH:mm") + "   " +
-                                createdDate.Value.Date.ToShortDateString();
-
-                        dgvCustomers.Rows[i].Cells["CreatedDate"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-                        var modifiedDate = users[i].ModifiedDate;
-                        if (modifiedDate != null)
-                            dgvCustomers.Rows[i].Cells["CreatedDate"].Value =
-                                modifiedDate.Value.ToString("HH:mm") + "   " +
-                                modifiedDate.Value.Date.ToShortDateString();
-
-                        dgvCustomers.Rows[i].Cells["CreatedDate"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-                        dgvCustomers.Rows[i].Cells["MoreInfo"].Value = "...";
-                    }
-                }
-                else
-                {
-                    RtlMessageBox.Show("متاسفانه جستجوی شما در سیستم نتیجه ای در بر نداشت.", "", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                    dgvCustomers.Rows.Clear();
-                }
-            }
         }
 
         private void dgvUsers_MouseUp(object sender, MouseEventArgs e)
