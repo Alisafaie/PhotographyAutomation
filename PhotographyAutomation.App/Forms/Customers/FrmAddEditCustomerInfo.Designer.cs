@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem1 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem2 = new Telerik.WinControls.UI.RadListDataItem();
             Telerik.WinControls.UI.RadListDataItem radListDataItem3 = new Telerik.WinControls.UI.RadListDataItem();
             Telerik.WinControls.UI.RadListDataItem radListDataItem4 = new Telerik.WinControls.UI.RadListDataItem();
             Telerik.WinControls.UI.RadListDataItem radListDataItem5 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem6 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem7 = new Telerik.WinControls.UI.RadListDataItem();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.radThemeManager1 = new Telerik.WinControls.RadThemeManager();
             this.office2010SilverTheme1 = new Telerik.WinControls.Themes.Office2010SilverTheme();
@@ -119,6 +119,7 @@
             // 
             this.btnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Location = new System.Drawing.Point(288, 12);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(110, 36);
@@ -202,15 +203,15 @@
             this.cmbMarriedStatus.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.cmbMarriedStatus.EnableAlternatingItemColor = true;
             this.cmbMarriedStatus.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            radListDataItem1.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem1.Text = "مجرد";
+            radListDataItem2.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem2.Text = "متاهل";
             radListDataItem3.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem3.Text = "مجرد";
-            radListDataItem4.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem4.Text = "متاهل";
-            radListDataItem5.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem5.Text = "نامشخص";
+            radListDataItem3.Text = "نامشخص";
+            this.cmbMarriedStatus.Items.Add(radListDataItem1);
+            this.cmbMarriedStatus.Items.Add(radListDataItem2);
             this.cmbMarriedStatus.Items.Add(radListDataItem3);
-            this.cmbMarriedStatus.Items.Add(radListDataItem4);
-            this.cmbMarriedStatus.Items.Add(radListDataItem5);
             this.cmbMarriedStatus.Location = new System.Drawing.Point(33, 111);
             this.cmbMarriedStatus.Name = "cmbMarriedStatus";
             this.cmbMarriedStatus.Size = new System.Drawing.Size(107, 20);
@@ -223,12 +224,12 @@
             this.cmbGender.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.cmbGender.EnableAlternatingItemColor = true;
             this.cmbGender.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            radListDataItem6.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem6.Text = "خانم";
-            radListDataItem7.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem7.Text = "آقا";
-            this.cmbGender.Items.Add(radListDataItem6);
-            this.cmbGender.Items.Add(radListDataItem7);
+            radListDataItem4.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem4.Text = "خانم";
+            radListDataItem5.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem5.Text = "آقا";
+            this.cmbGender.Items.Add(radListDataItem4);
+            this.cmbGender.Items.Add(radListDataItem5);
             this.cmbGender.Location = new System.Drawing.Point(310, 111);
             this.cmbGender.Name = "cmbGender";
             this.cmbGender.Size = new System.Drawing.Size(107, 20);
@@ -630,7 +631,7 @@
             this.btnCheckNumber.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnCheckNumber.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnCheckNumber.Image = global::PhotographyAutomation.App.Properties.Resources.check_MobileNumber;
-            this.btnCheckNumber.Location = new System.Drawing.Point(86, 25);
+            this.btnCheckNumber.Location = new System.Drawing.Point(93, 25);
             this.btnCheckNumber.Name = "btnCheckNumber";
             this.btnCheckNumber.Size = new System.Drawing.Size(47, 36);
             this.btnCheckNumber.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;

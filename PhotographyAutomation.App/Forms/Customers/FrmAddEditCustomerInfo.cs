@@ -176,18 +176,25 @@ namespace PhotographyAutomation.App.Forms.Customers
                 }
                 else
                 {
-                    //customer.Id = CustomerId;
-
-                    if (checkCustomerMobileNumber.Id == CustomerId)
+                    if (checkCustomerMobileNumber != null)
                     {
-                        customer.Id = CustomerId;
-                        db.CustomerGenericRepository.Update(customer);
+                        if (checkCustomerMobileNumber.Id == CustomerId)
+                        {
+                            customer.Id = CustomerId;
+                            db.CustomerGenericRepository.Update(customer);
+                        }
+                        else
+                        {
+                            RtlMessageBox.Show("این شماره موبایل قبلا برای کاربر دیگری ثبت شده است.",
+                                "خطا در ورود اطلاعات",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            txtMobile.Focus();
+                        }
                     }
                     else
                     {
-                        RtlMessageBox.Show("این شماره موبایل قبلا برای کاربر دیگری ثبت شده است.", "خطا در ورود اطلاعات",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        txtMobile.Focus();
+                        customer.Id = CustomerId;
+                        db.CustomerGenericRepository.Update(customer);
                     }
                 }
 
@@ -205,7 +212,6 @@ namespace PhotographyAutomation.App.Forms.Customers
                 else
                     RtlMessageBox.Show("خطا در ثبت اطلاعات کاربر", "خطا در ثبت اطلاعات", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
-
             }
         }
 

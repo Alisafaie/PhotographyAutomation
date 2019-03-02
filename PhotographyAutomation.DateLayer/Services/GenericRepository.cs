@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Migrations;
+//using System.Data.Entity.Migrations;
 using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
@@ -81,12 +81,16 @@ namespace PhotographyAutomation.DateLayer.Services
         {
             try
             {
-                //_db.Entry(entity).State = System.Data.Entity.EntityState.Modified;
+                //Method 1  ->  using System.Data.Entity.Migrations;
+                //_db.Set<TEntity>().AddOrUpdate(entity);
 
-                _db.Set<TEntity>().AddOrUpdate(entity);
 
-
-                //_db.Entry(entity).State = EntityState.Modified;
+                //Method 2
+                if (_db.Entry(entity).State == EntityState.Detached || _db.Entry(entity).State == EntityState.Modified)
+                {
+                    _db.Set<TEntity>().Attach(entity); //attach
+                    _db.Entry(entity).State = EntityState.Modified; //do it here
+                }
             }
             catch (Exception exception)
             {
