@@ -103,6 +103,12 @@
     <Compile Include="Forms\Customers\FrmShowCustomerInfo.Designer.cs">
       <DependentUpon>FrmShowCustomerInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Photos\FrmShowUploadedPhotos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Photos\FrmShowUploadedPhotos.Designer.cs">
+      <DependentUpon>FrmShowUploadedPhotos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Photos\FrmUploadPhotos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Customers\FrmShowCustomerInfo.resx">
       <DependentUpon>FrmShowCustomerInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Photos\FrmShowUploadedPhotos.resx">
+      <DependentUpon>FrmShowUploadedPhotos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Photos\FrmUploadPhotos.resx">
       <DependentUpon>FrmUploadPhotos.cs</DependentUpon>
@@ -1299,6 +1308,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\advanced_Search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_view_text_3269.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

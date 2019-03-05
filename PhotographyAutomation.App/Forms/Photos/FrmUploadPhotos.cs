@@ -135,11 +135,11 @@ namespace PhotographyAutomation.App.Forms.Photos
                     int month = pc.GetMonth(DateTime.Now);
 
                     var resultCheckPhotoYearFolder =
-                        db.DocumentRepository.CheckPhotoYearFolderIsCreatedReturnsPath(year);
+                        db.PhotoRepository.CheckPhotoYearFolderIsCreatedReturnsPath(year);
 
                     if (resultCheckPhotoYearFolder == null)
                     {
-                        var resultCreateYearFolder = db.DocumentRepository.CreateYearFolderOfPhotos(year);
+                        var resultCreateYearFolder = db.PhotoRepository.CreateYearFolderOfPhotos(year);
                         if (resultCreateYearFolder != null)
                         {
                             RtlMessageBox.Show("فولدر سال جاری ایجاد شد.");
@@ -148,11 +148,11 @@ namespace PhotographyAutomation.App.Forms.Photos
 
 
                     var resultCheckPhotoMonthFolder =
-                        db.DocumentRepository.CheckPhotoMonthFolderIsCreatedReturnsPath(month);
+                        db.PhotoRepository.CheckPhotoMonthFolderIsCreatedReturnsPath(month);
 
                     if (resultCheckPhotoMonthFolder == null)
                     {
-                        var resultCreateYearFolder = db.DocumentRepository.CreateMonthFolderOfPhotos(month, year);
+                        var resultCreateYearFolder = db.PhotoRepository.CreateMonthFolderOfPhotos(month, year);
                         if (resultCreateYearFolder != null)
                         {
                             RtlMessageBox.Show("فولدر ماه عکس برداری ایجاد شد.");
@@ -160,7 +160,7 @@ namespace PhotographyAutomation.App.Forms.Photos
                     }
 
                     var resultCheckCustomerFinancialFolder =
-                        db.DocumentRepository.CheckCustomerFinancialFolderIsCreatedReturnsPath(customerFinancialNumber);
+                        db.PhotoRepository.CheckCustomerFinancialFolderIsCreatedReturnsPath(customerFinancialNumber);
 
                     if (resultCheckCustomerFinancialFolder != null)
                     {
@@ -171,7 +171,7 @@ namespace PhotographyAutomation.App.Forms.Photos
                     if (resultCheckCustomerFinancialFolder == null)
                     {
                         var resultCreateYearFolder =
-                            db.DocumentRepository.CreateCustomerFinancialFolder(customerFinancialNumber, month);
+                            db.PhotoRepository.CreateCustomerFinancialFolder(customerFinancialNumber, month);
                         if (resultCreateYearFolder != null)
                         {
                             RtlMessageBox.Show("فولدر فاکتور مشتری ایجاد شد.");
@@ -190,7 +190,7 @@ namespace PhotographyAutomation.App.Forms.Photos
 
                     for (int i = 0; i < filesToUpload.Count; i++)
                     {
-                        var fileUploadResult = db.DocumentRepository.CreateFileTableFile(
+                        var fileUploadResult = db.PhotoRepository.CreateFileTableFile(
                             fileNamesUpload[i], parentPathName, 4, filesToUpload[i]);
 
                         if (fileUploadResult) resultUploads++;
@@ -232,6 +232,7 @@ namespace PhotographyAutomation.App.Forms.Photos
                         txtFinancialNumber.Text = string.Empty;
                         _fileNamesAndPathsList.Clear();
                         _fileNamesList.Clear();
+                        panelPreviewPictures.Controls.Clear();
                     }
                     else
                     {

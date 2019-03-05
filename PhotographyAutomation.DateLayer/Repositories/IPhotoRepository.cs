@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace PhotographyAutomation.DateLayer.Repositories
 {
-    public interface IDocumentRepository
+    public interface IPhotoRepository
     {
         DocumentInfoViewModel GetPhotoByGuid(Guid documentGuid);
         List<DocumentInfoViewModel> GetDocuments();

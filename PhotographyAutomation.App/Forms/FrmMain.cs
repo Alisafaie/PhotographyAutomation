@@ -22,16 +22,6 @@ namespace PhotographyAutomation.App.Forms
             }
         }
 
-        private void buttonItem15_Click(object sender, EventArgs e)
-        {
-            using (var f = new FrmAddEditBooking())
-            {
-                f.CustomerId = 18;
-                f.ShowDialog();
-            };
-        }
-
-
         private void btnShowCustomers_Click(object sender, EventArgs e)
         {
             using (var showCustomers = new FrmShowCustomer())
@@ -60,6 +50,14 @@ namespace PhotographyAutomation.App.Forms
             using (var f = new FrmUploadPhotos())
             {
                 f.ShowDialog();
+            }
+        }
+
+        private void buttonItem15_Click_1(object sender, EventArgs e)
+        {
+            using (var frmShowUploadedPhotos = new FrmShowUploadedPhotos())
+            {
+                frmShowUploadedPhotos.ShowDialog();
             }
         }
     }

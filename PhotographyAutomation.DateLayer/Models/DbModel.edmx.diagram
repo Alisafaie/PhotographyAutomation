@@ -5,25 +5,26 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="e7e41739ebbd420381004722f0754320" Name="Diagram1">
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblAtelierType" Width="1.5" PointX="8.25" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblBooking" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblBookingStatus" Width="1.5" PointX="8.125" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblCustomer" Width="1.5" PointX="3.5" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblDocumentPhotos" Width="1.5" PointX="1" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblDocuments" Width="1.5" PointX="1" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblEmployeeType" Width="1.5" PointX="3.625" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblEmpRole" Width="1.5" PointX="5.875" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPhotographyType" Width="1.5" PointX="8.375" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblRoleType" Width="1.5" PointX="3.625" PointY="10" IsExpanded="true" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.View_GetAllPhotos" Width="1.75" PointX="13.375" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.View_GetDocumentsFolders" Width="2.125" PointX="11.125" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblAtelierType" Width="1.5" PointX="12.875" PointY="3.25" IsExpanded="true" FillColor="192, 255, 255" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblBooking" Width="1.5" PointX="9.375" PointY="0.875" IsExpanded="true" FillColor="192, 255, 192" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblBookingStatus" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" FillColor="128, 255, 128" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblCustomer" Width="1.5" PointX="6.625" PointY="0.5" IsExpanded="true" FillColor="255, 255, 192" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblDocumentPhotos" Width="1.5" PointX="0.625" PointY="0.875" IsExpanded="true" FillColor="255, 128, 0" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblDocuments" Width="1.5" PointX="3.75" PointY="0.625" IsExpanded="true" FillColor="192, 64, 0" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblEmployeeType" Width="1.5" PointX="0.625" PointY="6.375" IsExpanded="true" FillColor="255, 128, 0" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblEmpRole" Width="1.5" PointX="3.375" PointY="5.875" IsExpanded="true" FillColor="192, 64, 0" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPhotographyType" Width="1.5" PointX="13" PointY="5.5" IsExpanded="true" FillColor="255, 192, 255" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblRoleType" Width="1.5" PointX="0.625" PointY="3.875" IsExpanded="true" FillColor="255, 192, 128" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.View_GetAllPhotos" Width="1.75" PointX="2.875" PointY="8.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.View_GetDocumentsFolders" Width="2.125" PointX="0.625" PointY="8.375" IsExpanded="false" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblBooking_TblAtelierType" ManuallyRouted="false" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblBooking_TblBookingStatus" ManuallyRouted="false" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblBooking_TblPhotographyType" ManuallyRouted="false" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblBooking_TblUser" ManuallyRouted="false" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblDocumentPhotos_TblDocuments" ManuallyRouted="false" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_tblEmp_Role_tblEmployeeType" ManuallyRouted="false" />
-        <AssociationConnector Association="PhotographyAutomationDBModel.FK_tblEmp_Role_tblRoleType" ManuallyRouted="false" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_tblEmp_Role_tblRoleType" ManuallyRouted="false" >
+        </AssociationConnector>
         <AssociationConnector Association="PhotographyAutomationDBModel.TblCustomerDocuments" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

@@ -42,18 +42,18 @@ namespace PhotographyAutomation.DateLayer.Context
             }
         }
 
-        private IDocumentRepository _documentRepository;
+        private IPhotoRepository _photoRepository;
 
-        public IDocumentRepository DocumentRepository
+        public IPhotoRepository PhotoRepository
         {
             get
             {
-                if (_documentRepository == null)
+                if (_photoRepository == null)
                 {
-                    _documentRepository = new DocumentRepository(_db);
+                    _photoRepository = new PhotoRepository(_db);
                 }
 
-                return _documentRepository;
+                return _photoRepository;
             }
         }
 

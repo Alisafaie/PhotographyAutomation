@@ -12,11 +12,11 @@ using System.Linq;
 
 namespace PhotographyAutomation.DateLayer.Services
 {
-    public class DocumentRepository : IDocumentRepository
+    public class PhotoRepository : IPhotoRepository
     {
         private readonly PhotographyAutomationDBEntities _db;
 
-        public DocumentRepository(PhotographyAutomationDBEntities context)
+        public PhotoRepository(PhotographyAutomationDBEntities context)
         {
             _db = context;
         }
@@ -60,9 +60,7 @@ namespace PhotographyAutomation.DateLayer.Services
             try
             {
                 var result = _db.View_GetDocumentsFolders.FirstOrDefault(x => x.FolderName == year.ToString());
-                if (result != null)
-                    return result.FullUncPath;
-                return null;
+                return result?.FullUncPath;
             }
             catch (Exception exception)
             {
