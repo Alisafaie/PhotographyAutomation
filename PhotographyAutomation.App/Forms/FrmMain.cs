@@ -4,6 +4,7 @@ using PhotographyAutomation.App.Forms.Customers;
 using PhotographyAutomation.App.Forms.Photos;
 using System;
 using System.Windows.Forms;
+using PhotographyAutomation.App.Forms.Orders;
 
 namespace PhotographyAutomation.App.Forms
 {
@@ -12,6 +13,11 @@ namespace PhotographyAutomation.App.Forms
         public FrmMain()
         {
             InitializeComponent();
+        }
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            persianMonthCalendar.Value = PersianDate.Now;
         }
 
         private void btnAddEditBooking_Click(object sender, EventArgs e)
@@ -30,13 +36,6 @@ namespace PhotographyAutomation.App.Forms
             }
         }
 
-        private void FrmMain_Load(object sender, EventArgs e)
-        {
-            persianMonthCalendar.Value = PersianDate.Now;
-        }
-
-
-
         private void btnShowBookings_Click(object sender, EventArgs e)
         {
             using (var frmShowBookings = new FrmShowBookings())
@@ -44,8 +43,8 @@ namespace PhotographyAutomation.App.Forms
                 frmShowBookings.ShowDialog();
             }
         }
-
-        private void btnUpload_Click(object sender, EventArgs e)
+        
+        private void btnUploadPhotos_Click(object sender, EventArgs e)
         {
             using (var f = new FrmUploadPhotos())
             {
@@ -53,7 +52,7 @@ namespace PhotographyAutomation.App.Forms
             }
         }
 
-        private void buttonItem15_Click_1(object sender, EventArgs e)
+        private void btnShowUploadedPhotos_Click(object sender, EventArgs e)
         {
             using (var frmShowUploadedPhotos = new FrmShowUploadedPhotos())
             {

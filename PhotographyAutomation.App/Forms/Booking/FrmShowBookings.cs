@@ -402,6 +402,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                         if (booking != null && bookingStatusToOrderId != 0)
                         {
                             booking.StatusId = bookingStatusToOrderId;
+
                             db.BookingGenericRepository.Update(booking);
                             int result = db.Save();
                             if (result > 0)

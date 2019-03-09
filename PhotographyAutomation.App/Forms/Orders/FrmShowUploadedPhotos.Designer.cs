@@ -1,4 +1,4 @@
-﻿namespace PhotographyAutomation.App.Forms.Photos
+﻿namespace PhotographyAutomation.App.Forms.Orders
 {
     partial class FrmShowUploadedPhotos
     {
@@ -365,6 +365,8 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Gainsboro;
             this.dgvUploadedPhotos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvUploadedPhotos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvUploadedPhotos.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgvUploadedPhotos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F);
@@ -379,7 +381,7 @@
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvUploadedPhotos.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvUploadedPhotos.Dock = System.Windows.Forms.DockStyle.Fill;

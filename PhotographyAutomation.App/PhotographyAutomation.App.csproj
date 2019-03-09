@@ -103,10 +103,10 @@
     <Compile Include="Forms\Customers\FrmShowCustomerInfo.Designer.cs">
       <DependentUpon>FrmShowCustomerInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Photos\FrmShowUploadedPhotos.cs">
+    <Compile Include="Forms\Orders\FrmShowUploadedPhotos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Photos\FrmShowUploadedPhotos.Designer.cs">
+    <Compile Include="Forms\Orders\FrmShowUploadedPhotos.Designer.cs">
       <DependentUpon>FrmShowUploadedPhotos.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Photos\FrmUploadPhotos.cs">
@@ -138,7 +138,7 @@
     <EmbeddedResource Include="Forms\Customers\FrmShowCustomerInfo.resx">
       <DependentUpon>FrmShowCustomerInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Photos\FrmShowUploadedPhotos.resx">
+    <EmbeddedResource Include="Forms\Orders\FrmShowUploadedPhotos.resx">
       <DependentUpon>FrmShowUploadedPhotos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Photos\FrmUploadPhotos.resx">
