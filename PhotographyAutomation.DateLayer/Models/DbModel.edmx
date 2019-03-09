@@ -124,17 +124,17 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.TblCustomerDocuments' 
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="OrderCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderCode" Type="int" Nullable="false" />
           <Property Name="OrderStatusId" Type="int" Nullable="false" />
           <Property Name="BookingId" Type="int" Nullable="false" />
           <Property Name="PhotographyTypeId" Type="int" Nullable="false" />
           <Property Name="CustomerId" Type="int" Nullable="false" />
-          <Property Name="PhotographerId" Type="int" Nullable="false" />
-          <Property Name="PaymentIsOk" Type="tinyint" Nullable="false" />
-          <Property Name="OrdefFolderStreamId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="OrdefFolderPathLocator" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="OrdefFolderParentPathLocator" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PhotographerId" Type="int" />
+          <Property Name="PaymentIsOk" Type="tinyint" />
+          <Property Name="OrdefFolderStreamId" Type="uniqueidentifier" />
+          <Property Name="OrdefFolderPathLocator" Type="nvarchar(max)" />
+          <Property Name="OrdefFolderParentPathLocator" Type="nvarchar(max)" />
           <Property Name="TotalFiles" Type="int" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
@@ -1130,7 +1130,7 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
             <End Role="TblOrder" EntitySet="TblOrder" />
             <End Role="TblOrderFiles" EntitySet="TblOrderFiles" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <ComplexType Name="usp_CreateFileTableFile_Result">
           <Property Type="String" Name="streamId" Nullable="true" MaxLength="4000" />
           <Property Type="String" Name="name" Nullable="true" MaxLength="255" />
@@ -1281,17 +1281,17 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="OrderCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderCode" Type="Int32" Nullable="false" />
           <Property Name="OrderStatusId" Type="Int32" Nullable="false" />
           <Property Name="BookingId" Type="Int32" Nullable="false" />
           <Property Name="PhotographyTypeId" Type="Int32" Nullable="false" />
           <Property Name="CustomerId" Type="Int32" Nullable="false" />
-          <Property Name="PhotographerId" Type="Int32" Nullable="false" />
-          <Property Name="PaymentIsOk" Type="Byte" Nullable="false" />
-          <Property Name="OrdefFolderStreamId" Type="Guid" Nullable="false" />
-          <Property Name="OrdefFolderPathLocator" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="OrdefFolderParentPathLocator" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhotographerId" Type="Int32" />
+          <Property Name="PaymentIsOk" Type="Byte" />
+          <Property Name="OrdefFolderStreamId" Type="Guid" />
+          <Property Name="OrdefFolderPathLocator" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrdefFolderParentPathLocator" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="TotalFiles" Type="Int32" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
@@ -1388,7 +1388,7 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>

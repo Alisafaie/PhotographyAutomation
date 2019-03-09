@@ -85,7 +85,7 @@ namespace PhotographyAutomation.DateLayer.Services
                 _db.Set<TEntity>().AddOrUpdate(entity);
 
 
-                //Method 2
+                //Method 2  Not Working!!!
                 //if (_db.Entry(entity).State == EntityState.Detached || _db.Entry(entity).State == EntityState.Modified)
                 //{
                 //    _db.Set<TEntity>().Attach(entity); //attach

@@ -28,9 +28,9 @@ namespace PhotographyAutomation.DateLayer.Models
         public int BookingId { get; set; }
         public int PhotographyTypeId { get; set; }
         public int CustomerId { get; set; }
-        public int PhotographerId { get; set; }
-        public byte PaymentIsOk { get; set; }
-        public System.Guid OrdefFolderStreamId { get; set; }
+        public Nullable<int> PhotographerId { get; set; }
+        public Nullable<byte> PaymentIsOk { get; set; }
+        public Nullable<System.Guid> OrdefFolderStreamId { get; set; }
         public string OrdefFolderPathLocator { get; set; }
         public string OrdefFolderParentPathLocator { get; set; }
         public Nullable<int> TotalFiles { get; set; }

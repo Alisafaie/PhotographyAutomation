@@ -161,6 +161,39 @@ namespace PhotographyAutomation.DateLayer.Context
             }
         }
 
+        private GenericRepository<TblOrder> _orderGenericRepository;
+
+        public GenericRepository<TblOrder> OrderGenericRepository
+        {
+            get
+            {
+                if (_orderGenericRepository == null)
+                {
+                    _orderGenericRepository = new GenericRepository<TblOrder>(_db);
+                }
+
+                return _orderGenericRepository;
+            }
+        }
+
+
+        private GenericRepository<TblOrderStatus> _orderStatusGenericRepository;
+
+        public GenericRepository<TblOrderStatus> OrderStatusGenericRepository
+        {
+            get
+            {
+                if (_orderStatusGenericRepository == null)
+                {
+                    _orderStatusGenericRepository = new GenericRepository<TblOrderStatus>(_db);
+                }
+
+                return _orderStatusGenericRepository;
+            }
+        }
+
+
+
 
         public int Save()
         {
@@ -171,10 +204,22 @@ namespace PhotographyAutomation.DateLayer.Context
             }
             catch (Exception exception)
             {
+                Debug.WriteLine("Message");
                 Debug.WriteLine(exception.Message);
+
+                Debug.WriteLine("Inner Exception");
                 Debug.WriteLine(exception.InnerException);
+
+                Debug.WriteLine("Inner Exception Message:");
+                Debug.WriteLine(exception.InnerException?.Message);
+
+                Debug.WriteLine("Source");
                 Debug.WriteLine(exception.Source);
+
+                Debug.WriteLine("Data");
                 Debug.WriteLine(exception.Data);
+
+                Debug.WriteLine("Stack Trace");
                 Debug.WriteLine(exception.StackTrace);
 
                 return -1;

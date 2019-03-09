@@ -386,31 +386,66 @@ namespace PhotographyAutomation.App.Forms.Booking
                 var dialogResult = RtlMessageBox.Show("آیا وضعیت رزرو مشتری به سفارش تغییر یابد؟",
                     "تغییر وضعیت رزرو به سفارش", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                if (dialogResult == DialogResult.Yes)
+                if (dialogResult != DialogResult.Yes) return;
+                using (var db = new UnitOfWork())
                 {
-                    using (var db = new UnitOfWork())
+                    var booking = db.BookingGenericRepository.GetById(bookingId);
+                    var bookingStatusList = db.BookingStatusGenericRepository.Get().ToList();
+                    var orderStatusList = db.OrderStatusGenericRepository.Get().ToList();
+                    int bookingStatusToOrderId = 0;
+                    int orderStatusId = 0;
+                    if (bookingStatusList.Any() && orderStatusList.Any())
                     {
-                        var booking = db.BookingGenericRepository.GetById(bookingId);
-                        List<TblBookingStatus> bookingStatusList = db.BookingStatusGenericRepository.Get().ToList();
-                        int bookingStatusToOrderId = 0;
-                        if (bookingStatusList.Any())
-                        {
-                            bookingStatusToOrderId =
-                                bookingStatusList.First(x => x.StatusName.Equals("تبدیل به سفارش")).Id;
-                        }
+                        bookingStatusToOrderId =
+                            bookingStatusList.First(x => x.StatusName.Equals("تبدیل به سفارش")).Id;
+                        orderStatusId = orderStatusList.First(x => x.Name.Equals("ورود به آتلیه")).Id;
+                    }
 
-                        if (booking != null && bookingStatusToOrderId != 0)
+                    
+                    if (booking != null && bookingStatusToOrderId != 0)
+                    {
+                        booking.StatusId = bookingStatusToOrderId;
+                        var order = new TblOrder
                         {
-                            booking.StatusId = bookingStatusToOrderId;
+                            CustomerId = booking.CustomerId,
+                            BookingId = bookingId,
+                            CreatedDateTime = DateTime.Now,
+                            IsActive = true,
+                            OrderStatusId = orderStatusId,
+                            PhotographyTypeId = booking.PhotographyTypeId,
+                        };
 
-                            db.BookingGenericRepository.Update(booking);
-                            int result = db.Save();
-                            if (result > 0)
-                            {
-                                RtlMessageBox.Show("وضعیت رزرو مشتری با موفقیت به سفارش تغییر پیدا کرد.",
-                                    "تبدیل به سفارش رزرو", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
+
+
+                        db.BookingGenericRepository.Update(booking);
+                        //int resultUpdateBooking = db.Save();
+
+                        db.OrderGenericRepository.Insert(order);
+                        //int resultInsertNewOrder = db.Save();
+                        
+                        if (db.Save()>0)
+                        {
+                            RtlMessageBox.Show(
+                                "وضعیت رزرو مشتری با موفقیت به سفارش و ورود به آتلیه تغییر پیدا کرد.",
+                                "تبدیل به سفارش رزرو", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
+                        else
+                        {
+                            RtlMessageBox.Show(
+                                "مشکلی در به روز رسانی وضعیت رزرو پیش آمده است. " +
+                                "لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.",
+                                "خطا در ثبت اطلاعات در سیستم",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        RtlMessageBox.Show(
+                            "اطلاعات رزرو مورد از نظر از بانک اطلاعاتی قابل دریافت نیست. " +
+                            "لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.",
+                            "خطا در دریافت اطلاعات رزرو از سیستم",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
