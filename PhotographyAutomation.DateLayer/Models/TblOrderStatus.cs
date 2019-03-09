@@ -12,33 +12,22 @@ namespace PhotographyAutomation.DateLayer.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TblBooking
+    public partial class TblOrderStatus
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TblBooking()
+        public TblOrderStatus()
         {
             this.TblOrder = new HashSet<TblOrder>();
+            this.TblOrderPrint = new HashSet<TblOrderPrint>();
         }
     
         public int Id { get; set; }
-        public int CustomerId { get; set; }
-        public System.DateTime Date { get; set; }
-        public System.TimeSpan Time { get; set; }
-        public byte PhotographerGender { get; set; }
-        public int PhotographyTypeId { get; set; }
-        public int AtelierTypeId { get; set; }
-        public int PersonCount { get; set; }
-        public byte PrepaymentIsOk { get; set; }
-        public int Submitter { get; set; }
-        public int StatusId { get; set; }
-        public System.DateTime CreatedDate { get; set; }
-        public Nullable<System.DateTime> ModifiedDate { get; set; }
+        public int Code { get; set; }
+        public string Name { get; set; }
     
-        public virtual TblAtelierType TblAtelierType { get; set; }
-        public virtual TblBookingStatus TblBookingStatus { get; set; }
-        public virtual TblPhotographyType TblPhotographyType { get; set; }
-        public virtual TblCustomer TblCustomer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblOrder> TblOrder { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblOrderPrint> TblOrderPrint { get; set; }
     }
 }

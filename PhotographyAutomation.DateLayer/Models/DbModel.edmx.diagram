@@ -26,6 +26,24 @@
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_tblEmp_Role_tblRoleType" ManuallyRouted="false" >
         </AssociationConnector>
         <AssociationConnector Association="PhotographyAutomationDBModel.TblCustomerDocuments" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblAllOrderStatus" Width="1.5" PointX="17.375" PointY="7.625" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrder" Width="1.5" PointX="15.125" PointY="1.5" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrderFiles" Width="1.5" PointX="13.25" PointY="8.125" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrderPrint" Width="1.5" PointX="17.375" PointY="1.375" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrderPrintDetails" Width="1.75" PointX="20.5" PointY="1.375" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrderStatus" Width="1.5" PointX="19.625" PointY="8.25" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblAllOrderStatus_TblOrder" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblAllOrderStatus_TblOrderPrint" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrder_TblBooking" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrder_TblCustomer" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderPrint_TblCustomer" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblCustomer" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrder_TblOrderPrint" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrder_TblOrderStatus" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrder_TblPhotographyType" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderStreams_TblOrder" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderPrint_TblOrderStatus" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblOrderPrint" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

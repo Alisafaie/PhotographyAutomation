@@ -151,14 +151,17 @@ namespace PhotographyAutomation.App.Forms.Customers
             };
 
 
-            if (cmbMarriedStatus.SelectedIndex == 1)
-                if (txtWeddingDate.Text == @"13  /  /" || txtWeddingDate.Text.ToMiladiDate() == null)
-                {
-                    errorProvider1.Clear();
-                    errorProvider1.SetError(txtWeddingDate, "تاریخ ازدواج به درستی مشخص نشده است.");
-                    return;
-                }
-            customer.WeddingDate = txtWeddingDate.Text.ToMiladiDate();
+            //if (cmbMarriedStatus.SelectedIndex == 1)
+            //{
+            //    if (txtWeddingDate.Text == @"13  /  /" || txtWeddingDate.Text.ToMiladiDate() == null)
+            //    {
+            //        errorProvider1.Clear();
+            //        errorProvider1.SetError(txtWeddingDate, "تاریخ ازدواج به درستی مشخص نشده است.");
+            //        return;
+            //    }
+
+            //    customer.WeddingDate = txtWeddingDate.Text.ToMiladiDate();
+            //}
 
             using (var db = new UnitOfWork())
             {
@@ -250,16 +253,16 @@ namespace PhotographyAutomation.App.Forms.Customers
             }
 
 
-            if (txtBirthDate.Text != @"13  /  /  ")
-            {
-                if (DateTime.TryParse(txtBirthDate.Text, out _) == false)
-                {
-                    errorProvider1.Clear();
-                    errorProvider1.SetError(txtBirthDate, "تاریخ تولد مشتری به درستی وارد نشده است.");
-                    txtBirthDate.Focus();
-                    return false;
-                }
-            }
+            //if (txtBirthDate.Text != @"13  /  /  ")
+            //{
+            //    if (DateTime.TryParse(txtBirthDate.Text, out _) == false)
+            //    {
+            //        errorProvider1.Clear();
+            //        errorProvider1.SetError(txtBirthDate, "تاریخ تولد مشتری به درستی وارد نشده است.");
+            //        txtBirthDate.Focus();
+            //        return false;
+            //    }
+            //}
 
 
             if (txtTell.Text.Replace(" ", "") == @"313")

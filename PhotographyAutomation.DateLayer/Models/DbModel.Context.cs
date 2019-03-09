@@ -39,6 +39,12 @@ namespace PhotographyAutomation.DateLayer.Models
         public virtual DbSet<TblRoleType> TblRoleType { get; set; }
         public virtual DbSet<View_GetAllPhotos> View_GetAllPhotos { get; set; }
         public virtual DbSet<View_GetDocumentsFolders> View_GetDocumentsFolders { get; set; }
+        public virtual DbSet<TblAllOrderStatus> TblAllOrderStatus { get; set; }
+        public virtual DbSet<TblOrder> TblOrder { get; set; }
+        public virtual DbSet<TblOrderFiles> TblOrderFiles { get; set; }
+        public virtual DbSet<TblOrderPrint> TblOrderPrint { get; set; }
+        public virtual DbSet<TblOrderPrintDetails> TblOrderPrintDetails { get; set; }
+        public virtual DbSet<TblOrderStatus> TblOrderStatus { get; set; }
     
         public virtual ObjectResult<string> usp_CreateCustomerFinancialDirectory(string customerFinancialNumber, string monthNumber, Nullable<byte> parent_level, ObjectParameter returnValue)
         {

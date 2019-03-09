@@ -47,7 +47,6 @@
             this.cmbGender = new Telerik.WinControls.UI.RadDropDownList();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -166,7 +165,6 @@
             this.groupBoxCustomerInfo.Controls.Add(this.cmbGender);
             this.groupBoxCustomerInfo.Controls.Add(this.label22);
             this.groupBoxCustomerInfo.Controls.Add(this.label21);
-            this.groupBoxCustomerInfo.Controls.Add(this.label12);
             this.groupBoxCustomerInfo.Controls.Add(this.label18);
             this.groupBoxCustomerInfo.Controls.Add(this.label17);
             this.groupBoxCustomerInfo.Controls.Add(this.label16);
@@ -259,18 +257,6 @@
             this.label21.Size = new System.Drawing.Size(13, 13);
             this.label21.TabIndex = 32;
             this.label21.Text = "*";
-            // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(295, 161);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(13, 13);
-            this.label12.TabIndex = 31;
-            this.label12.Text = "*";
             // 
             // label18
             // 
@@ -740,7 +726,6 @@
         private System.Windows.Forms.Label label16;
         private Telerik.WinControls.UI.RadDropDownList cmbGender;
         private Telerik.WinControls.UI.RadDropDownList cmbMarriedStatus;
-        private System.Windows.Forms.Label label12;
         private DevComponents.DotNetBar.ButtonX btnCheckNumber;
         private DevComponents.DotNetBar.ButtonX btnSearchCustomer;
         private DevComponents.DotNetBar.ButtonX btnCancel;
