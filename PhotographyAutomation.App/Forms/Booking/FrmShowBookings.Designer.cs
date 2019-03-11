@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmShowBookings));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
@@ -52,25 +52,6 @@
             this.rbCurrentDay = new Telerik.WinControls.UI.RadRadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvBookings = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.clmId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmCustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmCustomerFullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPhotographerGender = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPhotographerGenderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPhotographyTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPhotographyTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmAtelierTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmAtelierTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPersonCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPaymentIsOK = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmSubmitter = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmSubmitterName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmStatusId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmStatusName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmCreatedDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmModifiedDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStripDgvBookings = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ویرایشاطلاعاتمشتریToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ویرایشاطلاعاتنوبتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -91,6 +72,25 @@
             this._ویرایش_اطلاعات_رزروToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this._تبدیل_به_سفارش_رزروToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
+            this.clmId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmCustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmCustomerFullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPhotographerGender = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPhotographerGenderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPhotographyTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPhotographyTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmAtelierTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmAtelierTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPersonCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPaymentIsOK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmSubmitter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmSubmitterName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmStatusId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmStatusName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmCreatedDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmModifiedDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panelEx2.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -272,7 +272,6 @@
             this.datePickerBookingDateTo.TabIndex = 4;
             this.datePickerBookingDateTo.Text = "persianDateTimePicker1";
             this.datePickerBookingDateTo.Value = ((FreeControls.PersianDate)(resources.GetObject("datePickerBookingDateTo.Value")));
-            this.datePickerBookingDateTo.EnabledChanged += new System.EventHandler(this.datePickerBookingDate_EnabledChanged);
             // 
             // datePickerBookingDateFrom
             // 
@@ -288,7 +287,6 @@
             this.datePickerBookingDateFrom.TabIndex = 4;
             this.datePickerBookingDateFrom.Text = "persianDateTimePicker1";
             this.datePickerBookingDateFrom.Value = ((FreeControls.PersianDate)(resources.GetObject("datePickerBookingDateFrom.Value")));
-            this.datePickerBookingDateFrom.EnabledChanged += new System.EventHandler(this.datePickerBookingDate_EnabledChanged);
             // 
             // rbCurrentmonth
             // 
@@ -343,18 +341,18 @@
             this.dgvBookings.AllowUserToAddRows = false;
             this.dgvBookings.AllowUserToDeleteRows = false;
             this.dgvBookings.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvBookings.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvBookings.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvBookings.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvBookings.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBookings.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBookings.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvBookings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBookings.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmId,
@@ -377,14 +375,14 @@
             this.clmCreatedDateTime,
             this.clmModifiedDateTime});
             this.dgvBookings.ContextMenuStrip = this.contextMenuStripDgvBookings;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBookings.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBookings.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvBookings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvBookings.EnableHeadersVisualStyles = false;
             this.dgvBookings.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
@@ -392,14 +390,14 @@
             this.dgvBookings.MultiSelect = false;
             this.dgvBookings.Name = "dgvBookings";
             this.dgvBookings.ReadOnly = true;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBookings.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBookings.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvBookings.RowHeadersVisible = false;
             this.dgvBookings.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvBookings.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -407,6 +405,155 @@
             this.dgvBookings.Size = new System.Drawing.Size(1130, 510);
             this.dgvBookings.TabIndex = 0;
             this.dgvBookings.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dgvBookings_MouseUp);
+            // 
+            // contextMenuStripDgvBookings
+            // 
+            this.contextMenuStripDgvBookings.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.contextMenuStripDgvBookings.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ویرایشاطلاعاتمشتریToolStripMenuItem,
+            this.ویرایشاطلاعاتنوبتToolStripMenuItem,
+            this.تبدیلبهسفارشToolStripMenuItem});
+            this.contextMenuStripDgvBookings.Name = "contextMenuStripDgvBookings";
+            this.contextMenuStripDgvBookings.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.contextMenuStripDgvBookings.Size = new System.Drawing.Size(197, 70);
+            // 
+            // ویرایشاطلاعاتمشتریToolStripMenuItem
+            // 
+            this.ویرایشاطلاعاتمشتریToolStripMenuItem.Name = "ویرایشاطلاعاتمشتریToolStripMenuItem";
+            this.ویرایشاطلاعاتمشتریToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.ویرایشاطلاعاتمشتریToolStripMenuItem.Text = "ویرایش اطلاعات مشتری";
+            this.ویرایشاطلاعاتمشتریToolStripMenuItem.Click += new System.EventHandler(this.ویرایش_اطلاعات_مشتری_ToolStripMenuItem1_Click);
+            // 
+            // ویرایشاطلاعاتنوبتToolStripMenuItem
+            // 
+            this.ویرایشاطلاعاتنوبتToolStripMenuItem.Name = "ویرایشاطلاعاتنوبتToolStripMenuItem";
+            this.ویرایشاطلاعاتنوبتToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.ویرایشاطلاعاتنوبتToolStripMenuItem.Text = "ویرایش اطلاعات رزرو";
+            this.ویرایشاطلاعاتنوبتToolStripMenuItem.Click += new System.EventHandler(this.ویرایش_اطلاعات_رزرو_ToolStripMenuItem_Click);
+            // 
+            // تبدیلبهسفارشToolStripMenuItem
+            // 
+            this.تبدیلبهسفارشToolStripMenuItem.Name = "تبدیلبهسفارشToolStripMenuItem";
+            this.تبدیلبهسفارشToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.تبدیلبهسفارشToolStripMenuItem.Text = "تبدیل به سفارش";
+            this.تبدیلبهسفارشToolStripMenuItem.Click += new System.EventHandler(this.تبدیل_به_سفارش_ToolStripMenuItem_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.customerToolStripMenuItem,
+            this.bookingToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1160, 24);
+            this.menuStrip1.TabIndex = 4;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // customerToolStripMenuItem
+            // 
+            this.customerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ویرایشاطلاعاتمشتریToolStripMenuItem1});
+            this.customerToolStripMenuItem.Name = "customerToolStripMenuItem";
+            this.customerToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.customerToolStripMenuItem.Text = "مشتریان";
+            // 
+            // ویرایشاطلاعاتمشتریToolStripMenuItem1
+            // 
+            this.ویرایشاطلاعاتمشتریToolStripMenuItem1.Image = global::PhotographyAutomation.App.Properties.Resources._132685___modify;
+            this.ویرایشاطلاعاتمشتریToolStripMenuItem1.Name = "ویرایشاطلاعاتمشتریToolStripMenuItem1";
+            this.ویرایشاطلاعاتمشتریToolStripMenuItem1.Size = new System.Drawing.Size(187, 22);
+            this.ویرایشاطلاعاتمشتریToolStripMenuItem1.Text = "ویرایش اطلاعات مشتری";
+            this.ویرایشاطلاعاتمشتریToolStripMenuItem1.Click += new System.EventHandler(this.ویرایش_اطلاعات_مشتری_ToolStripMenuItem1_Click);
+            // 
+            // bookingToolStripMenuItem
+            // 
+            this.bookingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripSeparator1,
+            this.رزروهای_امروزToolStripMenuItem,
+            this.رزروهای_هفته_جاری_ToolStripMenuItem,
+            this._رزروهای_ماه_جاریToolStripMenuItem,
+            this._رزروهای_تاریخ_خاصToolStripMenuItem,
+            this._رزروهای_ویژهToolStripMenuItem,
+            this.toolStripSeparator2,
+            this._ویرایش_اطلاعات_رزروToolStripMenuItem1,
+            this._تبدیل_به_سفارش_رزروToolStripMenuItem1});
+            this.bookingToolStripMenuItem.Name = "bookingToolStripMenuItem";
+            this.bookingToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.bookingToolStripMenuItem.Text = "رزرو ها";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // رزروهای_امروزToolStripMenuItem
+            // 
+            this.رزروهای_امروزToolStripMenuItem.Name = "رزروهای_امروزToolStripMenuItem";
+            this.رزروهای_امروزToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.رزروهای_امروزToolStripMenuItem.Text = "رزرو های امروز";
+            this.رزروهای_امروزToolStripMenuItem.Click += new System.EventHandler(this.رزروهای_امروزToolStripMenuItem_Click);
+            // 
+            // رزروهای_هفته_جاری_ToolStripMenuItem
+            // 
+            this.رزروهای_هفته_جاری_ToolStripMenuItem.Name = "رزروهای_هفته_جاری_ToolStripMenuItem";
+            this.رزروهای_هفته_جاری_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.رزروهای_هفته_جاری_ToolStripMenuItem.Text = "رزرو های هفته جاری";
+            this.رزروهای_هفته_جاری_ToolStripMenuItem.Click += new System.EventHandler(this.رزروهای_هفته_جاری_ToolStripMenuItem_Click);
+            // 
+            // _رزروهای_ماه_جاریToolStripMenuItem
+            // 
+            this._رزروهای_ماه_جاریToolStripMenuItem.Name = "_رزروهای_ماه_جاریToolStripMenuItem";
+            this._رزروهای_ماه_جاریToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this._رزروهای_ماه_جاریToolStripMenuItem.Text = "رزرو های ماه جاری";
+            this._رزروهای_ماه_جاریToolStripMenuItem.Click += new System.EventHandler(this._رزروهای_ماه_جاریToolStripMenuItem_Click);
+            // 
+            // _رزروهای_تاریخ_خاصToolStripMenuItem
+            // 
+            this._رزروهای_تاریخ_خاصToolStripMenuItem.Name = "_رزروهای_تاریخ_خاصToolStripMenuItem";
+            this._رزروهای_تاریخ_خاصToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this._رزروهای_تاریخ_خاصToolStripMenuItem.Text = "رزروهای تاریخ خاص";
+            this._رزروهای_تاریخ_خاصToolStripMenuItem.Click += new System.EventHandler(this._رزروهای_تاریخ_خاصToolStripMenuItem_Click);
+            // 
+            // _رزروهای_ویژهToolStripMenuItem
+            // 
+            this._رزروهای_ویژهToolStripMenuItem.Name = "_رزروهای_ویژهToolStripMenuItem";
+            this._رزروهای_ویژهToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this._رزروهای_ویژهToolStripMenuItem.Text = "رزروهای ویژه";
+            this._رزروهای_ویژهToolStripMenuItem.Click += new System.EventHandler(this._رزروهای_ویژهToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            // 
+            // _ویرایش_اطلاعات_رزروToolStripMenuItem1
+            // 
+            this._ویرایش_اطلاعات_رزروToolStripMenuItem1.Name = "_ویرایش_اطلاعات_رزروToolStripMenuItem1";
+            this._ویرایش_اطلاعات_رزروToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this._ویرایش_اطلاعات_رزروToolStripMenuItem1.Text = "ویرایش اطلاعات رزرو ";
+            this._ویرایش_اطلاعات_رزروToolStripMenuItem1.Click += new System.EventHandler(this.ویرایش_اطلاعات_رزرو_ToolStripMenuItem_Click);
+            // 
+            // _تبدیل_به_سفارش_رزروToolStripMenuItem1
+            // 
+            this._تبدیل_به_سفارش_رزروToolStripMenuItem1.Name = "_تبدیل_به_سفارش_رزروToolStripMenuItem1";
+            this._تبدیل_به_سفارش_رزروToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this._تبدیل_به_سفارش_رزروToolStripMenuItem1.Text = "تبدیل به سفارش رزرو";
+            this._تبدیل_به_سفارش_رزروToolStripMenuItem1.Click += new System.EventHandler(this.تبدیل_به_سفارش_ToolStripMenuItem_Click);
+            // 
+            // labelX3
+            // 
+            this.labelX3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelX3.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX3.Location = new System.Drawing.Point(768, 61);
+            this.labelX3.Name = "labelX3";
+            this.labelX3.Size = new System.Drawing.Size(9, 16);
+            this.labelX3.TabIndex = 23;
+            this.labelX3.Text = "تا";
             // 
             // clmId
             // 
@@ -428,11 +575,12 @@
             // 
             // clmCustomerFullName
             // 
-            this.clmCustomerFullName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmCustomerFullName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.clmCustomerFullName.DataPropertyName = "CustomerFullName";
             this.clmCustomerFullName.HeaderText = "نام مشتری";
             this.clmCustomerFullName.Name = "clmCustomerFullName";
             this.clmCustomerFullName.ReadOnly = true;
+            this.clmCustomerFullName.Width = 85;
             // 
             // clmDate
             // 
@@ -569,155 +717,6 @@
             this.clmModifiedDateTime.Visible = false;
             this.clmModifiedDateTime.Width = 89;
             // 
-            // contextMenuStripDgvBookings
-            // 
-            this.contextMenuStripDgvBookings.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.contextMenuStripDgvBookings.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ویرایشاطلاعاتمشتریToolStripMenuItem,
-            this.ویرایشاطلاعاتنوبتToolStripMenuItem,
-            this.تبدیلبهسفارشToolStripMenuItem});
-            this.contextMenuStripDgvBookings.Name = "contextMenuStripDgvBookings";
-            this.contextMenuStripDgvBookings.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStripDgvBookings.Size = new System.Drawing.Size(197, 70);
-            // 
-            // ویرایشاطلاعاتمشتریToolStripMenuItem
-            // 
-            this.ویرایشاطلاعاتمشتریToolStripMenuItem.Name = "ویرایشاطلاعاتمشتریToolStripMenuItem";
-            this.ویرایشاطلاعاتمشتریToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.ویرایشاطلاعاتمشتریToolStripMenuItem.Text = "ویرایش اطلاعات مشتری";
-            this.ویرایشاطلاعاتمشتریToolStripMenuItem.Click += new System.EventHandler(this.ویرایش_اطلاعات_مشتری_ToolStripMenuItem1_Click);
-            // 
-            // ویرایشاطلاعاتنوبتToolStripMenuItem
-            // 
-            this.ویرایشاطلاعاتنوبتToolStripMenuItem.Name = "ویرایشاطلاعاتنوبتToolStripMenuItem";
-            this.ویرایشاطلاعاتنوبتToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.ویرایشاطلاعاتنوبتToolStripMenuItem.Text = "ویرایش اطلاعات رزرو";
-            this.ویرایشاطلاعاتنوبتToolStripMenuItem.Click += new System.EventHandler(this.ویرایش_اطلاعات_رزرو_ToolStripMenuItem_Click);
-            // 
-            // تبدیلبهسفارشToolStripMenuItem
-            // 
-            this.تبدیلبهسفارشToolStripMenuItem.Name = "تبدیلبهسفارشToolStripMenuItem";
-            this.تبدیلبهسفارشToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.تبدیلبهسفارشToolStripMenuItem.Text = "تبدیل به سفارش";
-            this.تبدیلبهسفارشToolStripMenuItem.Click += new System.EventHandler(this.تبدیل_به_سفارش_ToolStripMenuItem_Click);
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.customerToolStripMenuItem,
-            this.bookingToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1160, 24);
-            this.menuStrip1.TabIndex = 4;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // customerToolStripMenuItem
-            // 
-            this.customerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ویرایشاطلاعاتمشتریToolStripMenuItem1});
-            this.customerToolStripMenuItem.Name = "customerToolStripMenuItem";
-            this.customerToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.customerToolStripMenuItem.Text = "مشتریان";
-            // 
-            // ویرایشاطلاعاتمشتریToolStripMenuItem1
-            // 
-            this.ویرایشاطلاعاتمشتریToolStripMenuItem1.Image = global::PhotographyAutomation.App.Properties.Resources._132685___modify;
-            this.ویرایشاطلاعاتمشتریToolStripMenuItem1.Name = "ویرایشاطلاعاتمشتریToolStripMenuItem1";
-            this.ویرایشاطلاعاتمشتریToolStripMenuItem1.Size = new System.Drawing.Size(187, 22);
-            this.ویرایشاطلاعاتمشتریToolStripMenuItem1.Text = "ویرایش اطلاعات مشتری";
-            this.ویرایشاطلاعاتمشتریToolStripMenuItem1.Click += new System.EventHandler(this.ویرایش_اطلاعات_مشتری_ToolStripMenuItem1_Click);
-            // 
-            // bookingToolStripMenuItem
-            // 
-            this.bookingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripSeparator1,
-            this.رزروهای_امروزToolStripMenuItem,
-            this.رزروهای_هفته_جاری_ToolStripMenuItem,
-            this._رزروهای_ماه_جاریToolStripMenuItem,
-            this._رزروهای_تاریخ_خاصToolStripMenuItem,
-            this._رزروهای_ویژهToolStripMenuItem,
-            this.toolStripSeparator2,
-            this._ویرایش_اطلاعات_رزروToolStripMenuItem1,
-            this._تبدیل_به_سفارش_رزروToolStripMenuItem1});
-            this.bookingToolStripMenuItem.Name = "bookingToolStripMenuItem";
-            this.bookingToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
-            this.bookingToolStripMenuItem.Text = "رزرو ها";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(167, 6);
-            // 
-            // رزروهای_امروزToolStripMenuItem
-            // 
-            this.رزروهای_امروزToolStripMenuItem.Name = "رزروهای_امروزToolStripMenuItem";
-            this.رزروهای_امروزToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.رزروهای_امروزToolStripMenuItem.Text = "رزرو های امروز";
-            this.رزروهای_امروزToolStripMenuItem.Click += new System.EventHandler(this.رزروهای_امروزToolStripMenuItem_Click);
-            // 
-            // رزروهای_هفته_جاری_ToolStripMenuItem
-            // 
-            this.رزروهای_هفته_جاری_ToolStripMenuItem.Name = "رزروهای_هفته_جاری_ToolStripMenuItem";
-            this.رزروهای_هفته_جاری_ToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.رزروهای_هفته_جاری_ToolStripMenuItem.Text = "رزرو های هفته جاری";
-            this.رزروهای_هفته_جاری_ToolStripMenuItem.Click += new System.EventHandler(this.رزروهای_هفته_جاری_ToolStripMenuItem_Click);
-            // 
-            // _رزروهای_ماه_جاریToolStripMenuItem
-            // 
-            this._رزروهای_ماه_جاریToolStripMenuItem.Name = "_رزروهای_ماه_جاریToolStripMenuItem";
-            this._رزروهای_ماه_جاریToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this._رزروهای_ماه_جاریToolStripMenuItem.Text = "رزرو های ماه جاری";
-            this._رزروهای_ماه_جاریToolStripMenuItem.Click += new System.EventHandler(this._رزروهای_ماه_جاریToolStripMenuItem_Click);
-            // 
-            // _رزروهای_تاریخ_خاصToolStripMenuItem
-            // 
-            this._رزروهای_تاریخ_خاصToolStripMenuItem.Name = "_رزروهای_تاریخ_خاصToolStripMenuItem";
-            this._رزروهای_تاریخ_خاصToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this._رزروهای_تاریخ_خاصToolStripMenuItem.Text = "رزروهای تاریخ خاص";
-            this._رزروهای_تاریخ_خاصToolStripMenuItem.Click += new System.EventHandler(this._رزروهای_تاریخ_خاصToolStripMenuItem_Click);
-            // 
-            // _رزروهای_ویژهToolStripMenuItem
-            // 
-            this._رزروهای_ویژهToolStripMenuItem.Name = "_رزروهای_ویژهToolStripMenuItem";
-            this._رزروهای_ویژهToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this._رزروهای_ویژهToolStripMenuItem.Text = "رزروهای ویژه";
-            this._رزروهای_ویژهToolStripMenuItem.Click += new System.EventHandler(this._رزروهای_ویژهToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(167, 6);
-            // 
-            // _ویرایش_اطلاعات_رزروToolStripMenuItem1
-            // 
-            this._ویرایش_اطلاعات_رزروToolStripMenuItem1.Name = "_ویرایش_اطلاعات_رزروToolStripMenuItem1";
-            this._ویرایش_اطلاعات_رزروToolStripMenuItem1.Size = new System.Drawing.Size(170, 22);
-            this._ویرایش_اطلاعات_رزروToolStripMenuItem1.Text = "ویرایش اطلاعات رزرو ";
-            this._ویرایش_اطلاعات_رزروToolStripMenuItem1.Click += new System.EventHandler(this.ویرایش_اطلاعات_رزرو_ToolStripMenuItem_Click);
-            // 
-            // _تبدیل_به_سفارش_رزروToolStripMenuItem1
-            // 
-            this._تبدیل_به_سفارش_رزروToolStripMenuItem1.Name = "_تبدیل_به_سفارش_رزروToolStripMenuItem1";
-            this._تبدیل_به_سفارش_رزروToolStripMenuItem1.Size = new System.Drawing.Size(170, 22);
-            this._تبدیل_به_سفارش_رزروToolStripMenuItem1.Text = "تبدیل به سفارش رزرو";
-            this._تبدیل_به_سفارش_رزروToolStripMenuItem1.Click += new System.EventHandler(this.تبدیل_به_سفارش_ToolStripMenuItem_Click);
-            // 
-            // labelX3
-            // 
-            this.labelX3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelX3.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(768, 61);
-            this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(9, 16);
-            this.labelX3.TabIndex = 23;
-            this.labelX3.Text = "تا";
-            // 
             // FrmShowBookings
             // 
             this.AcceptButton = this.btnShowBookings;
@@ -792,6 +791,11 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem _رزروهای_ویژهToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem _رزروهای_تاریخ_خاصToolStripMenuItem;
+        private DevComponents.DotNetBar.LabelX labelX2;
+        private DevComponents.DotNetBar.LabelX labelX1;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtCustomerInfo;
+        private FreeControls.PersianDateTimePicker datePickerBookingDateTo;
+        private DevComponents.DotNetBar.LabelX labelX3;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmId;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmCustomerId;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmCustomerFullName;
@@ -811,10 +815,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmStatusName;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmCreatedDateTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmModifiedDateTime;
-        private DevComponents.DotNetBar.LabelX labelX2;
-        private DevComponents.DotNetBar.LabelX labelX1;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtCustomerInfo;
-        private FreeControls.PersianDateTimePicker datePickerBookingDateTo;
-        private DevComponents.DotNetBar.LabelX labelX3;
     }
 }
