@@ -1312,5 +1312,11 @@
   <ItemGroup>
     <None Include="Resources\iconfinder_view_text_3269.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Gnome-Edit-Clear-32_54970.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Search_text_131785.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

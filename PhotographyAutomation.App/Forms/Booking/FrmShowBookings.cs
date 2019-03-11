@@ -115,6 +115,19 @@ namespace PhotographyAutomation.App.Forms.Booking
             }
         }
 
+        private void btnClearSearch_Click(object sender, EventArgs e)
+        {
+            rbCurrentDay.IsChecked = false;
+            rbCurrentWeek.IsChecked = false;
+            rbCurrentmonth.IsChecked = false;
+            chkEnableDatePickerBookingDate.Checked = false;
+            chkSpecialBookings.Checked = false;
+            cmbBookinsStatus.SelectedIndex = 0;
+            cmbBookinsStatus.Enabled = false;
+            txtCustomerInfo.ResetText();
+        }
+
+
         private void chkSpecialBookings_ToggleStateChanged(object sender, Telerik.WinControls.UI.StateChangedEventArgs args)
         {
             if (chkSpecialBookings.Checked)

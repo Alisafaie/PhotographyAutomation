@@ -2613,9 +2613,29 @@ namespace PhotographyAutomation.App.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_Gnome_Edit_Clear_32_54970 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_Gnome_Edit_Clear_32_54970", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconfinder_Search_131849 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_Search_131849", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_Search_text_131785 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_Search_text_131785", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
