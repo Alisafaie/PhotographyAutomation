@@ -3,6 +3,7 @@ using PhotographyAutomation.DateLayer.Repositories;
 using PhotographyAutomation.ViewModels.User;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
@@ -70,7 +71,7 @@ namespace PhotographyAutomation.DateLayer.Services
 
 
 
-        public List<BookingHistoryAddEditBookingViewModel> GetBookingBetweenDates(DateTime dtFrom, DateTime dtTo, int statusCode)
+        public List<BookingHistoryAddEditBookingViewModel> GetBookingBetweenDates(DateTime dtFrom, DateTime dtTo, int statusCode, string customerInfo)
         {
             try
             {
@@ -79,7 +80,11 @@ namespace PhotographyAutomation.DateLayer.Services
                     .Include(x => x.TblAtelierType)
                     .Include(x => x.TblBookingStatus)
                     .Include(x => x.TblPhotographyType)
-                    .Where(x => x.Date >= dtFrom && x.Date <= dtTo && x.TblBookingStatus.Code == statusCode)
+                    .Where(x => x.Date >= dtFrom && x.Date <= dtTo && x.TblBookingStatus.Code == statusCode &&
+                                (x.TblCustomer.FirstName.Contains(customerInfo) ||
+                                 x.TblCustomer.LastName.Contains(customerInfo) ||
+                                 x.TblCustomer.Tell.Contains(customerInfo) ||
+                                 x.TblCustomer.Mobile.Contains(customerInfo)))
                     .Select(
                         x => new BookingHistoryAddEditBookingViewModel
                         {
@@ -121,7 +126,13 @@ namespace PhotographyAutomation.DateLayer.Services
             }
         }
 
-        public List<BookingHistoryAddEditBookingViewModel> GetBookingBetweenDates(DateTime dtFrom, DateTime dtTo)
+        //public BindingList<TblBooking> LoadBindingList()
+        //{
+        //    _db.TblBooking.Load();
+        //    return _db.TblBooking.Local.ToBindingList();
+        //}
+
+        public List<BookingHistoryAddEditBookingViewModel> GetBookingBetweenDates(DateTime dtFrom, DateTime dtTo, string customerInfo)
         {
             try
             {
@@ -130,7 +141,11 @@ namespace PhotographyAutomation.DateLayer.Services
                     .Include(x => x.TblAtelierType)
                     .Include(x => x.TblBookingStatus)
                     .Include(x => x.TblPhotographyType)
-                    .Where(x => x.Date >= dtFrom && x.Date <= dtTo)
+                    .Where(x => x.Date >= dtFrom && x.Date <= dtTo &&
+                                (x.TblCustomer.FirstName.Contains(customerInfo) ||
+                                 x.TblCustomer.LastName.Contains(customerInfo) ||
+                                 x.TblCustomer.Tell.Contains(customerInfo) ||
+                                 x.TblCustomer.Mobile.Contains(customerInfo)))
                     .Select(
                         x => new BookingHistoryAddEditBookingViewModel
                         {
@@ -158,6 +173,7 @@ namespace PhotographyAutomation.DateLayer.Services
                     .OrderByDescending(x => x.Date)
                     .ThenByDescending(x => x.Time)
                     .ToList();
+
 
                 return returnValue;
             }
@@ -277,5 +293,7 @@ namespace PhotographyAutomation.DateLayer.Services
                 return null;
             }
         }
+
+
     }
 }

@@ -29,12 +29,15 @@ namespace PhotographyAutomation.App.Forms.Booking
         private void FrmShowBookings_Load(object sender, EventArgs e)
         {
             dgvBookings.BackColor = Color.White;
-            GetBookingStatus();
-
+            
             rbCurrentDay.CheckState = CheckState.Unchecked;
             rbCurrentWeek.CheckState = CheckState.Unchecked;
             rbCurrentmonth.CheckState = CheckState.Unchecked;
+
+            GetBookingStatus();
         }
+
+
 
         private void GetBookingStatus()
         {
@@ -53,8 +56,31 @@ namespace PhotographyAutomation.App.Forms.Booking
             }
         }
 
+        private void ShowBookings(string customerInfo)
+        {
+            dgvBookings.BackColor = Color.White;
 
-        private void ShowBookings(DateTime dtFrom, DateTime dtTo, int statusCode)
+            using (var db = new UnitOfWork())
+            {
+                var bookingsList = db.BookingRepository.GetBookingOfCustomer(customerInfo);
+
+                if (bookingsList.Count > 0)
+                {
+                    PopulateDataGridView(bookingsList);
+                }
+                else
+                {
+                    RtlMessageBox.Show("برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.", "",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    dgvBookings.Rows.Clear();
+                }
+            }
+            dgvBookings.BackColor = Color.White;
+            dgvBookings.ClearSelection();
+        }
+
+        private void ShowBookings(DateTime dtFrom, DateTime dtTo, string customerInfo)
         {
             dgvBookings.BackColor = Color.White;
 
@@ -63,8 +89,35 @@ namespace PhotographyAutomation.App.Forms.Booking
 
             using (var db = new UnitOfWork())
             {
-                var bookingsList = db.BookingRepository.GetBookingBetweenDates(dtFrom, dtTo, statusCode);
-                if (bookingsList != null && bookingsList.Count > 0)
+                var bookingsList = db.BookingRepository.GetBookingBetweenDates(dtFrom, dtTo, customerInfo);
+
+                if (bookingsList.Count > 0)
+                {
+                    PopulateDataGridView(bookingsList);
+                }
+                else
+                {
+                    RtlMessageBox.Show("برای تاریخ مورد نظر نوبتی ثبت نگردیده است.", "", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    dgvBookings.Rows.Clear();
+                }
+            }
+            dgvBookings.BackColor = Color.White;
+            dgvBookings.ClearSelection();
+        }
+        
+        private void ShowBookings(DateTime dtFrom, DateTime dtTo, int statusCode, string customerInfo)
+        {
+            dgvBookings.BackColor = Color.White;
+
+            dtFrom = new DateTime(dtFrom.Year, dtFrom.Month, dtFrom.Day, 0, 0, 0);
+            dtTo = new DateTime(dtTo.Year, dtTo.Month, dtTo.Day, 23, 59, 59);
+
+            using (var db = new UnitOfWork())
+            {
+                var bookingsList = db.BookingRepository.GetBookingBetweenDates(dtFrom, dtTo, statusCode, customerInfo);
+                
+                if (bookingsList.Count > 0)
                 {
                     PopulateDataGridView(bookingsList);
                 }
@@ -79,32 +132,7 @@ namespace PhotographyAutomation.App.Forms.Booking
             dgvBookings.ClearSelection();
         }
 
-        private void ShowBookings(DateTime dtFrom, DateTime dtTo)
-        {
-            dgvBookings.BackColor = Color.White;
-
-            dtFrom = new DateTime(dtFrom.Year, dtFrom.Month, dtFrom.Day, 0, 0, 0);
-            dtTo = new DateTime(dtTo.Year, dtTo.Month, dtTo.Day, 23, 59, 59);
-
-            using (var db = new UnitOfWork())
-            {
-                var bookingsList = db.BookingRepository.GetBookingBetweenDates(dtFrom, dtTo);
-                if (bookingsList != null && bookingsList.Count > 0)
-                {
-                    PopulateDataGridView(bookingsList);
-                }
-                else
-                {
-                    RtlMessageBox.Show("برای تاریخ مورد نظر نوبتی ثبت نگردیده است.", "", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                    dgvBookings.Rows.Clear();
-                }
-            }
-            dgvBookings.BackColor = Color.White;
-            dgvBookings.ClearSelection();
-        }
-
-        private void PopulateDataGridView(List<BookingHistoryAddEditBookingViewModel> bookingsList)
+        private void PopulateDataGridView(IReadOnlyList<BookingHistoryAddEditBookingViewModel> bookingsList)
         {
             dgvBookings.Rows.Clear();
             dgvBookings.RowCount = bookingsList.Count;
@@ -172,57 +200,9 @@ namespace PhotographyAutomation.App.Forms.Booking
             }
         }
 
-        private void ShowBookingsOfCustomer(string cucstomerInfo)
-        {
-            using (var db = new UnitOfWork())
-            {
-                var bookingsList = db.BookingRepository.GetBookingOfCustomer(cucstomerInfo);
-                {
-                    dgvBookings.Rows.Clear();
-                    if (bookingsList != null && bookingsList.Count > 0)
-                    {
-                        PopulateDataGridView(bookingsList);
-                    }
-                    else
-                    {
-                        RtlMessageBox.Show("برای مشتری مورد نظر نوبتی در سیستم ثبت نشده است.", "", MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                    }
-                }
-            }
-        }
+        
 
 
-
-        private void rbCurrentDay_ToggleStateChanged(object sender, Telerik.WinControls.UI.StateChangedEventArgs args)
-        {
-            if (rbCurrentDay.CheckState == CheckState.Checked)
-            {
-                //ShowBookings(DateTime.Now, DateTime.Now, _statusCode);
-                ShowBookings(DateTime.Now, DateTime.Now);
-            }
-        }
-
-        private void rbCurrentWeek_ToggleStateChanged(object sender, Telerik.WinControls.UI.StateChangedEventArgs args)
-        {
-            if (rbCurrentWeek.CheckState == CheckState.Checked)
-            {
-                DateTime fridayDate = DateTime.Now.GetFridayDate();
-                //ShowBookings(DateTime.Now.GetFirstDayOfWeek(), fridayDate, _statusCode);
-                ShowBookings(DateTime.Now.GetFirstDayOfWeek(), fridayDate);
-            }
-        }
-
-        private void rbCurrentmonth_ToggleStateChanged(object sender, Telerik.WinControls.UI.StateChangedEventArgs args)
-        {
-            if (rbCurrentmonth.CheckState == CheckState.Checked)
-            {
-                DateTime dtLastDayOfMonth = PersianDate.Now.GetLastDateOfMonth();
-                DateTime dtFirstDayOfMonth = PersianDate.Now.GetFirstDayOfMonth();
-                //ShowBookings(dtFirstDayOfMonth, dtLastDayOfMonth, _statusCode);
-                ShowBookings(dtFirstDayOfMonth, dtLastDayOfMonth);
-            }
-        }
 
 
 
@@ -242,39 +222,74 @@ namespace PhotographyAutomation.App.Forms.Booking
         }
 
 
-
-        private void datePickerBookingDate_ValueChanged(object sender, PersianMonthCalendarEventArgs e)
-        {
-            DateTime dtSelectedDate = datePickerBookingDate.Value.GetDateFromPersianDateTimePicker();
-            //ShowBookings(dtSelectedDate, dtSelectedDate, _statusCode);
-            ShowBookings(dtSelectedDate, dtSelectedDate);
-        }
-
         private void btnShowBookings_Click(object sender, EventArgs e)
         {
-            bool currentDay = rbCurrentDay.IsChecked;
-            bool currentWeek = rbCurrentWeek.IsChecked;
-            bool currentMonth = rbCurrentmonth.IsChecked;
-            bool searchSpecialDate = chkEnableDatePickerBookingDate.Checked;
+            bool searchTodayIsChecked = rbCurrentDay.IsChecked;
+            bool searchCurrentWeekIsChecked = rbCurrentWeek.IsChecked;
+            bool searchCurrentMonthIsChecked = rbCurrentmonth.IsChecked;
+            bool searchSpecialDateIsChecked = chkEnableDatePickerBookingDate.Checked;
 
-            if (searchSpecialDate)
+            if (searchSpecialDateIsChecked)
             {
-                DateTime dtSelectedDate = datePickerBookingDate.Value.GetDateFromPersianDateTimePicker();
-                ShowBookings(dtSelectedDate, dtSelectedDate, _statusCode);
+                var dtFrom = datePickerBookingDateFrom.Value.GetDateFromPersianDateTimePicker();
+                var dtTo = datePickerBookingDateTo.Value.GetDateFromPersianDateTimePicker();
+
+
+
+                if (chkSpecialBookings.Checked)
+                {
+                    if (chkSpecialBookings.Checked)
+                    {
+                        ShowBookings(dtFrom, dtTo, _statusCode, txtCustomerInfo.Text.Trim());
+                    }
+                    else
+                    {
+                        ShowBookings(dtFrom, dtTo, txtCustomerInfo.Text.Trim());
+                    }
+                }
+                else
+                {
+                    ShowBookings(dtFrom, dtTo, txtCustomerInfo.Text.Trim());
+                }
             }
             else
             {
-                if (currentDay)
+                if (searchTodayIsChecked)
                 {
-                    ShowBookings(DateTime.Now, DateTime.Now, _statusCode);
+                    if (chkSpecialBookings.Checked)
+                    {
+                        ShowBookings(DateTime.Now.GetBeggingOfTheDateTime(), DateTime.Now.GetEndOfTheDateTime(), _statusCode, txtCustomerInfo.Text.Trim());
+                    }
+                    else
+                    {
+                        ShowBookings(DateTime.Now.GetBeggingOfTheDateTime(), DateTime.Now.GetEndOfTheDateTime(), txtCustomerInfo.Text.Trim());
+                    }
                 }
-                else if (currentWeek)
+                else if (searchCurrentWeekIsChecked)
                 {
-                    ShowBookings(DateTime.Now.GetFirstDayOfWeek(), DateTime.Now.GetFridayDate(), _statusCode);
+                    if (chkSpecialBookings.Checked)
+                    {
+                        ShowBookings(DateTime.Now.GetFirstDayOfWeek(), DateTime.Now.GetFridayDate(), _statusCode, txtCustomerInfo.Text.Trim());
+                    }
+                    else
+                    {
+                        ShowBookings(DateTime.Now.GetFirstDayOfWeek(), DateTime.Now.GetFridayDate(), txtCustomerInfo.Text.Trim());
+                    }
                 }
-                else if (currentMonth)
+                else if (searchCurrentMonthIsChecked)
                 {
-                    ShowBookings(PersianDate.Now.GetFirstDayOfMonth(), PersianDate.Now.GetLastDateOfMonth(), _statusCode);
+                    if (chkSpecialBookings.Checked)
+                    {
+                        ShowBookings(PersianDate.Now.GetFirstDayOfMonth(), PersianDate.Now.GetLastDateOfMonth(), _statusCode, txtCustomerInfo.Text.Trim());
+                    }
+                    else
+                    {
+                        ShowBookings(PersianDate.Now.GetFirstDayOfMonth(), PersianDate.Now.GetLastDateOfMonth(), txtCustomerInfo.Text.Trim());
+                    }
+                }
+                else
+                {
+                    ShowBookings(txtCustomerInfo.Text);
                 }
             }
         }
@@ -283,29 +298,25 @@ namespace PhotographyAutomation.App.Forms.Booking
         {
             if (chkEnableDatePickerBookingDate.Checked)
             {
-                datePickerBookingDate.Enabled = true;
+                datePickerBookingDateFrom.Enabled = true;
+                datePickerBookingDateTo.Enabled = true;
                 rbCurrentDay.CheckState = CheckState.Unchecked;
                 rbCurrentWeek.CheckState = CheckState.Unchecked;
                 rbCurrentmonth.CheckState = CheckState.Unchecked;
             }
             else
             {
-                datePickerBookingDate.Enabled = false;
+                datePickerBookingDateFrom.Enabled = false;
+                datePickerBookingDateTo.Enabled = false;
             }
         }
 
         private void datePickerBookingDate_EnabledChanged(object sender, EventArgs e)
         {
-            BackColor = datePickerBookingDate.Enabled ? Color.White : Color.Gainsboro;
+            BackColor = datePickerBookingDateFrom.Enabled ? Color.White : Color.Gainsboro;
         }
 
-        private void btnSearchCustomer_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(txtCustomerInfo.Text.Trim()))
-            {
-                ShowBookingsOfCustomer(txtCustomerInfo.Text.Trim());
-            }
-        }
+        
 
 
         //پیاده سازی نمایش کانتکست منو روی قسمت هایی که مقدار دارند و انتخاب آن ردیف
@@ -359,7 +370,10 @@ namespace PhotographyAutomation.App.Forms.Booking
                 frmAddEditCustomerInfo.JustSaveCustomerInfo = true;
                 frmAddEditCustomerInfo.IsEditMode = true;
 
-                frmAddEditCustomerInfo.ShowDialog();
+                if (frmAddEditCustomerInfo.ShowDialog() == DialogResult.OK)
+                {
+                    btnShowBookings_Click(null, null);
+                }
             }
         }
 
@@ -374,7 +388,10 @@ namespace PhotographyAutomation.App.Forms.Booking
                     BookingId = bookingId,
                     CustomerId = customerId
                 };
-                frmAddEditBooking.ShowDialog();
+                if (frmAddEditBooking.ShowDialog() == DialogResult.OK)
+                {
+                    btnShowBookings_Click(null, null);
+                }
             }
         }
 
@@ -401,7 +418,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                         orderStatusId = orderStatusList.First(x => x.Name.Equals("ورود به آتلیه")).Id;
                     }
 
-                    
+
                     if (booking != null && bookingStatusToOrderId != 0)
                     {
                         booking.StatusId = bookingStatusToOrderId;
@@ -422,12 +439,15 @@ namespace PhotographyAutomation.App.Forms.Booking
 
                         db.OrderGenericRepository.Insert(order);
                         //int resultInsertNewOrder = db.Save();
-                        
-                        if (db.Save()>0)
+
+                        if (db.Save() > 0)
                         {
                             RtlMessageBox.Show(
                                 "وضعیت رزرو مشتری با موفقیت به سفارش و ورود به آتلیه تغییر پیدا کرد.",
                                 "تبدیل به سفارش رزرو", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if (dgvBookings.CurrentRow != null)
+                                dgvBookings.CurrentRow.Cells["clmStatusName"].Value = "تبدیل به سفارش";
+                            btnShowBookings_Click(null,null);
                         }
                         else
                         {
@@ -464,20 +484,20 @@ namespace PhotographyAutomation.App.Forms.Booking
 
         private void رزروهای_امروزToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            rbCurrentDay.CheckState = CheckState.Checked;
-            rbCurrentDay_ToggleStateChanged(null, null);
+            rbCurrentDay.IsChecked = true;
+            btnShowBookings_Click(null, null);
         }
 
         private void رزروهای_هفته_جاری_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            rbCurrentWeek.CheckState = CheckState.Checked;
-            rbCurrentWeek_ToggleStateChanged(null, null);
+            rbCurrentWeek.IsChecked = true;
+            btnShowBookings_Click(null, null);
         }
 
         private void _رزروهای_ماه_جاریToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            rbCurrentmonth.CheckState = CheckState.Checked;
-            rbCurrentmonth_ToggleStateChanged(null, null);
+            rbCurrentmonth.IsChecked = true;
+            btnShowBookings_Click(null, null);
         }
 
         private void _رزروهای_تاریخ_خاصToolStripMenuItem_Click(object sender, EventArgs e)

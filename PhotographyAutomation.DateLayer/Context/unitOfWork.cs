@@ -2,6 +2,7 @@
 using PhotographyAutomation.DateLayer.Repositories;
 using PhotographyAutomation.DateLayer.Services;
 using System;
+using System.Data.Entity;
 using System.Diagnostics;
 
 namespace PhotographyAutomation.DateLayer.Context
@@ -225,8 +226,6 @@ namespace PhotographyAutomation.DateLayer.Context
                 return -1;
             }
         }
-
-
 
         public void Dispose()
         {

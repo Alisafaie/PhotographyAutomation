@@ -54,5 +54,15 @@ namespace PhotographyAutomation.Utilities.ExtentionMethods
             DateTime dtSelectedDate = pc.ToDateTime(selectedDate.Year, selectedDate.Month, selectedDate.Day, 0, 0, 0, 0);
             return dtSelectedDate;
         }
+
+        public static DateTime GetBeggingOfTheDateTime(this DateTime dt)
+        {
+            return new DateTime(dt.Year, dt.Month, dt.Day, 0, 0, 0);
+        }
+
+        public static DateTime GetEndOfTheDateTime(this DateTime dt)
+        {
+            return new DateTime(dt.Year, dt.Month, dt.Day, 23, 59, 59);
+        }
     }
 }
