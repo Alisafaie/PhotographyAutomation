@@ -109,6 +109,12 @@
     <Compile Include="Forms\Orders\FrmShowUploadedPhotos.Designer.cs">
       <DependentUpon>FrmShowUploadedPhotos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Photos\FrmShowIncommingBookings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Photos\FrmShowIncommingBookings.Designer.cs">
+      <DependentUpon>FrmShowIncommingBookings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Photos\FrmUploadPhotos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Orders\FrmShowUploadedPhotos.resx">
       <DependentUpon>FrmShowUploadedPhotos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Photos\FrmShowIncommingBookings.resx">
+      <DependentUpon>FrmShowIncommingBookings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Photos\FrmUploadPhotos.resx">
       <DependentUpon>FrmUploadPhotos.cs</DependentUpon>

@@ -2,7 +2,6 @@
 using PhotographyAutomation.DateLayer.Repositories;
 using PhotographyAutomation.DateLayer.Services;
 using System;
-using System.Data.Entity;
 using System.Diagnostics;
 
 namespace PhotographyAutomation.DateLayer.Context

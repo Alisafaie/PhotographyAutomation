@@ -59,5 +59,13 @@ namespace PhotographyAutomation.App.Forms
                 frmShowUploadedPhotos.ShowDialog();
             }
         }
+
+        private void btnShowIncommingBookings_Click(object sender, EventArgs e)
+        {
+            using (var frmShowIncommingBookings=new FrmShowIncommingBookings())
+            {
+                frmShowIncommingBookings.ShowDialog();
+            }
+        }
     }
 }

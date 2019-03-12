@@ -21,9 +21,9 @@ namespace PhotographyAutomation.App.Forms.Booking
 
         private int _statusCode = 10;
         public static int CustomerId = 0;
+        public int OrderId = 0;
 
         #endregion
-        
 
         #region Form Events
 
@@ -35,7 +35,7 @@ namespace PhotographyAutomation.App.Forms.Booking
         private void FrmShowBookings_Load(object sender, EventArgs e)
         {
             dgvBookings.BackColor = Color.White;
-            
+
             rbCurrentDay.CheckState = CheckState.Unchecked;
             rbCurrentWeek.CheckState = CheckState.Unchecked;
             rbCurrentmonth.CheckState = CheckState.Unchecked;
@@ -45,15 +45,13 @@ namespace PhotographyAutomation.App.Forms.Booking
 
         #endregion
 
-
-
         #region Controls Events
 
         private void btnShowBookings_Click(object sender, EventArgs e)
         {
-            bool searchTodayIsChecked = rbCurrentDay.IsChecked;
-            bool searchCurrentWeekIsChecked = rbCurrentWeek.IsChecked;
-            bool searchCurrentMonthIsChecked = rbCurrentmonth.IsChecked;
+            bool searchTodayIsChecked = rbCurrentDay.Checked;
+            bool searchCurrentWeekIsChecked = rbCurrentWeek.Checked;
+            bool searchCurrentMonthIsChecked = rbCurrentmonth.Checked;
             bool searchSpecialDateIsChecked = chkEnableDatePickerBookingDate.Checked;
 
             if (searchSpecialDateIsChecked)
@@ -105,7 +103,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                         if (string.IsNullOrEmpty(txtCustomerInfo.Text.Trim()))
                         {
                             RtlMessageBox.Show("اطلاعاتی از مشتری برای جستجو وارد نشده است.", "خطا در ورود اطلاعات",
-                                MessageBoxButtons.OK, 
+                                MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
                             return;
                         }
@@ -117,9 +115,9 @@ namespace PhotographyAutomation.App.Forms.Booking
 
         private void btnClearSearch_Click(object sender, EventArgs e)
         {
-            rbCurrentDay.IsChecked = false;
-            rbCurrentWeek.IsChecked = false;
-            rbCurrentmonth.IsChecked = false;
+            rbCurrentDay.Checked = false;
+            rbCurrentWeek.Checked = false;
+            rbCurrentmonth.Checked = false;
             chkEnableDatePickerBookingDate.Checked = false;
             chkSpecialBookings.Checked = false;
             cmbBookinsStatus.SelectedIndex = 0;
@@ -127,23 +125,27 @@ namespace PhotographyAutomation.App.Forms.Booking
             txtCustomerInfo.ResetText();
         }
 
-
-        private void chkSpecialBookings_ToggleStateChanged(object sender, Telerik.WinControls.UI.StateChangedEventArgs args)
+        private void chkSpecialBookings_CheckedChanged(object sender, EventArgs e)
         {
             if (chkSpecialBookings.Checked)
             {
                 cmbBookinsStatus.Enabled = true;
-                cmbBookinsStatus.ShowDropDown();
+                cmbBookinsStatus.DroppedDown = true;
+            }
+            else
+            {
+                cmbBookinsStatus.Enabled = false;
+                cmbBookinsStatus.DroppedDown = false;
             }
         }
 
-        private void cmbBookinsStatus_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
+        private void cmbBookinsStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbBookinsStatus.Enabled)
-                _statusCode = (int)cmbBookinsStatus.SelectedValue;
+                int.TryParse(cmbBookinsStatus.SelectedValue.ToString(), out _statusCode);
         }
-        
-        private void chkEnableDatePickerBookingDate_ToggleStateChanged(object sender, Telerik.WinControls.UI.StateChangedEventArgs args)
+
+        private void chkEnableDatePickerBookingDate_CheckedChanged(object sender, EventArgs e)
         {
             if (chkEnableDatePickerBookingDate.Checked)
             {
@@ -152,12 +154,40 @@ namespace PhotographyAutomation.App.Forms.Booking
                 rbCurrentDay.CheckState = CheckState.Unchecked;
                 rbCurrentWeek.CheckState = CheckState.Unchecked;
                 rbCurrentmonth.CheckState = CheckState.Unchecked;
+                lblToDate.Visible = true;
+                datePickerBookingDateTo.Visible = true;
             }
             else
             {
                 datePickerBookingDateFrom.Enabled = false;
                 datePickerBookingDateTo.Enabled = false;
+                rbCurrentDay.CheckState = CheckState.Unchecked;
+                rbCurrentWeek.CheckState = CheckState.Unchecked;
+                rbCurrentmonth.CheckState = CheckState.Unchecked;
+                lblToDate.Visible = false;
+                datePickerBookingDateTo.Visible = false;
             }
+        }
+
+        private void rbCurrentDay_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!rbCurrentDay.Checked) return;
+            if (chkEnableDatePickerBookingDate.Checked)
+                chkEnableDatePickerBookingDate.Checked = false;
+        }
+
+        private void rbCurrentWeek_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!rbCurrentWeek.Checked) return;
+            if (chkEnableDatePickerBookingDate.Checked)
+                chkEnableDatePickerBookingDate.Checked = false;
+        }
+
+        private void rbCurrentmonth_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!rbCurrentmonth.Checked) return;
+            if (chkEnableDatePickerBookingDate.Checked)
+                chkEnableDatePickerBookingDate.Checked = false;
         }
 
         #endregion
@@ -178,37 +208,42 @@ namespace PhotographyAutomation.App.Forms.Booking
         }
 
         #endregion
-        
+
         #region Top Menu
 
         private void رزروهای_امروزToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            rbCurrentDay.IsChecked = true;
+            rbCurrentDay.Checked = true;
             btnShowBookings_Click(null, null);
         }
 
         private void رزروهای_هفته_جاری_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            rbCurrentWeek.IsChecked = true;
+            rbCurrentWeek.Checked = true;
             btnShowBookings_Click(null, null);
         }
 
         private void _رزروهای_ماه_جاریToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            rbCurrentmonth.IsChecked = true;
+            rbCurrentmonth.Checked = true;
             btnShowBookings_Click(null, null);
         }
 
         private void _رزروهای_تاریخ_خاصToolStripMenuItem_Click(object sender, EventArgs e)
         {
             chkEnableDatePickerBookingDate.Checked = true;
-            chkEnableDatePickerBookingDate_ToggleStateChanged(null, null);
+            chkEnableDatePickerBookingDate_CheckedChanged(null, null);
         }
 
         private void _رزروهای_ویژهToolStripMenuItem_Click(object sender, EventArgs e)
         {
             chkSpecialBookings.Checked = true;
-            chkSpecialBookings_ToggleStateChanged(null, null);
+            chkSpecialBookings_CheckedChanged(null, null);
+        }
+
+        private void لغورزروToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            لغورزروToolStripMenuItem_Click(null, null);
         }
 
         #endregion
@@ -251,7 +286,13 @@ namespace PhotographyAutomation.App.Forms.Booking
 
                 if (frmAddEditCustomerInfo.ShowDialog() == DialogResult.OK)
                 {
-                    btnShowBookings_Click(null, null);
+                    if (dgvBookings.CurrentRow != null)
+                    {
+                        int rowIndex = dgvBookings.CurrentRow.Index;
+
+                        btnShowBookings_Click(null, null);
+                        dgvBookings.Rows[rowIndex].Selected = true;
+                    }
                 }
             }
         }
@@ -269,18 +310,24 @@ namespace PhotographyAutomation.App.Forms.Booking
                 };
                 if (frmAddEditBooking.ShowDialog() == DialogResult.OK)
                 {
-                    btnShowBookings_Click(null, null);
+                    if (dgvBookings.CurrentRow != null)
+                    {
+                        int rowIndex = dgvBookings.CurrentRow.Index;
+
+                        btnShowBookings_Click(null, null);
+                        dgvBookings.Rows[rowIndex].Selected = true;
+                    }
                 }
             }
         }
 
-        private void تبدیل_به_سفارش_ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ورودبهآتلیهToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (dgvBookings.SelectedRows.Count == 1 &&
                 int.TryParse(dgvBookings.SelectedRows[0].Cells["clmId"].Value.ToString(), out var bookingId))
             {
-                var dialogResult = RtlMessageBox.Show("آیا وضعیت رزرو مشتری به سفارش تغییر یابد؟",
-                    "تغییر وضعیت رزرو به سفارش", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var dialogResult = RtlMessageBox.Show("آیا وضعیت رزرو مشتری به 'ورود به آتلیه' تغییر یابد؟",
+                    "تغییر وضعیت رزرو", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (dialogResult != DialogResult.Yes) return;
                 using (var db = new UnitOfWork())
@@ -292,9 +339,37 @@ namespace PhotographyAutomation.App.Forms.Booking
                     int orderStatusId = 0;
                     if (bookingStatusList.Any() && orderStatusList.Any())
                     {
+                        #region کدهای وضعیت های رزرو
+                        /*
+                         * 10	فعال
+                           20	غیر فعال
+                           30	حذف
+                           40	ورود به آتلیه
+                           50	در انتظار بیعانه
+                           60	لغو مشتری
+                         */
+                        #endregion
                         bookingStatusToOrderId =
-                            bookingStatusList.First(x => x.StatusName.Equals("تبدیل به سفارش")).Id;
-                        orderStatusId = orderStatusList.First(x => x.Name.Equals("ورود به آتلیه")).Id;
+                            bookingStatusList.First(x => x.Code == 40).Id;
+
+                        #region کد وضعیت ورود به آتلیه
+                        /*
+                         * 10	ورود به آتلیه
+                           20	بارگزاری عکس
+                           30	انتخاب عکس و سایز
+                           40	انتخاب آلبوم و خدمات 
+                           50	تعیین اولویت
+                           60	در حال پردازش
+                           70	بازبینی عکس
+                           80	در حال چاپ
+                           90	خدمات اضافه
+                           100	ساخت آلبوم
+                           110	تائید مالی
+                           120	تحویل به مشتری
+                           130	راکد
+                         */
+                        #endregion
+                        orderStatusId = orderStatusList.First(x => x.Code == 10).Id;
                     }
 
 
@@ -311,22 +386,26 @@ namespace PhotographyAutomation.App.Forms.Booking
                             PhotographyTypeId = booking.PhotographyTypeId,
                         };
 
-
-
                         db.BookingGenericRepository.Update(booking);
                         //int resultUpdateBooking = db.Save();
 
                         db.OrderGenericRepository.Insert(order);
                         //int resultInsertNewOrder = db.Save();
 
+
                         if (db.Save() > 0)
                         {
+                            OrderId = order.Id;
                             RtlMessageBox.Show(
-                                "وضعیت رزرو مشتری با موفقیت به سفارش و ورود به آتلیه تغییر پیدا کرد.",
-                                "تبدیل به سفارش رزرو", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                "وضعیت رزرو مشتری با موفقیت به 'ورود به آتلیه' تغییر پیدا کرد.",
+                                "تغییر وضعیت رزرو", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             if (dgvBookings.CurrentRow != null)
-                                dgvBookings.CurrentRow.Cells["clmStatusName"].Value = "تبدیل به سفارش";
-                            btnShowBookings_Click(null,null);
+                            {
+                                int rowIndex = dgvBookings.CurrentRow.Index;
+
+                                btnShowBookings_Click(null, null);
+                                dgvBookings.Rows[rowIndex].Selected = true;
+                            }
                         }
                         else
                         {
@@ -356,8 +435,77 @@ namespace PhotographyAutomation.App.Forms.Booking
             }
         }
 
+        private void لغورزروToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvBookings.SelectedRows.Count != 1 ||
+                !int.TryParse(dgvBookings.SelectedRows[0].Cells["clmId"].Value.ToString(), out var bookingId)) return;
+
+            var customerName = dgvBookings.SelectedRows[0].Cells["clmCustomerFullName"].Value.ToString();
+            bookingId = int.Parse(dgvBookings.SelectedRows[0].Cells["clmId"].Value.ToString());
+            var dr = RtlMessageBox.Show("آیا از لغو رزرو مشتری " + customerName + " اطمینان دارید؟",
+                "لغو رزرو مشتری",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dr != DialogResult.Yes) return;
+
+            using (var db = new UnitOfWork())
+            {
+                var booking = db.BookingGenericRepository.GetById(bookingId);
+                var bookingStatusList = db.BookingStatusGenericRepository.Get().ToList();
+                if (booking != null)
+                {
+                    var bookingStatusId =
+                        bookingStatusList.First(x => x.Code == 60).Id;
+                    booking.StatusId = bookingStatusId;
+                    #region کدهای وضعیت های رزرو
+                    /*
+                             * 10	فعال
+                               20	غیر فعال
+                               30	حذف
+                               40	ورود به آتلیه
+                               50	در انتظار بیعانه
+                               60	لغو مشتری
+                             */
+                    #endregion
+
+                    db.BookingGenericRepository.Update(booking);
+                    if (db.Save() > 0)
+                    {
+                        RtlMessageBox.Show(
+                            "رزرو مشتری " + customerName + " با موفقیت لغو گردید.",
+                            "لغو رزرو مشتری",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        if (dgvBookings.SelectedRows[0] != null)
+                        {
+                            var rowIndex = dgvBookings.SelectedRows[0].Index;
+
+                            btnShowBookings_Click(null, null);
+                            dgvBookings.Rows[rowIndex].Selected = true;
+                        }
+                    }
+                    else
+                    {
+                        RtlMessageBox.Show(
+                            "مشکلی در به روز رسانی وضعیت رزرو پیش آمده است. " +
+                            "لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.",
+                            "خطا در ثبت اطلاعات در سیستم",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    RtlMessageBox.Show(
+                        "اطلاعات رزرو مورد از نظر از بانک اطلاعاتی قابل دریافت نیست. " +
+                        "لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.",
+                        "خطا در دریافت اطلاعات رزرو از سیستم",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
         #endregion
-        
+
         #region Methods
 
         private void GetBookingStatus()
@@ -426,7 +574,7 @@ namespace PhotographyAutomation.App.Forms.Booking
             dgvBookings.BackColor = Color.White;
             dgvBookings.ClearSelection();
         }
-        
+
         private void ShowBookings(DateTime dtFrom, DateTime dtTo, int statusCode, string customerInfo)
         {
             dgvBookings.BackColor = Color.White;
@@ -437,7 +585,7 @@ namespace PhotographyAutomation.App.Forms.Booking
             using (var db = new UnitOfWork())
             {
                 var bookingsList = db.BookingRepository.GetBookingBetweenDates(dtFrom, dtTo, statusCode, customerInfo);
-                
+
                 if (bookingsList.Count > 0)
                 {
                     PopulateDataGridView(bookingsList);
@@ -520,6 +668,11 @@ namespace PhotographyAutomation.App.Forms.Booking
                     bookingsList[i].ModifiedDateTime;
             }
         }
+
+
+
+
+
 
         #endregion
     }
