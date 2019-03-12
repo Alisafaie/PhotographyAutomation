@@ -610,7 +610,7 @@ namespace PhotographyAutomation.App.Forms.Booking
             for (int i = 0; i < bookingsList.Count; i++)
             {
                 dgvBookings.Rows[i].Cells["clmId"].Value = bookingsList[i].Id;
-                dgvBookings.Rows[i].Cells["clmCustomerId"].Value = bookingsList[i].UserId;
+                dgvBookings.Rows[i].Cells["clmCustomerId"].Value = bookingsList[i].CustomerId;
 
                 if (bookingsList[i].CustomerGender == 0)
                 {

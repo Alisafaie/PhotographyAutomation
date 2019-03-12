@@ -13,7 +13,7 @@
           <Property Name="OrderId" Type="int" Nullable="false" />
           <Property Name="OrderPrintId" Type="int" Nullable="false" />
           <Property Name="StatusCode" Type="int" Nullable="false" />
-          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
           <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
           <Property Name="ModifiedDateTime" Type="datetime" />
         </EntityType>
@@ -1147,7 +1147,7 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           <Property Name="OrderId" Type="Int32" Nullable="false" />
           <Property Name="OrderPrintId" Type="Int32" Nullable="false" />
           <Property Name="StatusCode" Type="Int32" Nullable="false" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
           <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
           <NavigationProperty Name="TblOrderPrint" Relationship="PhotographyAutomationDBModel.FK_TblAllOrderStatus_TblOrderPrint" FromRole="TblAllOrderStatus" ToRole="TblOrderPrint" />
@@ -1594,7 +1594,7 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
               <MappingFragment StoreEntitySet="TblAllOrderStatus">
                 <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
                 <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
                 <ScalarProperty Name="OrderPrintId" ColumnName="OrderPrintId" />
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />

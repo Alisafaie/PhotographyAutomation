@@ -3,7 +3,6 @@ using PhotographyAutomation.DateLayer.Repositories;
 using PhotographyAutomation.ViewModels.User;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
@@ -35,7 +34,7 @@ namespace PhotographyAutomation.DateLayer.Services
                         {
                             Id = x.Id,
                             Date = x.Date,
-                            UserId = x.CustomerId,
+                            CustomerId = x.CustomerId,
                             Time = x.Time.Hours.ToString() + ":" + x.Time.Minutes.ToString(),
                             CreatedDateTime = x.CreatedDate,
                             AtelierTypeId = x.AtelierTypeId,
@@ -90,7 +89,7 @@ namespace PhotographyAutomation.DateLayer.Services
                         {
                             Id = x.Id,
                             Date = x.Date,
-                            UserId = x.CustomerId,
+                            CustomerId = x.CustomerId,
                             Time = x.Time.Hours.ToString() + ":" + x.Time.Minutes.ToString(),
                             CreatedDateTime = x.CreatedDate,
                             AtelierTypeId = x.AtelierTypeId,
@@ -151,7 +150,7 @@ namespace PhotographyAutomation.DateLayer.Services
                         {
                             Id = x.Id,
                             Date = x.Date,
-                            UserId = x.CustomerId,
+                            CustomerId = x.CustomerId,
                             Time = x.Time.Hours.ToString() + ":" + x.Time.Minutes.ToString(),
                             CreatedDateTime = x.CreatedDate,
                             AtelierTypeId = x.AtelierTypeId,
@@ -203,7 +202,7 @@ namespace PhotographyAutomation.DateLayer.Services
                         {
                             Id = x.Id,
                             Date = x.Date,
-                            UserId = x.CustomerId,
+                            CustomerId = x.CustomerId,
                             Time = x.Time.Hours.ToString() + ":" + x.Time.Minutes.ToString(),
                             CreatedDateTime = x.CreatedDate,
                             AtelierTypeId = x.AtelierTypeId,
@@ -257,7 +256,7 @@ namespace PhotographyAutomation.DateLayer.Services
                         {
                             Id = x.Id,
                             Date = x.Date,
-                            UserId = x.CustomerId,
+                            CustomerId = x.CustomerId,
                             Time = x.Time.Hours.ToString() + ":" + x.Time.Minutes.ToString(),
                             CreatedDateTime = x.CreatedDate,
                             AtelierTypeId = x.AtelierTypeId,
@@ -285,15 +284,26 @@ namespace PhotographyAutomation.DateLayer.Services
             }
             catch (Exception exception)
             {
+                Debug.WriteLine("Message");
                 Debug.WriteLine(exception.Message);
-                Debug.WriteLine(exception.Data);
+
+                Debug.WriteLine("Inner Exception");
                 Debug.WriteLine(exception.InnerException);
+
+                Debug.WriteLine("Inner Exception Message:");
+                Debug.WriteLine(exception.InnerException?.Message);
+
+                Debug.WriteLine("Source");
                 Debug.WriteLine(exception.Source);
+
+                Debug.WriteLine("Data");
+                Debug.WriteLine(exception.Data);
+
+                Debug.WriteLine("Stack Trace");
                 Debug.WriteLine(exception.StackTrace);
+
                 return null;
             }
         }
-
-
     }
 }

@@ -66,7 +66,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                     for (int i = 0; i < bookingHistory.Count; i++)
                     {
                         dgvBookingHistory.Rows[i].Cells["clmId"].Value = bookingHistory[i].Id;
-                        dgvBookingHistory.Rows[i].Cells["clmUserId"].Value = bookingHistory[i].UserId;
+                        dgvBookingHistory.Rows[i].Cells["clmUserId"].Value = bookingHistory[i].CustomerId;
 
                         if (bookingHistory[i].CustomerGender == 0)
                         {

@@ -5,7 +5,7 @@ namespace PhotographyAutomation.ViewModels.User
     public class BookingHistoryAddEditBookingViewModel
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
+        public int CustomerId { get; set; }
         public byte? CustomerGender { get; set; }
         public string CustomerFullName { get; set; }
         public DateTime Date { get; set; }

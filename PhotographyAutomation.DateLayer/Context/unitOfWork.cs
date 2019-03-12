@@ -42,6 +42,8 @@ namespace PhotographyAutomation.DateLayer.Context
             }
         }
 
+
+
         private IPhotoRepository _photoRepository;
 
         public IPhotoRepository PhotoRepository
@@ -54,6 +56,23 @@ namespace PhotographyAutomation.DateLayer.Context
                 }
 
                 return _photoRepository;
+            }
+        }
+
+
+
+        private IOrderRepository _orderRepository;
+
+        public IOrderRepository OrderRepository
+        {
+            get
+            {
+                if (_orderRepository == null)
+                {
+                    _orderRepository = new OrderRepository(_db);
+                }
+
+                return _orderRepository;
             }
         }
 
@@ -161,6 +180,9 @@ namespace PhotographyAutomation.DateLayer.Context
             }
         }
 
+
+
+
         private GenericRepository<TblOrder> _orderGenericRepository;
 
         public GenericRepository<TblOrder> OrderGenericRepository
@@ -175,6 +197,8 @@ namespace PhotographyAutomation.DateLayer.Context
                 return _orderGenericRepository;
             }
         }
+
+
 
 
         private GenericRepository<TblOrderStatus> _orderStatusGenericRepository;
@@ -193,8 +217,7 @@ namespace PhotographyAutomation.DateLayer.Context
         }
 
 
-
-
+        
         public int Save()
         {
             try
