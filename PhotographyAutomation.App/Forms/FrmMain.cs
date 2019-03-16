@@ -38,13 +38,10 @@ namespace PhotographyAutomation.App.Forms
 
         private void btnShowBookings_Click(object sender, EventArgs e)
         {
-            //using (var frmShowBookings = new FrmShowBookings())
-            //{
-            //    frmShowBookings.ShowDialog();
-            //}
-
-            var frmShowBookings = new FrmShowBookings();
-            frmShowBookings.ShowDialog();
+            using (var frmShowBookings = new FrmShowBookings())
+            {
+                frmShowBookings.ShowDialog();
+            }
         }
 
         private void btnUploadPhotos_Click(object sender, EventArgs e)

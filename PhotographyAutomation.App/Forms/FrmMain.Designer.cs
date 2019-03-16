@@ -35,6 +35,10 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.ribbonControl1 = new DevComponents.DotNetBar.RibbonControl();
+            this.ribbonPanel1 = new DevComponents.DotNetBar.RibbonPanel();
+            this.ribbonBar1 = new DevComponents.DotNetBar.RibbonBar();
+            this.btnAddEditBooking = new DevComponents.DotNetBar.ButtonItem();
+            this.btnShowBookings = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonPanel3 = new DevComponents.DotNetBar.RibbonPanel();
             this.ribbonBar3 = new DevComponents.DotNetBar.RibbonBar();
             this.btnUploadPhotos = new DevComponents.DotNetBar.ButtonItem();
@@ -45,10 +49,6 @@
             this.ribbonPanel2 = new DevComponents.DotNetBar.RibbonPanel();
             this.ribbonBar5 = new DevComponents.DotNetBar.RibbonBar();
             this.btnShowCustomers = new DevComponents.DotNetBar.ButtonItem();
-            this.ribbonPanel1 = new DevComponents.DotNetBar.RibbonPanel();
-            this.ribbonBar1 = new DevComponents.DotNetBar.RibbonBar();
-            this.btnAddEditBooking = new DevComponents.DotNetBar.ButtonItem();
-            this.btnShowBookings = new DevComponents.DotNetBar.ButtonItem();
             this.applicationButton1 = new DevComponents.DotNetBar.ApplicationButton();
             this.itemContainer1 = new DevComponents.DotNetBar.ItemContainer();
             this.itemContainer2 = new DevComponents.DotNetBar.ItemContainer();
@@ -76,14 +76,14 @@
             this.qatCustomizeItem1 = new DevComponents.DotNetBar.QatCustomizeItem();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
-            this.persianMonthCalendar = new FreeControls.PersianMonthCalendar();
             this.buttonItem16 = new DevComponents.DotNetBar.ButtonItem();
+            this.persianMonthCalendar = new FreeControls.PersianMonthCalendar();
             this.toolStripTopMenu.SuspendLayout();
             this.ribbonControl1.SuspendLayout();
+            this.ribbonPanel1.SuspendLayout();
             this.ribbonPanel3.SuspendLayout();
             this.ribbonPanel4.SuspendLayout();
             this.ribbonPanel2.SuspendLayout();
-            this.ribbonPanel1.SuspendLayout();
             this.panelEx1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -122,8 +122,8 @@
             // 
             // 
             this.ribbonControl1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonControl1.Controls.Add(this.ribbonPanel1);
             this.ribbonControl1.Controls.Add(this.ribbonPanel3);
+            this.ribbonControl1.Controls.Add(this.ribbonPanel1);
             this.ribbonControl1.Controls.Add(this.ribbonPanel4);
             this.ribbonControl1.Controls.Add(this.ribbonPanel2);
             this.ribbonControl1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -161,6 +161,87 @@
             this.ribbonControl1.TabIndex = 3;
             this.ribbonControl1.Text = "ribbonControl1";
             // 
+            // ribbonPanel1
+            // 
+            this.ribbonPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonPanel1.Controls.Add(this.ribbonBar1);
+            this.ribbonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ribbonPanel1.Location = new System.Drawing.Point(0, 0);
+            this.ribbonPanel1.Name = "ribbonPanel1";
+            this.ribbonPanel1.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.ribbonPanel1.Size = new System.Drawing.Size(1085, 117);
+            // 
+            // 
+            // 
+            this.ribbonPanel1.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonPanel1.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonPanel1.TabIndex = 1;
+            this.ribbonPanel1.Visible = false;
+            // 
+            // ribbonBar1
+            // 
+            this.ribbonBar1.AutoOverflowEnabled = true;
+            // 
+            // 
+            // 
+            this.ribbonBar1.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar1.ContainerControlProcessDialogKey = true;
+            this.ribbonBar1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ribbonBar1.DragDropSupport = true;
+            this.ribbonBar1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.btnAddEditBooking,
+            this.btnShowBookings});
+            this.ribbonBar1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F";
+            this.ribbonBar1.Location = new System.Drawing.Point(3, 0);
+            this.ribbonBar1.Name = "ribbonBar1";
+            this.ribbonBar1.Size = new System.Drawing.Size(168, 114);
+            this.ribbonBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonBar1.TabIndex = 0;
+            this.ribbonBar1.Text = "نوبت ";
+            // 
+            // 
+            // 
+            this.ribbonBar1.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar1.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // btnAddEditBooking
+            // 
+            this.btnAddEditBooking.FixedSize = new System.Drawing.Size(80, 80);
+            this.btnAddEditBooking.Image = global::PhotographyAutomation.App.Properties.Resources._1371475930_filenew;
+            this.btnAddEditBooking.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnAddEditBooking.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
+            this.btnAddEditBooking.Name = "btnAddEditBooking";
+            this.btnAddEditBooking.PopupWidth = 100;
+            this.btnAddEditBooking.SubItemsExpandWidth = 14;
+            this.btnAddEditBooking.Text = "ثبت نوبت جدید";
+            this.btnAddEditBooking.Click += new System.EventHandler(this.btnAddEditBooking_Click);
+            // 
+            // btnShowBookings
+            // 
+            this.btnShowBookings.FixedSize = new System.Drawing.Size(80, 80);
+            this.btnShowBookings.Image = global::PhotographyAutomation.App.Properties.Resources.list2;
+            this.btnShowBookings.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnShowBookings.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
+            this.btnShowBookings.Name = "btnShowBookings";
+            this.btnShowBookings.PopupWidth = 100;
+            this.btnShowBookings.SubItemsExpandWidth = 14;
+            this.btnShowBookings.Text = "لیست نوبت ها";
+            this.btnShowBookings.Click += new System.EventHandler(this.btnShowBookings_Click);
+            // 
             // ribbonPanel3
             // 
             this.ribbonPanel3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -183,7 +264,6 @@
             // 
             this.ribbonPanel3.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ribbonPanel3.TabIndex = 3;
-            this.ribbonPanel3.Visible = false;
             // 
             // ribbonBar3
             // 
@@ -239,7 +319,7 @@
             this.btnShowIncommingBookings.Name = "btnShowIncommingBookings";
             this.btnShowIncommingBookings.PopupWidth = 100;
             this.btnShowIncommingBookings.SubItemsExpandWidth = 14;
-            this.btnShowIncommingBookings.Text = "لیست نوبت های رسیده";
+            this.btnShowIncommingBookings.Text = "رزروهای رسیده";
             this.btnShowIncommingBookings.Click += new System.EventHandler(this.btnShowIncommingBookings_Click);
             // 
             // ribbonPanel4
@@ -377,86 +457,6 @@
             this.btnShowCustomers.SubItemsExpandWidth = 14;
             this.btnShowCustomers.Text = "لیست مشتریان";
             this.btnShowCustomers.Click += new System.EventHandler(this.btnShowCustomers_Click);
-            // 
-            // ribbonPanel1
-            // 
-            this.ribbonPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ribbonPanel1.Controls.Add(this.ribbonBar1);
-            this.ribbonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ribbonPanel1.Location = new System.Drawing.Point(0, 25);
-            this.ribbonPanel1.Name = "ribbonPanel1";
-            this.ribbonPanel1.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.ribbonPanel1.Size = new System.Drawing.Size(1085, 92);
-            // 
-            // 
-            // 
-            this.ribbonPanel1.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonPanel1.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonPanel1.TabIndex = 1;
-            // 
-            // ribbonBar1
-            // 
-            this.ribbonBar1.AutoOverflowEnabled = true;
-            // 
-            // 
-            // 
-            this.ribbonBar1.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonBar1.ContainerControlProcessDialogKey = true;
-            this.ribbonBar1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ribbonBar1.DragDropSupport = true;
-            this.ribbonBar1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.btnAddEditBooking,
-            this.btnShowBookings});
-            this.ribbonBar1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F";
-            this.ribbonBar1.Location = new System.Drawing.Point(3, 0);
-            this.ribbonBar1.Name = "ribbonBar1";
-            this.ribbonBar1.Size = new System.Drawing.Size(168, 89);
-            this.ribbonBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ribbonBar1.TabIndex = 0;
-            this.ribbonBar1.Text = "نوبت ";
-            // 
-            // 
-            // 
-            this.ribbonBar1.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar1.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // btnAddEditBooking
-            // 
-            this.btnAddEditBooking.FixedSize = new System.Drawing.Size(80, 80);
-            this.btnAddEditBooking.Image = global::PhotographyAutomation.App.Properties.Resources._1371475930_filenew;
-            this.btnAddEditBooking.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnAddEditBooking.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
-            this.btnAddEditBooking.Name = "btnAddEditBooking";
-            this.btnAddEditBooking.PopupWidth = 100;
-            this.btnAddEditBooking.SubItemsExpandWidth = 14;
-            this.btnAddEditBooking.Text = "ثبت نوبت جدید";
-            this.btnAddEditBooking.Click += new System.EventHandler(this.btnAddEditBooking_Click);
-            // 
-            // btnShowBookings
-            // 
-            this.btnShowBookings.FixedSize = new System.Drawing.Size(80, 80);
-            this.btnShowBookings.Image = global::PhotographyAutomation.App.Properties.Resources.list2;
-            this.btnShowBookings.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnShowBookings.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
-            this.btnShowBookings.Name = "btnShowBookings";
-            this.btnShowBookings.PopupWidth = 100;
-            this.btnShowBookings.SubItemsExpandWidth = 14;
-            this.btnShowBookings.Text = "لیست نوبت ها";
-            this.btnShowBookings.Click += new System.EventHandler(this.btnShowBookings_Click);
             // 
             // applicationButton1
             // 
@@ -692,7 +692,6 @@
             // 
             // ribbonTabItem1
             // 
-            this.ribbonTabItem1.Checked = true;
             this.ribbonTabItem1.Name = "ribbonTabItem1";
             this.ribbonTabItem1.Panel = this.ribbonPanel1;
             this.ribbonTabItem1.Text = "نوبت ها";
@@ -705,9 +704,10 @@
             // 
             // ribbonTabItem3
             // 
+            this.ribbonTabItem3.Checked = true;
             this.ribbonTabItem3.Name = "ribbonTabItem3";
             this.ribbonTabItem3.Panel = this.ribbonPanel3;
-            this.ribbonTabItem3.Text = "رزرو های تبدیل به سفارش";
+            this.ribbonTabItem3.Text = "ورود به آتلیه";
             // 
             // ribbonTabItem4
             // 
@@ -748,6 +748,17 @@
             this.panelEx1.Style.GradientAngle = 90;
             this.panelEx1.TabIndex = 4;
             // 
+            // buttonItem16
+            // 
+            this.buttonItem16.FixedSize = new System.Drawing.Size(80, 80);
+            this.buttonItem16.Image = global::PhotographyAutomation.App.Properties.Resources._1371475930_filenew;
+            this.buttonItem16.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.buttonItem16.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
+            this.buttonItem16.Name = "buttonItem16";
+            this.buttonItem16.PopupWidth = 100;
+            this.buttonItem16.SubItemsExpandWidth = 14;
+            this.buttonItem16.Text = "ثبت نوبت دستی";
+            // 
             // persianMonthCalendar
             // 
             this.persianMonthCalendar.BackColor = System.Drawing.Color.White;
@@ -764,17 +775,6 @@
             this.persianMonthCalendar.TitleBackColor = System.Drawing.SystemColors.ActiveCaption;
             this.persianMonthCalendar.TitleForeColor = System.Drawing.Color.White;
             this.persianMonthCalendar.Value = ((FreeControls.PersianDate)(resources.GetObject("persianMonthCalendar.Value")));
-            // 
-            // buttonItem16
-            // 
-            this.buttonItem16.FixedSize = new System.Drawing.Size(80, 80);
-            this.buttonItem16.Image = global::PhotographyAutomation.App.Properties.Resources._1371475930_filenew;
-            this.buttonItem16.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.buttonItem16.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
-            this.buttonItem16.Name = "buttonItem16";
-            this.buttonItem16.PopupWidth = 100;
-            this.buttonItem16.SubItemsExpandWidth = 14;
-            this.buttonItem16.Text = "ثبت نوبت دستی";
             // 
             // FrmMain
             // 
@@ -797,10 +797,10 @@
             this.toolStripTopMenu.PerformLayout();
             this.ribbonControl1.ResumeLayout(false);
             this.ribbonControl1.PerformLayout();
+            this.ribbonPanel1.ResumeLayout(false);
             this.ribbonPanel3.ResumeLayout(false);
             this.ribbonPanel4.ResumeLayout(false);
             this.ribbonPanel2.ResumeLayout(false);
-            this.ribbonPanel1.ResumeLayout(false);
             this.panelEx1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -519,15 +519,10 @@ namespace PhotographyAutomation.App.Forms.Booking
                 //        StatusCode = x.Code,
                 //        Name = x.StatusName
                 //    }).ToList();
-                var bookingsStatuses = db.BookingStatusGenericRepository.Get().Select(x => new TblBookingStatus
-                {
-                    Id = x.Id,
-                    Code = x.Code,
-                    StatusName = x.StatusName
-                }).ToList();
+                var bookingsStatuses = db.BookingStatusGenericRepository.Get();
                 
 
-                if (bookingsStatuses.Any())
+                if (bookingsStatuses!=null)
                 {
                     cmbBookinsStatus1.DataSource = bookingsStatuses;
                     cmbBookinsStatus1.DisplayMember = "StatusName";

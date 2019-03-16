@@ -21,7 +21,7 @@ namespace PhotographyAutomation.DateLayer.Services
         }
 
 
-        public virtual List<TEntity> Get(Expression<Func<TEntity, bool>> where = null)
+        public virtual IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> where = null)
         {
             try
             {

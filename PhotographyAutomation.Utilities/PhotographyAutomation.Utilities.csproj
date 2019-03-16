@@ -32,10 +32,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PersianDate">
-      <HintPath>..\..\..\..\..\Downloads\Compressed\کامپوننت تقویم شمسی بسیار زیبا\PersianDate\PersianDate\PersianDate\bin\Debug\PersianDate.dll</HintPath>
+      <HintPath>..\Components\PersianDate.dll</HintPath>
     </Reference>
     <Reference Include="PopupControl">
-      <HintPath>..\..\..\..\..\Downloads\Compressed\کامپوننت تقویم شمسی بسیار زیبا\PersianDate\PersianDate\PersianDate\bin\Debug\PopupControl.dll</HintPath>
+      <HintPath>..\Components\PopupControl.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

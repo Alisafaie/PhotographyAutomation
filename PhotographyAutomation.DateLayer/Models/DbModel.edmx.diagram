@@ -14,35 +14,49 @@
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblDocuments" Width="1.5" PointX="0.75" PointY="7.75" />
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblEmployeeType" Width="1.5" PointX="5.75" PointY="1" />
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblEmpRole" Width="1.5" PointX="8" PointY="0.875" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrder" Width="1.5" PointX="7.5" PointY="7.75" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrderFiles" Width="1.5" PointX="9.75" PointY="18.25" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrderFiles" Width="1.5" PointX="9.75" PointY="14.625" />
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrderPrint" Width="1.5" PointX="12.75" PointY="8.125" />
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrderPrintDetails" Width="1.5" PointX="15" PointY="8.5" />
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrderStatus" Width="1.5" PointX="7.125" PointY="4.875" />
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPhotographyType" Width="1.5" PointX="6.5" PointY="15" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblRoleType" Width="1.5" PointX="9.25" PointY="13.75" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblRoleType" Width="1.5" PointX="9.75" PointY="12.5" />
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.View_GetAllPhotos" Width="1.5" PointX="10.75" PointY="0.75" />
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.View_GetDocumentsFolders" Width="1.5" PointX="12.75" PointY="0.75" />
-        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblAllOrderStatus_TblOrder" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblAllOrderStatus_TblOrderPrint" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblBooking_TblAtelierType" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblBooking_TblBookingStatus" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblBooking_TblPhotographyType" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblBooking_TblUser" />
-        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrder_TblBooking" />
-        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrder_TblCustomer" />
-        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderPrint_TblCustomer" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderPrint_TblCustomer" ManuallyRouted="true" >
+          <ConnectorPoint PointX="4.5" PointY="7.71875" />
+          <ConnectorPoint PointX="5.385416666666667" PointY="7.7187499999999991" />
+          <ConnectorPoint PointX="5.552083333333333" PointY="7.71875" />
+          <ConnectorPoint PointX="7.4700000000000006" PointY="7.71875" />
+          <ConnectorPoint PointX="7.4700000000000006" PointY="7.375" />
+          <ConnectorPoint PointX="7.979166666666667" PointY="7.3749999999999991" />
+          <ConnectorPoint PointX="8.1458333333333339" PointY="7.375" />
+          <ConnectorPoint PointX="9.1979166666666661" PointY="7.3749999999999991" />
+          <ConnectorPoint PointX="9.3645833333333339" PointY="7.375" />
+          <ConnectorPoint PointX="13.010414666666666" PointY="7.3749999999999991" />
+          <ConnectorPoint PointX="13.177081333333334" PointY="7.375" />
+          <ConnectorPoint PointX="13.5" PointY="7.375" />
+          <ConnectorPoint PointX="13.5" PointY="8.125" />
+        </AssociationConnector>
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblCustomer" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblDocumentPhotos_TblDocuments" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_tblEmp_Role_tblEmployeeType" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_tblEmp_Role_tblRoleType" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderPrint_TblOrderStatus" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblOrderPrint" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.TblCustomerDocuments" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrder" Width="1.5" PointX="7.5" PointY="7.875" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblAllOrderStatus_TblOrder" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrder_TblBooking" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrder_TblCustomer" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrder_TblOrderPrint" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrder_TblOrderStatus" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrder_TblPhotographyType" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderStreams_TblOrder" />
-        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderPrint_TblOrderStatus" />
-        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblOrderPrint" />
-        <AssociationConnector Association="PhotographyAutomationDBModel.TblCustomerDocuments" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
