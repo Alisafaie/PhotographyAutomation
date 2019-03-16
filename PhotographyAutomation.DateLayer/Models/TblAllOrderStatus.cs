@@ -22,7 +22,7 @@ namespace PhotographyAutomation.DateLayer.Models
         public System.DateTime CreatedDateTime { get; set; }
         public Nullable<System.DateTime> ModifiedDateTime { get; set; }
     
-        public virtual TblOrderPrint TblOrderPrint { get; set; }
         public virtual TblOrder TblOrder { get; set; }
+        public virtual TblOrderPrint TblOrderPrint { get; set; }
     }
 }

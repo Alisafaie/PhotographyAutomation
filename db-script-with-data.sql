@@ -4,13 +4,13 @@ GO
 CREATE DATABASE [PhotographyAutomationDB]
  CONTAINMENT = NONE
  ON  PRIMARY 
-( NAME = N'PhotographyAutomationDB', FILENAME = N'C:\SQL-2017\Data\PhotographyAutomationDB.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB ), 
+( NAME = N'PhotographyAutomationDB', FILENAME = N'C:\SQL-2014\Data_Log\PhotographyAutomationDB.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB ), 
  FILEGROUP [PhotoArchive_FG1] CONTAINS FILESTREAM  DEFAULT
 ( NAME = N'PhotoArchive_1', FILENAME = N'c:\PhotographyAutomation_FileStores\PhotoArchive_1' , MAXSIZE = UNLIMITED), 
  FILEGROUP [RetouchedPhotos_FG1] CONTAINS FILESTREAM 
 ( NAME = N'RetouchedPhotoArchive_1', FILENAME = N'C:\PhotographyAutomation_FileStores\RetouchedPhotoArchive_1' , MAXSIZE = UNLIMITED)
  LOG ON 
-( NAME = N'PhotographyAutomationDB_log', FILENAME = N'C:\SQL-2017\Data\PhotographyAutomationDB_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+( NAME = N'PhotographyAutomationDB_log', FILENAME = N'C:\SQL-2014\Data_Log\PhotographyAutomationDB_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
 GO
 ALTER DATABASE [PhotographyAutomationDB] ADD FILEGROUP [PhotosFileGroup]
 GO

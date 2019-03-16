@@ -39,9 +39,9 @@ namespace PhotographyAutomation.DateLayer.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblAllOrderStatus> TblAllOrderStatus { get; set; }
         public virtual TblCustomer TblCustomer { get; set; }
+        public virtual TblOrder TblOrder { get; set; }
         public virtual TblOrderStatus TblOrderStatus { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblOrderPrintDetails> TblOrderPrintDetails { get; set; }
-        public virtual TblOrder TblOrder { get; set; }
     }
 }

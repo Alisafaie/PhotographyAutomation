@@ -27,6 +27,7 @@ namespace PhotographyAutomation.DateLayer.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<TblAllOrderStatus> TblAllOrderStatus { get; set; }
         public virtual DbSet<TblAtelierType> TblAtelierType { get; set; }
         public virtual DbSet<TblBooking> TblBooking { get; set; }
         public virtual DbSet<TblBookingStatus> TblBookingStatus { get; set; }
@@ -35,16 +36,15 @@ namespace PhotographyAutomation.DateLayer.Models
         public virtual DbSet<TblDocuments> TblDocuments { get; set; }
         public virtual DbSet<TblEmployeeType> TblEmployeeType { get; set; }
         public virtual DbSet<TblEmpRole> TblEmpRole { get; set; }
-        public virtual DbSet<TblPhotographyType> TblPhotographyType { get; set; }
-        public virtual DbSet<TblRoleType> TblRoleType { get; set; }
-        public virtual DbSet<View_GetAllPhotos> View_GetAllPhotos { get; set; }
-        public virtual DbSet<View_GetDocumentsFolders> View_GetDocumentsFolders { get; set; }
-        public virtual DbSet<TblAllOrderStatus> TblAllOrderStatus { get; set; }
+        public virtual DbSet<TblOrder> TblOrder { get; set; }
         public virtual DbSet<TblOrderFiles> TblOrderFiles { get; set; }
         public virtual DbSet<TblOrderPrint> TblOrderPrint { get; set; }
         public virtual DbSet<TblOrderPrintDetails> TblOrderPrintDetails { get; set; }
         public virtual DbSet<TblOrderStatus> TblOrderStatus { get; set; }
-        public virtual DbSet<TblOrder> TblOrder { get; set; }
+        public virtual DbSet<TblPhotographyType> TblPhotographyType { get; set; }
+        public virtual DbSet<TblRoleType> TblRoleType { get; set; }
+        public virtual DbSet<View_GetAllPhotos> View_GetAllPhotos { get; set; }
+        public virtual DbSet<View_GetDocumentsFolders> View_GetDocumentsFolders { get; set; }
     
         public virtual ObjectResult<string> usp_CreateCustomerFinancialDirectory(string customerFinancialNumber, string monthNumber, Nullable<byte> parent_level, ObjectParameter returnValue)
         {

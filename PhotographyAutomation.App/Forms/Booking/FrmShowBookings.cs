@@ -30,17 +30,17 @@ namespace PhotographyAutomation.App.Forms.Booking
         public FrmShowBookings()
         {
             InitializeComponent();
-        }
-
-        private void FrmShowBookings_Load(object sender, EventArgs e)
-        {
-            dgvBookings.BackColor = Color.White;
 
             rbCurrentDay.CheckState = CheckState.Unchecked;
             rbCurrentWeek.CheckState = CheckState.Unchecked;
             rbCurrentmonth.CheckState = CheckState.Unchecked;
 
             GetBookingStatus();
+        }
+
+        private void FrmShowBookings_Load(object sender, EventArgs e)
+        {
+
         }
 
         #endregion
@@ -120,8 +120,8 @@ namespace PhotographyAutomation.App.Forms.Booking
             rbCurrentmonth.Checked = false;
             chkEnableDatePickerBookingDate.Checked = false;
             chkSpecialBookings.Checked = false;
-            cmbBookinsStatus.SelectedIndex = 0;
-            cmbBookinsStatus.Enabled = false;
+            cmbBookinsStatus1.SelectedIndex = 0;
+            cmbBookinsStatus1.Enabled = false;
             txtCustomerInfo.ResetText();
         }
 
@@ -129,20 +129,20 @@ namespace PhotographyAutomation.App.Forms.Booking
         {
             if (chkSpecialBookings.Checked)
             {
-                cmbBookinsStatus.Enabled = true;
-                cmbBookinsStatus.DroppedDown = true;
+                cmbBookinsStatus1.Enabled = true;
+                cmbBookinsStatus1.DroppedDown = true;
             }
             else
             {
-                cmbBookinsStatus.Enabled = false;
-                cmbBookinsStatus.DroppedDown = false;
+                cmbBookinsStatus1.Enabled = false;
+                cmbBookinsStatus1.DroppedDown = false;
             }
         }
 
         private void cmbBookinsStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbBookinsStatus.Enabled)
-                int.TryParse(cmbBookinsStatus.SelectedValue.ToString(), out _statusCode);
+            if (cmbBookinsStatus1.Enabled)
+                int.TryParse(cmbBookinsStatus1.SelectedValue.ToString(), out _statusCode);
         }
 
         private void chkEnableDatePickerBookingDate_CheckedChanged(object sender, EventArgs e)
@@ -512,16 +512,43 @@ namespace PhotographyAutomation.App.Forms.Booking
         {
             using (var db = new UnitOfWork())
             {
-                cmbBookinsStatus.DataSource = db.BookingStatusGenericRepository.Get()
-                    .Select(x => new BookingStatusViewModel
-                    {
-                        Id = x.Id,
-                        StatusCode = x.Code,
-                        Name = x.StatusName
-                    }).ToList();
+                //List<BookingStatusViewModel> bookingsStatuses = db.BookingStatusGenericRepository.Get()
+                //    .Select(x => new BookingStatusViewModel
+                //    {
+                //        Id = x.Id,
+                //        StatusCode = x.Code,
+                //        Name = x.StatusName
+                //    }).ToList();
+                var bookingsStatuses = db.BookingStatusGenericRepository.Get().Select(x => new TblBookingStatus
+                {
+                    Id = x.Id,
+                    Code = x.Code,
+                    StatusName = x.StatusName
+                }).ToList();
+                
 
-                cmbBookinsStatus.DisplayMember = "Name";
-                cmbBookinsStatus.ValueMember = "StatusCode";
+                if (bookingsStatuses.Any())
+                {
+                    cmbBookinsStatus1.DataSource = bookingsStatuses;
+                    cmbBookinsStatus1.DisplayMember = "StatusName";
+                    cmbBookinsStatus1.ValueMember = "Code";
+                }
+                else
+                {
+                    RtlMessageBox.Show(
+                        "اطلاعات وضعیت رزروها از سیستم قابل دریافت نمی باشد." +
+                        " لطفا فرم را بسته و مجددا باز کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید. ",
+                        "خطا در دریافت اطلاعات از سیستم",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+
+
+                    //    .Select(x => new TblBookingStatus
+                    //    {
+                    //    Id = x.Id,
+                    //    Code = x.Code,
+                    //    StatusName = x.StatusName
+                    //    });
+                }
             }
         }
 

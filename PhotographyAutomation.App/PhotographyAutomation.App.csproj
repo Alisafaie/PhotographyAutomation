@@ -42,12 +42,18 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="GlassButton">
+      <HintPath>..\Components\GlassButton.dll</HintPath>
+    </Reference>
     <Reference Include="PersianDate">
-      <HintPath>..\..\Automation\Automation\PersianDate\PersianDate.dll</HintPath>
+      <HintPath>..\Components\PersianDate.dll</HintPath>
     </Reference>
     <Reference Include="PopupControl, Version=1.4.0.968, Culture=neutral, PublicKeyToken=04c10344d6495b18, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\PopupControl.dll</HintPath>
+    </Reference>
+    <Reference Include="RGF_TXT">
+      <HintPath>E:\My Files\Programing Components\RGF_TXT.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

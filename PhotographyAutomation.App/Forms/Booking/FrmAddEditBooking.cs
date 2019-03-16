@@ -35,7 +35,7 @@ namespace PhotographyAutomation.App.Forms.Booking
 
             using (var db = new UnitOfWork())
             {
-                UserInfoBookingViewModel userInfo = new UserInfoBookingViewModel();
+                var userInfo = new UserInfoBookingViewModel();
                 if (CustomerId > 0)
                     userInfo = db.CustomerRepository.GetCustomerInfoBooking(CustomerId);
                 if (userInfo != null)
@@ -150,7 +150,7 @@ namespace PhotographyAutomation.App.Forms.Booking
 
 
                         datePickerBookingDate.Value = booking.Date.Date;
-                        DateTime dt = new DateTime(booking.Date.Year, booking.Date.Month, booking.Date.Day, booking.Time.Hours, booking.Time.Minutes, booking.Time.Seconds);
+                        var dt = new DateTime(booking.Date.Year, booking.Date.Month, booking.Date.Day, booking.Time.Hours, booking.Time.Minutes, booking.Time.Seconds);
                         timePickerBookingTime.Value = dt;
                         cmbPhotographyTypes.SelectedValue = booking.PhotographyTypeId;
                         cmbAtelierTypes.SelectedValue = booking.AtelierTypeId;
@@ -158,9 +158,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                         txtBookingStatus.Text = booking.TblBookingStatus.StatusName;
                     }
                 }
-
             }
-
         }
 
 
@@ -221,7 +219,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                         db.BookingGenericRepository.Update(booking);
                     }
 
-                    int result = db.Save();
+                    var result = db.Save();
                     if (result > 0)
                     {
                         if (BookingId == 0)
@@ -235,6 +233,13 @@ namespace PhotographyAutomation.App.Forms.Booking
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         DialogResult = DialogResult.OK;
+                    }
+                    else
+                    {
+                        RtlMessageBox.Show("متاسفانه اطلاعات رزرو در سیستم ثبت نگردید. " +
+                                           "لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
+                            "خطا در ثبت اطلاعات در سیستم",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }

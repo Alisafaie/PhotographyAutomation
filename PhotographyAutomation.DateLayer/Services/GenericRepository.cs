@@ -21,7 +21,7 @@ namespace PhotographyAutomation.DateLayer.Services
         }
 
 
-        public virtual IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> where = null)
+        public virtual List<TEntity> Get(Expression<Func<TEntity, bool>> where = null)
         {
             try
             {
@@ -35,11 +35,7 @@ namespace PhotographyAutomation.DateLayer.Services
             }
             catch (Exception exception)
             {
-                Debug.WriteLine(exception.Message);
-                Debug.WriteLine(exception.Data);
-                Debug.WriteLine(exception.InnerException);
-                Debug.WriteLine(exception.Source);
-                Debug.WriteLine(exception.StackTrace);
+                WriteDebugInfoToOutput(exception);
                 return null;
             }
         }
@@ -52,11 +48,7 @@ namespace PhotographyAutomation.DateLayer.Services
             }
             catch (Exception exception)
             {
-                Debug.WriteLine(exception.Message);
-                Debug.WriteLine(exception.Data);
-                Debug.WriteLine(exception.InnerException);
-                Debug.WriteLine(exception.Source);
-                Debug.WriteLine(exception.StackTrace);
+                WriteDebugInfoToOutput(exception);
                 return null;
             }
         }
@@ -69,11 +61,7 @@ namespace PhotographyAutomation.DateLayer.Services
             }
             catch (Exception exception)
             {
-                Debug.WriteLine(exception.Message);
-                Debug.WriteLine(exception.Data);
-                Debug.WriteLine(exception.InnerException);
-                Debug.WriteLine(exception.Source);
-                Debug.WriteLine(exception.StackTrace);
+                WriteDebugInfoToOutput(exception);
             }
         }
 
@@ -94,11 +82,7 @@ namespace PhotographyAutomation.DateLayer.Services
             }
             catch (Exception exception)
             {
-                Debug.WriteLine(exception.Message);
-                Debug.WriteLine(exception.Data);
-                Debug.WriteLine(exception.InnerException);
-                Debug.WriteLine(exception.Source);
-                Debug.WriteLine(exception.StackTrace);
+                WriteDebugInfoToOutput(exception);
             }
         }
 
@@ -115,11 +99,7 @@ namespace PhotographyAutomation.DateLayer.Services
             }
             catch (Exception exception)
             {
-                Debug.WriteLine(exception.Message);
-                Debug.WriteLine(exception.Data);
-                Debug.WriteLine(exception.InnerException);
-                Debug.WriteLine(exception.Source);
-                Debug.WriteLine(exception.StackTrace);
+                WriteDebugInfoToOutput(exception);
             }
         }
 
@@ -132,12 +112,29 @@ namespace PhotographyAutomation.DateLayer.Services
             }
             catch (Exception exception)
             {
-                Debug.WriteLine(exception.Message);
-                Debug.WriteLine(exception.Data);
-                Debug.WriteLine(exception.InnerException);
-                Debug.WriteLine(exception.Source);
-                Debug.WriteLine(exception.StackTrace);
+                WriteDebugInfoToOutput(exception);
             }
+        }
+
+        public void WriteDebugInfoToOutput(Exception exception)
+        {
+            Debug.WriteLine("Message: ");
+            Debug.WriteLine(exception.Message);
+
+            Debug.WriteLine("Inner Exception: ");
+            Debug.WriteLine(exception.InnerException);
+
+            Debug.WriteLine("Inner Exception Message:");
+            Debug.WriteLine(exception.InnerException?.Message);
+
+            Debug.WriteLine("Source: ");
+            Debug.WriteLine(exception.Source);
+
+            Debug.WriteLine("Data: ");
+            Debug.WriteLine(exception.Data);
+
+            Debug.WriteLine("Stack Trace: ");
+            Debug.WriteLine(exception.StackTrace);
         }
     }
 }

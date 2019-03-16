@@ -1,10 +1,10 @@
 ﻿using FreeControls;
 using PhotographyAutomation.App.Forms.Booking;
 using PhotographyAutomation.App.Forms.Customers;
+using PhotographyAutomation.App.Forms.Orders;
 using PhotographyAutomation.App.Forms.Photos;
 using System;
 using System.Windows.Forms;
-using PhotographyAutomation.App.Forms.Orders;
 
 namespace PhotographyAutomation.App.Forms
 {
@@ -38,12 +38,15 @@ namespace PhotographyAutomation.App.Forms
 
         private void btnShowBookings_Click(object sender, EventArgs e)
         {
-            using (var frmShowBookings = new FrmShowBookings())
-            {
-                frmShowBookings.ShowDialog();
-            }
+            //using (var frmShowBookings = new FrmShowBookings())
+            //{
+            //    frmShowBookings.ShowDialog();
+            //}
+
+            var frmShowBookings = new FrmShowBookings();
+            frmShowBookings.ShowDialog();
         }
-        
+
         private void btnUploadPhotos_Click(object sender, EventArgs e)
         {
             using (var f = new FrmUploadPhotos())
@@ -62,7 +65,7 @@ namespace PhotographyAutomation.App.Forms
 
         private void btnShowIncommingBookings_Click(object sender, EventArgs e)
         {
-            using (var frmShowIncommingBookings=new FrmShowIncommingBookings())
+            using (var frmShowIncommingBookings = new FrmShowIncommingBookings())
             {
                 frmShowIncommingBookings.ShowDialog();
             }
