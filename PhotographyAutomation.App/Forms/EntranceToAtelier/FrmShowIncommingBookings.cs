@@ -13,7 +13,6 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 {
     public partial class FrmShowIncommingBookings : Form
     {
-
         #region Variables
 
         private int _statusCode = 10;
@@ -22,6 +21,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 
         #endregion
 
+        #region Form Events
 
         public FrmShowIncommingBookings()
         {
@@ -38,7 +38,9 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
         }
 
 
+        #endregion
 
+        #region Radio Buttons Events
 
         private void rbCurrentDay_CheckedChanged(object sender, EventArgs e)
         {
@@ -61,6 +63,9 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                 chkEnableDatePickerBookingDate.Checked = false;
         }
 
+        #endregion
+
+        #region CheckBoxes Events
         private void chkEnableDatePickerBookingDate_CheckedChanged(object sender, EventArgs e)
         {
             if (chkEnableDatePickerBookingDate.Checked)
@@ -99,12 +104,18 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
             }
         }
 
+        #endregion
+
+        #region Combox Events
         private void cmbOrderStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbOrderStatus.Enabled)
                 int.TryParse(cmbOrderStatus.SelectedValue.ToString(), out _statusCode);
         }
 
+        #endregion
+
+        #region Button Events
         private void btnClearSearch_Click(object sender, EventArgs e)
         {
             rbCurrentDay.Checked = false;
@@ -194,8 +205,9 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
             }
         }
 
+        #endregion
 
-
+        #region Methods
         private void GetBookingStatus()
         {
             using (var db = new UnitOfWork())
@@ -319,7 +331,8 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                 dgvOrders.Rows[i].Cells["clmDate"].Value = ordersList[i].BookingDate.ToShamsiDate();
                 dgvOrders.Rows[i].Cells["clmDate"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-                dgvOrders.Rows[i].Cells["clmTime"].Value = ordersList[i].BookingTime;
+                dgvOrders.Rows[i].Cells["clmTime"].Value = ordersList[i].BookingTime.Hours.ToString("##") + ":" +
+                                                           ordersList[i].BookingTime.Minutes.ToString("00");
                 dgvOrders.Rows[i].Cells["clmTime"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 
                 //dgvOrders.Rows[i].Cells["clmPhotographerGender"].Value =
@@ -356,5 +369,33 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 
             }
         }
+
+
+        //پیاده سازی نمایش کانتکست منو روی قسمت هایی که مقدار دارند و انتخاب آن ردیف
+        private void dgvBookings_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (dgvOrders.Rows.Count > 0)
+                {
+                    int currentMouseOverRow = dgvOrders.HitTest(e.X, e.Y).RowIndex;
+                    if (currentMouseOverRow > -1)
+                    {
+                        dgvOrders.Rows[currentMouseOverRow].Selected = true;
+                        //DataGridViewRow row = dgvBookings.Rows[currentMouseOverRow];
+                    }
+                    else
+                    {
+                        contextMenuStripDgvBookings.Visible = false;
+                    }
+                }
+                else
+                {
+                    contextMenuStripDgvBookings.Visible = false;
+                }
+            }
+        }
+
+        #endregion
     }
 }

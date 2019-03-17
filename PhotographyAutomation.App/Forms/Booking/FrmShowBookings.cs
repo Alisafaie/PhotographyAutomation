@@ -520,9 +520,9 @@ namespace PhotographyAutomation.App.Forms.Booking
                 //        Name = x.StatusName
                 //    }).ToList();
                 var bookingsStatuses = db.BookingStatusGenericRepository.Get();
-                
 
-                if (bookingsStatuses!=null)
+
+                if (bookingsStatuses != null)
                 {
                     cmbBookinsStatus1.DataSource = bookingsStatuses;
                     cmbBookinsStatus1.DisplayMember = "StatusName";
@@ -653,7 +653,8 @@ namespace PhotographyAutomation.App.Forms.Booking
                 dgvBookings.Rows[i].Cells["clmDate"].Value = bookingsList[i].Date.ToShamsiDate();
                 dgvBookings.Rows[i].Cells["clmDate"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-                dgvBookings.Rows[i].Cells["clmTime"].Value = bookingsList[i].Time;
+                dgvBookings.Rows[i].Cells["clmTime"].Value = bookingsList[i].Time.Hours.ToString("##") + ":" +
+                                                             bookingsList[i].Time.Minutes.ToString("00");
 
                 dgvBookings.Rows[i].Cells["clmTime"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 
@@ -690,12 +691,6 @@ namespace PhotographyAutomation.App.Forms.Booking
                     bookingsList[i].ModifiedDateTime;
             }
         }
-
-
-
-
-
-
         #endregion
     }
 }

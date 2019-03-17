@@ -16,7 +16,7 @@ namespace PhotographyAutomation.ViewModels.Order
         public int CustomerId { get; set; }
         public string CustomerFullName { get; set; }
         public byte CustomerGender { get; set; }
-        public int Submitter { get; set; }
+        public int? Submitter { get; set; }
         public string SubmitterName { get; set; }
         public int? PhotographerId { get; set; }
         public byte PhotographerGender { get; set; }

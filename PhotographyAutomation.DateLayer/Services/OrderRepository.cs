@@ -26,26 +26,33 @@ namespace PhotographyAutomation.DateLayer.Services
                     x.TblCustomer.FirstName.Contains(customerInfo) ||
                     x.TblCustomer.LastName.Contains(customerInfo) ||
                     x.TblCustomer.Tell.Contains(customerInfo) ||
-                    x.TblCustomer.Mobile.Contains(customerInfo)).Select(x => new CustomerOrderViewModel
+                    x.TblCustomer.Mobile.Contains(customerInfo))
+                    .Select(x => new CustomerOrderViewModel
                     {
                         Id = x.Id,
-                        CustomerId = x.CustomerId,
-                        BookingId = x.BookingId,
-                        PhotographyTypeId = x.PhotographyTypeId,
-                        CustomerFullName = x.TblCustomer.FirstName + " " + x.TblCustomer.LastName,
-                        OrderCode = x.OrderCode.ToString(),
-                        OrderStatusId = x.OrderStatusId,
                         CreatedDateTime = x.CreatedDateTime,
-                        ModifiedDateTime = x.ModifiedDateTime,
-                        PhotographerId = x.PhotographerId.Value,
-                        PhotographyTypeName = x.TblPhotographyType.TypeName,
+                        BookingId = x.BookingId,
+                        BookingDate = x.TblBooking.Date,
+                        BookingTime = x.TblBooking.Time,
+                        CustomerFullName = x.TblCustomer.FirstName + " " + x.TblCustomer.LastName,
+                        CustomerId = x.CustomerId,
+                        CustomerGender = x.TblCustomer.Gender.Value,
+                        OrderCode = x.OrderCode.ToString(),
+                        ModifiedDateTime = x.ModifiedDateTime.Value,
                         TotalFiles = x.TotalFiles.Value,
-                        PaymentIsOk = x.PaymentIsOk.Value,
+                        PhotographyTypeId = x.PhotographyTypeId,
+                        PhotographyTypeName = x.TblPhotographyType.TypeName,
+                        OrderStatusId = x.OrderStatusId,
+                        OrderStatusName = x.TblOrderStatus.Name,
                         IsActive = x.IsActive,
-                        OrderFolderStreamId = x.OrdefFolderStreamId.Value,
+                        OrderFolderParentPathLocator = x.OrdefFolderParentPathLocator,
                         OrderFolderPathLocator = x.OrdefFolderPathLocator,
-                        OrderFolderParentPathLocator = x.OrdefFolderParentPathLocator
-
+                        OrderFolderStreamId = x.OrdefFolderStreamId.Value,
+                        PaymentIsOk = x.PaymentIsOk.Value,
+                        PhotographerId = x.PhotographerId.Value,
+                        PersonCount = x.TblBooking.PersonCount,
+                        PhotographerGender = x.TblBooking.PhotographerGender,
+                        Submitter = x.Submitter.Value
                     })
                     .OrderByDescending(x => x.Id).ToList();
 
@@ -93,6 +100,7 @@ namespace PhotographyAutomation.DateLayer.Services
                         PhotographyTypeId = x.PhotographyTypeId,
                         PhotographyTypeName = x.TblPhotographyType.TypeName,
                         OrderStatusId = x.OrderStatusId,
+                        OrderStatusName = x.TblOrderStatus.Name,
                         IsActive = x.IsActive,
                         OrderFolderParentPathLocator = x.OrdefFolderParentPathLocator,
                         OrderFolderPathLocator = x.OrdefFolderPathLocator,
@@ -101,9 +109,7 @@ namespace PhotographyAutomation.DateLayer.Services
                         PhotographerId = x.PhotographerId.Value,
                         PersonCount = x.TblBooking.PersonCount,
                         PhotographerGender = x.TblBooking.PhotographerGender,
-                        Submitter = x.Submitter.Value,
-                        OrderStatusName = x.TblOrderStatus.Name
-
+                        Submitter = x.Submitter.Value
                     })
                     .OrderBy(x => x.BookingDate)
                     .ThenBy(x => x.BookingTime)
@@ -123,9 +129,9 @@ namespace PhotographyAutomation.DateLayer.Services
             try
             {
                 var returnValue = _db.TblOrder
-                    .Include(x => x.TblOrderStatus)
                     .Include(x => x.TblBooking)
                     .Include(x => x.TblCustomer)
+                    .Include(x => x.TblOrderStatus)
                     .Include(x => x.TblAllOrderStatus)
                     .Include(x => x.TblOrderFiles)
                     .Include(x => x.TblOrderPrint)
@@ -147,16 +153,20 @@ namespace PhotographyAutomation.DateLayer.Services
                         CustomerGender = x.TblCustomer.Gender.Value,
                         OrderCode = x.OrderCode.ToString(),
                         ModifiedDateTime = x.ModifiedDateTime,
-                        TotalFiles = x.TotalFiles,
+                        TotalFiles = x.TotalFiles.Value,
                         PhotographyTypeId = x.PhotographyTypeId,
                         PhotographyTypeName = x.TblPhotographyType.TypeName,
                         OrderStatusId = x.OrderStatusId,
+                        OrderStatusName = x.TblOrderStatus.Name,
                         IsActive = x.IsActive,
                         OrderFolderParentPathLocator = x.OrdefFolderParentPathLocator,
                         OrderFolderPathLocator = x.OrdefFolderPathLocator,
                         OrderFolderStreamId = x.OrdefFolderStreamId,
                         PaymentIsOk = x.PaymentIsOk,
-                        PhotographerId = x.PhotographerId
+                        PhotographerId = x.PhotographerId,
+                        PersonCount = x.TblBooking.PersonCount,
+                        PhotographerGender = x.TblBooking.PhotographerGender,
+                        Submitter = x.Submitter
                     })
                     .OrderBy(x => x.BookingDate)
                     .ThenBy(x => x.BookingTime)

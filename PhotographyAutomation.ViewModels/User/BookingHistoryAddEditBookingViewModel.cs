@@ -9,7 +9,7 @@ namespace PhotographyAutomation.ViewModels.User
         public byte? CustomerGender { get; set; }
         public string CustomerFullName { get; set; }
         public DateTime Date { get; set; }
-        public string Time { get; set; }
+        public TimeSpan Time { get; set; }
         public int PhotographerGender { get; set; }
         public int PhotographyTypeId { get; set; }
         public string PhotographyTypeName { get; set; }

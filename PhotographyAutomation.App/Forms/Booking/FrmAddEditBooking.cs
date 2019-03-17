@@ -89,7 +89,9 @@ namespace PhotographyAutomation.App.Forms.Booking
                         dgvBookingHistory.Rows[i].Cells["clmDate"].Style.Alignment =
                             DataGridViewContentAlignment.MiddleRight;
 
-                        dgvBookingHistory.Rows[i].Cells["clmTime"].Value = bookingHistory[i].Time;
+                        dgvBookingHistory.Rows[i].Cells["clmTime"].Value =
+                            bookingHistory[i].Time.Hours.ToString("##") + ":" +
+                            bookingHistory[i].Time.Minutes.ToString("00");
 
                         dgvBookingHistory.Rows[i].Cells["clmTime"].Style.Alignment =
                             DataGridViewContentAlignment.MiddleRight;
