@@ -9,8 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-
-namespace PhotographyAutomation.App.Forms.Photos
+namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 {
     public partial class FrmShowIncommingBookings : Form
     {
@@ -113,7 +112,7 @@ namespace PhotographyAutomation.App.Forms.Photos
             rbCurrentmonth.Checked = false;
             chkEnableDatePickerBookingDate.Checked = false;
             chkSpecialBookings.Checked = false;
-            if(cmbOrderStatus.Enabled) cmbOrderStatus.SelectedIndex = 0;
+            if (cmbOrderStatus.Enabled) cmbOrderStatus.SelectedIndex = 0;
             cmbOrderStatus.Enabled = false;
             txtCustomerInfo.ResetText();
         }

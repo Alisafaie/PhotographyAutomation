@@ -1,8 +1,8 @@
 ﻿using FreeControls;
 using PhotographyAutomation.App.Forms.Booking;
 using PhotographyAutomation.App.Forms.Customers;
+using PhotographyAutomation.App.Forms.EntranceToAtelier;
 using PhotographyAutomation.App.Forms.Orders;
-using PhotographyAutomation.App.Forms.Photos;
 using System;
 using System.Windows.Forms;
 

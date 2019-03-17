@@ -1,4 +1,4 @@
-﻿namespace PhotographyAutomation.App.Forms.Photos
+﻿namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 {
     partial class FrmShowIncommingBookings
     {
@@ -50,11 +50,6 @@
             this.datePickerBookingDateFrom = new FreeControls.PersianDateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvOrders = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.contextMenuStripDgvBookings = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ویرایشاطلاعاتمشتریToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ویرایشاطلاعاتنوبتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ارسالعکسToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.clmId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmCustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmOrderCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,12 +59,17 @@
             this.clmPhotographyTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmPhotographyTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmPhotographerGenderType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmStatusName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmPersonCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmStatusId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmTotalFiles = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmStatusName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmCreatedDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmModifiedDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStripDgvBookings = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ویرایشاطلاعاتمشتریToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ویرایشاطلاعاتنوبتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ارسالعکسToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
@@ -95,7 +95,7 @@
             this.groupBox2.Controls.Add(this.datePickerBookingDateFrom);
             this.groupBox2.Location = new System.Drawing.Point(17, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1196, 90);
+            this.groupBox2.Size = new System.Drawing.Size(1205, 90);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "مشاهده رزرو ها بر اساس";
@@ -106,7 +106,7 @@
             this.cmbOrderStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbOrderStatus.Enabled = false;
             this.cmbOrderStatus.FormattingEnabled = true;
-            this.cmbOrderStatus.Location = new System.Drawing.Point(531, 38);
+            this.cmbOrderStatus.Location = new System.Drawing.Point(507, 38);
             this.cmbOrderStatus.Name = "cmbOrderStatus";
             this.cmbOrderStatus.Size = new System.Drawing.Size(125, 21);
             this.cmbOrderStatus.TabIndex = 24;
@@ -120,7 +120,7 @@
             // 
             // 
             this.chkSpecialBookings.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.chkSpecialBookings.Location = new System.Drawing.Point(662, 40);
+            this.chkSpecialBookings.Location = new System.Drawing.Point(638, 40);
             this.chkSpecialBookings.Name = "chkSpecialBookings";
             this.chkSpecialBookings.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.chkSpecialBookings.Size = new System.Drawing.Size(71, 16);
@@ -137,7 +137,7 @@
             // 
             // 
             this.chkEnableDatePickerBookingDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.chkEnableDatePickerBookingDate.Location = new System.Drawing.Point(878, 40);
+            this.chkEnableDatePickerBookingDate.Location = new System.Drawing.Point(854, 40);
             this.chkEnableDatePickerBookingDate.Name = "chkEnableDatePickerBookingDate";
             this.chkEnableDatePickerBookingDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.chkEnableDatePickerBookingDate.Size = new System.Drawing.Size(54, 16);
@@ -155,7 +155,7 @@
             // 
             this.rbCurrentmonth.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.rbCurrentmonth.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
-            this.rbCurrentmonth.Location = new System.Drawing.Point(949, 40);
+            this.rbCurrentmonth.Location = new System.Drawing.Point(925, 40);
             this.rbCurrentmonth.Name = "rbCurrentmonth";
             this.rbCurrentmonth.Size = new System.Drawing.Size(64, 16);
             this.rbCurrentmonth.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -172,7 +172,7 @@
             // 
             this.rbCurrentWeek.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.rbCurrentWeek.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
-            this.rbCurrentWeek.Location = new System.Drawing.Point(1030, 40);
+            this.rbCurrentWeek.Location = new System.Drawing.Point(1006, 40);
             this.rbCurrentWeek.Name = "rbCurrentWeek";
             this.rbCurrentWeek.Size = new System.Drawing.Size(73, 16);
             this.rbCurrentWeek.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -189,7 +189,7 @@
             // 
             this.rbCurrentDay.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.rbCurrentDay.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
-            this.rbCurrentDay.Location = new System.Drawing.Point(1120, 40);
+            this.rbCurrentDay.Location = new System.Drawing.Point(1096, 40);
             this.rbCurrentDay.Name = "rbCurrentDay";
             this.rbCurrentDay.Size = new System.Drawing.Size(63, 16);
             this.rbCurrentDay.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -205,7 +205,7 @@
             // 
             // 
             this.lblToDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lblToDate.Location = new System.Drawing.Point(881, 63);
+            this.lblToDate.Location = new System.Drawing.Point(857, 63);
             this.lblToDate.Name = "lblToDate";
             this.lblToDate.Size = new System.Drawing.Size(33, 16);
             this.lblToDate.TabIndex = 23;
@@ -220,7 +220,7 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(416, 40);
+            this.labelX1.Location = new System.Drawing.Point(392, 40);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(85, 16);
             this.labelX1.TabIndex = 21;
@@ -236,7 +236,7 @@
             this.txtCustomerInfo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtCustomerInfo.FocusHighlightColor = System.Drawing.SystemColors.Info;
             this.txtCustomerInfo.FocusHighlightEnabled = true;
-            this.txtCustomerInfo.Location = new System.Drawing.Point(172, 38);
+            this.txtCustomerInfo.Location = new System.Drawing.Point(148, 38);
             this.txtCustomerInfo.Name = "txtCustomerInfo";
             this.txtCustomerInfo.PreventEnterBeep = true;
             this.txtCustomerInfo.Size = new System.Drawing.Size(238, 21);
@@ -249,7 +249,7 @@
             this.btnShowBookings.FlatAppearance.BorderSize = 0;
             this.btnShowBookings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShowBookings.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_Search_text_131785;
-            this.btnShowBookings.Location = new System.Drawing.Point(118, 32);
+            this.btnShowBookings.Location = new System.Drawing.Point(94, 32);
             this.btnShowBookings.Name = "btnShowBookings";
             this.btnShowBookings.Size = new System.Drawing.Size(32, 32);
             this.btnShowBookings.TabIndex = 9;
@@ -262,7 +262,7 @@
             this.btnClearSearch.FlatAppearance.BorderSize = 0;
             this.btnClearSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearSearch.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_Gnome_Edit_Clear_32_54970;
-            this.btnClearSearch.Location = new System.Drawing.Point(80, 32);
+            this.btnClearSearch.Location = new System.Drawing.Point(56, 32);
             this.btnClearSearch.Name = "btnClearSearch";
             this.btnClearSearch.Size = new System.Drawing.Size(32, 32);
             this.btnClearSearch.TabIndex = 10;
@@ -275,7 +275,7 @@
             this.datePickerBookingDateTo.BackColor = System.Drawing.Color.White;
             this.datePickerBookingDateTo.Enabled = false;
             this.datePickerBookingDateTo.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.datePickerBookingDateTo.Location = new System.Drawing.Point(764, 62);
+            this.datePickerBookingDateTo.Location = new System.Drawing.Point(740, 62);
             this.datePickerBookingDateTo.Name = "datePickerBookingDateTo";
             this.datePickerBookingDateTo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.datePickerBookingDateTo.ShowTime = false;
@@ -291,7 +291,7 @@
             this.datePickerBookingDateFrom.BackColor = System.Drawing.Color.White;
             this.datePickerBookingDateFrom.Enabled = false;
             this.datePickerBookingDateFrom.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.datePickerBookingDateFrom.Location = new System.Drawing.Point(764, 39);
+            this.datePickerBookingDateFrom.Location = new System.Drawing.Point(740, 39);
             this.datePickerBookingDateFrom.Name = "datePickerBookingDateFrom";
             this.datePickerBookingDateFrom.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.datePickerBookingDateFrom.ShowTime = false;
@@ -307,7 +307,7 @@
             this.groupBox1.Controls.Add(this.dgvOrders);
             this.groupBox1.Location = new System.Drawing.Point(17, 106);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1196, 462);
+            this.groupBox1.Size = new System.Drawing.Size(1205, 462);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "لیست رزرو ها";
@@ -340,10 +340,10 @@
             this.clmPhotographyTypeId,
             this.clmPhotographyTypeName,
             this.clmPhotographerGenderType,
-            this.clmStatusName,
             this.clmPersonCount,
             this.clmStatusId,
             this.clmTotalFiles,
+            this.clmStatusName,
             this.clmCreatedDateTime,
             this.clmModifiedDateTime});
             this.dgvOrders.ContextMenuStrip = this.contextMenuStripDgvBookings;
@@ -374,42 +374,8 @@
             this.dgvOrders.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOrders.ShowEditingIcon = false;
-            this.dgvOrders.Size = new System.Drawing.Size(1190, 442);
+            this.dgvOrders.Size = new System.Drawing.Size(1199, 442);
             this.dgvOrders.TabIndex = 0;
-            // 
-            // contextMenuStripDgvBookings
-            // 
-            this.contextMenuStripDgvBookings.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.contextMenuStripDgvBookings.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ویرایشاطلاعاتمشتریToolStripMenuItem,
-            this.ویرایشاطلاعاتنوبتToolStripMenuItem,
-            this.ارسالعکسToolStripMenuItem});
-            this.contextMenuStripDgvBookings.Name = "contextMenuStripDgvBookings";
-            this.contextMenuStripDgvBookings.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStripDgvBookings.Size = new System.Drawing.Size(197, 70);
-            // 
-            // ویرایشاطلاعاتمشتریToolStripMenuItem
-            // 
-            this.ویرایشاطلاعاتمشتریToolStripMenuItem.Name = "ویرایشاطلاعاتمشتریToolStripMenuItem";
-            this.ویرایشاطلاعاتمشتریToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.ویرایشاطلاعاتمشتریToolStripMenuItem.Text = "ویرایش اطلاعات مشتری";
-            // 
-            // ویرایشاطلاعاتنوبتToolStripMenuItem
-            // 
-            this.ویرایشاطلاعاتنوبتToolStripMenuItem.Name = "ویرایشاطلاعاتنوبتToolStripMenuItem";
-            this.ویرایشاطلاعاتنوبتToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.ویرایشاطلاعاتنوبتToolStripMenuItem.Text = "ویرایش اطلاعات رزرو";
-            // 
-            // ارسالعکسToolStripMenuItem
-            // 
-            this.ارسالعکسToolStripMenuItem.Name = "ارسالعکسToolStripMenuItem";
-            this.ارسالعکسToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.ارسالعکسToolStripMenuItem.Text = "ارسال عکس";
-            // 
-            // styleManager1
-            // 
-            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2010Silver;
-            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255))))), System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199))))));
             // 
             // clmId
             // 
@@ -435,10 +401,12 @@
             // 
             // clmCustomerFullName
             // 
+            this.clmCustomerFullName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.clmCustomerFullName.DataPropertyName = "CustomerFullName";
             this.clmCustomerFullName.HeaderText = "نام مشتری";
             this.clmCustomerFullName.Name = "clmCustomerFullName";
             this.clmCustomerFullName.ReadOnly = true;
+            this.clmCustomerFullName.Width = 170;
             // 
             // clmDate
             // 
@@ -476,13 +444,6 @@
             this.clmPhotographerGenderType.Name = "clmPhotographerGenderType";
             this.clmPhotographerGenderType.ReadOnly = true;
             // 
-            // clmStatusName
-            // 
-            this.clmStatusName.DataPropertyName = "StatusName";
-            this.clmStatusName.HeaderText = "وضعیت";
-            this.clmStatusName.Name = "clmStatusName";
-            this.clmStatusName.ReadOnly = true;
-            // 
             // clmPersonCount
             // 
             this.clmPersonCount.DataPropertyName = "PersonCount";
@@ -505,12 +466,20 @@
             this.clmTotalFiles.Name = "clmTotalFiles";
             this.clmTotalFiles.ReadOnly = true;
             // 
+            // clmStatusName
+            // 
+            this.clmStatusName.DataPropertyName = "StatusName";
+            this.clmStatusName.HeaderText = "وضعیت";
+            this.clmStatusName.Name = "clmStatusName";
+            this.clmStatusName.ReadOnly = true;
+            // 
             // clmCreatedDateTime
             // 
             this.clmCreatedDateTime.DataPropertyName = "CreatedDateTime";
             this.clmCreatedDateTime.HeaderText = "تاریخ ثبت";
             this.clmCreatedDateTime.Name = "clmCreatedDateTime";
             this.clmCreatedDateTime.ReadOnly = true;
+            this.clmCreatedDateTime.Visible = false;
             // 
             // clmModifiedDateTime
             // 
@@ -520,11 +489,45 @@
             this.clmModifiedDateTime.ReadOnly = true;
             this.clmModifiedDateTime.Visible = false;
             // 
+            // contextMenuStripDgvBookings
+            // 
+            this.contextMenuStripDgvBookings.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.contextMenuStripDgvBookings.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ویرایشاطلاعاتمشتریToolStripMenuItem,
+            this.ویرایشاطلاعاتنوبتToolStripMenuItem,
+            this.ارسالعکسToolStripMenuItem});
+            this.contextMenuStripDgvBookings.Name = "contextMenuStripDgvBookings";
+            this.contextMenuStripDgvBookings.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.contextMenuStripDgvBookings.Size = new System.Drawing.Size(197, 70);
+            // 
+            // ویرایشاطلاعاتمشتریToolStripMenuItem
+            // 
+            this.ویرایشاطلاعاتمشتریToolStripMenuItem.Name = "ویرایشاطلاعاتمشتریToolStripMenuItem";
+            this.ویرایشاطلاعاتمشتریToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.ویرایشاطلاعاتمشتریToolStripMenuItem.Text = "ویرایش اطلاعات مشتری";
+            // 
+            // ویرایشاطلاعاتنوبتToolStripMenuItem
+            // 
+            this.ویرایشاطلاعاتنوبتToolStripMenuItem.Name = "ویرایشاطلاعاتنوبتToolStripMenuItem";
+            this.ویرایشاطلاعاتنوبتToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.ویرایشاطلاعاتنوبتToolStripMenuItem.Text = "ویرایش اطلاعات رزرو";
+            // 
+            // ارسالعکسToolStripMenuItem
+            // 
+            this.ارسالعکسToolStripMenuItem.Name = "ارسالعکسToolStripMenuItem";
+            this.ارسالعکسToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.ارسالعکسToolStripMenuItem.Text = "ارسال عکس";
+            // 
+            // styleManager1
+            // 
+            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2010Silver;
+            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255))))), System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199))))));
+            // 
             // FrmShowIncommingBookings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1225, 580);
+            this.ClientSize = new System.Drawing.Size(1234, 580);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F);
@@ -536,7 +539,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "مشاهده رزروهای آمده";
+            this.Text = "مشاهده رزروهای رسیده";
             this.Load += new System.EventHandler(this.FrmShowIncommingBookings_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -579,10 +582,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPhotographyTypeId;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPhotographyTypeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPhotographerGenderType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmStatusName;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPersonCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmStatusId;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmTotalFiles;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmStatusName;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmCreatedDateTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmModifiedDateTime;
     }

@@ -1,4 +1,5 @@
-﻿using PhotographyAutomation.DateLayer.Context;
+﻿using PhotographyAutomation.App.Forms.Photos;
+using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.Utilities;
 using PhotographyAutomation.Utilities.Convertor;
 using PhotographyAutomation.Utilities.ExtentionMethods;
@@ -11,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace PhotographyAutomation.App.Forms.Photos
+namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 {
     public partial class FrmUploadPhotos : Form
     {

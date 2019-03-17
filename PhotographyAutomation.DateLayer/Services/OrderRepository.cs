@@ -46,7 +46,8 @@ namespace PhotographyAutomation.DateLayer.Services
                         OrderFolderPathLocator = x.OrdefFolderPathLocator,
                         OrderFolderParentPathLocator = x.OrdefFolderParentPathLocator
 
-                    }).OrderByDescending(x => x.Id).ToList();
+                    })
+                    .OrderByDescending(x => x.Id).ToList();
 
                 return returnValue;
             }
@@ -103,8 +104,10 @@ namespace PhotographyAutomation.DateLayer.Services
                         Submitter = x.Submitter.Value,
                         OrderStatusName = x.TblOrderStatus.Name
 
-                    }).OrderByDescending(x => x.CreatedDateTime)
-                      .ToList();
+                    })
+                    .OrderBy(x => x.BookingDate)
+                    .ThenBy(x => x.BookingTime)
+                    .ToList();
 
                 return returnValue;
             }
@@ -155,8 +158,9 @@ namespace PhotographyAutomation.DateLayer.Services
                         PaymentIsOk = x.PaymentIsOk,
                         PhotographerId = x.PhotographerId
                     })
-                    .OrderByDescending(x => x.CreatedDateTime)
-                      .ToList();
+                    .OrderBy(x => x.BookingDate)
+                    .ThenBy(x => x.BookingTime)
+                    .ToList();
 
                 return returnValue;
             }
