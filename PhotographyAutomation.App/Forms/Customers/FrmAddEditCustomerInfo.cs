@@ -1,4 +1,5 @@
-﻿using PhotographyAutomation.App.Forms.Booking;
+﻿#region Usings
+using PhotographyAutomation.App.Forms.Booking;
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.DateLayer.Models;
 using PhotographyAutomation.Utilities;
@@ -8,18 +9,25 @@ using PhotographyAutomation.Utilities.Regex;
 using System;
 using System.Windows.Forms;
 
+#endregion Usings
+
 namespace PhotographyAutomation.App.Forms.Customers
 {
     public partial class FrmAddEditCustomerInfo : Form
     {
+        #region Variables
         public int CustomerId;
         public bool JustSaveCustomerInfo = false;
         public bool IsEditMode = false;
+
+        #endregion
+
+
+        #region Form Events
         public FrmAddEditCustomerInfo()
         {
             InitializeComponent();
         }
-
         private void FrmAddEditCustomerInfo_Load(object sender, EventArgs e)
         {
             if (IsEditMode)
@@ -31,52 +39,44 @@ namespace PhotographyAutomation.App.Forms.Customers
                 return;
             }
             btnOk.Enabled = false;
-            this.AcceptButton = btnCheckNumber;
+            AcceptButton = btnCheckNumber;
+            groupBoxSearchCustomer.Enabled = true;
+            groupBoxCustomerInfo.Enabled = false;
         }
 
-        private void GetCustomerInfo(int customerId)
-        {
-            if (customerId > 0)
-            {
-                using (var db = new UnitOfWork())
-                {
-                    var customer = db.CustomerGenericRepository.GetById(customerId);
-                    if (customer != null)
-                    {
-                        txtFirstName.Text = customer.FirstName;
-                        txtLastName.Text = customer.LastName;
-                        txtMobile.Text = txtMobileSearch.Text = customer.Mobile;
-                        txtTell.Text = customer.Tell;
-                        cmbGender.SelectedIndex = customer.Gender == 0 ? 0 : 1;
-                        if (customer.BirthDate != null) txtBirthDate.Text = customer.BirthDate.Value.ToShamsiDate();
-                        txtNationalId.Text = customer.NationalId;
-                        cmbMarriedStatus.SelectedIndex = customer.IsMarried == 0 ? 0 : 1;
-                        txtAddress.Text = customer.Address;
-                        txtEmail.Text = customer.Email;
-                    }
-                }
-            }
-        }
+        #endregion Form Events
 
+        #region Buttons Events
         private void btnCheckNumber_Click(object sender, EventArgs e)
         {
             errorProvider1.Clear();
-            if (string.IsNullOrEmpty(txtMobileSearch.Text.Replace(" ", "")))
+            string chustomerNumberString = txtMobileSearch.Text
+                .Replace("(", "")
+                .Replace(")", "")
+                .Replace("-", "")
+                .Replace("_", "")
+                .Replace(" ", "")
+                .Trim();
+
+            if (string.IsNullOrEmpty(chustomerNumberString))
             {
                 errorProvider1.Clear();
-                errorProvider1.SetError(txtMobileSearch, "شماره موبایل وارد نشده است.");
+                errorProvider1.SetError(txtMobileSearch,
+                    "شماره موبایل وارد نشده است.");
                 txtMobileSearch.Focus();
             }
-            else if (!txtMobileSearch.Text.StartsWith("9", StringComparison.InvariantCulture))
+            else if (!chustomerNumberString.StartsWith("09", StringComparison.InvariantCulture))
             {
                 errorProvider1.Clear();
-                errorProvider1.SetError(txtMobileSearch, "شماره موبایل باید با عدد 9 شروع گردد.");
+                errorProvider1.SetError(txtMobileSearch,
+                    "شماره موبایل باید با عدد 09 شروع گردد.");
                 txtMobileSearch.Focus();
             }
-            else if (txtMobileSearch.Text.Replace(" ", "").Length < 10)
+            else if (chustomerNumberString.Length < 11)
             {
                 errorProvider1.Clear();
-                errorProvider1.SetError(txtMobileSearch, "شماره موبایل باید به صورت 10 رقمی (7890 345 912) وارد گردد.");
+                errorProvider1.SetError(txtMobileSearch,
+                    "شماره موبایل باید به صورت 11 رقمی (7890 345 0912) وارد گردد.");
                 txtMobileSearch.Focus();
             }
             else
@@ -85,7 +85,9 @@ namespace PhotographyAutomation.App.Forms.Customers
 
                 using (var db = new UnitOfWork())
                 {
-                    var user = db.CustomerRepository.FindCustomersByMobile(txtMobileSearch.Text.Replace(" ", ""));
+
+                    var user = db.CustomerRepository.
+                        FindCustomersByMobile(chustomerNumberString.Substring(1, 10));
 
                     if (user != null)
                     {
@@ -111,7 +113,9 @@ namespace PhotographyAutomation.App.Forms.Customers
                     }
                     else
                     {
-                        RtlMessageBox.Show("متاسفانه کاربری با شماره همراه داده شده یافت نگردید.", "عدم وجود کاربر",
+                        RtlMessageBox.Show(
+                            "متاسفانه کاربری با شماره همراه داده شده یافت نگردید.",
+                            "عدم وجود کاربر",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         txtMobile.Text = txtMobileSearch.Text;
@@ -126,11 +130,18 @@ namespace PhotographyAutomation.App.Forms.Customers
                     AcceptButton = btnOk;
 
                     btnOk.Enabled = true;
+                    //groupBoxSearchCustomer.Enabled = false;
+                    groupBoxCustomerInfo.Enabled = true;
 
                     txtFirstName.Focus();
-                    this.AcceptButton = btnOk;
+                    AcceptButton = btnOk;
                 }
             }
+        }
+        private void btnSearchCustomer_Click(object sender, EventArgs e)
+        {
+            FrmShowCustomer searchUser = new FrmShowCustomer();
+            searchUser.ShowDialog();
         }
 
 
@@ -222,11 +233,50 @@ namespace PhotographyAutomation.App.Forms.Customers
                     DialogResult = DialogResult.OK;
                 }
                 else
-                    RtlMessageBox.Show("خطا در ثبت اطلاعات کاربر", "خطا در ثبت اطلاعات", MessageBoxButtons.OK,
+                    RtlMessageBox.Show(
+                        "خطا در ثبت اطلاعات کاربر",
+                        "خطا در ثبت اطلاعات",
+                        MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
             }
         }
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+        }
 
+        #endregion Buttons Events
+
+
+
+        #region TextBoxes Events
+        private void txtMobileSearch_TextChanged(object sender, EventArgs e)
+        {
+            int len = txtMobileSearch.Text
+                .Replace("(", "")
+                .Replace(")", "")
+                .Replace("-", "")
+                .Replace("_", "")
+                .Replace(" ", "")
+                .Trim().Length;
+            if (len == 11)
+                btnCheckNumber.Focus();
+        }
+        private void txtFirstName_Enter(object sender, EventArgs e)
+        {
+            var language = new System.Globalization.CultureInfo("fa-IR");
+            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
+        }
+
+        private void txtFirstName_Leave(object sender, EventArgs e)
+        {
+            var language = new System.Globalization.CultureInfo("en-US");
+            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
+        }
+
+        #endregion TextBoxes Events
+
+        #region Methods
         private bool CheckInputs()
         {
             if (string.IsNullOrEmpty(txtFirstName.Text.Trim()))
@@ -275,7 +325,8 @@ namespace PhotographyAutomation.App.Forms.Customers
                 return false;
             }
 
-            if (txtTell.Text.Replace(" ", "").Length > 3 && txtTell.Text.Replace(" ", "").Length < 10)
+            if (txtTell.Text.Replace(" ", "").Length > 3 &&
+                txtTell.Text.Replace(" ", "").Length < 10)
             {
                 errorProvider1.Clear();
                 errorProvider1.SetError(txtTell, "تلفن ثابت مشتری به درستی وارد نشده است.");
@@ -283,7 +334,8 @@ namespace PhotographyAutomation.App.Forms.Customers
                 return false;
             }
 
-            if (txtMobile.Text.Replace(" ", "").Length < 10 || !txtMobile.Text.StartsWith("9"))
+            if (txtMobile.Text.Replace(" ", "").Length < 10 ||
+                !txtMobile.Text.StartsWith("9"))
             {
                 errorProvider1.Clear();
                 errorProvider1.SetError(txtMobile, "تلفن همراه مشتری به درستی وارد نشده است.");
@@ -335,28 +387,30 @@ namespace PhotographyAutomation.App.Forms.Customers
             }
             return true;
         }
-
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void GetCustomerInfo(int customerId)
         {
-            DialogResult = DialogResult.Cancel;
+            if (customerId > 0)
+            {
+                using (var db = new UnitOfWork())
+                {
+                    var customer = db.CustomerGenericRepository.GetById(customerId);
+                    if (customer != null)
+                    {
+                        txtFirstName.Text = customer.FirstName;
+                        txtLastName.Text = customer.LastName;
+                        txtMobile.Text = txtMobileSearch.Text = customer.Mobile;
+                        txtTell.Text = customer.Tell;
+                        cmbGender.SelectedIndex = customer.Gender == 0 ? 0 : 1;
+                        if (customer.BirthDate != null) txtBirthDate.Text = customer.BirthDate.Value.ToShamsiDate();
+                        txtNationalId.Text = customer.NationalId;
+                        cmbMarriedStatus.SelectedIndex = customer.IsMarried == 0 ? 0 : 1;
+                        txtAddress.Text = customer.Address;
+                        txtEmail.Text = customer.Email;
+                    }
+                }
+            }
         }
 
-        private void txtFirstName_Enter(object sender, EventArgs e)
-        {
-            var language = new System.Globalization.CultureInfo("fa-IR");
-            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
-        }
-
-        private void txtFirstName_Leave(object sender, EventArgs e)
-        {
-            var language = new System.Globalization.CultureInfo("en-US");
-            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
-        }
-
-        private void btnSearchCustomer_Click(object sender, EventArgs e)
-        {
-            FrmShowCustomer searchUser = new FrmShowCustomer();
-            searchUser.ShowDialog();
-        }
+        #endregion Methods
     }
 }

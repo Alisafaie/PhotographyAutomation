@@ -31,9 +31,9 @@
             this.components = new System.ComponentModel.Container();
             Telerik.WinControls.UI.RadListDataItem radListDataItem1 = new Telerik.WinControls.UI.RadListDataItem();
             Telerik.WinControls.UI.RadListDataItem radListDataItem2 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem8 = new Telerik.WinControls.UI.RadListDataItem();
             Telerik.WinControls.UI.RadListDataItem radListDataItem3 = new Telerik.WinControls.UI.RadListDataItem();
             Telerik.WinControls.UI.RadListDataItem radListDataItem4 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem5 = new Telerik.WinControls.UI.RadListDataItem();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.radThemeManager1 = new Telerik.WinControls.RadThemeManager();
             this.office2010SilverTheme1 = new Telerik.WinControls.Themes.Office2010SilverTheme();
@@ -205,11 +205,11 @@
             radListDataItem1.Text = "مجرد";
             radListDataItem2.Font = new System.Drawing.Font("Tahoma", 8.25F);
             radListDataItem2.Text = "متاهل";
-            radListDataItem3.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem3.Text = "نامشخص";
+            radListDataItem8.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem8.Text = "نامشخص";
             this.cmbMarriedStatus.Items.Add(radListDataItem1);
             this.cmbMarriedStatus.Items.Add(radListDataItem2);
-            this.cmbMarriedStatus.Items.Add(radListDataItem3);
+            this.cmbMarriedStatus.Items.Add(radListDataItem8);
             this.cmbMarriedStatus.Location = new System.Drawing.Point(33, 111);
             this.cmbMarriedStatus.Name = "cmbMarriedStatus";
             this.cmbMarriedStatus.Size = new System.Drawing.Size(107, 20);
@@ -222,12 +222,12 @@
             this.cmbGender.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.cmbGender.EnableAlternatingItemColor = true;
             this.cmbGender.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            radListDataItem3.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem3.Text = "خانم";
             radListDataItem4.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem4.Text = "خانم";
-            radListDataItem5.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem5.Text = "آقا";
+            radListDataItem4.Text = "آقا";
+            this.cmbGender.Items.Add(radListDataItem3);
             this.cmbGender.Items.Add(radListDataItem4);
-            this.cmbGender.Items.Add(radListDataItem5);
             this.cmbGender.Location = new System.Drawing.Point(310, 111);
             this.cmbGender.Name = "cmbGender";
             this.cmbGender.Size = new System.Drawing.Size(107, 20);
@@ -636,14 +636,15 @@
             this.txtMobileSearch.ButtonClear.Visible = true;
             this.txtMobileSearch.FocusHighlightColor = System.Drawing.SystemColors.Info;
             this.txtMobileSearch.FocusHighlightEnabled = true;
-            this.txtMobileSearch.Location = new System.Drawing.Point(309, 33);
-            this.txtMobileSearch.Mask = "000 000 0000";
+            this.txtMobileSearch.Location = new System.Drawing.Point(295, 33);
+            this.txtMobileSearch.Mask = "(9999) 000-0000";
             this.txtMobileSearch.Name = "txtMobileSearch";
             this.txtMobileSearch.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtMobileSearch.Size = new System.Drawing.Size(107, 20);
+            this.txtMobileSearch.Size = new System.Drawing.Size(121, 20);
             this.txtMobileSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.txtMobileSearch.TabIndex = 0;
-            this.txtMobileSearch.Text = "";
+            this.txtMobileSearch.Text = "09";
+            this.txtMobileSearch.TextChanged += new System.EventHandler(this.txtMobileSearch_TextChanged);
             // 
             // label1
             // 
