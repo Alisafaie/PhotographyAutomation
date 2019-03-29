@@ -258,7 +258,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                 //var orderList = db.BookingRepository.GetBookingBetweenDates(dtFrom, dtTo, customerInfo);
                 var ordersList = db.OrderRepository.GetOrdersBetweenDates(dtFrom, dtTo, customerInfo);
 
-                if (ordersList != null)
+                if (ordersList.Count > 0)
                 {
                     PopulateDataGridView(ordersList);
                 }

@@ -123,7 +123,7 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(110, 36);
             this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnCancel.TabIndex = 2;
+            this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "انصراف";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -135,7 +135,7 @@
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(110, 36);
             this.btnOk.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnOk.TabIndex = 2;
+            this.btnOk.TabIndex = 0;
             this.btnOk.Text = "ثبت اطلاعات مشتری";
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
@@ -440,7 +440,7 @@
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.PreventEnterBeep = true;
             this.txtAddress.Size = new System.Drawing.Size(384, 65);
-            this.txtAddress.TabIndex = 15;
+            this.txtAddress.TabIndex = 10;
             this.txtAddress.Enter += new System.EventHandler(this.txtFirstName_Enter);
             this.txtAddress.Leave += new System.EventHandler(this.txtFirstName_Leave);
             // 
@@ -621,7 +621,7 @@
             this.btnCheckNumber.Name = "btnCheckNumber";
             this.btnCheckNumber.Size = new System.Drawing.Size(47, 36);
             this.btnCheckNumber.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnCheckNumber.TabIndex = 2;
+            this.btnCheckNumber.TabIndex = 1;
             this.btnCheckNumber.Tooltip = "بررسی شماره همراه";
             this.btnCheckNumber.Click += new System.EventHandler(this.btnCheckNumber_Click);
             // 

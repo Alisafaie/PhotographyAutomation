@@ -15,6 +15,8 @@ namespace PhotographyAutomation.App.Forms.Booking
         public int CustomerId = 0;
         public int BookingId = 0;
 
+        public TimeSpan BookingTimeSpan;
+
         public FrmAddEditBooking()
         {
             InitializeComponent();
@@ -26,7 +28,7 @@ namespace PhotographyAutomation.App.Forms.Booking
             btnOk.Text = BookingId == 0 ? "ثبت نوبت" : "ویرایش نوبت";
 
             datePickerBookingDate.Value = PersianDate.Now;
-            timePickerBookingTime.Value = DateTime.Now;
+            //timePickerBookingTime.Value = DateTime.Now;
 
 
             txtPersonCount.Value = 1;
@@ -53,6 +55,7 @@ namespace PhotographyAutomation.App.Forms.Booking
 
                 PopulateComboBoxes();
 
+
                 dgvBookingHistory.AutoGenerateColumns = false;
 
                 var bookingHistory = db.BookingRepository.GetCustomerBookingHistory(CustomerId);
@@ -63,7 +66,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                     dgvBookingHistory.RowCount = bookingHistory.Count;
                     dgvBookingHistory.DataSource = bookingHistory;
 
-                    for (int i = 0; i < bookingHistory.Count; i++)
+                    for (var i = 0; i < bookingHistory.Count; i++)
                     {
                         dgvBookingHistory.Rows[i].Cells["clmId"].Value = bookingHistory[i].Id;
                         dgvBookingHistory.Rows[i].Cells["clmUserId"].Value = bookingHistory[i].CustomerId;
@@ -85,7 +88,8 @@ namespace PhotographyAutomation.App.Forms.Booking
                                 bookingHistory[i].CustomerFullName;
                         }
 
-                        dgvBookingHistory.Rows[i].Cells["clmDate"].Value = bookingHistory[i].Date.ToShamsiDate();
+                        dgvBookingHistory.Rows[i].Cells["clmDate"].Value =
+                            bookingHistory[i].Date.ToShamsiDate();
                         dgvBookingHistory.Rows[i].Cells["clmDate"].Style.Alignment =
                             DataGridViewContentAlignment.MiddleRight;
 
@@ -114,19 +118,37 @@ namespace PhotographyAutomation.App.Forms.Booking
 
                         dgvBookingHistory.Rows[i].Cells["clmPhotographyTypeId"].Value =
                             bookingHistory[i].PhotographyTypeId;
+
                         dgvBookingHistory.Rows[i].Cells["clmPhotographyTypeName"].Value =
                             bookingHistory[i].PhotographyTypeName;
-                        dgvBookingHistory.Rows[i].Cells["clmAtelierTypeId"].Value = bookingHistory[i].AtelierTypeId;
+
+                        dgvBookingHistory.Rows[i].Cells["clmAtelierTypeId"].Value =
+                            bookingHistory[i].AtelierTypeId;
+
                         dgvBookingHistory.Rows[i].Cells["clmAtelierTypeName"].Value =
-                            bookingHistory[i].AtelierTypeName;
-                        dgvBookingHistory.Rows[i].Cells["clmPersonCount"].Value = bookingHistory[i].PersonCount;
-                        dgvBookingHistory.Rows[i].Cells["clmPaymentIsOK"].Value = bookingHistory[i].PaymentIsOk;
-                        dgvBookingHistory.Rows[i].Cells["clmSubmitter"].Value = bookingHistory[i].Submitter;
-                        dgvBookingHistory.Rows[i].Cells["clmSubmitterName"].Value = bookingHistory[i].SubmitterName;
-                        dgvBookingHistory.Rows[i].Cells["clmStatusId"].Value = bookingHistory[i].StatusId;
-                        dgvBookingHistory.Rows[i].Cells["clmStatusName"].Value = bookingHistory[i].StatusName;
+                           bookingHistory[i].AtelierTypeName;
+
+                        dgvBookingHistory.Rows[i].Cells["clmPersonCount"].Value =
+                            bookingHistory[i].PersonCount;
+
+                        dgvBookingHistory.Rows[i].Cells["clmPaymentIsOK"].Value =
+                            bookingHistory[i].PaymentIsOk;
+
+                        dgvBookingHistory.Rows[i].Cells["clmSubmitter"].Value =
+                            bookingHistory[i].Submitter;
+
+                        dgvBookingHistory.Rows[i].Cells["clmSubmitterName"].Value =
+                            bookingHistory[i].SubmitterName;
+
+                        dgvBookingHistory.Rows[i].Cells["clmStatusId"].Value =
+                            bookingHistory[i].StatusId;
+
+                        dgvBookingHistory.Rows[i].Cells["clmStatusName"].Value =
+                            bookingHistory[i].StatusName;
+
                         dgvBookingHistory.Rows[i].Cells["clmCreatedDateTime"].Value =
                             bookingHistory[i].CreatedDateTime;
+
                         dgvBookingHistory.Rows[i].Cells["clmModifiedDateTime"].Value =
                             bookingHistory[i].ModifiedDateTime;
                     }
@@ -140,34 +162,32 @@ namespace PhotographyAutomation.App.Forms.Booking
                         switch (booking.PhotographerGender)
                         {
                             case 0:
-                                rbFemalePhotographer.Checked = true;
+                                cmbPhotographerGender.SelectedIndex = 0;
                                 break;
                             case 1:
-                                rbMalePhotographer.Checked = true;
+                                cmbPhotographerGender.SelectedIndex = 1;
                                 break;
                             case 2:
-                                rbNoMatterPhotographer.Checked = true;
+                                cmbPhotographerGender.SelectedIndex = 2;
                                 break;
                         }
 
 
                         datePickerBookingDate.Value = booking.Date.Date;
                         var dt = new DateTime(booking.Date.Year, booking.Date.Month, booking.Date.Day, booking.Time.Hours, booking.Time.Minutes, booking.Time.Seconds);
-                        timePickerBookingTime.Value = dt;
+                        txtBookingTime.Text = dt.ToShortDateString();
                         cmbPhotographyTypes.SelectedValue = booking.PhotographyTypeId;
                         cmbAtelierTypes.SelectedValue = booking.AtelierTypeId;
                         txtPersonCount.Value = booking.PersonCount;
                         txtBookingStatus.Text = booking.TblBookingStatus.StatusName;
                     }
                 }
+
+
+
             }
         }
 
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-        }
 
         private void PopulateComboBoxes()
         {
@@ -175,13 +195,44 @@ namespace PhotographyAutomation.App.Forms.Booking
             {
                 cmbPhotographyTypes.DataSource =
                     db.PhotographyTypesGenericRepository.Get().OrderBy(x => x.Code).ToList();
-                cmbPhotographyTypes.DisplayMember = "TypeName";
-                cmbPhotographyTypes.ValueMember = "Id";
+
+                if (cmbPhotographyTypes.DataSource != null)
+                {
+                    cmbPhotographyTypes.DisplayMember = "TypeName";
+                    cmbPhotographyTypes.ValueMember = "Id";
+                }
+                else
+                {
+                    RtlMessageBox.Show("اطلاعات انواع عکس ها از سیستم قابل دریافت نمی باشد.",
+                        "خطا در دریافت اطلاعات از سیستم", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    DialogResult = DialogResult.Cancel;
+                }
+
 
                 cmbAtelierTypes.DataSource = db.AtelierTypesGenericRepository.Get().OrderBy(x => x.Code).ToList();
-                cmbAtelierTypes.DisplayMember = "AtelierName";
-                cmbAtelierTypes.ValueMember = "Id";
+                if (cmbAtelierTypes.DataSource != null)
+                {
+                    cmbAtelierTypes.DisplayMember = "AtelierName";
+                    cmbAtelierTypes.ValueMember = "Id";
+                }
+                else
+                {
+                    RtlMessageBox.Show("اطلاعات انواع آتلیه ها از سیستم قابل دریافت نمی باشد.",
+                        "خطا در دریافت اطلاعات از سیستم", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    DialogResult = DialogResult.Cancel;
+                }
             }
+            //foreach (ComboItem item in cmbPhotographyTypes.Items)
+            //{
+            //    item.TextAlignment = StringAlignment.Near;
+            //    //item.TextLineAlignment = StringAlignment.Center;
+
+            //}
+            //foreach (ComboItem item in cmbAtelierTypes.Items)
+            //{
+            //    item.TextAlignment = StringAlignment.Near;
+            //    //item.TextLineAlignment = StringAlignment.Far;
+            //}
         }
 
         private void btnOk_Click(object sender, EventArgs e)
@@ -194,20 +245,19 @@ namespace PhotographyAutomation.App.Forms.Booking
                     AtelierTypeId = (int)cmbAtelierTypes.SelectedValue,
                     CreatedDate = DateTime.Now,
                     Date = datePickerBookingDate.Value,
-                    PersonCount = (int)txtPersonCount.Value,
+                    PersonCount = txtPersonCount.Value,
                     PhotographyTypeId = (int)cmbPhotographyTypes.SelectedValue,
                     StatusId = 6
                 };
 
-                if (timePickerBookingTime.Value != null)
-                    booking.Time = new TimeSpan(0, timePickerBookingTime.Value.Value.Hour,
-                        timePickerBookingTime.Value.Value.Minute, 0);
+                if (!string.IsNullOrEmpty(txtBookingTime.Text))
+                    booking.Time = BookingTimeSpan;
 
                 booking.PrepaymentIsOk = 0;
 
 
-                if (rbFemalePhotographer.Checked) booking.PhotographerGender = 0;
-                else if (rbMalePhotographer.Checked) booking.PhotographerGender = 1;
+                if (cmbPhotographerGender.SelectedIndex == 0) booking.PhotographerGender = 0;
+                else if (cmbPhotographerGender.SelectedIndex == 1) booking.PhotographerGender = 1;
                 else booking.PhotographerGender = 2;
 
 
@@ -271,29 +321,34 @@ namespace PhotographyAutomation.App.Forms.Booking
                 return false;
             }
 
-            if (timePickerBookingTime.Value != null &&
-                timePickerBookingTime.Value.Value.Hour < 9)
+            if (string.IsNullOrEmpty(txtBookingTime.Text.Trim()))
             {
                 errorProvider1.Clear();
-                errorProvider1.SetError(timePickerBookingTime, "زمان نوبت انتخابی قبل از شروع به کار مجموعه است.");
-                timePickerBookingTime.Focus();
+                errorProvider1.SetError(txtBookingTime, "زمان رزرو مشخص نشده است.");
                 return false;
             }
 
-            if (timePickerBookingTime.Value != null &&
-                timePickerBookingTime.Value.Value.Hour >= 20)
-                if (timePickerBookingTime.Value.Value.Hour >= 21)
+            if (!string.IsNullOrEmpty(txtBookingTime.Text.Trim()) &&
+                BookingTimeSpan.Hours < 9)
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtBookingTime, "زمان نوبت انتخابی قبل از شروع به کار مجموعه است.");
+                return false;
+            }
+
+            if (!string.IsNullOrEmpty(txtBookingTime.Text.Trim()) &&
+                BookingTimeSpan.Hours >= 20)
+                if (BookingTimeSpan.Hours >= 21)
                 {
                     errorProvider1.Clear();
-                    errorProvider1.SetError(timePickerBookingTime, "زمان نوبت انتخابی بعد از ساعت کاری مجموعه است.");
-                    timePickerBookingTime.Focus();
+                    errorProvider1.SetError(txtBookingTime, "زمان نوبت انتخابی بعد از ساعت کاری مجموعه است.");
                     return false;
                 }
-                else if (timePickerBookingTime.Value != null && timePickerBookingTime.Value.Value.Minute >= 30)
+                else if (!string.IsNullOrEmpty(txtBookingTime.Text.Trim()) &&
+                         BookingTimeSpan.Minutes >= 30)
                 {
                     errorProvider1.Clear();
-                    errorProvider1.SetError(timePickerBookingTime, "امکان ثبت زمان نوبت بعد از ساعت 20:30 امکان پذیر نمی باشد.");
-                    timePickerBookingTime.Focus();
+                    errorProvider1.SetError(txtBookingTime, "امکان ثبت زمان نوبت بعد از ساعت 20:30 امکان پذیر نمی باشد.");
                     return false;
                 }
 
@@ -306,31 +361,51 @@ namespace PhotographyAutomation.App.Forms.Booking
                 return false;
             }
 
-            if (rbFemalePhotographer.Checked == false && rbMalePhotographer.Checked == false && rbNoMatterPhotographer.Checked == false)
+            if (cmbPhotographerGender.SelectedIndex < 0)
             {
                 errorProvider1.Clear();
-                errorProvider1.SetError(panelPhotographerTypes, "نوع عکاس نوبت انتخاب نشده است.");
-                panelPhotographerTypes.Focus();
+                errorProvider1.SetError(cmbPhotographerGender, "نوع عکاس نوبت انتخاب نشده است.");
+                cmbPhotographerGender.DroppedDown = true;
                 return false;
             }
-
-
 
             return true;
         }
 
-        private void cmbPhotographyTypes_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
+
+        private void btnShowFrmSelectBookingTime_Click(object sender, EventArgs e)
         {
+            using (var f = new FrmSelectBookingTime())
+            {
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    txtBookingTime.Text = f.SelectedTimeString;
+                    BookingTimeSpan = f.SelectedTimeSpan;
+                }
+            }
+        }
+
+        private void btnCancelCurrentBooking_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+        }
+
+        private void cmbPhotographyTypes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            #region info
+            //نوع عکس
             //1	10	پرسنلی
             //2	20	کودک
             //3	30	خانوادگی
             //4	40	نامزدی
             //5	50	جشن
 
+            //نوع آتلیه
             //1	10	آتلیه پرسنلی
             //2	20	آتلیه هنری
             //3	30	آتلیه کودک
             //4	40	فضای باز سرو
+            #endregion
 
             switch (cmbPhotographyTypes.SelectedValue)
             {

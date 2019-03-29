@@ -73,6 +73,12 @@
     <Compile Include="Forms\Booking\FrmAddEditBooking.Designer.cs">
       <DependentUpon>FrmAddEditBooking.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Booking\FrmSelectBookingTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Booking\FrmSelectBookingTime.Designer.cs">
+      <DependentUpon>FrmSelectBookingTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Customers\FrmAddEditCustomerInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\Booking\FrmAddEditBooking.resx">
       <DependentUpon>FrmAddEditBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Booking\FrmSelectBookingTime.resx">
+      <DependentUpon>FrmSelectBookingTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Customers\FrmAddEditCustomerInfo.resx">
       <DependentUpon>FrmAddEditCustomerInfo.cs</DependentUpon>
@@ -1332,6 +1341,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\iconfinder_Search_text_131785.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Clock_728924.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_clock_2411792.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_freebies1_expanded-11_2916074.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Clock_728924 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_freebies1_expanded-11_2916074 %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

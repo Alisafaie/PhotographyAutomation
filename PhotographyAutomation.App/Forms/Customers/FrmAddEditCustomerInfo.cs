@@ -31,6 +31,7 @@ namespace PhotographyAutomation.App.Forms.Customers
                 return;
             }
             btnOk.Enabled = false;
+            this.AcceptButton = btnCheckNumber;
         }
 
         private void GetCustomerInfo(int customerId)
@@ -127,6 +128,7 @@ namespace PhotographyAutomation.App.Forms.Customers
                     btnOk.Enabled = true;
 
                     txtFirstName.Focus();
+                    this.AcceptButton = btnOk;
                 }
             }
         }
