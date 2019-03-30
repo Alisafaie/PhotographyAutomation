@@ -57,12 +57,12 @@
             this.ثبتنوبتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ثبتفاکتورToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtTell = new Telerik.WinControls.UI.RadTextBox();
+            this.btnSearch = new DevComponents.DotNetBar.ButtonX();
+            this.txtFirstName = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtLastName = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtTell = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtLastName = new Telerik.WinControls.UI.RadTextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnSearch = new Telerik.WinControls.UI.RadButton();
-            this.txtFirstName = new Telerik.WinControls.UI.RadTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,10 +79,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
             this.menuDgvUsers.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTell)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtLastName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFirstName)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -164,7 +160,7 @@
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvCustomers.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvCustomers.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -289,26 +285,27 @@
             this.ثبتنوبتToolStripMenuItem,
             this.ثبتفاکتورToolStripMenuItem});
             this.menuDgvUsers.Name = "menuDgvUsers";
-            this.menuDgvUsers.Size = new System.Drawing.Size(148, 70);
+            this.menuDgvUsers.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.menuDgvUsers.Size = new System.Drawing.Size(181, 92);
             // 
             // ویرایشاطلاعاتToolStripMenuItem
             // 
             this.ویرایشاطلاعاتToolStripMenuItem.Name = "ویرایشاطلاعاتToolStripMenuItem";
-            this.ویرایشاطلاعاتToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.ویرایشاطلاعاتToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ویرایشاطلاعاتToolStripMenuItem.Text = "ویرایش اطلاعات";
             this.ویرایشاطلاعاتToolStripMenuItem.Click += new System.EventHandler(this.ویرایشاطلاعاتToolStripMenuItem_Click);
             // 
             // ثبتنوبتToolStripMenuItem
             // 
             this.ثبتنوبتToolStripMenuItem.Name = "ثبتنوبتToolStripMenuItem";
-            this.ثبتنوبتToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.ثبتنوبتToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ثبتنوبتToolStripMenuItem.Text = "ثبت نوبت";
             this.ثبتنوبتToolStripMenuItem.Click += new System.EventHandler(this.ثبتنوبتToolStripMenuItem_Click);
             // 
             // ثبتفاکتورToolStripMenuItem
             // 
             this.ثبتفاکتورToolStripMenuItem.Name = "ثبتفاکتورToolStripMenuItem";
-            this.ثبتفاکتورToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.ثبتفاکتورToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ثبتفاکتورToolStripMenuItem.Text = "ثبت فاکتور";
             this.ثبتفاکتورToolStripMenuItem.Click += new System.EventHandler(this.ثبتفاکتورToolStripMenuItem_Click);
             // 
@@ -316,12 +313,12 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.txtTell);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtLastName);
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.btnSearch);
             this.groupBox1.Controls.Add(this.txtFirstName);
+            this.groupBox1.Controls.Add(this.txtLastName);
+            this.groupBox1.Controls.Add(this.txtTell);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
@@ -330,15 +327,69 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "جستجوی مشتری";
             // 
+            // btnSearch
+            // 
+            this.btnSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSearch.Location = new System.Drawing.Point(6, 18);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(110, 36);
+            this.btnSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSearch.TabIndex = 3;
+            this.btnSearch.Text = "جستجو";
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // txtFirstName
+            // 
+            this.txtFirstName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.txtFirstName.Border.Class = "TextBoxBorder";
+            this.txtFirstName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtFirstName.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.txtFirstName.Location = new System.Drawing.Point(983, 26);
+            this.txtFirstName.Name = "txtFirstName";
+            this.txtFirstName.PreventEnterBeep = true;
+            this.txtFirstName.Size = new System.Drawing.Size(100, 21);
+            this.txtFirstName.TabIndex = 0;
+            this.txtFirstName.Enter += new System.EventHandler(this.txtFirstName_Enter);
+            this.txtFirstName.Leave += new System.EventHandler(this.txtFirstName_Leave);
+            // 
+            // txtLastName
+            // 
+            this.txtLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.txtLastName.Border.Class = "TextBoxBorder";
+            this.txtLastName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtLastName.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.txtLastName.Location = new System.Drawing.Point(784, 26);
+            this.txtLastName.Name = "txtLastName";
+            this.txtLastName.PreventEnterBeep = true;
+            this.txtLastName.Size = new System.Drawing.Size(100, 21);
+            this.txtLastName.TabIndex = 1;
+            this.txtLastName.Enter += new System.EventHandler(this.txtFirstName_Enter);
+            this.txtLastName.Leave += new System.EventHandler(this.txtFirstName_Leave);
+            // 
             // txtTell
             // 
-            this.txtTell.Location = new System.Drawing.Point(441, 28);
-            this.txtTell.MaxLength = 11;
+            this.txtTell.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.txtTell.Border.Class = "TextBoxBorder";
+            this.txtTell.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTell.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.txtTell.Location = new System.Drawing.Point(551, 26);
             this.txtTell.Name = "txtTell";
-            this.txtTell.Size = new System.Drawing.Size(100, 20);
+            this.txtTell.PreventEnterBeep = true;
+            this.txtTell.Size = new System.Drawing.Size(100, 21);
             this.txtTell.TabIndex = 2;
-            this.txtTell.ThemeName = "Office2010Silver";
+            this.txtTell.Enter += new System.EventHandler(this.txtFirstName_Enter);
             this.txtTell.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTell_KeyPress);
+            this.txtTell.Leave += new System.EventHandler(this.txtFirstName_Leave);
             // 
             // label3
             // 
@@ -350,19 +401,6 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "تلفن (ثابت یا همراه)";
             // 
-            // txtLastName
-            // 
-            this.txtLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLastName.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtLastName.Location = new System.Drawing.Point(784, 28);
-            this.txtLastName.MaxLength = 200;
-            this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(100, 19);
-            this.txtLastName.TabIndex = 1;
-            this.txtLastName.ThemeName = "Office2010Silver";
-            this.txtLastName.Enter += new System.EventHandler(this.txtFirstName_Enter);
-            this.txtLastName.Leave += new System.EventHandler(this.txtFirstName_Leave);
-            // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -372,30 +410,6 @@
             this.label2.Size = new System.Drawing.Size(65, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "نام خانوادگی";
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.btnSearch.Location = new System.Drawing.Point(6, 20);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(110, 36);
-            this.btnSearch.TabIndex = 3;
-            this.btnSearch.Text = "جستجو";
-            this.btnSearch.ThemeName = "Office2010Silver";
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // txtFirstName
-            // 
-            this.txtFirstName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFirstName.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtFirstName.Location = new System.Drawing.Point(983, 28);
-            this.txtFirstName.MaxLength = 200;
-            this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(100, 19);
-            this.txtFirstName.TabIndex = 0;
-            this.txtFirstName.ThemeName = "Office2010Silver";
-            this.txtFirstName.Enter += new System.EventHandler(this.txtFirstName_Enter);
-            this.txtFirstName.Leave += new System.EventHandler(this.txtFirstName_Leave);
             // 
             // label1
             // 
@@ -415,7 +429,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1149, 24);
-            this.menuStrip1.TabIndex = 4;
+            this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
@@ -497,6 +511,7 @@
             this.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmShowCustomer";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -512,10 +527,6 @@
             this.menuDgvUsers.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTell)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtLastName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFirstName)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -532,18 +543,14 @@
         private DevComponents.DotNetBar.PanelEx panelEx1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private Telerik.WinControls.UI.RadTextBox txtFirstName;
         private System.Windows.Forms.Label label1;
-        private Telerik.WinControls.UI.RadButton btnSearch;
         private System.Windows.Forms.Label label3;
-        private Telerik.WinControls.UI.RadTextBox txtLastName;
         private System.Windows.Forms.Label label2;
         private DevComponents.DotNetBar.Controls.DataGridViewX dgvCustomers;
         private System.Windows.Forms.ContextMenuStrip menuDgvUsers;
         private System.Windows.Forms.ToolStripMenuItem ثبتنوبتToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ویرایشاطلاعاتToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ثبتفاکتورToolStripMenuItem;
-        private Telerik.WinControls.UI.RadTextBox txtTell;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
@@ -564,5 +571,9 @@
         private System.Windows.Forms.ToolStripMenuItem ویرایشاطلاعاتToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem ثبتنوبتToolStripMenuItem1;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtFirstName;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtLastName;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtTell;
+        private DevComponents.DotNetBar.ButtonX btnSearch;
     }
 }

@@ -178,6 +178,15 @@ namespace PhotographyAutomation.App.Forms.Customers
 
             using (var db = new UnitOfWork())
             {
+                customer.Mobile = customer.Mobile
+                    .Replace("(", "")
+                    .Replace(")", "")
+                    .Replace("-", "")
+                    .Replace("_", "")
+                    .Replace(" ", "")
+                    .Substring(1,10)
+                    .Trim();
+
                 var checkCustomerMobileNumber = db.CustomerRepository.GetCustomerByMobile(customer.Mobile);
 
                 if (CustomerId == 0 && IsEditMode == false)
@@ -204,7 +213,8 @@ namespace PhotographyAutomation.App.Forms.Customers
                         }
                         else
                         {
-                            RtlMessageBox.Show("این شماره موبایل قبلا برای کاربر دیگری ثبت شده است.",
+                            RtlMessageBox.Show(
+                                "این شماره موبایل قبلا برای کاربر دیگری ثبت شده است.",
                                 "خطا در ورود اطلاعات",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                             txtMobile.Focus();
@@ -333,9 +343,16 @@ namespace PhotographyAutomation.App.Forms.Customers
                 txtTell.Focus();
                 return false;
             }
+            string chustomerNumberString = txtMobileSearch.Text
+                .Replace("(", "")
+                .Replace(")", "")
+                .Replace("-", "")
+                .Replace("_", "")
+                .Replace(" ", "")
+                .Trim();
 
-            if (txtMobile.Text.Replace(" ", "").Length < 10 ||
-                !txtMobile.Text.StartsWith("9"))
+            if (chustomerNumberString.Length != 11 ||
+                !chustomerNumberString.StartsWith("09"))
             {
                 errorProvider1.Clear();
                 errorProvider1.SetError(txtMobile, "تلفن همراه مشتری به درستی وارد نشده است.");
@@ -398,7 +415,7 @@ namespace PhotographyAutomation.App.Forms.Customers
                     {
                         txtFirstName.Text = customer.FirstName;
                         txtLastName.Text = customer.LastName;
-                        txtMobile.Text = txtMobileSearch.Text = customer.Mobile;
+                        txtMobile.Text = txtMobileSearch.Text = @"0" + customer.Mobile;
                         txtTell.Text = customer.Tell;
                         cmbGender.SelectedIndex = customer.Gender == 0 ? 0 : 1;
                         if (customer.BirthDate != null) txtBirthDate.Text = customer.BirthDate.Value.ToShamsiDate();

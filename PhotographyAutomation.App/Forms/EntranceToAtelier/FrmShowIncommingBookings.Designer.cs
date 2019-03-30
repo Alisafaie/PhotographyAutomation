@@ -352,7 +352,7 @@
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvOrders.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvOrders.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -504,25 +504,28 @@
             this.ارسالعکسToolStripMenuItem});
             this.contextMenuStripDgvBookings.Name = "contextMenuStripDgvBookings";
             this.contextMenuStripDgvBookings.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStripDgvBookings.Size = new System.Drawing.Size(197, 70);
+            this.contextMenuStripDgvBookings.Size = new System.Drawing.Size(197, 92);
             // 
             // ویرایشاطلاعاتمشتریToolStripMenuItem
             // 
             this.ویرایشاطلاعاتمشتریToolStripMenuItem.Name = "ویرایشاطلاعاتمشتریToolStripMenuItem";
             this.ویرایشاطلاعاتمشتریToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.ویرایشاطلاعاتمشتریToolStripMenuItem.Text = "ویرایش اطلاعات مشتری";
+            this.ویرایشاطلاعاتمشتریToolStripMenuItem.Click += new System.EventHandler(this.ویرایشاطلاعاتمشتریToolStripMenuItem_Click);
             // 
             // ویرایشاطلاعاتنوبتToolStripMenuItem
             // 
             this.ویرایشاطلاعاتنوبتToolStripMenuItem.Name = "ویرایشاطلاعاتنوبتToolStripMenuItem";
             this.ویرایشاطلاعاتنوبتToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.ویرایشاطلاعاتنوبتToolStripMenuItem.Text = "ویرایش اطلاعات رزرو";
+            this.ویرایشاطلاعاتنوبتToolStripMenuItem.Click += new System.EventHandler(this.ویرایشاطلاعاتنوبتToolStripMenuItem_Click);
             // 
             // ارسالعکسToolStripMenuItem
             // 
             this.ارسالعکسToolStripMenuItem.Name = "ارسالعکسToolStripMenuItem";
             this.ارسالعکسToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.ارسالعکسToolStripMenuItem.Text = "ارسال عکس";
+            this.ارسالعکسToolStripMenuItem.Click += new System.EventHandler(this.ارسالعکسToolStripMenuItem_Click);
             // 
             // styleManager1
             // 

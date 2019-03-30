@@ -38,6 +38,7 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmbBookinsStatus1 = new System.Windows.Forms.ComboBox();
             this.chkSpecialBookings = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.chkEnableDatePickerBookingDate = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.rbCurrentmonth = new DevComponents.DotNetBar.Controls.CheckBoxX();
@@ -90,7 +91,6 @@
             this._ویرایش_اطلاعات_رزروToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ورودبهآتلیهToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.لغورزروToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmbBookinsStatus1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panelEx2.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -153,6 +153,17 @@
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "مشاهده رزرو ها بر اساس";
+            // 
+            // cmbBookinsStatus1
+            // 
+            this.cmbBookinsStatus1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBookinsStatus1.Enabled = false;
+            this.cmbBookinsStatus1.FormattingEnabled = true;
+            this.cmbBookinsStatus1.Location = new System.Drawing.Point(464, 38);
+            this.cmbBookinsStatus1.Name = "cmbBookinsStatus1";
+            this.cmbBookinsStatus1.Size = new System.Drawing.Size(125, 21);
+            this.cmbBookinsStatus1.TabIndex = 24;
+            this.cmbBookinsStatus1.SelectedIndexChanged += new System.EventHandler(this.cmbBookinsStatus_SelectedIndexChanged);
             // 
             // chkSpecialBookings
             // 
@@ -738,17 +749,6 @@
             this.لغورزروToolStripMenuItem1.Size = new System.Drawing.Size(170, 22);
             this.لغورزروToolStripMenuItem1.Text = "لغو رزرو";
             this.لغورزروToolStripMenuItem1.Click += new System.EventHandler(this.لغورزروToolStripMenuItem1_Click);
-            // 
-            // cmbBookinsStatus1
-            // 
-            this.cmbBookinsStatus1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbBookinsStatus1.Enabled = false;
-            this.cmbBookinsStatus1.FormattingEnabled = true;
-            this.cmbBookinsStatus1.Location = new System.Drawing.Point(464, 38);
-            this.cmbBookinsStatus1.Name = "cmbBookinsStatus1";
-            this.cmbBookinsStatus1.Size = new System.Drawing.Size(125, 21);
-            this.cmbBookinsStatus1.TabIndex = 24;
-            this.cmbBookinsStatus1.SelectedIndexChanged += new System.EventHandler(this.cmbBookinsStatus_SelectedIndexChanged);
             // 
             // FrmShowBookings
             // 

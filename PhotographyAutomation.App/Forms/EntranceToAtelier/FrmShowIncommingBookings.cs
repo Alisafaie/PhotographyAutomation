@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using PhotographyAutomation.App.Forms.Customers;
 
 namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 {
@@ -397,5 +398,38 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
         }
 
         #endregion
+
+        private void ویرایشاطلاعاتمشتریToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvOrders.SelectedRows.Count != 1) return;
+            int customerId = Convert.ToInt32(dgvOrders.SelectedRows[0].Cells["clmCustomerId"].Value);
+            using (var frmAddEditCustomerInfo = new FrmAddEditCustomerInfo())
+            {
+                frmAddEditCustomerInfo.CustomerId = customerId;
+                frmAddEditCustomerInfo.JustSaveCustomerInfo = true;
+                frmAddEditCustomerInfo.IsEditMode = true;
+
+                if (frmAddEditCustomerInfo.ShowDialog() == DialogResult.OK)
+                {
+                    if (dgvOrders.CurrentRow != null)
+                    {
+                        int rowIndex = dgvOrders.CurrentRow.Index;
+
+                        btnShowBookings_Click(null, null);
+                        dgvOrders.Rows[rowIndex].Selected = true;
+                    }
+                }
+            }
+        }
+
+        private void ویرایشاطلاعاتنوبتToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ارسالعکسToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

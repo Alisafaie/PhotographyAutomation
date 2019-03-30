@@ -113,7 +113,7 @@ namespace PhotographyAutomation.App.Forms.Customers
                 int moreInfoCellIndex = dgvCustomers.CurrentRow.Cells["MoreInfo"].ColumnIndex;
                 if (dgvCustomers.CurrentCell.ColumnIndex.Equals(moreInfoCellIndex) && e.RowIndex != -1)
                 {
-                    if (dgvCustomers.CurrentCell != null && dgvCustomers.CurrentCell.Value != null)
+                    if (dgvCustomers.CurrentCell?.Value != null)
                     {
                         var customerId = (int)dgvCustomers.CurrentRow.Cells["Id"].Value;
                         if (FromFrmShowBookings)
@@ -151,7 +151,8 @@ namespace PhotographyAutomation.App.Forms.Customers
         {
             var menu = new ContextMenuStrip();
             menu.Items.Add("لطفا اعداد را به صورت کپی پیست وارد نکنید.");
-            txtTell.TextBoxElement.TextBoxItem.HostedControl.ContextMenuStrip = menu;
+            //txtTell.TextBoxElement.TextBoxItem.HostedControl.ContextMenuStrip = menu;
+            txtTell.ContextMenuStrip = menu;
         }
 
         private void dgvUsers_MouseUp(object sender, MouseEventArgs e)
@@ -197,7 +198,7 @@ namespace PhotographyAutomation.App.Forms.Customers
                 {
                     frmAddEditBooking.CustomerId = customerId;
                     frmAddEditBooking.ShowDialog();
-                };
+                }
             }
             else
             {
