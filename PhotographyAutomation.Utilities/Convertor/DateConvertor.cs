@@ -20,7 +20,7 @@ namespace PhotographyAutomation.Utilities.Convertor
         public static string ToShamsiDate(this DateTime value)
         {
             var pc = new PersianCalendar();
-            var sb=new StringBuilder();
+            var sb = new StringBuilder();
             sb.Append(pc.GetYear(value).ToString("0000"));
             sb.Append("/");
             sb.Append(pc.GetMonth(value).ToString("00"));
@@ -40,10 +40,21 @@ namespace PhotographyAutomation.Utilities.Convertor
             sb.Append(pc.GetMonth(value).ToString("00"));
             sb.Append("/");
             sb.Append(pc.GetYear(value).ToString("0000"));
-            
+
             var returnValue = sb.ToString();
             sb.Clear();
             return returnValue;
+        }
+
+        public static string ToShortTimeString(this TimeSpan value)
+        {
+            var sb = new StringBuilder();
+            sb.Append(value.Hours.ToString("00"));
+            sb.Append(":");
+            sb.Append(value.Minutes.ToString("00"));
+            sb.Append(" ");
+            sb.Append(value.Hours >= 12 ? "PM" : "AM");
+            return sb.ToString();
         }
     }
 }

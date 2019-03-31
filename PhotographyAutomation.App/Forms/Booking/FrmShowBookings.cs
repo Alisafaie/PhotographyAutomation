@@ -5,7 +5,6 @@ using PhotographyAutomation.DateLayer.Models;
 using PhotographyAutomation.Utilities;
 using PhotographyAutomation.Utilities.Convertor;
 using PhotographyAutomation.Utilities.ExtentionMethods;
-using PhotographyAutomation.ViewModels.Booking;
 using PhotographyAutomation.ViewModels.User;
 using System;
 using System.Collections.Generic;
@@ -21,7 +20,7 @@ namespace PhotographyAutomation.App.Forms.Booking
 
         private int _statusCode = 10;
         public static int CustomerId = 0;
-        public int OrderId = 0;
+        public int OrderId;
 
         #endregion
 

@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using PhotographyAutomation.App.Forms.Booking;
 using PhotographyAutomation.App.Forms.Customers;
 
 namespace PhotographyAutomation.App.Forms.EntranceToAtelier
@@ -311,6 +312,8 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
             {
                 dgvOrders.Rows[i].Cells["clmId"].Value = ordersList[i].Id;
                 dgvOrders.Rows[i].Cells["clmCustomerId"].Value = ordersList[i].CustomerId;
+                dgvOrders.Rows[i].Cells["clmBookingId"].Value = ordersList[i].BookingId;
+
                 switch (ordersList[i].CustomerGender)
                 {
                     case 0:
@@ -424,7 +427,26 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 
         private void ویرایشاطلاعاتنوبتToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (dgvOrders.SelectedRows.Count == 1)
+            {
+                int bookingId = Convert.ToInt32(dgvOrders.SelectedRows[0].Cells["clmBookingId"].Value);
+                int customerId = Convert.ToInt32(dgvOrders.SelectedRows[0].Cells["clmCustomerId"].Value);
+                var frmAddEditBooking = new FrmAddEditBooking()
+                {
+                    BookingId = bookingId,
+                    CustomerId = customerId
+                };
+                if (frmAddEditBooking.ShowDialog() == DialogResult.OK)
+                {
+                    if (dgvOrders.CurrentRow != null)
+                    {
+                        int rowIndex = dgvOrders.CurrentRow.Index;
 
+                        btnShowBookings_Click(null, null);
+                        dgvOrders.Rows[rowIndex].Selected = true;
+                    }
+                }
+            }
         }
 
         private void ارسالعکسToolStripMenuItem_Click(object sender, EventArgs e)
