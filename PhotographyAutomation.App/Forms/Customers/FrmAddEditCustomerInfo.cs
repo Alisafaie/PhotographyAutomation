@@ -133,7 +133,7 @@ namespace PhotographyAutomation.App.Forms.Customers
                     //groupBoxSearchCustomer.Enabled = false;
                     groupBoxCustomerInfo.Enabled = true;
 
-                    txtFirstName.Focus();
+                    btnOk.Focus();
                     AcceptButton = btnOk;
                 }
             }

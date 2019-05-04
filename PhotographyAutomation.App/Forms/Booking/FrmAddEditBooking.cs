@@ -15,7 +15,9 @@ namespace PhotographyAutomation.App.Forms.Booking
         public int CustomerId = 0;
         public int BookingId = 0;
 
-        public TimeSpan BookingTimeSpan;
+        private int _bookingHour;
+        private int _bookingMinute;
+
 
         public FrmAddEditBooking()
         {
@@ -114,7 +116,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                         DataGridViewContentAlignment.MiddleRight;
 
                     dgvBookingHistory.Rows[i].Cells["clmTime"].Value =
-                        bookingHistory[i].Time.Hours.ToString("##") + ":" +
+                        bookingHistory[i].Time.Hours.ToString("00") + ":" +
                         bookingHistory[i].Time.Minutes.ToString("00");
 
                     dgvBookingHistory.Rows[i].Cells["clmTime"].Style.Alignment =
@@ -257,7 +259,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                 };
 
                 if (!string.IsNullOrEmpty(txtBookingTime.Text))
-                    booking.Time = BookingTimeSpan;
+                    booking.Time = new TimeSpan(GetHour(txtBookingTime.Text), GetMinute(txtBookingTime.Text), 0);
 
                 booking.PrepaymentIsOk = 0;
 
@@ -334,29 +336,36 @@ namespace PhotographyAutomation.App.Forms.Booking
                 return false;
             }
 
-            if (!string.IsNullOrEmpty(txtBookingTime.Text.Trim()) &&
-                BookingTimeSpan.Hours < 9)
+            if (!string.IsNullOrEmpty(txtBookingTime.Text.Trim()))
             {
-                errorProvider1.Clear();
-                errorProvider1.SetError(txtBookingTime, "زمان نوبت انتخابی قبل از شروع به کار مجموعه است.");
-                return false;
+                var hour = GetHour(txtBookingTime.Text);
+                var minute = GetMinute(txtBookingTime.Text);
+
+                if (hour < 9)
+                {
+                    errorProvider1.Clear();
+                    errorProvider1.SetError(txtBookingTime, "زمان نوبت انتخابی قبل از شروع به کار مجموعه است.");
+                    return false;
+                }
+
+                if (hour >= 20)
+                {
+                    if (hour >= 21)
+                    {
+                        errorProvider1.Clear();
+                        errorProvider1.SetError(txtBookingTime, "زمان نوبت انتخابی بعد از ساعت کاری مجموعه است.");
+                        return false;
+                    }
+                    else if (minute >= 30)
+                    {
+                        errorProvider1.Clear();
+                        errorProvider1.SetError(txtBookingTime, "امکان ثبت زمان نوبت بعد از ساعت 20:30 امکان پذیر نمی باشد.");
+                        return false;
+                    }
+                }
             }
 
-            if (!string.IsNullOrEmpty(txtBookingTime.Text.Trim()) &&
-                BookingTimeSpan.Hours >= 20)
-                if (BookingTimeSpan.Hours >= 21)
-                {
-                    errorProvider1.Clear();
-                    errorProvider1.SetError(txtBookingTime, "زمان نوبت انتخابی بعد از ساعت کاری مجموعه است.");
-                    return false;
-                }
-                else if (!string.IsNullOrEmpty(txtBookingTime.Text.Trim()) &&
-                         BookingTimeSpan.Minutes >= 30)
-                {
-                    errorProvider1.Clear();
-                    errorProvider1.SetError(txtBookingTime, "امکان ثبت زمان نوبت بعد از ساعت 20:30 امکان پذیر نمی باشد.");
-                    return false;
-                }
+
 
 
             if (txtPersonCount.Value == 0)
@@ -378,6 +387,17 @@ namespace PhotographyAutomation.App.Forms.Booking
             return true;
         }
 
+        private int GetHour(string bookingTime)
+        {
+            var returnValue = int.Parse(bookingTime.Substring(0, 2));
+            return returnValue;
+        }
+
+        private int GetMinute(string bookingTime)
+        {
+            var returnValue = int.Parse(bookingTime.Substring(3, 2));
+            return returnValue;
+        }
 
         private void btnShowFrmSelectBookingTime_Click(object sender, EventArgs e)
         {
@@ -386,7 +406,8 @@ namespace PhotographyAutomation.App.Forms.Booking
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     txtBookingTime.Text = f.SelectedTimeString;
-                    BookingTimeSpan = f.SelectedTimeSpan;
+                    _bookingHour = f.SelectedTimeSpan.Hours;
+                    _bookingMinute = f.SelectedTimeSpan.Minutes;
                 }
             }
         }
@@ -431,6 +452,91 @@ namespace PhotographyAutomation.App.Forms.Booking
                     cmbAtelierTypes.SelectedValue = 2;
                     break;
             }
+        }
+
+
+        //پیاده سازی نمایش کانتکست منو روی قسمت هایی که مقدار دارند و انتخاب آن ردیف
+        private void dgvBookingHistory_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (dgvBookingHistory.Rows.Count > 0)
+                {
+                    int currentMouseOverRow = dgvBookingHistory.HitTest(e.X, e.Y).RowIndex;
+                    if (currentMouseOverRow > -1)
+                    {
+                        dgvBookingHistory.Rows[currentMouseOverRow].Selected = true;
+                        //DataGridViewRow row = dgvBookings.Rows[currentMouseOverRow];
+                    }
+                    else
+                    {
+                        contextMenu_dgvBookingHistory.Visible = false;
+                    }
+                }
+                else
+                {
+                    contextMenu_dgvBookingHistory.Visible = false;
+                }
+            }
+        }
+
+        private void ویرایشنوبتToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvBookingHistory.SelectedRows.Count != 1) return;
+            var oldBookingId = Convert.ToInt32(dgvBookingHistory.SelectedRows[0].Cells["clmId"].Value);
+            var oldBookingStatusId = Convert.ToInt32(dgvBookingHistory.SelectedRows[0].Cells["clmStatusId"].Value);
+
+
+
+
+            using (var db = new UnitOfWork())
+            {
+                var bookingStatus = db.BookingStatusGenericRepository.GetById(oldBookingStatusId);
+
+                if (bookingStatus.Code == 40)
+                {
+                    RtlMessageBox.Show(
+                        "رزروی که وضعیت آن 'ورود به آتلیه' است ، قابل ویرایش نمی باشد.",
+                        "عدم امکان تغییر وضعیت رزرو",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                    return;
+                }
+
+                var booking = db.BookingGenericRepository.GetById(oldBookingId);
+                if (booking != null)
+                {
+                    BookingId = booking.Id;
+                    switch (booking.PhotographerGender)
+                    {
+                        case 0:
+                            cmbPhotographerGender.SelectedIndex = 0;
+                            break;
+                        case 1:
+                            cmbPhotographerGender.SelectedIndex = 1;
+                            break;
+                        case 2:
+                            cmbPhotographerGender.SelectedIndex = 2;
+                            break;
+                    }
+
+
+                    datePickerBookingDate.Value = booking.Date.Date;
+                    //var dt = new DateTime(booking.Date.Year, booking.Date.Month, booking.Date.Day, booking.Time.Hours, booking.Time.Minutes, booking.Time.Seconds);
+                    txtBookingTime.Text = booking.Time.ToShortTimeString();
+                    cmbPhotographyTypes.SelectedValue = booking.PhotographyTypeId;
+                    cmbAtelierTypes.SelectedValue = booking.AtelierTypeId;
+                    txtPersonCount.Value = booking.PersonCount;
+                    txtBookingStatus.Text = booking.TblBookingStatus.StatusName;
+                }
+            }
+        }
+
+        private void dgvBookingHistory_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvBookingHistory.SelectedRows.Count != 1) return;
+            if (dgvBookingHistory.SelectedRows[0].Cells["clmId"].Value == null) return;
+
+            ویرایشنوبتToolStripMenuItem_Click(null, null);
         }
     }
 }
