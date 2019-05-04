@@ -125,7 +125,7 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.TblCustomerDocuments' 
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="OrderCode" Type="int" Nullable="false" />
+          <Property Name="OrderCode" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="OrderStatusId" Type="int" Nullable="false" />
           <Property Name="BookingId" Type="int" Nullable="false" />
           <Property Name="PhotographyTypeId" Type="int" Nullable="false" />
@@ -1283,7 +1283,7 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderCode" Type="Int32" Nullable="false" />
+          <Property Name="OrderCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="OrderStatusId" Type="Int32" Nullable="false" />
           <Property Name="BookingId" Type="Int32" Nullable="false" />
           <Property Name="PhotographyTypeId" Type="Int32" Nullable="false" />

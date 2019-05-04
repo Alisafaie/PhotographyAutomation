@@ -155,6 +155,9 @@ namespace PhotographyAutomation.App.Forms.Booking
                 rbCurrentmonth.CheckState = CheckState.Unchecked;
                 lblToDate.Visible = true;
                 datePickerBookingDateTo.Visible = true;
+                var pd = datePickerBookingDateFrom.Value;
+                pd = pd.AddDays(10);
+                datePickerBookingDateTo.Value = pd;
             }
             else
             {
@@ -325,7 +328,9 @@ namespace PhotographyAutomation.App.Forms.Booking
             if (dgvBookings.SelectedRows.Count == 1 &&
                 int.TryParse(dgvBookings.SelectedRows[0].Cells["clmId"].Value.ToString(), out var bookingId))
             {
-                var dialogResult = RtlMessageBox.Show("آیا وضعیت رزرو مشتری به 'ورود به آتلیه' تغییر یابد؟",
+                var dialogResult = RtlMessageBox.Show(
+                    "آیا وضعیت رزرو مشتری به 'ورود به آتلیه' تغییر یابد؟" + "\n" +
+                    "پس از تغییر وضعیت رزرو شناسه سفارش ایجاد می گردد و وضعیت آن قابل تغییر نمی باشد.",
                     "تغییر وضعیت رزرو", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (dialogResult != DialogResult.Yes) return;
@@ -375,10 +380,12 @@ namespace PhotographyAutomation.App.Forms.Booking
                     if (booking != null && bookingStatusToOrderId != 0)
                     {
                         booking.StatusId = bookingStatusToOrderId;
+                        CustomerId = booking.CustomerId;
                         var order = new TblOrder
                         {
                             CustomerId = booking.CustomerId,
                             BookingId = bookingId,
+                            OrderCode = OrderUtilities.GenerateOrderCode(DateTime.Now, booking.CustomerId, bookingId),
                             CreatedDateTime = DateTime.Now,
                             IsActive = true,
                             OrderStatusId = orderStatusId,
@@ -428,8 +435,10 @@ namespace PhotographyAutomation.App.Forms.Booking
             }
             else
             {
-                RtlMessageBox.Show("هیچ رزروی برای تبدیل به سفارش انتخاب نشده است.",
-                    "خطا - عدم  انتخاب رزرو برای تبدیل به سفارش", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                RtlMessageBox.Show(
+                    "هیچ رزروی برای تبدیل به سفارش انتخاب نشده است.",
+                    "خطا - عدم  انتخاب رزرو برای تبدیل به سفارش", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 dgvBookings.Focus();
             }
         }
@@ -437,7 +446,8 @@ namespace PhotographyAutomation.App.Forms.Booking
         private void لغورزروToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (dgvBookings.SelectedRows.Count != 1 ||
-                !int.TryParse(dgvBookings.SelectedRows[0].Cells["clmId"].Value.ToString(), out var bookingId)) return;
+                !int.TryParse(dgvBookings.SelectedRows[0].Cells["clmId"].Value.ToString(), out var bookingId))
+                return;
 
             var customerName = dgvBookings.SelectedRows[0].Cells["clmCustomerFullName"].Value.ToString();
             bookingId = int.Parse(dgvBookings.SelectedRows[0].Cells["clmId"].Value.ToString());

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e7e41739ebbd420381004722f0754320" Name="Diagram1">
+      <Diagram DiagramId="e7e41739ebbd420381004722f0754320" Name="Diagram1" ZoomLevel="59">
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblAllOrderStatus" Width="1.5" PointX="9.75" PointY="9" />
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblAtelierType" Width="1.5" PointX="3" PointY="0.875" />
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblBooking" Width="1.5" PointX="5.25" PointY="8.125" />
@@ -28,17 +28,17 @@
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblBooking_TblPhotographyType" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblBooking_TblUser" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderPrint_TblCustomer" ManuallyRouted="true" >
-          <ConnectorPoint PointX="4.5" PointY="7.71875" />
-          <ConnectorPoint PointX="5.385416666666667" PointY="7.7187499999999991" />
-          <ConnectorPoint PointX="5.552083333333333" PointY="7.71875" />
-          <ConnectorPoint PointX="7.4700000000000006" PointY="7.71875" />
+          <ConnectorPoint PointX="4.5" PointY="11.855793681259188" />
+          <ConnectorPoint PointX="7.0266671666666669" PointY="11.855793681259188" />
+          <ConnectorPoint PointX="7.193333833333333" PointY="11.855793681259188" />
+          <ConnectorPoint PointX="7.4700000000000006" PointY="11.855793681259188" />
           <ConnectorPoint PointX="7.4700000000000006" PointY="7.375" />
-          <ConnectorPoint PointX="7.979166666666667" PointY="7.3749999999999991" />
-          <ConnectorPoint PointX="8.1458333333333339" PointY="7.375" />
-          <ConnectorPoint PointX="9.1979166666666661" PointY="7.3749999999999991" />
-          <ConnectorPoint PointX="9.3645833333333339" PointY="7.375" />
-          <ConnectorPoint PointX="13.010414666666666" PointY="7.3749999999999991" />
-          <ConnectorPoint PointX="13.177081333333334" PointY="7.375" />
+          <ConnectorPoint PointX="7.9641666666666664" PointY="7.3749999999999991" />
+          <ConnectorPoint PointX="8.1308333333333334" PointY="7.375" />
+          <ConnectorPoint PointX="8.2604166666666661" PointY="7.3749999999999991" />
+          <ConnectorPoint PointX="8.4270833333333339" PointY="7.375" />
+          <ConnectorPoint PointX="9.0104166666666661" PointY="7.3749999999999991" />
+          <ConnectorPoint PointX="9.1770833333333339" PointY="7.375" />
           <ConnectorPoint PointX="13.5" PointY="7.375" />
           <ConnectorPoint PointX="13.5" PointY="8.125" />
         </AssociationConnector>
@@ -49,7 +49,7 @@
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderPrint_TblOrderStatus" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblOrderPrint" />
         <AssociationConnector Association="PhotographyAutomationDBModel.TblCustomerDocuments" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrder" Width="1.5" PointX="7.5" PointY="7.875" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrder" Width="1.5" PointX="12.375" PointY="14.25" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblAllOrderStatus_TblOrder" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrder_TblBooking" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrder_TblCustomer" />
@@ -57,7 +57,7 @@
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrder_TblOrderStatus" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrder_TblPhotographyType" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderStreams_TblOrder" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

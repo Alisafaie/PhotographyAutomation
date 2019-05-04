@@ -10,10 +10,10 @@ namespace PhotographyAutomation.DateLayer.Repositories
         List<DocumentInfoViewModel> GetDocuments();
         string CheckPhotoYearFolderIsCreatedReturnsPath(int year);
         string CheckPhotoMonthFolderIsCreatedReturnsPath(int month);
-        string CheckCustomerFinancialFolderIsCreatedReturnsPath(int financialNumber);
+        string CheckCustomerFinancialFolderIsCreatedReturnsPath(string orderCode);
         string CreateYearFolderOfPhotos(int year);
         string CreateMonthFolderOfPhotos(int month, int year);
-        string CreateCustomerFinancialFolder(int finacialNumber, int month);
-        bool CreateFileTableFile(string name, string parent, byte level,string localFilePath);
+        string CreateCustomerFinancialFolder(string orderCode, int month);
+        bool CreateFileTableFile(string name, string parent, byte level, string localFilePath);
     }
 }

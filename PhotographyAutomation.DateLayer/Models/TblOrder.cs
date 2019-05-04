@@ -23,7 +23,7 @@ namespace PhotographyAutomation.DateLayer.Models
         }
     
         public int Id { get; set; }
-        public int OrderCode { get; set; }
+        public string OrderCode { get; set; }
         public int OrderStatusId { get; set; }
         public int BookingId { get; set; }
         public int PhotographyTypeId { get; set; }

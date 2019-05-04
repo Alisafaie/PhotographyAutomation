@@ -25,6 +25,10 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
         private int _sizeWidth = 128;
         private int _sizeHeight = 128;
 
+        public string OrderCode = string.Empty;
+        public int BookingId = 0;
+        public int CustomerId = 0;
+
 
         public FrmUploadPhotos()
         {
@@ -37,6 +41,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
             _locY = 10;
             _sizeWidth = 128;
             _sizeHeight = 128;
+            txtOrderCode.Text = OrderCode;
         }
 
 
@@ -47,8 +52,9 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
             {
                 CheckFileExists = true,
                 DefaultExt = "*.jpg",
-                Filter = @"JPEG Files|*.jpg|PSD Files|*.psd",
-                Multiselect = true,
+                Filter = @"Image Files(*.JPG; *.JPEG)|*.JPG; *.JPEG",
+                //Image Files(*.BMP; *.JPG; *.GIF)| *.BMP; *.JPG; *.GIF | All files(*.*) | *.*
+                       Multiselect = true,
                 RestoreDirectory = true,
                 SupportMultiDottedExtensions = true,
                 Title = @"دریافت عکس ها",
@@ -81,7 +87,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                         RtlMessageBox.Show(exception.Message);
                     }
                 }
-                txtFinancialNumber.Focus();
+                txtOrderCode.Focus();
             }
         }
 
@@ -99,18 +105,13 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
             var fileNamesUpload = new List<string>();
 
 
-            if (string.IsNullOrEmpty(txtFinancialNumber.Text.Trim()))
+            if (string.IsNullOrEmpty(txtOrderCode.Text.Trim()))
             {
                 RtlMessageBox.Show("مقداری برای شماره فاکتور مشتری وارد نشده است.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtFinancialNumber.Focus();
+                txtOrderCode.Focus();
                 return;
             }
-            if (int.TryParse(txtFinancialNumber.Text, out var customerFinancialNumber) == false)
-            {
-                RtlMessageBox.Show("مقدار فاکترو مشتری صحیح نمی باشد.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtFinancialNumber.Focus();
-                return;
-            }
+
             if (_fileNamesAndPathsList.Count == 0)
             {
                 RtlMessageBox.Show("عکسی برای ارسال انتخاب نشده است.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -132,8 +133,8 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                 using (var db = new UnitOfWork())
                 {
                     var pc = new PersianCalendar();
-                    int year = pc.GetYear(DateTime.Now);
-                    int month = pc.GetMonth(DateTime.Now);
+                    var year = pc.GetYear(DateTime.Now);
+                    var month = pc.GetMonth(DateTime.Now);
 
                     var resultCheckPhotoYearFolder =
                         db.PhotoRepository.CheckPhotoYearFolderIsCreatedReturnsPath(year);
@@ -161,7 +162,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                     }
 
                     var resultCheckCustomerFinancialFolder =
-                        db.PhotoRepository.CheckCustomerFinancialFolderIsCreatedReturnsPath(customerFinancialNumber);
+                        db.PhotoRepository.CheckCustomerFinancialFolderIsCreatedReturnsPath(OrderCode);
 
                     if (resultCheckCustomerFinancialFolder != null)
                     {
@@ -172,7 +173,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                     if (resultCheckCustomerFinancialFolder == null)
                     {
                         var resultCreateYearFolder =
-                            db.PhotoRepository.CreateCustomerFinancialFolder(customerFinancialNumber, month);
+                            db.PhotoRepository.CreateCustomerFinancialFolder(OrderCode, month);
                         if (resultCreateYearFolder != null)
                         {
                             RtlMessageBox.Show("فولدر فاکتور مشتری ایجاد شد.");
@@ -180,7 +181,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                         }
                     }
 
-                    string parentPathName = customerFinancialNumber.ToString("");
+                    string parentPathName = OrderCode;
 
 
                     int resultUploads = 0;
@@ -230,7 +231,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                     if (dr == DialogResult.Yes)
                     {
 
-                        txtFinancialNumber.Text = string.Empty;
+                        txtOrderCode.Text = string.Empty;
                         _fileNamesAndPathsList.Clear();
                         _fileNamesList.Clear();
                         panelPreviewPictures.Controls.Clear();
@@ -382,6 +383,11 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                     checkBox.CheckState = CheckState.Checked;
                 }
             }
+        }
+
+        private void btnChoosePhotoPath_Click(object sender, EventArgs e)
+        {
+            openToolStripMenuItem_Click(null,null);
         }
     }
 }

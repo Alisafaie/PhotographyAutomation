@@ -91,12 +91,12 @@ namespace PhotographyAutomation.DateLayer.Services
             }
         }
 
-        public string CheckCustomerFinancialFolderIsCreatedReturnsPath(int financialNumber)
+        public string CheckCustomerFinancialFolderIsCreatedReturnsPath(string orderCode)
         {
             try
             {
                 var result = _db.View_GetDocumentsFolders.Where(
-                    x => x.FolderName == financialNumber.ToString()).ToList();
+                    x => x.FolderName == orderCode).ToList();
                 return result.Count > 0 ? result[0].FullUncPath : null;
             }
             catch (Exception exception)
@@ -164,7 +164,7 @@ namespace PhotographyAutomation.DateLayer.Services
             }
         }
 
-        public string CreateCustomerFinancialFolder(int finacialNumber, int month)
+        public string CreateCustomerFinancialFolder(string orderCode, int month)
         {
             try
             {
@@ -172,7 +172,7 @@ namespace PhotographyAutomation.DateLayer.Services
 
 
                 ObjectParameter returnValue = new ObjectParameter("returnValue", typeof(string));
-                var result = _db.usp_CreateCustomerFinancialDirectory(finacialNumber.ToString(), strMonth, 3, returnValue)
+                var result = _db.usp_CreateCustomerFinancialDirectory(orderCode, strMonth, 3, returnValue)
                                 .ToList();
 
                 if (result.Count > 0)

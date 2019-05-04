@@ -182,9 +182,6 @@ namespace PhotographyAutomation.App.Forms.Customers
                     .Replace("(", "")
                     .Replace(")", "")
                     .Replace("-", "")
-                    .Replace("_", "")
-                    .Replace(" ", "")
-                    .Substring(1,10)
                     .Trim();
 
                 var checkCustomerMobileNumber = db.CustomerRepository.GetCustomerByMobile(customer.Mobile);

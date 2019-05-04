@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem6 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem7 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem8 = new Telerik.WinControls.UI.RadListDataItem();
             Telerik.WinControls.UI.RadListDataItem radListDataItem1 = new Telerik.WinControls.UI.RadListDataItem();
             Telerik.WinControls.UI.RadListDataItem radListDataItem2 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem3 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem4 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem5 = new Telerik.WinControls.UI.RadListDataItem();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.radThemeManager1 = new Telerik.WinControls.RadThemeManager();
             this.office2010SilverTheme1 = new Telerik.WinControls.Themes.Office2010SilverTheme();
@@ -201,15 +201,15 @@
             this.cmbMarriedStatus.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.cmbMarriedStatus.EnableAlternatingItemColor = true;
             this.cmbMarriedStatus.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            radListDataItem1.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem1.Text = "مجرد";
-            radListDataItem2.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem2.Text = "متاهل";
-            radListDataItem3.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem3.Text = "نامشخص";
-            this.cmbMarriedStatus.Items.Add(radListDataItem1);
-            this.cmbMarriedStatus.Items.Add(radListDataItem2);
-            this.cmbMarriedStatus.Items.Add(radListDataItem3);
+            radListDataItem6.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem6.Text = "مجرد";
+            radListDataItem7.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem7.Text = "متاهل";
+            radListDataItem8.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem8.Text = "نامشخص";
+            this.cmbMarriedStatus.Items.Add(radListDataItem6);
+            this.cmbMarriedStatus.Items.Add(radListDataItem7);
+            this.cmbMarriedStatus.Items.Add(radListDataItem8);
             this.cmbMarriedStatus.Location = new System.Drawing.Point(23, 111);
             this.cmbMarriedStatus.Name = "cmbMarriedStatus";
             this.cmbMarriedStatus.Size = new System.Drawing.Size(117, 20);
@@ -222,12 +222,12 @@
             this.cmbGender.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.cmbGender.EnableAlternatingItemColor = true;
             this.cmbGender.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            radListDataItem4.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem4.Text = "خانم";
-            radListDataItem5.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem5.Text = "آقا";
-            this.cmbGender.Items.Add(radListDataItem4);
-            this.cmbGender.Items.Add(radListDataItem5);
+            radListDataItem1.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem1.Text = "خانم";
+            radListDataItem2.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            radListDataItem2.Text = "آقا";
+            this.cmbGender.Items.Add(radListDataItem1);
+            this.cmbGender.Items.Add(radListDataItem2);
             this.cmbGender.Location = new System.Drawing.Point(300, 111);
             this.cmbGender.Name = "cmbGender";
             this.cmbGender.Size = new System.Drawing.Size(117, 20);
@@ -336,7 +336,7 @@
             this.txtMobile.FocusHighlightColor = System.Drawing.SystemColors.Info;
             this.txtMobile.FocusHighlightEnabled = true;
             this.txtMobile.Location = new System.Drawing.Point(23, 67);
-            this.txtMobile.Mask = "(9999) 000 - 0000";
+            this.txtMobile.Mask = "(999) 000 - 0000";
             this.txtMobile.Name = "txtMobile";
             this.txtMobile.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtMobile.Size = new System.Drawing.Size(117, 21);

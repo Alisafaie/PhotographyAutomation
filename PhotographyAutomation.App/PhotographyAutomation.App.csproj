@@ -1357,5 +1357,20 @@
   <ItemGroup>
     <None Include="Resources\iconfinder_freebies1_expanded-11_2916074 %281%29.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_folderopen1_43821.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_folder_open-go_59925.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_folder_closed_59915.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_folder_upload_66809.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_folder_upload_66809 %282%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
