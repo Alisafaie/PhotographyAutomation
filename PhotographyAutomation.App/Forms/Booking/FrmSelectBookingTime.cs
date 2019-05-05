@@ -7,7 +7,9 @@ namespace PhotographyAutomation.App.Forms.Booking
     public partial class FrmSelectBookingTime : Form
     {
         public string SelectedTimeString;
-        public TimeSpan SelectedTimeSpan;
+        public TimeSpan SelectedTimeSpan { get; private set; }
+
+    
         public FrmSelectBookingTime()
         {
             InitializeComponent();

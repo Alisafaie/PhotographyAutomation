@@ -13,10 +13,10 @@ namespace PhotographyAutomation.App.Forms.Booking
     public partial class FrmAddEditBooking : Form
     {
         public int CustomerId = 0;
-        public int BookingId = 0;
+        public int BookingId;
 
-        private int _bookingHour;
-        private int _bookingMinute;
+        public int BookingHour { get; private set; }
+        public int BookingMinute { get; private set; }
 
 
         public FrmAddEditBooking()
@@ -387,13 +387,13 @@ namespace PhotographyAutomation.App.Forms.Booking
             return true;
         }
 
-        private int GetHour(string bookingTime)
+        private static int GetHour(string bookingTime)
         {
             var returnValue = int.Parse(bookingTime.Substring(0, 2));
             return returnValue;
         }
 
-        private int GetMinute(string bookingTime)
+        private static int GetMinute(string bookingTime)
         {
             var returnValue = int.Parse(bookingTime.Substring(3, 2));
             return returnValue;
@@ -406,8 +406,8 @@ namespace PhotographyAutomation.App.Forms.Booking
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     txtBookingTime.Text = f.SelectedTimeString;
-                    _bookingHour = f.SelectedTimeSpan.Hours;
-                    _bookingMinute = f.SelectedTimeSpan.Minutes;
+                    BookingHour = f.SelectedTimeSpan.Hours;
+                    BookingMinute = f.SelectedTimeSpan.Minutes;
                 }
             }
         }
