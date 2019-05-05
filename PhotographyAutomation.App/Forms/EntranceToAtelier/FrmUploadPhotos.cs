@@ -1,5 +1,6 @@
 ﻿using PhotographyAutomation.App.Forms.Photos;
 using PhotographyAutomation.DateLayer.Context;
+using PhotographyAutomation.DateLayer.Models;
 using PhotographyAutomation.Utilities;
 using PhotographyAutomation.Utilities.Convertor;
 using PhotographyAutomation.Utilities.ExtentionMethods;
@@ -28,6 +29,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
         public string OrderCode = string.Empty;
         public int BookingId = 0;
         public int CustomerId = 0;
+        public int OrderId = 0;
 
 
         public FrmUploadPhotos()
@@ -54,7 +56,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                 DefaultExt = "*.jpg",
                 Filter = @"Image Files(*.JPG; *.JPEG)|*.JPG; *.JPEG",
                 //Image Files(*.BMP; *.JPG; *.GIF)| *.BMP; *.JPG; *.GIF | All files(*.*) | *.*
-                       Multiselect = true,
+                Multiselect = true,
                 RestoreDirectory = true,
                 SupportMultiDottedExtensions = true,
                 Title = @"دریافت عکس ها",
@@ -105,18 +107,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
             var fileNamesUpload = new List<string>();
 
 
-            if (string.IsNullOrEmpty(txtOrderCode.Text.Trim()))
-            {
-                RtlMessageBox.Show("مقداری برای شماره فاکتور مشتری وارد نشده است.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtOrderCode.Focus();
-                return;
-            }
-
-            if (_fileNamesAndPathsList.Count == 0)
-            {
-                RtlMessageBox.Show("عکسی برای ارسال انتخاب نشده است.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            if (!CheckInputs()) return;
 
             foreach (var checkbox in panelPreviewPictures.Controls.OfType<DevComponents.DotNetBar.Controls.CheckBoxX>())
             {
@@ -185,29 +176,70 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 
 
                     int resultUploads = 0;
-                    List<string> errorInUpload = new List<string>();
-
-
-
+                    var errorInUpload = new List<string>();
+                    var orderFilesList = new List<TblOrderFiles>();
 
                     for (int i = 0; i < filesToUpload.Count; i++)
                     {
-                        var fileUploadResult = db.PhotoRepository.CreateFileTableFile(
+                        //var fileUploadResult = db.PhotoRepository.CreateFileTableFile(
+                        //    fileNamesUpload[i], parentPathName, 4, filesToUpload[i]);
+
+                        var fileUploadResult2 =
+                            db.PhotoRepository.CreateFileTableFileReturnCreateFileViewModel(
                             fileNamesUpload[i], parentPathName, 4, filesToUpload[i]);
 
-                        if (fileUploadResult) resultUploads++;
+                        if (fileUploadResult2 != null)
+                        {
+                            var orderFile = new TblOrderFiles
+                            {
+                                FileName = fileUploadResult2.name,
+                                OrderId = OrderId,
+                                PathLocator = fileUploadResult2.path_locator_str,
+                                StreamId = new Guid(fileUploadResult2.streamId)
+                            };
+
+                            orderFilesList.Add(orderFile);
+                            db.OrderFilesGenericRepository.Insert(orderFile);
+                            if (db.Save() > 0)
+                                resultUploads++;
+                        }
                         else
                         {
-                            RtlMessageBox.Show("ارسال فایل " + fileNamesUpload[i] + " با خطا مواجه شد.",
+                            RtlMessageBox.Show(
+                                "ارسال فایل " + fileNamesUpload[i] + " با خطا مواجه شد.",
                                 "خطا در ارسال فایل", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                             errorInUpload.Add(fileNamesUpload[i]);
                         }
                     }
 
                     if (resultUploads == filesToUpload.Count)
                     {
+                        var orderStatusList = db.OrderStatusGenericRepository.Get();
+                    retry:
+                        var order = db.OrderGenericRepository.Get().FirstOrDefault(x => x.Id == OrderId);
+
+                        if (order != null)
+                        {
+                            order.OrderStatusId = orderStatusList.First(x => x.Code == 20).Id;
+
+                        }
+                        else
+                        {
+                            var dialogResult = RtlMessageBox.Show(
+                                "اطلاعات سفارش فابل دریافت نمی باشد.",
+                                "عدم امکان دریافت اطلاعات سفارش",
+                                MessageBoxButtons.RetryCancel, MessageBoxIcon.Error,
+                                MessageBoxDefaultButton.Button1);
+                            if (dialogResult == DialogResult.Retry)
+                            {
+                                goto retry;
+                            }
+                        }
+
                         RtlMessageBox.Show("تمامی فایل ها با موفقیت ارسال گردید.", "", MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
+
                     }
                     else
                     {
@@ -250,6 +282,25 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                 Debug.WriteLine(exception.Source);
                 Debug.WriteLine(exception.StackTrace);
             }
+        }
+
+        private bool CheckInputs()
+        {
+            if (string.IsNullOrEmpty(txtOrderCode.Text.Trim()))
+            {
+                RtlMessageBox.Show("مقداری برای شماره فاکتور مشتری وارد نشده است.", "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                txtOrderCode.Focus();
+                return false;
+            }
+
+            if (_fileNamesAndPathsList.Count == 0)
+            {
+                RtlMessageBox.Show("عکسی برای ارسال انتخاب نشده است.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
         }
 
 
@@ -387,7 +438,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 
         private void btnChoosePhotoPath_Click(object sender, EventArgs e)
         {
-            openToolStripMenuItem_Click(null,null);
+            openToolStripMenuItem_Click(null, null);
         }
     }
 }

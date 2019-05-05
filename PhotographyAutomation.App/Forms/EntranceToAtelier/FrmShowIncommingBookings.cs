@@ -460,12 +460,14 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                 var bookingId = Convert.ToInt32(dgvOrders.SelectedRows[0].Cells["clmBookingId"].Value);
                 var customerId = Convert.ToInt32(dgvOrders.SelectedRows[0].Cells["clmCustomerId"].Value);
                 var orderCode = dgvOrders.SelectedRows[0].Cells["clmOrderCode"].Value.ToString();
+                var orderId = Convert.ToInt32(dgvOrders.SelectedRows[0].Cells["clmId"].Value);
 
                 var uploadForm = new FrmUploadPhotos
                 {
                     OrderCode = orderCode,
                     BookingId = bookingId,
-                    CustomerId = customerId
+                    CustomerId = customerId,
+                    OrderId = orderId
                 };
                 uploadForm.ShowDialog();
             }

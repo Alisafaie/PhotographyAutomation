@@ -15,5 +15,6 @@ namespace PhotographyAutomation.DateLayer.Repositories
         string CreateMonthFolderOfPhotos(int month, int year);
         string CreateCustomerFinancialFolder(string orderCode, int month);
         bool CreateFileTableFile(string name, string parent, byte level, string localFilePath);
+        CreateFileViewModel CreateFileTableFileReturnCreateFileViewModel(string name, string parent, byte level, string localFilePath);
     }
 }

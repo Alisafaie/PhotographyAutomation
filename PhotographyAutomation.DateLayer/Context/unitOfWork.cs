@@ -77,6 +77,21 @@ namespace PhotographyAutomation.DateLayer.Context
         }
 
 
+        private GenericRepository<TblOrderFiles> _orderFilesGenericRepository;
+
+        public GenericRepository<TblOrderFiles> OrderFilesGenericRepository
+        {
+            get
+            {
+                if (_orderFilesGenericRepository == null)
+                {
+                    _orderFilesGenericRepository = new GenericRepository<TblOrderFiles>(_db);
+                }
+                return _orderFilesGenericRepository;
+            }
+        }
+
+
 
 
         private GenericRepository<TblCustomer> _customerGenericRepository;

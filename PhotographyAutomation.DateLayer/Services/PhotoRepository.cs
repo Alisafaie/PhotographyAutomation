@@ -236,5 +236,48 @@ namespace PhotographyAutomation.DateLayer.Services
                 }
             }
         }
+
+        public CreateFileViewModel CreateFileTableFileReturnCreateFileViewModel(string name, string parent, byte level, string localFilePath)
+        {
+            using (DbContextTransaction dbTransaction = _db.Database.BeginTransaction())
+            {
+                try
+                {
+                    var result = _db.usp_CreateFileTableFile(name, parent, level).ToList();
+
+                    var info = new CreateFileViewModel
+                    {
+                        name = result[0].name,
+                        streamId = result[0].streamId,
+                        path_locator_str = result[0].path_locator_str,
+                        parent_locator = result[0].parent_locator,
+                        path_name = result[0].path_name,
+                        filestreamTxn = result[0].filestreamTxn
+                    };
+
+                    using (var fs = new SqlFileStream(info.path_name, info.filestreamTxn, FileAccess.Write, FileOptions.WriteThrough, 0L))
+                    {
+                        using (var local = new FileStream(localFilePath, FileMode.Open, FileAccess.Read))
+                        {
+                            local.CopyTo(fs);
+                        }
+                    }
+
+
+                    dbTransaction.Commit();
+                    return info;
+                }
+                catch (Exception exception)
+                {
+                    dbTransaction.Rollback();
+                    Debug.WriteLine(exception.Message);
+                    Debug.WriteLine(exception.Data);
+                    Debug.WriteLine(exception.InnerException);
+                    Debug.WriteLine(exception.Source);
+                    Debug.WriteLine(exception.StackTrace);
+                    return null;
+                }
+            }
+        }
     }
 }
