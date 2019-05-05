@@ -37,7 +37,11 @@
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.groupBoxCustomerInfo = new System.Windows.Forms.GroupBox();
             this.cmbMarriedStatus = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem3 = new DevComponents.Editors.ComboItem();
+            this.comboItem4 = new DevComponents.Editors.ComboItem();
             this.cmbGender = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem1 = new DevComponents.Editors.ComboItem();
+            this.comboItem2 = new DevComponents.Editors.ComboItem();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -192,11 +196,22 @@
             this.cmbMarriedStatus.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbMarriedStatus.FormattingEnabled = true;
             this.cmbMarriedStatus.ItemHeight = 16;
+            this.cmbMarriedStatus.Items.AddRange(new object[] {
+            this.comboItem3,
+            this.comboItem4});
             this.cmbMarriedStatus.Location = new System.Drawing.Point(23, 110);
             this.cmbMarriedStatus.Name = "cmbMarriedStatus";
             this.cmbMarriedStatus.Size = new System.Drawing.Size(117, 22);
             this.cmbMarriedStatus.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cmbMarriedStatus.TabIndex = 7;
+            // 
+            // comboItem3
+            // 
+            this.comboItem3.Text = "مجرد";
+            // 
+            // comboItem4
+            // 
+            this.comboItem4.Text = "متاهل";
             // 
             // cmbGender
             // 
@@ -204,11 +219,22 @@
             this.cmbGender.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbGender.FormattingEnabled = true;
             this.cmbGender.ItemHeight = 16;
+            this.cmbGender.Items.AddRange(new object[] {
+            this.comboItem1,
+            this.comboItem2});
             this.cmbGender.Location = new System.Drawing.Point(300, 111);
             this.cmbGender.Name = "cmbGender";
             this.cmbGender.Size = new System.Drawing.Size(117, 22);
             this.cmbGender.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cmbGender.TabIndex = 2;
+            // 
+            // comboItem1
+            // 
+            this.comboItem1.Text = "مرد";
+            // 
+            // comboItem2
+            // 
+            this.comboItem2.Text = "زن";
             // 
             // label22
             // 
@@ -312,13 +338,13 @@
             this.txtMobile.FocusHighlightColor = System.Drawing.SystemColors.Info;
             this.txtMobile.FocusHighlightEnabled = true;
             this.txtMobile.Location = new System.Drawing.Point(23, 67);
-            this.txtMobile.Mask = "(999) 000 - 0000";
+            this.txtMobile.Mask = "(9999) 000-0000";
             this.txtMobile.Name = "txtMobile";
             this.txtMobile.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtMobile.Size = new System.Drawing.Size(117, 21);
             this.txtMobile.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.txtMobile.TabIndex = 6;
-            this.txtMobile.Text = "";
+            this.txtMobile.Text = "09";
             // 
             // txtTell
             // 
@@ -703,5 +729,9 @@
         private DevComponents.DotNetBar.ButtonX btnOk;
         private DevComponents.DotNetBar.Controls.ComboBoxEx cmbMarriedStatus;
         private DevComponents.DotNetBar.Controls.ComboBoxEx cmbGender;
+        private DevComponents.Editors.ComboItem comboItem3;
+        private DevComponents.Editors.ComboItem comboItem4;
+        private DevComponents.Editors.ComboItem comboItem1;
+        private DevComponents.Editors.ComboItem comboItem2;
     }
 }

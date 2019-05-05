@@ -351,9 +351,10 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgvUploadedPhotos);
-            this.groupBox1.Location = new System.Drawing.Point(12, 6);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1168, 459);
+            this.groupBox1.Size = new System.Drawing.Size(1149, 356);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -380,7 +381,7 @@
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvUploadedPhotos.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvUploadedPhotos.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -401,7 +402,7 @@
             this.dgvUploadedPhotos.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvUploadedPhotos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUploadedPhotos.ShowEditingIcon = false;
-            this.dgvUploadedPhotos.Size = new System.Drawing.Size(1162, 439);
+            this.dgvUploadedPhotos.Size = new System.Drawing.Size(1143, 336);
             this.dgvUploadedPhotos.TabIndex = 0;
             // 
             // panelEx3

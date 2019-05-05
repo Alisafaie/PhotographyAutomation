@@ -119,7 +119,7 @@
             this.txtOrderCode});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1034, 27);
+            this.menuStrip1.Size = new System.Drawing.Size(1034, 25);
             this.menuStrip1.TabIndex = 15;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -131,7 +131,7 @@
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(60, 23);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(60, 21);
             this.fileToolStripMenuItem.Text = "&عکس ها";
             // 
             // openToolStripMenuItem
@@ -172,7 +172,7 @@
             this.optionsToolStripMenuItem});
             this.toolsToolStripMenuItem.Enabled = false;
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 23);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 21);
             this.toolsToolStripMenuItem.Text = "ابزارها";
             // 
             // customizeToolStripMenuItem
@@ -192,21 +192,22 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(125, 23);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(125, 21);
             this.toolStripMenuItem1.Text = "شماره فاکتور مشتری :";
             // 
             // txtOrderCode
             // 
+            this.txtOrderCode.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.txtOrderCode.Name = "txtOrderCode";
             this.txtOrderCode.ReadOnly = true;
-            this.txtOrderCode.Size = new System.Drawing.Size(100, 23);
+            this.txtOrderCode.Size = new System.Drawing.Size(100, 21);
             // 
             // pictureBoxPreview
             // 
             this.pictureBoxPreview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxPreview.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxPreview.Name = "pictureBoxPreview";
-            this.pictureBoxPreview.Size = new System.Drawing.Size(253, 555);
+            this.pictureBoxPreview.Size = new System.Drawing.Size(253, 557);
             this.pictureBoxPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxPreview.TabIndex = 0;
             this.pictureBoxPreview.TabStop = false;
@@ -231,7 +232,7 @@
             this.collapsibleSplitContainer1.Panel2.Controls.Add(this.panelEx5);
             this.collapsibleSplitContainer1.Panel2.Controls.Add(this.panelEx4);
             this.collapsibleSplitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.collapsibleSplitContainer1.Size = new System.Drawing.Size(1034, 588);
+            this.collapsibleSplitContainer1.Size = new System.Drawing.Size(1034, 590);
             this.collapsibleSplitContainer1.SplitterDistance = 761;
             this.collapsibleSplitContainer1.SplitterWidth = 20;
             this.collapsibleSplitContainer1.TabIndex = 4;
@@ -242,7 +243,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(761, 49);
+            this.panel1.Size = new System.Drawing.Size(761, 51);
             this.panel1.TabIndex = 25;
             // 
             // btnChoosePhotoPath
@@ -252,7 +253,7 @@
             this.btnChoosePhotoPath.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnChoosePhotoPath.HoverImage = global::PhotographyAutomation.App.Properties.Resources.iconfinder_folder_open_go_59925;
             this.btnChoosePhotoPath.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_folder_closed_59915;
-            this.btnChoosePhotoPath.Location = new System.Drawing.Point(608, 7);
+            this.btnChoosePhotoPath.Location = new System.Drawing.Point(608, 9);
             this.btnChoosePhotoPath.Name = "btnChoosePhotoPath";
             this.btnChoosePhotoPath.Size = new System.Drawing.Size(141, 36);
             this.btnChoosePhotoPath.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -267,7 +268,7 @@
             this.panelPreviewPictures.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.panelPreviewPictures.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelPreviewPictures.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelPreviewPictures.Location = new System.Drawing.Point(0, 49);
+            this.panelPreviewPictures.Location = new System.Drawing.Point(0, 51);
             this.panelPreviewPictures.Name = "panelPreviewPictures";
             this.panelPreviewPictures.Size = new System.Drawing.Size(761, 506);
             this.panelPreviewPictures.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -286,7 +287,7 @@
             this.panelEx2.Controls.Add(this.checkBoxSelectAll);
             this.panelEx2.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelEx2.Location = new System.Drawing.Point(0, 555);
+            this.panelEx2.Location = new System.Drawing.Point(0, 557);
             this.panelEx2.Name = "panelEx2";
             this.panelEx2.Size = new System.Drawing.Size(761, 33);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -322,7 +323,7 @@
             this.panelEx5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx5.Location = new System.Drawing.Point(0, 0);
             this.panelEx5.Name = "panelEx5";
-            this.panelEx5.Size = new System.Drawing.Size(253, 555);
+            this.panelEx5.Size = new System.Drawing.Size(253, 557);
             this.panelEx5.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx5.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx5.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -340,7 +341,7 @@
             this.panelEx4.Controls.Add(this.labelPicturePreviewName);
             this.panelEx4.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelEx4.Location = new System.Drawing.Point(0, 555);
+            this.panelEx4.Location = new System.Drawing.Point(0, 557);
             this.panelEx4.Name = "panelEx4";
             this.panelEx4.Size = new System.Drawing.Size(253, 33);
             this.panelEx4.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -375,9 +376,9 @@
             this.panelEx3.Controls.Add(this.collapsibleSplitContainer1);
             this.panelEx3.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx3.Location = new System.Drawing.Point(0, 27);
+            this.panelEx3.Location = new System.Drawing.Point(0, 25);
             this.panelEx3.Name = "panelEx3";
-            this.panelEx3.Size = new System.Drawing.Size(1034, 588);
+            this.panelEx3.Size = new System.Drawing.Size(1034, 590);
             this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx3.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx3.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;

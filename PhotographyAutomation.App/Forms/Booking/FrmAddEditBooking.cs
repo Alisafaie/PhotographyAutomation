@@ -46,6 +46,8 @@ namespace PhotographyAutomation.App.Forms.Booking
 
                 GetCustomerBookingHistory(db);
 
+                cmbPhotographerGender.SelectedIndex = 0;
+
                 if (BookingId > 0)
                 {
                     var booking = db.BookingGenericRepository.GetById(BookingId);

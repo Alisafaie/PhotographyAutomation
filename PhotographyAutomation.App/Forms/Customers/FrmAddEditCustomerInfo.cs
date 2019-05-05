@@ -89,6 +89,10 @@ namespace PhotographyAutomation.App.Forms.Customers
                     var user = db.CustomerRepository.
                         FindCustomersByMobile(chustomerNumberString.Substring(1, 10));
 
+                    AcceptButton = btnOk;
+                    btnOk.Enabled = true;
+                    groupBoxCustomerInfo.Enabled = true;
+
                     if (user != null)
                     {
                         CustomerId = user.Id;
@@ -100,7 +104,7 @@ namespace PhotographyAutomation.App.Forms.Customers
                         if (user.BirthDate != null) txtBirthDate.Text = user.BirthDate.Value.ToShamsiDate();
                         txtNationalId.Text = user.NationalId;
                         txtTell.Text = user.Tell;
-                        txtMobile.Text = user.Mobile;
+                        txtMobile.Text = chustomerNumberString;
 
                         cmbMarriedStatus.SelectedIndex = user.IsMarried == 0 ? 0 : 1;
 
@@ -110,6 +114,7 @@ namespace PhotographyAutomation.App.Forms.Customers
 
                         txtEmail.Text = user.Email;
                         txtAddress.Text = user.Address;
+                        btnOk.Focus();
                     }
                     else
                     {
@@ -118,23 +123,13 @@ namespace PhotographyAutomation.App.Forms.Customers
                             "عدم وجود کاربر",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                        txtMobile.Text = txtMobileSearch.Text;
+                        txtMobile.Text = chustomerNumberString;
 
                         cmbGender.SelectedIndex = 0;
                         cmbMarriedStatus.SelectedIndex = 0;
+
+                        txtFirstName.Focus();
                     }
-
-                    //groupBoxCustomerInfo.Enabled = true;
-                    //groupBoxSearchCustomer.Enabled = false;
-
-                    AcceptButton = btnOk;
-
-                    btnOk.Enabled = true;
-                    //groupBoxSearchCustomer.Enabled = false;
-                    groupBoxCustomerInfo.Enabled = true;
-
-                    btnOk.Focus();
-                    AcceptButton = btnOk;
                 }
             }
         }
@@ -148,20 +143,24 @@ namespace PhotographyAutomation.App.Forms.Customers
         private void btnOk_Click(object sender, EventArgs e)
         {
             if (!CheckInputs()) return;
-            var customer = new TblCustomer
-            {
-                FirstName = txtFirstName.Text.Trim(),
-                LastName = txtLastName.Text.Trim(),
-                Mobile = txtMobile.Text.Replace(" ", "").Trim(),
-                Tell = txtTell.Text.Replace(" ", "").Trim(),
-                Gender = Convert.ToByte(cmbGender.SelectedIndex == 0 ? 0 : 1),
-                BirthDate = txtBirthDate.Text.ToMiladiDate(),
-                NationalId = txtNationalId.Text.Replace("-", "").Trim(),
-                IsMarried = Convert.ToByte(cmbMarriedStatus.SelectedIndex == 0 ? 0 : 1),
-                Address = txtAddress.Text.Trim(),
-                Email = txtEmail.Text.Trim(),
-                IsDeleted = 0
-            };
+            var customer = new TblCustomer();
+            customer.FirstName = txtFirstName.Text.Trim();
+            customer.LastName = txtLastName.Text.Trim();
+            customer.Mobile = txtMobile.Text
+                .Replace("(", "")
+                .Replace(")", "")
+                .Replace("-", "")
+                .Replace("_", "")
+                .Replace(" ", "")
+                .Trim().Substring(1,10);
+            customer.Tell = txtTell.Text.Replace(" ", "").Trim();
+            customer.Gender = Convert.ToByte(cmbGender.SelectedIndex == 0 ? 0 : 1);
+            customer.BirthDate = txtBirthDate.Text.ToMiladiDate();
+            customer.NationalId = txtNationalId.Text.Replace("-", "").Trim();
+            customer.IsMarried = Convert.ToByte(cmbMarriedStatus.SelectedIndex == 0 ? 0 : 1);
+            customer.Address = txtAddress.Text.Trim();
+            customer.Email = txtEmail.Text.Trim();
+            customer.IsDeleted = 0;
 
 
             //if (cmbMarriedStatus.SelectedIndex == 1)
@@ -178,12 +177,6 @@ namespace PhotographyAutomation.App.Forms.Customers
 
             using (var db = new UnitOfWork())
             {
-                customer.Mobile = customer.Mobile
-                    .Replace("(", "")
-                    .Replace(")", "")
-                    .Replace("-", "")
-                    .Trim();
-
                 var checkCustomerMobileNumber = db.CustomerRepository.GetCustomerByMobile(customer.Mobile);
 
                 if (CustomerId == 0 && IsEditMode == false)

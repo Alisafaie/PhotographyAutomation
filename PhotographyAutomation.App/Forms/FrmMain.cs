@@ -67,5 +67,10 @@ namespace PhotographyAutomation.App.Forms
                 frmShowIncommingBookings.ShowDialog();
             }
         }
+
+        private void btnAddNewBooking_QuickAccess_Click(object sender, EventArgs e)
+        {
+            btnAddEditBooking_Click(null, null);
+        }
     }
 }

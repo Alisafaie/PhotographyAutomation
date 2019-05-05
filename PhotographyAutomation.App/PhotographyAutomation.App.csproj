@@ -224,9 +224,6 @@
     <None Include="Resources\Users.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\1370791030_credit-card.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\1371475930_filenew.png" />
   </ItemGroup>
   <ItemGroup>
@@ -1359,6 +1356,45 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\iconfinder_folder_upload_66809 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_calendar-clock_299096.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_calendar-add2_59842.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_calendar_add_35800.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_calendar-add_59841.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132574 - danger1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1370791030_credit-card.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_folder_open_59927.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_folder_open-go_59925 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_folder_upload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_list_59957.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_New_1493292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_up2_44022.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_upload_84990.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
