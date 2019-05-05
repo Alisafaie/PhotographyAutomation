@@ -306,7 +306,7 @@ namespace PhotographyAutomation.App.Forms.Customers
             {
                 errorProvider1.Clear();
                 errorProvider1.SetError(cmbGender, "جنسیت مشتری مشتری مشخص نشده است.");
-                cmbGender.ShowDropDown();
+                cmbGender.DroppedDown = true;
                 cmbGender.Focus();
                 return false;
             }

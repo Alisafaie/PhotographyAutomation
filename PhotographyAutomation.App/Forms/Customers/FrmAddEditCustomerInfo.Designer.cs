@@ -29,22 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem6 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem7 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem8 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem1 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem2 = new Telerik.WinControls.UI.RadListDataItem();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.radThemeManager1 = new Telerik.WinControls.RadThemeManager();
-            this.office2010SilverTheme1 = new Telerik.WinControls.Themes.Office2010SilverTheme();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.btnCancel = new DevComponents.DotNetBar.ButtonX();
             this.btnOk = new DevComponents.DotNetBar.ButtonX();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.groupBoxCustomerInfo = new System.Windows.Forms.GroupBox();
-            this.cmbMarriedStatus = new Telerik.WinControls.UI.RadDropDownList();
-            this.cmbGender = new Telerik.WinControls.UI.RadDropDownList();
+            this.cmbMarriedStatus = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cmbGender = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -79,8 +72,6 @@
             this.panelEx1.SuspendLayout();
             this.panelEx2.SuspendLayout();
             this.groupBoxCustomerInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbMarriedStatus)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbGender)).BeginInit();
             this.groupBoxSearchCustomer.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -197,42 +188,27 @@
             // 
             // cmbMarriedStatus
             // 
-            this.cmbMarriedStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbMarriedStatus.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
-            this.cmbMarriedStatus.EnableAlternatingItemColor = true;
-            this.cmbMarriedStatus.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            radListDataItem6.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem6.Text = "مجرد";
-            radListDataItem7.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem7.Text = "متاهل";
-            radListDataItem8.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem8.Text = "نامشخص";
-            this.cmbMarriedStatus.Items.Add(radListDataItem6);
-            this.cmbMarriedStatus.Items.Add(radListDataItem7);
-            this.cmbMarriedStatus.Items.Add(radListDataItem8);
-            this.cmbMarriedStatus.Location = new System.Drawing.Point(23, 111);
+            this.cmbMarriedStatus.DisplayMember = "Text";
+            this.cmbMarriedStatus.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbMarriedStatus.FormattingEnabled = true;
+            this.cmbMarriedStatus.ItemHeight = 16;
+            this.cmbMarriedStatus.Location = new System.Drawing.Point(23, 110);
             this.cmbMarriedStatus.Name = "cmbMarriedStatus";
-            this.cmbMarriedStatus.Size = new System.Drawing.Size(117, 20);
+            this.cmbMarriedStatus.Size = new System.Drawing.Size(117, 22);
+            this.cmbMarriedStatus.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cmbMarriedStatus.TabIndex = 7;
-            this.cmbMarriedStatus.ThemeName = "Office2010Silver";
             // 
             // cmbGender
             // 
-            this.cmbGender.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbGender.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
-            this.cmbGender.EnableAlternatingItemColor = true;
-            this.cmbGender.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            radListDataItem1.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem1.Text = "خانم";
-            radListDataItem2.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            radListDataItem2.Text = "آقا";
-            this.cmbGender.Items.Add(radListDataItem1);
-            this.cmbGender.Items.Add(radListDataItem2);
+            this.cmbGender.DisplayMember = "Text";
+            this.cmbGender.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbGender.FormattingEnabled = true;
+            this.cmbGender.ItemHeight = 16;
             this.cmbGender.Location = new System.Drawing.Point(300, 111);
             this.cmbGender.Name = "cmbGender";
-            this.cmbGender.Size = new System.Drawing.Size(117, 20);
+            this.cmbGender.Size = new System.Drawing.Size(117, 22);
+            this.cmbGender.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cmbGender.TabIndex = 2;
-            this.cmbGender.ThemeName = "Office2010Silver";
             // 
             // label22
             // 
@@ -681,8 +657,6 @@
             this.panelEx2.ResumeLayout(false);
             this.groupBoxCustomerInfo.ResumeLayout(false);
             this.groupBoxCustomerInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbMarriedStatus)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbGender)).EndInit();
             this.groupBoxSearchCustomer.ResumeLayout(false);
             this.groupBoxSearchCustomer.PerformLayout();
             this.ResumeLayout(false);
@@ -691,8 +665,6 @@
 
         #endregion
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private Telerik.WinControls.RadThemeManager radThemeManager1;
-        private Telerik.WinControls.Themes.Office2010SilverTheme office2010SilverTheme1;
         private DevComponents.DotNetBar.PanelEx panelEx1;
         private DevComponents.DotNetBar.StyleManager styleManager1;
         private DevComponents.DotNetBar.PanelEx panelEx2;
@@ -725,11 +697,11 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
-        private Telerik.WinControls.UI.RadDropDownList cmbGender;
-        private Telerik.WinControls.UI.RadDropDownList cmbMarriedStatus;
         private DevComponents.DotNetBar.ButtonX btnCheckNumber;
         private DevComponents.DotNetBar.ButtonX btnSearchCustomer;
         private DevComponents.DotNetBar.ButtonX btnCancel;
         private DevComponents.DotNetBar.ButtonX btnOk;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbMarriedStatus;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbGender;
     }
 }

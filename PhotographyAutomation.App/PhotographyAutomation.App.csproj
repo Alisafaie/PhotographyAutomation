@@ -62,9 +62,6 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
-    <Reference Include="Telerik.WinControls, Version=2018.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
-    <Reference Include="Telerik.WinControls.Themes.Office2010Silver, Version=2018.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
-    <Reference Include="Telerik.WinControls.UI, Version=2018.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Forms\Booking\FrmAddEditBooking.cs">
@@ -109,12 +106,6 @@
     <Compile Include="Forms\Customers\FrmShowCustomer.Designer.cs">
       <DependentUpon>FrmShowCustomer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Customers\FrmShowCustomerInfo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Customers\FrmShowCustomerInfo.Designer.cs">
-      <DependentUpon>FrmShowCustomerInfo.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Orders\FrmShowUploadedPhotos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,9 +146,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Customers\FrmShowCustomer.resx">
       <DependentUpon>FrmShowCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Customers\FrmShowCustomerInfo.resx">
-      <DependentUpon>FrmShowCustomerInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Orders\FrmShowUploadedPhotos.resx">
       <DependentUpon>FrmShowUploadedPhotos.cs</DependentUpon>

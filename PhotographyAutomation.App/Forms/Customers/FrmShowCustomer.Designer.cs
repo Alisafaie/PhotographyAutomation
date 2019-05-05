@@ -35,8 +35,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmShowCustomer));
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.radThemeManager1 = new Telerik.WinControls.RadThemeManager();
-            this.office2010SilverTheme1 = new Telerik.WinControls.Themes.Office2010SilverTheme();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -160,7 +158,7 @@
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvCustomers.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvCustomers.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -286,26 +284,26 @@
             this.ثبتفاکتورToolStripMenuItem});
             this.menuDgvUsers.Name = "menuDgvUsers";
             this.menuDgvUsers.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.menuDgvUsers.Size = new System.Drawing.Size(181, 92);
+            this.menuDgvUsers.Size = new System.Drawing.Size(148, 70);
             // 
             // ویرایشاطلاعاتToolStripMenuItem
             // 
             this.ویرایشاطلاعاتToolStripMenuItem.Name = "ویرایشاطلاعاتToolStripMenuItem";
-            this.ویرایشاطلاعاتToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ویرایشاطلاعاتToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.ویرایشاطلاعاتToolStripMenuItem.Text = "ویرایش اطلاعات";
             this.ویرایشاطلاعاتToolStripMenuItem.Click += new System.EventHandler(this.ویرایشاطلاعاتToolStripMenuItem_Click);
             // 
             // ثبتنوبتToolStripMenuItem
             // 
             this.ثبتنوبتToolStripMenuItem.Name = "ثبتنوبتToolStripMenuItem";
-            this.ثبتنوبتToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ثبتنوبتToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.ثبتنوبتToolStripMenuItem.Text = "ثبت نوبت";
             this.ثبتنوبتToolStripMenuItem.Click += new System.EventHandler(this.ثبتنوبتToolStripMenuItem_Click);
             // 
             // ثبتفاکتورToolStripMenuItem
             // 
             this.ثبتفاکتورToolStripMenuItem.Name = "ثبتفاکتورToolStripMenuItem";
-            this.ثبتفاکتورToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ثبتفاکتورToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.ثبتفاکتورToolStripMenuItem.Text = "ثبت فاکتور";
             this.ثبتفاکتورToolStripMenuItem.Click += new System.EventHandler(this.ثبتفاکتورToolStripMenuItem_Click);
             // 
@@ -537,8 +535,6 @@
         #endregion
 
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private Telerik.WinControls.RadThemeManager radThemeManager1;
-        private Telerik.WinControls.Themes.Office2010SilverTheme office2010SilverTheme1;
         private DevComponents.DotNetBar.StyleManager styleManager1;
         private DevComponents.DotNetBar.PanelEx panelEx1;
         private System.Windows.Forms.GroupBox groupBox2;
