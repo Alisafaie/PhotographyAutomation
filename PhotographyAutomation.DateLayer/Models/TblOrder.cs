@@ -18,9 +18,9 @@ namespace PhotographyAutomation.DateLayer.Models
         public TblOrder()
         {
             this.TblAllOrderStatus = new HashSet<TblAllOrderStatus>();
+            this.TblFilesError = new HashSet<TblFilesError>();
             this.TblOrderPrint = new HashSet<TblOrderPrint>();
             this.TblOrderFiles = new HashSet<TblOrderFiles>();
-            this.TblFilesError = new HashSet<TblFilesError>();
         }
     
         public int Id { get; set; }
@@ -31,9 +31,9 @@ namespace PhotographyAutomation.DateLayer.Models
         public int CustomerId { get; set; }
         public Nullable<int> PhotographerId { get; set; }
         public Nullable<byte> PaymentIsOk { get; set; }
-        public Nullable<System.Guid> OrdefFolderStreamId { get; set; }
-        public string OrdefFolderPathLocator { get; set; }
-        public string OrdefFolderParentPathLocator { get; set; }
+        public Nullable<System.Guid> OrderFolderStreamId { get; set; }
+        public string OrderFolderPathLocator { get; set; }
+        public string OrderFolderParentPathLocator { get; set; }
         public Nullable<int> TotalFiles { get; set; }
         public bool IsActive { get; set; }
         public System.DateTime CreatedDateTime { get; set; }
@@ -45,12 +45,12 @@ namespace PhotographyAutomation.DateLayer.Models
         public virtual TblBooking TblBooking { get; set; }
         public virtual TblCustomer TblCustomer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblFilesError> TblFilesError { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblOrderPrint> TblOrderPrint { get; set; }
         public virtual TblOrderStatus TblOrderStatus { get; set; }
         public virtual TblPhotographyType TblPhotographyType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblOrderFiles> TblOrderFiles { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblFilesError> TblFilesError { get; set; }
     }
 }

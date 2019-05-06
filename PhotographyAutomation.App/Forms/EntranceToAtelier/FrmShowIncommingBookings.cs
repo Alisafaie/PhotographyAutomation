@@ -483,6 +483,8 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
         private void contextMenuStripDgvBookings_Paint(object sender, PaintEventArgs e)
         {
             ارسالعکسToolStripMenuItem.Enabled = dgvOrders.SelectedRows[0].Cells["clmOrderStatusCode"].Value.ToString() == "10";
+            مشاهدهعکسهاToolStripMenuItem.Enabled =
+                dgvOrders.SelectedRows[0].Cells["clmOrderStatusCode"].Value.ToString() != "10";
         }
     }
 }

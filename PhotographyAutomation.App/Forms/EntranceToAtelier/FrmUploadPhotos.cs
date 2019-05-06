@@ -120,41 +120,40 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                     var year = pc.GetYear(DateTime.Now);
                     var month = pc.GetMonth(DateTime.Now);
 
-                    var resultCheckPhotoYearFolder =
-                        db.PhotoRepository.CheckPhotoYearFolderIsCreatedReturnsPath(year);
+                    string yearFolderPath;
+                    string monthFolderPath;
+                    string orderFolderPath = null;
 
-                    if (resultCheckPhotoYearFolder == null)
+                    var checkYearFolder = db.PhotoRepository.CheckPhotoYearFolderIsCreatedReturnsPath(year);
+                    if (checkYearFolder == null)
                     {
-                        var resultCreateYearFolder = db.PhotoRepository.CreateYearFolderOfPhotos(year);
-                        if (resultCreateYearFolder != null)
+                        yearFolderPath = db.PhotoRepository.CreateYearFolderOfPhotos(year); //1398
+                        if (yearFolderPath != null)
                         {
                             RtlMessageBox.Show("فولدر سال جاری ایجاد شد.");
                         }
                     }
+                    yearFolderPath = checkYearFolder;
 
-                    var resultCheckPhotoMonthFolder =
-                        db.PhotoRepository.CheckPhotoMonthFolderIsCreatedReturnsPath(month);
-
-                    if (resultCheckPhotoMonthFolder == null)
+                    var checkMonthFolder = db.PhotoRepository.CheckPhotoMonthFolderIsCreatedReturnsPath(month);
+                    if (checkMonthFolder == null)
                     {
-                        var resultCreateYearFolder = db.PhotoRepository.CreateMonthFolderOfPhotos(month, year);
-                        if (resultCreateYearFolder != null)
+                        monthFolderPath = db.PhotoRepository.CreateMonthFolderOfPhotos(month, year);
+                        if (monthFolderPath != null)
                         {
                             RtlMessageBox.Show("فولدر ماه عکس برداری ایجاد شد.");
                         }
                     }
+                    monthFolderPath = checkMonthFolder;
 
-                    var resultCheckCustomerFinancialFolder =
-                        db.PhotoRepository.CheckCustomerFinancialFolderIsCreatedReturnsPath(OrderCode);
-
-                    if (resultCheckCustomerFinancialFolder == null)
+                    var checkCustomerOrderFolder = db.PhotoRepository.CheckCustomerOrderFolderIsCreatedReturnsPath(OrderCode);
+                    if (checkCustomerOrderFolder == null)
                     {
-                        var resultCreateYearFolder =
+                        orderFolderPath =
                             db.PhotoRepository.CreateCustomerFinancialFolder(OrderCode, month);
-                        if (resultCreateYearFolder != null)
+                        if (orderFolderPath != null)
                         {
-                            RtlMessageBox.Show("فولدر فاکتور مشتری ایجاد شد.");
-                            //uploadPath = resultCreateYearFolder;
+                            RtlMessageBox.Show("فولدر عکس های مشتری ایجاد شد.");
                         }
                     }
                     else
@@ -167,6 +166,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                             "در صورت انتخاب خیر عکس های فعلی در کنار عکس های قبلی قرار می کیرند."
                             , "", MessageBoxButtons.YesNo,
                             MessageBoxIcon.Question);
+
                         if (dialogResultReplaceFiles == DialogResult.Yes)
                         {
 
@@ -176,6 +176,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 
                         }
                     }
+                    var orderFolderStreamId = db.PhotoRepository.GetOrderFolderStreamId(OrderCode);
 
                     var parentPathName = OrderCode;
 
@@ -188,10 +189,11 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                     {
                         //var fileUploadResult = db.PhotoRepository.CreateFileTableFile(
                         //    fileNamesUpload[i], parentPathName, 4, filesToUpload[i]);
+                        string fileName = OrderCode + "--" + fileNamesUpload[i];
 
                         var fileUploadResult2 =
                             db.PhotoRepository.CreateFileTableFileReturnCreateFileViewModel(
-                            OrderCode + "--" + fileNamesUpload[i], parentPathName, 4, filesToUpload[i]);
+                            fileName, parentPathName, 4, filesToUpload[i]);
 
                         if (fileUploadResult2 != null)
                         {
@@ -215,19 +217,38 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                                 "خطا در ارسال فایل", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                             errorInUpload.Add(fileNamesUpload[i]);
+
+                            var fileError = new TblFilesError
+                            {
+                                OrderId = OrderId,
+                                BookingId = BookingId,
+                                CustomerId = CustomerId,
+                                DateTime = DateTime.Now,
+                                FileName = fileNamesUpload[i],
+                                OrderCode = OrderCode,
+                                ErrorMessage = null,
+                                ErrorInId = null,
+                                Submitter = null
+                            };
+                            db.FilesErrorGenericRepository.Insert(fileError);
                         }
                     }
+
                     var orderStatusList = db.OrderStatusGenericRepository.Get();
                     var order = db.OrderGenericRepository.Get().FirstOrDefault(x => x.Id == OrderId);
 
                     if (totalFilesUploaded == filesToUpload.Count)
                     {
-                        
                     retry:
-                        
+
                         if (order != null)
                         {
                             order.OrderStatusId = orderStatusList.First(x => x.Code == 20).Id;
+                            order.OrderFolderPathLocator = orderFolderPath;
+                            order.OrderFolderParentPathLocator = monthFolderPath;
+                            order.TotalFiles = totalFilesUploaded;
+                            order.OrderFolderStreamId = orderFolderStreamId;
+
                             db.OrderGenericRepository.Update(order);
                             db.Save();
                         }
@@ -258,19 +279,6 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                         {
                             sb.Append(item);
                             sb.Append("\n");
-                            var fileError = new TblFilesError
-                            {
-                                OrderId = OrderId,
-                                BookingId = BookingId,
-                                CustomerId = CustomerId,
-                                DateTime = DateTime.Now,
-                                FileName = item,
-                                OrderCode = OrderCode,
-                                ErrorMessage = null,
-                                ErrorInId = null,
-                                Submitter = null
-                            };
-                            db.FilesErrorGenericRepository.Insert(fileError);
                         }
 
                         if (order != null)
@@ -283,19 +291,19 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                         RtlMessageBox.Show(sb.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
-                    var dr = RtlMessageBox.Show("آیا بازهم عکسی برای ارسال دارید؟", "",
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    //var dr = RtlMessageBox.Show("آیا بازهم عکسی برای ارسال دارید؟", "",
+                    //    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                    if (dr == DialogResult.Yes)
-                    {
+                    //if (dr == DialogResult.Yes)
+                    //{
 
-                        txtOrderCode.Text = string.Empty;
-                        _fileNamesAndPathsList.Clear();
-                        _fileNamesList.Clear();
-                        panelPreviewPictures.Controls.Clear();
-                    }
-                    else
-                        DialogResult = DialogResult.OK;
+                    //    txtOrderCode.Text = string.Empty;
+                    //    _fileNamesAndPathsList.Clear();
+                    //    _fileNamesList.Clear();
+                    //    panelPreviewPictures.Controls.Clear();
+                    //}
+                    //else
+                    DialogResult = DialogResult.OK;
                 }
             }
             catch (Exception exception)
@@ -382,7 +390,6 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 
         private void LoadImagestoPanel(string imageName, string imageFullName, int newLocX, int newLocY)
         {
-
             PictureBox pictureBoxControl = new PictureBox
             {
                 BackColor = SystemColors.Control,

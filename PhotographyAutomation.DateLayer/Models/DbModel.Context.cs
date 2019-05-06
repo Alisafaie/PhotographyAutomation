@@ -44,8 +44,8 @@ namespace PhotographyAutomation.DateLayer.Models
         public virtual DbSet<TblRoleType> TblRoleType { get; set; }
         public virtual DbSet<View_GetAllPhotos> View_GetAllPhotos { get; set; }
         public virtual DbSet<View_GetDocumentsFolders> View_GetDocumentsFolders { get; set; }
-        public virtual DbSet<TblOrder> TblOrder { get; set; }
         public virtual DbSet<TblFilesError> TblFilesError { get; set; }
+        public virtual DbSet<TblOrder> TblOrder { get; set; }
     
         public virtual ObjectResult<string> usp_CreateCustomerFinancialDirectory(string customerFinancialNumber, string monthNumber, Nullable<byte> parent_level, ObjectParameter returnValue)
         {
@@ -113,6 +113,15 @@ namespace PhotographyAutomation.DateLayer.Models
                 new ObjectParameter("parent_level", typeof(byte));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("usp_CreateYearFolder", nameParameter, parent_nameParameter, parent_levelParameter, returnValue);
+        }
+    
+        public virtual ObjectResult<string> usp_GetOrderFolderStreamId(string customerFinancialNumber, ObjectParameter returnValue)
+        {
+            var customerFinancialNumberParameter = customerFinancialNumber != null ?
+                new ObjectParameter("customerFinancialNumber", customerFinancialNumber) :
+                new ObjectParameter("customerFinancialNumber", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("usp_GetOrderFolderStreamId", customerFinancialNumberParameter, returnValue);
         }
     }
 }

@@ -147,9 +147,9 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.TblCustomerDocuments' 
           <Property Name="CustomerId" Type="int" Nullable="false" />
           <Property Name="PhotographerId" Type="int" />
           <Property Name="PaymentIsOk" Type="tinyint" />
-          <Property Name="OrdefFolderStreamId" Type="uniqueidentifier" />
-          <Property Name="OrdefFolderPathLocator" Type="nvarchar(max)" />
-          <Property Name="OrdefFolderParentPathLocator" Type="nvarchar(max)" />
+          <Property Name="OrderFolderStreamId" Type="uniqueidentifier" />
+          <Property Name="OrderFolderPathLocator" Type="nvarchar(max)" />
+          <Property Name="OrderFolderParentPathLocator" Type="nvarchar(max)" />
           <Property Name="TotalFiles" Type="int" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
@@ -611,6 +611,10 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           <Parameter Name="parent_level" Type="tinyint" Mode="In" />
           <Parameter Name="returnValue" Type="nvarchar(max)" Mode="InOut" />
         </Function>
+        <Function Name="usp_GetOrderFolderStreamId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="customerFinancialNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="returnValue" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
         <EntityContainer Name="PhotographyAutomationDBModelStoreContainer">
           <EntitySet Name="TblAllOrderStatus" EntityType="Self.TblAllOrderStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblAtelierType" EntityType="Self.TblAtelierType" Schema="dbo" store:Type="Tables" />
@@ -878,6 +882,15 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
             <End Role="TblDocuments" EntitySet="TblDocuments" />
             <End Role="TblCustomer" EntitySet="TblCustomer" />
           </AssociationSet>
+          <EntitySet Name="TblFilesError" EntityType="PhotographyAutomationDBModel.TblFilesError" />
+          <AssociationSet Name="FK_TblFilesError_TblBooking" Association="PhotographyAutomationDBModel.FK_TblFilesError_TblBooking">
+            <End Role="TblBooking" EntitySet="TblBooking" />
+            <End Role="TblFilesError" EntitySet="TblFilesError" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblFilesError_TblCustomer" Association="PhotographyAutomationDBModel.FK_TblFilesError_TblCustomer">
+            <End Role="TblCustomer" EntitySet="TblCustomer" />
+            <End Role="TblFilesError" EntitySet="TblFilesError" />
+          </AssociationSet>
           <EntitySet Name="TblOrder" EntityType="PhotographyAutomationDBModel.TblOrder" />
           <AssociationSet Name="FK_TblAllOrderStatus_TblOrder" Association="PhotographyAutomationDBModel.FK_TblAllOrderStatus_TblOrder">
             <End Role="TblOrder" EntitySet="TblOrder" />
@@ -890,6 +903,10 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           <AssociationSet Name="FK_TblOrder_TblCustomer" Association="PhotographyAutomationDBModel.FK_TblOrder_TblCustomer">
             <End Role="TblCustomer" EntitySet="TblCustomer" />
             <End Role="TblOrder" EntitySet="TblOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblFilesError_TblOrder" Association="PhotographyAutomationDBModel.FK_TblFilesError_TblOrder">
+            <End Role="TblOrder" EntitySet="TblOrder" />
+            <End Role="TblFilesError" EntitySet="TblFilesError" />
           </AssociationSet>
           <AssociationSet Name="FK_TblOrder_TblOrderPrint" Association="PhotographyAutomationDBModel.FK_TblOrder_TblOrderPrint">
             <End Role="TblOrder" EntitySet="TblOrder" />
@@ -907,19 +924,10 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
             <End Role="TblOrder" EntitySet="TblOrder" />
             <End Role="TblOrderFiles" EntitySet="TblOrderFiles" />
           </AssociationSet>
-          <EntitySet Name="TblFilesError" EntityType="PhotographyAutomationDBModel.TblFilesError" />
-          <AssociationSet Name="FK_TblFilesError_TblBooking" Association="PhotographyAutomationDBModel.FK_TblFilesError_TblBooking">
-            <End Role="TblBooking" EntitySet="TblBooking" />
-            <End Role="TblFilesError" EntitySet="TblFilesError" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblFilesError_TblCustomer" Association="PhotographyAutomationDBModel.FK_TblFilesError_TblCustomer">
-            <End Role="TblCustomer" EntitySet="TblCustomer" />
-            <End Role="TblFilesError" EntitySet="TblFilesError" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblFilesError_TblOrder" Association="PhotographyAutomationDBModel.FK_TblFilesError_TblOrder">
-            <End Role="TblOrder" EntitySet="TblOrder" />
-            <End Role="TblFilesError" EntitySet="TblFilesError" />
-          </AssociationSet>
+          <FunctionImport Name="usp_GetOrderFolderStreamId" ReturnType="Collection(String)">
+            <Parameter Name="customerFinancialNumber" Mode="In" Type="String" />
+            <Parameter Name="returnValue" Mode="InOut" Type="String" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="usp_CreateFileTableFile_Result">
           <Property Type="String" Name="streamId" Nullable="true" MaxLength="4000" />
@@ -973,8 +981,8 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           <NavigationProperty Name="TblBookingStatus" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblBookingStatus" FromRole="TblBooking" ToRole="TblBookingStatus" />
           <NavigationProperty Name="TblPhotographyType" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblPhotographyType" FromRole="TblBooking" ToRole="TblPhotographyType" />
           <NavigationProperty Name="TblCustomer" Relationship="PhotographyAutomationDBModel.FK_TblBooking_TblUser" FromRole="TblBooking" ToRole="TblCustomer" />
-          <NavigationProperty Name="TblOrder" Relationship="PhotographyAutomationDBModel.FK_TblOrder_TblBooking" FromRole="TblBooking" ToRole="TblOrder" />
           <NavigationProperty Name="TblFilesError" Relationship="PhotographyAutomationDBModel.FK_TblFilesError_TblBooking" FromRole="TblBooking" ToRole="TblFilesError" />
+          <NavigationProperty Name="TblOrder" Relationship="PhotographyAutomationDBModel.FK_TblOrder_TblBooking" FromRole="TblBooking" ToRole="TblOrder" />
         </EntityType>
         <EntityType Name="TblBookingStatus">
           <Key>
@@ -1011,8 +1019,8 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           <NavigationProperty Name="TblOrderPrint" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrint_TblCustomer" FromRole="TblCustomer" ToRole="TblOrderPrint" />
           <NavigationProperty Name="TblOrderPrintDetails" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblCustomer" FromRole="TblCustomer" ToRole="TblOrderPrintDetails" />
           <NavigationProperty Name="TblDocuments" Relationship="PhotographyAutomationDBModel.TblCustomerDocuments" FromRole="TblCustomer" ToRole="TblDocuments" />
-          <NavigationProperty Name="TblOrder" Relationship="PhotographyAutomationDBModel.FK_TblOrder_TblCustomer" FromRole="TblCustomer" ToRole="TblOrder" />
           <NavigationProperty Name="TblFilesError" Relationship="PhotographyAutomationDBModel.FK_TblFilesError_TblCustomer" FromRole="TblCustomer" ToRole="TblFilesError" />
+          <NavigationProperty Name="TblOrder" Relationship="PhotographyAutomationDBModel.FK_TblOrder_TblCustomer" FromRole="TblCustomer" ToRole="TblOrder" />
         </EntityType>
         <EntityType Name="TblDocumentPhotos">
           <Key>
@@ -1357,6 +1365,48 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           <End Type="PhotographyAutomationDBModel.TblDocuments" Role="TblDocuments" Multiplicity="*" />
           <End Type="PhotographyAutomationDBModel.TblCustomer" Role="TblCustomer" Multiplicity="*" />
         </Association>
+        <EntityType Name="TblFilesError">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="FileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Submitter" Type="Int32" />
+          <Property Name="OrderId" Type="Int32" />
+          <Property Name="OrderCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="BookingId" Type="Int32" />
+          <Property Name="ErrorInId" Type="Int32" />
+          <Property Name="ErrorMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblBooking" Relationship="PhotographyAutomationDBModel.FK_TblFilesError_TblBooking" FromRole="TblFilesError" ToRole="TblBooking" />
+          <NavigationProperty Name="TblCustomer" Relationship="PhotographyAutomationDBModel.FK_TblFilesError_TblCustomer" FromRole="TblFilesError" ToRole="TblCustomer" />
+          <NavigationProperty Name="TblOrder" Relationship="PhotographyAutomationDBModel.FK_TblFilesError_TblOrder" FromRole="TblFilesError" ToRole="TblOrder" />
+        </EntityType>
+        <Association Name="FK_TblFilesError_TblBooking">
+          <End Type="PhotographyAutomationDBModel.TblBooking" Role="TblBooking" Multiplicity="1" />
+          <End Type="PhotographyAutomationDBModel.TblFilesError" Role="TblFilesError" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TblBooking">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblFilesError">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblFilesError_TblCustomer">
+          <End Type="PhotographyAutomationDBModel.TblCustomer" Role="TblCustomer" Multiplicity="0..1" />
+          <End Type="PhotographyAutomationDBModel.TblFilesError" Role="TblFilesError" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCustomer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblFilesError">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="TblOrder">
           <Key>
             <PropertyRef Name="Id" />
@@ -1369,9 +1419,9 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           <Property Name="CustomerId" Type="Int32" Nullable="false" />
           <Property Name="PhotographerId" Type="Int32" />
           <Property Name="PaymentIsOk" Type="Byte" />
-          <Property Name="OrdefFolderStreamId" Type="Guid" />
-          <Property Name="OrdefFolderPathLocator" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="OrdefFolderParentPathLocator" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrderFolderStreamId" Type="Guid" />
+          <Property Name="OrderFolderPathLocator" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrderFolderParentPathLocator" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="TotalFiles" Type="Int32" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
@@ -1380,11 +1430,11 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           <NavigationProperty Name="TblAllOrderStatus" Relationship="PhotographyAutomationDBModel.FK_TblAllOrderStatus_TblOrder" FromRole="TblOrder" ToRole="TblAllOrderStatus" />
           <NavigationProperty Name="TblBooking" Relationship="PhotographyAutomationDBModel.FK_TblOrder_TblBooking" FromRole="TblOrder" ToRole="TblBooking" />
           <NavigationProperty Name="TblCustomer" Relationship="PhotographyAutomationDBModel.FK_TblOrder_TblCustomer" FromRole="TblOrder" ToRole="TblCustomer" />
+          <NavigationProperty Name="TblFilesError" Relationship="PhotographyAutomationDBModel.FK_TblFilesError_TblOrder" FromRole="TblOrder" ToRole="TblFilesError" />
           <NavigationProperty Name="TblOrderPrint" Relationship="PhotographyAutomationDBModel.FK_TblOrder_TblOrderPrint" FromRole="TblOrder" ToRole="TblOrderPrint" />
           <NavigationProperty Name="TblOrderStatus" Relationship="PhotographyAutomationDBModel.FK_TblOrder_TblOrderStatus" FromRole="TblOrder" ToRole="TblOrderStatus" />
           <NavigationProperty Name="TblPhotographyType" Relationship="PhotographyAutomationDBModel.FK_TblOrder_TblPhotographyType" FromRole="TblOrder" ToRole="TblPhotographyType" />
           <NavigationProperty Name="TblOrderFiles" Relationship="PhotographyAutomationDBModel.FK_TblOrderStreams_TblOrder" FromRole="TblOrder" ToRole="TblOrderFiles" />
-          <NavigationProperty Name="TblFilesError" Relationship="PhotographyAutomationDBModel.FK_TblFilesError_TblOrder" FromRole="TblOrder" ToRole="TblFilesError" />
         </EntityType>
         <Association Name="FK_TblAllOrderStatus_TblOrder">
           <End Type="PhotographyAutomationDBModel.TblOrder" Role="TblOrder" Multiplicity="1" />
@@ -1419,6 +1469,18 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
             </Principal>
             <Dependent Role="TblOrder">
               <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblFilesError_TblOrder">
+          <End Type="PhotographyAutomationDBModel.TblOrder" Role="TblOrder" Multiplicity="0..1" />
+          <End Type="PhotographyAutomationDBModel.TblFilesError" Role="TblFilesError" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblOrder">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblFilesError">
+              <PropertyRef Name="OrderId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1466,60 +1528,6 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="TblOrderFiles">
-              <PropertyRef Name="OrderId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="TblFilesError">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="FileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DateTime" Type="DateTime" Precision="3" />
-          <Property Name="Submitter" Type="Int32" />
-          <Property Name="OrderId" Type="Int32" />
-          <Property Name="OrderCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerId" Type="Int32" />
-          <Property Name="BookingId" Type="Int32" />
-          <Property Name="ErrorInId" Type="Int32" />
-          <Property Name="ErrorMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="TblBooking" Relationship="PhotographyAutomationDBModel.FK_TblFilesError_TblBooking" FromRole="TblFilesError" ToRole="TblBooking" />
-          <NavigationProperty Name="TblCustomer" Relationship="PhotographyAutomationDBModel.FK_TblFilesError_TblCustomer" FromRole="TblFilesError" ToRole="TblCustomer" />
-          <NavigationProperty Name="TblOrder" Relationship="PhotographyAutomationDBModel.FK_TblFilesError_TblOrder" FromRole="TblFilesError" ToRole="TblOrder" />
-        </EntityType>
-        <Association Name="FK_TblFilesError_TblBooking">
-          <End Type="PhotographyAutomationDBModel.TblBooking" Role="TblBooking" Multiplicity="1" />
-          <End Type="PhotographyAutomationDBModel.TblFilesError" Role="TblFilesError" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="TblBooking">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TblFilesError">
-              <PropertyRef Name="Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblFilesError_TblCustomer">
-          <End Type="PhotographyAutomationDBModel.TblCustomer" Role="TblCustomer" Multiplicity="0..1" />
-          <End Type="PhotographyAutomationDBModel.TblFilesError" Role="TblFilesError" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblCustomer">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TblFilesError">
-              <PropertyRef Name="CustomerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblFilesError_TblOrder">
-          <End Type="PhotographyAutomationDBModel.TblOrder" Role="TblOrder" Multiplicity="0..1" />
-          <End Type="PhotographyAutomationDBModel.TblFilesError" Role="TblFilesError" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblOrder">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TblFilesError">
               <PropertyRef Name="OrderId" />
             </Dependent>
           </ReferentialConstraint>
@@ -1796,28 +1804,6 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
               <ScalarProperty Name="Id" ColumnName="DocumentId" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="TblOrder">
-            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblOrder">
-              <MappingFragment StoreEntitySet="TblOrder">
-                <ScalarProperty Name="Submitter" ColumnName="Submitter" />
-                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
-                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="TotalFiles" ColumnName="TotalFiles" />
-                <ScalarProperty Name="OrdefFolderParentPathLocator" ColumnName="OrdefFolderParentPathLocator" />
-                <ScalarProperty Name="OrdefFolderPathLocator" ColumnName="OrdefFolderPathLocator" />
-                <ScalarProperty Name="OrdefFolderStreamId" ColumnName="OrdefFolderStreamId" />
-                <ScalarProperty Name="PaymentIsOk" ColumnName="PaymentIsOk" />
-                <ScalarProperty Name="PhotographerId" ColumnName="PhotographerId" />
-                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
-                <ScalarProperty Name="PhotographyTypeId" ColumnName="PhotographyTypeId" />
-                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
-                <ScalarProperty Name="OrderStatusId" ColumnName="OrderStatusId" />
-                <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TblFilesError">
             <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblFilesError">
               <MappingFragment StoreEntitySet="TblFilesError">
@@ -1834,6 +1820,29 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TblOrder">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblOrder">
+              <MappingFragment StoreEntitySet="TblOrder">
+                <ScalarProperty Name="Submitter" ColumnName="Submitter" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="TotalFiles" ColumnName="TotalFiles" />
+                <ScalarProperty Name="OrderFolderParentPathLocator" ColumnName="OrderFolderParentPathLocator" />
+                <ScalarProperty Name="OrderFolderPathLocator" ColumnName="OrderFolderPathLocator" />
+                <ScalarProperty Name="OrderFolderStreamId" ColumnName="OrderFolderStreamId" />
+                <ScalarProperty Name="PaymentIsOk" ColumnName="PaymentIsOk" />
+                <ScalarProperty Name="PhotographerId" ColumnName="PhotographerId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="PhotographyTypeId" ColumnName="PhotographyTypeId" />
+                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+                <ScalarProperty Name="OrderStatusId" ColumnName="OrderStatusId" />
+                <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_GetOrderFolderStreamId" FunctionName="PhotographyAutomationDBModel.Store.usp_GetOrderFolderStreamId" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

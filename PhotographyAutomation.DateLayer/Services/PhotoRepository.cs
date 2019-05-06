@@ -91,7 +91,7 @@ namespace PhotographyAutomation.DateLayer.Services
             }
         }
 
-        public string CheckCustomerFinancialFolderIsCreatedReturnsPath(string orderCode)
+        public string CheckCustomerOrderFolderIsCreatedReturnsPath(string orderCode)
         {
             try
             {
@@ -169,7 +169,6 @@ namespace PhotographyAutomation.DateLayer.Services
             try
             {
                 string strMonth = month.ToString();
-
 
                 ObjectParameter returnValue = new ObjectParameter("returnValue", typeof(string));
                 var result = _db.usp_CreateCustomerFinancialDirectory(orderCode, strMonth, 3, returnValue)
@@ -277,6 +276,33 @@ namespace PhotographyAutomation.DateLayer.Services
                     Debug.WriteLine(exception.StackTrace);
                     return null;
                 }
+            }
+        }
+
+        public Guid GetOrderFolderStreamId(string orderCode)
+        {
+            try
+            {
+                ObjectParameter returnValue = new ObjectParameter("returnValue", typeof(string));
+                var result = _db.usp_GetOrderFolderStreamId(orderCode, returnValue).ToList();
+
+                if (result.Count > 0)
+                {
+                    return new Guid(result[0]);
+                }
+                else
+                {
+                    return Guid.Empty;
+                }
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine(exception.Message);
+                Debug.WriteLine(exception.Data);
+                Debug.WriteLine(exception.InnerException);
+                Debug.WriteLine(exception.Source);
+                Debug.WriteLine(exception.StackTrace);
+                return Guid.Empty;
             }
         }
     }
