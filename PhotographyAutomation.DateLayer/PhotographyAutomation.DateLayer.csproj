@@ -94,6 +94,9 @@
     <Compile Include="Models\TblEmpRole.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TblFilesError.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\TblOrder.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>

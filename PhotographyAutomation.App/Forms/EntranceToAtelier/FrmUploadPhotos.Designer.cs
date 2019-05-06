@@ -402,6 +402,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmUploadPhotos";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ارسال عکس ها به سرور";
             this.Load += new System.EventHandler(this.FrmUploadPhotos_Load);

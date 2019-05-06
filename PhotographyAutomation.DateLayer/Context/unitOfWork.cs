@@ -231,6 +231,21 @@ namespace PhotographyAutomation.DateLayer.Context
             }
         }
 
+        private GenericRepository<TblFilesError> _filesErrorGenericRepository;
+
+        public GenericRepository<TblFilesError> FilesErrorGenericRepository
+        {
+            get
+            {
+                if (_filesErrorGenericRepository == null)
+                {
+                    _filesErrorGenericRepository = new GenericRepository<TblFilesError>(_db);
+                }
+
+                return _filesErrorGenericRepository;
+            }
+        }
+
 
         
         public int Save()

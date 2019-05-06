@@ -7,6 +7,7 @@ namespace PhotographyAutomation.ViewModels.Order
         public int Id { get; set; }
         public string OrderCode { get; set; }
         public int OrderStatusId { get; set; }
+        public int OrderStatusCode { get; set; }
         public string OrderStatusName { get; set; }
         public int BookingId { get; set; }
         public DateTime BookingDate { get; set; }

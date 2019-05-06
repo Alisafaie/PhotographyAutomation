@@ -28,10 +28,8 @@
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblBooking_TblPhotographyType" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblBooking_TblUser" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderPrint_TblCustomer" ManuallyRouted="true" >
-          <ConnectorPoint PointX="4.5" PointY="11.855793681259188" />
-          <ConnectorPoint PointX="7.0266671666666669" PointY="11.855793681259188" />
-          <ConnectorPoint PointX="7.193333833333333" PointY="11.855793681259188" />
-          <ConnectorPoint PointX="7.4700000000000006" PointY="11.855793681259188" />
+          <ConnectorPoint PointX="4.5" PointY="13.259013671875001" />
+          <ConnectorPoint PointX="7.4700000000000006" PointY="191.80709406767957" />
           <ConnectorPoint PointX="7.4700000000000006" PointY="7.375" />
           <ConnectorPoint PointX="7.9641666666666664" PointY="7.3749999999999991" />
           <ConnectorPoint PointX="8.1308333333333334" PointY="7.375" />
@@ -57,6 +55,10 @@
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrder_TblOrderStatus" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrder_TblPhotographyType" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderStreams_TblOrder" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblFilesError" Width="1.5" PointX="15.625" PointY="13" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblFilesError_TblBooking" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblFilesError_TblCustomer" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblFilesError_TblOrder" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

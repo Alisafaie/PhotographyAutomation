@@ -335,7 +335,6 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                         dgvOrders.Rows[i].Cells["clmCustomerFullName"].Value =
                             ordersList[i].CustomerFullName;
                         break;
-
                 }
 
 
@@ -377,7 +376,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                 dgvOrders.Rows[i].Cells["clmCreatedDateTime"].Value = ordersList[i].CreatedDateTime;
                 dgvOrders.Rows[i].Cells["clmModifiedDateTime"].Value = ordersList[i].ModifiedDateTime;
                 dgvOrders.Rows[i].Cells["clmTotalFiles"].Value = ordersList[i].TotalFiles;
-
+                dgvOrders.Rows[i].Cells["clmOrderStatusCode"].Value = ordersList[i].OrderStatusCode;
             }
         }
 
@@ -470,7 +469,20 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                     OrderId = orderId
                 };
                 uploadForm.ShowDialog();
+
+                if (dgvOrders.CurrentRow != null)
+                {
+                    int rowIndex = dgvOrders.CurrentRow.Index;
+
+                    btnShowBookings_Click(null, null);
+                    dgvOrders.Rows[rowIndex].Selected = true;
+                }
             }
+        }
+
+        private void contextMenuStripDgvBookings_Paint(object sender, PaintEventArgs e)
+        {
+            ارسالعکسToolStripMenuItem.Enabled = dgvOrders.SelectedRows[0].Cells["clmOrderStatusCode"].Value.ToString() == "10";
         }
     }
 }

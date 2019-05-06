@@ -50,7 +50,11 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialogBrowsePictures = new OpenFileDialog
+            btnChoosePhotoPath_Click(null, null);
+        }
+        private void btnChoosePhotoPath_Click(object sender, EventArgs e)
+        {
+            var openFileDialogBrowsePictures = new OpenFileDialog
             {
                 CheckFileExists = true,
                 DefaultExt = "*.jpg",
@@ -64,48 +68,39 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                 //ShowReadOnly = true
             };
 
-            if (openFileDialogBrowsePictures.ShowDialog() == DialogResult.OK)
+            if (openFileDialogBrowsePictures.ShowDialog() != DialogResult.OK) return;
+
+            panelPreviewPictures.Controls.Clear();
+            var locnewX = _locX;
+            // ReSharper disable once UnusedVariable
+            var locnewY = _locY;
+
+
+            for (var i = 0; i < openFileDialogBrowsePictures.SafeFileNames.Length; i++)
             {
-
-                panelPreviewPictures.Controls.Clear();
-
-                int locnewX = _locX;
-                // ReSharper disable once UnusedVariable
-                int locnewY = _locY;
-
-
-                for (int i = 0; i < openFileDialogBrowsePictures.SafeFileNames.Length; i++)
+                try
                 {
-                    try
-                    {
-                        _fileNamesAndPathsList.Add(openFileDialogBrowsePictures.FileNames[i]);
-                        _fileNamesList.Add(openFileDialogBrowsePictures.SafeFileNames[i]);
-
-
-                        locnewX = ShowImagePreview(locnewX, openFileDialogBrowsePictures, i);
-                    }
-                    catch (Exception exception)
-                    {
-                        RtlMessageBox.Show(exception.Message);
-                    }
+                    _fileNamesAndPathsList.Add(openFileDialogBrowsePictures.FileNames[i]);
+                    _fileNamesList.Add(openFileDialogBrowsePictures.SafeFileNames[i]);
+                    locnewX = ShowImagePreview(locnewX, openFileDialogBrowsePictures, i);
                 }
-                txtOrderCode.Focus();
+                catch (Exception exception)
+                {
+                    RtlMessageBox.Show(exception.Message);
+                }
             }
+            txtOrderCode.Focus();
         }
-
-
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             btnUploadPhotos_Click(null, null);
         }
-
         private void btnUploadPhotos_Click(object sender, EventArgs e)
         {
             //string uploadPath = string.Empty;
             var filesToUpload = new List<string>();
             var fileNamesUpload = new List<string>();
-
 
             if (!CheckInputs()) return;
 
@@ -117,8 +112,6 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                     fileNamesUpload.Add(checkbox.AccessibleName);
                 }
             }
-
-
             try
             {
                 using (var db = new UnitOfWork())
@@ -139,7 +132,6 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                         }
                     }
 
-
                     var resultCheckPhotoMonthFolder =
                         db.PhotoRepository.CheckPhotoMonthFolderIsCreatedReturnsPath(month);
 
@@ -155,12 +147,6 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                     var resultCheckCustomerFinancialFolder =
                         db.PhotoRepository.CheckCustomerFinancialFolderIsCreatedReturnsPath(OrderCode);
 
-                    if (resultCheckCustomerFinancialFolder != null)
-                    {
-                        RtlMessageBox.Show(@"فولدر فاکتور مشتری در سیستم وجود دارد.", "", MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);
-                    }
-
                     if (resultCheckCustomerFinancialFolder == null)
                     {
                         var resultCreateYearFolder =
@@ -171,22 +157,41 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                             //uploadPath = resultCreateYearFolder;
                         }
                     }
+                    else
+                    {
+                        DialogResult dialogResultReplaceFiles = RtlMessageBox.Show(
+                            "فولدر فاکتور مشتری در سیستم وجود دارد." +
+                            Environment.NewLine +
+                            "آیا می خواهید عکس های قبلی پاک شده و عکس های جدید جایگزین شود؟" +
+                            Environment.NewLine +
+                            "در صورت انتخاب خیر عکس های فعلی در کنار عکس های قبلی قرار می کیرند."
+                            , "", MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Question);
+                        if (dialogResultReplaceFiles == DialogResult.Yes)
+                        {
 
-                    string parentPathName = OrderCode;
+                        }
+                        else
+                        {
+
+                        }
+                    }
+
+                    var parentPathName = OrderCode;
 
 
-                    int resultUploads = 0;
+                    var totalFilesUploaded = 0;
                     var errorInUpload = new List<string>();
                     var orderFilesList = new List<TblOrderFiles>();
 
-                    for (int i = 0; i < filesToUpload.Count; i++)
+                    for (var i = 0; i < filesToUpload.Count; i++)
                     {
                         //var fileUploadResult = db.PhotoRepository.CreateFileTableFile(
                         //    fileNamesUpload[i], parentPathName, 4, filesToUpload[i]);
 
                         var fileUploadResult2 =
                             db.PhotoRepository.CreateFileTableFileReturnCreateFileViewModel(
-                            fileNamesUpload[i], parentPathName, 4, filesToUpload[i]);
+                            OrderCode + "--" + fileNamesUpload[i], parentPathName, 4, filesToUpload[i]);
 
                         if (fileUploadResult2 != null)
                         {
@@ -201,7 +206,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                             orderFilesList.Add(orderFile);
                             db.OrderFilesGenericRepository.Insert(orderFile);
                             if (db.Save() > 0)
-                                resultUploads++;
+                                totalFilesUploaded++;
                         }
                         else
                         {
@@ -212,17 +217,19 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                             errorInUpload.Add(fileNamesUpload[i]);
                         }
                     }
+                    var orderStatusList = db.OrderStatusGenericRepository.Get();
+                    var order = db.OrderGenericRepository.Get().FirstOrDefault(x => x.Id == OrderId);
 
-                    if (resultUploads == filesToUpload.Count)
+                    if (totalFilesUploaded == filesToUpload.Count)
                     {
-                        var orderStatusList = db.OrderStatusGenericRepository.Get();
+                        
                     retry:
-                        var order = db.OrderGenericRepository.Get().FirstOrDefault(x => x.Id == OrderId);
-
+                        
                         if (order != null)
                         {
                             order.OrderStatusId = orderStatusList.First(x => x.Code == 20).Id;
-
+                            db.OrderGenericRepository.Update(order);
+                            db.Save();
                         }
                         else
                         {
@@ -239,11 +246,10 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 
                         RtlMessageBox.Show("تمامی فایل ها با موفقیت ارسال گردید.", "", MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
-
                     }
                     else
                     {
-                        StringBuilder sb = new StringBuilder();
+                        var sb = new StringBuilder();
                         sb.Append("ارسال فایل (های) زیر با مشکل مواجه شد.");
                         sb.Append("---------------------------------------\n");
                         sb.Append("\n");
@@ -252,12 +258,32 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                         {
                             sb.Append(item);
                             sb.Append("\n");
+                            var fileError = new TblFilesError
+                            {
+                                OrderId = OrderId,
+                                BookingId = BookingId,
+                                CustomerId = CustomerId,
+                                DateTime = DateTime.Now,
+                                FileName = item,
+                                OrderCode = OrderCode,
+                                ErrorMessage = null,
+                                ErrorInId = null,
+                                Submitter = null
+                            };
+                            db.FilesErrorGenericRepository.Insert(fileError);
                         }
 
+                        if (order != null)
+                        {
+                            order.OrderStatusId = orderStatusList.First(x => x.Code == 140).Id;
+                            db.OrderGenericRepository.Update(order);
+                        }
+
+                        db.Save();
                         RtlMessageBox.Show(sb.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
-                    DialogResult dr = RtlMessageBox.Show("آیا بازهم عکسی برای ارسال دارید؟", "",
+                    var dr = RtlMessageBox.Show("آیا بازهم عکسی برای ارسال دارید؟", "",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                     if (dr == DialogResult.Yes)
@@ -269,9 +295,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                         panelPreviewPictures.Controls.Clear();
                     }
                     else
-                    {
-                        Close();
-                    }
+                        DialogResult = DialogResult.OK;
                 }
             }
             catch (Exception exception)
@@ -299,7 +323,6 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                 RtlMessageBox.Show("عکسی برای ارسال انتخاب نشده است.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-
             return true;
         }
 
@@ -434,11 +457,6 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                     checkBox.CheckState = CheckState.Checked;
                 }
             }
-        }
-
-        private void btnChoosePhotoPath_Click(object sender, EventArgs e)
-        {
-            openToolStripMenuItem_Click(null, null);
         }
     }
 }

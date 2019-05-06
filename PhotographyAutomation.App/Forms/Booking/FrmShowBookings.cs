@@ -330,7 +330,8 @@ namespace PhotographyAutomation.App.Forms.Booking
             {
                 var dialogResult = RtlMessageBox.Show(
                     "آیا وضعیت رزرو مشتری به 'ورود به آتلیه' تغییر یابد؟" + "\n" +
-                    "پس از تغییر وضعیت رزرو شناسه سفارش ایجاد می گردد و وضعیت آن قابل تغییر نمی باشد.",
+                    "پس از تغییر وضعیت رزرو شناسه سفارش ایجاد می گردد" + "\n" +
+                    " و وضعیت آن قابل تغییر نمی باشد.",
                     "تغییر وضعیت رزرو", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (dialogResult != DialogResult.Yes) return;
@@ -339,8 +340,8 @@ namespace PhotographyAutomation.App.Forms.Booking
                     var booking = db.BookingGenericRepository.GetById(bookingId);
                     var bookingStatusList = db.BookingStatusGenericRepository.Get().ToList();
                     var orderStatusList = db.OrderStatusGenericRepository.Get().ToList();
-                    int bookingStatusToOrderId = 0;
-                    int orderStatusId = 0;
+                    var bookingStatusToOrderId = 0;
+                    var orderStatusId = 0;
                     if (bookingStatusList.Any() && orderStatusList.Any())
                     {
                         #region کدهای وضعیت های رزرو
