@@ -611,6 +611,9 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           <Parameter Name="parent_level" Type="tinyint" Mode="In" />
           <Parameter Name="returnValue" Type="nvarchar(max)" Mode="InOut" />
         </Function>
+        <Function Name="usp_DeleteOrderFolderFiles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pathLocator" Type="nvarchar(max)" Mode="In" />
+        </Function>
         <Function Name="usp_GetOrderFolderStreamId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="customerFinancialNumber" Type="nvarchar" Mode="In" />
           <Parameter Name="returnValue" Type="nvarchar(max)" Mode="InOut" />
@@ -927,6 +930,9 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           <FunctionImport Name="usp_GetOrderFolderStreamId" ReturnType="Collection(String)">
             <Parameter Name="customerFinancialNumber" Mode="In" Type="String" />
             <Parameter Name="returnValue" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeleteOrderFolderFiles">
+            <Parameter Name="pathLocator" Mode="In" Type="String" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="usp_CreateFileTableFile_Result">
@@ -1843,6 +1849,7 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="usp_GetOrderFolderStreamId" FunctionName="PhotographyAutomationDBModel.Store.usp_GetOrderFolderStreamId" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteOrderFolderFiles" FunctionName="PhotographyAutomationDBModel.Store.usp_DeleteOrderFolderFiles" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

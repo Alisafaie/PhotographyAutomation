@@ -91,13 +91,52 @@ namespace PhotographyAutomation.DateLayer.Services
             }
         }
 
-        public string CheckCustomerOrderFolderIsCreatedReturnsPath(string orderCode)
+        public string CheckCustomerOrderFolderIsCreatedReturnsFullUncPath(string orderCode)
         {
             try
             {
                 var result = _db.View_GetDocumentsFolders.Where(
                     x => x.FolderName == orderCode).ToList();
                 return result.Count > 0 ? result[0].FullUncPath : null;
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine(exception.Message);
+                Debug.WriteLine(exception.Data);
+                Debug.WriteLine(exception.InnerException);
+                Debug.WriteLine(exception.Source);
+                Debug.WriteLine(exception.StackTrace);
+                return null;
+            }
+        }
+
+        public List<View_GetDocumentsFolders> CheckCustomerOrderFolderIsCreatedReturnsFullData(string orderCode)
+        {
+            try
+            {
+                List<View_GetDocumentsFolders> result = _db.View_GetDocumentsFolders.Where(
+                    x => x.FolderName == orderCode).ToList();
+                return result.Count > 0 ? result : null;
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine(exception.Message);
+                Debug.WriteLine(exception.Data);
+                Debug.WriteLine(exception.InnerException);
+                Debug.WriteLine(exception.Source);
+                Debug.WriteLine(exception.StackTrace);
+                return null;
+            }
+        }
+
+
+        public string CheckCustomerOrderFolderIsCreatedReturnsPathStreamId(string orderCode)
+        {
+            try
+            {
+                var result = _db.View_GetDocumentsFolders.Where(
+                    x => x.FolderName == orderCode).ToList();
+                return result.Count > 0 ? result[0].StreamId.ToString() : null;
             }
             catch (Exception exception)
             {
@@ -303,6 +342,26 @@ namespace PhotographyAutomation.DateLayer.Services
                 Debug.WriteLine(exception.Source);
                 Debug.WriteLine(exception.StackTrace);
                 return Guid.Empty;
+            }
+        }
+
+        public bool DeleteFilesOfOrder(string pathLocator)
+        {
+            try
+            {
+                var result = _db.usp_DeleteOrderFolderFiles(pathLocator);
+                if (result > 0)
+                    return true;
+                return false;
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine(exception.Message);
+                Debug.WriteLine(exception.Data);
+                Debug.WriteLine(exception.InnerException);
+                Debug.WriteLine(exception.Source);
+                Debug.WriteLine(exception.StackTrace);
+                return false;
             }
         }
     }

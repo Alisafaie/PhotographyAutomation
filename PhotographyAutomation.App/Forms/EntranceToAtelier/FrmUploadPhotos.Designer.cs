@@ -47,8 +47,6 @@
             this.toolTipPictureBoxPreview = new System.Windows.Forms.ToolTip(this.components);
             this.pictureBoxPreview = new System.Windows.Forms.PictureBox();
             this.collapsibleSplitContainer1 = new DevComponents.DotNetBar.Controls.CollapsibleSplitContainer();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnChoosePhotoPath = new DevComponents.DotNetBar.ButtonX();
             this.panelPreviewPictures = new DevComponents.DotNetBar.PanelEx();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.checkBoxSelectAll = new DevComponents.DotNetBar.Controls.CheckBoxX();
@@ -56,6 +54,7 @@
             this.panelEx4 = new DevComponents.DotNetBar.PanelEx();
             this.labelPicturePreviewName = new DevComponents.DotNetBar.LabelX();
             this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
+            this.btnChoosePhotoPath = new DevComponents.DotNetBar.ButtonX();
             this.panelEx1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).BeginInit();
@@ -63,7 +62,6 @@
             this.collapsibleSplitContainer1.Panel1.SuspendLayout();
             this.collapsibleSplitContainer1.Panel2.SuspendLayout();
             this.collapsibleSplitContainer1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.panelEx2.SuspendLayout();
             this.panelEx5.SuspendLayout();
             this.panelEx4.SuspendLayout();
@@ -79,6 +77,7 @@
             // 
             this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx1.Controls.Add(this.btnChoosePhotoPath);
             this.panelEx1.Controls.Add(this.btnUploadPhotos);
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -101,9 +100,9 @@
             this.btnUploadPhotos.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnUploadPhotos.HoverImage = global::PhotographyAutomation.App.Properties.Resources.iconfinder_folder_upload_66809__2_;
             this.btnUploadPhotos.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_folder_closed_59915;
-            this.btnUploadPhotos.Location = new System.Drawing.Point(848, 11);
+            this.btnUploadPhotos.Location = new System.Drawing.Point(701, 20);
             this.btnUploadPhotos.Name = "btnUploadPhotos";
-            this.btnUploadPhotos.Size = new System.Drawing.Size(174, 45);
+            this.btnUploadPhotos.Size = new System.Drawing.Size(174, 36);
             this.btnUploadPhotos.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnUploadPhotos.TabIndex = 5;
             this.btnUploadPhotos.Text = "ارسال عکس ها به سرور";
@@ -222,7 +221,6 @@
             // 
             // collapsibleSplitContainer1.Panel1
             // 
-            this.collapsibleSplitContainer1.Panel1.Controls.Add(this.panel1);
             this.collapsibleSplitContainer1.Panel1.Controls.Add(this.panelPreviewPictures);
             this.collapsibleSplitContainer1.Panel1.Controls.Add(this.panelEx2);
             this.collapsibleSplitContainer1.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -237,40 +235,16 @@
             this.collapsibleSplitContainer1.SplitterWidth = 20;
             this.collapsibleSplitContainer1.TabIndex = 4;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnChoosePhotoPath);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(761, 51);
-            this.panel1.TabIndex = 25;
-            // 
-            // btnChoosePhotoPath
-            // 
-            this.btnChoosePhotoPath.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnChoosePhotoPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnChoosePhotoPath.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnChoosePhotoPath.HoverImage = global::PhotographyAutomation.App.Properties.Resources.iconfinder_folder_open_go_59925;
-            this.btnChoosePhotoPath.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_folder_closed_59915;
-            this.btnChoosePhotoPath.Location = new System.Drawing.Point(608, 9);
-            this.btnChoosePhotoPath.Name = "btnChoosePhotoPath";
-            this.btnChoosePhotoPath.Size = new System.Drawing.Size(141, 36);
-            this.btnChoosePhotoPath.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnChoosePhotoPath.TabIndex = 5;
-            this.btnChoosePhotoPath.Text = "انتخاب مسیر";
-            this.btnChoosePhotoPath.Click += new System.EventHandler(this.btnChoosePhotoPath_Click);
-            // 
             // panelPreviewPictures
             // 
             this.panelPreviewPictures.AutoScroll = true;
             this.panelPreviewPictures.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelPreviewPictures.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.panelPreviewPictures.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelPreviewPictures.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelPreviewPictures.Location = new System.Drawing.Point(0, 51);
+            this.panelPreviewPictures.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelPreviewPictures.Location = new System.Drawing.Point(0, 0);
             this.panelPreviewPictures.Name = "panelPreviewPictures";
-            this.panelPreviewPictures.Size = new System.Drawing.Size(761, 506);
+            this.panelPreviewPictures.Size = new System.Drawing.Size(761, 557);
             this.panelPreviewPictures.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelPreviewPictures.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelPreviewPictures.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -388,6 +362,21 @@
             this.panelEx3.Style.GradientAngle = 90;
             this.panelEx3.TabIndex = 19;
             // 
+            // btnChoosePhotoPath
+            // 
+            this.btnChoosePhotoPath.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnChoosePhotoPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnChoosePhotoPath.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnChoosePhotoPath.HoverImage = global::PhotographyAutomation.App.Properties.Resources.iconfinder_folder_open_go_59925;
+            this.btnChoosePhotoPath.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_folder_closed_59915;
+            this.btnChoosePhotoPath.Location = new System.Drawing.Point(881, 20);
+            this.btnChoosePhotoPath.Name = "btnChoosePhotoPath";
+            this.btnChoosePhotoPath.Size = new System.Drawing.Size(141, 36);
+            this.btnChoosePhotoPath.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnChoosePhotoPath.TabIndex = 6;
+            this.btnChoosePhotoPath.Text = "انتخاب مسیر";
+            this.btnChoosePhotoPath.Click += new System.EventHandler(this.btnChoosePhotoPath_Click);
+            // 
             // FrmUploadPhotos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -414,7 +403,6 @@
             this.collapsibleSplitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.collapsibleSplitContainer1)).EndInit();
             this.collapsibleSplitContainer1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             this.panelEx2.ResumeLayout(false);
             this.panelEx2.PerformLayout();
             this.panelEx5.ResumeLayout(false);
@@ -451,7 +439,6 @@
         private DevComponents.DotNetBar.PanelEx panelEx4;
         private DevComponents.DotNetBar.LabelX labelPicturePreviewName;
         private DevComponents.DotNetBar.PanelEx panelEx3;
-        private System.Windows.Forms.Panel panel1;
         private DevComponents.DotNetBar.ButtonX btnChoosePhotoPath;
     }
 }

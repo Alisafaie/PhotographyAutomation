@@ -6,6 +6,7 @@ using PhotographyAutomation.Utilities.Convertor;
 using PhotographyAutomation.Utilities.ExtentionMethods;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
@@ -124,6 +125,8 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                     string monthFolderPath;
                     string orderFolderPath = null;
 
+                    var orderStatusList = db.OrderStatusGenericRepository.Get();
+
                     var checkYearFolder = db.PhotoRepository.CheckPhotoYearFolderIsCreatedReturnsPath(year);
                     if (checkYearFolder == null)
                     {
@@ -146,8 +149,10 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                     }
                     monthFolderPath = checkMonthFolder;
 
-                    var checkCustomerOrderFolder = db.PhotoRepository.CheckCustomerOrderFolderIsCreatedReturnsPath(OrderCode);
-                    if (checkCustomerOrderFolder == null)
+                    //var checkCustomerOrderFolder = db.PhotoRepository.CheckCustomerOrderFolderIsCreatedReturnsPath(OrderCode);
+                    //var checkCustomerOrderFolder = db.PhotoRepository.CheckCustomerOrderFolderIsCreatedReturnsPathStreamId(OrderCode);
+                    var orderFolderFullData = db.PhotoRepository.CheckCustomerOrderFolderIsCreatedReturnsFullData(OrderCode);
+                    if (orderFolderFullData == null)
                     {
                         orderFolderPath =
                             db.PhotoRepository.CreateCustomerFinancialFolder(OrderCode, month);
@@ -167,129 +172,241 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                             , "", MessageBoxButtons.YesNo,
                             MessageBoxIcon.Question);
 
+
                         if (dialogResultReplaceFiles == DialogResult.Yes)
                         {
-
-                        }
-                        else
-                        {
-
-                        }
-                    }
-                    var orderFolderStreamId = db.PhotoRepository.GetOrderFolderStreamId(OrderCode);
-
-                    var parentPathName = OrderCode;
-
-
-                    var totalFilesUploaded = 0;
-                    var errorInUpload = new List<string>();
-                    var orderFilesList = new List<TblOrderFiles>();
-
-                    for (var i = 0; i < filesToUpload.Count; i++)
-                    {
-                        //var fileUploadResult = db.PhotoRepository.CreateFileTableFile(
-                        //    fileNamesUpload[i], parentPathName, 4, filesToUpload[i]);
-                        string fileName = OrderCode + "--" + fileNamesUpload[i];
-
-                        var fileUploadResult2 =
-                            db.PhotoRepository.CreateFileTableFileReturnCreateFileViewModel(
-                            fileName, parentPathName, 4, filesToUpload[i]);
-
-                        if (fileUploadResult2 != null)
-                        {
-                            var orderFile = new TblOrderFiles
+                        retryUpload:
+                            string pathLocator = orderFolderFullData[0].PathLocator;
+                            var deleteResult = db.PhotoRepository.DeleteFilesOfOrder(pathLocator);
+                            if (deleteResult)
                             {
-                                FileName = fileUploadResult2.name,
-                                OrderId = OrderId,
-                                PathLocator = fileUploadResult2.path_locator_str,
-                                StreamId = new Guid(fileUploadResult2.streamId)
-                            };
+                                var parentPathName = OrderCode;
+                                var totalFilesUploaded = 0;
+                                var errorInUpload = new List<string>();
+                                ////var orderFilesList = new List<TblOrderFiles>();
 
-                            orderFilesList.Add(orderFile);
-                            db.OrderFilesGenericRepository.Insert(orderFile);
-                            if (db.Save() > 0)
-                                totalFilesUploaded++;
-                        }
-                        else
-                        {
-                            RtlMessageBox.Show(
-                                "ارسال فایل " + fileNamesUpload[i] + " با خطا مواجه شد.",
-                                "خطا در ارسال فایل", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                for (var i = 0; i < filesToUpload.Count; i++)
+                                {
+                                    string fileName = OrderCode + "--" + fileNamesUpload[i] + "--" + i + 1;
 
-                            errorInUpload.Add(fileNamesUpload[i]);
+                                    var fileUploadResult2 =
+                                        db.PhotoRepository.CreateFileTableFileReturnCreateFileViewModel(
+                                        fileName, parentPathName, 4, filesToUpload[i]);
 
-                            var fileError = new TblFilesError
-                            {
-                                OrderId = OrderId,
-                                BookingId = BookingId,
-                                CustomerId = CustomerId,
-                                DateTime = DateTime.Now,
-                                FileName = fileNamesUpload[i],
-                                OrderCode = OrderCode,
-                                ErrorMessage = null,
-                                ErrorInId = null,
-                                Submitter = null
-                            };
-                            db.FilesErrorGenericRepository.Insert(fileError);
-                        }
-                    }
+                                    if (fileUploadResult2 != null)
+                                    {
+                                        var orderFile = new TblOrderFiles
+                                        {
+                                            FileName = fileUploadResult2.name,
+                                            OrderId = OrderId,
+                                            PathLocator = fileUploadResult2.path_locator_str,
+                                            StreamId = new Guid(fileUploadResult2.streamId)
+                                        };
 
-                    var orderStatusList = db.OrderStatusGenericRepository.Get();
-                    var order = db.OrderGenericRepository.Get().FirstOrDefault(x => x.Id == OrderId);
+                                        ////orderFilesList.Add(orderFile);
+                                        db.OrderFilesGenericRepository.Insert(orderFile);
+                                        if (db.Save() > 0)
+                                            totalFilesUploaded++;
+                                    }
+                                    else
+                                    {
+                                        RtlMessageBox.Show(
+                                            "ارسال فایل " + fileNamesUpload[i] + " با خطا مواجه شد.",
+                                            "خطا در ارسال فایل", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                    if (totalFilesUploaded == filesToUpload.Count)
-                    {
-                    retry:
+                                        errorInUpload.Add(fileNamesUpload[i]);
 
-                        if (order != null)
-                        {
-                            order.OrderStatusId = orderStatusList.First(x => x.Code == 20).Id;
-                            order.OrderFolderPathLocator = orderFolderPath;
-                            order.OrderFolderParentPathLocator = monthFolderPath;
-                            order.TotalFiles = totalFilesUploaded;
-                            order.OrderFolderStreamId = orderFolderStreamId;
+                                        var fileError = new TblFilesError
+                                        {
+                                            OrderId = OrderId,
+                                            BookingId = BookingId,
+                                            CustomerId = CustomerId,
+                                            DateTime = DateTime.Now,
+                                            FileName = fileNamesUpload[i],
+                                            OrderCode = OrderCode,
+                                            ErrorMessage = null,
+                                            ErrorInId = null,
+                                            Submitter = null
+                                        };
+                                        db.FilesErrorGenericRepository.Insert(fileError);
+                                    }
+                                }
 
-                            db.OrderGenericRepository.Update(order);
-                            db.Save();
-                        }
-                        else
-                        {
-                            var dialogResult = RtlMessageBox.Show(
-                                "اطلاعات سفارش فابل دریافت نمی باشد.",
-                                "عدم امکان دریافت اطلاعات سفارش",
-                                MessageBoxButtons.RetryCancel, MessageBoxIcon.Error,
-                                MessageBoxDefaultButton.Button1);
-                            if (dialogResult == DialogResult.Retry)
-                            {
-                                goto retry;
+                                var order = db.OrderGenericRepository.Get().FirstOrDefault(x => x.Id == OrderId);
+
+                                if (totalFilesUploaded == filesToUpload.Count && order != null)
+                                {
+                                    order.OrderStatusId = orderStatusList.First(x => x.Code == 20).Id;
+                                    order.OrderFolderPathLocator = orderFolderFullData[0].PathLocator;
+                                    order.OrderFolderParentPathLocator = orderFolderFullData[0].ParentPathLocator;
+                                    order.TotalFiles = totalFilesUploaded;
+                                    order.OrderFolderStreamId = orderFolderFullData[0].StreamId;
+
+                                    db.OrderGenericRepository.Update(order);
+                                    db.Save();
+
+                                    //else
+                                    //{
+                                    //    var dialogResult = RtlMessageBox.Show(
+                                    //        "اطلاعات سفارش فابل دریافت نمی باشد.",
+                                    //        "عدم امکان دریافت اطلاعات سفارش",
+                                    //        MessageBoxButtons.RetryCancel, MessageBoxIcon.Error,
+                                    //        MessageBoxDefaultButton.Button1);
+                                    //    if (dialogResult == DialogResult.Retry)
+                                    //    {
+                                    //        goto retry;
+                                    //    }
+                                    //}
+
+                                    RtlMessageBox.Show("تمامی فایل ها با موفقیت ارسال گردید.", "", MessageBoxButtons.OK,
+                                        MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    var sb = new StringBuilder();
+                                    sb.Append("ارسال فایل (های) زیر با مشکل مواجه شد.");
+                                    sb.Append("---------------------------------------\n");
+                                    sb.Append("\n");
+
+                                    foreach (var item in errorInUpload)
+                                    {
+                                        sb.Append(item);
+                                        sb.Append("\n");
+                                    }
+
+                                    if (order != null)
+                                    {
+                                        order.OrderStatusId = orderStatusList.First(x => x.Code == 140).Id;
+                                        db.OrderGenericRepository.Update(order);
+                                    }
+
+                                    db.Save();
+                                    RtlMessageBox.Show(sb.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
-                        }
-
-                        RtlMessageBox.Show("تمامی فایل ها با موفقیت ارسال گردید.", "", MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        var sb = new StringBuilder();
-                        sb.Append("ارسال فایل (های) زیر با مشکل مواجه شد.");
-                        sb.Append("---------------------------------------\n");
-                        sb.Append("\n");
-
-                        foreach (var item in errorInUpload)
+                            else
+                            {
+                                DialogResult dr = RtlMessageBox.Show(
+                                    "سیستم قادر به پاک کردن داده های قبلی نمی باشد. " + Environment.NewLine +
+                                    "دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.",
+                                    "خطا در حذف داده های قبلی");
+                                if (dr == DialogResult.OK)
+                                    goto retryUpload;
+                            }
+                        } // upload new fileas near old files
+                        else
                         {
-                            sb.Append(item);
-                            sb.Append("\n");
-                        }
+                            string pathLocator = orderFolderFullData[0].PathLocator;
 
-                        if (order != null)
-                        {
-                            order.OrderStatusId = orderStatusList.First(x => x.Code == 140).Id;
-                            db.OrderGenericRepository.Update(order);
-                        }
+                            var parentPathName = OrderCode;
 
-                        db.Save();
-                        RtlMessageBox.Show(sb.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            var totalFilesUploaded = 0;
+                            var errorInUpload = new List<string>();
+                            ////var orderFilesList = new List<TblOrderFiles>();
+
+                            for (var i = 0; i < filesToUpload.Count; i++)
+                            {
+                                string fileName = OrderCode + "--" + fileNamesUpload[i] + "--" + i + 1;
+
+                                var fileUploadResult2 =
+                                    db.PhotoRepository.CreateFileTableFileReturnCreateFileViewModel(
+                                    fileName, parentPathName, 4, filesToUpload[i]);
+
+                                if (fileUploadResult2 != null)
+                                {
+                                    var orderFile = new TblOrderFiles
+                                    {
+                                        FileName = fileUploadResult2.name,
+                                        OrderId = OrderId,
+                                        PathLocator = fileUploadResult2.path_locator_str,
+                                        StreamId = new Guid(fileUploadResult2.streamId)
+                                    };
+
+                                    ////orderFilesList.Add(orderFile);
+                                    db.OrderFilesGenericRepository.Insert(orderFile);
+                                    if (db.Save() > 0)
+                                        totalFilesUploaded++;
+                                }
+                                else
+                                {
+                                    RtlMessageBox.Show(
+                                        "ارسال فایل " + fileNamesUpload[i] + " با خطا مواجه شد.",
+                                        "خطا در ارسال فایل", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                                    errorInUpload.Add(fileNamesUpload[i]);
+
+                                    var fileError = new TblFilesError
+                                    {
+                                        OrderId = OrderId,
+                                        BookingId = BookingId,
+                                        CustomerId = CustomerId,
+                                        DateTime = DateTime.Now,
+                                        FileName = fileNamesUpload[i],
+                                        OrderCode = OrderCode,
+                                        ErrorMessage = null,
+                                        ErrorInId = null,
+                                        Submitter = null
+                                    };
+                                    db.FilesErrorGenericRepository.Insert(fileError);
+                                }
+                            }
+
+                            var order = db.OrderGenericRepository.Get().FirstOrDefault(x => x.Id == OrderId);
+
+                            if (totalFilesUploaded == filesToUpload.Count && order != null)
+                            {
+                                order.OrderStatusId = orderStatusList.First(x => x.Code == 20).Id;
+                                order.OrderFolderPathLocator = orderFolderFullData[0].PathLocator;
+                                order.OrderFolderParentPathLocator = orderFolderFullData[0].ParentPathLocator;
+                                order.TotalFiles = totalFilesUploaded;
+                                order.OrderFolderStreamId = orderFolderFullData[0].StreamId;
+
+                                db.OrderGenericRepository.Update(order);
+                                db.Save();
+
+                                //else
+                                //{
+                                //    var dialogResult = RtlMessageBox.Show(
+                                //        "اطلاعات سفارش فابل دریافت نمی باشد.",
+                                //        "عدم امکان دریافت اطلاعات سفارش",
+                                //        MessageBoxButtons.RetryCancel, MessageBoxIcon.Error,
+                                //        MessageBoxDefaultButton.Button1);
+                                //    if (dialogResult == DialogResult.Retry)
+                                //    {
+                                //        goto retry;
+                                //    }
+                                //}
+
+                                RtlMessageBox.Show("تمامی فایل ها با موفقیت ارسال گردید.", "", MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                var sb = new StringBuilder();
+                                sb.Append("ارسال فایل (های) زیر با مشکل مواجه شد.");
+                                sb.Append("---------------------------------------\n");
+                                sb.Append("\n");
+
+                                foreach (var item in errorInUpload)
+                                {
+                                    sb.Append(item);
+                                    sb.Append("\n");
+                                }
+
+                                if (order != null)
+                                {
+                                    order.OrderStatusId = orderStatusList.First(x => x.Code == 140).Id;
+                                    db.OrderGenericRepository.Update(order);
+                                }
+
+                                db.Save();
+                                RtlMessageBox.Show(sb.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+
+                        }
                     }
+
+
 
                     //var dr = RtlMessageBox.Show("آیا بازهم عکسی برای ارسال دارید؟", "",
                     //    MessageBoxButtons.YesNo, MessageBoxIcon.Question);

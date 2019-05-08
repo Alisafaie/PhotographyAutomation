@@ -123,5 +123,14 @@ namespace PhotographyAutomation.DateLayer.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("usp_GetOrderFolderStreamId", customerFinancialNumberParameter, returnValue);
         }
+    
+        public virtual int usp_DeleteOrderFolderFiles(string pathLocator)
+        {
+            var pathLocatorParameter = pathLocator != null ?
+                new ObjectParameter("pathLocator", pathLocator) :
+                new ObjectParameter("pathLocator", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_DeleteOrderFolderFiles", pathLocatorParameter);
+        }
     }
 }
