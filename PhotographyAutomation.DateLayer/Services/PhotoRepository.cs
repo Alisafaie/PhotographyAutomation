@@ -151,10 +151,9 @@ namespace PhotographyAutomation.DateLayer.Services
 
         public string CreateYearFolderOfPhotos(int year)
         {
+            ObjectParameter returnValue = new ObjectParameter("returnValue", typeof(string));
             try
             {
-
-                ObjectParameter returnValue = new ObjectParameter("returnValue", typeof(string));
                 var result = _db.usp_CreateYearFolder(year.ToString("####"), "Root", 1, returnValue).ToList();
 
                 if (result.Count > 0)
@@ -177,12 +176,12 @@ namespace PhotographyAutomation.DateLayer.Services
 
         public string CreateMonthFolderOfPhotos(int month, int year)
         {
+            ObjectParameter returnValue = new ObjectParameter("returnValue", typeof(string));
             try
             {
                 string strMonth = month.ToString("##");
                 string strYear = year.ToString("####");
 
-                ObjectParameter returnValue = new ObjectParameter("returnValue", typeof(string));
                 var result = _db.usp_CreateMonthFolder(strMonth, strYear, 2, returnValue).ToList();
 
                 if (result.Count > 0)
@@ -205,11 +204,11 @@ namespace PhotographyAutomation.DateLayer.Services
 
         public string CreateCustomerFinancialFolder(string orderCode, int month)
         {
+            ObjectParameter returnValue = new ObjectParameter("returnValue", typeof(string));
             try
             {
                 string strMonth = month.ToString();
 
-                ObjectParameter returnValue = new ObjectParameter("returnValue", typeof(string));
                 var result = _db.usp_CreateCustomerFinancialDirectory(orderCode, strMonth, 3, returnValue)
                                 .ToList();
 
@@ -320,19 +319,16 @@ namespace PhotographyAutomation.DateLayer.Services
 
         public Guid GetOrderFolderStreamId(string orderCode)
         {
+            ObjectParameter returnValue = new ObjectParameter("returnValue", typeof(string));
             try
             {
-                ObjectParameter returnValue = new ObjectParameter("returnValue", typeof(string));
                 var result = _db.usp_GetOrderFolderStreamId(orderCode, returnValue).ToList();
 
                 if (result.Count > 0)
                 {
                     return new Guid(result[0]);
                 }
-                else
-                {
-                    return Guid.Empty;
-                }
+                return Guid.Empty;
             }
             catch (Exception exception)
             {
@@ -345,14 +341,11 @@ namespace PhotographyAutomation.DateLayer.Services
             }
         }
 
-        public bool DeleteFilesOfOrder(string pathLocator)
+        public void DeleteFilesOfOrder(string pathLocator)
         {
             try
             {
-                var result = _db.usp_DeleteOrderFolderFiles(pathLocator);
-                if (result > 0)
-                    return true;
-                return false;
+                _db.usp_DeleteOrderFolderFiles(pathLocator);
             }
             catch (Exception exception)
             {
@@ -361,7 +354,60 @@ namespace PhotographyAutomation.DateLayer.Services
                 Debug.WriteLine(exception.InnerException);
                 Debug.WriteLine(exception.Source);
                 Debug.WriteLine(exception.StackTrace);
-                return false;
+            }
+        }
+
+        public int GetTotalFilesOfFolder(string pathLocator)
+        {
+            var returnValue = new ObjectParameter("returnValue", typeof(int));
+            try
+            {
+                int result = _db.usp_GetTotalFilesOfFolder(pathLocator, returnValue);
+                if (result > 0)
+                    return result;
+                return -1;
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine(exception.Message);
+                Debug.WriteLine(exception.Data);
+                Debug.WriteLine(exception.InnerException);
+                Debug.WriteLine(exception.Source);
+                Debug.WriteLine(exception.StackTrace);
+                return -1;
+            }
+        }
+
+        public List<FilesInFolderViewModel> GetListOfFilesInFolder(string pathLocator)
+        {
+            List<FilesInFolderViewModel> listOfFiles = null;
+            
+            try
+            {
+                var result = _db.usp_GetListOfFilesInFolder(pathLocator).ToList();
+                if (result.Any())
+                {
+                   listOfFiles = new List<FilesInFolderViewModel>(result.Count);
+                    foreach (var item in result)
+                    {
+                        var file = new FilesInFolderViewModel
+                        {
+                            FileName = item.FileName, StreamId = item.StreamId, FileSize = item.FileSize
+                        };
+                        listOfFiles.Add(file);
+                    }
+                }
+
+                return listOfFiles;
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine(exception.Message);
+                Debug.WriteLine(exception.Data);
+                Debug.WriteLine(exception.InnerException);
+                Debug.WriteLine(exception.Source);
+                Debug.WriteLine(exception.StackTrace);
+                return null;
             }
         }
     }

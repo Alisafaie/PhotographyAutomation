@@ -20,6 +20,8 @@ namespace PhotographyAutomation.DateLayer.Repositories
         bool CreateFileTableFile(string name, string parent, byte level, string localFilePath);
         CreateFileViewModel CreateFileTableFileReturnCreateFileViewModel(string name, string parent, byte level, string localFilePath);
         Guid GetOrderFolderStreamId(string orderCode);
-        bool DeleteFilesOfOrder(string pathLocator);
+        void DeleteFilesOfOrder(string pathLocator);
+        int GetTotalFilesOfFolder(string pathLocator);
+        List<FilesInFolderViewModel> GetListOfFilesInFolder(string pathLocator);
     }
 }

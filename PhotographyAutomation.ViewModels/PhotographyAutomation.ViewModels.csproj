@@ -44,6 +44,7 @@
     <Compile Include="Booking\BookingStatusViewModel.cs" />
     <Compile Include="Document\CreateFileViewModel.cs" />
     <Compile Include="Document\DocumentInfoViewModel.cs" />
+    <Compile Include="Document\FilesInFolderViewModel.cs" />
     <Compile Include="Order\CustomerOrderViewModel.cs" />
     <Compile Include="Order\OrderStatusViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
