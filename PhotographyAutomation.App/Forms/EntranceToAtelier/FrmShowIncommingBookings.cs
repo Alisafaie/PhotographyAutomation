@@ -36,7 +36,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
             rbCurrentWeek.CheckState = CheckState.Unchecked;
             rbCurrentmonth.CheckState = CheckState.Unchecked;
 
-            GetBookingStatus();
+            PopulateComboBoxBookingStatus();
         }
 
 
@@ -214,7 +214,8 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
         #endregion
 
         #region Methods
-        private void GetBookingStatus()
+
+        private void PopulateComboBoxBookingStatus()
         {
             using (var db = new UnitOfWork())
             {
@@ -488,6 +489,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 
             مشاهدهعکسهاToolStripMenuItem.Enabled = orderStatusCode != 10;
             حذفعکسهاToolStripMenuItem.Enabled =orderStatusCode!= 10;
+            درخواستصدورقبضToolStripMenuItem.Enabled = orderStatusCode != 10;
         }
     }
 }

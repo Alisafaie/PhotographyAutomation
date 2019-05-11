@@ -48,7 +48,7 @@
             this.btnShowIncommingBookings = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonPanel4 = new DevComponents.DotNetBar.RibbonPanel();
             this.ribbonBar2 = new DevComponents.DotNetBar.RibbonBar();
-            this.btnShowUploadedPhotos = new DevComponents.DotNetBar.ButtonItem();
+            this.btnShowPreOrders = new DevComponents.DotNetBar.ButtonItem();
             this.applicationButton1 = new DevComponents.DotNetBar.ApplicationButton();
             this.itemContainer1 = new DevComponents.DotNetBar.ItemContainer();
             this.itemContainer2 = new DevComponents.DotNetBar.ItemContainer();
@@ -419,7 +419,7 @@
             this.ribbonBar2.Dock = System.Windows.Forms.DockStyle.Left;
             this.ribbonBar2.DragDropSupport = true;
             this.ribbonBar2.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.btnShowUploadedPhotos});
+            this.btnShowPreOrders});
             this.ribbonBar2.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F";
             this.ribbonBar2.Location = new System.Drawing.Point(3, 0);
             this.ribbonBar2.Name = "ribbonBar2";
@@ -436,17 +436,17 @@
             // 
             this.ribbonBar2.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
-            // btnShowUploadedPhotos
+            // btnShowPreOrders
             // 
-            this.btnShowUploadedPhotos.FixedSize = new System.Drawing.Size(80, 80);
-            this.btnShowUploadedPhotos.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_view_text_3269;
-            this.btnShowUploadedPhotos.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnShowUploadedPhotos.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
-            this.btnShowUploadedPhotos.Name = "btnShowUploadedPhotos";
-            this.btnShowUploadedPhotos.PopupWidth = 100;
-            this.btnShowUploadedPhotos.SubItemsExpandWidth = 14;
-            this.btnShowUploadedPhotos.Text = "لیست های های آپلود شده";
-            this.btnShowUploadedPhotos.Click += new System.EventHandler(this.btnShowUploadedPhotos_Click);
+            this.btnShowPreOrders.FixedSize = new System.Drawing.Size(80, 80);
+            this.btnShowPreOrders.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_view_text_3269;
+            this.btnShowPreOrders.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnShowPreOrders.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
+            this.btnShowPreOrders.Name = "btnShowPreOrders";
+            this.btnShowPreOrders.PopupWidth = 100;
+            this.btnShowPreOrders.SubItemsExpandWidth = 14;
+            this.btnShowPreOrders.Text = "مشاهده نوبت ها";
+            this.btnShowPreOrders.Click += new System.EventHandler(this.btnShowPreOrders_Click);
             // 
             // applicationButton1
             // 
@@ -749,7 +749,7 @@
         private DevComponents.DotNetBar.RibbonPanel ribbonPanel4;
         private DevComponents.DotNetBar.RibbonBar ribbonBar2;
         private DevComponents.DotNetBar.RibbonTabItem ribbonTabItem4;
-        private DevComponents.DotNetBar.ButtonItem btnShowUploadedPhotos;
+        private DevComponents.DotNetBar.ButtonItem btnShowPreOrders;
         private DevComponents.DotNetBar.RibbonBar ribbonBar3;
         private DevComponents.DotNetBar.ButtonItem btnShowIncommingBookings;
         private DevComponents.DotNetBar.ButtonItem btnUploadPhotos;

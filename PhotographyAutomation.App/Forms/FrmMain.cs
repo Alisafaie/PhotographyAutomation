@@ -54,10 +54,7 @@ namespace PhotographyAutomation.App.Forms
 
         private void btnShowUploadedPhotos_Click(object sender, EventArgs e)
         {
-            using (var frmShowUploadedPhotos = new FrmShowUploadedPhotos())
-            {
-                frmShowUploadedPhotos.ShowDialog();
-            }
+
         }
 
         private void btnShowIncommingBookings_Click(object sender, EventArgs e)
@@ -71,6 +68,14 @@ namespace PhotographyAutomation.App.Forms
         private void btnAddNewBooking_QuickAccess_Click(object sender, EventArgs e)
         {
             btnAddEditBooking_Click(null, null);
+        }
+
+        private void btnShowPreOrders_Click(object sender, EventArgs e)
+        {
+            using (var frmShowUploadedPhotos = new FrmShowUploadedPhotos())
+            {
+                frmShowUploadedPhotos.ShowDialog();
+            }
         }
     }
 }
