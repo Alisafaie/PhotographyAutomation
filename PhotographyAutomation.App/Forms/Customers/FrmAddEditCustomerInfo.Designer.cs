@@ -220,8 +220,8 @@
             this.cmbGender.FormattingEnabled = true;
             this.cmbGender.ItemHeight = 16;
             this.cmbGender.Items.AddRange(new object[] {
-            this.comboItem1,
-            this.comboItem2});
+            this.comboItem2,
+            this.comboItem1});
             this.cmbGender.Location = new System.Drawing.Point(300, 111);
             this.cmbGender.Name = "cmbGender";
             this.cmbGender.Size = new System.Drawing.Size(117, 22);

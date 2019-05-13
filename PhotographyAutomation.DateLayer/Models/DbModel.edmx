@@ -147,6 +147,8 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.TblCustomerDocuments' 
           <Property Name="CustomerId" Type="int" Nullable="false" />
           <Property Name="PhotographerId" Type="int" />
           <Property Name="PaymentIsOk" Type="tinyint" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Time" Type="time" Precision="0" />
           <Property Name="OrderFolderStreamId" Type="uniqueidentifier" />
           <Property Name="OrderFolderPathLocator" Type="nvarchar(max)" />
           <Property Name="OrderFolderParentPathLocator" Type="nvarchar(max)" />
@@ -901,6 +903,20 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
             <End Role="TblCustomer" EntitySet="TblCustomer" />
             <End Role="TblFilesError" EntitySet="TblFilesError" />
           </AssociationSet>
+          <FunctionImport Name="usp_GetOrderFolderStreamId" ReturnType="Collection(String)">
+            <Parameter Name="customerFinancialNumber" Mode="In" Type="String" />
+            <Parameter Name="returnValue" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeleteOrderFolderFiles">
+          <Parameter Name="pathLocator" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetTotalFilesOfFolder">
+            <Parameter Name="parent_path_locator" Mode="In" Type="String" />
+            <Parameter Name="returnValue" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetListOfFilesInFolder" ReturnType="Collection(PhotographyAutomationDBModel.usp_GetListOfFilesInFolder_Result1)">
+          <Parameter Name="path_locator" Mode="In" Type="String" />
+          </FunctionImport>
           <EntitySet Name="TblOrder" EntityType="PhotographyAutomationDBModel.TblOrder" />
           <AssociationSet Name="FK_TblAllOrderStatus_TblOrder" Association="PhotographyAutomationDBModel.FK_TblAllOrderStatus_TblOrder">
             <End Role="TblOrder" EntitySet="TblOrder" />
@@ -934,20 +950,6 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
             <End Role="TblOrder" EntitySet="TblOrder" />
             <End Role="TblOrderFiles" EntitySet="TblOrderFiles" />
           </AssociationSet>
-          <FunctionImport Name="usp_GetOrderFolderStreamId" ReturnType="Collection(String)">
-            <Parameter Name="customerFinancialNumber" Mode="In" Type="String" />
-            <Parameter Name="returnValue" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="usp_DeleteOrderFolderFiles">
-          <Parameter Name="pathLocator" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="usp_GetTotalFilesOfFolder">
-            <Parameter Name="parent_path_locator" Mode="In" Type="String" />
-            <Parameter Name="returnValue" Mode="InOut" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_GetListOfFilesInFolder" ReturnType="Collection(PhotographyAutomationDBModel.usp_GetListOfFilesInFolder_Result1)">
-            <Parameter Name="path_locator" Mode="In" Type="String" />
-          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="usp_CreateFileTableFile_Result">
           <Property Type="String" Name="streamId" Nullable="true" MaxLength="4000" />
@@ -1427,6 +1429,16 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="usp_GetListOfFilesInFolder_Result">
+          <Property Type="String" Name="FILENAME" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="FileType" Nullable="true" MaxLength="255" />
+          <Property Type="Int64" Name="FileSize" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_GetListOfFilesInFolder_Result1">
+          <Property Type="Guid" Name="StreamId" Nullable="false" />
+          <Property Type="String" Name="FileName" Nullable="false" MaxLength="255" />
+          <Property Type="Int64" Name="FileSize" Nullable="true" />
+        </ComplexType>
         <EntityType Name="TblOrder">
           <Key>
             <PropertyRef Name="Id" />
@@ -1439,6 +1451,8 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           <Property Name="CustomerId" Type="Int32" Nullable="false" />
           <Property Name="PhotographerId" Type="Int32" />
           <Property Name="PaymentIsOk" Type="Byte" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Time" Type="Time" Precision="0" />
           <Property Name="OrderFolderStreamId" Type="Guid" />
           <Property Name="OrderFolderPathLocator" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="OrderFolderParentPathLocator" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -1552,16 +1566,6 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="usp_GetListOfFilesInFolder_Result">
-          <Property Type="String" Name="FILENAME" Nullable="false" MaxLength="255" />
-          <Property Type="String" Name="FileType" Nullable="true" MaxLength="255" />
-          <Property Type="Int64" Name="FileSize" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="usp_GetListOfFilesInFolder_Result1">
-          <Property Type="Guid" Name="StreamId" Nullable="false" />
-          <Property Type="String" Name="FileName" Nullable="false" MaxLength="255" />
-          <Property Type="Int64" Name="FileSize" Nullable="true" />
-        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1850,28 +1854,6 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TblOrder">
-            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblOrder">
-              <MappingFragment StoreEntitySet="TblOrder">
-                <ScalarProperty Name="Submitter" ColumnName="Submitter" />
-                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
-                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="TotalFiles" ColumnName="TotalFiles" />
-                <ScalarProperty Name="OrderFolderParentPathLocator" ColumnName="OrderFolderParentPathLocator" />
-                <ScalarProperty Name="OrderFolderPathLocator" ColumnName="OrderFolderPathLocator" />
-                <ScalarProperty Name="OrderFolderStreamId" ColumnName="OrderFolderStreamId" />
-                <ScalarProperty Name="PaymentIsOk" ColumnName="PaymentIsOk" />
-                <ScalarProperty Name="PhotographerId" ColumnName="PhotographerId" />
-                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
-                <ScalarProperty Name="PhotographyTypeId" ColumnName="PhotographyTypeId" />
-                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
-                <ScalarProperty Name="OrderStatusId" ColumnName="OrderStatusId" />
-                <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="usp_GetOrderFolderStreamId" FunctionName="PhotographyAutomationDBModel.Store.usp_GetOrderFolderStreamId" />
           <FunctionImportMapping FunctionImportName="usp_DeleteOrderFolderFiles" FunctionName="PhotographyAutomationDBModel.Store.usp_DeleteOrderFolderFiles" />
           <FunctionImportMapping FunctionImportName="usp_GetTotalFilesOfFolder" FunctionName="PhotographyAutomationDBModel.Store.usp_GetTotalFilesOfFolder" />
@@ -1884,6 +1866,30 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="TblOrder">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblOrder">
+              <MappingFragment StoreEntitySet="TblOrder">
+                <ScalarProperty Name="Submitter" ColumnName="Submitter" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="TotalFiles" ColumnName="TotalFiles" />
+                <ScalarProperty Name="OrderFolderParentPathLocator" ColumnName="OrderFolderParentPathLocator" />
+                <ScalarProperty Name="OrderFolderPathLocator" ColumnName="OrderFolderPathLocator" />
+                <ScalarProperty Name="OrderFolderStreamId" ColumnName="OrderFolderStreamId" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="PaymentIsOk" ColumnName="PaymentIsOk" />
+                <ScalarProperty Name="PhotographerId" ColumnName="PhotographerId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="PhotographyTypeId" ColumnName="PhotographyTypeId" />
+                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+                <ScalarProperty Name="OrderStatusId" ColumnName="OrderStatusId" />
+                <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -12,6 +12,8 @@ namespace PhotographyAutomation.ViewModels.Order
         public int BookingId { get; set; }
         public DateTime BookingDate { get; set; }
         public TimeSpan BookingTime { get; set; }
+        public DateTime? OrderDate { get; set; }
+        public TimeSpan? OrderTime { get; set; }
         public int PhotographyTypeId { get; set; }
         public string PhotographyTypeName { get; set; }
         public int CustomerId { get; set; }

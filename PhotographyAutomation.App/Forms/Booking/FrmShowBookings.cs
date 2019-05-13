@@ -388,6 +388,8 @@ namespace PhotographyAutomation.App.Forms.Booking
                             BookingId = bookingId,
                             OrderCode = OrderUtilities.GenerateOrderCode(DateTime.Now, booking.CustomerId, bookingId),
                             CreatedDateTime = DateTime.Now,
+                            Date = DateTime.Now,
+                            Time = new TimeSpan(DateTime.Now.Hour,DateTime.Now.Minute,DateTime.Now.Second),
                             IsActive = true,
                             OrderStatusId = orderStatusId,
                             PhotographyTypeId = booking.PhotographyTypeId,

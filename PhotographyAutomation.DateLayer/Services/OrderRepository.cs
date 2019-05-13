@@ -18,44 +18,249 @@ namespace PhotographyAutomation.DateLayer.Services
             _db = context;
         }
 
+
+        //Used in ShowUploaded Photos
+        public List<CustomerOrderViewModel> GetOrdersOfCustomerByOrderCode(string orderCode)
+        {
+            try
+            {
+                var returnValue =
+                    _db.TblOrder
+                        .Include(x => x.TblCustomer)
+                        .Include(x => x.TblPhotographyType)
+                        .Include(x => x.TblOrderStatus)
+                        .Where(x =>
+                            x.OrderCode.Equals(orderCode))
+                        .Select(x => new CustomerOrderViewModel
+                        {
+                            Id = x.Id,
+                            BookingId = x.BookingId,
+                            OrderDate = x.Date,
+                            BookingTime = x.TblBooking.Time,
+                            CustomerFullName = x.TblCustomer.FirstName + " " + x.TblCustomer.LastName,
+                            CustomerId = x.CustomerId,
+                            CustomerGender = x.TblCustomer.Gender.Value,
+                            OrderCode = x.OrderCode.ToString(),
+                            CreatedDateTime = x.CreatedDateTime,
+                            ModifiedDateTime = x.ModifiedDateTime.Value,
+                            TotalFiles = x.TotalFiles.Value,
+                            PhotographyTypeId = x.PhotographyTypeId,
+                            PhotographyTypeName = x.TblPhotographyType.TypeName,
+                            OrderStatusId = x.OrderStatusId,
+                            OrderStatusCode = x.TblOrderStatus.Code,
+                            OrderStatusName = x.TblOrderStatus.Name,
+                            IsActive = x.IsActive,
+                            OrderFolderParentPathLocator = x.OrderFolderParentPathLocator,
+                            OrderFolderPathLocator = x.OrderFolderPathLocator,
+                            OrderFolderStreamId = x.OrderFolderStreamId.Value,
+                            PaymentIsOk = x.PaymentIsOk.Value,
+                            PersonCount = x.TblBooking.PersonCount,
+                            Submitter = x.Submitter.Value
+                        })
+                    .OrderByDescending(x => x.OrderDate).ToList();
+
+                return returnValue;
+            }
+            catch (Exception exception)
+            {
+                WriteDebugInfoToOutput(exception);
+                return null;
+            }
+        }
         public List<CustomerOrderViewModel> GetOrdersOfCustomer(string customerInfo)
         {
             try
             {
-                var returnValue = _db.TblOrder.Include(x => x.TblCustomer).Include(x => x.TblPhotographyType).Where(x =>
-                    x.TblCustomer.FirstName.Contains(customerInfo) ||
-                    x.TblCustomer.LastName.Contains(customerInfo) ||
-                    x.TblCustomer.Tell.Contains(customerInfo) ||
-                    x.TblCustomer.Mobile.Contains(customerInfo))
-                    .Select(x => new CustomerOrderViewModel
-                    {
-                        Id = x.Id,
-                        CreatedDateTime = x.CreatedDateTime,
-                        BookingId = x.BookingId,
-                        BookingDate = x.TblBooking.Date,
-                        BookingTime = x.TblBooking.Time,
-                        CustomerFullName = x.TblCustomer.FirstName + " " + x.TblCustomer.LastName,
-                        CustomerId = x.CustomerId,
-                        CustomerGender = x.TblCustomer.Gender.Value,
-                        OrderCode = x.OrderCode.ToString(),
-                        ModifiedDateTime = x.ModifiedDateTime.Value,
-                        TotalFiles = x.TotalFiles.Value,
-                        PhotographyTypeId = x.PhotographyTypeId,
-                        PhotographyTypeName = x.TblPhotographyType.TypeName,
-                        OrderStatusId = x.OrderStatusId,
-                        OrderStatusCode=x.TblOrderStatus.Code,
-                        OrderStatusName = x.TblOrderStatus.Name,
-                        IsActive = x.IsActive,
-                        OrderFolderParentPathLocator = x.OrderFolderParentPathLocator,
-                        OrderFolderPathLocator = x.OrderFolderPathLocator,
-                        OrderFolderStreamId = x.OrderFolderStreamId.Value,
-                        PaymentIsOk = x.PaymentIsOk.Value,
-                        PhotographerId = x.PhotographerId.Value,
-                        PersonCount = x.TblBooking.PersonCount,
-                        PhotographerGender = x.TblBooking.PhotographerGender,
-                        Submitter = x.Submitter.Value
-                    })
-                    .OrderByDescending(x => x.Id).ToList();
+                var returnValue =
+                    _db.TblOrder
+                        .Include(x => x.TblCustomer)
+                        .Include(x => x.TblPhotographyType)
+                        .Include(x => x.TblOrderStatus)
+                        .Where(x =>
+                            x.TblCustomer.FirstName.Contains(customerInfo) ||
+                            x.TblCustomer.LastName.Contains(customerInfo) ||
+                            x.TblCustomer.Tell.Contains(customerInfo) ||
+                            x.TblCustomer.Mobile.Contains(customerInfo))
+                        .Select(x => new CustomerOrderViewModel
+                        {
+                            Id = x.Id,
+                            BookingId = x.BookingId,
+                            OrderDate = x.Date.Value,
+                            BookingTime = x.TblBooking.Time,
+                            CustomerFullName = x.TblCustomer.FirstName + " " + x.TblCustomer.LastName,
+                            CustomerId = x.CustomerId,
+                            CustomerGender = x.TblCustomer.Gender.Value,
+                            OrderCode = x.OrderCode.ToString(),
+                            CreatedDateTime = x.CreatedDateTime,
+                            ModifiedDateTime = x.ModifiedDateTime.Value,
+                            TotalFiles = x.TotalFiles.Value,
+                            PhotographyTypeId = x.PhotographyTypeId,
+                            PhotographyTypeName = x.TblPhotographyType.TypeName,
+                            OrderStatusId = x.OrderStatusId,
+                            OrderStatusCode = x.TblOrderStatus.Code,
+                            OrderStatusName = x.TblOrderStatus.Name,
+                            IsActive = x.IsActive,
+                            OrderFolderParentPathLocator = x.OrderFolderParentPathLocator,
+                            OrderFolderPathLocator = x.OrderFolderPathLocator,
+                            OrderFolderStreamId = x.OrderFolderStreamId.Value,
+                            PaymentIsOk = x.PaymentIsOk.Value,
+                            PersonCount = x.TblBooking.PersonCount,
+                            Submitter = x.Submitter.Value
+                        })
+                    .OrderByDescending(x => x.OrderDate).ToList();
+
+                return returnValue;
+            }
+            catch (Exception exception)
+            {
+                WriteDebugInfoToOutput(exception);
+                return null;
+            }
+        }
+        public List<CustomerOrderViewModel> GetOrdersByStatusCode(int orderStatusId)
+        {
+            try
+            {
+                var returnValue =
+                    _db.TblOrder
+                        .Include(x => x.TblCustomer)
+                        .Include(x => x.TblPhotographyType)
+                        .Include(x => x.TblOrderStatus)
+                        .Where(x => x.OrderStatusId == orderStatusId)
+                        .Select(x => new CustomerOrderViewModel
+                        {
+                            Id = x.Id,
+                            BookingId = x.BookingId,
+                            OrderDate = x.Date.Value,
+                            BookingTime = x.TblBooking.Time,
+                            CustomerFullName = x.TblCustomer.FirstName + " " + x.TblCustomer.LastName,
+                            CustomerId = x.CustomerId,
+                            CustomerGender = x.TblCustomer.Gender.Value,
+                            OrderCode = x.OrderCode.ToString(),
+                            CreatedDateTime = x.CreatedDateTime,
+                            ModifiedDateTime = x.ModifiedDateTime.Value,
+                            TotalFiles = x.TotalFiles.Value,
+                            PhotographyTypeId = x.PhotographyTypeId,
+                            PhotographyTypeName = x.TblPhotographyType.TypeName,
+                            OrderStatusId = x.OrderStatusId,
+                            OrderStatusCode = x.TblOrderStatus.Code,
+                            OrderStatusName = x.TblOrderStatus.Name,
+                            IsActive = x.IsActive,
+                            OrderFolderParentPathLocator = x.OrderFolderParentPathLocator,
+                            OrderFolderPathLocator = x.OrderFolderPathLocator,
+                            OrderFolderStreamId = x.OrderFolderStreamId.Value,
+                            PaymentIsOk = x.PaymentIsOk.Value,
+                            PersonCount = x.TblBooking.PersonCount,
+                            Submitter = x.Submitter.Value
+                        })
+                    .OrderByDescending(x => x.OrderDate).ToList();
+
+                return returnValue;
+            }
+            catch (Exception exception)
+            {
+                WriteDebugInfoToOutput(exception);
+                return null;
+            }
+        }
+        public List<CustomerOrderViewModel> GetOrdersByStatusCode(int orderStatusId, DateTime orderDate)
+        {
+            try
+            {
+                var returnValue =
+                    _db.TblOrder
+                        .Include(x => x.TblCustomer)
+                        .Include(x => x.TblPhotographyType)
+                        .Include(x => x.TblOrderStatus)
+                        .Where(x =>
+                            x.OrderStatusId == orderStatusId &&
+                            (x.CreatedDateTime == orderDate || x.ModifiedDateTime == orderDate))
+                        .Select(x => new CustomerOrderViewModel
+                        {
+                            Id = x.Id,
+                            BookingId = x.BookingId,
+                            OrderDate = x.Date.Value,
+                            BookingTime = x.TblBooking.Time,
+                            CustomerFullName = x.TblCustomer.FirstName + " " + x.TblCustomer.LastName,
+                            CustomerId = x.CustomerId,
+                            CustomerGender = x.TblCustomer.Gender.Value,
+                            OrderCode = x.OrderCode.ToString(),
+                            CreatedDateTime = x.CreatedDateTime,
+                            ModifiedDateTime = x.ModifiedDateTime.Value,
+                            TotalFiles = x.TotalFiles.Value,
+                            PhotographyTypeId = x.PhotographyTypeId,
+                            PhotographyTypeName = x.TblPhotographyType.TypeName,
+                            OrderStatusId = x.OrderStatusId,
+                            OrderStatusCode = x.TblOrderStatus.Code,
+                            OrderStatusName = x.TblOrderStatus.Name,
+                            IsActive = x.IsActive,
+                            OrderFolderParentPathLocator = x.OrderFolderParentPathLocator,
+                            OrderFolderPathLocator = x.OrderFolderPathLocator,
+                            OrderFolderStreamId = x.OrderFolderStreamId.Value,
+                            PaymentIsOk = x.PaymentIsOk.Value,
+                            PersonCount = x.TblBooking.PersonCount,
+                            Submitter = x.Submitter.Value
+                        })
+                    .OrderByDescending(x => x.OrderDate).ToList();
+
+                return returnValue;
+            }
+            catch (Exception exception)
+            {
+                WriteDebugInfoToOutput(exception);
+                return null;
+            }
+        }
+
+        public List<CustomerOrderViewModel> GetOrdersByOrderDate(DateTime dtOrderDate)
+        {
+            try
+            {
+                var returnValue =
+                    _db.TblOrder
+                        .Include(x => x.TblOrderStatus)
+                        .Include(x => x.TblBooking)
+                        .Include(x => x.TblCustomer)
+                        .Include(x => x.TblAllOrderStatus)
+                        .Include(x => x.TblOrderFiles)
+                        .Include(x => x.TblOrderPrint)
+                        .Include(x => x.TblPhotographyType)
+                        .Where(x =>
+                            x.CreatedDateTime == dtOrderDate ||
+                            x.ModifiedDateTime == dtOrderDate)
+                        .Select(x => new CustomerOrderViewModel
+                        {
+                            Id = x.Id,
+                            CreatedDateTime = x.CreatedDateTime,
+                            BookingId = x.BookingId,
+                            BookingDate = x.TblBooking.Date,
+                            BookingTime = x.TblBooking.Time,
+                            CustomerFullName = x.TblCustomer.FirstName + " " + x.TblCustomer.LastName,
+                            CustomerId = x.CustomerId,
+                            CustomerGender = x.TblCustomer.Gender.Value,
+                            OrderCode = x.OrderCode.ToString(),
+                            ModifiedDateTime = x.ModifiedDateTime.Value,
+                            TotalFiles = x.TotalFiles.Value,
+                            PhotographyTypeId = x.PhotographyTypeId,
+                            PhotographyTypeName = x.TblPhotographyType.TypeName,
+                            OrderStatusId = x.OrderStatusId,
+                            OrderStatusCode = x.TblOrderStatus.Code,
+                            OrderStatusName = x.TblOrderStatus.Name,
+                            IsActive = x.IsActive,
+                            OrderFolderParentPathLocator = x.OrderFolderParentPathLocator,
+                            OrderFolderPathLocator = x.OrderFolderPathLocator,
+                            OrderFolderStreamId = x.OrderFolderStreamId.Value,
+                            PaymentIsOk = x.PaymentIsOk.Value,
+                            PhotographerId = x.PhotographerId.Value,
+                            PersonCount = x.TblBooking.PersonCount,
+                            PhotographerGender = x.TblBooking.PhotographerGender,
+                            Submitter = x.Submitter.Value,
+                            OrderDate = x.Date.Value,
+                            OrderTime = x.Time.Value
+                        })
+                    .OrderBy(x => x.BookingDate)
+                    .ThenBy(x => x.BookingTime)
+                    .ToList();
 
                 return returnValue;
             }
@@ -71,48 +276,51 @@ namespace PhotographyAutomation.DateLayer.Services
         {
             try
             {
-                var returnValue = _db.TblOrder
-                    .Include(x => x.TblOrderStatus)
-                    .Include(x => x.TblBooking)
-                    .Include(x => x.TblCustomer)
-                    .Include(x => x.TblAllOrderStatus)
-                    .Include(x => x.TblOrderFiles)
-                    .Include(x => x.TblOrderPrint)
-                    .Include(x => x.TblPhotographyType)
-                    .Where(x => x.CreatedDateTime >= dtFrom && x.CreatedDateTime <= dtTo &&
-                                x.TblOrderStatus.Code == statusCode &&
-                                (x.TblCustomer.FirstName.Contains(customerInfo) ||
-                                 x.TblCustomer.LastName.Contains(customerInfo) ||
-                                 x.TblCustomer.Tell.Contains(customerInfo) ||
-                                 x.TblCustomer.Mobile.Contains(customerInfo)))
-                    .Select(x => new CustomerOrderViewModel
-                    {
-                        Id = x.Id,
-                        CreatedDateTime = x.CreatedDateTime,
-                        BookingId = x.BookingId,
-                        BookingDate = x.TblBooking.Date,
-                        BookingTime = x.TblBooking.Time,
-                        CustomerFullName = x.TblCustomer.FirstName + " " + x.TblCustomer.LastName,
-                        CustomerId = x.CustomerId,
-                        CustomerGender = x.TblCustomer.Gender.Value,
-                        OrderCode = x.OrderCode.ToString(),
-                        ModifiedDateTime = x.ModifiedDateTime.Value,
-                        TotalFiles = x.TotalFiles.Value,
-                        PhotographyTypeId = x.PhotographyTypeId,
-                        PhotographyTypeName = x.TblPhotographyType.TypeName,
-                        OrderStatusId = x.OrderStatusId,
-                        OrderStatusCode=x.TblOrderStatus.Code,
-                        OrderStatusName = x.TblOrderStatus.Name,
-                        IsActive = x.IsActive,
-                        OrderFolderParentPathLocator = x.OrderFolderParentPathLocator,
-                        OrderFolderPathLocator = x.OrderFolderPathLocator,
-                        OrderFolderStreamId = x.OrderFolderStreamId.Value,
-                        PaymentIsOk = x.PaymentIsOk.Value,
-                        PhotographerId = x.PhotographerId.Value,
-                        PersonCount = x.TblBooking.PersonCount,
-                        PhotographerGender = x.TblBooking.PhotographerGender,
-                        Submitter = x.Submitter.Value
-                    })
+                var returnValue =
+                    _db.TblOrder
+                        .Include(x => x.TblOrderStatus)
+                        .Include(x => x.TblBooking)
+                        .Include(x => x.TblCustomer)
+                        .Include(x => x.TblAllOrderStatus)
+                        .Include(x => x.TblOrderFiles)
+                        .Include(x => x.TblOrderPrint)
+                        .Include(x => x.TblPhotographyType)
+                        .Where(x =>
+                            x.CreatedDateTime >= dtFrom &&
+                            x.CreatedDateTime <= dtTo &&
+                            x.TblOrderStatus.Code == statusCode &&
+                            (x.TblCustomer.FirstName.Contains(customerInfo) ||
+                             x.TblCustomer.LastName.Contains(customerInfo) ||
+                             x.TblCustomer.Tell.Contains(customerInfo) ||
+                             x.TblCustomer.Mobile.Contains(customerInfo)))
+                        .Select(x => new CustomerOrderViewModel
+                        {
+                            Id = x.Id,
+                            CreatedDateTime = x.CreatedDateTime,
+                            BookingId = x.BookingId,
+                            BookingDate = x.TblBooking.Date,
+                            BookingTime = x.TblBooking.Time,
+                            CustomerFullName = x.TblCustomer.FirstName + " " + x.TblCustomer.LastName,
+                            CustomerId = x.CustomerId,
+                            CustomerGender = x.TblCustomer.Gender.Value,
+                            OrderCode = x.OrderCode.ToString(),
+                            ModifiedDateTime = x.ModifiedDateTime.Value,
+                            TotalFiles = x.TotalFiles.Value,
+                            PhotographyTypeId = x.PhotographyTypeId,
+                            PhotographyTypeName = x.TblPhotographyType.TypeName,
+                            OrderStatusId = x.OrderStatusId,
+                            OrderStatusCode = x.TblOrderStatus.Code,
+                            OrderStatusName = x.TblOrderStatus.Name,
+                            IsActive = x.IsActive,
+                            OrderFolderParentPathLocator = x.OrderFolderParentPathLocator,
+                            OrderFolderPathLocator = x.OrderFolderPathLocator,
+                            OrderFolderStreamId = x.OrderFolderStreamId.Value,
+                            PaymentIsOk = x.PaymentIsOk.Value,
+                            PhotographerId = x.PhotographerId.Value,
+                            PersonCount = x.TblBooking.PersonCount,
+                            PhotographerGender = x.TblBooking.PhotographerGender,
+                            Submitter = x.Submitter.Value
+                        })
                     .OrderBy(x => x.BookingDate)
                     .ThenBy(x => x.BookingTime)
                     .ToList();
@@ -125,52 +333,54 @@ namespace PhotographyAutomation.DateLayer.Services
                 return null;
             }
         }
-
         public List<CustomerOrderViewModel> GetOrdersBetweenDates(DateTime dtFrom, DateTime dtTo, string customerInfo)
         {
             try
             {
-                var returnValue = _db.TblOrder
-                    .Include(x => x.TblBooking)
-                    .Include(x => x.TblCustomer)
-                    .Include(x => x.TblOrderStatus)
-                    .Include(x => x.TblAllOrderStatus)
-                    .Include(x => x.TblOrderFiles)
-                    .Include(x => x.TblOrderPrint)
-                    .Include(x => x.TblPhotographyType)
-                    .Where(x => x.CreatedDateTime >= dtFrom && x.CreatedDateTime <= dtTo &&
-                                (x.TblCustomer.FirstName.Contains(customerInfo) ||
-                                 x.TblCustomer.LastName.Contains(customerInfo) ||
-                                 x.TblCustomer.Tell.Contains(customerInfo) ||
-                                 x.TblCustomer.Mobile.Contains(customerInfo)))
-                    .Select(x => new CustomerOrderViewModel
-                    {
-                        Id = x.Id,
-                        CreatedDateTime = x.CreatedDateTime,
-                        BookingId = x.BookingId,
-                        BookingDate = x.TblBooking.Date,
-                        BookingTime = x.TblBooking.Time,
-                        CustomerFullName = x.TblCustomer.FirstName + " " + x.TblCustomer.LastName,
-                        CustomerId = x.CustomerId,
-                        CustomerGender = x.TblCustomer.Gender.Value,
-                        OrderCode = x.OrderCode.ToString(),
-                        ModifiedDateTime = x.ModifiedDateTime,
-                        TotalFiles = x.TotalFiles.Value,
-                        PhotographyTypeId = x.PhotographyTypeId,
-                        PhotographyTypeName = x.TblPhotographyType.TypeName,
-                        OrderStatusId = x.OrderStatusId,
-                        OrderStatusCode=x.TblOrderStatus.Code,
-                        OrderStatusName = x.TblOrderStatus.Name,
-                        IsActive = x.IsActive,
-                        OrderFolderParentPathLocator = x.OrderFolderParentPathLocator,
-                        OrderFolderPathLocator = x.OrderFolderPathLocator,
-                        OrderFolderStreamId = x.OrderFolderStreamId,
-                        PaymentIsOk = x.PaymentIsOk,
-                        PhotographerId = x.PhotographerId,
-                        PersonCount = x.TblBooking.PersonCount,
-                        PhotographerGender = x.TblBooking.PhotographerGender,
-                        Submitter = x.Submitter
-                    })
+                var returnValue =
+                    _db.TblOrder
+                        .Include(x => x.TblBooking)
+                        .Include(x => x.TblCustomer)
+                        .Include(x => x.TblOrderStatus)
+                        .Include(x => x.TblAllOrderStatus)
+                        .Include(x => x.TblOrderFiles)
+                        .Include(x => x.TblOrderPrint)
+                        .Include(x => x.TblPhotographyType)
+                        .Where(x =>
+                            x.CreatedDateTime >= dtFrom &&
+                            x.CreatedDateTime <= dtTo &&
+                            (x.TblCustomer.FirstName.Contains(customerInfo) ||
+                             x.TblCustomer.LastName.Contains(customerInfo) ||
+                             x.TblCustomer.Tell.Contains(customerInfo) ||
+                             x.TblCustomer.Mobile.Contains(customerInfo)))
+                        .Select(x => new CustomerOrderViewModel
+                        {
+                            Id = x.Id,
+                            CreatedDateTime = x.CreatedDateTime,
+                            BookingId = x.BookingId,
+                            BookingDate = x.TblBooking.Date,
+                            BookingTime = x.TblBooking.Time,
+                            CustomerFullName = x.TblCustomer.FirstName + " " + x.TblCustomer.LastName,
+                            CustomerId = x.CustomerId,
+                            CustomerGender = x.TblCustomer.Gender.Value,
+                            OrderCode = x.OrderCode.ToString(),
+                            ModifiedDateTime = x.ModifiedDateTime,
+                            TotalFiles = x.TotalFiles.Value,
+                            PhotographyTypeId = x.PhotographyTypeId,
+                            PhotographyTypeName = x.TblPhotographyType.TypeName,
+                            OrderStatusId = x.OrderStatusId,
+                            OrderStatusCode = x.TblOrderStatus.Code,
+                            OrderStatusName = x.TblOrderStatus.Name,
+                            IsActive = x.IsActive,
+                            OrderFolderParentPathLocator = x.OrderFolderParentPathLocator,
+                            OrderFolderPathLocator = x.OrderFolderPathLocator,
+                            OrderFolderStreamId = x.OrderFolderStreamId,
+                            PaymentIsOk = x.PaymentIsOk,
+                            PhotographerId = x.PhotographerId,
+                            PersonCount = x.TblBooking.PersonCount,
+                            PhotographerGender = x.TblBooking.PhotographerGender,
+                            Submitter = x.Submitter
+                        })
                     .OrderBy(x => x.BookingDate)
                     .ThenBy(x => x.BookingTime)
                     .ToList();

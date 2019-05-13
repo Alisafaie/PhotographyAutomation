@@ -1,85 +1,102 @@
-﻿using System;
-using System.Linq;
-using System.Windows.Forms;
-using DevComponents.DotNetBar.Controls;
+﻿using DevComponents.DotNetBar.Controls;
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.Utilities;
+using PhotographyAutomation.Utilities.Convertor;
 using PhotographyAutomation.Utilities.ExtentionMethods;
 using PhotographyAutomation.ViewModels.Order;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace PhotographyAutomation.App.Forms.Orders
 {
     public partial class FrmShowUploadedPhotos : Form
     {
         #region Variables
-        private int _statusCode = 0;
+        private int _statusCode;
         #endregion
+
+        #region Form Events
         public FrmShowUploadedPhotos()
         {
             InitializeComponent();
         }
 
-        private void FrmShowUploadedPhotos_Load(object sender, System.EventArgs e)
+        private void FrmShowUploadedPhotos_Load(object sender, EventArgs e)
         {
             PopulateComboBox();
         }
 
-        
+        #endregion
 
-        private void chkSpecialOrders_CheckedChanged(object sender, System.EventArgs e)
-        {
-            if (chkSpecialOrders.Checked)
-            {
-                cmbOrderStatus.Enabled = true;
-                cmbOrderStatus.Focus();
-                cmbOrderStatus.DroppedDown = true;
-            }
-            else
-            {
-                cmbOrderStatus.Enabled = false;
-            }
-        }
+        #region Button Events
 
-        private void chkEnableDatePickerOrderDate_CheckedChanged(object sender, System.EventArgs e)
-        {
-            datePickerOrderDate.Enabled = chkEnableDatePickerOrderDate.Checked;
-        }
-
-
-
-
-        private void btnClearSearch_Click(object sender, System.EventArgs e)
+        private void btnClearSearch_Click(object sender, EventArgs e)
         {
             txtOrderCodeDate.ResetText();
-            txtOrderCodeCustomerId.ResetText();
-            txtOrderCodeBookingId.ResetText();
-            chkEnableDatePickerOrderDate.Checked = false;
-            chkSpecialOrders.Checked = false;
+            txtOrderCodeCustomerIdBookingId.ResetText();
 
             txtOrderCodeDate.Focus();
         }
 
-        private void btnShowOrders_Click(object sender, System.EventArgs e)
+        private void btnShowOrders_Click(object sender, EventArgs e)
         {
-            string orderCode = txtOrderCodeDate.Text + txtOrderCodeCustomerId.Text + txtOrderCodeBookingId.Text;
-            string customerInfo = txtCustomerInfo.Text.Trim();
-
-            var searchSpecialDateIsChecked = chkEnableDatePickerOrderDate.Checked;
-
-            if (searchSpecialDateIsChecked)
+            if (rbOrderCode.Checked)
             {
-                var dtOrder = datePickerOrderDate.Value.GetDateFromPersianDateTimePicker();
-                
-                if (chkSpecialOrders.Checked)
+                string orderCode = txtOrderCodeDate.Text + "-" + txtOrderCodeCustomerIdBookingId.Text;
+                ShowOrdersByOrderCode(orderCode);
+            }
+            else if (rbCustomerInfo.Checked)
+            {
+                string customerInfo = txtCustomerInfo.Text.Trim();
+                ShowOrders(customerInfo);
+            }
+            else if (rbOrderDate.Checked)
+            {
+                var orderDate = datePickerOrderDate.Value.GetDateFromPersianDateTimePicker();
+                ShowOrders(orderDate);
+            }
+            else if (rbOrderStatus.Checked)
+            {
+                if (chkEnableOrderStatusDatePicker.Checked == false)
                 {
-                    if (chkSpecialOrders.Checked)
-                        ShowOrders(dtOrder, _statusCode,orderCode, customerInfo);
-                    else
-                        ShowOrders(dtFrom, dtTo, txtCustomerInfo.Text.Trim());
+                    ShowOrders(_statusCode);
                 }
                 else
-                    ShowOrders(dtFrom, dtTo, txtCustomerInfo.Text.Trim());
+                {
+                    DateTime statusDate = datePickerOrderStatus.Value.GetDateFromPersianDateTimePicker();
+                    ShowOrders(_statusCode, statusDate);
+                }
             }
+        }
+
+        #endregion
+
+
+        #region Methods
+
+        private void ShowOrdersByOrderCode(string orderCode)
+        {
+            using (var db = new UnitOfWork())
+            {
+                var ordersList = db.OrderRepository.GetOrdersOfCustomerByOrderCode(orderCode);
+
+                if (ordersList.Count > 0)
+                {
+                    PopulateDataGridView(ordersList);
+                }
+                else
+                {
+                    RtlMessageBox.Show(
+                        "برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.",
+                        "",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    dgvUploads.Rows.Clear();
+                }
+            }
+            dgvUploads.ClearSelection();
         }
 
         private void ShowOrders(string customerInfo)
@@ -109,7 +126,7 @@ namespace PhotographyAutomation.App.Forms.Orders
         {
             using (var db = new UnitOfWork())
             {
-                var ordersList = db.OrderRepository.GetOrdersOfCustomer(orderDate);
+                var ordersList = db.OrderRepository.GetOrdersByOrderDate(orderDate);
 
                 if (ordersList.Count > 0)
                 {
@@ -128,11 +145,34 @@ namespace PhotographyAutomation.App.Forms.Orders
             dgvUploads.ClearSelection();
         }
 
-        private void ShowOrders(int orderStatus)
+        private void ShowOrders(int orderStatusId)
         {
             using (var db = new UnitOfWork())
             {
-                var ordersList = db.OrderRepository.GetOrdersOfCustomer(orderStatus);
+                var ordersList = db.OrderRepository.GetOrdersByStatusCode(orderStatusId);
+
+                if (ordersList.Count > 0)
+                {
+                    PopulateDataGridView(ordersList);
+                }
+                else
+                {
+                    RtlMessageBox.Show(
+                        "برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.",
+                        "",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    dgvUploads.Rows.Clear();
+                }
+            }
+            dgvUploads.ClearSelection();
+        }
+
+        private void ShowOrders(int orderStatusId, DateTime statusDate)
+        {
+            using (var db = new UnitOfWork())
+            {
+                var ordersList = db.OrderRepository.GetOrdersByStatusCode(orderStatusId, statusDate);
 
                 if (ordersList.Count > 0)
                 {
@@ -152,6 +192,64 @@ namespace PhotographyAutomation.App.Forms.Orders
         }
 
 
+
+        private void PopulateDataGridView(IReadOnlyList<CustomerOrderViewModel> ordersList)
+        {
+            dgvUploads.Rows.Clear();
+            dgvUploads.RowCount = ordersList.Count;
+            dgvUploads.AutoGenerateColumns = false;
+
+            for (var i = 0; i < ordersList.Count; i++)
+            {
+                dgvUploads.Rows[i].Cells["clmId"].Value = ordersList[i].Id;
+                dgvUploads.Rows[i].Cells["clmCustomerId"].Value = ordersList[i].CustomerId;
+                dgvUploads.Rows[i].Cells["clmBookingId"].Value = ordersList[i].BookingId;
+
+                if (ordersList[i].OrderCode != null)
+                    dgvUploads.Rows[i].Cells["clmOrderCode"].Value = ordersList[i].OrderCode;
+
+                switch (ordersList[i].CustomerGender)
+                {
+                    case 0:
+                        dgvUploads.Rows[i].Cells["clmCustomerFullName"].Value =
+                            "خانم " + ordersList[i].CustomerFullName;
+                        break;
+                    case 1:
+                        dgvUploads.Rows[i].Cells["clmCustomerFullName"].Value =
+                            "آقای " + ordersList[i].CustomerFullName;
+                        break;
+                    case 2:
+                        dgvUploads.Rows[i].Cells["clmCustomerFullName"].Value =
+                            ordersList[i].CustomerFullName;
+                        break;
+                }
+
+
+                dgvUploads.Rows[i].Cells["clmDate"].Value = ordersList[i].OrderDate?.ToShamsiDate();
+                dgvUploads.Rows[i].Cells["clmTime"].Value = ordersList[i].OrderTime?.Hours.ToString("##") + ":" +
+                                                           ordersList[i].OrderTime?.Minutes.ToString("00");
+                dgvUploads.Rows[i].Cells["clmPhotographyTypeId"].Value = ordersList[i].PhotographyTypeId;
+                dgvUploads.Rows[i].Cells["clmPhotographyTypeName"].Value = ordersList[i].PhotographyTypeName;
+                dgvUploads.Rows[i].Cells["clmPersonCount"].Value = ordersList[i].PersonCount;
+                //dgvOrders.Rows[i].Cells["clmPaymentIsOK"].Value = ordersList[i].PaymentIsOk;
+                //dgvOrders.Rows[i].Cells["clmSubmitter"].Value = ordersList[i].Submitter;
+                //dgvOrders.Rows[i].Cells["clmSubmitterName"].Value = ordersList[i].SubmitterName;
+                dgvUploads.Rows[i].Cells["clmStatusId"].Value = ordersList[i].OrderStatusId;
+                dgvUploads.Rows[i].Cells["clmStatusName"].Value = ordersList[i].OrderStatusName;
+                dgvUploads.Rows[i].Cells["clmCreatedDateTime"].Value = ordersList[i].CreatedDateTime;
+                dgvUploads.Rows[i].Cells["clmModifiedDateTime"].Value = ordersList[i].ModifiedDateTime;
+                dgvUploads.Rows[i].Cells["clmTotalFiles"].Value = ordersList[i].TotalFiles;
+                dgvUploads.Rows[i].Cells["clmOrderStatusCode"].Value = ordersList[i].OrderStatusCode;
+                dgvUploads.Rows[i].Cells["clmViewPhotos"].Value = ordersList[i].OrderFolderPathLocator;
+
+                //Alignments
+                dgvUploads.Rows[i].Cells["clmDate"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvUploads.Rows[i].Cells["clmTime"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvUploads.Rows[i].Cells["clmOrderCode"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvUploads.Rows[i].Cells["clmTotalFiles"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvUploads.Rows[i].Cells["clmPersonCount"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+        }
 
         private void PopulateComboBox()
         {
@@ -166,11 +264,11 @@ namespace PhotographyAutomation.App.Forms.Orders
                     }).ToList();
 
                 cmbOrderStatus.DisplayMember = "Name";
-                cmbOrderStatus.ValueMember = "StatusCode";
+                cmbOrderStatus.ValueMember = "Id";
             }
         }
 
-
+        #endregion
 
 
         #region NumberOnlyTextbox
@@ -183,20 +281,11 @@ namespace PhotographyAutomation.App.Forms.Orders
                 char.IsPunctuation(e.KeyChar))
                 e.Handled = true;
 
-            if (txtOrderCodeDate.TextLength == 7)
-                txtOrderCodeCustomerId.Focus();
+            //if (txtOrderCodeDate.TextLength == 7)
+            //    txtOrderCodeCustomerId.Focus();
         }
 
         private void txtOrderCodeCustomerId_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (char.IsLetter(e.KeyChar) ||
-                char.IsSymbol(e.KeyChar) ||
-                char.IsWhiteSpace(e.KeyChar) ||
-                char.IsPunctuation(e.KeyChar))
-                e.Handled = true;
-        }
-
-        private void txtOrderCodeBookingId_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (char.IsLetter(e.KeyChar) ||
                 char.IsSymbol(e.KeyChar) ||
@@ -219,16 +308,14 @@ namespace PhotographyAutomation.App.Forms.Orders
                 case Keys.Delete:
                     e.SuppressKeyPress = false;
                     return;
-                default:
-                    break;
             }
 
             //Block non-number characters
             char currentKey = (char)e.KeyCode;
             bool modifier = e.Control || e.Alt || e.Shift;
-            bool nonNumber = char.IsLetter(currentKey) || 
-                             char.IsSymbol(currentKey) || 
-                             char.IsWhiteSpace(currentKey) || 
+            bool nonNumber = char.IsLetter(currentKey) ||
+                             char.IsSymbol(currentKey) ||
+                             char.IsWhiteSpace(currentKey) ||
                              char.IsPunctuation(currentKey);
 
             if (!modifier && nonNumber)
@@ -240,10 +327,10 @@ namespace PhotographyAutomation.App.Forms.Orders
                 //Preview paste data (removing non-number characters)
                 string pasteText = Clipboard.GetText();
                 string strippedText = "";
-                for (int i = 0; i < pasteText.Length; i++)
+                foreach (var t in pasteText)
                 {
-                    if (char.IsDigit(pasteText[i]))
-                        strippedText += pasteText[i].ToString();
+                    if (char.IsDigit(t))
+                        strippedText += t.ToString();
                 }
 
                 if (strippedText != pasteText)
@@ -269,10 +356,89 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         #endregion
 
-        private void cmbOrderStatus_SelectedIndexChanged(object sender, System.EventArgs e)
+
+        #region ComboBox Events
+        private void cmbOrderStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbOrderStatus.Enabled)
                 int.TryParse(cmbOrderStatus.SelectedValue.ToString(), out _statusCode);
+        }
+
+
+
+        #endregion
+
+        private void chkEnableOrderStatusDatePicker_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkEnableOrderStatusDatePicker.Checked)
+            {
+                datePickerOrderStatus.Enabled = true;
+                datePickerOrderStatus.Focus();
+            }
+            else
+            {
+                datePickerOrderStatus.Enabled = false;
+            }
+        }
+
+        private void txtOrderCodeDate_TextChanged(object sender, EventArgs e)
+        {
+            if (txtOrderCodeDate.TextLength == 7)
+                txtOrderCodeCustomerIdBookingId.Focus();
+        }
+
+        private void rbOrderCode_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbOrderCode.Checked)
+            {
+                txtOrderCodeDate.Enabled = true;
+                txtOrderCodeCustomerIdBookingId.Enabled = true;
+                txtOrderCodeDate.Focus();
+            }
+            else
+            {
+                txtOrderCodeDate.Enabled = false;
+                txtOrderCodeCustomerIdBookingId.Enabled = false;
+            }
+        }
+
+        private void rbCustomerInfo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbCustomerInfo.Checked)
+                txtCustomerInfo.Enabled = true;
+            else
+                txtCustomerInfo.Enabled = false;
+        }
+
+        private void rbOrderDate_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbOrderDate.Checked)
+            {
+                datePickerOrderDate.Enabled = true;
+            }
+            else
+                datePickerOrderDate.Enabled = false;
+
+        }
+
+        private void rbOrderStatus_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbOrderStatus.Checked)
+            {
+                cmbOrderStatus.Enabled = true;
+                chkEnableOrderStatusDatePicker.Enabled=true;
+
+                if (chkEnableOrderStatusDatePicker.Checked)
+                    datePickerOrderStatus.Enabled = true;
+                else
+                    datePickerOrderStatus.Enabled = false;
+            }
+            else
+            {
+                cmbOrderStatus.Enabled = false;
+                datePickerOrderDate.Enabled = false;
+                chkEnableOrderStatusDatePicker.Enabled = false;
+            }
         }
     }
 }

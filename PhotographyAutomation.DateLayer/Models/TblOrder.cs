@@ -31,6 +31,8 @@ namespace PhotographyAutomation.DateLayer.Models
         public int CustomerId { get; set; }
         public Nullable<int> PhotographerId { get; set; }
         public Nullable<byte> PaymentIsOk { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
+        public Nullable<System.TimeSpan> Time { get; set; }
         public Nullable<System.Guid> OrderFolderStreamId { get; set; }
         public string OrderFolderPathLocator { get; set; }
         public string OrderFolderParentPathLocator { get; set; }
