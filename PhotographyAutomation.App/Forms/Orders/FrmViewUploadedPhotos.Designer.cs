@@ -1,4 +1,4 @@
-﻿namespace PhotographyAutomation.App.Forms.EntranceToAtelier
+﻿namespace PhotographyAutomation.App.Forms.Orders
 {
     partial class FrmViewUploadedPhotos
     {

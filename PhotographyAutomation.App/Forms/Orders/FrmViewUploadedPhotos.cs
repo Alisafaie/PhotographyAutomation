@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace PhotographyAutomation.App.Forms.EntranceToAtelier
+namespace PhotographyAutomation.App.Forms.Orders
 {
     public partial class FrmViewUploadedPhotos : Form
     {
