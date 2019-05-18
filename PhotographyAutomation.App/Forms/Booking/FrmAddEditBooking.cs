@@ -410,6 +410,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                     txtBookingTime.Text = f.SelectedTimeString;
                     BookingHour = f.SelectedTimeSpan.Hours;
                     BookingMinute = f.SelectedTimeSpan.Minutes;
+                    txtPersonCount.Focus();
                 }
             }
         }

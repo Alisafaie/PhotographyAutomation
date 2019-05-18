@@ -392,7 +392,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                             Time = new TimeSpan(DateTime.Now.Hour,DateTime.Now.Minute,DateTime.Now.Second),
                             IsActive = true,
                             OrderStatusId = orderStatusId,
-                            PhotographyTypeId = booking.PhotographyTypeId,
+                            PhotographyTypeId = booking.PhotographyTypeId
                         };
 
                         db.BookingGenericRepository.Update(booking);

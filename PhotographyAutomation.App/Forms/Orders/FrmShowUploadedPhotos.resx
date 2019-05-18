@@ -316,9 +316,22 @@
   <metadata name="clmStatusName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="clmPhotosFolderLink.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="clmViewPhotos.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="clmViewPhotos.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAFzUkdCAK7O
+        HOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAAsQAAALEAGtI711AAAA7ElEQVQ4T6XTP2oCQRzFcRWC
+        JtErWNjkEKnsUgmCio2X8Ax2CsFbBLU1xD9gIwq21iKC99Dvm52RGdwFNz74uMM4v7e7ghlywuWfNGsW
+        AzRS+oZmzYc2zviMuSaljaBAhwsx16QEBWv8pLRB8ARpc/cKSWlhil/45x4u0HDW+tOGTWLBi7266M4a
+        zmGmDZvYgjL28Au11p01XNeGzV2Bhlf4wAg64PKKt2h5S1DQhYYr2iB6jTE6yEO/wxzvcAkKDnDDLiqZ
+        YIcmaligCCUo8B/Xj0qq0dLkC0uUEBT0oC8f0ccWQ5iCJ/7OmeMV3wVtaLu6zdgAAAAASUVORK5CYII=
+</value>
+  </data>
   <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>264, 17</value>
   </metadata>

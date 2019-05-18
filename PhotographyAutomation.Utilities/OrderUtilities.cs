@@ -14,7 +14,7 @@ namespace PhotographyAutomation.Utilities
 
             //رقم هزار به دلیل بدون استفاده بودن و برای کاهش یک رقم از شناسه سفارش حذف می شود.
             persianYear = persianYear.Substring(1);
-            var returnValue = persianYear + persianMonth + persianDay + "-" + customerId.ToString() +"-"+ bookingId.ToString();
+            var returnValue = persianYear + persianMonth + persianDay + "-" + customerId + bookingId;
             return returnValue;
 
             #region Examples

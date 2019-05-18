@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 {
-    public partial class FrmUploadPhotos : Form
+    public partial class FrmViewUploadedPhotos : Form
     {
 
         private readonly List<string> _fileNamesList = new List<string>();
@@ -32,7 +32,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
         public int OrderId = 0;
 
 
-        public FrmUploadPhotos()
+        public FrmViewUploadedPhotos()
         {
             InitializeComponent();
         }

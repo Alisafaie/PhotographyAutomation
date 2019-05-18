@@ -88,6 +88,12 @@
     <Compile Include="Forms\Booking\FrmShowBookings.Designer.cs">
       <DependentUpon>FrmShowBookings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Orders\FrmViewUploadedPhotos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Orders\FrmViewUploadedPhotos.Designer.cs">
+      <DependentUpon>FrmViewUploadedPhotos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Photos\FrmPhotoViewer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Booking\FrmShowBookings.resx">
       <DependentUpon>FrmShowBookings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Orders\FrmViewUploadedPhotos.resx">
+      <DependentUpon>FrmViewUploadedPhotos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Photos\FrmPhotoViewer.resx">
       <DependentUpon>FrmPhotoViewer.cs</DependentUpon>
@@ -1404,6 +1413,42 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\iconfinder_folder_closed-add2_59904.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Instagram_571111.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_photo_36330.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Upload_image_131883.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Illustration_60746.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_image-x-photo-cd_24919.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_interface-07_809318 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_interface-07_809318.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Picture_131797.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_picture-01_186391.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Flickr_2745005.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_folder-edit_85073.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_folder_84607.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

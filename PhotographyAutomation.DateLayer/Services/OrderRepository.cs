@@ -36,6 +36,7 @@ namespace PhotographyAutomation.DateLayer.Services
                             Id = x.Id,
                             BookingId = x.BookingId,
                             OrderDate = x.Date,
+                            OrderTime = x.Time,
                             BookingTime = x.TblBooking.Time,
                             CustomerFullName = x.TblCustomer.FirstName + " " + x.TblCustomer.LastName,
                             CustomerId = x.CustomerId,
@@ -55,7 +56,8 @@ namespace PhotographyAutomation.DateLayer.Services
                             OrderFolderStreamId = x.OrderFolderStreamId.Value,
                             PaymentIsOk = x.PaymentIsOk.Value,
                             PersonCount = x.TblBooking.PersonCount,
-                            Submitter = x.Submitter.Value
+                            Submitter = x.Submitter.Value,
+                            UploadDate = x.UploadDate.Value
                         })
                     .OrderByDescending(x => x.OrderDate).ToList();
 
@@ -86,6 +88,7 @@ namespace PhotographyAutomation.DateLayer.Services
                             Id = x.Id,
                             BookingId = x.BookingId,
                             OrderDate = x.Date.Value,
+                            OrderTime = x.Time,
                             BookingTime = x.TblBooking.Time,
                             CustomerFullName = x.TblCustomer.FirstName + " " + x.TblCustomer.LastName,
                             CustomerId = x.CustomerId,
@@ -105,7 +108,8 @@ namespace PhotographyAutomation.DateLayer.Services
                             OrderFolderStreamId = x.OrderFolderStreamId.Value,
                             PaymentIsOk = x.PaymentIsOk.Value,
                             PersonCount = x.TblBooking.PersonCount,
-                            Submitter = x.Submitter.Value
+                            Submitter = x.Submitter.Value,
+                            UploadDate = x.UploadDate.Value
                         })
                     .OrderByDescending(x => x.OrderDate).ToList();
 
@@ -132,6 +136,7 @@ namespace PhotographyAutomation.DateLayer.Services
                             Id = x.Id,
                             BookingId = x.BookingId,
                             OrderDate = x.Date.Value,
+                            OrderTime = x.Time,
                             BookingTime = x.TblBooking.Time,
                             CustomerFullName = x.TblCustomer.FirstName + " " + x.TblCustomer.LastName,
                             CustomerId = x.CustomerId,
@@ -151,7 +156,8 @@ namespace PhotographyAutomation.DateLayer.Services
                             OrderFolderStreamId = x.OrderFolderStreamId.Value,
                             PaymentIsOk = x.PaymentIsOk.Value,
                             PersonCount = x.TblBooking.PersonCount,
-                            Submitter = x.Submitter.Value
+                            Submitter = x.Submitter.Value,
+                            UploadDate = x.UploadDate.Value
                         })
                     .OrderByDescending(x => x.OrderDate).ToList();
 
@@ -180,6 +186,7 @@ namespace PhotographyAutomation.DateLayer.Services
                             Id = x.Id,
                             BookingId = x.BookingId,
                             OrderDate = x.Date.Value,
+                            OrderTime = x.Time,
                             BookingTime = x.TblBooking.Time,
                             CustomerFullName = x.TblCustomer.FirstName + " " + x.TblCustomer.LastName,
                             CustomerId = x.CustomerId,
@@ -199,7 +206,8 @@ namespace PhotographyAutomation.DateLayer.Services
                             OrderFolderStreamId = x.OrderFolderStreamId.Value,
                             PaymentIsOk = x.PaymentIsOk.Value,
                             PersonCount = x.TblBooking.PersonCount,
-                            Submitter = x.Submitter.Value
+                            Submitter = x.Submitter.Value,
+                            UploadDate = x.UploadDate.Value
                         })
                     .OrderByDescending(x => x.OrderDate).ToList();
 
@@ -256,7 +264,8 @@ namespace PhotographyAutomation.DateLayer.Services
                             PhotographerGender = x.TblBooking.PhotographerGender,
                             Submitter = x.Submitter.Value,
                             OrderDate = x.Date.Value,
-                            OrderTime = x.Time.Value
+                            OrderTime = x.Time.Value,
+                            UploadDate = x.UploadDate.Value
                         })
                     .OrderBy(x => x.BookingDate)
                     .ThenBy(x => x.BookingTime)
@@ -319,7 +328,8 @@ namespace PhotographyAutomation.DateLayer.Services
                             PhotographerId = x.PhotographerId.Value,
                             PersonCount = x.TblBooking.PersonCount,
                             PhotographerGender = x.TblBooking.PhotographerGender,
-                            Submitter = x.Submitter.Value
+                            Submitter = x.Submitter.Value,
+                            UploadDate = x.UploadDate.Value
                         })
                     .OrderBy(x => x.BookingDate)
                     .ThenBy(x => x.BookingTime)
@@ -379,7 +389,8 @@ namespace PhotographyAutomation.DateLayer.Services
                             PhotographerId = x.PhotographerId,
                             PersonCount = x.TblBooking.PersonCount,
                             PhotographerGender = x.TblBooking.PhotographerGender,
-                            Submitter = x.Submitter
+                            Submitter = x.Submitter,
+                            UploadDate = x.UploadDate.Value
                         })
                     .OrderBy(x => x.BookingDate)
                     .ThenBy(x => x.BookingTime)

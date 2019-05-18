@@ -19,6 +19,7 @@ namespace PhotographyAutomation.DateLayer.Models
         public System.Guid StreamId { get; set; }
         public string FileName { get; set; }
         public string PathLocator { get; set; }
+        public Nullable<System.DateTime> UploadDate { get; set; }
     
         public virtual TblOrder TblOrder { get; set; }
     }

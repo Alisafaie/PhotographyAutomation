@@ -1,4 +1,5 @@
 ﻿using DevComponents.DotNetBar.Controls;
+using PhotographyAutomation.App.Forms.EntranceToAtelier;
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.Utilities;
 using PhotographyAutomation.Utilities.Convertor;
@@ -6,6 +7,7 @@ using PhotographyAutomation.Utilities.ExtentionMethods;
 using PhotographyAutomation.ViewModels.Order;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -42,6 +44,9 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         private void btnShowOrders_Click(object sender, EventArgs e)
         {
+            if (CheckInputs() == false)
+                return;
+
             if (rbOrderCode.Checked)
             {
                 string orderCode = txtOrderCodeDate.Text + "-" + txtOrderCodeCustomerIdBookingId.Text;
@@ -61,6 +66,8 @@ namespace PhotographyAutomation.App.Forms.Orders
             {
                 if (chkEnableOrderStatusDatePicker.Checked == false)
                 {
+                    _statusCode = (int)cmbOrderStatus.SelectedValue;
+
                     ShowOrders(_statusCode);
                 }
                 else
@@ -70,6 +77,8 @@ namespace PhotographyAutomation.App.Forms.Orders
                 }
             }
         }
+
+
 
         #endregion
 
@@ -240,7 +249,10 @@ namespace PhotographyAutomation.App.Forms.Orders
                 dgvUploads.Rows[i].Cells["clmModifiedDateTime"].Value = ordersList[i].ModifiedDateTime;
                 dgvUploads.Rows[i].Cells["clmTotalFiles"].Value = ordersList[i].TotalFiles;
                 dgvUploads.Rows[i].Cells["clmOrderStatusCode"].Value = ordersList[i].OrderStatusCode;
-                dgvUploads.Rows[i].Cells["clmViewPhotos"].Value = ordersList[i].OrderFolderPathLocator;
+                dgvUploads.Rows[i].Cells["clmPhotosFolderLink"].Value = ordersList[i].OrderFolderPathLocator;
+                dgvUploads.Rows[i].Cells["clmUploadDate"].Value = ordersList[i].UploadDate?.ToShamsiDate();
+                //dgvUploads.Rows[i].Cells["clmViewPhotos"].Value = "مشاهده عکس ها";
+
 
                 //Alignments
                 dgvUploads.Rows[i].Cells["clmDate"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -248,14 +260,49 @@ namespace PhotographyAutomation.App.Forms.Orders
                 dgvUploads.Rows[i].Cells["clmOrderCode"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvUploads.Rows[i].Cells["clmTotalFiles"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvUploads.Rows[i].Cells["clmPersonCount"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvUploads.Rows[i].Cells["clmUploadDate"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
         }
 
+
+        private bool CheckInputs()
+        {
+            if (rbOrderCode.Checked)
+            {
+                if (string.IsNullOrEmpty(txtOrderCodeDate.Text.Trim()) ||
+                    string.IsNullOrEmpty(txtOrderCodeCustomerIdBookingId.Text.Trim()))
+                {
+                    RtlMessageBox.Show(
+                        "شناسه سفارش به درستی وارد نشده است.",
+                        "خطا در ورود اطلاعات",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+
+            if (rbCustomerInfo.Checked)
+            {
+                if (string.IsNullOrEmpty(txtCustomerInfo.Text.Trim()))
+                {
+                    RtlMessageBox.Show(
+                        "اطلاعات مشتری وارد نشده است.",
+                        "خطا در ورود اطلاعات",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    txtCustomerInfo.Focus();
+                    return false;
+                }
+            }
+
+
+            return true;
+        }
         private void PopulateComboBox()
         {
             using (var db = new UnitOfWork())
             {
-                cmbOrderStatus.DataSource = db.OrderStatusGenericRepository.Get()
+                cmbOrderStatus.DataSource = db.OrderStatusGenericRepository.Get(x => x.Code > 10)
                     .Select(x => new OrderStatusViewModel
                     {
                         Id = x.Id,
@@ -273,6 +320,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         #region NumberOnlyTextbox
 
+
         private void txtOrderCodeDate_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (char.IsLetter(e.KeyChar) ||
@@ -284,16 +332,6 @@ namespace PhotographyAutomation.App.Forms.Orders
             //if (txtOrderCodeDate.TextLength == 7)
             //    txtOrderCodeCustomerId.Focus();
         }
-
-        private void txtOrderCodeCustomerId_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (char.IsLetter(e.KeyChar) ||
-                char.IsSymbol(e.KeyChar) ||
-                char.IsWhiteSpace(e.KeyChar) ||
-                char.IsPunctuation(e.KeyChar))
-                e.Handled = true;
-        }
-
         private void txtOrderCodeDate_KeyDown(object sender, KeyEventArgs e)
         {
             //Allow navigation keyboard arrows
@@ -353,6 +391,15 @@ namespace PhotographyAutomation.App.Forms.Orders
         }
 
 
+
+        private void txtOrderCodeCustomerId_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar) ||
+                char.IsSymbol(e.KeyChar) ||
+                char.IsWhiteSpace(e.KeyChar) ||
+                char.IsPunctuation(e.KeyChar))
+                e.Handled = true;
+        }
 
         #endregion
 
@@ -426,7 +473,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             if (rbOrderStatus.Checked)
             {
                 cmbOrderStatus.Enabled = true;
-                chkEnableOrderStatusDatePicker.Enabled=true;
+                chkEnableOrderStatusDatePicker.Enabled = true;
 
                 if (chkEnableOrderStatusDatePicker.Checked)
                     datePickerOrderStatus.Enabled = true;
@@ -438,6 +485,28 @@ namespace PhotographyAutomation.App.Forms.Orders
                 cmbOrderStatus.Enabled = false;
                 datePickerOrderDate.Enabled = false;
                 chkEnableOrderStatusDatePicker.Enabled = false;
+            }
+        }
+
+        private void dgvUploads_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridViewX)sender;
+
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonXColumn &&
+                e.RowIndex >= 0)
+            {
+                string pathLocator = null;
+                if (dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value != null)
+                {
+                    pathLocator = dgvUploads.SelectedRows[0].Cells["clmPhotosFolderLink"].Value.ToString();
+
+                    if (pathLocator != null)
+                    {
+                        var frmViewUploadedPhotos = new FrmViewUploadedPhotos();
+                        frmViewUploadedPhotos.ShowDialog();
+
+                    }
+                }
             }
         }
     }

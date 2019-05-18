@@ -9,7 +9,7 @@ namespace PhotographyAutomation.App.Forms.Booking
         public string SelectedTimeString;
         public TimeSpan SelectedTimeSpan { get; private set; }
 
-    
+
         public FrmSelectBookingTime()
         {
             InitializeComponent();
@@ -26,7 +26,7 @@ namespace PhotographyAutomation.App.Forms.Booking
             sb.Append(SelectedTimeSpan.Hours >= 12 ? " PM" : " AM");
             SelectedTimeString = sb.ToString();
 
-            this.DialogResult = DialogResult.OK;
+            DialogResult = DialogResult.OK;
         }
     }
 }

@@ -32,5 +32,6 @@ namespace PhotographyAutomation.ViewModels.Order
         public bool? IsActive { get; set; }
         public DateTime CreatedDateTime { get; set; }
         public DateTime? ModifiedDateTime { get; set; }
+        public DateTime? UploadDate { get; set; }
     }
 }
