@@ -95,7 +95,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                 }
                 else
                 {
-                    if (txtCustomerInfo.Text == @"نمایش همه رزروها")
+                    if (txtCustomerInfo.Text == @"***")
                         ShowBookings(string.Empty);
                     else
                     {

@@ -30,6 +30,7 @@ namespace PhotographyAutomation.App.Forms.Orders
         public int BookingId = 0;
         public int CustomerId = 0;
         public int OrderId = 0;
+        public string PathLocator;
 
 
         public FrmViewUploadedPhotos()
@@ -44,58 +45,38 @@ namespace PhotographyAutomation.App.Forms.Orders
             _sizeWidth = 128;
             _sizeHeight = 128;
             txtOrderCode.Text = OrderCode;
+            //GetOrderCodeFiles(PathLocator);
         }
 
 
 
-        private void openToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            btnChoosePhotoPath_Click(null, null);
-        }
+        
         private void btnChoosePhotoPath_Click(object sender, EventArgs e)
         {
-            var openFileDialogBrowsePictures = new OpenFileDialog
-            {
-                CheckFileExists = true,
-                DefaultExt = "*.jpg",
-                Filter = @"Image Files(*.JPG; *.JPEG)|*.JPG; *.JPEG",
-                //Image Files(*.BMP; *.JPG; *.GIF)| *.BMP; *.JPG; *.GIF | All files(*.*) | *.*
-                Multiselect = true,
-                RestoreDirectory = true,
-                SupportMultiDottedExtensions = true,
-                Title = @"دریافت عکس ها",
-                //ReadOnlyChecked = true,
-                //ShowReadOnly = true
-            };
+            //if (openFileDialogBrowsePictures.ShowDialog() != DialogResult.OK) return;
 
-            if (openFileDialogBrowsePictures.ShowDialog() != DialogResult.OK) return;
-
-            panelPreviewPictures.Controls.Clear();
-            var locnewX = _locX;
-            // ReSharper disable once UnusedVariable
-            var locnewY = _locY;
+            //panelPreviewPictures.Controls.Clear();
+            //var locnewX = _locX;
+            //// ReSharper disable once UnusedVariable
+            //var locnewY = _locY;
 
 
-            for (var i = 0; i < openFileDialogBrowsePictures.SafeFileNames.Length; i++)
-            {
-                try
-                {
-                    _fileNamesAndPathsList.Add(openFileDialogBrowsePictures.FileNames[i]);
-                    _fileNamesList.Add(openFileDialogBrowsePictures.SafeFileNames[i]);
-                    locnewX = ShowImagePreview(locnewX, openFileDialogBrowsePictures, i);
-                }
-                catch (Exception exception)
-                {
-                    RtlMessageBox.Show(exception.Message);
-                }
-            }
-            txtOrderCode.Focus();
+            //for (var i = 0; i < openFileDialogBrowsePictures.SafeFileNames.Length; i++)
+            //{
+            //    try
+            //    {
+            //        _fileNamesAndPathsList.Add(openFileDialogBrowsePictures.FileNames[i]);
+            //        _fileNamesList.Add(openFileDialogBrowsePictures.SafeFileNames[i]);
+            //        locnewX = ShowImagePreview(locnewX, openFileDialogBrowsePictures, i);
+            //    }
+            //    catch (Exception exception)
+            //    {
+            //        RtlMessageBox.Show(exception.Message);
+            //    }
+            //}
+            //txtOrderCode.Focus();
         }
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            btnUploadPhotos_Click(null, null);
-        }
         private void btnUploadPhotos_Click(object sender, EventArgs e)
         {
             //string uploadPath = string.Empty;

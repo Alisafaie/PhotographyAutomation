@@ -18,6 +18,53 @@ namespace PhotographyAutomation.DateLayer.Services
             _db = context;
         }
 
+        public List<CustomerOrderViewModel> GetAllOrders()
+        {
+             try
+            {
+                var returnValue =
+                    _db.TblOrder
+                        .Include(x => x.TblCustomer)
+                        .Include(x => x.TblPhotographyType)
+                        .Include(x => x.TblOrderStatus)
+                        .Select(x => new CustomerOrderViewModel
+                        {
+                            Id = x.Id,
+                            BookingId = x.BookingId,
+                            OrderDate = x.Date,
+                            OrderTime = x.Time,
+                            BookingTime = x.TblBooking.Time,
+                            CustomerFullName = x.TblCustomer.FirstName + " " + x.TblCustomer.LastName,
+                            CustomerId = x.CustomerId,
+                            CustomerGender = x.TblCustomer.Gender.Value,
+                            OrderCode = x.OrderCode.ToString(),
+                            CreatedDateTime = x.CreatedDateTime,
+                            ModifiedDateTime = x.ModifiedDateTime.Value,
+                            TotalFiles = x.TotalFiles.Value,
+                            PhotographyTypeId = x.PhotographyTypeId,
+                            PhotographyTypeName = x.TblPhotographyType.TypeName,
+                            OrderStatusId = x.OrderStatusId,
+                            OrderStatusCode = x.TblOrderStatus.Code,
+                            OrderStatusName = x.TblOrderStatus.Name,
+                            IsActive = x.IsActive,
+                            OrderFolderParentPathLocator = x.OrderFolderParentPathLocator,
+                            OrderFolderPathLocator = x.OrderFolderPathLocator,
+                            OrderFolderStreamId = x.OrderFolderStreamId.Value,
+                            PaymentIsOk = x.PaymentIsOk.Value,
+                            PersonCount = x.TblBooking.PersonCount,
+                            Submitter = x.Submitter.Value,
+                            UploadDate = x.UploadDate.Value
+                        })
+                    .OrderByDescending(x => x.OrderDate).ToList();
+
+                return returnValue;
+            }
+            catch (Exception exception)
+            {
+                WriteDebugInfoToOutput(exception);
+                return null;
+            }
+        }
 
         //Used in ShowUploaded Photos
         public List<CustomerOrderViewModel> GetOrdersOfCustomerByOrderCode(string orderCode)
@@ -89,6 +136,7 @@ namespace PhotographyAutomation.DateLayer.Services
                             BookingId = x.BookingId,
                             OrderDate = x.Date.Value,
                             OrderTime = x.Time,
+                            BookingDate = x.TblBooking.Date,
                             BookingTime = x.TblBooking.Time,
                             CustomerFullName = x.TblCustomer.FirstName + " " + x.TblCustomer.LastName,
                             CustomerId = x.CustomerId,
@@ -137,6 +185,7 @@ namespace PhotographyAutomation.DateLayer.Services
                             BookingId = x.BookingId,
                             OrderDate = x.Date.Value,
                             OrderTime = x.Time,
+                            BookingDate = x.TblBooking.Date,
                             BookingTime = x.TblBooking.Time,
                             CustomerFullName = x.TblCustomer.FirstName + " " + x.TblCustomer.LastName,
                             CustomerId = x.CustomerId,
@@ -187,6 +236,7 @@ namespace PhotographyAutomation.DateLayer.Services
                             BookingId = x.BookingId,
                             OrderDate = x.Date.Value,
                             OrderTime = x.Time,
+                            BookingDate = x.TblBooking.Date,
                             BookingTime = x.TblBooking.Time,
                             CustomerFullName = x.TblCustomer.FirstName + " " + x.TblCustomer.LastName,
                             CustomerId = x.CustomerId,

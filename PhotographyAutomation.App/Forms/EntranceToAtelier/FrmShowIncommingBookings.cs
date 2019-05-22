@@ -192,7 +192,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                 }
                 else
                 {
-                    if (txtCustomerInfo.Text == @"نمایش همه رزروها")
+                    if (txtCustomerInfo.Text == @"***")
                         ShowOrders(string.Empty);
                     else
                     {

@@ -1,5 +1,4 @@
 ﻿using DevComponents.DotNetBar.Controls;
-using PhotographyAutomation.App.Forms.EntranceToAtelier;
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.Utilities;
 using PhotographyAutomation.Utilities.Convertor;
@@ -7,7 +6,6 @@ using PhotographyAutomation.Utilities.ExtentionMethods;
 using PhotographyAutomation.ViewModels.Order;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -55,7 +53,11 @@ namespace PhotographyAutomation.App.Forms.Orders
             else if (rbCustomerInfo.Checked)
             {
                 string customerInfo = txtCustomerInfo.Text.Trim();
-                ShowOrders(customerInfo);
+
+                if (customerInfo == "***")
+                    ShowAllOrders();
+                else
+                    ShowOrders(customerInfo);
             }
             else if (rbOrderDate.Checked)
             {
@@ -108,11 +110,32 @@ namespace PhotographyAutomation.App.Forms.Orders
             dgvUploads.ClearSelection();
         }
 
+        private void ShowAllOrders()
+        {
+            using (var db = new UnitOfWork())
+            {
+                var ordersList = db.OrderRepository.GetAllOrders();
+                if (ordersList.Count > 0)
+                {
+                    PopulateDataGridView(ordersList);
+                }
+                else
+                {
+                    RtlMessageBox.Show(
+                        "هیچ سفارشی در سیستم ثبت نشده است.",
+                        "",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    dgvUploads.Rows.Clear();
+                }
+            }
+        }
+
         private void ShowOrders(string customerInfo)
         {
             using (var db = new UnitOfWork())
             {
-                var ordersList = db.OrderRepository.GetOrdersOfCustomer(customerInfo);
+                List<CustomerOrderViewModel> ordersList = db.OrderRepository.GetOrdersOfCustomer(customerInfo);
 
                 if (ordersList.Count > 0)
                 {
@@ -503,11 +526,35 @@ namespace PhotographyAutomation.App.Forms.Orders
                     if (pathLocator != null)
                     {
                         var frmViewUploadedPhotos = new FrmViewUploadedPhotos();
-                        frmViewUploadedPhotos.ShowDialog();
+                        frmViewUploadedPhotos.PathLocator = pathLocator;
 
+
+                        frmViewUploadedPhotos.ShowDialog();
                     }
                 }
             }
+        }
+
+
+
+        private void مشاهدهعکسهاToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void دریافتعکسهاToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void مشاهدهاطلاعاتمشتریToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void مشاهدهاطلاعاترزروToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
