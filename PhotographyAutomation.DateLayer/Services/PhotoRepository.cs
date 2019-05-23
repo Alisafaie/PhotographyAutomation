@@ -9,6 +9,7 @@ using System.Data.SqlTypes;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using PhotographyAutomation.ViewModels.Photo;
 
 namespace PhotographyAutomation.DateLayer.Services
 {
@@ -54,6 +55,8 @@ namespace PhotographyAutomation.DateLayer.Services
         {
             throw new NotImplementedException();
         }
+
+        
 
         public string CheckPhotoYearFolderIsCreatedReturnsPath(int year)
         {
@@ -148,6 +151,8 @@ namespace PhotographyAutomation.DateLayer.Services
                 return null;
             }
         }
+
+        
 
         public string CreateYearFolderOfPhotos(int year)
         {
@@ -357,6 +362,7 @@ namespace PhotographyAutomation.DateLayer.Services
             }
         }
 
+        
         public int GetTotalFilesOfFolder(string pathLocator)
         {
             var returnValue = new ObjectParameter("returnValue", typeof(int));
@@ -378,27 +384,43 @@ namespace PhotographyAutomation.DateLayer.Services
             }
         }
 
-        public List<FilesInFolderViewModel> GetListOfFilesInFolder(string pathLocator)
+        public List<PhotoViewModel> GetListOfFilesInFolder(string pathLocator)
         {
-            List<FilesInFolderViewModel> listOfFiles = null;
-            
+            List<PhotoViewModel> listOfPhotos = null;
             try
             {
                 var result = _db.usp_GetListOfFilesInFolder(pathLocator).ToList();
                 if (result.Any())
                 {
-                   listOfFiles = new List<FilesInFolderViewModel>(result.Count);
+                    listOfPhotos = new List<PhotoViewModel>(result.Count);
                     foreach (var item in result)
                     {
-                        var file = new FilesInFolderViewModel
+                        var file = new PhotoViewModel
                         {
-                            FileName = item.FileName, StreamId = item.StreamId, FileSize = item.FileSize
+                           StreamId = item.stream_id,
+                           FileStream = item.file_stream,
+                           Name = item.name,
+                           PathLocator = item.PathLocator,
+                           ParentPathLocator = item.ParentPathLocator,
+                           FullUncPath = item.FullUncPath,
+                           Type = item.file_type,
+                           CachedFileSize = item.cached_file_size,
+                           CreationDateTime = item.creation_time.DateTime,
+                           LastWriteTime = item.last_write_time.DateTime,
+                           LastAccessDateTime = item.last_access_time?.DateTime,
+                           IsDirectory = item.is_directory,
+                           IsOffline = item.is_offline,
+                           IsHidden = item.is_hidden,
+                           IsArchive = item.is_archive,
+                           IsReadOnly = item.is_readonly,
+                           IsSystem = item.is_system,
+                           IsTemporary = item.is_temporary,
+                           TransactionContext = item.TransactionContext
                         };
-                        listOfFiles.Add(file);
+                        listOfPhotos.Add(file);
                     }
                 }
-
-                return listOfFiles;
+                return listOfPhotos;
             }
             catch (Exception exception)
             {

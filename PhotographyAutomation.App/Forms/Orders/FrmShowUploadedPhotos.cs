@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using PhotographyAutomation.ViewModels.Document;
+using PhotographyAutomation.ViewModels.Photo;
 
 namespace PhotographyAutomation.App.Forms.Orders
 {
@@ -36,6 +38,11 @@ namespace PhotographyAutomation.App.Forms.Orders
         {
             txtOrderCodeDate.ResetText();
             txtOrderCodeCustomerIdBookingId.ResetText();
+
+            rbCustomerInfo.Checked = false;
+            rbOrderCode.Checked = false;
+            rbOrderDate.Checked = false;
+            rbOrderStatus.Checked = false;
 
             txtOrderCodeDate.Focus();
         }
@@ -78,6 +85,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                     ShowOrders(_statusCode, statusDate);
                 }
             }
+            GC.Collect();
         }
 
 
@@ -86,6 +94,27 @@ namespace PhotographyAutomation.App.Forms.Orders
 
 
         #region Methods
+        private void ShowAllOrders()
+        {
+            using (var db = new UnitOfWork())
+            {
+                var ordersList = db.OrderRepository.GetAllOrders();
+                if (ordersList.Count > 0)
+                {
+                    PopulateDataGridView(ordersList);
+                }
+                else
+                {
+                    RtlMessageBox.Show(
+                        "هیچ سفارشی در سیستم ثبت نشده است.",
+                        "",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    dgvUploads.Rows.Clear();
+                }
+            }
+        }
+
 
         private void ShowOrdersByOrderCode(string orderCode)
         {
@@ -110,26 +139,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             dgvUploads.ClearSelection();
         }
 
-        private void ShowAllOrders()
-        {
-            using (var db = new UnitOfWork())
-            {
-                var ordersList = db.OrderRepository.GetAllOrders();
-                if (ordersList.Count > 0)
-                {
-                    PopulateDataGridView(ordersList);
-                }
-                else
-                {
-                    RtlMessageBox.Show(
-                        "هیچ سفارشی در سیستم ثبت نشده است.",
-                        "",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                    dgvUploads.Rows.Clear();
-                }
-            }
-        }
+
 
         private void ShowOrders(string customerInfo)
         {
@@ -454,7 +464,11 @@ namespace PhotographyAutomation.App.Forms.Orders
         private void txtOrderCodeDate_TextChanged(object sender, EventArgs e)
         {
             if (txtOrderCodeDate.TextLength == 7)
+            {
+                txtOrderCodeCustomerIdBookingId.ReadOnly = false;
+                txtOrderCodeCustomerIdBookingId.Enabled = true;
                 txtOrderCodeCustomerIdBookingId.Focus();
+            }
         }
 
         private void rbOrderCode_CheckedChanged(object sender, EventArgs e)
@@ -474,21 +488,12 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         private void rbCustomerInfo_CheckedChanged(object sender, EventArgs e)
         {
-            if (rbCustomerInfo.Checked)
-                txtCustomerInfo.Enabled = true;
-            else
-                txtCustomerInfo.Enabled = false;
+            txtCustomerInfo.Enabled = rbCustomerInfo.Checked;
         }
 
         private void rbOrderDate_CheckedChanged(object sender, EventArgs e)
         {
-            if (rbOrderDate.Checked)
-            {
-                datePickerOrderDate.Enabled = true;
-            }
-            else
-                datePickerOrderDate.Enabled = false;
-
+            datePickerOrderDate.Enabled = rbOrderDate.Checked;
         }
 
         private void rbOrderStatus_CheckedChanged(object sender, EventArgs e)
@@ -498,10 +503,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                 cmbOrderStatus.Enabled = true;
                 chkEnableOrderStatusDatePicker.Enabled = true;
 
-                if (chkEnableOrderStatusDatePicker.Checked)
-                    datePickerOrderStatus.Enabled = true;
-                else
-                    datePickerOrderStatus.Enabled = false;
+                datePickerOrderStatus.Enabled = chkEnableOrderStatusDatePicker.Checked;
             }
             else
             {
@@ -518,23 +520,60 @@ namespace PhotographyAutomation.App.Forms.Orders
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonXColumn &&
                 e.RowIndex >= 0)
             {
-                string pathLocator = null;
-                if (dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value != null)
+            RetryGetListOfPhotos:
+
+                var pathLocator = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
+
+                if (pathLocator != null)
                 {
-                    pathLocator = dgvUploads.SelectedRows[0].Cells["clmPhotosFolderLink"].Value.ToString();
-
-                    if (pathLocator != null)
+                    List<PhotoViewModel> listOfFiles = GetListOfFilesOfOrder(pathLocator);
+                    if (listOfFiles!=null)
                     {
-                        var frmViewUploadedPhotos = new FrmViewUploadedPhotos();
-                        frmViewUploadedPhotos.PathLocator = pathLocator;
+                        using(var frmViewUploadedPhotos = new FrmViewUploadedPhotos() )
 
+                        {
+                            frmViewUploadedPhotos.ListOfPhotos = listOfFiles;
+                            frmViewUploadedPhotos.OrderCode =
+                                dgvUploads.SelectedRows[0]?.Cells["clmOrderCode"].Value.ToString();
+                            frmViewUploadedPhotos.CustomerName = dgvUploads.SelectedRows[0].Cells["clmCustomerFullName"]
+                                .Value.ToString();
+                            frmViewUploadedPhotos.PhotographyDate =
+                                dgvUploads.SelectedRows[0].Cells["clmDate"].Value.ToString();
+                            frmViewUploadedPhotos.TotalPhotos =
+                                (int) dgvUploads.SelectedRows[0].Cells["clmTotalFiles"].Value;
+                            frmViewUploadedPhotos.OrderStatus =
+                                dgvUploads.SelectedRows[0].Cells["clmStatusName"].Value.ToString();
 
-                        frmViewUploadedPhotos.ShowDialog();
+                            frmViewUploadedPhotos.ShowDialog();
+                            GC.Collect();
+                        };
+                        
+                    }
+                    else
+                    {
+                        var dialogResult = RtlMessageBox.Show(
+                            "برای این سفارش در سیستم عکسی ثبت نشده است. " + Environment.NewLine +
+                            "لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
+                            "خطا در دریافت لیست عکس های سفارش",
+                            MessageBoxButtons.RetryCancel,
+                            MessageBoxIcon.Error);
+                        if (dialogResult == DialogResult.Retry)
+                        {
+                            goto RetryGetListOfPhotos;
+                        }
                     }
                 }
             }
         }
 
+        public List<PhotoViewModel> GetListOfFilesOfOrder(string pathLocator)
+        {
+            using (var db=new UnitOfWork())
+            {
+                return db.PhotoRepository.GetListOfFilesInFolder(pathLocator);
+            }
+        }
+        
 
 
         private void مشاهدهعکسهاToolStripMenuItem_Click(object sender, EventArgs e)

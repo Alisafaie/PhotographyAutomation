@@ -1,7 +1,10 @@
 ﻿using PhotographyAutomation.ViewModels.Document;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
+using System.Net.Mime;
 using PhotographyAutomation.DateLayer.Models;
+using PhotographyAutomation.ViewModels.Photo;
 
 namespace PhotographyAutomation.DateLayer.Repositories
 {
@@ -22,6 +25,6 @@ namespace PhotographyAutomation.DateLayer.Repositories
         Guid GetOrderFolderStreamId(string orderCode);
         void DeleteFilesOfOrder(string pathLocator);
         int GetTotalFilesOfFolder(string pathLocator);
-        List<FilesInFolderViewModel> GetListOfFilesInFolder(string pathLocator);
+        List<PhotoViewModel> GetListOfFilesInFolder(string pathLocator);
     }
 }

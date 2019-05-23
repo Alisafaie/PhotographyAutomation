@@ -1,9 +1,8 @@
-﻿using PhotographyAutomation.App.Forms.Photos;
-using PhotographyAutomation.DateLayer.Context;
+﻿using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.DateLayer.Models;
 using PhotographyAutomation.Utilities;
-using PhotographyAutomation.Utilities.Convertor;
 using PhotographyAutomation.Utilities.ExtentionMethods;
+using PhotographyAutomation.ViewModels.Photo;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -18,19 +17,22 @@ namespace PhotographyAutomation.App.Forms.Orders
     public partial class FrmViewUploadedPhotos : Form
     {
 
-        private readonly List<string> _fileNamesList = new List<string>();
-        private readonly List<string> _fileNamesAndPathsList = new List<string>();
-
         private int _locX = 20;
         private int _locY = 10;
         private int _sizeWidth = 128;
         private int _sizeHeight = 128;
 
         public string OrderCode = string.Empty;
+        public string CustomerName;
+        public string PhotographyDate;
+        public int TotalPhotos;
+        public string OrderStatus;
+
         public int BookingId = 0;
         public int CustomerId = 0;
         public int OrderId = 0;
-        public string PathLocator;
+
+        public List<PhotoViewModel> ListOfPhotos;
 
 
         public FrmViewUploadedPhotos()
@@ -44,39 +46,205 @@ namespace PhotographyAutomation.App.Forms.Orders
             _locY = 10;
             _sizeWidth = 128;
             _sizeHeight = 128;
-            txtOrderCode.Text = OrderCode;
-            //GetOrderCodeFiles(PathLocator);
+
+            toolStripMenuItemOrderCode.Text = OrderCode;
+            toolStripMenuItemCustomerName.Text = CustomerName;
+            toolStripMenuItemOrderstatus.Text = OrderStatus;
+            toolStripMenuItemPhotographyDate.Text = PhotographyDate;
+            toolStripMenuItemTotalPhotos.Text = TotalPhotos.ToString();
+
+            ShowImages();
         }
 
 
-
-        
-        private void btnChoosePhotoPath_Click(object sender, EventArgs e)
+        void ShowImages()
         {
-            //if (openFileDialogBrowsePictures.ShowDialog() != DialogResult.OK) return;
+            panelPreviewPictures.Controls.Clear();
+            var locnewX = _locX;
+            // ReSharper disable once UnusedVariable
+            var locnewY = _locY;
 
-            //panelPreviewPictures.Controls.Clear();
-            //var locnewX = _locX;
-            //// ReSharper disable once UnusedVariable
-            //var locnewY = _locY;
-
-
-            //for (var i = 0; i < openFileDialogBrowsePictures.SafeFileNames.Length; i++)
-            //{
-            //    try
-            //    {
-            //        _fileNamesAndPathsList.Add(openFileDialogBrowsePictures.FileNames[i]);
-            //        _fileNamesList.Add(openFileDialogBrowsePictures.SafeFileNames[i]);
-            //        locnewX = ShowImagePreview(locnewX, openFileDialogBrowsePictures, i);
-            //    }
-            //    catch (Exception exception)
-            //    {
-            //        RtlMessageBox.Show(exception.Message);
-            //    }
-            //}
-            //txtOrderCode.Focus();
+            for (var i = 0; i < ListOfPhotos.Count; i++)
+            {
+                try
+                {
+                    locnewX = ShowImagePreview(locnewX, ListOfPhotos, i);
+                }
+                catch (Exception exception)
+                {
+                    RtlMessageBox.Show(exception.Message);
+                }
+            }
         }
 
+
+
+
+        private void control_MouseClick(object sender, MouseEventArgs e)
+        {
+            Control control = (Control)sender;
+            PictureBox pic = (PictureBox)control;
+            pictureBoxPreview.Image = pic.Image;
+
+            // File Location
+            pictureBoxPreview.Tag = pic.AccessibleDescription;
+
+            //File Name
+            labelPicturePreviewName.Text = pic.Tag.ToString();
+        }
+
+        private void pictureBox_DoubleClick(object sender, EventArgs e)
+        {
+            Control control = (Control)sender;
+
+            foreach (var checkBox in panelPreviewPictures.Controls.OfType<DevComponents.DotNetBar.Controls.CheckBoxX>())
+            {
+                if (control.Tag == checkBox.Tag)
+                {
+                    checkBox.CheckState = CheckState.Unchecked;
+                }
+            }
+
+            checkBoxSelectAll.Checked = false;
+            checkBoxSelectAll.CheckState = CheckState.Unchecked;
+
+            GC.Collect();
+        }
+
+
+
+
+        private int ShowImagePreview(int locnewX, List<PhotoViewModel> photoList, int i)
+        {
+            int locnewY;
+            if (locnewX >= panelPreviewPictures.Width - _sizeWidth - 10)
+            {
+                locnewX = _locX;
+                _locY = _locY + _sizeHeight + 30;
+                locnewY = _locY;
+            }
+            else
+            {
+                locnewY = _locY;
+            }
+
+            LoadImagestoPanel(photoList[i].Name, photoList[i].FileStream, locnewX, locnewY, i);
+
+            // ReSharper disable once RedundantAssignment
+            locnewY = _locY + _sizeHeight + 10;
+            locnewX = locnewX + _sizeWidth + 10;
+            return locnewX;
+        }
+
+        private void LoadImagestoPanel(string imageName, byte[] imageBytes, int newLocX, int newLocY, int i)
+        {
+            PictureBox pictureBoxControl = new PictureBox
+            {
+                BackColor = SystemColors.Control,
+                Location = new Point(newLocX, newLocY + 10),
+                Size = new Size(_sizeWidth, _sizeHeight),
+                SizeMode = PictureBoxSizeMode.Zoom,
+                BorderStyle = BorderStyle.FixedSingle,
+                Tag = imageName,
+                AccessibleDescription = imageName,
+                Image = imageBytes.GetPhotoAndRotateIt()
+            };
+
+            Label pictureBoxLabel = new Label
+            {
+                BackColor = SystemColors.Control,
+                ForeColor = SystemColors.ControlText,
+                Font = SystemFonts.DefaultFont,
+                Location = new Point(newLocX + 5, newLocY + 140),
+                Text = imageName,
+                AutoSize = true,
+                MaximumSize = new Size(_sizeWidth, 30),
+                ClientSize = new Size(_sizeWidth, 30)
+            };
+
+            var pictureBoxCheckBox = new DevComponents.DotNetBar.Controls.CheckBoxX
+            {
+                BackColor = Color.Transparent,
+                Font = SystemFonts.DefaultFont,
+                Location = new Point(newLocX + 3, newLocY + 13),
+                CheckState = CheckState.Checked,
+                Checked = true,
+                Tag = imageName,
+                Text = "",
+                AutoSize = false,
+                Size = new Size(17, 17),
+                MaximumSize = new Size(13, 13),
+                Parent = pictureBoxControl,
+                AccessibleDescription = ListOfPhotos[i].FullUncPath,
+                AccessibleName = imageName
+            };
+
+
+            pictureBoxControl.MouseClick += control_MouseClick;
+            pictureBoxControl.DoubleClick += pictureBox_DoubleClick;
+
+            panelPreviewPictures.Controls.Add(pictureBoxLabel);
+            panelPreviewPictures.Controls.Add(pictureBoxCheckBox);
+            panelPreviewPictures.Controls.Add(pictureBoxControl);
+
+        }
+
+
+
+        private void checkBoxSelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxSelectAll.Checked && checkBoxSelectAll.CheckState == CheckState.Checked)
+            {
+                foreach (var checkBox in panelPreviewPictures.Controls.OfType<DevComponents.DotNetBar.Controls.CheckBoxX>())
+                {
+                    checkBox.CheckState = CheckState.Checked;
+                }
+            }
+        }
+
+        private void checkBoxSelectNone_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxSelectAll.Checked && checkBoxSelectAll.CheckState == CheckState.Checked)
+            {
+                foreach (var checkBox in panelPreviewPictures.Controls.OfType<DevComponents.DotNetBar.Controls.CheckBoxX>())
+                {
+                    checkBox.CheckState = CheckState.Unchecked;
+                }
+            }
+        }
+
+
+
+        private void pictureBoxPreview_DoubleClick(object sender, EventArgs e)
+        {
+            //var viewer = new FrmPhotoViewer
+            //{
+            //    MyImageList = _fileNamesAndPathsList,
+            //    SelectedImageFilePath = pictureBoxPreview.Tag.ToString()
+            //};
+
+            //pv.ShowDialog();
+        }
+
+        #region Upload
+
+        private bool CheckInputs()
+        {
+            if (string.IsNullOrEmpty(toolStripMenuItemOrderCode.Text.Trim()))
+            {
+                RtlMessageBox.Show("مقداری برای شماره فاکتور مشتری وارد نشده است.", "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                toolStripMenuItemOrderCode.Focus();
+                return false;
+            }
+
+            if (ListOfPhotos.Count == 0)
+            {
+                RtlMessageBox.Show("عکسی برای ارسال انتخاب نشده است.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
         private void btnUploadPhotos_Click(object sender, EventArgs e)
         {
             //string uploadPath = string.Empty;
@@ -143,7 +311,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
                         for (var i = 0; i < filesToUpload.Count; i++)
                         {
-                            string fileName = OrderCode + "--" + _fileNamesList[i];
+                            string fileName = OrderCode + "--" + ListOfPhotos[i];
 
                             var fileUploadResult2 =
                                 db.PhotoRepository.CreateFileTableFileReturnCreateFileViewModel(
@@ -276,7 +444,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
                             for (var i = 0; i < filesToUpload.Count; i++)
                             {
-                                string fileName = OrderCode + "--" + _fileNamesList[i];
+                                string fileName = OrderCode + "--" + ListOfPhotos[i];
 
                                 var fileUploadResult2 =
                                     db.PhotoRepository.CreateFileTableFileReturnCreateFileViewModel(
@@ -548,154 +716,8 @@ namespace PhotographyAutomation.App.Forms.Orders
             }
         }
 
-        private bool CheckInputs()
-        {
-            if (string.IsNullOrEmpty(txtOrderCode.Text.Trim()))
-            {
-                RtlMessageBox.Show("مقداری برای شماره فاکتور مشتری وارد نشده است.", "", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                txtOrderCode.Focus();
-                return false;
-            }
-
-            if (_fileNamesAndPathsList.Count == 0)
-            {
-                RtlMessageBox.Show("عکسی برای ارسال انتخاب نشده است.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            return true;
-        }
 
 
-        private void control_MouseClick(object sender, MouseEventArgs e)
-        {
-            Control control = (Control)sender;
-            PictureBox pic = (PictureBox)control;
-            pictureBoxPreview.Image = pic.Image;
-
-            // File Location
-            pictureBoxPreview.Tag = pic.AccessibleDescription;
-
-            //File Name
-            labelPicturePreviewName.Text = pic.Tag.ToString();
-        }
-
-        private void pictureBox_DoubleClick(object sender, EventArgs e)
-        {
-            Control control = (Control)sender;
-
-            foreach (var checkBox in panelPreviewPictures.Controls.OfType<DevComponents.DotNetBar.Controls.CheckBoxX>())
-            {
-                if (control.Tag == checkBox.Tag)
-                {
-                    checkBox.CheckState = CheckState.Unchecked;
-                }
-            }
-
-            checkBoxSelectAll.Checked = false;
-            checkBoxSelectAll.CheckState = CheckState.Unchecked;
-        }
-
-
-        private int ShowImagePreview(int locnewX, OpenFileDialog openFileDialogBrowsePictures, int i)
-        {
-            int locnewY;
-            if (locnewX >= panelPreviewPictures.Width - _sizeWidth - 10)
-            {
-                locnewX = _locX;
-                _locY = _locY + _sizeHeight + 30;
-                locnewY = _locY;
-            }
-            else
-            {
-                locnewY = _locY;
-            }
-
-            LoadImagestoPanel(openFileDialogBrowsePictures.SafeFileNames[i],
-                openFileDialogBrowsePictures.FileNames[i], locnewX, locnewY);
-
-            // ReSharper disable once RedundantAssignment
-            locnewY = _locY + _sizeHeight + 10;
-            locnewX = locnewX + _sizeWidth + 10;
-            return locnewX;
-        }
-
-        private void LoadImagestoPanel(string imageName, string imageFullName, int newLocX, int newLocY)
-        {
-            PictureBox pictureBoxControl = new PictureBox
-            {
-                BackColor = SystemColors.Control,
-                Location = new Point(newLocX, newLocY + 10),
-                Size = new Size(_sizeWidth, _sizeHeight),
-                SizeMode = PictureBoxSizeMode.Zoom,
-                BorderStyle = BorderStyle.FixedSingle,
-                Tag = imageName,
-                AccessibleDescription = imageFullName
-            };
-
-            byte[] originalPhotoBytes = imageFullName.FileToByteArray();
-            pictureBoxControl.Image = originalPhotoBytes.GetPhotoAndRotateIt();
-
-
-            Label pictureBoxLabel = new Label
-            {
-                BackColor = SystemColors.Control,
-                ForeColor = SystemColors.ControlText,
-                Font = SystemFonts.DefaultFont,
-                Location = new Point(newLocX + 5, newLocY + 140),
-                Text = imageName,
-                AutoSize = true,
-                MaximumSize = new Size(_sizeWidth, 30),
-                ClientSize = new Size(_sizeWidth, 30)
-            };
-
-            var pictureBoxCheckBox = new DevComponents.DotNetBar.Controls.CheckBoxX
-            {
-                BackColor = Color.Transparent,
-                Font = SystemFonts.DefaultFont,
-                Location = new Point(newLocX + 3, newLocY + 13),
-                CheckState = CheckState.Checked,
-                Checked = true,
-                Tag = imageName,
-                Text = "",
-                AutoSize = false,
-                Size = new Size(17, 17),
-                MaximumSize = new Size(13, 13),
-                Parent = pictureBoxControl,
-                AccessibleDescription = imageFullName,
-                AccessibleName = imageName
-            };
-
-
-            pictureBoxControl.MouseClick += control_MouseClick;
-            pictureBoxControl.DoubleClick += pictureBox_DoubleClick;
-
-            panelPreviewPictures.Controls.Add(pictureBoxLabel);
-            panelPreviewPictures.Controls.Add(pictureBoxCheckBox);
-            panelPreviewPictures.Controls.Add(pictureBoxControl);
-
-        }
-
-        private void pictureBoxPreview_DoubleClick(object sender, EventArgs e)
-        {
-            FrmPhotoViewer pv = new FrmPhotoViewer
-            {
-                MyImageList = _fileNamesAndPathsList,
-                SelectedImageFilePath = pictureBoxPreview.Tag.ToString()
-            };
-
-            pv.ShowDialog();
-        }
-
-        private void checkBoxSelectAll_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxSelectAll.Checked && checkBoxSelectAll.CheckState == CheckState.Checked)
-            {
-                foreach (var checkBox in panelPreviewPictures.Controls.OfType<DevComponents.DotNetBar.Controls.CheckBoxX>())
-                {
-                    checkBox.CheckState = CheckState.Checked;
-                }
-            }
-        }
+        #endregion
     }
 }

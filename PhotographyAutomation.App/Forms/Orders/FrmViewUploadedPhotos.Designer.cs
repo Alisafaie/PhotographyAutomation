@@ -31,10 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
-            this.btnChoosePhotoPath = new DevComponents.DotNetBar.ButtonX();
+            this.btnUpdateOrderPhoto = new DevComponents.DotNetBar.ButtonX();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtOrderCode = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripMenuItemOrderCode = new System.Windows.Forms.ToolStripTextBox();
             this.toolTipPictureBoxPreview = new System.Windows.Forms.ToolTip(this.components);
             this.pictureBoxPreview = new System.Windows.Forms.PictureBox();
             this.collapsibleSplitContainer1 = new DevComponents.DotNetBar.Controls.CollapsibleSplitContainer();
@@ -45,6 +45,15 @@
             this.panelEx4 = new DevComponents.DotNetBar.PanelEx();
             this.labelPicturePreviewName = new DevComponents.DotNetBar.LabelX();
             this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
+            this.checkBoxSelectNone = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.ناممشتریToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemCustomerName = new System.Windows.Forms.ToolStripMenuItem();
+            this.تاریخعکسبرداریToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemPhotographyDate = new System.Windows.Forms.ToolStripMenuItem();
+            this.تعدادعکسهاToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemTotalPhotos = new System.Windows.Forms.ToolStripMenuItem();
+            this.وضعیتسفارشToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemOrderstatus = new System.Windows.Forms.ToolStripMenuItem();
             this.panelEx1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).BeginInit();
@@ -67,7 +76,7 @@
             // 
             this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx1.Controls.Add(this.btnChoosePhotoPath);
+            this.panelEx1.Controls.Add(this.btnUpdateOrderPhoto);
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelEx1.Location = new System.Drawing.Point(0, 615);
@@ -82,26 +91,34 @@
             this.panelEx1.Style.GradientAngle = 90;
             this.panelEx1.TabIndex = 0;
             // 
-            // btnChoosePhotoPath
+            // btnUpdateOrderPhoto
             // 
-            this.btnChoosePhotoPath.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnChoosePhotoPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnChoosePhotoPath.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnChoosePhotoPath.HoverImage = global::PhotographyAutomation.App.Properties.Resources.iconfinder_folder_edit_85073;
-            this.btnChoosePhotoPath.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_folder_edit_85073;
-            this.btnChoosePhotoPath.Location = new System.Drawing.Point(934, 20);
-            this.btnChoosePhotoPath.Name = "btnChoosePhotoPath";
-            this.btnChoosePhotoPath.Size = new System.Drawing.Size(88, 36);
-            this.btnChoosePhotoPath.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnChoosePhotoPath.TabIndex = 6;
-            this.btnChoosePhotoPath.Text = "ویرایش";
+            this.btnUpdateOrderPhoto.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnUpdateOrderPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUpdateOrderPhoto.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnUpdateOrderPhoto.HoverImage = global::PhotographyAutomation.App.Properties.Resources.iconfinder_folder_edit_85073;
+            this.btnUpdateOrderPhoto.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_folder_edit_85073;
+            this.btnUpdateOrderPhoto.Location = new System.Drawing.Point(891, 20);
+            this.btnUpdateOrderPhoto.Name = "btnUpdateOrderPhoto";
+            this.btnUpdateOrderPhoto.Size = new System.Drawing.Size(131, 36);
+            this.btnUpdateOrderPhoto.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnUpdateOrderPhoto.TabIndex = 6;
+            this.btnUpdateOrderPhoto.Text = "ویرایش عکس ها";
             // 
             // menuStrip1
             // 
             this.menuStrip1.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
-            this.txtOrderCode});
+            this.toolStripMenuItemOrderCode,
+            this.ناممشتریToolStripMenuItem,
+            this.toolStripMenuItemCustomerName,
+            this.تاریخعکسبرداریToolStripMenuItem,
+            this.toolStripMenuItemPhotographyDate,
+            this.تعدادعکسهاToolStripMenuItem,
+            this.toolStripMenuItemTotalPhotos,
+            this.وضعیتسفارشToolStripMenuItem,
+            this.toolStripMenuItemOrderstatus});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1034, 25);
@@ -111,15 +128,16 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(125, 21);
-            this.toolStripMenuItem1.Text = "شماره فاکتور مشتری :";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(98, 21);
+            this.toolStripMenuItem1.Text = "شناسه سفارش:";
             // 
-            // txtOrderCode
+            // toolStripMenuItemOrderCode
             // 
-            this.txtOrderCode.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.txtOrderCode.Name = "txtOrderCode";
-            this.txtOrderCode.ReadOnly = true;
-            this.txtOrderCode.Size = new System.Drawing.Size(100, 21);
+            this.toolStripMenuItemOrderCode.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.toolStripMenuItemOrderCode.Name = "toolStripMenuItemOrderCode";
+            this.toolStripMenuItemOrderCode.ReadOnly = true;
+            this.toolStripMenuItemOrderCode.Size = new System.Drawing.Size(120, 21);
+            this.toolStripMenuItemOrderCode.Text = "--";
             // 
             // pictureBoxPreview
             // 
@@ -131,7 +149,6 @@
             this.pictureBoxPreview.TabIndex = 0;
             this.pictureBoxPreview.TabStop = false;
             this.toolTipPictureBoxPreview.SetToolTip(this.pictureBoxPreview, "برای نمایش عکس در اندازه بزرگتر روی عکس دابل کلیک کنید.");
-            this.pictureBoxPreview.DoubleClick += new System.EventHandler(this.pictureBoxPreview_DoubleClick);
             // 
             // collapsibleSplitContainer1
             // 
@@ -164,6 +181,7 @@
             this.panelPreviewPictures.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelPreviewPictures.Location = new System.Drawing.Point(0, 0);
             this.panelPreviewPictures.Name = "panelPreviewPictures";
+            this.panelPreviewPictures.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.panelPreviewPictures.Size = new System.Drawing.Size(761, 557);
             this.panelPreviewPictures.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelPreviewPictures.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
@@ -178,6 +196,7 @@
             // 
             this.panelEx2.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx2.Controls.Add(this.checkBoxSelectNone);
             this.panelEx2.Controls.Add(this.checkBoxSelectAll);
             this.panelEx2.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -200,6 +219,7 @@
             // 
             // 
             this.checkBoxSelectAll.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxSelectAll.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
             this.checkBoxSelectAll.Location = new System.Drawing.Point(673, 9);
             this.checkBoxSelectAll.Name = "checkBoxSelectAll";
             this.checkBoxSelectAll.Size = new System.Drawing.Size(76, 16);
@@ -282,6 +302,78 @@
             this.panelEx3.Style.GradientAngle = 90;
             this.panelEx3.TabIndex = 19;
             // 
+            // checkBoxSelectNone
+            // 
+            this.checkBoxSelectNone.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxSelectNone.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxSelectNone.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
+            this.checkBoxSelectNone.Location = new System.Drawing.Point(572, 9);
+            this.checkBoxSelectNone.Name = "checkBoxSelectNone";
+            this.checkBoxSelectNone.Size = new System.Drawing.Size(95, 16);
+            this.checkBoxSelectNone.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxSelectNone.TabIndex = 1;
+            this.checkBoxSelectNone.Text = "انتخاب هیچکدام";
+            this.checkBoxSelectNone.CheckedChanged += new System.EventHandler(this.checkBoxSelectNone_CheckedChanged);
+            // 
+            // ناممشتریToolStripMenuItem
+            // 
+            this.ناممشتریToolStripMenuItem.Name = "ناممشتریToolStripMenuItem";
+            this.ناممشتریToolStripMenuItem.Size = new System.Drawing.Size(79, 21);
+            this.ناممشتریToolStripMenuItem.Text = "نام مشتری :";
+            // 
+            // toolStripMenuItemCustomerName
+            // 
+            this.toolStripMenuItemCustomerName.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.toolStripMenuItemCustomerName.Name = "toolStripMenuItemCustomerName";
+            this.toolStripMenuItemCustomerName.Size = new System.Drawing.Size(29, 21);
+            this.toolStripMenuItemCustomerName.Text = "--";
+            this.toolStripMenuItemCustomerName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // تاریخعکسبرداریToolStripMenuItem
+            // 
+            this.تاریخعکسبرداریToolStripMenuItem.Name = "تاریخعکسبرداریToolStripMenuItem";
+            this.تاریخعکسبرداریToolStripMenuItem.Size = new System.Drawing.Size(103, 21);
+            this.تاریخعکسبرداریToolStripMenuItem.Text = "تاریخ عکسبرداری:";
+            // 
+            // toolStripMenuItemPhotographyDate
+            // 
+            this.toolStripMenuItemPhotographyDate.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.toolStripMenuItemPhotographyDate.Name = "toolStripMenuItemPhotographyDate";
+            this.toolStripMenuItemPhotographyDate.Size = new System.Drawing.Size(29, 21);
+            this.toolStripMenuItemPhotographyDate.Text = "--";
+            this.toolStripMenuItemPhotographyDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // تعدادعکسهاToolStripMenuItem
+            // 
+            this.تعدادعکسهاToolStripMenuItem.Name = "تعدادعکسهاToolStripMenuItem";
+            this.تعدادعکسهاToolStripMenuItem.Size = new System.Drawing.Size(86, 21);
+            this.تعدادعکسهاToolStripMenuItem.Text = "تعداد عکس ها";
+            // 
+            // toolStripMenuItemTotalPhotos
+            // 
+            this.toolStripMenuItemTotalPhotos.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.toolStripMenuItemTotalPhotos.Name = "toolStripMenuItemTotalPhotos";
+            this.toolStripMenuItemTotalPhotos.Size = new System.Drawing.Size(29, 21);
+            this.toolStripMenuItemTotalPhotos.Text = "--";
+            this.toolStripMenuItemTotalPhotos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // وضعیتسفارشToolStripMenuItem
+            // 
+            this.وضعیتسفارشToolStripMenuItem.Name = "وضعیتسفارشToolStripMenuItem";
+            this.وضعیتسفارشToolStripMenuItem.Size = new System.Drawing.Size(97, 21);
+            this.وضعیتسفارشToolStripMenuItem.Text = "وضعیت سفارش:";
+            // 
+            // toolStripMenuItemOrderstatus
+            // 
+            this.toolStripMenuItemOrderstatus.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.toolStripMenuItemOrderstatus.Name = "toolStripMenuItemOrderstatus";
+            this.toolStripMenuItemOrderstatus.Size = new System.Drawing.Size(29, 21);
+            this.toolStripMenuItemOrderstatus.Text = "--";
+            this.toolStripMenuItemOrderstatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // FrmViewUploadedPhotos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -290,6 +382,7 @@
             this.Controls.Add(this.panelEx3);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panelEx1);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -324,7 +417,7 @@
         private DevComponents.DotNetBar.PanelEx panelEx1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripTextBox txtOrderCode;
+        private System.Windows.Forms.ToolStripTextBox toolStripMenuItemOrderCode;
         private System.Windows.Forms.ToolTip toolTipPictureBoxPreview;
         private DevComponents.DotNetBar.Controls.CollapsibleSplitContainer collapsibleSplitContainer1;
         private DevComponents.DotNetBar.PanelEx panelPreviewPictures;
@@ -335,6 +428,15 @@
         private DevComponents.DotNetBar.PanelEx panelEx4;
         private DevComponents.DotNetBar.LabelX labelPicturePreviewName;
         private DevComponents.DotNetBar.PanelEx panelEx3;
-        private DevComponents.DotNetBar.ButtonX btnChoosePhotoPath;
+        private DevComponents.DotNetBar.ButtonX btnUpdateOrderPhoto;
+        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxSelectNone;
+        private System.Windows.Forms.ToolStripMenuItem ناممشتریToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCustomerName;
+        private System.Windows.Forms.ToolStripMenuItem تاریخعکسبرداریToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPhotographyDate;
+        private System.Windows.Forms.ToolStripMenuItem تعدادعکسهاToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemTotalPhotos;
+        private System.Windows.Forms.ToolStripMenuItem وضعیتسفارشToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemOrderstatus;
     }
 }

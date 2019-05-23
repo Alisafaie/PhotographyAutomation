@@ -52,10 +52,6 @@ namespace PhotographyAutomation.App.Forms
             }
         }
 
-        private void btnShowUploadedPhotos_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnShowIncommingBookings_Click(object sender, EventArgs e)
         {

@@ -376,11 +376,12 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.rbCustomerInfo);
+            this.groupBox2.Controls.Add(this.txtCustomerInfo);
             this.groupBox2.Controls.Add(this.rbOrderStatus);
             this.groupBox2.Controls.Add(this.rbOrderDate);
             this.groupBox2.Controls.Add(this.btnShowOrders);
             this.groupBox2.Controls.Add(this.btnClearSearch);
-            this.groupBox2.Controls.Add(this.rbCustomerInfo);
             this.groupBox2.Controls.Add(this.rbOrderCode);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.chkEnableOrderStatusDatePicker);
@@ -390,7 +391,6 @@
             this.groupBox2.Controls.Add(this.txtOrderCodeDate);
             this.groupBox2.Controls.Add(this.txtOrderCodeCustomerIdBookingId);
             this.groupBox2.Controls.Add(this.labelX4);
-            this.groupBox2.Controls.Add(this.txtCustomerInfo);
             this.groupBox2.Location = new System.Drawing.Point(12, 3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1155, 101);
@@ -405,7 +405,6 @@
             this.rbOrderStatus.Name = "rbOrderStatus";
             this.rbOrderStatus.Size = new System.Drawing.Size(70, 17);
             this.rbOrderStatus.TabIndex = 3;
-            this.rbOrderStatus.TabStop = true;
             this.rbOrderStatus.Text = "موارد دیگر";
             this.rbOrderStatus.UseVisualStyleBackColor = true;
             this.rbOrderStatus.CheckedChanged += new System.EventHandler(this.rbOrderStatus_CheckedChanged);
@@ -417,7 +416,6 @@
             this.rbOrderDate.Name = "rbOrderDate";
             this.rbOrderDate.Size = new System.Drawing.Size(46, 17);
             this.rbOrderDate.TabIndex = 2;
-            this.rbOrderDate.TabStop = true;
             this.rbOrderDate.Text = "تاریخ";
             this.rbOrderDate.UseVisualStyleBackColor = true;
             this.rbOrderDate.CheckedChanged += new System.EventHandler(this.rbOrderDate_CheckedChanged);
@@ -448,24 +446,20 @@
             // 
             // rbCustomerInfo
             // 
-            this.rbCustomerInfo.AutoSize = true;
-            this.rbCustomerInfo.Location = new System.Drawing.Point(931, 66);
+            this.rbCustomerInfo.Location = new System.Drawing.Point(928, 66);
             this.rbCustomerInfo.Name = "rbCustomerInfo";
-            this.rbCustomerInfo.Size = new System.Drawing.Size(102, 17);
+            this.rbCustomerInfo.Size = new System.Drawing.Size(108, 17);
             this.rbCustomerInfo.TabIndex = 1;
-            this.rbCustomerInfo.TabStop = true;
             this.rbCustomerInfo.Text = "اطلاعات مشتری";
             this.rbCustomerInfo.UseVisualStyleBackColor = true;
             this.rbCustomerInfo.CheckedChanged += new System.EventHandler(this.rbCustomerInfo_CheckedChanged);
             // 
             // rbOrderCode
             // 
-            this.rbOrderCode.AutoSize = true;
-            this.rbOrderCode.Location = new System.Drawing.Point(933, 34);
+            this.rbOrderCode.Location = new System.Drawing.Point(928, 34);
             this.rbOrderCode.Name = "rbOrderCode";
-            this.rbOrderCode.Size = new System.Drawing.Size(100, 17);
+            this.rbOrderCode.Size = new System.Drawing.Size(108, 17);
             this.rbOrderCode.TabIndex = 0;
-            this.rbOrderCode.TabStop = true;
             this.rbOrderCode.Text = "شناسه سفارش";
             this.rbOrderCode.UseVisualStyleBackColor = true;
             this.rbOrderCode.CheckedChanged += new System.EventHandler(this.rbOrderCode_CheckedChanged);
@@ -575,6 +569,7 @@
             this.txtOrderCodeCustomerIdBookingId.MaxLength = 6;
             this.txtOrderCodeCustomerIdBookingId.Name = "txtOrderCodeCustomerIdBookingId";
             this.txtOrderCodeCustomerIdBookingId.PreventEnterBeep = true;
+            this.txtOrderCodeCustomerIdBookingId.ReadOnly = true;
             this.txtOrderCodeCustomerIdBookingId.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtOrderCodeCustomerIdBookingId.Size = new System.Drawing.Size(83, 21);
             this.txtOrderCodeCustomerIdBookingId.TabIndex = 5;
@@ -669,7 +664,7 @@
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvUploads.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvUploads.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -774,15 +769,16 @@
             // 
             this.clmOrderCode.DataPropertyName = "OrderCode";
             this.clmOrderCode.HeaderText = "شناسه سفارش";
-            this.clmOrderCode.MinimumWidth = 100;
+            this.clmOrderCode.MinimumWidth = 140;
             this.clmOrderCode.Name = "clmOrderCode";
             this.clmOrderCode.ReadOnly = true;
             // 
             // clmCustomerFullName
             // 
+            this.clmCustomerFullName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.clmCustomerFullName.DataPropertyName = "CustomerFullName";
             this.clmCustomerFullName.HeaderText = "نام مشتری";
-            this.clmCustomerFullName.MinimumWidth = 100;
+            this.clmCustomerFullName.MinimumWidth = 150;
             this.clmCustomerFullName.Name = "clmCustomerFullName";
             this.clmCustomerFullName.ReadOnly = true;
             // 
@@ -908,6 +904,7 @@
             // 
             // FrmShowUploadedPhotos
             // 
+            this.AcceptButton = this.btnShowOrders;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1182, 580);

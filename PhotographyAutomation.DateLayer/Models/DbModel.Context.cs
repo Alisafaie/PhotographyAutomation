@@ -142,13 +142,13 @@ namespace PhotographyAutomation.DateLayer.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_GetTotalFilesOfFolder", parent_path_locatorParameter, returnValue);
         }
     
-        public virtual ObjectResult<usp_GetListOfFilesInFolder_Result1> usp_GetListOfFilesInFolder(string path_locator)
+        public virtual ObjectResult<usp_GetListOfFilesInFolder_Result> usp_GetListOfFilesInFolder(string path_locator)
         {
             var path_locatorParameter = path_locator != null ?
                 new ObjectParameter("path_locator", path_locator) :
                 new ObjectParameter("path_locator", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_GetListOfFilesInFolder_Result1>("usp_GetListOfFilesInFolder", path_locatorParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_GetListOfFilesInFolder_Result>("usp_GetListOfFilesInFolder", path_locatorParameter);
         }
     }
 }

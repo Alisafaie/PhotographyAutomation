@@ -13,8 +13,24 @@ namespace PhotographyAutomation.DateLayer.Models
     
     public partial class usp_GetListOfFilesInFolder_Result
     {
-        public string FILENAME { get; set; }
-        public string FileType { get; set; }
-        public Nullable<long> FileSize { get; set; }
+        public System.Guid stream_id { get; set; }
+        public byte[] file_stream { get; set; }
+        public string FullUncPath { get; set; }
+        public string name { get; set; }
+        public string PathLocator { get; set; }
+        public string ParentPathLocator { get; set; }
+        public byte[] TransactionContext { get; set; }
+        public string file_type { get; set; }
+        public Nullable<long> cached_file_size { get; set; }
+        public System.DateTimeOffset creation_time { get; set; }
+        public System.DateTimeOffset last_write_time { get; set; }
+        public Nullable<System.DateTimeOffset> last_access_time { get; set; }
+        public bool is_directory { get; set; }
+        public bool is_offline { get; set; }
+        public bool is_hidden { get; set; }
+        public bool is_readonly { get; set; }
+        public bool is_archive { get; set; }
+        public bool is_system { get; set; }
+        public bool is_temporary { get; set; }
     }
 }
