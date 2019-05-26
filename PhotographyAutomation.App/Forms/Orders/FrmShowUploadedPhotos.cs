@@ -4,12 +4,11 @@ using PhotographyAutomation.Utilities;
 using PhotographyAutomation.Utilities.Convertor;
 using PhotographyAutomation.Utilities.ExtentionMethods;
 using PhotographyAutomation.ViewModels.Order;
+using PhotographyAutomation.ViewModels.Photo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using PhotographyAutomation.ViewModels.Document;
-using PhotographyAutomation.ViewModels.Photo;
 
 namespace PhotographyAutomation.App.Forms.Orders
 {
@@ -489,11 +488,15 @@ namespace PhotographyAutomation.App.Forms.Orders
         private void rbCustomerInfo_CheckedChanged(object sender, EventArgs e)
         {
             txtCustomerInfo.Enabled = rbCustomerInfo.Checked;
+            if (txtCustomerInfo.Enabled)
+                txtCustomerInfo.Focus();
         }
 
         private void rbOrderDate_CheckedChanged(object sender, EventArgs e)
         {
             datePickerOrderDate.Enabled = rbOrderDate.Checked;
+            if (datePickerOrderDate.Enabled)
+                datePickerOrderDate.Focus();
         }
 
         private void rbOrderStatus_CheckedChanged(object sender, EventArgs e)
@@ -502,7 +505,6 @@ namespace PhotographyAutomation.App.Forms.Orders
             {
                 cmbOrderStatus.Enabled = true;
                 chkEnableOrderStatusDatePicker.Enabled = true;
-
                 datePickerOrderStatus.Enabled = chkEnableOrderStatusDatePicker.Checked;
             }
             else
@@ -527,10 +529,9 @@ namespace PhotographyAutomation.App.Forms.Orders
                 if (pathLocator != null)
                 {
                     List<PhotoViewModel> listOfFiles = GetListOfFilesOfOrder(pathLocator);
-                    if (listOfFiles!=null)
+                    if (listOfFiles != null)
                     {
-                        using(var frmViewUploadedPhotos = new FrmViewUploadedPhotos() )
-
+                        using (var frmViewUploadedPhotos = new FrmViewUploadedPhotos())
                         {
                             frmViewUploadedPhotos.ListOfPhotos = listOfFiles;
                             frmViewUploadedPhotos.OrderCode =
@@ -540,14 +541,13 @@ namespace PhotographyAutomation.App.Forms.Orders
                             frmViewUploadedPhotos.PhotographyDate =
                                 dgvUploads.SelectedRows[0].Cells["clmDate"].Value.ToString();
                             frmViewUploadedPhotos.TotalPhotos =
-                                (int) dgvUploads.SelectedRows[0].Cells["clmTotalFiles"].Value;
+                                (int)dgvUploads.SelectedRows[0].Cells["clmTotalFiles"].Value;
                             frmViewUploadedPhotos.OrderStatus =
                                 dgvUploads.SelectedRows[0].Cells["clmStatusName"].Value.ToString();
 
                             frmViewUploadedPhotos.ShowDialog();
                             GC.Collect();
-                        };
-                        
+                        }
                     }
                     else
                     {
@@ -568,12 +568,12 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         public List<PhotoViewModel> GetListOfFilesOfOrder(string pathLocator)
         {
-            using (var db=new UnitOfWork())
+            using (var db = new UnitOfWork())
             {
                 return db.PhotoRepository.GetListOfFilesInFolder(pathLocator);
             }
         }
-        
+
 
 
         private void مشاهدهعکسهاToolStripMenuItem_Click(object sender, EventArgs e)

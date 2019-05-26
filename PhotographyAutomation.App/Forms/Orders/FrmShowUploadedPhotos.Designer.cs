@@ -66,11 +66,12 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rbCustomerInfo = new System.Windows.Forms.RadioButton();
+            this.txtCustomerInfo = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.rbOrderStatus = new System.Windows.Forms.RadioButton();
             this.rbOrderDate = new System.Windows.Forms.RadioButton();
             this.btnShowOrders = new System.Windows.Forms.Button();
             this.btnClearSearch = new System.Windows.Forms.Button();
-            this.rbCustomerInfo = new System.Windows.Forms.RadioButton();
             this.rbOrderCode = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.chkEnableOrderStatusDatePicker = new DevComponents.DotNetBar.Controls.CheckBoxX();
@@ -80,16 +81,8 @@
             this.txtOrderCodeDate = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtOrderCodeCustomerIdBookingId = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
-            this.txtCustomerInfo = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvUploads = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.contextMenuDgvUploads = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.مشاهدهعکسهاToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.دریافتعکسهاToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.مشاهدهاطلاعاتمشتریToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.مشاهدهاطلاعاترزروToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.clmId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmCustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmBookingId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -109,6 +102,13 @@
             this.clmStatusName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmPhotosFolderLink = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmViewPhotos = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
+            this.contextMenuDgvUploads = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.مشاهدهعکسهاToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.دریافتعکسهاToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.مشاهدهاطلاعاتمشتریToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.مشاهدهاطلاعاترزروToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.menuStrip1.SuspendLayout();
             this.panelEx3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -398,6 +398,34 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "مشاهده سفارشات بر اساس";
             // 
+            // rbCustomerInfo
+            // 
+            this.rbCustomerInfo.Location = new System.Drawing.Point(928, 66);
+            this.rbCustomerInfo.Name = "rbCustomerInfo";
+            this.rbCustomerInfo.Size = new System.Drawing.Size(108, 17);
+            this.rbCustomerInfo.TabIndex = 1;
+            this.rbCustomerInfo.Text = "اطلاعات مشتری";
+            this.rbCustomerInfo.UseVisualStyleBackColor = true;
+            this.rbCustomerInfo.CheckedChanged += new System.EventHandler(this.rbCustomerInfo_CheckedChanged);
+            // 
+            // txtCustomerInfo
+            // 
+            this.txtCustomerInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.txtCustomerInfo.Border.Class = "TextBoxBorder";
+            this.txtCustomerInfo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtCustomerInfo.Enabled = false;
+            this.txtCustomerInfo.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.txtCustomerInfo.FocusHighlightEnabled = true;
+            this.txtCustomerInfo.Location = new System.Drawing.Point(697, 64);
+            this.txtCustomerInfo.Name = "txtCustomerInfo";
+            this.txtCustomerInfo.PreventEnterBeep = true;
+            this.txtCustomerInfo.Size = new System.Drawing.Size(230, 21);
+            this.txtCustomerInfo.TabIndex = 6;
+            this.txtCustomerInfo.WatermarkText = "(نام ، نام خانوادگی ، تلفن ثابت، تلفن همراه)";
+            // 
             // rbOrderStatus
             // 
             this.rbOrderStatus.AutoSize = true;
@@ -443,16 +471,6 @@
             this.btnClearSearch.TabIndex = 12;
             this.btnClearSearch.UseVisualStyleBackColor = true;
             this.btnClearSearch.Click += new System.EventHandler(this.btnClearSearch_Click);
-            // 
-            // rbCustomerInfo
-            // 
-            this.rbCustomerInfo.Location = new System.Drawing.Point(928, 66);
-            this.rbCustomerInfo.Name = "rbCustomerInfo";
-            this.rbCustomerInfo.Size = new System.Drawing.Size(108, 17);
-            this.rbCustomerInfo.TabIndex = 1;
-            this.rbCustomerInfo.Text = "اطلاعات مشتری";
-            this.rbCustomerInfo.UseVisualStyleBackColor = true;
-            this.rbCustomerInfo.CheckedChanged += new System.EventHandler(this.rbCustomerInfo_CheckedChanged);
             // 
             // rbOrderCode
             // 
@@ -590,24 +608,6 @@
             this.labelX4.TabIndex = 79;
             this.labelX4.Text = "-";
             // 
-            // txtCustomerInfo
-            // 
-            this.txtCustomerInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.txtCustomerInfo.Border.Class = "TextBoxBorder";
-            this.txtCustomerInfo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtCustomerInfo.Enabled = false;
-            this.txtCustomerInfo.FocusHighlightColor = System.Drawing.SystemColors.Info;
-            this.txtCustomerInfo.FocusHighlightEnabled = true;
-            this.txtCustomerInfo.Location = new System.Drawing.Point(697, 64);
-            this.txtCustomerInfo.Name = "txtCustomerInfo";
-            this.txtCustomerInfo.PreventEnterBeep = true;
-            this.txtCustomerInfo.Size = new System.Drawing.Size(230, 21);
-            this.txtCustomerInfo.TabIndex = 6;
-            this.txtCustomerInfo.WatermarkText = "(نام ، نام خانوادگی ، تلفن ثابت، تلفن همراه)";
-            // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -689,57 +689,6 @@
             this.dgvUploads.Size = new System.Drawing.Size(1152, 414);
             this.dgvUploads.TabIndex = 0;
             this.dgvUploads.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUploads_CellContentClick);
-            // 
-            // contextMenuDgvUploads
-            // 
-            this.contextMenuDgvUploads.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.contextMenuDgvUploads.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.مشاهدهعکسهاToolStripMenuItem,
-            this.دریافتعکسهاToolStripMenuItem,
-            this.toolStripSeparator6,
-            this.مشاهدهاطلاعاتمشتریToolStripMenuItem,
-            this.مشاهدهاطلاعاترزروToolStripMenuItem});
-            this.contextMenuDgvUploads.Name = "contextMenuStrip1";
-            this.contextMenuDgvUploads.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuDgvUploads.Size = new System.Drawing.Size(195, 98);
-            // 
-            // مشاهدهعکسهاToolStripMenuItem
-            // 
-            this.مشاهدهعکسهاToolStripMenuItem.Name = "مشاهدهعکسهاToolStripMenuItem";
-            this.مشاهدهعکسهاToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.مشاهدهعکسهاToolStripMenuItem.Text = "مشاهده عکس ها";
-            this.مشاهدهعکسهاToolStripMenuItem.Click += new System.EventHandler(this.مشاهدهعکسهاToolStripMenuItem_Click);
-            // 
-            // دریافتعکسهاToolStripMenuItem
-            // 
-            this.دریافتعکسهاToolStripMenuItem.Name = "دریافتعکسهاToolStripMenuItem";
-            this.دریافتعکسهاToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.دریافتعکسهاToolStripMenuItem.Text = "دریافت عکس ها";
-            this.دریافتعکسهاToolStripMenuItem.Click += new System.EventHandler(this.دریافتعکسهاToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(191, 6);
-            // 
-            // مشاهدهاطلاعاتمشتریToolStripMenuItem
-            // 
-            this.مشاهدهاطلاعاتمشتریToolStripMenuItem.Name = "مشاهدهاطلاعاتمشتریToolStripMenuItem";
-            this.مشاهدهاطلاعاتمشتریToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.مشاهدهاطلاعاتمشتریToolStripMenuItem.Text = "مشاهده اطلاعات مشتری";
-            this.مشاهدهاطلاعاتمشتریToolStripMenuItem.Click += new System.EventHandler(this.مشاهدهاطلاعاتمشتریToolStripMenuItem_Click);
-            // 
-            // مشاهدهاطلاعاترزروToolStripMenuItem
-            // 
-            this.مشاهدهاطلاعاترزروToolStripMenuItem.Name = "مشاهدهاطلاعاترزروToolStripMenuItem";
-            this.مشاهدهاطلاعاترزروToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.مشاهدهاطلاعاترزروToolStripMenuItem.Text = "مشاهده اطلاعات رزرو";
-            this.مشاهدهاطلاعاترزروToolStripMenuItem.Click += new System.EventHandler(this.مشاهدهاطلاعاترزروToolStripMenuItem_Click);
-            // 
-            // styleManager1
-            // 
-            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2010Silver;
-            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255))))), System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199))))));
             // 
             // clmId
             // 
@@ -901,6 +850,57 @@
             this.clmViewPhotos.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.clmViewPhotos.Text = "مشاهده عکس ها";
             this.clmViewPhotos.Width = 120;
+            // 
+            // contextMenuDgvUploads
+            // 
+            this.contextMenuDgvUploads.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.contextMenuDgvUploads.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.مشاهدهعکسهاToolStripMenuItem,
+            this.دریافتعکسهاToolStripMenuItem,
+            this.toolStripSeparator6,
+            this.مشاهدهاطلاعاتمشتریToolStripMenuItem,
+            this.مشاهدهاطلاعاترزروToolStripMenuItem});
+            this.contextMenuDgvUploads.Name = "contextMenuStrip1";
+            this.contextMenuDgvUploads.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.contextMenuDgvUploads.Size = new System.Drawing.Size(195, 98);
+            // 
+            // مشاهدهعکسهاToolStripMenuItem
+            // 
+            this.مشاهدهعکسهاToolStripMenuItem.Name = "مشاهدهعکسهاToolStripMenuItem";
+            this.مشاهدهعکسهاToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.مشاهدهعکسهاToolStripMenuItem.Text = "مشاهده عکس ها";
+            this.مشاهدهعکسهاToolStripMenuItem.Click += new System.EventHandler(this.مشاهدهعکسهاToolStripMenuItem_Click);
+            // 
+            // دریافتعکسهاToolStripMenuItem
+            // 
+            this.دریافتعکسهاToolStripMenuItem.Name = "دریافتعکسهاToolStripMenuItem";
+            this.دریافتعکسهاToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.دریافتعکسهاToolStripMenuItem.Text = "دریافت عکس ها";
+            this.دریافتعکسهاToolStripMenuItem.Click += new System.EventHandler(this.دریافتعکسهاToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(191, 6);
+            // 
+            // مشاهدهاطلاعاتمشتریToolStripMenuItem
+            // 
+            this.مشاهدهاطلاعاتمشتریToolStripMenuItem.Name = "مشاهدهاطلاعاتمشتریToolStripMenuItem";
+            this.مشاهدهاطلاعاتمشتریToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.مشاهدهاطلاعاتمشتریToolStripMenuItem.Text = "مشاهده اطلاعات مشتری";
+            this.مشاهدهاطلاعاتمشتریToolStripMenuItem.Click += new System.EventHandler(this.مشاهدهاطلاعاتمشتریToolStripMenuItem_Click);
+            // 
+            // مشاهدهاطلاعاترزروToolStripMenuItem
+            // 
+            this.مشاهدهاطلاعاترزروToolStripMenuItem.Name = "مشاهدهاطلاعاترزروToolStripMenuItem";
+            this.مشاهدهاطلاعاترزروToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.مشاهدهاطلاعاترزروToolStripMenuItem.Text = "مشاهده اطلاعات رزرو";
+            this.مشاهدهاطلاعاترزروToolStripMenuItem.Click += new System.EventHandler(this.مشاهدهاطلاعاترزروToolStripMenuItem_Click);
+            // 
+            // styleManager1
+            // 
+            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2010Silver;
+            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255))))), System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199))))));
             // 
             // FrmShowUploadedPhotos
             // 

@@ -54,6 +54,7 @@
     <Compile Include="ExtentionMethods\DateHelper.cs" />
     <Compile Include="ExtentionMethods\ImageHelper.cs" />
     <Compile Include="ExtentionMethods\NationalIdHelper.cs" />
+    <Compile Include="MouseSilulator.cs" />
     <Compile Include="OrderUtilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Regex\EmailChecker.cs" />

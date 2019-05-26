@@ -35,17 +35,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemOrderCode = new System.Windows.Forms.ToolStripTextBox();
-            this.toolTipPictureBoxPreview = new System.Windows.Forms.ToolTip(this.components);
-            this.pictureBoxPreview = new System.Windows.Forms.PictureBox();
-            this.collapsibleSplitContainer1 = new DevComponents.DotNetBar.Controls.CollapsibleSplitContainer();
-            this.panelPreviewPictures = new DevComponents.DotNetBar.PanelEx();
-            this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
-            this.checkBoxSelectAll = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.panelEx5 = new DevComponents.DotNetBar.PanelEx();
-            this.panelEx4 = new DevComponents.DotNetBar.PanelEx();
-            this.labelPicturePreviewName = new DevComponents.DotNetBar.LabelX();
-            this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
-            this.checkBoxSelectNone = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.ناممشتریToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemCustomerName = new System.Windows.Forms.ToolStripMenuItem();
             this.تاریخعکسبرداریToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,6 +43,17 @@
             this.toolStripMenuItemTotalPhotos = new System.Windows.Forms.ToolStripMenuItem();
             this.وضعیتسفارشToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemOrderstatus = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTipPictureBoxPreview = new System.Windows.Forms.ToolTip(this.components);
+            this.pictureBoxPreview = new System.Windows.Forms.PictureBox();
+            this.collapsibleSplitContainer1 = new DevComponents.DotNetBar.Controls.CollapsibleSplitContainer();
+            this.panelPreviewPictures = new DevComponents.DotNetBar.PanelEx();
+            this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
+            this.checkBoxSelectNone = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxSelectAll = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.panelEx5 = new DevComponents.DotNetBar.PanelEx();
+            this.panelEx4 = new DevComponents.DotNetBar.PanelEx();
+            this.labelPicturePreviewName = new DevComponents.DotNetBar.LabelX();
+            this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).BeginInit();
@@ -139,6 +139,62 @@
             this.toolStripMenuItemOrderCode.Size = new System.Drawing.Size(120, 21);
             this.toolStripMenuItemOrderCode.Text = "--";
             // 
+            // ناممشتریToolStripMenuItem
+            // 
+            this.ناممشتریToolStripMenuItem.Name = "ناممشتریToolStripMenuItem";
+            this.ناممشتریToolStripMenuItem.Size = new System.Drawing.Size(79, 21);
+            this.ناممشتریToolStripMenuItem.Text = "نام مشتری :";
+            // 
+            // toolStripMenuItemCustomerName
+            // 
+            this.toolStripMenuItemCustomerName.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.toolStripMenuItemCustomerName.Name = "toolStripMenuItemCustomerName";
+            this.toolStripMenuItemCustomerName.Size = new System.Drawing.Size(29, 21);
+            this.toolStripMenuItemCustomerName.Text = "--";
+            this.toolStripMenuItemCustomerName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // تاریخعکسبرداریToolStripMenuItem
+            // 
+            this.تاریخعکسبرداریToolStripMenuItem.Name = "تاریخعکسبرداریToolStripMenuItem";
+            this.تاریخعکسبرداریToolStripMenuItem.Size = new System.Drawing.Size(103, 21);
+            this.تاریخعکسبرداریToolStripMenuItem.Text = "تاریخ عکسبرداری:";
+            // 
+            // toolStripMenuItemPhotographyDate
+            // 
+            this.toolStripMenuItemPhotographyDate.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.toolStripMenuItemPhotographyDate.Name = "toolStripMenuItemPhotographyDate";
+            this.toolStripMenuItemPhotographyDate.Size = new System.Drawing.Size(29, 21);
+            this.toolStripMenuItemPhotographyDate.Text = "--";
+            this.toolStripMenuItemPhotographyDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // تعدادعکسهاToolStripMenuItem
+            // 
+            this.تعدادعکسهاToolStripMenuItem.Name = "تعدادعکسهاToolStripMenuItem";
+            this.تعدادعکسهاToolStripMenuItem.Size = new System.Drawing.Size(86, 21);
+            this.تعدادعکسهاToolStripMenuItem.Text = "تعداد عکس ها";
+            // 
+            // toolStripMenuItemTotalPhotos
+            // 
+            this.toolStripMenuItemTotalPhotos.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.toolStripMenuItemTotalPhotos.Name = "toolStripMenuItemTotalPhotos";
+            this.toolStripMenuItemTotalPhotos.Size = new System.Drawing.Size(29, 21);
+            this.toolStripMenuItemTotalPhotos.Text = "--";
+            this.toolStripMenuItemTotalPhotos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // وضعیتسفارشToolStripMenuItem
+            // 
+            this.وضعیتسفارشToolStripMenuItem.Name = "وضعیتسفارشToolStripMenuItem";
+            this.وضعیتسفارشToolStripMenuItem.Size = new System.Drawing.Size(97, 21);
+            this.وضعیتسفارشToolStripMenuItem.Text = "وضعیت سفارش:";
+            // 
+            // toolStripMenuItemOrderstatus
+            // 
+            this.toolStripMenuItemOrderstatus.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.toolStripMenuItemOrderstatus.Name = "toolStripMenuItemOrderstatus";
+            this.toolStripMenuItemOrderstatus.Size = new System.Drawing.Size(29, 21);
+            this.toolStripMenuItemOrderstatus.Text = "--";
+            this.toolStripMenuItemOrderstatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // pictureBoxPreview
             // 
             this.pictureBoxPreview.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -211,6 +267,22 @@
             this.panelEx2.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx2.Style.GradientAngle = 90;
             this.panelEx2.TabIndex = 4;
+            // 
+            // checkBoxSelectNone
+            // 
+            this.checkBoxSelectNone.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxSelectNone.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxSelectNone.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
+            this.checkBoxSelectNone.Location = new System.Drawing.Point(572, 9);
+            this.checkBoxSelectNone.Name = "checkBoxSelectNone";
+            this.checkBoxSelectNone.Size = new System.Drawing.Size(95, 16);
+            this.checkBoxSelectNone.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxSelectNone.TabIndex = 1;
+            this.checkBoxSelectNone.Text = "انتخاب هیچکدام";
+            this.checkBoxSelectNone.CheckedChanged += new System.EventHandler(this.checkBoxSelectNone_CheckedChanged);
             // 
             // checkBoxSelectAll
             // 
@@ -302,78 +374,6 @@
             this.panelEx3.Style.GradientAngle = 90;
             this.panelEx3.TabIndex = 19;
             // 
-            // checkBoxSelectNone
-            // 
-            this.checkBoxSelectNone.AutoSize = true;
-            // 
-            // 
-            // 
-            this.checkBoxSelectNone.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxSelectNone.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
-            this.checkBoxSelectNone.Location = new System.Drawing.Point(572, 9);
-            this.checkBoxSelectNone.Name = "checkBoxSelectNone";
-            this.checkBoxSelectNone.Size = new System.Drawing.Size(95, 16);
-            this.checkBoxSelectNone.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxSelectNone.TabIndex = 1;
-            this.checkBoxSelectNone.Text = "انتخاب هیچکدام";
-            this.checkBoxSelectNone.CheckedChanged += new System.EventHandler(this.checkBoxSelectNone_CheckedChanged);
-            // 
-            // ناممشتریToolStripMenuItem
-            // 
-            this.ناممشتریToolStripMenuItem.Name = "ناممشتریToolStripMenuItem";
-            this.ناممشتریToolStripMenuItem.Size = new System.Drawing.Size(79, 21);
-            this.ناممشتریToolStripMenuItem.Text = "نام مشتری :";
-            // 
-            // toolStripMenuItemCustomerName
-            // 
-            this.toolStripMenuItemCustomerName.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.toolStripMenuItemCustomerName.Name = "toolStripMenuItemCustomerName";
-            this.toolStripMenuItemCustomerName.Size = new System.Drawing.Size(29, 21);
-            this.toolStripMenuItemCustomerName.Text = "--";
-            this.toolStripMenuItemCustomerName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // تاریخعکسبرداریToolStripMenuItem
-            // 
-            this.تاریخعکسبرداریToolStripMenuItem.Name = "تاریخعکسبرداریToolStripMenuItem";
-            this.تاریخعکسبرداریToolStripMenuItem.Size = new System.Drawing.Size(103, 21);
-            this.تاریخعکسبرداریToolStripMenuItem.Text = "تاریخ عکسبرداری:";
-            // 
-            // toolStripMenuItemPhotographyDate
-            // 
-            this.toolStripMenuItemPhotographyDate.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.toolStripMenuItemPhotographyDate.Name = "toolStripMenuItemPhotographyDate";
-            this.toolStripMenuItemPhotographyDate.Size = new System.Drawing.Size(29, 21);
-            this.toolStripMenuItemPhotographyDate.Text = "--";
-            this.toolStripMenuItemPhotographyDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // تعدادعکسهاToolStripMenuItem
-            // 
-            this.تعدادعکسهاToolStripMenuItem.Name = "تعدادعکسهاToolStripMenuItem";
-            this.تعدادعکسهاToolStripMenuItem.Size = new System.Drawing.Size(86, 21);
-            this.تعدادعکسهاToolStripMenuItem.Text = "تعداد عکس ها";
-            // 
-            // toolStripMenuItemTotalPhotos
-            // 
-            this.toolStripMenuItemTotalPhotos.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.toolStripMenuItemTotalPhotos.Name = "toolStripMenuItemTotalPhotos";
-            this.toolStripMenuItemTotalPhotos.Size = new System.Drawing.Size(29, 21);
-            this.toolStripMenuItemTotalPhotos.Text = "--";
-            this.toolStripMenuItemTotalPhotos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // وضعیتسفارشToolStripMenuItem
-            // 
-            this.وضعیتسفارشToolStripMenuItem.Name = "وضعیتسفارشToolStripMenuItem";
-            this.وضعیتسفارشToolStripMenuItem.Size = new System.Drawing.Size(97, 21);
-            this.وضعیتسفارشToolStripMenuItem.Text = "وضعیت سفارش:";
-            // 
-            // toolStripMenuItemOrderstatus
-            // 
-            this.toolStripMenuItemOrderstatus.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.toolStripMenuItemOrderstatus.Name = "toolStripMenuItemOrderstatus";
-            this.toolStripMenuItemOrderstatus.Size = new System.Drawing.Size(29, 21);
-            this.toolStripMenuItemOrderstatus.Text = "--";
-            this.toolStripMenuItemOrderstatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // FrmViewUploadedPhotos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -392,6 +392,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "مشاهده و ویرایش عکس های آپلود شده";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmViewUploadedPhotos_FormClosed);
             this.Load += new System.EventHandler(this.FrmUploadPhotos_Load);
             this.panelEx1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);

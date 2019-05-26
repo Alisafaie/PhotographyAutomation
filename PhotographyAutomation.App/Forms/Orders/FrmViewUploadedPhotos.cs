@@ -1,4 +1,5 @@
-﻿using PhotographyAutomation.DateLayer.Context;
+﻿using DevComponents.DotNetBar.Controls;
+using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.DateLayer.Models;
 using PhotographyAutomation.Utilities;
 using PhotographyAutomation.Utilities.ExtentionMethods;
@@ -54,10 +55,29 @@ namespace PhotographyAutomation.App.Forms.Orders
             toolStripMenuItemTotalPhotos.Text = TotalPhotos.ToString();
 
             ShowImages();
+
+            panelPreviewPictures.Focus();
+
+            if (panelPreviewPictures.Controls.Count > 0)
+            {
+                var control = panelPreviewPictures.Controls.Find("chk_" + ListOfPhotos[0].Name, true);
+                if (control[0].GetType() == typeof(CheckBoxX))
+                {
+                    CheckBoxX x = (CheckBoxX)control[0];
+                    panelPreviewPictures.Focus();
+
+                    var loc = x.PointToScreen(Point.Empty);
+
+                    MouseSilulator.MoveCursorToPoint(loc.X + 6, loc.Y + 6);
+                    MouseSilulator.DoMouseClick();
+                    MouseSilulator.DoMouseClick();
+
+                }
+            }
         }
 
 
-        void ShowImages()
+        private void ShowImages()
         {
             panelPreviewPictures.Controls.Clear();
             var locnewX = _locX;
@@ -79,6 +99,84 @@ namespace PhotographyAutomation.App.Forms.Orders
 
 
 
+        private int ShowImagePreview(int locnewX, IReadOnlyList<PhotoViewModel> photoList, int i)
+        {
+            int locnewY;
+            if (locnewX >= panelPreviewPictures.Width - _sizeWidth - 10)
+            {
+                locnewX = _locX;
+                _locY = _locY + _sizeHeight + 30;
+                locnewY = _locY;
+            }
+            else
+            {
+                locnewY = _locY;
+            }
+
+            LoadImagestoPanel(photoList[i].Name, photoList[i].FileStream, locnewX, locnewY, i);
+
+            // ReSharper disable once RedundantAssignment
+            locnewY = _locY + _sizeHeight + 10;
+            locnewX = locnewX + _sizeWidth + 10;
+            return locnewX;
+        }
+
+        private void LoadImagestoPanel(string imageName, byte[] imageBytes, int newLocX, int newLocY, int i)
+        {
+            PictureBox pictureBoxControl = new PictureBox
+            {
+                BackColor = SystemColors.Control,
+                Location = new Point(newLocX, newLocY + 10),
+                Size = new Size(_sizeWidth, _sizeHeight),
+                SizeMode = PictureBoxSizeMode.Zoom,
+                BorderStyle = BorderStyle.FixedSingle,
+                Tag = imageName,
+                AccessibleDescription = imageName,
+                Image = imageBytes.GetPhotoAndRotateIt(),
+                Name = "pb_" + imageName
+            };
+
+            Label pictureBoxLabel = new Label
+            {
+                BackColor = SystemColors.Control,
+                ForeColor = SystemColors.ControlText,
+                Font = SystemFonts.DefaultFont,
+                Location = new Point(newLocX + 5, newLocY + 140),
+                Text = imageName,
+                AutoSize = true,
+                MaximumSize = new Size(_sizeWidth, 30),
+                ClientSize = new Size(_sizeWidth, 30),
+                Name = "lbl_" + imageName
+            };
+
+            CheckBoxX pictureBoxCheckBox = new CheckBoxX
+            {
+                BackColor = Color.Transparent,
+                Font = SystemFonts.DefaultFont,
+                Location = new Point(newLocX + 3, newLocY + 13),
+                CheckState = CheckState.Checked,
+                Checked = true,
+                Tag = imageName,
+                Text = "",
+                AutoSize = false,
+                Size = new Size(17, 17),
+                MaximumSize = new Size(13, 13),
+                Parent = pictureBoxControl,
+                AccessibleDescription = ListOfPhotos[i].FullUncPath,
+                AccessibleName = imageName,
+                Name = "chk_" + imageName
+            };
+
+
+            pictureBoxControl.MouseClick += control_MouseClick;
+            pictureBoxControl.DoubleClick += pictureBox_DoubleClick;
+            //pictureBoxCheckBox.CheckedChanged += pictureBoxCheckBox_CheckedChanged;
+
+            panelPreviewPictures.Controls.Add(pictureBoxLabel);
+            panelPreviewPictures.Controls.Add(pictureBoxCheckBox);
+            panelPreviewPictures.Controls.Add(pictureBoxControl);
+
+        }
 
         private void control_MouseClick(object sender, MouseEventArgs e)
         {
@@ -113,89 +211,11 @@ namespace PhotographyAutomation.App.Forms.Orders
 
 
 
-
-        private int ShowImagePreview(int locnewX, List<PhotoViewModel> photoList, int i)
-        {
-            int locnewY;
-            if (locnewX >= panelPreviewPictures.Width - _sizeWidth - 10)
-            {
-                locnewX = _locX;
-                _locY = _locY + _sizeHeight + 30;
-                locnewY = _locY;
-            }
-            else
-            {
-                locnewY = _locY;
-            }
-
-            LoadImagestoPanel(photoList[i].Name, photoList[i].FileStream, locnewX, locnewY, i);
-
-            // ReSharper disable once RedundantAssignment
-            locnewY = _locY + _sizeHeight + 10;
-            locnewX = locnewX + _sizeWidth + 10;
-            return locnewX;
-        }
-
-        private void LoadImagestoPanel(string imageName, byte[] imageBytes, int newLocX, int newLocY, int i)
-        {
-            PictureBox pictureBoxControl = new PictureBox
-            {
-                BackColor = SystemColors.Control,
-                Location = new Point(newLocX, newLocY + 10),
-                Size = new Size(_sizeWidth, _sizeHeight),
-                SizeMode = PictureBoxSizeMode.Zoom,
-                BorderStyle = BorderStyle.FixedSingle,
-                Tag = imageName,
-                AccessibleDescription = imageName,
-                Image = imageBytes.GetPhotoAndRotateIt()
-            };
-
-            Label pictureBoxLabel = new Label
-            {
-                BackColor = SystemColors.Control,
-                ForeColor = SystemColors.ControlText,
-                Font = SystemFonts.DefaultFont,
-                Location = new Point(newLocX + 5, newLocY + 140),
-                Text = imageName,
-                AutoSize = true,
-                MaximumSize = new Size(_sizeWidth, 30),
-                ClientSize = new Size(_sizeWidth, 30)
-            };
-
-            var pictureBoxCheckBox = new DevComponents.DotNetBar.Controls.CheckBoxX
-            {
-                BackColor = Color.Transparent,
-                Font = SystemFonts.DefaultFont,
-                Location = new Point(newLocX + 3, newLocY + 13),
-                CheckState = CheckState.Checked,
-                Checked = true,
-                Tag = imageName,
-                Text = "",
-                AutoSize = false,
-                Size = new Size(17, 17),
-                MaximumSize = new Size(13, 13),
-                Parent = pictureBoxControl,
-                AccessibleDescription = ListOfPhotos[i].FullUncPath,
-                AccessibleName = imageName
-            };
-
-
-            pictureBoxControl.MouseClick += control_MouseClick;
-            pictureBoxControl.DoubleClick += pictureBox_DoubleClick;
-
-            panelPreviewPictures.Controls.Add(pictureBoxLabel);
-            panelPreviewPictures.Controls.Add(pictureBoxCheckBox);
-            panelPreviewPictures.Controls.Add(pictureBoxControl);
-
-        }
-
-
-
         private void checkBoxSelectAll_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxSelectAll.Checked && checkBoxSelectAll.CheckState == CheckState.Checked)
             {
-                foreach (var checkBox in panelPreviewPictures.Controls.OfType<DevComponents.DotNetBar.Controls.CheckBoxX>())
+                foreach (var checkBox in panelPreviewPictures.Controls.OfType<CheckBoxX>())
                 {
                     checkBox.CheckState = CheckState.Checked;
                 }
@@ -204,9 +224,9 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         private void checkBoxSelectNone_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxSelectAll.Checked && checkBoxSelectAll.CheckState == CheckState.Checked)
+            if (checkBoxSelectNone.Checked && checkBoxSelectNone.CheckState == CheckState.Checked)
             {
-                foreach (var checkBox in panelPreviewPictures.Controls.OfType<DevComponents.DotNetBar.Controls.CheckBoxX>())
+                foreach (var checkBox in panelPreviewPictures.Controls.OfType<CheckBoxX>())
                 {
                     checkBox.CheckState = CheckState.Unchecked;
                 }
@@ -243,8 +263,10 @@ namespace PhotographyAutomation.App.Forms.Orders
                 RtlMessageBox.Show("عکسی برای ارسال انتخاب نشده است.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+
             return true;
         }
+
         private void btnUploadPhotos_Click(object sender, EventArgs e)
         {
             //string uploadPath = string.Empty;
@@ -261,6 +283,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                     fileNamesUpload.Add(checkbox.AccessibleName);
                 }
             }
+
             try
             {
                 using (var db = new UnitOfWork())
@@ -295,7 +318,8 @@ namespace PhotographyAutomation.App.Forms.Orders
 
                     //var checkCustomerOrderFolder = db.PhotoRepository.CheckCustomerOrderFolderIsCreatedReturnsPath(OrderCode);
                     //var checkCustomerOrderFolder = db.PhotoRepository.CheckCustomerOrderFolderIsCreatedReturnsPathStreamId(OrderCode);
-                    var orderFolderFullData = db.PhotoRepository.CheckCustomerOrderFolderIsCreatedReturnsFullData(OrderCode);
+                    var orderFolderFullData =
+                        db.PhotoRepository.CheckCustomerOrderFolderIsCreatedReturnsFullData(OrderCode);
                     if (orderFolderFullData == null)
                     {
                         var orderFolderPath = db.PhotoRepository.CreateCustomerFinancialFolder(OrderCode, month);
@@ -315,7 +339,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
                             var fileUploadResult2 =
                                 db.PhotoRepository.CreateFileTableFileReturnCreateFileViewModel(
-                                fileName, parentPathName, 4, filesToUpload[i]);
+                                    fileName, parentPathName, 4, filesToUpload[i]);
 
                             if (fileUploadResult2 != null)
                             {
@@ -361,7 +385,8 @@ namespace PhotographyAutomation.App.Forms.Orders
 
                         if (totalFilesUploaded == filesToUpload.Count && order != null)
                         {
-                            orderFolderFullData = db.PhotoRepository.CheckCustomerOrderFolderIsCreatedReturnsFullData(OrderCode);
+                            orderFolderFullData =
+                                db.PhotoRepository.CheckCustomerOrderFolderIsCreatedReturnsFullData(OrderCode);
                             if (orderFolderFullData != null)
                             {
                                 order.OrderStatusId = orderStatusList.First(x => x.Code == 20).Id;
@@ -448,7 +473,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
                                 var fileUploadResult2 =
                                     db.PhotoRepository.CreateFileTableFileReturnCreateFileViewModel(
-                                    fileName, parentPathName, 4, filesToUpload[i]);
+                                        fileName, parentPathName, 4, filesToUpload[i]);
 
                                 if (fileUploadResult2 != null)
                                 {
@@ -719,5 +744,10 @@ namespace PhotographyAutomation.App.Forms.Orders
 
 
         #endregion
+
+        private void FrmViewUploadedPhotos_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            GC.Collect();
+        }
     }
 }
