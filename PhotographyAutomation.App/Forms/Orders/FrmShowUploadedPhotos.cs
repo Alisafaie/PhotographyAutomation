@@ -7,6 +7,7 @@ using PhotographyAutomation.ViewModels.Order;
 using PhotographyAutomation.ViewModels.Photo;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -452,7 +453,12 @@ namespace PhotographyAutomation.App.Forms.Orders
             if (chkEnableOrderStatusDatePicker.Checked)
             {
                 datePickerOrderStatus.Enabled = true;
-                datePickerOrderStatus.Focus();
+
+                var loc = datePickerOrderStatus.PointToScreen(Point.Empty);
+                MouseSilulator.MoveCursorToPoint(loc.X + 100, loc.Y + 10);
+                MouseSilulator.DoMouseClick();
+
+                //datePickerOrderStatus.Focus();
             }
             else
             {
@@ -496,7 +502,23 @@ namespace PhotographyAutomation.App.Forms.Orders
         {
             datePickerOrderDate.Enabled = rbOrderDate.Checked;
             if (datePickerOrderDate.Enabled)
-                datePickerOrderDate.Focus();
+            {
+                //datePickerOrderDate.Focus();
+                var loc = datePickerOrderDate.PointToScreen(Point.Empty);
+                MouseSilulator.MoveCursorToPoint(loc.X + 100, loc.Y + 10);
+                MouseSilulator.DoMouseClick();
+            }
+        }
+
+        private void rbOrderDate_Click(object sender, EventArgs e)
+        {
+            if (datePickerOrderDate.Enabled)
+            {
+                //datePickerOrderDate.Focus();
+                var loc = datePickerOrderDate.PointToScreen(Point.Empty);
+                MouseSilulator.MoveCursorToPoint(loc.X + 100, loc.Y + 10);
+                MouseSilulator.DoMouseClick();
+            }
         }
 
         private void rbOrderStatus_CheckedChanged(object sender, EventArgs e)
@@ -592,6 +614,11 @@ namespace PhotographyAutomation.App.Forms.Orders
         }
 
         private void مشاهدهاطلاعاترزروToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void datePickerOrderStatus_EnabledChanged(object sender, EventArgs e)
         {
 
         }

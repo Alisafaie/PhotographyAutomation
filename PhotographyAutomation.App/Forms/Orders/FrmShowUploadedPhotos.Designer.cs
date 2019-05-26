@@ -447,6 +447,7 @@
             this.rbOrderDate.Text = "تاریخ";
             this.rbOrderDate.UseVisualStyleBackColor = true;
             this.rbOrderDate.CheckedChanged += new System.EventHandler(this.rbOrderDate_CheckedChanged);
+            this.rbOrderDate.Click += new System.EventHandler(this.rbOrderDate_Click);
             // 
             // btnShowOrders
             // 
@@ -537,6 +538,7 @@
             this.datePickerOrderStatus.TabIndex = 10;
             this.datePickerOrderStatus.Text = "persianDateTimePicker1";
             this.datePickerOrderStatus.Value = ((FreeControls.PersianDate)(resources.GetObject("datePickerOrderStatus.Value")));
+            this.datePickerOrderStatus.EnabledChanged += new System.EventHandler(this.datePickerOrderStatus_EnabledChanged);
             // 
             // cmbOrderStatus
             // 
@@ -664,7 +666,7 @@
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvUploads.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvUploads.Dock = System.Windows.Forms.DockStyle.Fill;
