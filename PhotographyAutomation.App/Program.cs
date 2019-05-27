@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using PhotographyAutomation.App.Forms;
+using System;
 using System.Windows.Forms;
-using PhotographyAutomation.App.Forms;
 
 namespace PhotographyAutomation.App
 {

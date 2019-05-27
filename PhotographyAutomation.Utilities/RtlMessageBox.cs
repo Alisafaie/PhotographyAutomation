@@ -3,12 +3,17 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
+// ReSharper disable UnusedVariable
+// ReSharper disable UnusedMember.Local
+// ReSharper disable InconsistentNaming
+// ReSharper disable FieldCanBeMadeReadOnly.Local
+// ReSharper disable UnusedMember.Global
 
 namespace PhotographyAutomation.Utilities
 {
     public class RtlMessageBox
     {
-        static MessageBoxOptions rtlOptions = MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign;
+        private static MessageBoxOptions _rtlOptions = MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign;
 
         static RtlMessageBox()
         {
@@ -23,7 +28,7 @@ namespace PhotographyAutomation.Utilities
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information,
                 MessageBoxDefaultButton.Button1,
-                rtlOptions);
+                _rtlOptions);
         }
 
         public static DialogResult Show(string text, string caption)
@@ -34,7 +39,7 @@ namespace PhotographyAutomation.Utilities
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information,
                 MessageBoxDefaultButton.Button1,
-                rtlOptions);
+                _rtlOptions);
         }
 
         public static DialogResult Show(string text, string caption, MessageBoxButtons buttons)
@@ -45,7 +50,7 @@ namespace PhotographyAutomation.Utilities
                 buttons,
                 MessageBoxIcon.Information,
                 MessageBoxDefaultButton.Button1,
-                rtlOptions);
+                _rtlOptions);
         }
 
         public static DialogResult Show(string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon)
@@ -56,12 +61,12 @@ namespace PhotographyAutomation.Utilities
                 buttons,
                 icon,
                 MessageBoxDefaultButton.Button1,
-                rtlOptions);
+                _rtlOptions);
         }
 
         public static DialogResult Show(string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, MessageBoxOptions options)
         {
-            rtlOptions |= options;
+            _rtlOptions |= options;
 
             return MessageBox.Show(
                  text,
@@ -69,7 +74,7 @@ namespace PhotographyAutomation.Utilities
                  buttons,
                  icon,
                  MessageBoxDefaultButton.Button1,
-                 rtlOptions);
+                 _rtlOptions);
         }
 
         public static DialogResult Show(string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton defaultButton)
@@ -80,7 +85,7 @@ namespace PhotographyAutomation.Utilities
                 buttons,
                 icon,
                 defaultButton,
-                rtlOptions);
+                _rtlOptions);
         }
     }
 
@@ -88,6 +93,7 @@ namespace PhotographyAutomation.Utilities
     {
         private delegate IntPtr HookProc(int nCode, IntPtr wParam, IntPtr lParam);
         private delegate bool EnumChildProc(IntPtr hWnd, IntPtr lParam);
+
 
         private const int WH_CALLWNDPROCRET = 12;
         private const int WM_DESTROY = 0x0002;
@@ -190,7 +196,9 @@ namespace PhotographyAutomation.Utilities
 
         static MessageBoxManager()
         {
+            // ReSharper disable once RedundantDelegateCreation
             hookProc = new HookProc(MessageBoxHookProc);
+            // ReSharper disable once RedundantDelegateCreation
             enumProc = new EnumChildProc(MessageBoxEnumProc);
             hHook = IntPtr.Zero;
         }
@@ -215,6 +223,7 @@ namespace PhotographyAutomation.Utilities
         /// <remarks>
         /// Disables MessageBoxManager functionality on current thread only.
         /// </remarks>
+        // ReSharper disable once UnusedMember.Global
         public static void Unregister()
         {
             if (hHook != IntPtr.Zero)
@@ -287,10 +296,7 @@ namespace PhotographyAutomation.Utilities
                 }
                 nButton++;
             }
-
             return true;
         }
-
-
     }
 }

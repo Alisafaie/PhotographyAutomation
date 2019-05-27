@@ -1,4 +1,6 @@
 ﻿using System.Runtime.InteropServices;
+// ReSharper disable InconsistentNaming
+// ReSharper disable UnusedMember.Local
 
 namespace PhotographyAutomation.Utilities
 {
@@ -21,15 +23,9 @@ namespace PhotographyAutomation.Utilities
         [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
         public static extern void mouse_event(long dwFlags, long dx, long dy, long cButtons, long dwExtraInfo);
 
-        // ReSharper disable once InconsistentNaming
         private const int MOUSEEVENTF_LEFTDOWN = 0x02;
-        // ReSharper disable once InconsistentNaming
         private const int MOUSEEVENTF_LEFTUP = 0x04;
-        // ReSharper disable once InconsistentNaming
-        // ReSharper disable once UnusedMember.Local
         private const int MOUSEEVENTF_RIGHTDOWN = 0x08;
-        // ReSharper disable once InconsistentNaming
-        // ReSharper disable once UnusedMember.Local
         private const int MOUSEEVENTF_RIGHTUP = 0x10;
 
         public static void DoMouseClick()

@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.AccessControl;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PhotographyAutomation.ViewModels.Photo
 {
@@ -28,6 +23,5 @@ namespace PhotographyAutomation.ViewModels.Photo
         public bool IsArchive { get; set; }
         public bool IsSystem { get; set; }
         public bool IsTemporary { get; set; }
-
     }
 }

@@ -35,7 +35,7 @@ namespace PhotographyAutomation.App.Forms.Booking
 
             txtPersonCount.Value = 1;
 
-            txtBookingStatus.Text = @"در انتظار بیعانه";
+            txtBookingStatus.Text = "در انتظار بیعانه";
 
             using (var db = new UnitOfWork())
             {
@@ -186,7 +186,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                 userInfo = db.CustomerRepository.GetCustomerInfoBooking(CustomerId);
             if (userInfo != null)
             {
-                txtFirstNameLastName.Text = userInfo.FirstName + @" " + userInfo.LastName;
+                txtFirstNameLastName.Text = userInfo.FirstName + " " + userInfo.LastName;
                 txtMobile.Text = @"0" + userInfo.Mobile;
                 txtTell.Text = @"0" + userInfo.Tell;
             }

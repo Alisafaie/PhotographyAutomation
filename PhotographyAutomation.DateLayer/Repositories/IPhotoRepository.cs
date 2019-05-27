@@ -1,10 +1,8 @@
-﻿using PhotographyAutomation.ViewModels.Document;
+﻿using PhotographyAutomation.DateLayer.Models;
+using PhotographyAutomation.ViewModels.Document;
+using PhotographyAutomation.ViewModels.Photo;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.Core.Objects;
-using System.Net.Mime;
-using PhotographyAutomation.DateLayer.Models;
-using PhotographyAutomation.ViewModels.Photo;
 
 namespace PhotographyAutomation.DateLayer.Repositories
 {

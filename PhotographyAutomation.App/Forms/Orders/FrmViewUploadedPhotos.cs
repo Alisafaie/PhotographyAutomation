@@ -195,7 +195,7 @@ namespace PhotographyAutomation.App.Forms.Orders
         {
             Control control = (Control)sender;
 
-            foreach (var checkBox in panelPreviewPictures.Controls.OfType<DevComponents.DotNetBar.Controls.CheckBoxX>())
+            foreach (var checkBox in panelPreviewPictures.Controls.OfType<CheckBoxX>())
             {
                 if (control.Tag == checkBox.Tag)
                 {
@@ -235,16 +235,16 @@ namespace PhotographyAutomation.App.Forms.Orders
 
 
 
-        private void pictureBoxPreview_DoubleClick(object sender, EventArgs e)
-        {
-            //var viewer = new FrmPhotoViewer
-            //{
-            //    MyImageList = _fileNamesAndPathsList,
-            //    SelectedImageFilePath = pictureBoxPreview.Tag.ToString()
-            //};
+        //private void pictureBoxPreview_DoubleClick(object sender, EventArgs e)
+        //{
+        //    var viewer = new FrmPhotoViewer
+        //    {
+        //        MyImageList = _fileNamesAndPathsList,
+        //        SelectedImageFilePath = pictureBoxPreview.Tag.ToString()
+        //    };
 
-            //pv.ShowDialog();
-        }
+        //    pv.ShowDialog();
+        //}
 
         #region Upload
 
@@ -275,7 +275,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
             if (!CheckInputs()) return;
 
-            foreach (var checkbox in panelPreviewPictures.Controls.OfType<DevComponents.DotNetBar.Controls.CheckBoxX>())
+            foreach (var checkbox in panelPreviewPictures.Controls.OfType<CheckBoxX>())
             {
                 if (checkbox.Checked && checkbox.CheckState == CheckState.Checked)
                 {

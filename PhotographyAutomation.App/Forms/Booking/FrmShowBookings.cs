@@ -19,7 +19,7 @@ namespace PhotographyAutomation.App.Forms.Booking
         #region Variables
 
         private int _statusCode = 10;
-        public static int CustomerId = 0;
+        public static int CustomerId;
         public int OrderId;
 
         #endregion
@@ -93,7 +93,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                 }
                 else
                 {
-                    if (txtCustomerInfo.Text == @"***")
+                    if (txtCustomerInfo.Text == "***")
                         ShowBookings(string.Empty);
                     else
                     {

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PhotographyAutomation.ViewModels.Order
+﻿namespace PhotographyAutomation.ViewModels.Order
 {
     public class OrderStatusViewModel
     {

@@ -20,7 +20,7 @@ namespace PhotographyAutomation.DateLayer.Services
 
         public List<CustomerOrderViewModel> GetAllOrders()
         {
-             try
+            try
             {
                 var returnValue =
                     _db.TblOrder

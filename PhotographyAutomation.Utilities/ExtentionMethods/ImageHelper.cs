@@ -2,6 +2,8 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+// ReSharper disable UnusedMember.Global
+// ReSharper disable UnusedMember.Local
 
 namespace PhotographyAutomation.Utilities.ExtentionMethods
 {
@@ -100,11 +102,11 @@ namespace PhotographyAutomation.Utilities.ExtentionMethods
 
         public static Image GetPhotoAndRotateIt(this byte[] originalPhoto)
         {
-            using (var ms=new MemoryStream(originalPhoto))
+            using (var ms = new MemoryStream(originalPhoto))
             {
-                Image img=Image.FromStream(ms);
+                Image img = Image.FromStream(ms);
                 var orientation = img.GetOrientation();
-                RotateFlipType rotationType = OrientationToFlipType((int) orientation);
+                RotateFlipType rotationType = OrientationToFlipType((int)orientation);
                 img.RotateFlip(rotationType);
                 return img;
             }

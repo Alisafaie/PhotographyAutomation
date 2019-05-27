@@ -1,5 +1,5 @@
 ﻿using FreeControls;
-using PhotographyAutomation.App.Forms.Booking;
+//using PhotographyAutomation.App.Forms.Booking;
 using PhotographyAutomation.App.Forms.Customers;
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.Utilities;
@@ -18,8 +18,6 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
         #region Variables
 
         private int _statusCode = 10;
-        public static int CustomerId = 0;
-        public int OrderId = 0;
 
         #endregion
 
@@ -192,7 +190,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                 }
                 else
                 {
-                    if (txtCustomerInfo.Text == @"***")
+                    if (txtCustomerInfo.Text == "***")
                         ShowOrders(string.Empty);
                     else
                     {
@@ -432,26 +430,26 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
             }
         }
 
-        private void ویرایشاطلاعاتنوبتToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (dgvOrders.SelectedRows.Count == 1)
-            {
-                var bookingId = Convert.ToInt32(dgvOrders.SelectedRows[0].Cells["clmBookingId"].Value);
-                var customerId = Convert.ToInt32(dgvOrders.SelectedRows[0].Cells["clmCustomerId"].Value);
-                var frmAddEditBooking = new FrmAddEditBooking()
-                {
-                    BookingId = bookingId,
-                    CustomerId = customerId
-                };
-                if (dgvOrders.CurrentRow != null && frmAddEditBooking.ShowDialog() == DialogResult.OK)
-                {
-                    var rowIndex = dgvOrders.CurrentRow.Index;
+        //private void ویرایشاطلاعاتنوبتToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    if (dgvOrders.SelectedRows.Count == 1)
+        //    {
+        //        var bookingId = Convert.ToInt32(dgvOrders.SelectedRows[0].Cells["clmBookingId"].Value);
+        //        var customerId = Convert.ToInt32(dgvOrders.SelectedRows[0].Cells["clmCustomerId"].Value);
+        //        var frmAddEditBooking = new FrmAddEditBooking()
+        //        {
+        //            BookingId = bookingId,
+        //            CustomerId = customerId
+        //        };
+        //        if (dgvOrders.CurrentRow != null && frmAddEditBooking.ShowDialog() == DialogResult.OK)
+        //        {
+        //            var rowIndex = dgvOrders.CurrentRow.Index;
 
-                    btnShowBookings_Click(null, null);
-                    dgvOrders.Rows[rowIndex].Selected = true;
-                }
-            }
-        }
+        //            btnShowBookings_Click(null, null);
+        //            dgvOrders.Rows[rowIndex].Selected = true;
+        //        }
+        //    }
+        //}
 
         private void ارسالعکسToolStripMenuItem_Click(object sender, EventArgs e)
         {

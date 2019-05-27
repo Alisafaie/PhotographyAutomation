@@ -58,12 +58,12 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
             {
                 CheckFileExists = true,
                 DefaultExt = "*.jpg",
-                Filter = @"Image Files(*.JPG; *.JPEG)|*.JPG; *.JPEG",
+                Filter = "Image Files(*.JPG; *.JPEG)|*.JPG; *.JPEG",
                 //Image Files(*.BMP; *.JPG; *.GIF)| *.BMP; *.JPG; *.GIF | All files(*.*) | *.*
                 Multiselect = true,
                 RestoreDirectory = true,
                 SupportMultiDottedExtensions = true,
-                Title = @"دریافت عکس ها",
+                Title = "دریافت عکس ها",
                 //ReadOnlyChecked = true,
                 //ShowReadOnly = true
             };

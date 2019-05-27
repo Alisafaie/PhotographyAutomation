@@ -1,6 +1,7 @@
 ﻿using PhotographyAutomation.DateLayer.Models;
 using PhotographyAutomation.DateLayer.Repositories;
 using PhotographyAutomation.ViewModels.Document;
+using PhotographyAutomation.ViewModels.Photo;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,7 +10,6 @@ using System.Data.SqlTypes;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using PhotographyAutomation.ViewModels.Photo;
 
 namespace PhotographyAutomation.DateLayer.Services
 {
@@ -56,7 +56,7 @@ namespace PhotographyAutomation.DateLayer.Services
             throw new NotImplementedException();
         }
 
-        
+
 
         public string CheckPhotoYearFolderIsCreatedReturnsPath(int year)
         {
@@ -152,7 +152,7 @@ namespace PhotographyAutomation.DateLayer.Services
             }
         }
 
-        
+
 
         public string CreateYearFolderOfPhotos(int year)
         {
@@ -362,7 +362,7 @@ namespace PhotographyAutomation.DateLayer.Services
             }
         }
 
-        
+
         public int GetTotalFilesOfFolder(string pathLocator)
         {
             var returnValue = new ObjectParameter("returnValue", typeof(int));
@@ -397,25 +397,25 @@ namespace PhotographyAutomation.DateLayer.Services
                     {
                         var file = new PhotoViewModel
                         {
-                           StreamId = item.stream_id,
-                           FileStream = item.file_stream,
-                           Name = item.name,
-                           PathLocator = item.PathLocator,
-                           ParentPathLocator = item.ParentPathLocator,
-                           FullUncPath = item.FullUncPath,
-                           Type = item.file_type,
-                           CachedFileSize = item.cached_file_size,
-                           CreationDateTime = item.creation_time.DateTime,
-                           LastWriteTime = item.last_write_time.DateTime,
-                           LastAccessDateTime = item.last_access_time?.DateTime,
-                           IsDirectory = item.is_directory,
-                           IsOffline = item.is_offline,
-                           IsHidden = item.is_hidden,
-                           IsArchive = item.is_archive,
-                           IsReadOnly = item.is_readonly,
-                           IsSystem = item.is_system,
-                           IsTemporary = item.is_temporary,
-                           TransactionContext = item.TransactionContext
+                            StreamId = item.stream_id,
+                            FileStream = item.file_stream,
+                            Name = item.name,
+                            PathLocator = item.PathLocator,
+                            ParentPathLocator = item.ParentPathLocator,
+                            FullUncPath = item.FullUncPath,
+                            Type = item.file_type,
+                            CachedFileSize = item.cached_file_size,
+                            CreationDateTime = item.creation_time.DateTime,
+                            LastWriteTime = item.last_write_time.DateTime,
+                            LastAccessDateTime = item.last_access_time?.DateTime,
+                            IsDirectory = item.is_directory,
+                            IsOffline = item.is_offline,
+                            IsHidden = item.is_hidden,
+                            IsArchive = item.is_archive,
+                            IsReadOnly = item.is_readonly,
+                            IsSystem = item.is_system,
+                            IsTemporary = item.is_temporary,
+                            TransactionContext = item.TransactionContext
                         };
                         listOfPhotos.Add(file);
                     }
