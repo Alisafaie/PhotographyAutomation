@@ -450,20 +450,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         private void chkEnableOrderStatusDatePicker_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkEnableOrderStatusDatePicker.Checked)
-            {
-                datePickerOrderStatus.Enabled = true;
-
-                var loc = datePickerOrderStatus.PointToScreen(Point.Empty);
-                MouseSilulator.MoveCursorToPoint(loc.X + 100, loc.Y + 10);
-                MouseSilulator.DoMouseClick();
-
-                //datePickerOrderStatus.Focus();
-            }
-            else
-            {
-                datePickerOrderStatus.Enabled = false;
-            }
+            datePickerOrderStatus.Enabled = chkEnableOrderStatusDatePicker.Checked;
         }
 
         private void txtOrderCodeDate_TextChanged(object sender, EventArgs e)
@@ -501,24 +488,6 @@ namespace PhotographyAutomation.App.Forms.Orders
         private void rbOrderDate_CheckedChanged(object sender, EventArgs e)
         {
             datePickerOrderDate.Enabled = rbOrderDate.Checked;
-            if (datePickerOrderDate.Enabled)
-            {
-                //datePickerOrderDate.Focus();
-                var loc = datePickerOrderDate.PointToScreen(Point.Empty);
-                MouseSilulator.MoveCursorToPoint(loc.X + 100, loc.Y + 10);
-                MouseSilulator.DoMouseClick();
-            }
-        }
-
-        private void rbOrderDate_Click(object sender, EventArgs e)
-        {
-            if (datePickerOrderDate.Enabled)
-            {
-                //datePickerOrderDate.Focus();
-                var loc = datePickerOrderDate.PointToScreen(Point.Empty);
-                MouseSilulator.MoveCursorToPoint(loc.X + 100, loc.Y + 10);
-                MouseSilulator.DoMouseClick();
-            }
         }
 
         private void rbOrderStatus_CheckedChanged(object sender, EventArgs e)
@@ -533,6 +502,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             {
                 cmbOrderStatus.Enabled = false;
                 datePickerOrderDate.Enabled = false;
+                chkEnableOrderStatusDatePicker.Checked = false;
                 chkEnableOrderStatusDatePicker.Enabled = false;
             }
         }
@@ -544,7 +514,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonXColumn &&
                 e.RowIndex >= 0)
             {
-            RetryGetListOfPhotos:
+                RetryGetListOfPhotos:
 
                 var pathLocator = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
 
@@ -585,6 +555,14 @@ namespace PhotographyAutomation.App.Forms.Orders
                         }
                     }
                 }
+                else
+                {
+                    RtlMessageBox.Show(
+                        "برای رزرو انتخابی هنوز عکسی در سیستم قرار داده نشده است.",
+                        "عدم آپلود عکس برای رزرو انتخابی",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
             }
         }
 
@@ -600,7 +578,47 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         private void مشاهدهعکسهاToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            RetryGetListOfPhotos:
 
+            var pathLocator = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
+
+            if (pathLocator != null)
+            {
+                List<PhotoViewModel> listOfFiles = GetListOfFilesOfOrder(pathLocator);
+                if (listOfFiles != null)
+                {
+                    using (var frmViewUploadedPhotos = new FrmViewUploadedPhotos())
+                    {
+                        frmViewUploadedPhotos.ListOfPhotos = listOfFiles;
+                        frmViewUploadedPhotos.OrderCode =
+                            dgvUploads.SelectedRows[0]?.Cells["clmOrderCode"].Value.ToString();
+                        frmViewUploadedPhotos.CustomerName = dgvUploads.SelectedRows[0].Cells["clmCustomerFullName"]
+                            .Value.ToString();
+                        frmViewUploadedPhotos.PhotographyDate =
+                            dgvUploads.SelectedRows[0].Cells["clmDate"].Value.ToString();
+                        frmViewUploadedPhotos.TotalPhotos =
+                            (int)dgvUploads.SelectedRows[0].Cells["clmTotalFiles"].Value;
+                        frmViewUploadedPhotos.OrderStatus =
+                            dgvUploads.SelectedRows[0].Cells["clmStatusName"].Value.ToString();
+
+                        frmViewUploadedPhotos.ShowDialog();
+                        GC.Collect();
+                    }
+                }
+                else
+                {
+                    var dialogResult = RtlMessageBox.Show(
+                        "برای این سفارش در سیستم عکسی ثبت نشده است. " + Environment.NewLine +
+                        "لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
+                        "خطا در دریافت لیست عکس های سفارش",
+                        MessageBoxButtons.RetryCancel,
+                        MessageBoxIcon.Error);
+                    if (dialogResult == DialogResult.Retry)
+                    {
+                        goto RetryGetListOfPhotos;
+                    }
+                }
+            }
         }
 
         private void دریافتعکسهاToolStripMenuItem_Click(object sender, EventArgs e)
@@ -620,7 +638,22 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         private void datePickerOrderStatus_EnabledChanged(object sender, EventArgs e)
         {
+            if (datePickerOrderStatus.Enabled)
+            {
+                var loc = datePickerOrderStatus.PointToScreen(Point.Empty);
+                MouseSilulator.MoveCursorToPoint(loc.X + 100, loc.Y + 10);
+                //MouseSilulator.DoMouseClick();
+            }
+        }
 
+        private void datePickerOrderDate_EnabledChanged(object sender, EventArgs e)
+        {
+            if (datePickerOrderDate.Enabled)
+            {
+                var loc = datePickerOrderDate.PointToScreen(Point.Empty);
+                MouseSilulator.MoveCursorToPoint(loc.X + 100, loc.Y + 10);
+                //MouseSilulator.DoMouseClick();
+            }
         }
     }
 }

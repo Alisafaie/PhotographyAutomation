@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmShowUploadedPhotos));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -126,7 +126,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1182, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1147, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -296,7 +296,7 @@
             this.customizeToolStripMenuItem,
             this.optionsToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.toolsToolStripMenuItem.Text = "&Tools";
             // 
             // customizeToolStripMenuItem
@@ -362,7 +362,7 @@
             this.panelEx3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx3.Location = new System.Drawing.Point(0, 24);
             this.panelEx3.Name = "panelEx3";
-            this.panelEx3.Size = new System.Drawing.Size(1182, 556);
+            this.panelEx3.Size = new System.Drawing.Size(1147, 556);
             this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx3.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx3.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -393,14 +393,15 @@
             this.groupBox2.Controls.Add(this.labelX4);
             this.groupBox2.Location = new System.Drawing.Point(12, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1155, 101);
+            this.groupBox2.Size = new System.Drawing.Size(1120, 100);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "مشاهده سفارشات بر اساس";
             // 
             // rbCustomerInfo
             // 
-            this.rbCustomerInfo.Location = new System.Drawing.Point(928, 66);
+            this.rbCustomerInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rbCustomerInfo.Location = new System.Drawing.Point(908, 65);
             this.rbCustomerInfo.Name = "rbCustomerInfo";
             this.rbCustomerInfo.Size = new System.Drawing.Size(108, 17);
             this.rbCustomerInfo.TabIndex = 1;
@@ -419,7 +420,7 @@
             this.txtCustomerInfo.Enabled = false;
             this.txtCustomerInfo.FocusHighlightColor = System.Drawing.SystemColors.Info;
             this.txtCustomerInfo.FocusHighlightEnabled = true;
-            this.txtCustomerInfo.Location = new System.Drawing.Point(697, 64);
+            this.txtCustomerInfo.Location = new System.Drawing.Point(677, 65);
             this.txtCustomerInfo.Name = "txtCustomerInfo";
             this.txtCustomerInfo.PreventEnterBeep = true;
             this.txtCustomerInfo.Size = new System.Drawing.Size(230, 21);
@@ -428,8 +429,9 @@
             // 
             // rbOrderStatus
             // 
+            this.rbOrderStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rbOrderStatus.AutoSize = true;
-            this.rbOrderStatus.Location = new System.Drawing.Point(586, 66);
+            this.rbOrderStatus.Location = new System.Drawing.Point(551, 67);
             this.rbOrderStatus.Name = "rbOrderStatus";
             this.rbOrderStatus.Size = new System.Drawing.Size(70, 17);
             this.rbOrderStatus.TabIndex = 3;
@@ -439,22 +441,22 @@
             // 
             // rbOrderDate
             // 
+            this.rbOrderDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rbOrderDate.AutoSize = true;
-            this.rbOrderDate.Location = new System.Drawing.Point(610, 34);
+            this.rbOrderDate.Location = new System.Drawing.Point(575, 35);
             this.rbOrderDate.Name = "rbOrderDate";
             this.rbOrderDate.Size = new System.Drawing.Size(46, 17);
             this.rbOrderDate.TabIndex = 2;
             this.rbOrderDate.Text = "تاریخ";
             this.rbOrderDate.UseVisualStyleBackColor = true;
             this.rbOrderDate.CheckedChanged += new System.EventHandler(this.rbOrderDate_CheckedChanged);
-            this.rbOrderDate.Click += new System.EventHandler(this.rbOrderDate_Click);
             // 
             // btnShowOrders
             // 
             this.btnShowOrders.FlatAppearance.BorderSize = 0;
             this.btnShowOrders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShowOrders.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_Search_text_131785;
-            this.btnShowOrders.Location = new System.Drawing.Point(44, 58);
+            this.btnShowOrders.Location = new System.Drawing.Point(47, 58);
             this.btnShowOrders.Name = "btnShowOrders";
             this.btnShowOrders.Size = new System.Drawing.Size(32, 32);
             this.btnShowOrders.TabIndex = 11;
@@ -466,7 +468,7 @@
             this.btnClearSearch.FlatAppearance.BorderSize = 0;
             this.btnClearSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearSearch.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_Gnome_Edit_Clear_32_54970;
-            this.btnClearSearch.Location = new System.Drawing.Point(6, 58);
+            this.btnClearSearch.Location = new System.Drawing.Point(9, 58);
             this.btnClearSearch.Name = "btnClearSearch";
             this.btnClearSearch.Size = new System.Drawing.Size(32, 32);
             this.btnClearSearch.TabIndex = 12;
@@ -475,7 +477,8 @@
             // 
             // rbOrderCode
             // 
-            this.rbOrderCode.Location = new System.Drawing.Point(928, 34);
+            this.rbOrderCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rbOrderCode.Location = new System.Drawing.Point(908, 35);
             this.rbOrderCode.Name = "rbOrderCode";
             this.rbOrderCode.Size = new System.Drawing.Size(108, 17);
             this.rbOrderCode.TabIndex = 0;
@@ -487,7 +490,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1057, 36);
+            this.label1.Location = new System.Drawing.Point(1022, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 13);
             this.label1.TabIndex = 82;
@@ -502,7 +505,7 @@
             this.chkEnableOrderStatusDatePicker.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.chkEnableOrderStatusDatePicker.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chkEnableOrderStatusDatePicker.Enabled = false;
-            this.chkEnableOrderStatusDatePicker.Location = new System.Drawing.Point(410, 66);
+            this.chkEnableOrderStatusDatePicker.Location = new System.Drawing.Point(375, 66);
             this.chkEnableOrderStatusDatePicker.Name = "chkEnableOrderStatusDatePicker";
             this.chkEnableOrderStatusDatePicker.Size = new System.Drawing.Size(15, 18);
             this.chkEnableOrderStatusDatePicker.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -515,7 +518,7 @@
             this.datePickerOrderDate.BackColor = System.Drawing.Color.White;
             this.datePickerOrderDate.Enabled = false;
             this.datePickerOrderDate.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.datePickerOrderDate.Location = new System.Drawing.Point(469, 33);
+            this.datePickerOrderDate.Location = new System.Drawing.Point(434, 35);
             this.datePickerOrderDate.Name = "datePickerOrderDate";
             this.datePickerOrderDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.datePickerOrderDate.ShowTime = false;
@@ -523,6 +526,7 @@
             this.datePickerOrderDate.TabIndex = 7;
             this.datePickerOrderDate.Text = "persianDateTimePicker1";
             this.datePickerOrderDate.Value = ((FreeControls.PersianDate)(resources.GetObject("datePickerOrderDate.Value")));
+            this.datePickerOrderDate.EnabledChanged += new System.EventHandler(this.datePickerOrderDate_EnabledChanged);
             // 
             // datePickerOrderStatus
             // 
@@ -530,7 +534,7 @@
             this.datePickerOrderStatus.BackColor = System.Drawing.Color.White;
             this.datePickerOrderStatus.Enabled = false;
             this.datePickerOrderStatus.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.datePickerOrderStatus.Location = new System.Drawing.Point(297, 65);
+            this.datePickerOrderStatus.Location = new System.Drawing.Point(262, 66);
             this.datePickerOrderStatus.Name = "datePickerOrderStatus";
             this.datePickerOrderStatus.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.datePickerOrderStatus.ShowTime = false;
@@ -546,7 +550,7 @@
             this.cmbOrderStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbOrderStatus.Enabled = false;
             this.cmbOrderStatus.FormattingEnabled = true;
-            this.cmbOrderStatus.Location = new System.Drawing.Point(448, 64);
+            this.cmbOrderStatus.Location = new System.Drawing.Point(413, 65);
             this.cmbOrderStatus.Name = "cmbOrderStatus";
             this.cmbOrderStatus.Size = new System.Drawing.Size(132, 21);
             this.cmbOrderStatus.TabIndex = 8;
@@ -563,7 +567,7 @@
             this.txtOrderCodeDate.Enabled = false;
             this.txtOrderCodeDate.FocusHighlightColor = System.Drawing.SystemColors.Info;
             this.txtOrderCodeDate.FocusHighlightEnabled = true;
-            this.txtOrderCodeDate.Location = new System.Drawing.Point(776, 32);
+            this.txtOrderCodeDate.Location = new System.Drawing.Point(756, 35);
             this.txtOrderCodeDate.MaxLength = 7;
             this.txtOrderCodeDate.Name = "txtOrderCodeDate";
             this.txtOrderCodeDate.PreventEnterBeep = true;
@@ -585,7 +589,7 @@
             this.txtOrderCodeCustomerIdBookingId.Enabled = false;
             this.txtOrderCodeCustomerIdBookingId.FocusHighlightColor = System.Drawing.SystemColors.Info;
             this.txtOrderCodeCustomerIdBookingId.FocusHighlightEnabled = true;
-            this.txtOrderCodeCustomerIdBookingId.Location = new System.Drawing.Point(844, 32);
+            this.txtOrderCodeCustomerIdBookingId.Location = new System.Drawing.Point(824, 35);
             this.txtOrderCodeCustomerIdBookingId.MaxLength = 6;
             this.txtOrderCodeCustomerIdBookingId.Name = "txtOrderCodeCustomerIdBookingId";
             this.txtOrderCodeCustomerIdBookingId.PreventEnterBeep = true;
@@ -604,7 +608,7 @@
             // 
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(834, 34);
+            this.labelX4.Location = new System.Drawing.Point(814, 37);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(6, 16);
             this.labelX4.TabIndex = 79;
@@ -618,7 +622,7 @@
             this.groupBox1.Controls.Add(this.dgvUploads);
             this.groupBox1.Location = new System.Drawing.Point(12, 110);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1158, 434);
+            this.groupBox1.Size = new System.Drawing.Size(1123, 434);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
@@ -627,18 +631,18 @@
             this.dgvUploads.AllowUserToAddRows = false;
             this.dgvUploads.AllowUserToDeleteRows = false;
             this.dgvUploads.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvUploads.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvUploads.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvUploads.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvUploads.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUploads.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUploads.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvUploads.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUploads.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmId,
@@ -661,14 +665,14 @@
             this.clmPhotosFolderLink,
             this.clmViewPhotos});
             this.dgvUploads.ContextMenuStrip = this.contextMenuDgvUploads;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvUploads.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvUploads.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvUploads.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvUploads.EnableHeadersVisualStyles = false;
             this.dgvUploads.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
@@ -676,19 +680,19 @@
             this.dgvUploads.MultiSelect = false;
             this.dgvUploads.Name = "dgvUploads";
             this.dgvUploads.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUploads.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUploads.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvUploads.RowHeadersVisible = false;
             this.dgvUploads.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvUploads.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUploads.ShowEditingIcon = false;
-            this.dgvUploads.Size = new System.Drawing.Size(1152, 414);
+            this.dgvUploads.Size = new System.Drawing.Size(1117, 414);
             this.dgvUploads.TabIndex = 0;
             this.dgvUploads.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUploads_CellContentClick);
             // 
@@ -909,7 +913,7 @@
             this.AcceptButton = this.btnShowOrders;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1182, 580);
+            this.ClientSize = new System.Drawing.Size(1147, 580);
             this.Controls.Add(this.panelEx3);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F);

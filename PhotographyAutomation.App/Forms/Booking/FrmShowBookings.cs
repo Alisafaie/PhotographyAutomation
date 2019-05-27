@@ -58,8 +58,6 @@ namespace PhotographyAutomation.App.Forms.Booking
                 var dtFrom = datePickerBookingDateFrom.Value.GetDateFromPersianDateTimePicker();
                 var dtTo = datePickerBookingDateTo.Value.GetDateFromPersianDateTimePicker();
 
-
-
                 if (chkSpecialBookings.Checked)
                 {
                     if (chkSpecialBookings.Checked)
@@ -266,12 +264,12 @@ namespace PhotographyAutomation.App.Forms.Booking
                     }
                     else
                     {
-                        contextMenuStripDgvBookings.Visible = false;
+                        contextMenuDgvBookings.Visible = false;
                     }
                 }
                 else
                 {
-                    contextMenuStripDgvBookings.Visible = false;
+                    contextMenuDgvBookings.Visible = false;
                 }
             }
         }
@@ -389,7 +387,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                             OrderCode = OrderUtilities.GenerateOrderCode(DateTime.Now, booking.CustomerId, bookingId),
                             CreatedDateTime = DateTime.Now,
                             Date = DateTime.Now,
-                            Time = new TimeSpan(DateTime.Now.Hour,DateTime.Now.Minute,DateTime.Now.Second),
+                            Time = new TimeSpan(DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second),
                             IsActive = true,
                             OrderStatusId = orderStatusId,
                             PhotographyTypeId = booking.PhotographyTypeId
@@ -440,7 +438,7 @@ namespace PhotographyAutomation.App.Forms.Booking
             {
                 RtlMessageBox.Show(
                     "هیچ رزروی برای تبدیل به سفارش انتخاب نشده است.",
-                    "خطا - عدم  انتخاب رزرو برای تبدیل به سفارش", 
+                    "خطا - عدم  انتخاب رزرو برای تبدیل به سفارش",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 dgvBookings.Focus();
             }
@@ -697,6 +695,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                 dgvBookings.Rows[i].Cells["clmSubmitter"].Value = bookingsList[i].Submitter;
                 dgvBookings.Rows[i].Cells["clmSubmitterName"].Value = bookingsList[i].SubmitterName;
                 dgvBookings.Rows[i].Cells["clmStatusId"].Value = bookingsList[i].StatusId;
+                dgvBookings.Rows[i].Cells["clmStatusCode"].Value = bookingsList[i].StatusCode;
                 dgvBookings.Rows[i].Cells["clmStatusName"].Value = bookingsList[i].StatusName;
                 dgvBookings.Rows[i].Cells["clmCreatedDateTime"].Value = bookingsList[i].CreatedDateTime;
                 dgvBookings.Rows[i].Cells["clmModifiedDateTime"].Value =
@@ -704,5 +703,39 @@ namespace PhotographyAutomation.App.Forms.Booking
             }
         }
         #endregion
+
+        private void contextMenuStripDgvBookings_Paint(object sender, PaintEventArgs e)
+        {
+            /*
+             *
+             * 10	فعال
+             * 20	غیر فعال
+             * 30	حذف
+             * 40	ورود به آتلیه
+             * 50	در انتظار بیعانه
+             * 60	لغو مشتری
+             *
+             */
+            int bookingStatusCode = int.Parse(dgvBookings.SelectedRows[0].Cells["clmStatusCode"].Value.ToString());
+            
+            if (bookingStatusCode == 40 || bookingStatusCode == 30 || bookingStatusCode == 20)
+            {
+                ورودبهآتلیهToolStripMenuItem.Enabled = false;
+                لغورزروToolStripMenuItem.Enabled = false;
+                ویرایشاطلاعاتنوبتToolStripMenuItem.Enabled = false;
+            }
+
+            else if (bookingStatusCode == 60)
+            {
+                ورودبهآتلیهToolStripMenuItem.Enabled = false;
+                لغورزروToolStripMenuItem.Enabled = false;
+            }
+            else
+            {
+                ورودبهآتلیهToolStripMenuItem.Enabled = true;
+                لغورزروToolStripMenuItem.Enabled = true;
+                ویرایشاطلاعاتنوبتToolStripMenuItem.Enabled = true;
+            }
+        }
     }
 }

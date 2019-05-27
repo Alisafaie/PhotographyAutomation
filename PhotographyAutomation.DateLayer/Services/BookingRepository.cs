@@ -73,7 +73,7 @@ namespace PhotographyAutomation.DateLayer.Services
                     .Include(x => x.TblAtelierType)
                     .Include(x => x.TblBookingStatus)
                     .Include(x => x.TblPhotographyType)
-                    .Where(x => x.Date >= dtFrom && x.Date <= dtTo && x.TblBookingStatus.Code == statusCode &&
+                    .Where(x => x.TblCustomer.IsDeleted == 0 && x.Date >= dtFrom && x.Date <= dtTo && x.TblBookingStatus.Code == statusCode &&
                                 (x.TblCustomer.FirstName.Contains(customerInfo) ||
                                  x.TblCustomer.LastName.Contains(customerInfo) ||
                                  x.TblCustomer.Tell.Contains(customerInfo) ||
@@ -96,6 +96,7 @@ namespace PhotographyAutomation.DateLayer.Services
                             PhotographyTypeId = x.PhotographyTypeId,
                             PhotographyTypeName = x.TblPhotographyType.TypeName,
                             StatusId = x.StatusId,
+                            StatusCode = x.TblBookingStatus.Code,
                             StatusName = x.TblBookingStatus.StatusName,
                             //Submitter = 
                             //SubmitterName = 
@@ -130,7 +131,7 @@ namespace PhotographyAutomation.DateLayer.Services
                     .Include(x => x.TblAtelierType)
                     .Include(x => x.TblBookingStatus)
                     .Include(x => x.TblPhotographyType)
-                    .Where(x => x.Date >= dtFrom && x.Date <= dtTo &&
+                    .Where(x => x.TblCustomer.IsDeleted == 0 && x.Date >= dtFrom && x.Date <= dtTo &&
                                 (x.TblCustomer.FirstName.Contains(customerInfo) ||
                                  x.TblCustomer.LastName.Contains(customerInfo) ||
                                  x.TblCustomer.Tell.Contains(customerInfo) ||
@@ -153,6 +154,7 @@ namespace PhotographyAutomation.DateLayer.Services
                             PhotographyTypeId = x.PhotographyTypeId,
                             PhotographyTypeName = x.TblPhotographyType.TypeName,
                             StatusId = x.StatusId,
+                            StatusCode = x.TblBookingStatus.Code,
                             StatusName = x.TblBookingStatus.StatusName,
                             //Submitter = 
                             //SubmitterName = 
@@ -182,7 +184,7 @@ namespace PhotographyAutomation.DateLayer.Services
                     .Include(x => x.TblAtelierType)
                     .Include(x => x.TblBookingStatus)
                     .Include(x => x.TblPhotographyType)
-                    .Where(x => x.CustomerId == customerId)
+                    .Where(x => x.CustomerId == customerId && x.TblCustomer.IsDeleted == 0)
                     .Select(
                         x => new BookingHistoryAddEditBookingViewModel
                         {
@@ -201,6 +203,7 @@ namespace PhotographyAutomation.DateLayer.Services
                             PhotographyTypeId = x.PhotographyTypeId,
                             PhotographyTypeName = x.TblPhotographyType.TypeName,
                             StatusId = x.StatusId,
+                            StatusCode = x.TblBookingStatus.Code,
                             StatusName = x.TblBookingStatus.StatusName,
                             //Submitter = 
                             //SubmitterName = 
@@ -229,7 +232,7 @@ namespace PhotographyAutomation.DateLayer.Services
                     .Include(x => x.TblAtelierType)
                     .Include(x => x.TblBookingStatus)
                     .Include(x => x.TblPhotographyType)
-                    .Where(x => x.TblCustomer.FirstName.Contains(customerInfo) ||
+                    .Where(x => x.TblCustomer.IsDeleted == 0 && x.TblCustomer.FirstName.Contains(customerInfo) ||
                                 x.TblCustomer.LastName.Contains(customerInfo) ||
                                 x.TblCustomer.Tell.Contains(customerInfo) ||
                                 x.TblCustomer.Mobile.Contains(customerInfo))
@@ -251,6 +254,7 @@ namespace PhotographyAutomation.DateLayer.Services
                             PhotographyTypeId = x.PhotographyTypeId,
                             PhotographyTypeName = x.TblPhotographyType.TypeName,
                             StatusId = x.StatusId,
+                            StatusCode = x.TblBookingStatus.Code,
                             StatusName = x.TblBookingStatus.StatusName,
                             //Submitter = 
                             //SubmitterName = 

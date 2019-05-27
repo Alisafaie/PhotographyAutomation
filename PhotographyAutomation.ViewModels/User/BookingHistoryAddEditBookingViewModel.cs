@@ -20,6 +20,7 @@ namespace PhotographyAutomation.ViewModels.User
         public int Submitter { get; set; }
         public string SubmitterName { get; set; }
         public int StatusId { get; set; }
+        public int StatusCode { get; set; }
         public string StatusName { get; set; }
         public DateTime CreatedDateTime { get; set; }
         public DateTime? ModifiedDateTime { get; set; }

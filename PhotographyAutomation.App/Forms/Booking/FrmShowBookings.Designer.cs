@@ -30,14 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmShowBookings));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.cmbBookinsStatus1 = new System.Windows.Forms.ComboBox();
             this.chkSpecialBookings = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.chkEnableDatePickerBookingDate = new DevComponents.DotNetBar.Controls.CheckBoxX();
@@ -69,10 +70,11 @@
             this.clmSubmitter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmSubmitterName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmStatusId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmStatusCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmStatusName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmCreatedDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmModifiedDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStripDgvBookings = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuDgvBookings = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ویرایشاطلاعاتمشتریToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ویرایشاطلاعاتنوبتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ورودبهآتلیهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -96,7 +98,7 @@
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookings)).BeginInit();
-            this.contextMenuStripDgvBookings.SuspendLayout();
+            this.contextMenuDgvBookings.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -120,7 +122,7 @@
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx2.Location = new System.Drawing.Point(0, 0);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(1149, 665);
+            this.panelEx2.Size = new System.Drawing.Size(1147, 580);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -134,6 +136,7 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.cmbBookinsStatus1);
             this.groupBox2.Controls.Add(this.chkSpecialBookings);
             this.groupBox2.Controls.Add(this.chkEnableDatePickerBookingDate);
@@ -149,20 +152,30 @@
             this.groupBox2.Controls.Add(this.datePickerBookingDateFrom);
             this.groupBox2.Location = new System.Drawing.Point(12, 27);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1125, 90);
+            this.groupBox2.Size = new System.Drawing.Size(1123, 100);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "مشاهده رزرو ها بر اساس";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1022, 36);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(90, 13);
+            this.label1.TabIndex = 83;
+            this.label1.Text = "جستجو بر اساس:";
             // 
             // cmbBookinsStatus1
             // 
             this.cmbBookinsStatus1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBookinsStatus1.Enabled = false;
             this.cmbBookinsStatus1.FormattingEnabled = true;
-            this.cmbBookinsStatus1.Location = new System.Drawing.Point(464, 38);
+            this.cmbBookinsStatus1.Location = new System.Drawing.Point(441, 64);
             this.cmbBookinsStatus1.Name = "cmbBookinsStatus1";
-            this.cmbBookinsStatus1.Size = new System.Drawing.Size(125, 21);
-            this.cmbBookinsStatus1.TabIndex = 24;
+            this.cmbBookinsStatus1.Size = new System.Drawing.Size(111, 21);
+            this.cmbBookinsStatus1.TabIndex = 9;
             this.cmbBookinsStatus1.SelectedIndexChanged += new System.EventHandler(this.cmbBookinsStatus_SelectedIndexChanged);
             // 
             // chkSpecialBookings
@@ -173,12 +186,12 @@
             // 
             // 
             this.chkSpecialBookings.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.chkSpecialBookings.Location = new System.Drawing.Point(595, 40);
+            this.chkSpecialBookings.Location = new System.Drawing.Point(558, 66);
             this.chkSpecialBookings.Name = "chkSpecialBookings";
             this.chkSpecialBookings.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.chkSpecialBookings.Size = new System.Drawing.Size(71, 16);
             this.chkSpecialBookings.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.chkSpecialBookings.TabIndex = 6;
+            this.chkSpecialBookings.TabIndex = 8;
             this.chkSpecialBookings.Text = "موارد خاص";
             this.chkSpecialBookings.CheckedChanged += new System.EventHandler(this.chkSpecialBookings_CheckedChanged);
             // 
@@ -190,12 +203,12 @@
             // 
             // 
             this.chkEnableDatePickerBookingDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.chkEnableDatePickerBookingDate.Location = new System.Drawing.Point(810, 40);
+            this.chkEnableDatePickerBookingDate.Location = new System.Drawing.Point(575, 36);
             this.chkEnableDatePickerBookingDate.Name = "chkEnableDatePickerBookingDate";
             this.chkEnableDatePickerBookingDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.chkEnableDatePickerBookingDate.Size = new System.Drawing.Size(54, 16);
             this.chkEnableDatePickerBookingDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.chkEnableDatePickerBookingDate.TabIndex = 3;
+            this.chkEnableDatePickerBookingDate.TabIndex = 4;
             this.chkEnableDatePickerBookingDate.Text = "از تاریخ";
             this.chkEnableDatePickerBookingDate.CheckedChanged += new System.EventHandler(this.chkEnableDatePickerBookingDate_CheckedChanged);
             // 
@@ -208,7 +221,7 @@
             // 
             this.rbCurrentmonth.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.rbCurrentmonth.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
-            this.rbCurrentmonth.Location = new System.Drawing.Point(880, 40);
+            this.rbCurrentmonth.Location = new System.Drawing.Point(770, 36);
             this.rbCurrentmonth.Name = "rbCurrentmonth";
             this.rbCurrentmonth.Size = new System.Drawing.Size(64, 16);
             this.rbCurrentmonth.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -225,7 +238,7 @@
             // 
             this.rbCurrentWeek.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.rbCurrentWeek.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
-            this.rbCurrentWeek.Location = new System.Drawing.Point(960, 40);
+            this.rbCurrentWeek.Location = new System.Drawing.Point(855, 36);
             this.rbCurrentWeek.Name = "rbCurrentWeek";
             this.rbCurrentWeek.Size = new System.Drawing.Size(73, 16);
             this.rbCurrentWeek.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -242,7 +255,7 @@
             // 
             this.rbCurrentDay.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.rbCurrentDay.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
-            this.rbCurrentDay.Location = new System.Drawing.Point(1049, 40);
+            this.rbCurrentDay.Location = new System.Drawing.Point(952, 36);
             this.rbCurrentDay.Name = "rbCurrentDay";
             this.rbCurrentDay.Size = new System.Drawing.Size(63, 16);
             this.rbCurrentDay.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -258,10 +271,10 @@
             // 
             // 
             this.lblToDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lblToDate.Location = new System.Drawing.Point(813, 63);
+            this.lblToDate.Location = new System.Drawing.Point(382, 36);
             this.lblToDate.Name = "lblToDate";
             this.lblToDate.Size = new System.Drawing.Size(33, 16);
-            this.lblToDate.TabIndex = 23;
+            this.lblToDate.TabIndex = 6;
             this.lblToDate.Text = "تا تاریخ";
             this.lblToDate.Visible = false;
             // 
@@ -273,7 +286,7 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(345, 40);
+            this.labelX1.Location = new System.Drawing.Point(930, 66);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(85, 16);
             this.labelX1.TabIndex = 21;
@@ -289,11 +302,11 @@
             this.txtCustomerInfo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtCustomerInfo.FocusHighlightColor = System.Drawing.SystemColors.Info;
             this.txtCustomerInfo.FocusHighlightEnabled = true;
-            this.txtCustomerInfo.Location = new System.Drawing.Point(101, 38);
+            this.txtCustomerInfo.Location = new System.Drawing.Point(690, 64);
             this.txtCustomerInfo.Name = "txtCustomerInfo";
             this.txtCustomerInfo.PreventEnterBeep = true;
             this.txtCustomerInfo.Size = new System.Drawing.Size(238, 21);
-            this.txtCustomerInfo.TabIndex = 8;
+            this.txtCustomerInfo.TabIndex = 3;
             this.txtCustomerInfo.WatermarkText = "(نام ، نام خانوادگی ، تلفن ثابت، تلفن همراه)";
             this.txtCustomerInfo.Enter += new System.EventHandler(this.txtCustomerInfo_Enter);
             this.txtCustomerInfo.Leave += new System.EventHandler(this.txtCustomerInfo_Leave);
@@ -303,10 +316,10 @@
             this.btnShowBookings.FlatAppearance.BorderSize = 0;
             this.btnShowBookings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShowBookings.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_Search_text_131785;
-            this.btnShowBookings.Location = new System.Drawing.Point(47, 32);
+            this.btnShowBookings.Location = new System.Drawing.Point(47, 58);
             this.btnShowBookings.Name = "btnShowBookings";
             this.btnShowBookings.Size = new System.Drawing.Size(32, 32);
-            this.btnShowBookings.TabIndex = 9;
+            this.btnShowBookings.TabIndex = 10;
             this.btnShowBookings.UseVisualStyleBackColor = true;
             this.btnShowBookings.Click += new System.EventHandler(this.btnShowBookings_Click);
             // 
@@ -315,10 +328,10 @@
             this.btnClearSearch.FlatAppearance.BorderSize = 0;
             this.btnClearSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearSearch.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_Gnome_Edit_Clear_32_54970;
-            this.btnClearSearch.Location = new System.Drawing.Point(9, 32);
+            this.btnClearSearch.Location = new System.Drawing.Point(9, 58);
             this.btnClearSearch.Name = "btnClearSearch";
             this.btnClearSearch.Size = new System.Drawing.Size(32, 32);
-            this.btnClearSearch.TabIndex = 10;
+            this.btnClearSearch.TabIndex = 11;
             this.btnClearSearch.UseVisualStyleBackColor = true;
             this.btnClearSearch.Click += new System.EventHandler(this.btnClearSearch_Click);
             // 
@@ -328,12 +341,12 @@
             this.datePickerBookingDateTo.BackColor = System.Drawing.Color.White;
             this.datePickerBookingDateTo.Enabled = false;
             this.datePickerBookingDateTo.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.datePickerBookingDateTo.Location = new System.Drawing.Point(693, 62);
+            this.datePickerBookingDateTo.Location = new System.Drawing.Point(262, 35);
             this.datePickerBookingDateTo.Name = "datePickerBookingDateTo";
             this.datePickerBookingDateTo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.datePickerBookingDateTo.ShowTime = false;
             this.datePickerBookingDateTo.Size = new System.Drawing.Size(111, 18);
-            this.datePickerBookingDateTo.TabIndex = 5;
+            this.datePickerBookingDateTo.TabIndex = 7;
             this.datePickerBookingDateTo.Text = "persianDateTimePicker1";
             this.datePickerBookingDateTo.Value = ((FreeControls.PersianDate)(resources.GetObject("datePickerBookingDateTo.Value")));
             this.datePickerBookingDateTo.Visible = false;
@@ -344,12 +357,12 @@
             this.datePickerBookingDateFrom.BackColor = System.Drawing.Color.White;
             this.datePickerBookingDateFrom.Enabled = false;
             this.datePickerBookingDateFrom.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.datePickerBookingDateFrom.Location = new System.Drawing.Point(693, 39);
+            this.datePickerBookingDateFrom.Location = new System.Drawing.Point(441, 35);
             this.datePickerBookingDateFrom.Name = "datePickerBookingDateFrom";
             this.datePickerBookingDateFrom.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.datePickerBookingDateFrom.ShowTime = false;
             this.datePickerBookingDateFrom.Size = new System.Drawing.Size(111, 18);
-            this.datePickerBookingDateFrom.TabIndex = 4;
+            this.datePickerBookingDateFrom.TabIndex = 5;
             this.datePickerBookingDateFrom.Text = "persianDateTimePicker1";
             this.datePickerBookingDateFrom.Value = ((FreeControls.PersianDate)(resources.GetObject("datePickerBookingDateFrom.Value")));
             // 
@@ -358,9 +371,9 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.dgvBookings);
-            this.groupBox1.Location = new System.Drawing.Point(12, 123);
+            this.groupBox1.Location = new System.Drawing.Point(12, 134);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1125, 530);
+            this.groupBox1.Size = new System.Drawing.Size(1123, 434);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "لیست رزرو ها";
@@ -370,18 +383,18 @@
             this.dgvBookings.AllowUserToAddRows = false;
             this.dgvBookings.AllowUserToDeleteRows = false;
             this.dgvBookings.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvBookings.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvBookings.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvBookings.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvBookings.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBookings.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBookings.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvBookings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBookings.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmId,
@@ -400,18 +413,19 @@
             this.clmSubmitter,
             this.clmSubmitterName,
             this.clmStatusId,
+            this.clmStatusCode,
             this.clmStatusName,
             this.clmCreatedDateTime,
             this.clmModifiedDateTime});
-            this.dgvBookings.ContextMenuStrip = this.contextMenuStripDgvBookings;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBookings.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvBookings.ContextMenuStrip = this.contextMenuDgvBookings;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBookings.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvBookings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvBookings.EnableHeadersVisualStyles = false;
             this.dgvBookings.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
@@ -419,19 +433,19 @@
             this.dgvBookings.MultiSelect = false;
             this.dgvBookings.Name = "dgvBookings";
             this.dgvBookings.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBookings.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBookings.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvBookings.RowHeadersVisible = false;
             this.dgvBookings.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvBookings.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBookings.ShowEditingIcon = false;
-            this.dgvBookings.Size = new System.Drawing.Size(1119, 510);
+            this.dgvBookings.Size = new System.Drawing.Size(1117, 414);
             this.dgvBookings.TabIndex = 0;
             this.dgvBookings.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dgvBookings_MouseUp);
             // 
@@ -571,6 +585,14 @@
             this.clmStatusId.Visible = false;
             this.clmStatusId.Width = 88;
             // 
+            // clmStatusCode
+            // 
+            this.clmStatusCode.HeaderText = "StatusCode";
+            this.clmStatusCode.Name = "clmStatusCode";
+            this.clmStatusCode.ReadOnly = true;
+            this.clmStatusCode.Visible = false;
+            this.clmStatusCode.Width = 88;
+            // 
             // clmStatusName
             // 
             this.clmStatusName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -597,17 +619,18 @@
             this.clmModifiedDateTime.Visible = false;
             this.clmModifiedDateTime.Width = 89;
             // 
-            // contextMenuStripDgvBookings
+            // contextMenuDgvBookings
             // 
-            this.contextMenuStripDgvBookings.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.contextMenuStripDgvBookings.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contextMenuDgvBookings.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.contextMenuDgvBookings.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ویرایشاطلاعاتمشتریToolStripMenuItem,
             this.ویرایشاطلاعاتنوبتToolStripMenuItem,
             this.ورودبهآتلیهToolStripMenuItem,
             this.لغورزروToolStripMenuItem});
-            this.contextMenuStripDgvBookings.Name = "contextMenuStripDgvBookings";
-            this.contextMenuStripDgvBookings.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStripDgvBookings.Size = new System.Drawing.Size(197, 92);
+            this.contextMenuDgvBookings.Name = "contextMenuStripDgvBookings";
+            this.contextMenuDgvBookings.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.contextMenuDgvBookings.Size = new System.Drawing.Size(197, 92);
+            this.contextMenuDgvBookings.Paint += new System.Windows.Forms.PaintEventHandler(this.contextMenuStripDgvBookings_Paint);
             // 
             // ویرایشاطلاعاتمشتریToolStripMenuItem
             // 
@@ -645,7 +668,7 @@
             this.bookingToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1149, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1147, 24);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -753,7 +776,7 @@
             this.AcceptButton = this.btnShowBookings;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1149, 665);
+            this.ClientSize = new System.Drawing.Size(1147, 580);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panelEx2);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F);
@@ -774,7 +797,7 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookings)).EndInit();
-            this.contextMenuStripDgvBookings.ResumeLayout(false);
+            this.contextMenuDgvBookings.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -791,7 +814,7 @@
         private FreeControls.PersianDateTimePicker datePickerBookingDateFrom;
         private System.Windows.Forms.GroupBox groupBox1;
         private DevComponents.DotNetBar.Controls.DataGridViewX dgvBookings;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStripDgvBookings;
+        private System.Windows.Forms.ContextMenuStrip contextMenuDgvBookings;
         private System.Windows.Forms.ToolStripMenuItem ویرایشاطلاعاتمشتریToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ویرایشاطلاعاتنوبتToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -810,6 +833,19 @@
         private DevComponents.DotNetBar.Controls.TextBoxX txtCustomerInfo;
         private FreeControls.PersianDateTimePicker datePickerBookingDateTo;
         private DevComponents.DotNetBar.LabelX lblToDate;
+        private System.Windows.Forms.Button btnClearSearch;
+        private System.Windows.Forms.Button btnShowBookings;
+        private DevComponents.DotNetBar.Controls.CheckBoxX rbCurrentmonth;
+        private DevComponents.DotNetBar.Controls.CheckBoxX rbCurrentWeek;
+        private DevComponents.DotNetBar.Controls.CheckBoxX rbCurrentDay;
+        private DevComponents.DotNetBar.Controls.CheckBoxX chkEnableDatePickerBookingDate;
+        private DevComponents.DotNetBar.Controls.CheckBoxX chkSpecialBookings;
+        private System.Windows.Forms.ToolStripMenuItem ورودبهآتلیهToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem لغورزروToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ورودبهآتلیهToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem لغورزروToolStripMenuItem1;
+        private System.Windows.Forms.ComboBox cmbBookinsStatus1;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmId;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmCustomerId;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmCustomerFullName;
@@ -826,20 +862,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmSubmitter;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmSubmitterName;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmStatusId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmStatusCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmStatusName;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmCreatedDateTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmModifiedDateTime;
-        private System.Windows.Forms.Button btnClearSearch;
-        private System.Windows.Forms.Button btnShowBookings;
-        private DevComponents.DotNetBar.Controls.CheckBoxX rbCurrentmonth;
-        private DevComponents.DotNetBar.Controls.CheckBoxX rbCurrentWeek;
-        private DevComponents.DotNetBar.Controls.CheckBoxX rbCurrentDay;
-        private DevComponents.DotNetBar.Controls.CheckBoxX chkEnableDatePickerBookingDate;
-        private DevComponents.DotNetBar.Controls.CheckBoxX chkSpecialBookings;
-        private System.Windows.Forms.ToolStripMenuItem ورودبهآتلیهToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem لغورزروToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ورودبهآتلیهToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem لغورزروToolStripMenuItem1;
-        private System.Windows.Forms.ComboBox cmbBookinsStatus1;
     }
 }
