@@ -282,7 +282,7 @@ namespace PhotographyAutomation.App.Forms.Booking
             {
                 frmAddEditCustomerInfo.CustomerId = customerId;
                 frmAddEditCustomerInfo.JustSaveCustomerInfo = true;
-                frmAddEditCustomerInfo.IsEditMode = true;
+                frmAddEditCustomerInfo.NewCustomer = true;
 
                 if (frmAddEditCustomerInfo.ShowDialog() == DialogResult.OK)
                 {

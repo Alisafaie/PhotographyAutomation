@@ -1,4 +1,5 @@
 ﻿using DevComponents.DotNetBar.Controls;
+using PhotographyAutomation.App.Forms.Customers;
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.Utilities;
 using PhotographyAutomation.Utilities.Convertor;
@@ -31,6 +32,8 @@ namespace PhotographyAutomation.App.Forms.Orders
         }
 
         #endregion
+
+        #region Form Control Events
 
         #region Button Events
 
@@ -92,6 +95,344 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         #endregion
 
+
+        #region Radio Buttons
+        private void rbOrderCode_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbOrderCode.Checked)
+            {
+                txtOrderCodeDate.Enabled = true;
+                txtOrderCodeCustomerIdBookingId.Enabled = true;
+                txtOrderCodeDate.Focus();
+            }
+            else
+            {
+                txtOrderCodeDate.Enabled = false;
+                txtOrderCodeCustomerIdBookingId.Enabled = false;
+            }
+        }
+
+        private void rbCustomerInfo_CheckedChanged(object sender, EventArgs e)
+        {
+            txtCustomerInfo.Enabled = rbCustomerInfo.Checked;
+            if (txtCustomerInfo.Enabled)
+                txtCustomerInfo.Focus();
+        }
+
+        private void rbOrderDate_CheckedChanged(object sender, EventArgs e)
+        {
+            datePickerOrderDate.Enabled = rbOrderDate.Checked;
+        }
+
+        private void rbOrderStatus_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbOrderStatus.Checked)
+            {
+                cmbOrderStatus.Enabled = true;
+                chkEnableOrderStatusDatePicker.Enabled = true;
+                datePickerOrderStatus.Enabled = chkEnableOrderStatusDatePicker.Checked;
+            }
+            else
+            {
+                cmbOrderStatus.Enabled = false;
+                datePickerOrderDate.Enabled = false;
+                chkEnableOrderStatusDatePicker.Checked = false;
+                chkEnableOrderStatusDatePicker.Enabled = false;
+            }
+        }
+
+        #endregion Radio Buttons
+
+
+        #region NumberOnlyTextbox
+
+
+        private void txtOrderCodeDate_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar) ||
+                char.IsSymbol(e.KeyChar) ||
+                char.IsWhiteSpace(e.KeyChar) ||
+                char.IsPunctuation(e.KeyChar))
+                e.Handled = true;
+
+            //if (txtOrderCodeDate.TextLength == 7)
+            //    txtOrderCodeCustomerId.Focus();
+        }
+        private void txtOrderCodeDate_KeyDown(object sender, KeyEventArgs e)
+        {
+            //Allow navigation keyboard arrows
+            switch (e.KeyCode)
+            {
+                case Keys.Up:
+                case Keys.Down:
+                case Keys.Left:
+                case Keys.Right:
+                case Keys.PageUp:
+                case Keys.PageDown:
+                case Keys.Delete:
+                    e.SuppressKeyPress = false;
+                    return;
+            }
+
+            //Block non-number characters
+            char currentKey = (char)e.KeyCode;
+            bool modifier = e.Control || e.Alt || e.Shift;
+            bool nonNumber = char.IsLetter(currentKey) ||
+                             char.IsSymbol(currentKey) ||
+                             char.IsWhiteSpace(currentKey) ||
+                             char.IsPunctuation(currentKey);
+
+            if (!modifier && nonNumber)
+                e.SuppressKeyPress = true;
+
+            //Handle pasted Text
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                //Preview paste data (removing non-number characters)
+                string pasteText = Clipboard.GetText();
+                string strippedText = "";
+                foreach (var t in pasteText)
+                {
+                    if (char.IsDigit(t))
+                        strippedText += t.ToString();
+                }
+
+                if (strippedText != pasteText)
+                {
+                    //There were non-numbers in the pasted text
+                    e.SuppressKeyPress = true;
+
+                    //OPTIONAL: Manually insert text stripped of non-numbers
+                    TextBoxX me = (TextBoxX)sender;
+                    int start = me.SelectionStart;
+                    string newTxt = me.Text;
+                    newTxt = newTxt.Remove(me.SelectionStart, me.SelectionLength); //remove highlighted text
+                    newTxt = newTxt.Insert(me.SelectionStart, strippedText); //paste
+                    me.Text = newTxt;
+                    me.SelectionStart = start + strippedText.Length;
+                }
+                else
+                    e.SuppressKeyPress = false;
+            }
+        }
+
+
+
+        private void txtOrderCodeCustomerId_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar) ||
+                char.IsSymbol(e.KeyChar) ||
+                char.IsWhiteSpace(e.KeyChar) ||
+                char.IsPunctuation(e.KeyChar))
+                e.Handled = true;
+        }
+
+        #endregion
+
+
+        #region ComboBox Events
+        private void cmbOrderStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbOrderStatus.Enabled)
+                int.TryParse(cmbOrderStatus.SelectedValue.ToString(), out _statusCode);
+        }
+
+
+
+        #endregion
+
+
+        #region chkEnableOrderStatusDatePicker Events
+
+        private void chkEnableOrderStatusDatePicker_CheckedChanged(object sender, EventArgs e)
+        {
+            datePickerOrderStatus.Enabled = chkEnableOrderStatusDatePicker.Checked;
+        }
+
+        #endregion chkEnableOrderStatusDatePicker Events
+
+
+        #region TextBox Events
+        private void txtOrderCodeDate_TextChanged(object sender, EventArgs e)
+        {
+            if (txtOrderCodeDate.TextLength == 7)
+            {
+                txtOrderCodeCustomerIdBookingId.ReadOnly = false;
+                txtOrderCodeCustomerIdBookingId.Enabled = true;
+                txtOrderCodeCustomerIdBookingId.Focus();
+            }
+        }
+
+        #endregion TextBox Events
+
+
+        #region DatePicke Events
+
+        private void datePickerOrderStatus_EnabledChanged(object sender, EventArgs e)
+        {
+            if (datePickerOrderStatus.Enabled)
+            {
+                var loc = datePickerOrderStatus.PointToScreen(Point.Empty);
+                MouseSilulator.MoveCursorToPoint(loc.X + 100, loc.Y + 10);
+                //MouseSilulator.DoMouseClick();
+            }
+        }
+
+        private void datePickerOrderDate_EnabledChanged(object sender, EventArgs e)
+        {
+            if (datePickerOrderDate.Enabled)
+            {
+                var loc = datePickerOrderDate.PointToScreen(Point.Empty);
+                MouseSilulator.MoveCursorToPoint(loc.X + 100, loc.Y + 10);
+                //MouseSilulator.DoMouseClick();
+            }
+        }
+
+        #endregion DatePicke Events
+
+
+        #region DataGridView
+
+        #region DataGridView Events
+        private void dgvUploads_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridViewX)sender;
+
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonXColumn &&
+                e.RowIndex >= 0)
+            {
+            RetryGetListOfPhotos:
+
+                var pathLocator = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
+
+                if (pathLocator != null)
+                {
+                    List<PhotoViewModel> listOfFiles = GetListOfFilesOfOrder(pathLocator);
+                    if (listOfFiles != null)
+                    {
+                        using (var frmViewUploadedPhotos = new FrmViewUploadedPhotos())
+                        {
+                            frmViewUploadedPhotos.ListOfPhotos = listOfFiles;
+                            frmViewUploadedPhotos.OrderCode =
+                                dgvUploads.SelectedRows[0]?.Cells["clmOrderCode"].Value.ToString();
+                            frmViewUploadedPhotos.CustomerName = dgvUploads.SelectedRows[0].Cells["clmCustomerFullName"]
+                                .Value.ToString();
+                            frmViewUploadedPhotos.PhotographyDate =
+                                dgvUploads.SelectedRows[0].Cells["clmDate"].Value.ToString();
+                            frmViewUploadedPhotos.TotalPhotos =
+                                (int)dgvUploads.SelectedRows[0].Cells["clmTotalFiles"].Value;
+                            frmViewUploadedPhotos.OrderStatus =
+                                dgvUploads.SelectedRows[0].Cells["clmStatusName"].Value.ToString();
+
+                            frmViewUploadedPhotos.ShowDialog();
+                            GC.Collect();
+                        }
+                    }
+                    else
+                    {
+                        var dialogResult = RtlMessageBox.Show(
+                            "برای این سفارش در سیستم عکسی ثبت نشده است. " + Environment.NewLine +
+                            "لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
+                            "خطا در دریافت لیست عکس های سفارش",
+                            MessageBoxButtons.RetryCancel,
+                            MessageBoxIcon.Error);
+                        if (dialogResult == DialogResult.Retry)
+                        {
+                            goto RetryGetListOfPhotos;
+                        }
+                    }
+                }
+                else
+                {
+                    RtlMessageBox.Show(
+                        "برای رزرو انتخابی هنوز عکسی در سیستم قرار داده نشده است.",
+                        "عدم آپلود عکس برای رزرو انتخابی",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        #endregion DataGridView Events
+
+
+        #region DataGridView Contextmenu
+
+        private void مشاهدهعکسهاToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        RetryGetListOfPhotos:
+
+            var pathLocator = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
+
+            if (pathLocator != null)
+            {
+                List<PhotoViewModel> listOfFiles = GetListOfFilesOfOrder(pathLocator);
+                if (listOfFiles != null)
+                {
+                    using (var frmViewUploadedPhotos = new FrmViewUploadedPhotos())
+                    {
+                        frmViewUploadedPhotos.ListOfPhotos = listOfFiles;
+                        frmViewUploadedPhotos.OrderCode =
+                            dgvUploads.SelectedRows[0]?.Cells["clmOrderCode"].Value.ToString();
+                        frmViewUploadedPhotos.CustomerName = dgvUploads.SelectedRows[0].Cells["clmCustomerFullName"]
+                            .Value.ToString();
+                        frmViewUploadedPhotos.PhotographyDate =
+                            dgvUploads.SelectedRows[0].Cells["clmDate"].Value.ToString();
+                        frmViewUploadedPhotos.TotalPhotos =
+                            (int)dgvUploads.SelectedRows[0].Cells["clmTotalFiles"].Value;
+                        frmViewUploadedPhotos.OrderStatus =
+                            dgvUploads.SelectedRows[0].Cells["clmStatusName"].Value.ToString();
+
+                        frmViewUploadedPhotos.ShowDialog();
+                        GC.Collect();
+                    }
+                }
+                else
+                {
+                    var dialogResult = RtlMessageBox.Show(
+                        "برای این سفارش در سیستم عکسی ثبت نشده است. " + Environment.NewLine +
+                        "لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
+                        "خطا در دریافت لیست عکس های سفارش",
+                        MessageBoxButtons.RetryCancel,
+                        MessageBoxIcon.Error);
+                    if (dialogResult == DialogResult.Retry)
+                    {
+                        goto RetryGetListOfPhotos;
+                    }
+                }
+            }
+        }
+
+        private void دریافتعکسهاToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void مشاهدهاطلاعاتمشتریToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(dgvUploads.SelectedRows[0].Cells["clmCustomerId"].Value.ToString(), out int customerId))
+            {
+                using (var frmCustomerInfo = new FrmAddEditCustomerInfo())
+                {
+                    frmCustomerInfo.CustomerId = customerId;
+                    frmCustomerInfo.NewCustomer = true;
+                    frmCustomerInfo.IsViewOnly = true;
+                    frmCustomerInfo.ShowDialog();
+                }
+            }
+        }
+
+        private void مشاهدهاطلاعاترزروToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion DataGridView Contextmenu
+
+        #endregion DataGridView
+
+
+        #endregion Form Control Events
 
         #region Methods
         private void ShowAllOrders()
@@ -331,6 +672,9 @@ namespace PhotographyAutomation.App.Forms.Orders
 
             return true;
         }
+
+
+
         private void PopulateComboBox()
         {
             using (var db = new UnitOfWork())
@@ -348,223 +692,6 @@ namespace PhotographyAutomation.App.Forms.Orders
             }
         }
 
-        #endregion
-
-
-        #region NumberOnlyTextbox
-
-
-        private void txtOrderCodeDate_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (char.IsLetter(e.KeyChar) ||
-                char.IsSymbol(e.KeyChar) ||
-                char.IsWhiteSpace(e.KeyChar) ||
-                char.IsPunctuation(e.KeyChar))
-                e.Handled = true;
-
-            //if (txtOrderCodeDate.TextLength == 7)
-            //    txtOrderCodeCustomerId.Focus();
-        }
-        private void txtOrderCodeDate_KeyDown(object sender, KeyEventArgs e)
-        {
-            //Allow navigation keyboard arrows
-            switch (e.KeyCode)
-            {
-                case Keys.Up:
-                case Keys.Down:
-                case Keys.Left:
-                case Keys.Right:
-                case Keys.PageUp:
-                case Keys.PageDown:
-                case Keys.Delete:
-                    e.SuppressKeyPress = false;
-                    return;
-            }
-
-            //Block non-number characters
-            char currentKey = (char)e.KeyCode;
-            bool modifier = e.Control || e.Alt || e.Shift;
-            bool nonNumber = char.IsLetter(currentKey) ||
-                             char.IsSymbol(currentKey) ||
-                             char.IsWhiteSpace(currentKey) ||
-                             char.IsPunctuation(currentKey);
-
-            if (!modifier && nonNumber)
-                e.SuppressKeyPress = true;
-
-            //Handle pasted Text
-            if (e.Control && e.KeyCode == Keys.V)
-            {
-                //Preview paste data (removing non-number characters)
-                string pasteText = Clipboard.GetText();
-                string strippedText = "";
-                foreach (var t in pasteText)
-                {
-                    if (char.IsDigit(t))
-                        strippedText += t.ToString();
-                }
-
-                if (strippedText != pasteText)
-                {
-                    //There were non-numbers in the pasted text
-                    e.SuppressKeyPress = true;
-
-                    //OPTIONAL: Manually insert text stripped of non-numbers
-                    TextBoxX me = (TextBoxX)sender;
-                    int start = me.SelectionStart;
-                    string newTxt = me.Text;
-                    newTxt = newTxt.Remove(me.SelectionStart, me.SelectionLength); //remove highlighted text
-                    newTxt = newTxt.Insert(me.SelectionStart, strippedText); //paste
-                    me.Text = newTxt;
-                    me.SelectionStart = start + strippedText.Length;
-                }
-                else
-                    e.SuppressKeyPress = false;
-            }
-        }
-
-
-
-        private void txtOrderCodeCustomerId_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (char.IsLetter(e.KeyChar) ||
-                char.IsSymbol(e.KeyChar) ||
-                char.IsWhiteSpace(e.KeyChar) ||
-                char.IsPunctuation(e.KeyChar))
-                e.Handled = true;
-        }
-
-        #endregion
-
-
-        #region ComboBox Events
-        private void cmbOrderStatus_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbOrderStatus.Enabled)
-                int.TryParse(cmbOrderStatus.SelectedValue.ToString(), out _statusCode);
-        }
-
-
-
-        #endregion
-
-        private void chkEnableOrderStatusDatePicker_CheckedChanged(object sender, EventArgs e)
-        {
-            datePickerOrderStatus.Enabled = chkEnableOrderStatusDatePicker.Checked;
-        }
-
-        private void txtOrderCodeDate_TextChanged(object sender, EventArgs e)
-        {
-            if (txtOrderCodeDate.TextLength == 7)
-            {
-                txtOrderCodeCustomerIdBookingId.ReadOnly = false;
-                txtOrderCodeCustomerIdBookingId.Enabled = true;
-                txtOrderCodeCustomerIdBookingId.Focus();
-            }
-        }
-
-        private void rbOrderCode_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rbOrderCode.Checked)
-            {
-                txtOrderCodeDate.Enabled = true;
-                txtOrderCodeCustomerIdBookingId.Enabled = true;
-                txtOrderCodeDate.Focus();
-            }
-            else
-            {
-                txtOrderCodeDate.Enabled = false;
-                txtOrderCodeCustomerIdBookingId.Enabled = false;
-            }
-        }
-
-        private void rbCustomerInfo_CheckedChanged(object sender, EventArgs e)
-        {
-            txtCustomerInfo.Enabled = rbCustomerInfo.Checked;
-            if (txtCustomerInfo.Enabled)
-                txtCustomerInfo.Focus();
-        }
-
-        private void rbOrderDate_CheckedChanged(object sender, EventArgs e)
-        {
-            datePickerOrderDate.Enabled = rbOrderDate.Checked;
-        }
-
-        private void rbOrderStatus_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rbOrderStatus.Checked)
-            {
-                cmbOrderStatus.Enabled = true;
-                chkEnableOrderStatusDatePicker.Enabled = true;
-                datePickerOrderStatus.Enabled = chkEnableOrderStatusDatePicker.Checked;
-            }
-            else
-            {
-                cmbOrderStatus.Enabled = false;
-                datePickerOrderDate.Enabled = false;
-                chkEnableOrderStatusDatePicker.Checked = false;
-                chkEnableOrderStatusDatePicker.Enabled = false;
-            }
-        }
-
-        private void dgvUploads_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            var senderGrid = (DataGridViewX)sender;
-
-            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonXColumn &&
-                e.RowIndex >= 0)
-            {
-                RetryGetListOfPhotos:
-
-                var pathLocator = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
-
-                if (pathLocator != null)
-                {
-                    List<PhotoViewModel> listOfFiles = GetListOfFilesOfOrder(pathLocator);
-                    if (listOfFiles != null)
-                    {
-                        using (var frmViewUploadedPhotos = new FrmViewUploadedPhotos())
-                        {
-                            frmViewUploadedPhotos.ListOfPhotos = listOfFiles;
-                            frmViewUploadedPhotos.OrderCode =
-                                dgvUploads.SelectedRows[0]?.Cells["clmOrderCode"].Value.ToString();
-                            frmViewUploadedPhotos.CustomerName = dgvUploads.SelectedRows[0].Cells["clmCustomerFullName"]
-                                .Value.ToString();
-                            frmViewUploadedPhotos.PhotographyDate =
-                                dgvUploads.SelectedRows[0].Cells["clmDate"].Value.ToString();
-                            frmViewUploadedPhotos.TotalPhotos =
-                                (int)dgvUploads.SelectedRows[0].Cells["clmTotalFiles"].Value;
-                            frmViewUploadedPhotos.OrderStatus =
-                                dgvUploads.SelectedRows[0].Cells["clmStatusName"].Value.ToString();
-
-                            frmViewUploadedPhotos.ShowDialog();
-                            GC.Collect();
-                        }
-                    }
-                    else
-                    {
-                        var dialogResult = RtlMessageBox.Show(
-                            "برای این سفارش در سیستم عکسی ثبت نشده است. " + Environment.NewLine +
-                            "لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
-                            "خطا در دریافت لیست عکس های سفارش",
-                            MessageBoxButtons.RetryCancel,
-                            MessageBoxIcon.Error);
-                        if (dialogResult == DialogResult.Retry)
-                        {
-                            goto RetryGetListOfPhotos;
-                        }
-                    }
-                }
-                else
-                {
-                    RtlMessageBox.Show(
-                        "برای رزرو انتخابی هنوز عکسی در سیستم قرار داده نشده است.",
-                        "عدم آپلود عکس برای رزرو انتخابی",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-                }
-            }
-        }
 
         public List<PhotoViewModel> GetListOfFilesOfOrder(string pathLocator)
         {
@@ -574,86 +701,6 @@ namespace PhotographyAutomation.App.Forms.Orders
             }
         }
 
-
-
-        private void مشاهدهعکسهاToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            RetryGetListOfPhotos:
-
-            var pathLocator = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
-
-            if (pathLocator != null)
-            {
-                List<PhotoViewModel> listOfFiles = GetListOfFilesOfOrder(pathLocator);
-                if (listOfFiles != null)
-                {
-                    using (var frmViewUploadedPhotos = new FrmViewUploadedPhotos())
-                    {
-                        frmViewUploadedPhotos.ListOfPhotos = listOfFiles;
-                        frmViewUploadedPhotos.OrderCode =
-                            dgvUploads.SelectedRows[0]?.Cells["clmOrderCode"].Value.ToString();
-                        frmViewUploadedPhotos.CustomerName = dgvUploads.SelectedRows[0].Cells["clmCustomerFullName"]
-                            .Value.ToString();
-                        frmViewUploadedPhotos.PhotographyDate =
-                            dgvUploads.SelectedRows[0].Cells["clmDate"].Value.ToString();
-                        frmViewUploadedPhotos.TotalPhotos =
-                            (int)dgvUploads.SelectedRows[0].Cells["clmTotalFiles"].Value;
-                        frmViewUploadedPhotos.OrderStatus =
-                            dgvUploads.SelectedRows[0].Cells["clmStatusName"].Value.ToString();
-
-                        frmViewUploadedPhotos.ShowDialog();
-                        GC.Collect();
-                    }
-                }
-                else
-                {
-                    var dialogResult = RtlMessageBox.Show(
-                        "برای این سفارش در سیستم عکسی ثبت نشده است. " + Environment.NewLine +
-                        "لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
-                        "خطا در دریافت لیست عکس های سفارش",
-                        MessageBoxButtons.RetryCancel,
-                        MessageBoxIcon.Error);
-                    if (dialogResult == DialogResult.Retry)
-                    {
-                        goto RetryGetListOfPhotos;
-                    }
-                }
-            }
-        }
-
-        private void دریافتعکسهاToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void مشاهدهاطلاعاتمشتریToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void مشاهدهاطلاعاترزروToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void datePickerOrderStatus_EnabledChanged(object sender, EventArgs e)
-        {
-            if (datePickerOrderStatus.Enabled)
-            {
-                var loc = datePickerOrderStatus.PointToScreen(Point.Empty);
-                MouseSilulator.MoveCursorToPoint(loc.X + 100, loc.Y + 10);
-                //MouseSilulator.DoMouseClick();
-            }
-        }
-
-        private void datePickerOrderDate_EnabledChanged(object sender, EventArgs e)
-        {
-            if (datePickerOrderDate.Enabled)
-            {
-                var loc = datePickerOrderDate.PointToScreen(Point.Empty);
-                MouseSilulator.MoveCursorToPoint(loc.X + 100, loc.Y + 10);
-                //MouseSilulator.DoMouseClick();
-            }
-        }
+        #endregion
     }
 }

@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmShowUploadedPhotos));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,6 +83,13 @@
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvUploads = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.contextMenuDgvUploads = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.مشاهدهعکسهاToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.دریافتعکسهاToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.مشاهدهاطلاعاتمشتریToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.مشاهدهاطلاعاترزروToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.clmId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmCustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmBookingId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -102,13 +109,6 @@
             this.clmStatusName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmPhotosFolderLink = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmViewPhotos = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
-            this.contextMenuDgvUploads = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.مشاهدهعکسهاToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.دریافتعکسهاToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.مشاهدهاطلاعاتمشتریToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.مشاهدهاطلاعاترزروToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.menuStrip1.SuspendLayout();
             this.panelEx3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -296,7 +296,7 @@
             this.customizeToolStripMenuItem,
             this.optionsToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.toolsToolStripMenuItem.Text = "&Tools";
             // 
             // customizeToolStripMenuItem
@@ -631,18 +631,18 @@
             this.dgvUploads.AllowUserToAddRows = false;
             this.dgvUploads.AllowUserToDeleteRows = false;
             this.dgvUploads.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvUploads.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvUploads.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvUploads.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvUploads.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUploads.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUploads.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvUploads.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUploads.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmId,
@@ -665,14 +665,14 @@
             this.clmPhotosFolderLink,
             this.clmViewPhotos});
             this.dgvUploads.ContextMenuStrip = this.contextMenuDgvUploads;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvUploads.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvUploads.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvUploads.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvUploads.EnableHeadersVisualStyles = false;
             this.dgvUploads.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
@@ -680,14 +680,14 @@
             this.dgvUploads.MultiSelect = false;
             this.dgvUploads.Name = "dgvUploads";
             this.dgvUploads.ReadOnly = true;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUploads.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUploads.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvUploads.RowHeadersVisible = false;
             this.dgvUploads.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvUploads.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -695,6 +695,57 @@
             this.dgvUploads.Size = new System.Drawing.Size(1117, 414);
             this.dgvUploads.TabIndex = 0;
             this.dgvUploads.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUploads_CellContentClick);
+            // 
+            // contextMenuDgvUploads
+            // 
+            this.contextMenuDgvUploads.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.contextMenuDgvUploads.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.مشاهدهعکسهاToolStripMenuItem,
+            this.دریافتعکسهاToolStripMenuItem,
+            this.toolStripSeparator6,
+            this.مشاهدهاطلاعاتمشتریToolStripMenuItem,
+            this.مشاهدهاطلاعاترزروToolStripMenuItem});
+            this.contextMenuDgvUploads.Name = "contextMenuStrip1";
+            this.contextMenuDgvUploads.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.contextMenuDgvUploads.Size = new System.Drawing.Size(195, 98);
+            // 
+            // مشاهدهعکسهاToolStripMenuItem
+            // 
+            this.مشاهدهعکسهاToolStripMenuItem.Name = "مشاهدهعکسهاToolStripMenuItem";
+            this.مشاهدهعکسهاToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.مشاهدهعکسهاToolStripMenuItem.Text = "مشاهده عکس ها";
+            this.مشاهدهعکسهاToolStripMenuItem.Click += new System.EventHandler(this.مشاهدهعکسهاToolStripMenuItem_Click);
+            // 
+            // دریافتعکسهاToolStripMenuItem
+            // 
+            this.دریافتعکسهاToolStripMenuItem.Name = "دریافتعکسهاToolStripMenuItem";
+            this.دریافتعکسهاToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.دریافتعکسهاToolStripMenuItem.Text = "دریافت عکس ها";
+            this.دریافتعکسهاToolStripMenuItem.Click += new System.EventHandler(this.دریافتعکسهاToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(191, 6);
+            // 
+            // مشاهدهاطلاعاتمشتریToolStripMenuItem
+            // 
+            this.مشاهدهاطلاعاتمشتریToolStripMenuItem.Name = "مشاهدهاطلاعاتمشتریToolStripMenuItem";
+            this.مشاهدهاطلاعاتمشتریToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.مشاهدهاطلاعاتمشتریToolStripMenuItem.Text = "مشاهده اطلاعات مشتری";
+            this.مشاهدهاطلاعاتمشتریToolStripMenuItem.Click += new System.EventHandler(this.مشاهدهاطلاعاتمشتریToolStripMenuItem_Click);
+            // 
+            // مشاهدهاطلاعاترزروToolStripMenuItem
+            // 
+            this.مشاهدهاطلاعاترزروToolStripMenuItem.Name = "مشاهدهاطلاعاترزروToolStripMenuItem";
+            this.مشاهدهاطلاعاترزروToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.مشاهدهاطلاعاترزروToolStripMenuItem.Text = "مشاهده اطلاعات رزرو";
+            this.مشاهدهاطلاعاترزروToolStripMenuItem.Click += new System.EventHandler(this.مشاهدهاطلاعاترزروToolStripMenuItem_Click);
+            // 
+            // styleManager1
+            // 
+            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2010Silver;
+            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255))))), System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199))))));
             // 
             // clmId
             // 
@@ -707,7 +758,7 @@
             // clmCustomerId
             // 
             this.clmCustomerId.DataPropertyName = "CustomerId";
-            this.clmCustomerId.HeaderText = "clmUserId";
+            this.clmCustomerId.HeaderText = "clmCustomerId";
             this.clmCustomerId.Name = "clmCustomerId";
             this.clmCustomerId.ReadOnly = true;
             this.clmCustomerId.Visible = false;
@@ -856,57 +907,6 @@
             this.clmViewPhotos.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.clmViewPhotos.Text = "مشاهده عکس ها";
             this.clmViewPhotos.Width = 120;
-            // 
-            // contextMenuDgvUploads
-            // 
-            this.contextMenuDgvUploads.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.contextMenuDgvUploads.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.مشاهدهعکسهاToolStripMenuItem,
-            this.دریافتعکسهاToolStripMenuItem,
-            this.toolStripSeparator6,
-            this.مشاهدهاطلاعاتمشتریToolStripMenuItem,
-            this.مشاهدهاطلاعاترزروToolStripMenuItem});
-            this.contextMenuDgvUploads.Name = "contextMenuStrip1";
-            this.contextMenuDgvUploads.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuDgvUploads.Size = new System.Drawing.Size(195, 98);
-            // 
-            // مشاهدهعکسهاToolStripMenuItem
-            // 
-            this.مشاهدهعکسهاToolStripMenuItem.Name = "مشاهدهعکسهاToolStripMenuItem";
-            this.مشاهدهعکسهاToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.مشاهدهعکسهاToolStripMenuItem.Text = "مشاهده عکس ها";
-            this.مشاهدهعکسهاToolStripMenuItem.Click += new System.EventHandler(this.مشاهدهعکسهاToolStripMenuItem_Click);
-            // 
-            // دریافتعکسهاToolStripMenuItem
-            // 
-            this.دریافتعکسهاToolStripMenuItem.Name = "دریافتعکسهاToolStripMenuItem";
-            this.دریافتعکسهاToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.دریافتعکسهاToolStripMenuItem.Text = "دریافت عکس ها";
-            this.دریافتعکسهاToolStripMenuItem.Click += new System.EventHandler(this.دریافتعکسهاToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(191, 6);
-            // 
-            // مشاهدهاطلاعاتمشتریToolStripMenuItem
-            // 
-            this.مشاهدهاطلاعاتمشتریToolStripMenuItem.Name = "مشاهدهاطلاعاتمشتریToolStripMenuItem";
-            this.مشاهدهاطلاعاتمشتریToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.مشاهدهاطلاعاتمشتریToolStripMenuItem.Text = "مشاهده اطلاعات مشتری";
-            this.مشاهدهاطلاعاتمشتریToolStripMenuItem.Click += new System.EventHandler(this.مشاهدهاطلاعاتمشتریToolStripMenuItem_Click);
-            // 
-            // مشاهدهاطلاعاترزروToolStripMenuItem
-            // 
-            this.مشاهدهاطلاعاترزروToolStripMenuItem.Name = "مشاهدهاطلاعاترزروToolStripMenuItem";
-            this.مشاهدهاطلاعاترزروToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.مشاهدهاطلاعاترزروToolStripMenuItem.Text = "مشاهده اطلاعات رزرو";
-            this.مشاهدهاطلاعاترزروToolStripMenuItem.Click += new System.EventHandler(this.مشاهدهاطلاعاترزروToolStripMenuItem_Click);
-            // 
-            // styleManager1
-            // 
-            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2010Silver;
-            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255))))), System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199))))));
             // 
             // FrmShowUploadedPhotos
             // 

@@ -1,5 +1,4 @@
 ﻿using FreeControls;
-using PhotographyAutomation.App.Forms.Booking;
 using PhotographyAutomation.App.Forms.Customers;
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.Utilities;
@@ -409,6 +408,31 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 
         #endregion
 
+
+
+        //private void ویرایشاطلاعاتنوبتToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    if (dgvOrders.SelectedRows.Count == 1)
+        //    {
+        //        var bookingId = Convert.ToInt32(dgvOrders.SelectedRows[0].Cells["clmBookingId"].Value);
+        //        var customerId = Convert.ToInt32(dgvOrders.SelectedRows[0].Cells["clmCustomerId"].Value);
+        //        var frmAddEditBooking = new FrmAddEditBooking()
+        //        {
+        //            BookingId = bookingId,
+        //            CustomerId = customerId
+        //        };
+        //        if (dgvOrders.CurrentRow != null && frmAddEditBooking.ShowDialog() == DialogResult.OK)
+        //        {
+        //            var rowIndex = dgvOrders.CurrentRow.Index;
+
+        //            btnShowBookings_Click(null, null);
+        //            dgvOrders.Rows[rowIndex].Selected = true;
+        //        }
+        //    }
+        //}
+
+        #region DataGridView ContextMenu
+
         private void ویرایشاطلاعاتمشتریToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (dgvOrders.SelectedRows.Count != 1) return;
@@ -417,7 +441,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
             {
                 frmAddEditCustomerInfo.CustomerId = customerId;
                 frmAddEditCustomerInfo.JustSaveCustomerInfo = true;
-                frmAddEditCustomerInfo.IsEditMode = true;
+                frmAddEditCustomerInfo.NewCustomer = true;
 
                 if (frmAddEditCustomerInfo.ShowDialog() == DialogResult.OK)
                 {
@@ -428,27 +452,6 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                         btnShowBookings_Click(null, null);
                         dgvOrders.Rows[rowIndex].Selected = true;
                     }
-                }
-            }
-        }
-
-        private void ویرایشاطلاعاتنوبتToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (dgvOrders.SelectedRows.Count == 1)
-            {
-                var bookingId = Convert.ToInt32(dgvOrders.SelectedRows[0].Cells["clmBookingId"].Value);
-                var customerId = Convert.ToInt32(dgvOrders.SelectedRows[0].Cells["clmCustomerId"].Value);
-                var frmAddEditBooking = new FrmAddEditBooking()
-                {
-                    BookingId = bookingId,
-                    CustomerId = customerId
-                };
-                if (dgvOrders.CurrentRow != null && frmAddEditBooking.ShowDialog() == DialogResult.OK)
-                {
-                    var rowIndex = dgvOrders.CurrentRow.Index;
-
-                    btnShowBookings_Click(null, null);
-                    dgvOrders.Rows[rowIndex].Selected = true;
                 }
             }
         }
@@ -481,6 +484,23 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
             }
         }
 
+        private void مشاهدهعکسهاToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void درخواستصدورقبضToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void درخواستمجوزحذفعکسToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion DataGridView ContextMenu 
+
         private void contextMenuStripDgvBookings_Paint(object sender, PaintEventArgs e)
         {
             int orderStatusCode = int.Parse(dgvOrders.SelectedRows[0].Cells["clmOrderStatusCode"].Value.ToString());
@@ -488,7 +508,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
             ارسالعکسToolStripMenuItem.Enabled = orderStatusCode == 10;
 
             مشاهدهعکسهاToolStripMenuItem.Enabled = orderStatusCode != 10;
-            حذفعکسهاToolStripMenuItem.Enabled =orderStatusCode!= 10;
+            درخواستمجوزحذفعکسToolStripMenuItem.Enabled = orderStatusCode != 10;
             درخواستصدورقبضToolStripMenuItem.Enabled = orderStatusCode != 10;
         }
     }

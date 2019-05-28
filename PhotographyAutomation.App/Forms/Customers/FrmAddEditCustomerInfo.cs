@@ -7,7 +7,10 @@ using PhotographyAutomation.Utilities.Convertor;
 using PhotographyAutomation.Utilities.ExtentionMethods;
 using PhotographyAutomation.Utilities.Regex;
 using System;
+using System.Linq;
 using System.Windows.Forms;
+using DevComponents.DotNetBar;
+using DevComponents.DotNetBar.Controls;
 
 #endregion Usings
 
@@ -18,7 +21,8 @@ namespace PhotographyAutomation.App.Forms.Customers
         #region Variables
         public int CustomerId;
         public bool JustSaveCustomerInfo = false;
-        public bool IsEditMode = false;
+        public bool NewCustomer = false;
+        public bool IsViewOnly = false;
 
         #endregion
 
@@ -30,11 +34,35 @@ namespace PhotographyAutomation.App.Forms.Customers
         }
         private void FrmAddEditCustomerInfo_Load(object sender, EventArgs e)
         {
-            if (IsEditMode)
+            if (NewCustomer)
             {
                 GetCustomerInfo(CustomerId);
                 txtMobileSearch.Enabled = false;
                 btnCheckNumber.Enabled = false;
+
+                if (IsViewOnly)
+                {
+                    foreach (var textBox in Controls.OfType<TextBox>())
+                    {
+                        textBox.ReadOnly = true;
+                    }
+                    foreach (var textBox in groupBoxCustomerInfo.Controls.OfType<TextBoxX>())
+                    {
+                        textBox.ReadOnly = true;
+                    }
+                    foreach (var comboBoxEx in groupBoxCustomerInfo.Controls.OfType<ComboBoxEx>())
+                    {
+                        comboBoxEx.Enabled = false;
+                    }
+                    foreach (var maskedTextBoxAdv in groupBoxCustomerInfo.Controls.OfType<MaskedTextBoxAdv>())
+                    {
+                        maskedTextBoxAdv.Enabled = false;
+                    }
+                    foreach (var buttonX in panelEx1.Controls.OfType<ButtonX>())
+                    {
+                        buttonX.Enabled = false;
+                    }
+                }
 
                 return;
             }
@@ -179,7 +207,7 @@ namespace PhotographyAutomation.App.Forms.Customers
             {
                 var checkCustomerMobileNumber = db.CustomerRepository.GetCustomerByMobile(customer.Mobile);
 
-                if (CustomerId == 0 && IsEditMode == false)
+                if (CustomerId == 0 && NewCustomer == false)
                 {
                     if (checkCustomerMobileNumber != null)
                     {

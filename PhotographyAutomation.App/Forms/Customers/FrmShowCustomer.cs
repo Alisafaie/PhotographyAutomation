@@ -181,7 +181,7 @@ namespace PhotographyAutomation.App.Forms.Customers
             var frmAddEditCustomerInfo = new FrmAddEditCustomerInfo
             {
                 CustomerId = customerId,
-                IsEditMode = true,
+                NewCustomer = true,
                 JustSaveCustomerInfo = true
             };
             frmAddEditCustomerInfo.ShowDialog();
@@ -216,7 +216,7 @@ namespace PhotographyAutomation.App.Forms.Customers
         {
             using (var frmAddEditCustomer = new FrmAddEditCustomerInfo())
             {
-                frmAddEditCustomer.IsEditMode = false;
+                frmAddEditCustomer.NewCustomer = false;
                 frmAddEditCustomer.CustomerId = 0;
                 frmAddEditCustomer.JustSaveCustomerInfo = true;
 
@@ -234,7 +234,7 @@ namespace PhotographyAutomation.App.Forms.Customers
                     using (var frmAddEditCustomerInfo = new FrmAddEditCustomerInfo())
                     {
                         frmAddEditCustomerInfo.CustomerId = customerId;
-                        frmAddEditCustomerInfo.IsEditMode = true;
+                        frmAddEditCustomerInfo.NewCustomer = true;
                         frmAddEditCustomerInfo.JustSaveCustomerInfo = true;
                         if (frmAddEditCustomerInfo.ShowDialog() == DialogResult.OK)
                             btnSearch_Click(null, null);
