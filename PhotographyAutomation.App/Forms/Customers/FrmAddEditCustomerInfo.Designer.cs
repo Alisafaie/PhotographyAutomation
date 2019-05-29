@@ -40,8 +40,8 @@
             this.comboItem3 = new DevComponents.Editors.ComboItem();
             this.comboItem4 = new DevComponents.Editors.ComboItem();
             this.cmbGender = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.comboItem2 = new DevComponents.Editors.ComboItem();
+            this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -192,8 +192,13 @@
             // 
             // cmbMarriedStatus
             // 
+            this.cmbMarriedStatus.DisabledBackColor = System.Drawing.Color.White;
+            this.cmbMarriedStatus.DisabledForeColor = System.Drawing.Color.Black;
             this.cmbMarriedStatus.DisplayMember = "Text";
             this.cmbMarriedStatus.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbMarriedStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMarriedStatus.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.cmbMarriedStatus.FocusHighlightEnabled = true;
             this.cmbMarriedStatus.FormattingEnabled = true;
             this.cmbMarriedStatus.ItemHeight = 16;
             this.cmbMarriedStatus.Items.AddRange(new object[] {
@@ -204,6 +209,7 @@
             this.cmbMarriedStatus.Size = new System.Drawing.Size(117, 22);
             this.cmbMarriedStatus.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cmbMarriedStatus.TabIndex = 7;
+            this.cmbMarriedStatus.WatermarkText = "مجرد یا متاهل";
             // 
             // comboItem3
             // 
@@ -215,8 +221,13 @@
             // 
             // cmbGender
             // 
+            this.cmbGender.DisabledBackColor = System.Drawing.Color.White;
+            this.cmbGender.DisabledForeColor = System.Drawing.Color.Black;
             this.cmbGender.DisplayMember = "Text";
             this.cmbGender.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbGender.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.cmbGender.FocusHighlightEnabled = true;
             this.cmbGender.FormattingEnabled = true;
             this.cmbGender.ItemHeight = 16;
             this.cmbGender.Items.AddRange(new object[] {
@@ -227,14 +238,15 @@
             this.cmbGender.Size = new System.Drawing.Size(117, 22);
             this.cmbGender.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cmbGender.TabIndex = 2;
-            // 
-            // comboItem1
-            // 
-            this.comboItem1.Text = "مرد";
+            this.cmbGender.WatermarkText = "مرد یا زن";
             // 
             // comboItem2
             // 
             this.comboItem2.Text = "زن";
+            // 
+            // comboItem1
+            // 
+            this.comboItem1.Text = "مرد";
             // 
             // label22
             // 
@@ -335,6 +347,7 @@
             this.txtMobile.BackgroundStyle.Class = "TextBoxBorder";
             this.txtMobile.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtMobile.ButtonClear.Visible = true;
+            this.txtMobile.DisabledBackColor = System.Drawing.Color.White;
             this.txtMobile.FocusHighlightColor = System.Drawing.SystemColors.Info;
             this.txtMobile.FocusHighlightEnabled = true;
             this.txtMobile.Location = new System.Drawing.Point(23, 67);
@@ -355,6 +368,7 @@
             this.txtTell.BackgroundStyle.Class = "TextBoxBorder";
             this.txtTell.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtTell.ButtonClear.Visible = true;
+            this.txtTell.DisabledBackColor = System.Drawing.Color.White;
             this.txtTell.FocusHighlightColor = System.Drawing.SystemColors.Info;
             this.txtTell.FocusHighlightEnabled = true;
             this.txtTell.Location = new System.Drawing.Point(23, 23);
@@ -375,6 +389,7 @@
             this.txtWeddingDate.BackgroundStyle.Class = "TextBoxBorder";
             this.txtWeddingDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtWeddingDate.ButtonClear.Visible = true;
+            this.txtWeddingDate.DisabledBackColor = System.Drawing.Color.White;
             this.txtWeddingDate.FocusHighlightColor = System.Drawing.SystemColors.Info;
             this.txtWeddingDate.FocusHighlightEnabled = true;
             this.txtWeddingDate.Location = new System.Drawing.Point(23, 155);
@@ -395,6 +410,7 @@
             this.txtBirthDate.BackgroundStyle.Class = "TextBoxBorder";
             this.txtBirthDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtBirthDate.ButtonClear.Visible = true;
+            this.txtBirthDate.DisabledBackColor = System.Drawing.Color.White;
             this.txtBirthDate.FocusHighlightColor = System.Drawing.SystemColors.Info;
             this.txtBirthDate.FocusHighlightEnabled = true;
             this.txtBirthDate.Location = new System.Drawing.Point(300, 155);
@@ -415,6 +431,7 @@
             this.txtNationalId.BackgroundStyle.Class = "TextBoxBorder";
             this.txtNationalId.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtNationalId.ButtonClear.Visible = true;
+            this.txtNationalId.DisabledBackColor = System.Drawing.Color.White;
             this.txtNationalId.FocusHighlightColor = System.Drawing.SystemColors.Info;
             this.txtNationalId.FocusHighlightEnabled = true;
             this.txtNationalId.Location = new System.Drawing.Point(300, 199);

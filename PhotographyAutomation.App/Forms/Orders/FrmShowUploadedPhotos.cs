@@ -1,4 +1,6 @@
 ﻿using DevComponents.DotNetBar.Controls;
+using Ookii.Dialogs.WinForms;
+using PhotographyAutomation.App.Forms.Booking;
 using PhotographyAutomation.App.Forms.Customers;
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.Utilities;
@@ -405,26 +407,51 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         private void دریافتعکسهاToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            using (var folderBrowser = new VistaFolderBrowserDialog())
+            {
+                folderBrowser.RootFolder = Environment.SpecialFolder.MyComputer;
+                folderBrowser.ShowNewFolderButton = true;
+                folderBrowser.Description = @"لطفا محل ذخیره عکس های مشتری را انتخاب نمایید";
+                folderBrowser.UseDescriptionForTitle = true;
 
+
+                if (folderBrowser.ShowDialog() == DialogResult.OK)
+                {
+                    string selectedPath = folderBrowser.SelectedPath;
+
+                }
+            }
         }
 
         private void مشاهدهاطلاعاتمشتریToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(dgvUploads.SelectedRows[0].Cells["clmCustomerId"].Value.ToString(), out int customerId))
+            if (!int.TryParse(dgvUploads.SelectedRows[0].Cells["clmCustomerId"].Value.ToString(),
+                out int customerId)) return;
+
+            using (var frmCustomerInfo = new FrmAddEditCustomerInfo())
             {
-                using (var frmCustomerInfo = new FrmAddEditCustomerInfo())
-                {
-                    frmCustomerInfo.CustomerId = customerId;
-                    frmCustomerInfo.NewCustomer = true;
-                    frmCustomerInfo.IsViewOnly = true;
-                    frmCustomerInfo.ShowDialog();
-                }
+                frmCustomerInfo.CustomerId = customerId;
+                frmCustomerInfo.NewCustomer = true;
+                frmCustomerInfo.IsViewOnly = true;
+                frmCustomerInfo.ShowDialog();
             }
         }
 
         private void مشاهدهاطلاعاترزروToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //clmBookingId
+            if (!int.TryParse(dgvUploads.SelectedRows[0].Cells["clmBookingId"].Value.ToString(),
+                out int bookingId)) return;
+            if (!int.TryParse(dgvUploads.SelectedRows[0].Cells["clmCustomerId"].Value.ToString(),
+                out int customerId)) return;
 
+            using (var frmAddEditBooking = new FrmAddEditBooking())
+            {
+                frmAddEditBooking.BookingId = bookingId;
+                frmAddEditBooking.CustomerId = customerId;
+                frmAddEditBooking.IsViewOnly = true;
+                frmAddEditBooking.ShowDialog();
+            }
         }
 
         #endregion DataGridView Contextmenu

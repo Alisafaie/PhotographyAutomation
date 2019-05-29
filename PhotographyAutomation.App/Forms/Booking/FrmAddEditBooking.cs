@@ -1,4 +1,6 @@
-﻿using FreeControls;
+﻿using DevComponents.DotNetBar;
+using DevComponents.DotNetBar.Controls;
+using FreeControls;
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.DateLayer.Models;
 using PhotographyAutomation.Utilities;
@@ -14,6 +16,8 @@ namespace PhotographyAutomation.App.Forms.Booking
     {
         public int CustomerId = 0;
         public int BookingId;
+
+        public bool IsViewOnly = false;
 
         public int BookingHour { get; private set; }
         public int BookingMinute { get; private set; }
@@ -42,7 +46,6 @@ namespace PhotographyAutomation.App.Forms.Booking
                 GetCustomerInfo(db);
 
                 PopulateComboBoxes();
-
 
                 GetCustomerBookingHistory(db);
 
@@ -74,6 +77,46 @@ namespace PhotographyAutomation.App.Forms.Booking
                         cmbAtelierTypes.SelectedValue = booking.AtelierTypeId;
                         txtPersonCount.Value = booking.PersonCount;
                         txtBookingStatus.Text = booking.TblBookingStatus.StatusName;
+
+                        if (IsViewOnly)
+                        {
+                            foreach (Control control in groupBoxBookingInfo.Controls)
+                            {
+                                if (control is PersianDateTimePicker dateTimePicker)
+                                {
+                                    dateTimePicker.Enabled = false;
+                                }
+
+                                if (control is TextBoxX textBoxX)
+                                {
+                                    textBoxX.Enabled = false;
+                                }
+
+                                if (control is Button button)
+                                {
+                                    button.Enabled = false;
+                                }
+
+                                if (control is DevComponents.Editors.IntegerInput integerInput)
+                                {
+                                    integerInput.Enabled = false;
+                                }
+
+                                if (control is ComboBoxEx comboBoxEx)
+                                {
+                                    comboBoxEx.Enabled = false;
+                                    comboBoxEx.DropDownStyle = ComboBoxStyle.Simple;
+                                }
+                            }
+
+                            foreach (Control control in panelEx1.Controls)
+                            {
+                                if (control is ButtonX buttonX)
+                                {
+                                    buttonX.Enabled = false;
+                                }
+                            }
+                        }
                     }
                 }
             }

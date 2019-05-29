@@ -1,4 +1,6 @@
 ﻿#region Usings
+using DevComponents.DotNetBar;
+using DevComponents.DotNetBar.Controls;
 using PhotographyAutomation.App.Forms.Booking;
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.DateLayer.Models;
@@ -7,10 +9,7 @@ using PhotographyAutomation.Utilities.Convertor;
 using PhotographyAutomation.Utilities.ExtentionMethods;
 using PhotographyAutomation.Utilities.Regex;
 using System;
-using System.Linq;
 using System.Windows.Forms;
-using DevComponents.DotNetBar;
-using DevComponents.DotNetBar.Controls;
 
 #endregion Usings
 
@@ -42,26 +41,33 @@ namespace PhotographyAutomation.App.Forms.Customers
 
                 if (IsViewOnly)
                 {
-                    foreach (var textBox in Controls.OfType<TextBox>())
+                    foreach (Control control in groupBoxCustomerInfo.Controls)
                     {
-                        textBox.ReadOnly = true;
+                        if (control is TextBoxX textBoxX)
+                        {
+                            textBoxX.Enabled = false;
+                        }
+                        else if (control is ComboBoxEx comboBoxEx)
+                        {
+                            comboBoxEx.Enabled = false;
+                            comboBoxEx.DropDownStyle = ComboBoxStyle.Simple;
+                        }
+                        else if (control is MaskedTextBoxAdv maskedTextBoxAdv)
+                        {
+                            maskedTextBoxAdv.Enabled = false;
+                            //maskedTextBoxAdv.ButtonClear.Enabled = false;
+                        }
                     }
-                    foreach (var textBox in groupBoxCustomerInfo.Controls.OfType<TextBoxX>())
+
+                    foreach (Control control in panelEx1.Controls)
                     {
-                        textBox.ReadOnly = true;
+                        if (control is ButtonX buttonX)
+                        {
+                            buttonX.Enabled = false;
+                        }
                     }
-                    foreach (var comboBoxEx in groupBoxCustomerInfo.Controls.OfType<ComboBoxEx>())
-                    {
-                        comboBoxEx.Enabled = false;
-                    }
-                    foreach (var maskedTextBoxAdv in groupBoxCustomerInfo.Controls.OfType<MaskedTextBoxAdv>())
-                    {
-                        maskedTextBoxAdv.Enabled = false;
-                    }
-                    foreach (var buttonX in panelEx1.Controls.OfType<ButtonX>())
-                    {
-                        buttonX.Enabled = false;
-                    }
+
+                    btnSearchCustomer.Enabled = false;
                 }
 
                 return;
@@ -180,7 +186,7 @@ namespace PhotographyAutomation.App.Forms.Customers
                 .Replace("-", "")
                 .Replace("_", "")
                 .Replace(" ", "")
-                .Trim().Substring(1,10);
+                .Trim().Substring(1, 10);
             customer.Tell = txtTell.Text.Replace(" ", "").Trim();
             customer.Gender = Convert.ToByte(cmbGender.SelectedIndex == 0 ? 0 : 1);
             customer.BirthDate = txtBirthDate.Text.ToMiladiDate();
