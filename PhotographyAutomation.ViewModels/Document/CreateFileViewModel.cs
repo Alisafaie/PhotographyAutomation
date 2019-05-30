@@ -21,5 +21,6 @@ namespace PhotographyAutomation.ViewModels.Document
         public string path_locator_str { get; set; }
         public string path_name { get; set; }
         public string streamId { get; set; }
+        public Int64? fileSize { get; set; }
     }
 }

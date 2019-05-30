@@ -1,6 +1,7 @@
 ﻿using PhotographyAutomation.DateLayer.Models;
 using PhotographyAutomation.DateLayer.Repositories;
 using PhotographyAutomation.ViewModels.Document;
+using PhotographyAutomation.ViewModels.Photo;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,7 +10,6 @@ using System.Data.SqlTypes;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using PhotographyAutomation.ViewModels.Photo;
 
 namespace PhotographyAutomation.DateLayer.Services
 {
@@ -56,7 +56,7 @@ namespace PhotographyAutomation.DateLayer.Services
             throw new NotImplementedException();
         }
 
-        
+
 
         public string CheckPhotoYearFolderIsCreatedReturnsPath(int year)
         {
@@ -152,7 +152,7 @@ namespace PhotographyAutomation.DateLayer.Services
             }
         }
 
-        
+
 
         public string CreateYearFolderOfPhotos(int year)
         {
@@ -235,6 +235,55 @@ namespace PhotographyAutomation.DateLayer.Services
             }
         }
 
+        public bool DownloadOrderPhotos(string photoPath, string selectedPath, List<Guid> fileStreamIds)
+        {
+            using (DbContextTransaction dbTransaction = _db.Database.BeginTransaction())
+            {
+                try
+                {
+                    for (int i = 0; i < fileStreamIds.Count; i++)
+                    {
+                        var result = _db.usp_GetImageInfo(fileStreamIds[i]).ToList();
+                        {
+                            var info = new CreateFileViewModel
+                            {
+                                path_locator_str = result[0].PathLocator,
+                                filestreamTxn = result[0].TransactionContext,
+                                fileSize = result[0].FileSize
+                            };
+                            using (MemoryStream ms = new MemoryStream())
+                            {
+                                using (SqlFileStream fs = new SqlFileStream(
+                                                                            info.path_locator_str, 
+                                                                            info.filestreamTxn, 
+                                                                            FileAccess.Read, 
+                                                                            FileOptions.WriteThrough, 
+                                                                            (long)info.fileSize))
+                                {
+                                    fs.CopyTo(ms);
+                                }
+                            }
+                        }
+                    }
+
+                    return true;
+                }
+                #region catch
+                catch (Exception exception)
+                {
+
+                    dbTransaction.Rollback();
+                    Debug.WriteLine(exception.Message);
+                    Debug.WriteLine(exception.Data);
+                    Debug.WriteLine(exception.InnerException);
+                    Debug.WriteLine(exception.Source);
+                    Debug.WriteLine(exception.StackTrace);
+                    return false;
+                }
+                #endregion
+            }
+        }
+
         public bool CreateFileTableFile(string name, string parent, byte level, string localFilePath)
         {
             using (DbContextTransaction dbTransaction = _db.Database.BeginTransaction())
@@ -242,8 +291,6 @@ namespace PhotographyAutomation.DateLayer.Services
                 try
                 {
                     var result = _db.usp_CreateFileTableFile(name, parent, level).ToList();
-
-
                     var info = new CreateFileViewModel
                     {
                         name = result[0].name,
@@ -276,6 +323,34 @@ namespace PhotographyAutomation.DateLayer.Services
                     Debug.WriteLine(exception.StackTrace);
                     return false;
                 }
+            }
+        }
+
+
+
+        public List<Guid> GetListOfOrderFilesReturnStreamIds(string pathLocator)
+        {
+            try
+            {
+                List<Guid> listOfFilesStreamIds = new List<Guid>();
+                var list = _db.usp_GetListOfFilesOfOrder(pathLocator);
+                if (list != null)
+                {
+                    foreach (var guid in list)
+                    {
+                        if (guid != null) listOfFilesStreamIds.Add(guid.Value);
+                    }
+                }
+                return listOfFilesStreamIds;
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine(exception.Message);
+                Debug.WriteLine(exception.Data);
+                Debug.WriteLine(exception.InnerException);
+                Debug.WriteLine(exception.Source);
+                Debug.WriteLine(exception.StackTrace);
+                return null;
             }
         }
 
@@ -362,7 +437,7 @@ namespace PhotographyAutomation.DateLayer.Services
             }
         }
 
-        
+
         public int GetTotalFilesOfFolder(string pathLocator)
         {
             var returnValue = new ObjectParameter("returnValue", typeof(int));
@@ -397,25 +472,25 @@ namespace PhotographyAutomation.DateLayer.Services
                     {
                         var file = new PhotoViewModel
                         {
-                           StreamId = item.stream_id,
-                           FileStream = item.file_stream,
-                           Name = item.name,
-                           PathLocator = item.PathLocator,
-                           ParentPathLocator = item.ParentPathLocator,
-                           FullUncPath = item.FullUncPath,
-                           Type = item.file_type,
-                           CachedFileSize = item.cached_file_size,
-                           CreationDateTime = item.creation_time.DateTime,
-                           LastWriteTime = item.last_write_time.DateTime,
-                           LastAccessDateTime = item.last_access_time?.DateTime,
-                           IsDirectory = item.is_directory,
-                           IsOffline = item.is_offline,
-                           IsHidden = item.is_hidden,
-                           IsArchive = item.is_archive,
-                           IsReadOnly = item.is_readonly,
-                           IsSystem = item.is_system,
-                           IsTemporary = item.is_temporary,
-                           TransactionContext = item.TransactionContext
+                            StreamId = item.stream_id,
+                            FileStream = item.file_stream,
+                            Name = item.name,
+                            PathLocator = item.PathLocator,
+                            ParentPathLocator = item.ParentPathLocator,
+                            FullUncPath = item.FullUncPath,
+                            Type = item.file_type,
+                            CachedFileSize = item.cached_file_size,
+                            CreationDateTime = item.creation_time.DateTime,
+                            LastWriteTime = item.last_write_time.DateTime,
+                            LastAccessDateTime = item.last_access_time?.DateTime,
+                            IsDirectory = item.is_directory,
+                            IsOffline = item.is_offline,
+                            IsHidden = item.is_hidden,
+                            IsArchive = item.is_archive,
+                            IsReadOnly = item.is_readonly,
+                            IsSystem = item.is_system,
+                            IsTemporary = item.is_temporary,
+                            TransactionContext = item.TransactionContext
                         };
                         listOfPhotos.Add(file);
                     }
@@ -432,5 +507,7 @@ namespace PhotographyAutomation.DateLayer.Services
                 return null;
             }
         }
+
+
     }
 }

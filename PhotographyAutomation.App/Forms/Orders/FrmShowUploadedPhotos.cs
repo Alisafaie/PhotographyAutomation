@@ -10,6 +10,7 @@ using PhotographyAutomation.ViewModels.Order;
 using PhotographyAutomation.ViewModels.Photo;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -407,6 +408,17 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         private void دریافتعکسهاToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var photoPath = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
+            if (photoPath == null)
+            {
+                RtlMessageBox.Show(
+                    "عکسی برای این سفارش در سیستم ثبت نشده است.",
+                    "خطا در دریافت عکس های سفارش",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
             using (var folderBrowser = new VistaFolderBrowserDialog())
             {
                 folderBrowser.RootFolder = Environment.SpecialFolder.MyComputer;
@@ -418,10 +430,26 @@ namespace PhotographyAutomation.App.Forms.Orders
                 if (folderBrowser.ShowDialog() == DialogResult.OK)
                 {
                     string selectedPath = folderBrowser.SelectedPath;
+                    bool resultDownload = DownloadPhotos(selectedPath, photoPath);
+                    if (resultDownload)
+                    {
+                        if (RtlMessageBox.Show(
+                            "فایل ها با موفقیت در سیستم دریافت شد. آیا فولدر نگهداری آنها باز شود؟",
+                            "",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Information,
+                            MessageBoxDefaultButton.Button1) == DialogResult.Yes)
 
+                        {
+                            OpenFolder(selectedPath);
+                        }
+                    }
                 }
             }
         }
+
+
+
 
         private void مشاهدهاطلاعاتمشتریToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -725,6 +753,51 @@ namespace PhotographyAutomation.App.Forms.Orders
             using (var db = new UnitOfWork())
             {
                 return db.PhotoRepository.GetListOfFilesInFolder(pathLocator);
+            }
+        }
+
+        private bool DownloadPhotos(string selectedPath, string photoPath)
+        {
+            bool result = false;
+            using (var db = new UnitOfWork())
+            {
+                List<Guid> fileStreamIdList = db.PhotoRepository.GetListOfOrderFilesReturnStreamIds(photoPath);
+                if (fileStreamIdList != null)
+                {
+                     result = db.PhotoRepository.DownloadOrderPhotos(photoPath, selectedPath, fileStreamIdList);
+
+                }
+            }
+            return result;
+        }
+
+        private void OpenFolder(string selectedPath)
+        {
+            ////Method 1
+            //try
+            //{
+            //    Process.Start("explorer.exe", selectedPath);
+            //}
+            //catch (Exception exception)
+            //{
+            //    MessageBox.Show(@"Exception: " + Environment.NewLine + exception.Message);
+            //}
+
+            ////Method 2
+            try
+            {
+                Process.Start(new ProcessStartInfo()
+                {
+                    FileName = selectedPath,
+                    UseShellExecute = true,
+                    Verb = "open",
+                    WindowStyle = ProcessWindowStyle.Normal,
+                    ErrorDialog = true
+                });
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(@"Exception: " + Environment.NewLine + exception.Message);
             }
         }
 

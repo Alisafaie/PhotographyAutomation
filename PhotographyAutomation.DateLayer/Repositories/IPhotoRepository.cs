@@ -1,10 +1,8 @@
-﻿using PhotographyAutomation.ViewModels.Document;
+﻿using PhotographyAutomation.DateLayer.Models;
+using PhotographyAutomation.ViewModels.Document;
+using PhotographyAutomation.ViewModels.Photo;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.Core.Objects;
-using System.Net.Mime;
-using PhotographyAutomation.DateLayer.Models;
-using PhotographyAutomation.ViewModels.Photo;
 
 namespace PhotographyAutomation.DateLayer.Repositories
 {
@@ -26,5 +24,7 @@ namespace PhotographyAutomation.DateLayer.Repositories
         void DeleteFilesOfOrder(string pathLocator);
         int GetTotalFilesOfFolder(string pathLocator);
         List<PhotoViewModel> GetListOfFilesInFolder(string pathLocator);
+        bool DownloadOrderPhotos(string photoPath, string selectedPath,List<Guid> fileStreamIds);
+        List<Guid> GetListOfOrderFilesReturnStreamIds(string pathLocator);
     }
 }
