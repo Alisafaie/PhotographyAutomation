@@ -784,6 +784,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                                 string fileNameAndPath = directoryPathOrderCode + file.name;
 
                                 #region Method 1
+
                                 //using (var fileStream = new FileStream(fileNameAndPath, FileMode.Create, FileAccess.Write))
                                 //{
                                 //    byte[] bytes = new byte[file.fileStream.Length];
@@ -791,28 +792,46 @@ namespace PhotographyAutomation.App.Forms.Orders
                                 //    fileStream.Write(bytes, 0, bytes.Length);
                                 //    //ms.Close();
                                 //}
+
                                 #endregion
-                                #region Method 4 .NET 4+
 
-                                using (var fileStream = new FileStream(fileNameAndPath, FileMode.CreateNew, FileAccess.Write))
+                                #region Method 2 
+                                //.NET 4+
+                                using (var fileStream = new FileStream(fileNameAndPath, FileMode.Create,
+                                    FileAccess.Write))
                                 {
-                                    file.fileStream.WriteTo(fileStream);
-                                    if (fileStream.Length == file.fileStream.Length)
+                                    bool fileExists = File.Exists(fileNameAndPath);
+                                    DialogResult dr = DialogResult.None;
+                                    if (fileExists)
                                     {
-                                        counter++;
-                                        fileStream.Flush();
-                                        fileStream.Close();
+                                        dr = RtlMessageBox.Show(
+                                            "این فایل قبلا در سیستم ذخیره شده است. آیا می خواهید بازنویسی شود؟" +
+                                            Environment.NewLine +
+                                            "در صورت تایید محتوای فایل قبلی از بین می رود.",
+                                            "تائید بازنویسی فایل",
+                                            MessageBoxButtons.YesNo);
                                     }
-                                    else
-                                    {
-                                        RtlMessageBox.Show(
-                                            "ذخیره فایل با نام " + file.name +
-                                            " با مشکل مواجه شد. حجم فایل سرور با فایل ذخیره شده تطابق ندارد.",
-                                            "خطا در ذخیره فایل در سیستم کاربر",
-                                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    }
-                                }
 
+                                    if (dr == DialogResult.Yes)
+                                    {
+                                        file.fileStream.WriteTo(fileStream);
+                                        if (fileStream.Length == file.fileStream.Length)
+                                        {
+
+                                            fileStream.Flush();
+                                            fileStream.Close();
+                                        }
+                                        else
+                                        {
+                                            RtlMessageBox.Show(
+                                                "ذخیره فایل با نام " + file.name +
+                                                " با مشکل مواجه شد. حجم فایل سرور با فایل ذخیره شده تطابق ندارد.",
+                                                "خطا در ذخیره فایل در سیستم کاربر",
+                                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
+                                    }
+                                    counter++;
+                                }
                                 #endregion
                             }
                         }
@@ -822,6 +841,11 @@ namespace PhotographyAutomation.App.Forms.Orders
                     }
 
                 }
+            }
+            catch (NotSupportedException notSupportedException)
+            {
+                MessageBox.Show(notSupportedException.Message);
+                return false;
             }
             catch (IOException ioException)
             {
