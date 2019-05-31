@@ -772,8 +772,9 @@ namespace PhotographyAutomation.App.Forms.Orders
                     if (fileStreamIdList != null)
                     {
                         var totalFiles = fileStreamIdList.Count;
-                        foreach (var guid in fileStreamIdList)
+                        for (var index = 0; index < fileStreamIdList.Count; index++)
                         {
+                            var guid = fileStreamIdList[index];
                             var file = db.PhotoRepository.DownloadOrderPhotos(guid);
                             if (file != null)
                             {
@@ -783,41 +784,27 @@ namespace PhotographyAutomation.App.Forms.Orders
 
                                 string fileNameAndPath = directoryPathOrderCode + file.name;
 
-                                #region Method 1
-
-                                //using (var fileStream = new FileStream(fileNameAndPath, FileMode.Create, FileAccess.Write))
-                                //{
-                                //    byte[] bytes = new byte[file.fileStream.Length];
-                                //    file.fileStream.Read(bytes, 0, (int)file.fileStream.Length);
-                                //    fileStream.Write(bytes, 0, bytes.Length);
-                                //    //ms.Close();
-                                //}
-
-                                #endregion
-
-                                #region Method 2 
-                                //.NET 4+
-                                using (var fileStream = new FileStream(fileNameAndPath, FileMode.Create,
-                                    FileAccess.Write))
+                                bool fileExists = File.Exists(fileNameAndPath);
+                                DialogResult dr = DialogResult.None;
+                                if (fileExists)
                                 {
-                                    bool fileExists = File.Exists(fileNameAndPath);
-                                    DialogResult dr = DialogResult.None;
-                                    if (fileExists)
-                                    {
-                                        dr = RtlMessageBox.Show(
-                                            "این فایل قبلا در سیستم ذخیره شده است. آیا می خواهید بازنویسی شود؟" +
-                                            Environment.NewLine +
-                                            "در صورت تایید محتوای فایل قبلی از بین می رود.",
-                                            "تائید بازنویسی فایل",
-                                            MessageBoxButtons.YesNo);
-                                    }
-
-                                    if (dr == DialogResult.Yes)
+                                    dr = RtlMessageBox.Show(
+                                        $"فایل  " + file.name +
+                                        " قبلا در سیستم ثبت شده است. آیا می خواهید بازنویسی شود؟  " +
+                                        Environment.NewLine +
+                                        "در صورت تایید محتوای فایل قبلی از بین می رود.",
+                                        "تائید بازنویسی فایل",
+                                        MessageBoxButtons.YesNo,
+                                        MessageBoxIcon.Warning,
+                                        MessageBoxDefaultButton.Button1);
+                                }
+                                else
+                                {
+                                    using (var fileStream = new FileStream(fileNameAndPath, FileMode.CreateNew, FileAccess.Write))
                                     {
                                         file.fileStream.WriteTo(fileStream);
                                         if (fileStream.Length == file.fileStream.Length)
                                         {
-
                                             fileStream.Flush();
                                             fileStream.Close();
                                         }
@@ -830,9 +817,33 @@ namespace PhotographyAutomation.App.Forms.Orders
                                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                                         }
                                     }
-                                    counter++;
                                 }
-                                #endregion
+
+                                if (dr == DialogResult.Yes)
+                                {
+                                    using (var fileStream = new FileStream(fileNameAndPath, FileMode.Create, FileAccess.Write))
+                                    {
+                                        file.fileStream.WriteTo(fileStream);
+                                        if (fileStream.Length == file.fileStream.Length)
+                                        {
+                                            fileStream.Flush();
+                                            fileStream.Close();
+                                        }
+                                        else
+                                        {
+                                            RtlMessageBox.Show(
+                                                "ذخیره فایل با نام " + file.name +
+                                                " با مشکل مواجه شد. حجم فایل سرور با فایل ذخیره شده تطابق ندارد.",
+                                                "خطا در ذخیره فایل در سیستم کاربر",
+                                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
+                                    }
+                                }
+                                //else
+                                //{
+                                //    break;
+                                //}
+                                counter++;
                             }
                         }
 
