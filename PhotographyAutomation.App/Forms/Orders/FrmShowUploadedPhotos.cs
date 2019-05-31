@@ -785,18 +785,39 @@ namespace PhotographyAutomation.App.Forms.Orders
                                 string fileNameAndPath = directoryPathOrderCode + file.name;
 
                                 bool fileExists = File.Exists(fileNameAndPath);
+
                                 DialogResult dr = DialogResult.None;
                                 if (fileExists)
                                 {
-                                    dr = RtlMessageBox.Show(
-                                        $"فایل  " + file.name +
-                                        " قبلا در سیستم ثبت شده است. آیا می خواهید بازنویسی شود؟  " +
-                                        Environment.NewLine +
-                                        "در صورت تایید محتوای فایل قبلی از بین می رود.",
-                                        "تائید بازنویسی فایل",
-                                        MessageBoxButtons.YesNo,
-                                        MessageBoxIcon.Warning,
-                                        MessageBoxDefaultButton.Button1);
+                                    long length = new FileInfo(fileNameAndPath).Length;
+
+                                    if (length == file.fileSize.Value)
+                                    {
+                                        dr = RtlMessageBox.Show(
+                                            $"فایل  " + file.name +
+                                            " قبلا در سیستم ثبت شده است. آیا می خواهید بازنویسی شود؟  " +
+                                            Environment.NewLine +
+                                            "در صورت تایید محتوای فایل قبلی از بین می رود." +
+                                            Environment.NewLine +
+                                            "در صورت انصراف، کل فرایند دریافت فایل ها متوقف خواهد شد.",
+                                            "تائید بازنویسی فایل",
+                                            MessageBoxButtons.YesNoCancel,
+                                            MessageBoxIcon.Warning,
+                                            MessageBoxDefaultButton.Button1);
+                                    }
+                                    else
+                                    {
+                                        dr = RtlMessageBox.Show(
+                                            "فایلی با همین نام ولی با حجم متفاوت در مسیر دریافت عکس ها وجود دارد. " +
+                                            Environment.NewLine +
+                                            "آیا می خواهید بازنویسی شود. در صورت بازنویسی محتوای قبلی فایل از بین خواهد رفت." +
+                                            Environment.NewLine +
+                                            "در صورت انصراف، کل فرایند دریافت فایل ها متوقف خواهد شد.",
+                                            "وجود عکس هم نام با سایز متفاوت در مسیر دریافت عکس ها",
+                                            MessageBoxButtons.YesNoCancel,
+                                            MessageBoxIcon.Warning,
+                                            MessageBoxDefaultButton.Button1);
+                                    }
                                 }
                                 else
                                 {
@@ -839,10 +860,10 @@ namespace PhotographyAutomation.App.Forms.Orders
                                         }
                                     }
                                 }
-                                //else
-                                //{
-                                //    break;
-                                //}
+                                else if (dr == DialogResult.Cancel)
+                                {
+                                    break;
+                                }
                                 counter++;
                             }
                         }
