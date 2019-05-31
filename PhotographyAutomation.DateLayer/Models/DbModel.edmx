@@ -1597,6 +1597,7 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           <Property Type="String" Name="PathLocator" Nullable="true" MaxLength="4000" />
           <Property Type="Binary" Name="TransactionContext" Nullable="true" />
           <Property Type="Int64" Name="FileSize" Nullable="true" />
+          <Property Type="String" Name="StreamFileName" Nullable="true" MaxLength="255" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1947,6 +1948,7 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
                 <ScalarProperty Name="PathLocator" ColumnName="PathLocator" />
                 <ScalarProperty Name="TransactionContext" ColumnName="TransactionContext" />
                 <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+                <ScalarProperty Name="StreamFileName" ColumnName="StreamFileName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

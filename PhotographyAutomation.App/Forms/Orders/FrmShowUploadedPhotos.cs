@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -409,6 +410,7 @@ namespace PhotographyAutomation.App.Forms.Orders
         private void دریافتعکسهاToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var photoPath = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
+            var orderCode = dgvUploads.SelectedRows[0]?.Cells["clmOrderCode"].Value.ToString();
             if (photoPath == null)
             {
                 RtlMessageBox.Show(
@@ -430,7 +432,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                 if (folderBrowser.ShowDialog() == DialogResult.OK)
                 {
                     string selectedPath = folderBrowser.SelectedPath;
-                    bool resultDownload = DownloadPhotos(selectedPath, photoPath);
+                    bool resultDownload = DownloadPhotos(selectedPath, photoPath, orderCode);
                     if (resultDownload)
                     {
                         if (RtlMessageBox.Show(
@@ -441,7 +443,8 @@ namespace PhotographyAutomation.App.Forms.Orders
                             MessageBoxDefaultButton.Button1) == DialogResult.Yes)
 
                         {
-                            OpenFolder(selectedPath);
+                            OpenFolder(selectedPath + "\\" + "Orders" + "\\" + orderCode);
+                            GC.Collect();
                         }
                     }
                 }
@@ -756,19 +759,101 @@ namespace PhotographyAutomation.App.Forms.Orders
             }
         }
 
-        private bool DownloadPhotos(string selectedPath, string photoPath)
+        private bool DownloadPhotos(string selectedPath, string photoPath, string orderCode)
         {
             bool result = false;
-            using (var db = new UnitOfWork())
+            try
             {
-                List<Guid> fileStreamIdList = db.PhotoRepository.GetListOfOrderFilesReturnStreamIds(photoPath);
-                if (fileStreamIdList != null)
+                using (var db = new UnitOfWork())
                 {
-                     result = db.PhotoRepository.DownloadOrderPhotos(photoPath, selectedPath, fileStreamIdList);
+
+                    List<Guid> fileStreamIdList = db.PhotoRepository.GetListOfOrderFilesReturnStreamIds(photoPath);
+                    int counter = 0;
+                    if (fileStreamIdList != null)
+                    {
+                        var totalFiles = fileStreamIdList.Count;
+                        foreach (var guid in fileStreamIdList)
+                        {
+                            var file = db.PhotoRepository.DownloadOrderPhotos(guid);
+                            if (file != null)
+                            {
+                                var directoryPathOrders = CreateOrderDirectory(selectedPath);
+
+                                var directoryPathOrderCode = CreateOrderCodeDirectory(orderCode, directoryPathOrders);
+
+                                string fileNameAndPath = directoryPathOrderCode + file.name;
+
+                                #region Method 1
+                                //using (var fileStream = new FileStream(fileNameAndPath, FileMode.Create, FileAccess.Write))
+                                //{
+                                //    byte[] bytes = new byte[file.fileStream.Length];
+                                //    file.fileStream.Read(bytes, 0, (int)file.fileStream.Length);
+                                //    fileStream.Write(bytes, 0, bytes.Length);
+                                //    //ms.Close();
+                                //}
+                                #endregion
+                                #region Method 4 .NET 4+
+
+                                using (var fileStream = new FileStream(fileNameAndPath, FileMode.CreateNew, FileAccess.Write))
+                                {
+                                    file.fileStream.WriteTo(fileStream);
+                                    if (fileStream.Length == file.fileStream.Length)
+                                    {
+                                        counter++;
+                                        fileStream.Flush();
+                                        fileStream.Close();
+                                    }
+                                    else
+                                    {
+                                        RtlMessageBox.Show(
+                                            "ذخیره فایل با نام " + file.name +
+                                            " با مشکل مواجه شد. حجم فایل سرور با فایل ذخیره شده تطابق ندارد.",
+                                            "خطا در ذخیره فایل در سیستم کاربر",
+                                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                }
+
+                                #endregion
+                            }
+                        }
+
+                        if (totalFiles > 0 && counter > 0 && counter == totalFiles)
+                            result = true;
+                    }
 
                 }
             }
+            catch (IOException ioException)
+            {
+                MessageBox.Show(ioException.Message);
+                return false;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+                return false;
+            }
+
             return result;
+
+        }
+
+        private static string CreateOrderCodeDirectory(string orderCode, string directoryPathOrders)
+        {
+            string directoryPathOrderCode = directoryPathOrders + "\\" + orderCode + "\\";
+            bool folderExistsOrderCode = Directory.Exists(directoryPathOrderCode);
+            if (!folderExistsOrderCode)
+                Directory.CreateDirectory(directoryPathOrderCode);
+            return directoryPathOrderCode;
+        }
+
+        private static string CreateOrderDirectory(string selectedPath)
+        {
+            string directoryPathOrders = selectedPath + "\\" + "Orders";
+            bool folderExistsOrders = Directory.Exists(directoryPathOrders);
+            if (!folderExistsOrders)
+                Directory.CreateDirectory(directoryPathOrders);
+            return directoryPathOrders;
         }
 
         private void OpenFolder(string selectedPath)

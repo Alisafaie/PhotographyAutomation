@@ -16,5 +16,6 @@ namespace PhotographyAutomation.DateLayer.Models
         public string PathLocator { get; set; }
         public byte[] TransactionContext { get; set; }
         public Nullable<long> FileSize { get; set; }
+        public string StreamFileName { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,5 +23,6 @@ namespace PhotographyAutomation.ViewModels.Document
         public string path_name { get; set; }
         public string streamId { get; set; }
         public Int64? fileSize { get; set; }
+        public MemoryStream fileStream { get; set; }
     }
 }

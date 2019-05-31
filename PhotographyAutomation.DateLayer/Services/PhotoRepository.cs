@@ -235,52 +235,63 @@ namespace PhotographyAutomation.DateLayer.Services
             }
         }
 
-        public bool DownloadOrderPhotos(string photoPath, string selectedPath, List<Guid> fileStreamIds)
+        public CreateFileViewModel DownloadOrderPhotos(Guid fileStreamId)
         {
             using (DbContextTransaction dbTransaction = _db.Database.BeginTransaction())
             {
+                CreateFileViewModel info = null;
                 try
                 {
-                    for (int i = 0; i < fileStreamIds.Count; i++)
+                    var result = _db.usp_GetImageInfo(fileStreamId).ToList();
+                    if (result != null)
                     {
-                        var result = _db.usp_GetImageInfo(fileStreamIds[i]).ToList();
                         {
-                            var info = new CreateFileViewModel
+                            info = new CreateFileViewModel
                             {
-                                path_locator_str = result[0].PathLocator,
+                                parent_locator = result[0].PathLocator,
                                 filestreamTxn = result[0].TransactionContext,
-                                fileSize = result[0].FileSize
+                                fileSize = result[0].FileSize,
+                                name = result[0].StreamFileName,
+                                fileStream = new MemoryStream()
                             };
-                            using (MemoryStream ms = new MemoryStream())
+                            using (var ms = new MemoryStream())
                             {
                                 using (SqlFileStream fs = new SqlFileStream(
-                                                                            info.path_locator_str, 
-                                                                            info.filestreamTxn, 
-                                                                            FileAccess.Read, 
-                                                                            FileOptions.WriteThrough, 
-                                                                            (long)info.fileSize))
+                                    info.parent_locator,
+                                    info.filestreamTxn,
+                                    FileAccess.Read,
+                                    FileOptions.WriteThrough,
+                                    (long)info.fileSize))
                                 {
                                     fs.CopyTo(ms);
+                                    ms.WriteTo(info.fileStream);
                                 }
                             }
                         }
                     }
-
-                    return true;
+                    return info;
                 }
+
                 #region catch
+
                 catch (Exception exception)
                 {
-
                     dbTransaction.Rollback();
                     Debug.WriteLine(exception.Message);
                     Debug.WriteLine(exception.Data);
                     Debug.WriteLine(exception.InnerException);
                     Debug.WriteLine(exception.Source);
                     Debug.WriteLine(exception.StackTrace);
-                    return false;
+                    return null;
                 }
+
                 #endregion
+
+                //finally
+                //{
+                //    memoryStream?.Close();
+                //}
+
             }
         }
 
