@@ -490,6 +490,23 @@ namespace PhotographyAutomation.App.Forms.Orders
         #endregion DataGridView
 
 
+        #region Persian English Type
+
+        private void txtCustomerInfo_Enter(object sender, EventArgs e)
+        {
+            var language = new System.Globalization.CultureInfo("fa-IR");
+            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
+        }
+
+        private void txtCustomerInfo_Leave(object sender, EventArgs e)
+        {
+            var language = new System.Globalization.CultureInfo("en-US");
+            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
+        }
+
+        #endregion Persian English Type
+
+
         #endregion Form Control Events
 
         #region Methods
@@ -731,8 +748,6 @@ namespace PhotographyAutomation.App.Forms.Orders
             return true;
         }
 
-
-
         private void PopulateComboBox()
         {
             using (var db = new UnitOfWork())
@@ -759,14 +774,13 @@ namespace PhotographyAutomation.App.Forms.Orders
             }
         }
 
-        private bool DownloadPhotos(string selectedPath, string photoPath, string orderCode)
+        private static bool DownloadPhotos(string selectedPath, string photoPath, string orderCode)
         {
             bool result = false;
             try
             {
                 using (var db = new UnitOfWork())
                 {
-
                     List<Guid> fileStreamIdList = db.PhotoRepository.GetListOfOrderFilesReturnStreamIds(photoPath);
                     int counter = 0;
                     if (fileStreamIdList != null)
@@ -791,11 +805,11 @@ namespace PhotographyAutomation.App.Forms.Orders
                                 {
                                     long length = new FileInfo(fileNameAndPath).Length;
 
+                                    Debug.Assert(file.fileSize != null, "file.fileSize != null");
                                     if (length == file.fileSize.Value)
                                     {
                                         dr = RtlMessageBox.Show(
-                                            $"فایل  " + file.name +
-                                            " قبلا در سیستم ثبت شده است. آیا می خواهید بازنویسی شود؟  " +
+                                            $"فایل  {file.name}  قبلا در سیستم ثبت شده است. آیا می خواهید بازنویسی شود؟  " +
                                             Environment.NewLine +
                                             "در صورت تایید محتوای فایل قبلی از بین می رود." +
                                             Environment.NewLine +
@@ -810,7 +824,8 @@ namespace PhotographyAutomation.App.Forms.Orders
                                         dr = RtlMessageBox.Show(
                                             "فایلی با همین نام ولی با حجم متفاوت در مسیر دریافت عکس ها وجود دارد. " +
                                             Environment.NewLine +
-                                            "آیا می خواهید بازنویسی شود. در صورت بازنویسی محتوای قبلی فایل از بین خواهد رفت." +
+                                            "آیا می خواهید فایل روی سیستم شما بازنویسی شود؟" +
+                                            " در صورت بازنویسی محتوای قبلی فایل از بین خواهد رفت." +
                                             Environment.NewLine +
                                             "در صورت انصراف، کل فرایند دریافت فایل ها متوقف خواهد شد.",
                                             "وجود عکس هم نام با سایز متفاوت در مسیر دریافت عکس ها",
@@ -832,7 +847,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                                         else
                                         {
                                             RtlMessageBox.Show(
-                                                "ذخیره فایل با نام " + file.name +
+                                                $"ذخیره فایل با نام {file.name} " +
                                                 " با مشکل مواجه شد. حجم فایل سرور با فایل ذخیره شده تطابق ندارد.",
                                                 "خطا در ذخیره فایل در سیستم کاربر",
                                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -853,7 +868,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                                         else
                                         {
                                             RtlMessageBox.Show(
-                                                "ذخیره فایل با نام " + file.name +
+                                                $"ذخیره فایل با نام {file.name} " +
                                                 " با مشکل مواجه شد. حجم فایل سرور با فایل ذخیره شده تطابق ندارد.",
                                                 "خطا در ذخیره فایل در سیستم کاربر",
                                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -871,7 +886,6 @@ namespace PhotographyAutomation.App.Forms.Orders
                         if (totalFiles > 0 && counter > 0 && counter == totalFiles)
                             result = true;
                     }
-
                 }
             }
             catch (NotSupportedException notSupportedException)
@@ -889,9 +903,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                 MessageBox.Show(exception.Message);
                 return false;
             }
-
             return result;
-
         }
 
         private static string CreateOrderCodeDirectory(string orderCode, string directoryPathOrders)
