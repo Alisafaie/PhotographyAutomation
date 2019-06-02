@@ -120,6 +120,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                     }
                 }
             }
+            dgvBookingHistory.ClearSelection();
         }
 
         private void GetCustomerBookingHistory(UnitOfWork db)

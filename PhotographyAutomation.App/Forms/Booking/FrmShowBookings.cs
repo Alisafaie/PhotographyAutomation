@@ -39,7 +39,7 @@ namespace PhotographyAutomation.App.Forms.Booking
 
         private void FrmShowBookings_Load(object sender, EventArgs e)
         {
-
+            menuStrip1.Enabled = false;
         }
 
         #endregion
@@ -107,6 +107,11 @@ namespace PhotographyAutomation.App.Forms.Booking
                         ShowBookings(txtCustomerInfo.Text);
                     }
                 }
+            }
+
+            if (dgvBookings.Rows.Count > 0)
+            {
+                menuStrip1.Enabled = true;
             }
         }
 
@@ -609,7 +614,7 @@ namespace PhotographyAutomation.App.Forms.Booking
 
         private void ShowBookings(DateTime dtFrom, DateTime dtTo, int statusCode, string customerInfo)
         {
-            dgvBookings.BackColor = Color.White;
+            //dgvBookings.BackColor = Color.White;
 
             dtFrom = new DateTime(dtFrom.Year, dtFrom.Month, dtFrom.Day, 0, 0, 0);
             dtTo = new DateTime(dtTo.Year, dtTo.Month, dtTo.Day, 23, 59, 59);
@@ -629,7 +634,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                     dgvBookings.Rows.Clear();
                 }
             }
-            dgvBookings.BackColor = Color.White;
+            //dgvBookings.BackColor = Color.White;
             dgvBookings.ClearSelection();
         }
 
