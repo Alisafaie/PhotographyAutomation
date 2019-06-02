@@ -39,7 +39,6 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         #endregion
 
-        #region Form Control Events
 
         #region Button Events
 
@@ -157,7 +156,6 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         #region NumberOnlyTextbox
 
-
         private void txtOrderCodeDate_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (char.IsLetter(e.KeyChar) ||
@@ -274,6 +272,22 @@ namespace PhotographyAutomation.App.Forms.Orders
             }
         }
 
+        #region Persian English Type
+
+        private void txtCustomerInfo_Enter(object sender, EventArgs e)
+        {
+            var language = new System.Globalization.CultureInfo("fa-IR");
+            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
+        }
+
+        private void txtCustomerInfo_Leave(object sender, EventArgs e)
+        {
+            var language = new System.Globalization.CultureInfo("en-US");
+            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
+        }
+
+        #endregion Persian English Type
+
         #endregion TextBox Events
 
 
@@ -302,65 +316,71 @@ namespace PhotographyAutomation.App.Forms.Orders
         #endregion DatePicke Events
 
 
-        #region DataGridView
-
         #region DataGridView Events
         private void dgvUploads_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            var senderGrid = (DataGridViewX)sender;
-
-            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonXColumn &&
-                e.RowIndex >= 0)
+            try
             {
-            RetryGetListOfPhotos:
+                var senderGrid = (DataGridViewX)sender;
 
-                var pathLocator = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
-
-                if (pathLocator != null)
+                if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonXColumn &&
+                    e.RowIndex >= 0)
                 {
-                    List<PhotoViewModel> listOfFiles = GetListOfFilesOfOrder(pathLocator);
-                    if (listOfFiles != null)
-                    {
-                        using (var frmViewUploadedPhotos = new FrmViewUploadedPhotos())
-                        {
-                            frmViewUploadedPhotos.ListOfPhotos = listOfFiles;
-                            frmViewUploadedPhotos.OrderCode =
-                                dgvUploads.SelectedRows[0]?.Cells["clmOrderCode"].Value.ToString();
-                            frmViewUploadedPhotos.CustomerName = dgvUploads.SelectedRows[0].Cells["clmCustomerFullName"]
-                                .Value.ToString();
-                            frmViewUploadedPhotos.PhotographyDate =
-                                dgvUploads.SelectedRows[0].Cells["clmDate"].Value.ToString();
-                            frmViewUploadedPhotos.TotalPhotos =
-                                (int)dgvUploads.SelectedRows[0].Cells["clmTotalFiles"].Value;
-                            frmViewUploadedPhotos.OrderStatus =
-                                dgvUploads.SelectedRows[0].Cells["clmStatusName"].Value.ToString();
+                RetryGetListOfPhotos:
 
-                            frmViewUploadedPhotos.ShowDialog();
-                            GC.Collect();
+                    var pathLocator = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
+
+                    if (pathLocator != null)
+                    {
+                        List<PhotoViewModel> listOfFiles = GetListOfFilesOfOrder(pathLocator);
+                        if (listOfFiles != null)
+                        {
+                            using (var frmViewUploadedPhotos = new FrmViewUploadedPhotos())
+                            {
+                                frmViewUploadedPhotos.ListOfPhotos = listOfFiles;
+                                frmViewUploadedPhotos.OrderCode =
+                                    dgvUploads.SelectedRows[0]?.Cells["clmOrderCode"].Value.ToString();
+                                frmViewUploadedPhotos.CustomerName = dgvUploads.SelectedRows[0]
+                                    .Cells["clmCustomerFullName"]
+                                    .Value.ToString();
+                                frmViewUploadedPhotos.PhotographyDate =
+                                    dgvUploads.SelectedRows[0].Cells["clmDate"].Value.ToString();
+                                frmViewUploadedPhotos.TotalPhotos =
+                                    (int)dgvUploads.SelectedRows[0].Cells["clmTotalFiles"].Value;
+                                frmViewUploadedPhotos.OrderStatus =
+                                    dgvUploads.SelectedRows[0].Cells["clmStatusName"].Value.ToString();
+
+                                frmViewUploadedPhotos.ShowDialog();
+                                GC.Collect();
+                            }
+                        }
+                        else
+                        {
+                            var dialogResult = RtlMessageBox.Show(
+                                "برای این سفارش در سیستم عکسی ثبت نشده است. " + Environment.NewLine +
+                                "لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
+                                "خطا در دریافت لیست عکس های سفارش",
+                                MessageBoxButtons.RetryCancel,
+                                MessageBoxIcon.Error);
+                            if (dialogResult == DialogResult.Retry)
+                            {
+                                goto RetryGetListOfPhotos;
+                            }
                         }
                     }
                     else
                     {
-                        var dialogResult = RtlMessageBox.Show(
-                            "برای این سفارش در سیستم عکسی ثبت نشده است. " + Environment.NewLine +
-                            "لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
-                            "خطا در دریافت لیست عکس های سفارش",
-                            MessageBoxButtons.RetryCancel,
-                            MessageBoxIcon.Error);
-                        if (dialogResult == DialogResult.Retry)
-                        {
-                            goto RetryGetListOfPhotos;
-                        }
+                        RtlMessageBox.Show(
+                            "برای رزرو انتخابی هنوز عکسی در سیستم قرار داده نشده است.",
+                            "عدم آپلود عکس برای رزرو انتخابی",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
                     }
                 }
-                else
-                {
-                    RtlMessageBox.Show(
-                        "برای رزرو انتخابی هنوز عکسی در سیستم قرار داده نشده است.",
-                        "عدم آپلود عکس برای رزرو انتخابی",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
             }
         }
 
@@ -395,7 +415,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         private void مشاهدهعکسهاToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         RetryGetListOfPhotos:
             try
             {
@@ -441,6 +461,12 @@ namespace PhotographyAutomation.App.Forms.Orders
             }
             catch (Exception exception)
             {
+                if (exception.HResult == -2146233086)
+                {
+                    RtlMessageBox.Show("رزروی برای مشاهده عکس انتخاب نشده است.", "",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 MessageBox.Show(exception.Message);
             }
         }
@@ -498,6 +524,12 @@ namespace PhotographyAutomation.App.Forms.Orders
             }
             catch (Exception exception)
             {
+                if (exception.HResult == -2146233086)
+                {
+                    RtlMessageBox.Show("رزروی برای دریافت عکس انتخاب نشده است.", "",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 MessageBox.Show(exception.Message);
             }
         }
@@ -533,6 +565,12 @@ namespace PhotographyAutomation.App.Forms.Orders
             }
             catch (Exception exception)
             {
+                if (exception.HResult == -2146233086)
+                {
+                    RtlMessageBox.Show("مشتری برای مشاهده اطلاعات انتخاب نشده است.", "",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 MessageBox.Show(exception.Message);
             }
         }
@@ -570,172 +608,201 @@ namespace PhotographyAutomation.App.Forms.Orders
             }
             catch (Exception exception)
             {
+                if (exception.HResult == -2146233086)
+                {
+                    RtlMessageBox.Show("رزروی برای مشاهده اطلاعات انتخاب نشده است.", "",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 MessageBox.Show(exception.Message);
             }
         }
 
         #endregion DataGridView Contextmenu
 
-        #endregion DataGridView
-
-
-        #region Persian English Type
-
-        private void txtCustomerInfo_Enter(object sender, EventArgs e)
-        {
-            var language = new System.Globalization.CultureInfo("fa-IR");
-            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
-        }
-
-        private void txtCustomerInfo_Leave(object sender, EventArgs e)
-        {
-            var language = new System.Globalization.CultureInfo("en-US");
-            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
-        }
-
-        #endregion Persian English Type
-
-
-        #endregion Form Control Events
 
         #region Methods
         private void ShowAllOrders()
         {
-            using (var db = new UnitOfWork())
+            try
             {
-                var ordersList = db.OrderRepository.GetAllOrders();
-                if (ordersList.Count > 0)
+                using (var db = new UnitOfWork())
                 {
-                    PopulateDataGridView(ordersList);
+                    var ordersList = db.OrderRepository.GetAllOrders();
+                    if (ordersList.Count > 0)
+                    {
+                        PopulateDataGridView(ordersList);
+                    }
+                    else
+                    {
+                        RtlMessageBox.Show(
+                            "هیچ سفارشی در سیستم ثبت نشده است.",
+                            "",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                        dgvUploads.Rows.Clear();
+                    }
                 }
-                else
-                {
-                    RtlMessageBox.Show(
-                        "هیچ سفارشی در سیستم ثبت نشده است.",
-                        "",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                    dgvUploads.Rows.Clear();
-                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
             }
         }
 
 
         private void ShowOrdersByOrderCode(string orderCode)
         {
-            using (var db = new UnitOfWork())
+            try
             {
-                var ordersList = db.OrderRepository.GetOrdersOfCustomerByOrderCode(orderCode);
+                using (var db = new UnitOfWork())
+                {
+                    var ordersList = db.OrderRepository.GetOrdersOfCustomerByOrderCode(orderCode);
 
-                if (ordersList.Count > 0)
-                {
-                    PopulateDataGridView(ordersList);
+                    if (ordersList.Count > 0)
+                    {
+                        PopulateDataGridView(ordersList);
+                    }
+                    else
+                    {
+                        RtlMessageBox.Show(
+                            "برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.",
+                            "",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                        dgvUploads.Rows.Clear();
+                    }
                 }
-                else
-                {
-                    RtlMessageBox.Show(
-                        "برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.",
-                        "",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                    dgvUploads.Rows.Clear();
-                }
+                dgvUploads.ClearSelection();
             }
-            dgvUploads.ClearSelection();
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
 
 
         private void ShowOrders(string customerInfo)
         {
-            using (var db = new UnitOfWork())
+            try
             {
-                List<CustomerOrderViewModel> ordersList = db.OrderRepository.GetOrdersOfCustomer(customerInfo);
+                using (var db = new UnitOfWork())
+                {
+                    List<CustomerOrderViewModel> ordersList = db.OrderRepository.GetOrdersOfCustomer(customerInfo);
 
-                if (ordersList.Count > 0)
-                {
-                    PopulateDataGridView(ordersList);
+                    if (ordersList.Count > 0)
+                    {
+                        PopulateDataGridView(ordersList);
+                    }
+                    else
+                    {
+                        RtlMessageBox.Show(
+                            "برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.",
+                            "",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                        dgvUploads.Rows.Clear();
+                    }
                 }
-                else
-                {
-                    RtlMessageBox.Show(
-                        "برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.",
-                        "",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                    dgvUploads.Rows.Clear();
-                }
+                dgvUploads.ClearSelection();
             }
-            dgvUploads.ClearSelection();
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         private void ShowOrders(DateTime orderDate)
         {
-            using (var db = new UnitOfWork())
+            try
             {
-                var ordersList = db.OrderRepository.GetOrdersByOrderDate(orderDate);
+                using (var db = new UnitOfWork())
+                {
+                    var ordersList = db.OrderRepository.GetOrdersByOrderDate(orderDate);
 
-                if (ordersList.Count > 0)
-                {
-                    PopulateDataGridView(ordersList);
+                    if (ordersList.Count > 0)
+                    {
+                        PopulateDataGridView(ordersList);
+                    }
+                    else
+                    {
+                        RtlMessageBox.Show(
+                            "برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.",
+                            "",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                        dgvUploads.Rows.Clear();
+                    }
                 }
-                else
-                {
-                    RtlMessageBox.Show(
-                        "برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.",
-                        "",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                    dgvUploads.Rows.Clear();
-                }
+                dgvUploads.ClearSelection();
             }
-            dgvUploads.ClearSelection();
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         private void ShowOrders(int orderStatusId)
         {
-            using (var db = new UnitOfWork())
+            try
             {
-                var ordersList = db.OrderRepository.GetOrdersByStatusCode(orderStatusId);
+                using (var db = new UnitOfWork())
+                {
+                    var ordersList = db.OrderRepository.GetOrdersByStatusCode(orderStatusId);
 
-                if (ordersList.Count > 0)
-                {
-                    PopulateDataGridView(ordersList);
+                    if (ordersList.Count > 0)
+                    {
+                        PopulateDataGridView(ordersList);
+                    }
+                    else
+                    {
+                        RtlMessageBox.Show(
+                            "برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.",
+                            "",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                        dgvUploads.Rows.Clear();
+                    }
                 }
-                else
-                {
-                    RtlMessageBox.Show(
-                        "برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.",
-                        "",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                    dgvUploads.Rows.Clear();
-                }
+
+                dgvUploads.ClearSelection();
             }
-            dgvUploads.ClearSelection();
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         private void ShowOrders(int orderStatusId, DateTime statusDate)
         {
-            using (var db = new UnitOfWork())
+            try
             {
-                var ordersList = db.OrderRepository.GetOrdersByStatusCode(orderStatusId, statusDate);
+                using (var db = new UnitOfWork())
+                {
+                    var ordersList = db.OrderRepository.GetOrdersByStatusCode(orderStatusId, statusDate);
 
-                if (ordersList.Count > 0)
-                {
-                    PopulateDataGridView(ordersList);
+                    if (ordersList.Count > 0)
+                    {
+                        PopulateDataGridView(ordersList);
+                    }
+                    else
+                    {
+                        RtlMessageBox.Show(
+                            "برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.",
+                            "",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                        dgvUploads.Rows.Clear();
+                    }
                 }
-                else
-                {
-                    RtlMessageBox.Show(
-                        "برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.",
-                        "",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                    dgvUploads.Rows.Clear();
-                }
+
+                dgvUploads.ClearSelection();
             }
-            dgvUploads.ClearSelection();
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
 
@@ -743,62 +810,70 @@ namespace PhotographyAutomation.App.Forms.Orders
         private void PopulateDataGridView(IReadOnlyList<CustomerOrderViewModel> ordersList)
         {
             dgvUploads.Rows.Clear();
-            dgvUploads.RowCount = ordersList.Count;
-            dgvUploads.AutoGenerateColumns = false;
 
-            for (var i = 0; i < ordersList.Count; i++)
+            if (ordersList.Count > 0)
             {
-                dgvUploads.Rows[i].Cells["clmId"].Value = ordersList[i].Id;
-                dgvUploads.Rows[i].Cells["clmCustomerId"].Value = ordersList[i].CustomerId;
-                dgvUploads.Rows[i].Cells["clmBookingId"].Value = ordersList[i].BookingId;
+                dgvUploads.RowCount = ordersList.Count;
+                dgvUploads.AutoGenerateColumns = false;
 
-                if (ordersList[i].OrderCode != null)
-                    dgvUploads.Rows[i].Cells["clmOrderCode"].Value = ordersList[i].OrderCode;
-
-                switch (ordersList[i].CustomerGender)
+                for (var i = 0; i < ordersList.Count; i++)
                 {
-                    case 0:
-                        dgvUploads.Rows[i].Cells["clmCustomerFullName"].Value =
-                            "خانم " + ordersList[i].CustomerFullName;
-                        break;
-                    case 1:
-                        dgvUploads.Rows[i].Cells["clmCustomerFullName"].Value =
-                            "آقای " + ordersList[i].CustomerFullName;
-                        break;
-                    case 2:
-                        dgvUploads.Rows[i].Cells["clmCustomerFullName"].Value =
-                            ordersList[i].CustomerFullName;
-                        break;
+                    dgvUploads.Rows[i].Cells["clmId"].Value = ordersList[i].Id;
+                    dgvUploads.Rows[i].Cells["clmCustomerId"].Value = ordersList[i].CustomerId;
+                    dgvUploads.Rows[i].Cells["clmBookingId"].Value = ordersList[i].BookingId;
+
+                    if (ordersList[i].OrderCode != null)
+                        dgvUploads.Rows[i].Cells["clmOrderCode"].Value = ordersList[i].OrderCode;
+
+                    switch (ordersList[i].CustomerGender)
+                    {
+                        case 0:
+                            dgvUploads.Rows[i].Cells["clmCustomerFullName"].Value =
+                                "خانم " + ordersList[i].CustomerFullName;
+                            break;
+                        case 1:
+                            dgvUploads.Rows[i].Cells["clmCustomerFullName"].Value =
+                                "آقای " + ordersList[i].CustomerFullName;
+                            break;
+                        case 2:
+                            dgvUploads.Rows[i].Cells["clmCustomerFullName"].Value =
+                                ordersList[i].CustomerFullName;
+                            break;
+                    }
+
+
+                    dgvUploads.Rows[i].Cells["clmDate"].Value = ordersList[i].OrderDate?.ToShamsiDate();
+                    dgvUploads.Rows[i].Cells["clmTime"].Value = ordersList[i].OrderTime?.Hours.ToString("##") + ":" +
+                                                                ordersList[i].OrderTime?.Minutes.ToString("00");
+                    dgvUploads.Rows[i].Cells["clmPhotographyTypeId"].Value = ordersList[i].PhotographyTypeId;
+                    dgvUploads.Rows[i].Cells["clmPhotographyTypeName"].Value = ordersList[i].PhotographyTypeName;
+                    dgvUploads.Rows[i].Cells["clmPersonCount"].Value = ordersList[i].PersonCount;
+                    //dgvOrders.Rows[i].Cells["clmPaymentIsOK"].Value = ordersList[i].PaymentIsOk;
+                    //dgvOrders.Rows[i].Cells["clmSubmitter"].Value = ordersList[i].Submitter;
+                    //dgvOrders.Rows[i].Cells["clmSubmitterName"].Value = ordersList[i].SubmitterName;
+                    dgvUploads.Rows[i].Cells["clmStatusId"].Value = ordersList[i].OrderStatusId;
+                    dgvUploads.Rows[i].Cells["clmStatusName"].Value = ordersList[i].OrderStatusName;
+                    dgvUploads.Rows[i].Cells["clmCreatedDateTime"].Value = ordersList[i].CreatedDateTime;
+                    dgvUploads.Rows[i].Cells["clmModifiedDateTime"].Value = ordersList[i].ModifiedDateTime;
+                    dgvUploads.Rows[i].Cells["clmTotalFiles"].Value = ordersList[i].TotalFiles;
+                    dgvUploads.Rows[i].Cells["clmOrderStatusCode"].Value = ordersList[i].OrderStatusCode;
+                    dgvUploads.Rows[i].Cells["clmPhotosFolderLink"].Value = ordersList[i].OrderFolderPathLocator;
+                    dgvUploads.Rows[i].Cells["clmUploadDate"].Value = ordersList[i].UploadDate?.ToShamsiDate();
+                    //dgvUploads.Rows[i].Cells["clmViewPhotos"].Value = "مشاهده عکس ها";
+
+
+                    //Alignments
+                    dgvUploads.Rows[i].Cells["clmDate"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    dgvUploads.Rows[i].Cells["clmTime"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    dgvUploads.Rows[i].Cells["clmOrderCode"].Style.Alignment =
+                        DataGridViewContentAlignment.MiddleCenter;
+                    dgvUploads.Rows[i].Cells["clmTotalFiles"].Style.Alignment =
+                        DataGridViewContentAlignment.MiddleCenter;
+                    dgvUploads.Rows[i].Cells["clmPersonCount"].Style.Alignment =
+                        DataGridViewContentAlignment.MiddleCenter;
+                    dgvUploads.Rows[i].Cells["clmUploadDate"].Style.Alignment =
+                        DataGridViewContentAlignment.MiddleCenter;
                 }
-
-
-                dgvUploads.Rows[i].Cells["clmDate"].Value = ordersList[i].OrderDate?.ToShamsiDate();
-                dgvUploads.Rows[i].Cells["clmTime"].Value = ordersList[i].OrderTime?.Hours.ToString("##") + ":" +
-                                                           ordersList[i].OrderTime?.Minutes.ToString("00");
-                dgvUploads.Rows[i].Cells["clmPhotographyTypeId"].Value = ordersList[i].PhotographyTypeId;
-                dgvUploads.Rows[i].Cells["clmPhotographyTypeName"].Value = ordersList[i].PhotographyTypeName;
-                dgvUploads.Rows[i].Cells["clmPersonCount"].Value = ordersList[i].PersonCount;
-                //dgvOrders.Rows[i].Cells["clmPaymentIsOK"].Value = ordersList[i].PaymentIsOk;
-                //dgvOrders.Rows[i].Cells["clmSubmitter"].Value = ordersList[i].Submitter;
-                //dgvOrders.Rows[i].Cells["clmSubmitterName"].Value = ordersList[i].SubmitterName;
-                dgvUploads.Rows[i].Cells["clmStatusId"].Value = ordersList[i].OrderStatusId;
-                dgvUploads.Rows[i].Cells["clmStatusName"].Value = ordersList[i].OrderStatusName;
-                dgvUploads.Rows[i].Cells["clmCreatedDateTime"].Value = ordersList[i].CreatedDateTime;
-                dgvUploads.Rows[i].Cells["clmModifiedDateTime"].Value = ordersList[i].ModifiedDateTime;
-                dgvUploads.Rows[i].Cells["clmTotalFiles"].Value = ordersList[i].TotalFiles;
-                dgvUploads.Rows[i].Cells["clmOrderStatusCode"].Value = ordersList[i].OrderStatusCode;
-                dgvUploads.Rows[i].Cells["clmPhotosFolderLink"].Value = ordersList[i].OrderFolderPathLocator;
-                dgvUploads.Rows[i].Cells["clmUploadDate"].Value = ordersList[i].UploadDate?.ToShamsiDate();
-                //dgvUploads.Rows[i].Cells["clmViewPhotos"].Value = "مشاهده عکس ها";
-
-
-                //Alignments
-                dgvUploads.Rows[i].Cells["clmDate"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvUploads.Rows[i].Cells["clmTime"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvUploads.Rows[i].Cells["clmOrderCode"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvUploads.Rows[i].Cells["clmTotalFiles"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvUploads.Rows[i].Cells["clmPersonCount"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvUploads.Rows[i].Cells["clmUploadDate"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
         }
 
@@ -832,34 +907,47 @@ namespace PhotographyAutomation.App.Forms.Orders
                     return false;
                 }
             }
-
-
             return true;
         }
 
         private void PopulateComboBox()
         {
-            using (var db = new UnitOfWork())
+            try
             {
-                cmbOrderStatus.DataSource = db.OrderStatusGenericRepository.Get(x => x.Code > 10)
-                    .Select(x => new OrderStatusViewModel
-                    {
-                        Id = x.Id,
-                        StatusCode = x.Code,
-                        Name = x.Name
-                    }).ToList();
+                using (var db = new UnitOfWork())
+                {
+                    cmbOrderStatus.DataSource = db.OrderStatusGenericRepository.Get(x => x.Code > 10)
+                        .Select(x => new OrderStatusViewModel
+                        {
+                            Id = x.Id,
+                            StatusCode = x.Code,
+                            Name = x.Name
+                        }).ToList();
 
-                cmbOrderStatus.DisplayMember = "Name";
-                cmbOrderStatus.ValueMember = "Id";
+                    cmbOrderStatus.DisplayMember = "Name";
+                    cmbOrderStatus.ValueMember = "Id";
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(@"exception: " + exception.Message);
             }
         }
 
 
         public List<PhotoViewModel> GetListOfFilesOfOrder(string pathLocator)
         {
-            using (var db = new UnitOfWork())
+            try
             {
-                return db.PhotoRepository.GetListOfFilesInFolder(pathLocator);
+                using (var db = new UnitOfWork())
+                {
+                    return db.PhotoRepository.GetListOfFilesInFolder(pathLocator);
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(@"exception: " + Environment.NewLine + exception.Message);
+                return null;
             }
         }
 
@@ -881,9 +969,25 @@ namespace PhotographyAutomation.App.Forms.Orders
                             var file = db.PhotoRepository.DownloadOrderPhotos(guid);
                             if (file != null)
                             {
+                            RetryCreateFolders:
                                 var directoryPathOrders = CreateOrderDirectory(selectedPath);
 
                                 var directoryPathOrderCode = CreateOrderCodeDirectory(orderCode, directoryPathOrders);
+                                if (directoryPathOrders == null || directoryPathOrderCode == null)
+                                {
+                                    DialogResult drCreateOrderFolders = RtlMessageBox.Show(
+                                        "خطا در ساخت فولدر های مربوط به سفارش." +
+                                        Environment.NewLine +
+                                        " لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.",
+                                        "",
+                                        MessageBoxButtons.RetryCancel,
+                                        MessageBoxIcon.Error,
+                                        MessageBoxDefaultButton.Button1);
+                                    if (drCreateOrderFolders == DialogResult.Retry)
+                                        goto RetryCreateFolders;
+                                    else
+                                        return false;
+                                }
 
                                 string fileNameAndPath = directoryPathOrderCode + file.name;
 
@@ -997,20 +1101,86 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         private static string CreateOrderCodeDirectory(string orderCode, string directoryPathOrders)
         {
-            string directoryPathOrderCode = directoryPathOrders + "\\" + orderCode + "\\";
-            bool folderExistsOrderCode = Directory.Exists(directoryPathOrderCode);
-            if (!folderExistsOrderCode)
-                Directory.CreateDirectory(directoryPathOrderCode);
-            return directoryPathOrderCode;
+            try
+            {
+                string directoryPathOrderCode = directoryPathOrders + "\\" + orderCode + "\\";
+                bool folderExistsOrderCode = Directory.Exists(directoryPathOrderCode);
+                if (!folderExistsOrderCode)
+                    Directory.CreateDirectory(directoryPathOrderCode);
+                return directoryPathOrderCode;
+            }
+            catch (IOException ioException)
+            {
+                MessageBox.Show(@"ioException: " + Environment.NewLine +
+                                ioException.Message);
+                return null;
+            }
+            catch (UnauthorizedAccessException accessException)
+            {
+                MessageBox.Show(@"accessException: " + Environment.NewLine +
+                                accessException.Message);
+                return null;
+            }
+            catch (ArgumentException argumentException)
+            {
+                MessageBox.Show(@"argumentException: " + Environment.NewLine +
+                                argumentException.Message);
+                return null;
+            }
+            catch (NotSupportedException notSupportedException)
+            {
+                MessageBox.Show(@"notSupportedException: " + Environment.NewLine +
+                                notSupportedException.Message);
+                return null;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(@"exception: " + Environment.NewLine +
+                                exception.Message);
+                return null;
+            }
         }
 
         private static string CreateOrderDirectory(string selectedPath)
         {
-            string directoryPathOrders = selectedPath + "\\" + "Orders";
-            bool folderExistsOrders = Directory.Exists(directoryPathOrders);
-            if (!folderExistsOrders)
-                Directory.CreateDirectory(directoryPathOrders);
-            return directoryPathOrders;
+            try
+            {
+                string directoryPathOrders = selectedPath + "\\" + "Orders";
+                bool folderExistsOrders = Directory.Exists(directoryPathOrders);
+                if (!folderExistsOrders)
+                    Directory.CreateDirectory(directoryPathOrders);
+                return directoryPathOrders;
+            }
+            catch (IOException ioException)
+            {
+                MessageBox.Show(@"ioException: " + Environment.NewLine +
+                                ioException.Message);
+                return null;
+            }
+            catch (UnauthorizedAccessException accessException)
+            {
+                MessageBox.Show(@"accessException: " + Environment.NewLine +
+                                accessException.Message);
+                return null;
+            }
+            catch (ArgumentException argumentException)
+            {
+                MessageBox.Show(@"argumentException: " + Environment.NewLine +
+                                argumentException.Message);
+                return null;
+            }
+            catch (NotSupportedException notSupportedException)
+            {
+                MessageBox.Show(@"notSupportedException: " + Environment.NewLine +
+                                notSupportedException.Message);
+                return null;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(@"exception: " + Environment.NewLine +
+                                exception.Message);
+                return null;
+            }
         }
 
         private void OpenFolder(string selectedPath)
@@ -1045,6 +1215,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         #endregion
 
+        #region Top MenuStrip
         private void مشاهدهعکسهاToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             مشاهدهعکسهاToolStripMenuItem_Click(null, null);
@@ -1064,5 +1235,6 @@ namespace PhotographyAutomation.App.Forms.Orders
         {
             مشاهدهاطلاعاترزروToolStripMenuItem_Click(null, null);
         }
+        #endregion Top MenuStrip
     }
 }
