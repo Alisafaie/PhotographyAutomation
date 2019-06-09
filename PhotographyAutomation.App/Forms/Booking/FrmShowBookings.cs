@@ -40,6 +40,9 @@ namespace PhotographyAutomation.App.Forms.Booking
         private void FrmShowBookings_Load(object sender, EventArgs e)
         {
             menuStrip1.Enabled = false;
+
+            btnShowBookings.Enabled = !backgroundWorker.IsBusy;
+            btnClearSearch.Enabled = !backgroundWorker.IsBusy;
         }
 
         #endregion
@@ -525,41 +528,7 @@ namespace PhotographyAutomation.App.Forms.Booking
 
         private void GetBookingStatus()
         {
-            using (var db = new UnitOfWork())
-            {
-                //List<BookingStatusViewModel> bookingsStatuses = db.BookingStatusGenericRepository.Get()
-                //    .Select(x => new BookingStatusViewModel
-                //    {
-                //        Id = x.Id,
-                //        StatusCode = x.Code,
-                //        Name = x.StatusName
-                //    }).ToList();
-                var bookingsStatuses = db.BookingStatusGenericRepository.Get();
-
-
-                if (bookingsStatuses != null)
-                {
-                    cmbBookinsStatus1.DataSource = bookingsStatuses;
-                    cmbBookinsStatus1.DisplayMember = "StatusName";
-                    cmbBookinsStatus1.ValueMember = "Code";
-                }
-                else
-                {
-                    RtlMessageBox.Show(
-                        "اطلاعات وضعیت رزروها از سیستم قابل دریافت نمی باشد." +
-                        " لطفا فرم را بسته و مجددا باز کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید. ",
-                        "خطا در دریافت اطلاعات از سیستم",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
-
-
-                    //    .Select(x => new TblBookingStatus
-                    //    {
-                    //    Id = x.Id,
-                    //    Code = x.Code,
-                    //    StatusName = x.StatusName
-                    //    });
-                }
-            }
+            backgroundWorker.RunWorkerAsync();
         }
 
         private void ShowBookings(string customerInfo)
@@ -740,6 +709,44 @@ namespace PhotographyAutomation.App.Forms.Booking
                 ورودبهآتلیهToolStripMenuItem.Enabled = true;
                 لغورزروToolStripMenuItem.Enabled = true;
                 ویرایشاطلاعاتنوبتToolStripMenuItem.Enabled = true;
+            }
+        }
+
+        private void backgroundWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            try
+            {
+                using (var db = new UnitOfWork())
+                {
+                    var result = db.BookingStatusGenericRepository.Get();
+                    e.Result = result;
+                }
+            }
+
+            catch (Exception exception)
+            {
+                MessageBox.Show(@"exception: " + exception.Message);
+            }
+        }
+
+        private void backgroundWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            if (e.Result != null)
+            {
+                cmbBookinsStatus1.DataSource = e.Result;
+                cmbBookinsStatus1.DisplayMember = "StatusName";
+                cmbBookinsStatus1.ValueMember = "Code";
+
+                btnShowBookings.Enabled = !backgroundWorker.IsBusy;
+                btnClearSearch.Enabled = !backgroundWorker.IsBusy;
+            }
+            else
+            {
+                RtlMessageBox.Show(
+                    "اطلاعات وضعیت رزروها از سیستم قابل دریافت نمی باشد." +
+                    " لطفا فرم را بسته و مجددا باز کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید. ",
+                    "خطا در دریافت اطلاعات از سیستم",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
         }
     }

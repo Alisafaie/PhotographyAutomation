@@ -93,6 +93,7 @@
             this._ویرایش_اطلاعات_رزروToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ورودبهآتلیهToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.لغورزروToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panelEx2.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -423,7 +424,7 @@
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 8.25F);
             dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvBookings.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvBookings.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -771,6 +772,11 @@
             this.لغورزروToolStripMenuItem1.Text = "لغو رزرو";
             this.لغورزروToolStripMenuItem1.Click += new System.EventHandler(this.لغورزروToolStripMenuItem1_Click);
             // 
+            // backgroundWorker
+            // 
+            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
+            this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
+            // 
             // FrmShowBookings
             // 
             this.AcceptButton = this.btnShowBookings;
@@ -866,5 +872,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmStatusName;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmCreatedDateTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmModifiedDateTime;
+        private System.ComponentModel.BackgroundWorker backgroundWorker;
     }
 }

@@ -35,6 +35,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.عکسToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.مشاهدهعکسهاToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.دریافتعکسهاToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.مشتریToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.مشاهدهاطلاعاتمشتریToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.رزروToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.مشاهدهاطلاعاترزروToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rbCustomerInfo = new System.Windows.Forms.RadioButton();
@@ -80,13 +87,7 @@
             this.مشاهدهاطلاعاتمشتریToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.مشاهدهاطلاعاترزروToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.عکسToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.مشتریToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.رزروToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.مشاهدهاطلاعاتمشتریToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.مشاهدهاطلاعاترزروToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.مشاهدهعکسهاToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.دریافتعکسهاToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1.SuspendLayout();
             this.panelEx3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -107,6 +108,59 @@
             this.menuStrip1.Size = new System.Drawing.Size(1147, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // عکسToolStripMenuItem
+            // 
+            this.عکسToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.مشاهدهعکسهاToolStripMenuItem1,
+            this.دریافتعکسهاToolStripMenuItem1});
+            this.عکسToolStripMenuItem.Name = "عکسToolStripMenuItem";
+            this.عکسToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.عکسToolStripMenuItem.Text = "عکس";
+            // 
+            // مشاهدهعکسهاToolStripMenuItem1
+            // 
+            this.مشاهدهعکسهاToolStripMenuItem1.Name = "مشاهدهعکسهاToolStripMenuItem1";
+            this.مشاهدهعکسهاToolStripMenuItem1.Size = new System.Drawing.Size(158, 22);
+            this.مشاهدهعکسهاToolStripMenuItem1.Text = "مشاهده عکس ها";
+            this.مشاهدهعکسهاToolStripMenuItem1.Click += new System.EventHandler(this.مشاهدهعکسهاToolStripMenuItem1_Click);
+            // 
+            // دریافتعکسهاToolStripMenuItem1
+            // 
+            this.دریافتعکسهاToolStripMenuItem1.Name = "دریافتعکسهاToolStripMenuItem1";
+            this.دریافتعکسهاToolStripMenuItem1.Size = new System.Drawing.Size(158, 22);
+            this.دریافتعکسهاToolStripMenuItem1.Text = "دریافت عکس ها";
+            this.دریافتعکسهاToolStripMenuItem1.Click += new System.EventHandler(this.دریافتعکسهاToolStripMenuItem1_Click);
+            // 
+            // مشتریToolStripMenuItem
+            // 
+            this.مشتریToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.مشاهدهاطلاعاتمشتریToolStripMenuItem1});
+            this.مشتریToolStripMenuItem.Name = "مشتریToolStripMenuItem";
+            this.مشتریToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.مشتریToolStripMenuItem.Text = "مشتری";
+            // 
+            // مشاهدهاطلاعاتمشتریToolStripMenuItem1
+            // 
+            this.مشاهدهاطلاعاتمشتریToolStripMenuItem1.Name = "مشاهدهاطلاعاتمشتریToolStripMenuItem1";
+            this.مشاهدهاطلاعاتمشتریToolStripMenuItem1.Size = new System.Drawing.Size(194, 22);
+            this.مشاهدهاطلاعاتمشتریToolStripMenuItem1.Text = "مشاهده اطلاعات مشتری";
+            this.مشاهدهاطلاعاتمشتریToolStripMenuItem1.Click += new System.EventHandler(this.مشاهدهاطلاعاتمشتریToolStripMenuItem1_Click);
+            // 
+            // رزروToolStripMenuItem
+            // 
+            this.رزروToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.مشاهدهاطلاعاترزروToolStripMenuItem1});
+            this.رزروToolStripMenuItem.Name = "رزروToolStripMenuItem";
+            this.رزروToolStripMenuItem.Size = new System.Drawing.Size(36, 20);
+            this.رزروToolStripMenuItem.Text = "رزرو";
+            // 
+            // مشاهدهاطلاعاترزروToolStripMenuItem1
+            // 
+            this.مشاهدهاطلاعاترزروToolStripMenuItem1.Name = "مشاهدهاطلاعاترزروToolStripMenuItem1";
+            this.مشاهدهاطلاعاترزروToolStripMenuItem1.Size = new System.Drawing.Size(174, 22);
+            this.مشاهدهاطلاعاترزروToolStripMenuItem1.Text = "مشاهده اطلاعات رزرو";
+            this.مشاهدهاطلاعاترزروToolStripMenuItem1.Click += new System.EventHandler(this.مشاهدهاطلاعاترزروToolStripMenuItem1_Click);
             // 
             // panelEx3
             // 
@@ -667,58 +721,10 @@
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2010Silver;
             this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255))))), System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199))))));
             // 
-            // عکسToolStripMenuItem
+            // backgroundWorker
             // 
-            this.عکسToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.مشاهدهعکسهاToolStripMenuItem1,
-            this.دریافتعکسهاToolStripMenuItem1});
-            this.عکسToolStripMenuItem.Name = "عکسToolStripMenuItem";
-            this.عکسToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
-            this.عکسToolStripMenuItem.Text = "عکس";
-            // 
-            // مشتریToolStripMenuItem
-            // 
-            this.مشتریToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.مشاهدهاطلاعاتمشتریToolStripMenuItem1});
-            this.مشتریToolStripMenuItem.Name = "مشتریToolStripMenuItem";
-            this.مشتریToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
-            this.مشتریToolStripMenuItem.Text = "مشتری";
-            // 
-            // رزروToolStripMenuItem
-            // 
-            this.رزروToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.مشاهدهاطلاعاترزروToolStripMenuItem1});
-            this.رزروToolStripMenuItem.Name = "رزروToolStripMenuItem";
-            this.رزروToolStripMenuItem.Size = new System.Drawing.Size(36, 20);
-            this.رزروToolStripMenuItem.Text = "رزرو";
-            // 
-            // مشاهدهاطلاعاتمشتریToolStripMenuItem1
-            // 
-            this.مشاهدهاطلاعاتمشتریToolStripMenuItem1.Name = "مشاهدهاطلاعاتمشتریToolStripMenuItem1";
-            this.مشاهدهاطلاعاتمشتریToolStripMenuItem1.Size = new System.Drawing.Size(194, 22);
-            this.مشاهدهاطلاعاتمشتریToolStripMenuItem1.Text = "مشاهده اطلاعات مشتری";
-            this.مشاهدهاطلاعاتمشتریToolStripMenuItem1.Click += new System.EventHandler(this.مشاهدهاطلاعاتمشتریToolStripMenuItem1_Click);
-            // 
-            // مشاهدهاطلاعاترزروToolStripMenuItem1
-            // 
-            this.مشاهدهاطلاعاترزروToolStripMenuItem1.Name = "مشاهدهاطلاعاترزروToolStripMenuItem1";
-            this.مشاهدهاطلاعاترزروToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.مشاهدهاطلاعاترزروToolStripMenuItem1.Text = "مشاهده اطلاعات رزرو";
-            this.مشاهدهاطلاعاترزروToolStripMenuItem1.Click += new System.EventHandler(this.مشاهدهاطلاعاترزروToolStripMenuItem1_Click);
-            // 
-            // مشاهدهعکسهاToolStripMenuItem1
-            // 
-            this.مشاهدهعکسهاToolStripMenuItem1.Name = "مشاهدهعکسهاToolStripMenuItem1";
-            this.مشاهدهعکسهاToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.مشاهدهعکسهاToolStripMenuItem1.Text = "مشاهده عکس ها";
-            this.مشاهدهعکسهاToolStripMenuItem1.Click += new System.EventHandler(this.مشاهدهعکسهاToolStripMenuItem1_Click);
-            // 
-            // دریافتعکسهاToolStripMenuItem1
-            // 
-            this.دریافتعکسهاToolStripMenuItem1.Name = "دریافتعکسهاToolStripMenuItem1";
-            this.دریافتعکسهاToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.دریافتعکسهاToolStripMenuItem1.Text = "دریافت عکس ها";
-            this.دریافتعکسهاToolStripMenuItem1.Click += new System.EventHandler(this.دریافتعکسهاToolStripMenuItem1_Click);
+            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
+            this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
             // 
             // FrmShowUploadedPhotos
             // 
@@ -807,5 +813,6 @@
         private System.Windows.Forms.ToolStripMenuItem مشاهدهاطلاعاتمشتریToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem رزروToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem مشاهدهاطلاعاترزروToolStripMenuItem1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker;
     }
 }

@@ -10,6 +10,7 @@ using PhotographyAutomation.ViewModels.Order;
 using PhotographyAutomation.ViewModels.Photo;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -35,6 +36,8 @@ namespace PhotographyAutomation.App.Forms.Orders
             PopulateComboBox();
 
             menuStrip1.Enabled = false;
+            btnShowOrders.Enabled = !backgroundWorker.IsBusy;
+            btnClearSearch.Enabled = !backgroundWorker.IsBusy;
         }
 
         #endregion
@@ -910,29 +913,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             return true;
         }
 
-        private void PopulateComboBox()
-        {
-            try
-            {
-                using (var db = new UnitOfWork())
-                {
-                    cmbOrderStatus.DataSource = db.OrderStatusGenericRepository.Get(x => x.Code > 10)
-                        .Select(x => new OrderStatusViewModel
-                        {
-                            Id = x.Id,
-                            StatusCode = x.Code,
-                            Name = x.Name
-                        }).ToList();
 
-                    cmbOrderStatus.DisplayMember = "Name";
-                    cmbOrderStatus.ValueMember = "Id";
-                }
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(@"exception: " + exception.Message);
-            }
-        }
 
 
         public List<PhotoViewModel> GetListOfFilesOfOrder(string pathLocator)
@@ -1236,5 +1217,76 @@ namespace PhotographyAutomation.App.Forms.Orders
             مشاهدهاطلاعاترزروToolStripMenuItem_Click(null, null);
         }
         #endregion Top MenuStrip
+
+
+        private void PopulateComboBox()
+        {
+            backgroundWorker.RunWorkerAsync();
+            //try
+            //{
+            //    using (var db = new UnitOfWork())
+            //    {
+
+            //        cmbOrderStatus.DataSource = db.OrderStatusGenericRepository.Get(x => x.Code > 10)
+            //            .Select(x => new OrderStatusViewModel
+            //            {
+            //                Id = x.Id,
+            //                StatusCode = x.Code,
+            //                Name = x.Name
+            //            }).ToList();
+
+            //        cmbOrderStatus.DisplayMember = "Name";
+            //        cmbOrderStatus.ValueMember = "Id";
+            //    }
+            //}
+            //catch (Exception exception)
+            //{
+            //    MessageBox.Show(@"exception: " + exception.Message);
+            //}
+        }
+
+        private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                using (var db = new UnitOfWork())
+                {
+                    var result = db.OrderStatusGenericRepository.Get(x => x.Code > 10)
+                        .Select(x => new OrderStatusViewModel
+                        {
+                            Id = x.Id,
+                            StatusCode = x.Code,
+                            Name = x.Name
+                        }).ToList();
+
+                    e.Result = result;
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(@"exception: " + exception.Message);
+            }
+        }
+
+        private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Result != null)
+            {
+                cmbOrderStatus.DataSource = e.Result;
+                cmbOrderStatus.DisplayMember = "Name";
+                cmbOrderStatus.ValueMember = "Id";
+            }
+            else
+            {
+                RtlMessageBox.Show(
+                    "اطلاعات وضعیت رزروها از سیستم قابل دریافت نمی باشد." +
+                    " لطفا فرم را بسته و مجددا باز کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید. ",
+                    "خطا در دریافت اطلاعات از سیستم",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
+
+            btnShowOrders.Enabled = !backgroundWorker.IsBusy;
+            btnClearSearch.Enabled = !backgroundWorker.IsBusy;
+        }
     }
 }

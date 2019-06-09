@@ -36,6 +36,9 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
             rbCurrentmonth.CheckState = CheckState.Unchecked;
 
             PopulateComboBoxBookingStatus();
+
+            btnShowBookings.Enabled = !backgroundWorker.IsBusy;
+            btnClearSearch.Enabled = !backgroundWorker.IsBusy;
         }
 
 
@@ -214,22 +217,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 
         #region Methods
 
-        private void PopulateComboBoxBookingStatus()
-        {
-            using (var db = new UnitOfWork())
-            {
-                cmbOrderStatus.DataSource = db.OrderStatusGenericRepository.Get()
-                    .Select(x => new OrderStatusViewModel
-                    {
-                        Id = x.Id,
-                        StatusCode = x.Code,
-                        Name = x.Name
-                    }).ToList();
-
-                cmbOrderStatus.DisplayMember = "Name";
-                cmbOrderStatus.ValueMember = "StatusCode";
-            }
-        }
+        
 
         private void ShowOrders(string customerInfo)
         {
@@ -510,6 +498,56 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
             مشاهدهعکسهاToolStripMenuItem.Enabled = orderStatusCode != 10;
             درخواستمجوزحذفعکسToolStripMenuItem.Enabled = orderStatusCode != 10;
             درخواستصدورقبضToolStripMenuItem.Enabled = orderStatusCode != 10;
+        }
+
+        private void PopulateComboBoxBookingStatus()
+        {
+            backgroundWorker.RunWorkerAsync();
+        }
+
+        private void backgroundWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            try
+            {
+                using (var db = new UnitOfWork())
+                {
+                     var result=db.OrderStatusGenericRepository.Get()
+                        .Select(x => new OrderStatusViewModel
+                        {
+                            Id = x.Id,
+                            StatusCode = x.Code,
+                            Name = x.Name
+                        }).ToList();
+
+                     e.Result = result;
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(@"exception: " + exception.Message);
+            }
+        }
+
+        private void backgroundWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            if (e.Result != null)
+            {
+                cmbOrderStatus.DataSource = e.Result;
+
+                cmbOrderStatus.DisplayMember = "Name";
+                cmbOrderStatus.ValueMember = "StatusCode";
+            }
+            else
+            {
+                RtlMessageBox.Show(
+                    "اطلاعات وضعیت رزروها از سیستم قابل دریافت نمی باشد." +
+                    " لطفا فرم را بسته و مجددا باز کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید. ",
+                    "خطا در دریافت اطلاعات از سیستم",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
+
+            btnShowBookings.Enabled = !backgroundWorker.IsBusy;
+            btnClearSearch.Enabled = !backgroundWorker.IsBusy;
         }
     }
 }
