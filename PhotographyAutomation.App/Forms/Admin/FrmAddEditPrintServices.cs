@@ -1,5 +1,4 @@
-﻿using Ookii.Dialogs.WinForms;
-using PhotographyAutomation.DateLayer.Context;
+﻿using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.DateLayer.Models;
 using PhotographyAutomation.Utilities;
 using PhotographyAutomation.ViewModels.Print;
@@ -30,7 +29,6 @@ namespace PhotographyAutomation.App.Forms.Admin
         {
             bgWorkerLoadPrintSizes.RunWorkerAsync();
             cmbPrintSizes.Enabled = !bgWorkerLoadPrintSizes.IsBusy;
-
 
             bgWorkerLoadPrintServices.RunWorkerAsync();
             cmbPrintServiceType.Enabled = !bgWorkerLoadPrintServices.IsBusy;
@@ -72,7 +70,8 @@ namespace PhotographyAutomation.App.Forms.Admin
                         OriginalPrintPrice = 0,
                         SecontPrintPrice = 0,
                         SizeWidth = 0,
-                        SizeHeight = 0
+                        SizeHeight = 0,
+                        SizeDescription = null
                     };
                     result.Add(psItem);
                     e.Result = result;
@@ -93,6 +92,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                 cmbPrintSizes.ValueMember = "Id";
             }
             cmbPrintSizes.Enabled = !bgWorkerLoadPrintSizes.IsBusy;
+
         }
 
 
@@ -137,7 +137,7 @@ namespace PhotographyAutomation.App.Forms.Admin
 
         private void cmbPrintSizes_EnabledChanged(object sender, EventArgs e)
         {
-            if (cmbPrintSizes.Enabled)
+            if (cmbPrintSizes.Enabled && cmbPrintSizes.SelectedValue != null)
             {
                 _selectedPrintSizeId = (int)cmbPrintSizes.SelectedValue;
                 cmbPrintSizes_SelectedIndexChanged(null, null);
@@ -152,12 +152,13 @@ namespace PhotographyAutomation.App.Forms.Admin
 
         private void cmbPrintSizes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbPrintSizes.Enabled && _selectedPrintSizeId > 0)
+            if (cmbPrintSizes.Enabled && cmbPrintSizes.SelectedValue != null)
             {
                 _selectedPrintSizeId = (int)cmbPrintSizes.SelectedValue;
+
+                //برای اینکه جدید انتخاب نشود
                 if (cmbPrintSizes.SelectedIndex != cmbPrintSizes.Items.Count - 1)
                 {
-                    //var item = cmbPrintSizes.SelectedItem as PrintSizePriceViewModel;
                     DisableInputComponents();
                     bgWorkerGetPrintSizePrices.RunWorkerAsync(_selectedPrintSizeId);
                 }
@@ -167,14 +168,19 @@ namespace PhotographyAutomation.App.Forms.Admin
                     integerInputOriginalPrintPrice.ResetText();
                     integerInputSecondPrintPrice.ResetText();
                     checkBoxEnablePrintSizeItems.Checked = true;
-                    integerInputWidth.Focus();
+                    doubleInputWidth.Focus();
                 }
             }
         }
 
         private void cmbPrintServiceType_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (cmbPrintServiceType.Enabled && cmbPrintServiceType.SelectedValue != null)
+            {
+                _selectedPrintServiceId = (int)cmbPrintServiceType.SelectedValue;
+                //txtPrintServiceCode.Focus();
+                bgWorkerGetPrintServicePrice.RunWorkerAsync();
+            }
         }
 
         private void bgWorkerGetPrintSizePrices_DoWork(object sender, DoWorkEventArgs e)
@@ -212,55 +218,131 @@ namespace PhotographyAutomation.App.Forms.Admin
                 {
                     integerInputOriginalPrintPrice.Value = result[0].OriginalPrintPrice;
                     integerInputSecondPrintPrice.Value = result[0].SecontPrintPrice;
+                    doubleInputWidth.Value = (double)result[0].SizeWidth;
+                    doubleInputHeight.Value = (double)result[0].SizeHeight;
                 }
             }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string sizeDesc = null;
-            if (cmbPrintSizes.SelectedItem is PrintSizePriceViewModel item && item.SizeName == "جدید")
+            if (CheckInputs())
             {
-                var dr = RtlMessageBox.Show(
-                    "آیا برای این سایز چاپ توضیح خاصی مد نظر دارید؟",
-                    "اضافه کردن توضیح برای سایز چاپ جدید",
-                    MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question,
-                    MessageBoxDefaultButton.Button1);
-
-                if (dr == DialogResult.Yes)
-                {
-                    var frmInput = new FrmAddEditInput
-                    {
-                        lblFormQuestion = { Text = @"لطفا توضیحات مورد نظر خود را وارد نمایید." },
-                        Text = @"ثبت توضیحات برای سایز چاپ"
-                    };
-
-                    if (frmInput.ShowDialog() == DialogResult.OK)
-                    {
-                        sizeDesc = frmInput.txtContent.Text;
-                    }
-                }
-
                 using (var db = new UnitOfWork())
                 {
-                    TblPrintSizePrices itemSizePrice = new TblPrintSizePrices
+                    string sizeDesc = null;
+                    var dr = RtlMessageBox.Show(
+                        "آیا برای این سایز چاپ توضیح خاصی مد نظر دارید؟",
+                        "اضافه کردن توضیح برای سایز چاپ جدید",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                        MessageBoxDefaultButton.Button2);
+
+                    if (dr == DialogResult.Yes)
                     {
-                        SizeName = integerInputWidth.Text + " x " + integerInputHeight.Text,
-                        OriginalPrintPrice = integerInputOriginalPrintPrice.Value,
-                        SecondPrintPrice = integerInputSecondPrintPrice.Value,
-                        SizeWidth = integerInputWidth.Value,
-                        SizeHeight = integerInputHeight.Value,
-                        SizeDescription = sizeDesc
-                    };
-                    db.PrintSizePricesGenericRepository.Insert(itemSizePrice);
-                    var result = db.Save();
-                    if (result > 0)
+                        var frmInput = new FrmAddEditInput
+                        {
+                            lblFormQuestion =
+                            {
+                                Text = @"لطفا توضیحات مورد نظر خود را وارد نمایید."
+                            },
+                            Text = @"ثبت توضیحات برای سایز چاپ"
+                        };
+
+                        if (frmInput.ShowDialog() == DialogResult.OK)
+                        {
+                            sizeDesc = frmInput.txtContent.Text;
+                        }
+                    }
+
+                    if (cmbPrintSizes.SelectedItem is PrintSizePriceViewModel itemNewSize &&
+                        itemNewSize.SizeName == "جدید")
                     {
-                        bgWorkerGetPrintSizePrices.RunWorkerAsync();
-                        cmbPrintSizes.Enabled = !bgWorkerGetPrintSizePrices.IsBusy;
+
+                        var itemSizePrice = new TblPrintSizePrices
+                        {
+                            SizeName = doubleInputWidth.Text + " x " + doubleInputHeight.Text,
+                            OriginalPrintPrice = integerInputOriginalPrintPrice.Value,
+                            SecondPrintPrice = integerInputSecondPrintPrice.Value,
+                            SizeWidth = (decimal)doubleInputWidth.Value,
+                            SizeHeight = (decimal)doubleInputHeight.Value,
+                            SizeDescription = sizeDesc
+                        };
+
+                        db.PrintSizePricesGenericRepository.Insert(itemSizePrice);
+                        var resultNewPrintSize = db.Save();
+                        _selectedPrintSizeId = itemSizePrice.Id;
+
+                        if (rbHasPrintService.Checked)
+                        {
+                            var itemServiceTypePrice = new TblPrintServices_TblPrintSizePrice
+                            {
+                                Code = txtPrintServiceCode.Text,
+                                Price = integerInputPrintServicePrice.Value,
+                                PrintSizePriceId = _selectedPrintSizeId,
+                                PrintServiceId = _selectedPrintServiceId
+                            };
+                            db.PrintServices_PrintSizePriceGenericRepository.Insert(itemServiceTypePrice);
+                        }
+
+                        var resultPrintService = db.Save();
+
+                        if (resultNewPrintSize > 0 && resultPrintService > 0)
+                        {
+                            bgWorkerGetPrintSizePrices.RunWorkerAsync();
+                            cmbPrintSizes.Enabled = !bgWorkerGetPrintSizePrices.IsBusy;
+                        }
+
+                    }
+                    else if (cmbPrintSizes.SelectedItem is PrintSizePriceViewModel)
+                    {
+                        if (checkBoxEnablePrintSizeItems.Checked)
+                        {
+                            var itemSizePrice = new TblPrintSizePrices
+                            {
+                                Id = (int)cmbPrintSizes.SelectedValue,
+                                SizeName = doubleInputWidth.Text + " x " + doubleInputHeight.Text,
+                                OriginalPrintPrice = integerInputOriginalPrintPrice.Value,
+                                SecondPrintPrice = integerInputSecondPrintPrice.Value,
+                                SizeWidth = (decimal)doubleInputWidth.Value,
+                                SizeHeight = (decimal)doubleInputHeight.Value,
+                                SizeDescription = sizeDesc
+                            };
+                            db.PrintSizePricesGenericRepository.Update(itemSizePrice);
+                        }
+
+                        var itemServiceTypePrice = new TblPrintServices_TblPrintSizePrice
+                        {
+                            Code = txtPrintServiceCode.Text,
+                            Price = integerInputPrintServicePrice.Value,
+                            PrintSizePriceId = _selectedPrintSizeId,
+                            PrintServiceId = _selectedPrintServiceId
+                        };
+                        
+                        var itemPrintSizePrintService = db.PrintServices_PrintSizePriceGenericRepository.Get(x =>
+                            x.PrintServiceId == _selectedPrintServiceId &&
+                            x.PrintSizePriceId == _selectedPrintSizeId).SingleOrDefault();
+                        if (itemPrintSizePrintService == null)
+                        {
+                            db.PrintServices_PrintSizePriceGenericRepository.Insert(itemServiceTypePrice);
+                        }
+                        else
+                        {
+                            itemPrintSizePrintService.PrintServiceId = _selectedPrintServiceId;
+                            itemPrintSizePrintService.PrintSizePriceId = _selectedPrintSizeId;
+                            itemPrintSizePrintService.Code = txtPrintServiceCode.Text;
+                            itemPrintSizePrintService.Price = integerInputPrintServicePrice.Value;
+                            db.PrintServices_PrintSizePriceGenericRepository.Update(itemPrintSizePrintService);
+                        }
+
+                        db.Save();
                     }
                 }
             }
+        }
+
+        private bool CheckInputs()
+        {
+            return true;
         }
 
 
@@ -278,10 +360,10 @@ namespace PhotographyAutomation.App.Forms.Admin
 
         private void DisableInputComponents()
         {
-            integerInputHeight.Enabled = false;
-            integerInputWidth.Enabled = false;
-            integerInputHeight.IsInputReadOnly = true;
-            integerInputWidth.IsInputReadOnly = true;
+            doubleInputHeight.Enabled = false;
+            doubleInputWidth.Enabled = false;
+            doubleInputHeight.IsInputReadOnly = true;
+            doubleInputWidth.IsInputReadOnly = true;
 
             integerInputOriginalPrintPrice.IsInputReadOnly = true;
             integerInputSecondPrintPrice.IsInputReadOnly = true;
@@ -291,10 +373,10 @@ namespace PhotographyAutomation.App.Forms.Admin
 
         private void EnableInputComponents()
         {
-            integerInputHeight.Enabled = true;
-            integerInputWidth.Enabled = true;
-            integerInputHeight.IsInputReadOnly = false;
-            integerInputWidth.IsInputReadOnly = false;
+            doubleInputHeight.Enabled = true;
+            doubleInputWidth.Enabled = true;
+            doubleInputHeight.IsInputReadOnly = false;
+            doubleInputWidth.IsInputReadOnly = false;
 
             integerInputOriginalPrintPrice.IsInputReadOnly = false;
             integerInputSecondPrintPrice.IsInputReadOnly = false;
@@ -304,11 +386,12 @@ namespace PhotographyAutomation.App.Forms.Admin
 
         private void rbHasPrintService_CheckedChanged(object sender, EventArgs e)
         {
-            if (rbHasNotPrintService.Checked)
+            if (rbHasPrintService.Checked)
             {
                 txtPrintServiceCode.Enabled = true;
                 cmbPrintServiceType.Enabled = true;
                 integerInputPrintServicePrice.Enabled = true;
+                cmbPrintServiceType.DroppedDown = true;
             }
         }
 
@@ -319,6 +402,64 @@ namespace PhotographyAutomation.App.Forms.Admin
                 txtPrintServiceCode.Enabled = false;
                 cmbPrintServiceType.Enabled = false;
                 integerInputPrintServicePrice.Enabled = false;
+            }
+        }
+
+        private void circularProgress1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bgWorkerGetPrintServicePrice_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                using (var db = new UnitOfWork())
+                {
+                    var result = db.PrintServices_PrintSizePriceGenericRepository.Get(
+                            x =>
+                                x.PrintServiceId == _selectedPrintServiceId
+                                &&
+                                x.PrintSizePriceId == _selectedPrintSizeId)
+
+                        .Select(x => new PrintServiceType_PrintSizePriceViewModel
+                        {
+                            Id = x.Id,
+                            Code = x.Code,
+                            PrintServiceName = x.TblPrintServices.PrintServiceName,
+                            Description = x.Description,
+                            PrintSizePriceId = x.PrintSizePriceId,
+                            PrintServiceId = x.PrintServiceId,
+                            Price = x.Price,
+                            PrintSizeName = x.TblPrintSizePrices.SizeName
+                        }).ToList();
+
+                    e.Result = result;
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(@"exception: " + exception.Message);
+            }
+        }
+
+        private void bgWorkerGetPrintServicePrice_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Result != null)
+            {
+                if (e.Result is List<PrintServiceType_PrintSizePriceViewModel> result)
+                {
+                    if (result.Any())
+                    {
+                        txtPrintServiceCode.Text = result[0].Code;
+                        integerInputPrintServicePrice.Value = result[0].Price;
+                    }
+                    else
+                    {
+                        txtPrintServiceCode.ResetText();
+                        integerInputPrintServicePrice.ResetText();
+                    }
+                }
             }
         }
     }
