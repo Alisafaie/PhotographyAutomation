@@ -115,6 +115,15 @@
     <Compile Include="Models\TblPhotographyType.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TblPrintServices.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TblPrintServices_TblPrintSizePrice.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TblPrintSizePrices.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\TblRoleType.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>

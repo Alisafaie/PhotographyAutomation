@@ -86,8 +86,11 @@
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.مشاهدهاطلاعاتمشتریToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.مشاهدهاطلاعاترزروToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.ارسالعکسهایانتخابشدهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.ثبتپیشفاکتورToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panelEx3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -678,43 +681,58 @@
             this.دریافتعکسهاToolStripMenuItem,
             this.toolStripSeparator6,
             this.مشاهدهاطلاعاتمشتریToolStripMenuItem,
-            this.مشاهدهاطلاعاترزروToolStripMenuItem});
+            this.مشاهدهاطلاعاترزروToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.ارسالعکسهایانتخابشدهToolStripMenuItem,
+            this.ثبتپیشفاکتورToolStripMenuItem});
             this.contextMenuDgvUploads.Name = "contextMenuStrip1";
             this.contextMenuDgvUploads.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuDgvUploads.Size = new System.Drawing.Size(195, 98);
+            this.contextMenuDgvUploads.Size = new System.Drawing.Size(214, 170);
             // 
             // مشاهدهعکسهاToolStripMenuItem
             // 
             this.مشاهدهعکسهاToolStripMenuItem.Name = "مشاهدهعکسهاToolStripMenuItem";
-            this.مشاهدهعکسهاToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.مشاهدهعکسهاToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.مشاهدهعکسهاToolStripMenuItem.Text = "مشاهده عکس ها";
             this.مشاهدهعکسهاToolStripMenuItem.Click += new System.EventHandler(this.مشاهدهعکسهاToolStripMenuItem_Click);
             // 
             // دریافتعکسهاToolStripMenuItem
             // 
             this.دریافتعکسهاToolStripMenuItem.Name = "دریافتعکسهاToolStripMenuItem";
-            this.دریافتعکسهاToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.دریافتعکسهاToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.دریافتعکسهاToolStripMenuItem.Text = "دریافت عکس ها";
             this.دریافتعکسهاToolStripMenuItem.Click += new System.EventHandler(this.دریافتعکسهاToolStripMenuItem_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(191, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(210, 6);
             // 
             // مشاهدهاطلاعاتمشتریToolStripMenuItem
             // 
             this.مشاهدهاطلاعاتمشتریToolStripMenuItem.Name = "مشاهدهاطلاعاتمشتریToolStripMenuItem";
-            this.مشاهدهاطلاعاتمشتریToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.مشاهدهاطلاعاتمشتریToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.مشاهدهاطلاعاتمشتریToolStripMenuItem.Text = "مشاهده اطلاعات مشتری";
             this.مشاهدهاطلاعاتمشتریToolStripMenuItem.Click += new System.EventHandler(this.مشاهدهاطلاعاتمشتریToolStripMenuItem_Click);
             // 
             // مشاهدهاطلاعاترزروToolStripMenuItem
             // 
             this.مشاهدهاطلاعاترزروToolStripMenuItem.Name = "مشاهدهاطلاعاترزروToolStripMenuItem";
-            this.مشاهدهاطلاعاترزروToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.مشاهدهاطلاعاترزروToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.مشاهدهاطلاعاترزروToolStripMenuItem.Text = "مشاهده اطلاعات رزرو";
             this.مشاهدهاطلاعاترزروToolStripMenuItem.Click += new System.EventHandler(this.مشاهدهاطلاعاترزروToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(210, 6);
+            // 
+            // ارسالعکسهایانتخابشدهToolStripMenuItem
+            // 
+            this.ارسالعکسهایانتخابشدهToolStripMenuItem.Name = "ارسالعکسهایانتخابشدهToolStripMenuItem";
+            this.ارسالعکسهایانتخابشدهToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.ارسالعکسهایانتخابشدهToolStripMenuItem.Text = "ارسال عکس های انتخاب شده";
+            this.ارسالعکسهایانتخابشدهToolStripMenuItem.Click += new System.EventHandler(this.ارسالعکسهایانتخابشدهToolStripMenuItem_Click);
             // 
             // styleManager1
             // 
@@ -725,6 +743,12 @@
             // 
             this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
             this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
+            // 
+            // ثبتپیشفاکتورToolStripMenuItem
+            // 
+            this.ثبتپیشفاکتورToolStripMenuItem.Name = "ثبتپیشفاکتورToolStripMenuItem";
+            this.ثبتپیشفاکتورToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.ثبتپیشفاکتورToolStripMenuItem.Text = "ثبت پیش فاکتور";
             // 
             // FrmShowUploadedPhotos
             // 
@@ -814,5 +838,8 @@
         private System.Windows.Forms.ToolStripMenuItem رزروToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem مشاهدهاطلاعاترزروToolStripMenuItem1;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem ارسالعکسهایانتخابشدهToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ثبتپیشفاکتورToolStripMenuItem;
     }
 }

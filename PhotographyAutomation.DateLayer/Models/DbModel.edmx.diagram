@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e7e41739ebbd420381004722f0754320" Name="Diagram1" ZoomLevel="101">
+      <Diagram DiagramId="e7e41739ebbd420381004722f0754320" Name="Diagram1" ZoomLevel="100">
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblAllOrderStatus" Width="1.5" PointX="9.75" PointY="9" />
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblAtelierType" Width="1.5" PointX="3" PointY="0.875" />
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblBooking" Width="1.5" PointX="5.25" PointY="8.125" />
@@ -27,7 +27,7 @@
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblBooking_TblPhotographyType" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblBooking_TblUser" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderPrint_TblCustomer" ManuallyRouted="true" >
-          <ConnectorPoint PointX="4.5" PointY="10.55957602959216" />
+          <ConnectorPoint PointX="4.5" PointY="10.459408778997215" />
           <ConnectorPoint PointX="7.4700000000000006" PointY="7.375" />
           <ConnectorPoint PointX="7.9166669166666663" PointY="7.3749999999999991" />
           <ConnectorPoint PointX="8.0833335833333333" PointY="7.375" />
@@ -58,6 +58,11 @@
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrder_TblOrderStatus" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrder_TblPhotographyType" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderStreams_TblOrder" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPrintServices" Width="1.5" PointX="15.375" PointY="1.25" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPrintServices_TblPrintSizePrice" Width="1.5" PointX="17.625" PointY="1" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblPrintServicePrice_TblPrintServices" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPrintSizePrices" Width="1.5" PointX="15.375" PointY="5" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblPrintServicePrice_TblPrintSizePrices" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

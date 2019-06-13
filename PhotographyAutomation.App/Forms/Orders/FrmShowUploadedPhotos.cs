@@ -2,6 +2,7 @@
 using Ookii.Dialogs.WinForms;
 using PhotographyAutomation.App.Forms.Booking;
 using PhotographyAutomation.App.Forms.Customers;
+using PhotographyAutomation.App.Forms.EntranceToAtelier;
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.Utilities;
 using PhotographyAutomation.Utilities.Convertor;
@@ -338,7 +339,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                         List<PhotoViewModel> listOfFiles = GetListOfFilesOfOrder(pathLocator);
                         if (listOfFiles != null)
                         {
-                            using (var frmViewUploadedPhotos = new FrmViewUploadedPhotos())
+                            using (var frmViewUploadedPhotos = new FrmViewEditUploadedPhotos())
                             {
                                 frmViewUploadedPhotos.ListOfPhotos = listOfFiles;
                                 frmViewUploadedPhotos.OrderCode =
@@ -354,8 +355,9 @@ namespace PhotographyAutomation.App.Forms.Orders
                                     dgvUploads.SelectedRows[0].Cells["clmStatusName"].Value.ToString();
 
                                 frmViewUploadedPhotos.ShowDialog();
-                                GC.Collect();
+
                             }
+                            GC.Collect();
                         }
                         else
                         {
@@ -435,7 +437,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                     List<PhotoViewModel> listOfFiles = GetListOfFilesOfOrder(pathLocator);
                     if (listOfFiles != null)
                     {
-                        using (var frmViewUploaded = new FrmViewUploadedPhotos())
+                        using (var frmViewUploaded = new FrmViewEditUploadedPhotos())
                         {
                             frmViewUploaded.ListOfPhotos = listOfFiles;
                             frmViewUploaded.OrderCode = dgvUploads.SelectedRows[0]?.Cells["clmOrderCode"].Value.ToString();
@@ -1222,27 +1224,6 @@ namespace PhotographyAutomation.App.Forms.Orders
         private void PopulateComboBox()
         {
             backgroundWorker.RunWorkerAsync();
-            //try
-            //{
-            //    using (var db = new UnitOfWork())
-            //    {
-
-            //        cmbOrderStatus.DataSource = db.OrderStatusGenericRepository.Get(x => x.Code > 10)
-            //            .Select(x => new OrderStatusViewModel
-            //            {
-            //                Id = x.Id,
-            //                StatusCode = x.Code,
-            //                Name = x.Name
-            //            }).ToList();
-
-            //        cmbOrderStatus.DisplayMember = "Name";
-            //        cmbOrderStatus.ValueMember = "Id";
-            //    }
-            //}
-            //catch (Exception exception)
-            //{
-            //    MessageBox.Show(@"exception: " + exception.Message);
-            //}
         }
 
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -1287,6 +1268,14 @@ namespace PhotographyAutomation.App.Forms.Orders
 
             btnShowOrders.Enabled = !backgroundWorker.IsBusy;
             btnClearSearch.Enabled = !backgroundWorker.IsBusy;
+        }
+
+        private void ارسالعکسهایانتخابشدهToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var frmUploadSelectedPhotos = new FrmUploadSelectedPhotos())
+            {
+                frmUploadSelectedPhotos.ShowDialog();
+            }
         }
     }
 }

@@ -47,6 +47,8 @@
     <Compile Include="Order\CustomerOrderViewModel.cs" />
     <Compile Include="Order\OrderStatusViewModel.cs" />
     <Compile Include="Photo\PhotoViewModel.cs" />
+    <Compile Include="Print\PrintServicesViewModel.cs" />
+    <Compile Include="Print\PrintSizePriceViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User\BookingHistoryAddEditBookingViewModel.cs" />
     <Compile Include="User\UserInfoBookingViewModel.cs" />

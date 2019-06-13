@@ -5,6 +5,8 @@ using PhotographyAutomation.App.Forms.EntranceToAtelier;
 using PhotographyAutomation.App.Forms.Orders;
 using System;
 using System.Windows.Forms;
+using PhotographyAutomation.App.Forms.Admin;
+using PhotographyAutomation.App.Forms.Factors;
 
 namespace PhotographyAutomation.App.Forms
 {
@@ -71,6 +73,22 @@ namespace PhotographyAutomation.App.Forms
             using (var frmShowUploadedPhotos = new FrmShowUploadedPhotos())
             {
                 frmShowUploadedPhotos.ShowDialog();
+            }
+        }
+
+        private void btnShowFrmPreFactor_Click(object sender, EventArgs e)
+        {
+            using (FrmAddEditPreFactor frmPreFactors = new FrmAddEditPreFactor())
+            {
+                frmPreFactors.ShowDialog();
+            }
+        }
+
+        private void btnShowFrmAddEditPrintServices_Click(object sender, EventArgs e)
+        {
+            using (FrmAddEditPrintServices frmPrintServices=new FrmAddEditPrintServices())
+            {
+                frmPrintServices.ShowDialog();
             }
         }
     }

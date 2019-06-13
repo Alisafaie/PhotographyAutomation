@@ -49,6 +49,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar.SuperGrid, Version=14.1.0.0, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
     <Reference Include="DevComponents.DotNetBar2, Version=14.1.0.0, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
     <Reference Include="DevComponents.Instrumentation, Version=14.1.0.0, Culture=neutral, PublicKeyToken=f90dc37c26666a67, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -90,6 +91,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Admin\FrmAddEditInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\FrmAddEditInput.Designer.cs">
+      <DependentUpon>FrmAddEditInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Admin\FrmAddEditPrintServices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\FrmAddEditPrintServices.Designer.cs">
+      <DependentUpon>FrmAddEditPrintServices.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Booking\FrmAddEditBooking.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,11 +127,23 @@
     <Compile Include="Forms\Booking\FrmShowBookings.Designer.cs">
       <DependentUpon>FrmShowBookings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Orders\FrmViewUploadedPhotos.cs">
+    <Compile Include="Forms\Factors\FrmAddEditPreFactor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Orders\FrmViewUploadedPhotos.Designer.cs">
-      <DependentUpon>FrmViewUploadedPhotos.cs</DependentUpon>
+    <Compile Include="Forms\Factors\FrmAddEditPreFactor.Designer.cs">
+      <DependentUpon>FrmAddEditPreFactor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Orders\FrmUploadSelectedPhotos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Orders\FrmUploadSelectedPhotos.Designer.cs">
+      <DependentUpon>FrmUploadSelectedPhotos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Orders\FrmViewEditUploadedPhotos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Orders\FrmViewEditUploadedPhotos.Designer.cs">
+      <DependentUpon>FrmViewEditUploadedPhotos.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Photos\FrmPhotoViewer.cs">
       <SubType>Form</SubType>
@@ -158,6 +183,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Admin\FrmAddEditInput.resx">
+      <DependentUpon>FrmAddEditInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Admin\FrmAddEditPrintServices.resx">
+      <DependentUpon>FrmAddEditPrintServices.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Booking\FrmAddEditBooking.resx">
       <DependentUpon>FrmAddEditBooking.cs</DependentUpon>
     </EmbeddedResource>
@@ -170,8 +201,14 @@
     <EmbeddedResource Include="Forms\Booking\FrmShowBookings.resx">
       <DependentUpon>FrmShowBookings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Orders\FrmViewUploadedPhotos.resx">
-      <DependentUpon>FrmViewUploadedPhotos.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Factors\FrmAddEditPreFactor.resx">
+      <DependentUpon>FrmAddEditPreFactor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Orders\FrmUploadSelectedPhotos.resx">
+      <DependentUpon>FrmUploadSelectedPhotos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Orders\FrmViewEditUploadedPhotos.resx">
+      <DependentUpon>FrmViewEditUploadedPhotos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Photos\FrmPhotoViewer.resx">
       <DependentUpon>FrmPhotoViewer.cs</DependentUpon>
@@ -1487,5 +1524,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
