@@ -63,7 +63,7 @@
             this.clmModifiedDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenu_dgvBookingHistory = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ویرایشنوبتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBoxBookingInfo = new System.Windows.Forms.GroupBox();
             this.txtPersonCount = new DevComponents.Editors.IntegerInput();
             this.cmbPhotographyTypes = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.cmbAtelierTypes = new DevComponents.DotNetBar.Controls.ComboBoxEx();
@@ -98,7 +98,7 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookingHistory)).BeginInit();
             this.contextMenu_dgvBookingHistory.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.groupBoxBookingInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPersonCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -161,7 +161,7 @@
             this.panelEx2.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.panelEx2.Controls.Add(this.groupBox3);
-            this.panelEx2.Controls.Add(this.groupBox2);
+            this.panelEx2.Controls.Add(this.groupBoxBookingInfo);
             this.panelEx2.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx2.Location = new System.Drawing.Point(0, 0);
@@ -186,7 +186,7 @@
             this.groupBox3.Size = new System.Drawing.Size(996, 230);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "تاریخچه نوبت های مشتری";
+            this.groupBox3.Text = "تاریخچه نوبت های قبلی مشتری";
             // 
             // dgvBookingHistory
             // 
@@ -233,7 +233,7 @@
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvBookingHistory.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvBookingHistory.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -364,12 +364,12 @@
             // 
             // clmPaymentIsOK
             // 
-            this.clmPaymentIsOK.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.clmPaymentIsOK.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.clmPaymentIsOK.DataPropertyName = "PaymentIsOK";
             this.clmPaymentIsOK.HeaderText = "وضعیت پرداخت";
             this.clmPaymentIsOK.Name = "clmPaymentIsOK";
             this.clmPaymentIsOK.ReadOnly = true;
-            this.clmPaymentIsOK.Width = 102;
+            this.clmPaymentIsOK.Width = 120;
             // 
             // clmSubmitter
             // 
@@ -448,39 +448,39 @@
             this.ویرایشنوبتToolStripMenuItem.Text = "ویرایش نوبت";
             this.ویرایشنوبتToolStripMenuItem.Click += new System.EventHandler(this.ویرایشنوبتToolStripMenuItem_Click);
             // 
-            // groupBox2
+            // groupBoxBookingInfo
             // 
-            this.groupBox2.Controls.Add(this.txtPersonCount);
-            this.groupBox2.Controls.Add(this.cmbPhotographyTypes);
-            this.groupBox2.Controls.Add(this.cmbAtelierTypes);
-            this.groupBox2.Controls.Add(this.cmbPhotographerGender);
-            this.groupBox2.Controls.Add(this.datePickerBookingDate);
-            this.groupBox2.Controls.Add(this.btnShowFrmSelectBookingTime);
-            this.groupBox2.Controls.Add(this.txtBookingTime);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.txtBookingStatus);
-            this.groupBox2.Controls.Add(this.txtFirstNameLastName);
-            this.groupBox2.Controls.Add(this.txtMobile);
-            this.groupBox2.Controls.Add(this.txtTell);
-            this.groupBox2.Controls.Add(this.line2);
-            this.groupBox2.Controls.Add(this.line1);
-            this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.groupBox2.Location = new System.Drawing.Point(12, 3);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(996, 217);
-            this.groupBox2.TabIndex = 0;
-            this.groupBox2.TabStop = false;
+            this.groupBoxBookingInfo.Controls.Add(this.txtPersonCount);
+            this.groupBoxBookingInfo.Controls.Add(this.cmbPhotographyTypes);
+            this.groupBoxBookingInfo.Controls.Add(this.cmbAtelierTypes);
+            this.groupBoxBookingInfo.Controls.Add(this.cmbPhotographerGender);
+            this.groupBoxBookingInfo.Controls.Add(this.datePickerBookingDate);
+            this.groupBoxBookingInfo.Controls.Add(this.btnShowFrmSelectBookingTime);
+            this.groupBoxBookingInfo.Controls.Add(this.txtBookingTime);
+            this.groupBoxBookingInfo.Controls.Add(this.label10);
+            this.groupBoxBookingInfo.Controls.Add(this.label9);
+            this.groupBoxBookingInfo.Controls.Add(this.label8);
+            this.groupBoxBookingInfo.Controls.Add(this.label7);
+            this.groupBoxBookingInfo.Controls.Add(this.label6);
+            this.groupBoxBookingInfo.Controls.Add(this.label5);
+            this.groupBoxBookingInfo.Controls.Add(this.label4);
+            this.groupBoxBookingInfo.Controls.Add(this.txtBookingStatus);
+            this.groupBoxBookingInfo.Controls.Add(this.txtFirstNameLastName);
+            this.groupBoxBookingInfo.Controls.Add(this.txtMobile);
+            this.groupBoxBookingInfo.Controls.Add(this.txtTell);
+            this.groupBoxBookingInfo.Controls.Add(this.line2);
+            this.groupBoxBookingInfo.Controls.Add(this.line1);
+            this.groupBoxBookingInfo.Controls.Add(this.label12);
+            this.groupBoxBookingInfo.Controls.Add(this.label11);
+            this.groupBoxBookingInfo.Controls.Add(this.label3);
+            this.groupBoxBookingInfo.Controls.Add(this.label2);
+            this.groupBoxBookingInfo.Controls.Add(this.label1);
+            this.groupBoxBookingInfo.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.groupBoxBookingInfo.Location = new System.Drawing.Point(12, 3);
+            this.groupBoxBookingInfo.Name = "groupBoxBookingInfo";
+            this.groupBoxBookingInfo.Size = new System.Drawing.Size(996, 217);
+            this.groupBoxBookingInfo.TabIndex = 0;
+            this.groupBoxBookingInfo.TabStop = false;
             // 
             // txtPersonCount
             // 
@@ -491,6 +491,9 @@
             this.txtPersonCount.BackgroundStyle.Class = "DateTimeInputBackground";
             this.txtPersonCount.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtPersonCount.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtPersonCount.DisabledBackColor = System.Drawing.Color.White;
+            this.txtPersonCount.DisabledForeColor = System.Drawing.Color.Black;
+            this.txtPersonCount.FocusHighlightColor = System.Drawing.SystemColors.Info;
             this.txtPersonCount.FocusHighlightEnabled = true;
             this.txtPersonCount.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.txtPersonCount.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
@@ -509,6 +512,8 @@
             this.cmbPhotographyTypes.DisplayMember = "Text";
             this.cmbPhotographyTypes.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbPhotographyTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPhotographyTypes.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.cmbPhotographyTypes.FocusHighlightEnabled = true;
             this.cmbPhotographyTypes.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.cmbPhotographyTypes.FormattingEnabled = true;
             this.cmbPhotographyTypes.ItemHeight = 16;
@@ -525,6 +530,8 @@
             this.cmbAtelierTypes.DisplayMember = "Text";
             this.cmbAtelierTypes.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbAtelierTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAtelierTypes.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.cmbAtelierTypes.FocusHighlightEnabled = true;
             this.cmbAtelierTypes.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.cmbAtelierTypes.FormattingEnabled = true;
             this.cmbAtelierTypes.ItemHeight = 16;
@@ -540,6 +547,8 @@
             this.cmbPhotographerGender.DisplayMember = "Text";
             this.cmbPhotographerGender.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbPhotographerGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPhotographerGender.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.cmbPhotographerGender.FocusHighlightEnabled = true;
             this.cmbPhotographerGender.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.cmbPhotographerGender.FormattingEnabled = true;
             this.cmbPhotographerGender.ItemHeight = 16;
@@ -605,6 +614,8 @@
             // 
             this.txtBookingTime.Border.Class = "TextBoxBorder";
             this.txtBookingTime.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtBookingTime.DisabledBackColor = System.Drawing.Color.White;
+            this.txtBookingTime.FocusHighlightColor = System.Drawing.SystemColors.Info;
             this.txtBookingTime.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.txtBookingTime.Location = new System.Drawing.Point(571, 124);
             this.txtBookingTime.Name = "txtBookingTime";
@@ -843,8 +854,8 @@
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookingHistory)).EndInit();
             this.contextMenu_dgvBookingHistory.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.groupBoxBookingInfo.ResumeLayout(false);
+            this.groupBoxBookingInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPersonCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
@@ -855,7 +866,7 @@
         private DevComponents.DotNetBar.PanelEx panelEx1;
         private DevComponents.DotNetBar.StyleManager styleManager1;
         private DevComponents.DotNetBar.PanelEx panelEx2;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBoxBookingInfo;
         private System.Windows.Forms.Label label5;
         private FreeControls.PersianDateTimePicker datePickerBookingDate;
         private System.Windows.Forms.Label label4;

@@ -222,6 +222,38 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.TblCustomerDocuments' 
           <Property Name="Code" Type="int" Nullable="false" />
           <Property Name="TypeName" Type="nvarchar" MaxLength="200" Nullable="false" />
         </EntityType>
+        <EntityType Name="TblPrintServices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrintServiceName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrintServiceDescription" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="TblPrintServices_TblPrintSizePrice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PrintServiceId" Type="int" Nullable="false" />
+          <Property Name="PrintSizePriceId" Type="int" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="TblPrintSizePrices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SizeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SizeWidth" Type="smallmoney" Nullable="false" />
+          <Property Name="SizeHeight" Type="smallmoney" Nullable="false" />
+          <Property Name="OriginalPrintPrice" Type="int" Nullable="false" />
+          <Property Name="SecondPrintPrice" Type="int" Nullable="false" />
+          <Property Name="SizeDescription" Type="nvarchar" MaxLength="500" />
+        </EntityType>
         <EntityType Name="TblRoleType">
           <Key>
             <PropertyRef Name="Id" />
@@ -592,6 +624,30 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TblPrintServicePrice_TblPrintServices">
+          <End Role="TblPrintServices" Type="Self.TblPrintServices" Multiplicity="1" />
+          <End Role="TblPrintServices_TblPrintSizePrice" Type="Self.TblPrintServices_TblPrintSizePrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblPrintServices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblPrintServices_TblPrintSizePrice">
+              <PropertyRef Name="PrintServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblPrintServicePrice_TblPrintSizePrices">
+          <End Role="TblPrintSizePrices" Type="Self.TblPrintSizePrices" Multiplicity="1" />
+          <End Role="TblPrintServices_TblPrintSizePrice" Type="Self.TblPrintServices_TblPrintSizePrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblPrintSizePrices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblPrintServices_TblPrintSizePrice">
+              <PropertyRef Name="PrintSizePriceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="usp_CreateCustomerFinancialDirectory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="customerFinancialNumber" Type="nvarchar" Mode="In" />
           <Parameter Name="monthNumber" Type="nvarchar" Mode="In" />
@@ -618,7 +674,13 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
         <Function Name="usp_DeleteOrderFolderFiles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="pathLocator" Type="nvarchar(max)" Mode="In" />
         </Function>
+        <Function Name="usp_GetImageInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="photoStreamId" Type="uniqueidentifier" Mode="In" />
+        </Function>
         <Function Name="usp_GetListOfFilesInFolder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="path_locator" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_GetListOfFilesOfOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="path_locator" Type="varchar" Mode="In" />
         </Function>
         <Function Name="usp_GetOrderFolderStreamId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -646,6 +708,9 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           <EntitySet Name="TblOrderPrintDetails" EntityType="Self.TblOrderPrintDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblOrderStatus" EntityType="Self.TblOrderStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblPhotographyType" EntityType="Self.TblPhotographyType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblPrintServices" EntityType="Self.TblPrintServices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblPrintServices_TblPrintSizePrice" EntityType="Self.TblPrintServices_TblPrintSizePrice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblPrintSizePrices" EntityType="Self.TblPrintSizePrices" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblRoleType" EntityType="Self.TblRoleType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblCustomerDocuments" EntityType="Self.TblCustomerDocuments" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -797,6 +862,14 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           <AssociationSet Name="FK_TblOrderStreams_TblOrder" Association="Self.FK_TblOrderStreams_TblOrder">
             <End Role="TblOrder" EntitySet="TblOrder" />
             <End Role="TblOrderFiles" EntitySet="TblOrderFiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblPrintServicePrice_TblPrintServices" Association="Self.FK_TblPrintServicePrice_TblPrintServices">
+            <End Role="TblPrintServices" EntitySet="TblPrintServices" />
+            <End Role="TblPrintServices_TblPrintSizePrice" EntitySet="TblPrintServices_TblPrintSizePrice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblPrintServicePrice_TblPrintSizePrices" Association="Self.FK_TblPrintServicePrice_TblPrintSizePrices">
+            <End Role="TblPrintSizePrices" EntitySet="TblPrintSizePrices" />
+            <End Role="TblPrintServices_TblPrintSizePrice" EntitySet="TblPrintServices_TblPrintSizePrice" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -950,8 +1023,25 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
             <End Role="TblOrderFiles" EntitySet="TblOrderFiles" />
           </AssociationSet>
           <FunctionImport Name="usp_GetListOfFilesInFolder" ReturnType="Collection(PhotographyAutomationDBModel.usp_GetListOfFilesInFolder_Result)">
-            <Parameter Name="path_locator" Mode="In" Type="String" />
+          <Parameter Name="path_locator" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="usp_GetListOfFilesOfOrder" ReturnType="Collection(Guid)">
+          <Parameter Name="path_locator" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetImageInfo" ReturnType="Collection(PhotographyAutomationDBModel.usp_GetImageInfo_Result)">
+          <Parameter Name="photoStreamId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <EntitySet Name="TblPrintServices" EntityType="PhotographyAutomationDBModel.TblPrintServices" />
+          <EntitySet Name="TblPrintServices_TblPrintSizePrice" EntityType="PhotographyAutomationDBModel.TblPrintServices_TblPrintSizePrice" />
+          <AssociationSet Name="FK_TblPrintServicePrice_TblPrintServices" Association="PhotographyAutomationDBModel.FK_TblPrintServicePrice_TblPrintServices">
+            <End Role="TblPrintServices" EntitySet="TblPrintServices" />
+            <End Role="TblPrintServices_TblPrintSizePrice" EntitySet="TblPrintServices_TblPrintSizePrice" />
+          </AssociationSet>
+          <EntitySet Name="TblPrintSizePrices" EntityType="PhotographyAutomationDBModel.TblPrintSizePrices" />
+          <AssociationSet Name="FK_TblPrintServicePrice_TblPrintSizePrices" Association="PhotographyAutomationDBModel.FK_TblPrintServicePrice_TblPrintSizePrices">
+            <End Role="TblPrintSizePrices" EntitySet="TblPrintSizePrices" />
+            <End Role="TblPrintServices_TblPrintSizePrice" EntitySet="TblPrintServices_TblPrintSizePrice" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="usp_CreateFileTableFile_Result">
           <Property Type="String" Name="streamId" Nullable="true" MaxLength="4000" />
@@ -1581,6 +1671,72 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           <Property Type="Boolean" Name="is_system" Nullable="false" />
           <Property Type="Boolean" Name="is_temporary" Nullable="false" />
         </ComplexType>
+        <ComplexType Name="usp_GetImageInfo_Result">
+          <Property Type="String" Name="PathLocator" Nullable="true" MaxLength="4000" />
+          <Property Type="Binary" Name="TransactionContext" Nullable="true" />
+          <Property Type="Int64" Name="FileSize" Nullable="true" />
+          <Property Type="String" Name="StreamFileName" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <EntityType Name="TblPrintServices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrintServiceName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrintServiceDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblPrintServices_TblPrintSizePrice" Relationship="PhotographyAutomationDBModel.FK_TblPrintServicePrice_TblPrintServices" FromRole="TblPrintServices" ToRole="TblPrintServices_TblPrintSizePrice" />
+        </EntityType>
+        <EntityType Name="TblPrintServices_TblPrintSizePrice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrintServiceId" Type="Int32" Nullable="false" />
+          <Property Name="PrintSizePriceId" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblPrintServices" Relationship="PhotographyAutomationDBModel.FK_TblPrintServicePrice_TblPrintServices" FromRole="TblPrintServices_TblPrintSizePrice" ToRole="TblPrintServices" />
+          <NavigationProperty Name="TblPrintSizePrices" Relationship="PhotographyAutomationDBModel.FK_TblPrintServicePrice_TblPrintSizePrices" FromRole="TblPrintServices_TblPrintSizePrice" ToRole="TblPrintSizePrices" />
+        </EntityType>
+        <Association Name="FK_TblPrintServicePrice_TblPrintServices">
+          <End Type="PhotographyAutomationDBModel.TblPrintServices" Role="TblPrintServices" Multiplicity="1" />
+          <End Type="PhotographyAutomationDBModel.TblPrintServices_TblPrintSizePrice" Role="TblPrintServices_TblPrintSizePrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblPrintServices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblPrintServices_TblPrintSizePrice">
+              <PropertyRef Name="PrintServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TblPrintSizePrices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SizeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SizeWidth" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="SizeHeight" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="OriginalPrintPrice" Type="Int32" Nullable="false" />
+          <Property Name="SecondPrintPrice" Type="Int32" Nullable="false" />
+          <Property Name="SizeDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblPrintServices_TblPrintSizePrice" Relationship="PhotographyAutomationDBModel.FK_TblPrintServicePrice_TblPrintSizePrices" FromRole="TblPrintSizePrices" ToRole="TblPrintServices_TblPrintSizePrice" />
+        </EntityType>
+        <Association Name="FK_TblPrintServicePrice_TblPrintSizePrices">
+          <End Type="PhotographyAutomationDBModel.TblPrintSizePrices" Role="TblPrintSizePrices" Multiplicity="1" />
+          <End Type="PhotographyAutomationDBModel.TblPrintServices_TblPrintSizePrice" Role="TblPrintServices_TblPrintSizePrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblPrintSizePrices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblPrintServices_TblPrintSizePrice">
+              <PropertyRef Name="PrintSizePriceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1923,6 +2079,52 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_GetListOfFilesOfOrder" FunctionName="PhotographyAutomationDBModel.Store.usp_GetListOfFilesOfOrder" />
+          <FunctionImportMapping FunctionImportName="usp_GetImageInfo" FunctionName="PhotographyAutomationDBModel.Store.usp_GetImageInfo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PhotographyAutomationDBModel.usp_GetImageInfo_Result">
+                <ScalarProperty Name="PathLocator" ColumnName="PathLocator" />
+                <ScalarProperty Name="TransactionContext" ColumnName="TransactionContext" />
+                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+                <ScalarProperty Name="StreamFileName" ColumnName="StreamFileName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="TblPrintServices">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblPrintServices">
+              <MappingFragment StoreEntitySet="TblPrintServices">
+                <ScalarProperty Name="PrintServiceDescription" ColumnName="PrintServiceDescription" />
+                <ScalarProperty Name="PrintServiceName" ColumnName="PrintServiceName" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblPrintServices_TblPrintSizePrice">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblPrintServices_TblPrintSizePrice">
+              <MappingFragment StoreEntitySet="TblPrintServices_TblPrintSizePrice">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PrintSizePriceId" ColumnName="PrintSizePriceId" />
+                <ScalarProperty Name="PrintServiceId" ColumnName="PrintServiceId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblPrintSizePrices">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblPrintSizePrices">
+              <MappingFragment StoreEntitySet="TblPrintSizePrices">
+                <ScalarProperty Name="SizeDescription" ColumnName="SizeDescription" />
+                <ScalarProperty Name="SecondPrintPrice" ColumnName="SecondPrintPrice" />
+                <ScalarProperty Name="OriginalPrintPrice" ColumnName="OriginalPrintPrice" />
+                <ScalarProperty Name="SizeHeight" ColumnName="SizeHeight" />
+                <ScalarProperty Name="SizeWidth" ColumnName="SizeWidth" />
+                <ScalarProperty Name="SizeName" ColumnName="SizeName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

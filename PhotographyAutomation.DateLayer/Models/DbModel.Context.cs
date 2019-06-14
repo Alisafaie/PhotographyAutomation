@@ -46,6 +46,9 @@ namespace PhotographyAutomation.DateLayer.Models
         public virtual DbSet<TblFilesError> TblFilesError { get; set; }
         public virtual DbSet<TblOrderFiles> TblOrderFiles { get; set; }
         public virtual DbSet<TblOrder> TblOrder { get; set; }
+        public virtual DbSet<TblPrintServices> TblPrintServices { get; set; }
+        public virtual DbSet<TblPrintServices_TblPrintSizePrice> TblPrintServices_TblPrintSizePrice { get; set; }
+        public virtual DbSet<TblPrintSizePrices> TblPrintSizePrices { get; set; }
     
         public virtual ObjectResult<string> usp_CreateCustomerFinancialDirectory(string customerFinancialNumber, string monthNumber, Nullable<byte> parent_level, ObjectParameter returnValue)
         {
@@ -149,6 +152,24 @@ namespace PhotographyAutomation.DateLayer.Models
                 new ObjectParameter("path_locator", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_GetListOfFilesInFolder_Result>("usp_GetListOfFilesInFolder", path_locatorParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<System.Guid>> usp_GetListOfFilesOfOrder(string path_locator)
+        {
+            var path_locatorParameter = path_locator != null ?
+                new ObjectParameter("path_locator", path_locator) :
+                new ObjectParameter("path_locator", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("usp_GetListOfFilesOfOrder", path_locatorParameter);
+        }
+    
+        public virtual ObjectResult<usp_GetImageInfo_Result> usp_GetImageInfo(Nullable<System.Guid> photoStreamId)
+        {
+            var photoStreamIdParameter = photoStreamId.HasValue ?
+                new ObjectParameter("photoStreamId", photoStreamId) :
+                new ObjectParameter("photoStreamId", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_GetImageInfo_Result>("usp_GetImageInfo", photoStreamIdParameter);
         }
     }
 }

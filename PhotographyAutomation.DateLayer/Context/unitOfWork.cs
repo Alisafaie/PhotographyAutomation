@@ -248,6 +248,54 @@ namespace PhotographyAutomation.DateLayer.Context
 
 
 
+        private GenericRepository<TblPrintServices> _printServicesGenericRepository;
+
+        public GenericRepository<TblPrintServices> PrintServicesGenericRepository
+        {
+            get
+            {
+                if (_printServicesGenericRepository == null)
+                {
+                    _printServicesGenericRepository = new GenericRepository<TblPrintServices>(_db);
+                }
+
+                return _printServicesGenericRepository;
+            }
+        }
+
+        private GenericRepository<TblPrintSizePrices> _printSizePricesGenericRepository;
+        public GenericRepository<TblPrintSizePrices> PrintSizePricesGenericRepository
+        {
+            get
+            {
+                if (_printServicesGenericRepository == null)
+                {
+                    _printSizePricesGenericRepository = new GenericRepository<TblPrintSizePrices>(_db);
+                }
+
+                return _printSizePricesGenericRepository;
+            }
+        }
+
+
+        private GenericRepository<TblPrintServices_TblPrintSizePrice> _printServices_printSizePriceGenericRepository;
+
+        // ReSharper disable once InconsistentNaming
+        public GenericRepository<TblPrintServices_TblPrintSizePrice> PrintServices_PrintSizePriceGenericRepository
+        {
+            get
+            {
+                if (_printServices_printSizePriceGenericRepository == null)
+                {
+                    _printServices_printSizePriceGenericRepository=new GenericRepository<TblPrintServices_TblPrintSizePrice>(_db);
+                }
+
+                return _printServices_printSizePriceGenericRepository;
+            }
+        }
+
+
+        
         public int Save()
         {
             try

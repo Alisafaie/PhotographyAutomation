@@ -235,6 +235,66 @@ namespace PhotographyAutomation.DateLayer.Services
             }
         }
 
+        public CreateFileViewModel DownloadOrderPhotos(Guid fileStreamId)
+        {
+            using (DbContextTransaction dbTransaction = _db.Database.BeginTransaction())
+            {
+                CreateFileViewModel info = null;
+                try
+                {
+                    var result = _db.usp_GetImageInfo(fileStreamId).ToList();
+                    if (result != null)
+                    {
+                        {
+                            info = new CreateFileViewModel
+                            {
+                                parent_locator = result[0].PathLocator,
+                                filestreamTxn = result[0].TransactionContext,
+                                fileSize = result[0].FileSize,
+                                name = result[0].StreamFileName,
+                                fileStream = new MemoryStream()
+                            };
+                            using (var ms = new MemoryStream())
+                            {
+                                using (SqlFileStream fs = new SqlFileStream(
+                                    info.parent_locator,
+                                    info.filestreamTxn,
+                                    FileAccess.Read,
+                                    FileOptions.WriteThrough,
+                                    (long)info.fileSize))
+                                {
+                                    fs.CopyTo(ms);
+                                    ms.WriteTo(info.fileStream);
+                                }
+                            }
+                        }
+                    }
+                    return info;
+                }
+
+                #region catch
+
+                catch (Exception exception)
+                {
+                    dbTransaction.Rollback();
+                    Debug.WriteLine(exception.Message);
+                    Debug.WriteLine(exception.Data);
+                    Debug.WriteLine(exception.InnerException);
+                    Debug.WriteLine(exception.Source);
+                    Debug.WriteLine(exception.StackTrace);
+                    return null;
+                }
+
+                #endregion
+
+                //finally
+                //{
+                //    memoryStream?.Close();
+                //}
+
+            }
+        }
+
         public bool CreateFileTableFile(string name, string parent, byte level, string localFilePath)
         {
             using (DbContextTransaction dbTransaction = _db.Database.BeginTransaction())
@@ -242,8 +302,6 @@ namespace PhotographyAutomation.DateLayer.Services
                 try
                 {
                     var result = _db.usp_CreateFileTableFile(name, parent, level).ToList();
-
-
                     var info = new CreateFileViewModel
                     {
                         name = result[0].name,
@@ -276,6 +334,34 @@ namespace PhotographyAutomation.DateLayer.Services
                     Debug.WriteLine(exception.StackTrace);
                     return false;
                 }
+            }
+        }
+
+
+
+        public List<Guid> GetListOfOrderFilesReturnStreamIds(string pathLocator)
+        {
+            try
+            {
+                List<Guid> listOfFilesStreamIds = new List<Guid>();
+                var list = _db.usp_GetListOfFilesOfOrder(pathLocator);
+                if (list != null)
+                {
+                    foreach (var guid in list)
+                    {
+                        if (guid != null) listOfFilesStreamIds.Add(guid.Value);
+                    }
+                }
+                return listOfFilesStreamIds;
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine(exception.Message);
+                Debug.WriteLine(exception.Data);
+                Debug.WriteLine(exception.InnerException);
+                Debug.WriteLine(exception.Source);
+                Debug.WriteLine(exception.StackTrace);
+                return null;
             }
         }
 
@@ -432,5 +518,7 @@ namespace PhotographyAutomation.DateLayer.Services
                 return null;
             }
         }
+
+
     }
 }

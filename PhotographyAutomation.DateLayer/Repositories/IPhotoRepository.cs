@@ -24,5 +24,7 @@ namespace PhotographyAutomation.DateLayer.Repositories
         void DeleteFilesOfOrder(string pathLocator);
         int GetTotalFilesOfFolder(string pathLocator);
         List<PhotoViewModel> GetListOfFilesInFolder(string pathLocator);
+        CreateFileViewModel DownloadOrderPhotos(Guid fileStreamId);
+        List<Guid> GetListOfOrderFilesReturnStreamIds(string pathLocator);
     }
 }

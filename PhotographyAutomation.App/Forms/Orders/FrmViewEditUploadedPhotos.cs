@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace PhotographyAutomation.App.Forms.Orders
 {
-    public partial class FrmViewUploadedPhotos : Form
+    public partial class FrmViewEditUploadedPhotos : Form
     {
 
         private int _locX = 20;
@@ -36,12 +36,12 @@ namespace PhotographyAutomation.App.Forms.Orders
         public List<PhotoViewModel> ListOfPhotos;
 
 
-        public FrmViewUploadedPhotos()
+        public FrmViewEditUploadedPhotos()
         {
             InitializeComponent();
         }
 
-        private void FrmUploadPhotos_Load(object sender, EventArgs e)
+        private void FrmViewEditUploadedPhotos_Load(object sender, EventArgs e)
         {
             _locX = 20;
             _locY = 10;

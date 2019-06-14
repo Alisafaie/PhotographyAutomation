@@ -284,8 +284,8 @@ namespace PhotographyAutomation.DateLayer.Services
                         .Include(x => x.TblOrderPrint)
                         .Include(x => x.TblPhotographyType)
                         .Where(x =>
-                            x.CreatedDateTime == dtOrderDate ||
-                            x.ModifiedDateTime == dtOrderDate)
+                            x.Date == dtOrderDate ||
+                            x.Date == dtOrderDate)
                         .Select(x => new CustomerOrderViewModel
                         {
                             Id = x.Id,

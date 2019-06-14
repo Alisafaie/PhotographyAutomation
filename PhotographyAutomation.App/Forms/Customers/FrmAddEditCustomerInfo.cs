@@ -1,4 +1,6 @@
 ﻿#region Usings
+using DevComponents.DotNetBar;
+using DevComponents.DotNetBar.Controls;
 using PhotographyAutomation.App.Forms.Booking;
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.DateLayer.Models;
@@ -18,7 +20,8 @@ namespace PhotographyAutomation.App.Forms.Customers
         #region Variables
         public int CustomerId;
         public bool JustSaveCustomerInfo = false;
-        public bool IsEditMode = false;
+        public bool NewCustomer = false;
+        public bool IsViewOnly = false;
 
         #endregion
 
@@ -30,11 +33,42 @@ namespace PhotographyAutomation.App.Forms.Customers
         }
         private void FrmAddEditCustomerInfo_Load(object sender, EventArgs e)
         {
-            if (IsEditMode)
+            if (NewCustomer)
             {
                 GetCustomerInfo(CustomerId);
                 txtMobileSearch.Enabled = false;
                 btnCheckNumber.Enabled = false;
+
+                if (IsViewOnly)
+                {
+                    foreach (Control control in groupBoxCustomerInfo.Controls)
+                    {
+                        if (control is TextBoxX textBoxX)
+                        {
+                            textBoxX.Enabled = false;
+                        }
+                        else if (control is ComboBoxEx comboBoxEx)
+                        {
+                            comboBoxEx.Enabled = false;
+                            comboBoxEx.DropDownStyle = ComboBoxStyle.Simple;
+                        }
+                        else if (control is MaskedTextBoxAdv maskedTextBoxAdv)
+                        {
+                            maskedTextBoxAdv.Enabled = false;
+                            //maskedTextBoxAdv.ButtonClear.Enabled = false;
+                        }
+                    }
+
+                    foreach (Control control in panelEx1.Controls)
+                    {
+                        if (control is ButtonX buttonX)
+                        {
+                            buttonX.Enabled = false;
+                        }
+                    }
+
+                    btnSearchCustomer.Enabled = false;
+                }
 
                 return;
             }
@@ -152,7 +186,7 @@ namespace PhotographyAutomation.App.Forms.Customers
                 .Replace("-", "")
                 .Replace("_", "")
                 .Replace(" ", "")
-                .Trim().Substring(1,10);
+                .Trim().Substring(1, 10);
             customer.Tell = txtTell.Text.Replace(" ", "").Trim();
             customer.Gender = Convert.ToByte(cmbGender.SelectedIndex == 0 ? 0 : 1);
             customer.BirthDate = txtBirthDate.Text.ToMiladiDate();
@@ -179,7 +213,7 @@ namespace PhotographyAutomation.App.Forms.Customers
             {
                 var checkCustomerMobileNumber = db.CustomerRepository.GetCustomerByMobile(customer.Mobile);
 
-                if (CustomerId == 0 && IsEditMode == false)
+                if (CustomerId == 0 && NewCustomer == false)
                 {
                     if (checkCustomerMobileNumber != null)
                     {

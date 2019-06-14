@@ -35,6 +35,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.cmbOrderStatus = new System.Windows.Forms.ComboBox();
             this.chkSpecialBookings = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.chkEnableDatePickerBookingDate = new DevComponents.DotNetBar.Controls.CheckBoxX();
@@ -71,11 +72,11 @@
             this.ویرایشاطلاعاتمشتریToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ارسالعکسToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.مشاهدهعکسهاToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.حذفعکسهاToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.درخواستصدورقبضToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.درخواستمجوزحذفعکسToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
@@ -106,6 +107,16 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "مشاهده رزرو ها بر اساس";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1022, 36);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(90, 13);
+            this.label1.TabIndex = 84;
+            this.label1.Text = "جستجو بر اساس:";
             // 
             // cmbOrderStatus
             // 
@@ -359,7 +370,7 @@
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvOrders.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvOrders.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -538,17 +549,17 @@
             this.ویرایشاطلاعاتمشتریToolStripMenuItem,
             this.ارسالعکسToolStripMenuItem,
             this.مشاهدهعکسهاToolStripMenuItem,
-            this.حذفعکسهاToolStripMenuItem,
-            this.درخواستصدورقبضToolStripMenuItem});
+            this.درخواستصدورقبضToolStripMenuItem,
+            this.درخواستمجوزحذفعکسToolStripMenuItem});
             this.contextMenuStripDgvBookings.Name = "contextMenuStripDgvBookings";
             this.contextMenuStripDgvBookings.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStripDgvBookings.Size = new System.Drawing.Size(197, 136);
+            this.contextMenuStripDgvBookings.Size = new System.Drawing.Size(213, 114);
             this.contextMenuStripDgvBookings.Paint += new System.Windows.Forms.PaintEventHandler(this.contextMenuStripDgvBookings_Paint);
             // 
             // ویرایشاطلاعاتمشتریToolStripMenuItem
             // 
             this.ویرایشاطلاعاتمشتریToolStripMenuItem.Name = "ویرایشاطلاعاتمشتریToolStripMenuItem";
-            this.ویرایشاطلاعاتمشتریToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.ویرایشاطلاعاتمشتریToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.ویرایشاطلاعاتمشتریToolStripMenuItem.Text = "ویرایش اطلاعات مشتری";
             this.ویرایشاطلاعاتمشتریToolStripMenuItem.Click += new System.EventHandler(this.ویرایشاطلاعاتمشتریToolStripMenuItem_Click);
             // 
@@ -556,7 +567,7 @@
             // 
             this.ارسالعکسToolStripMenuItem.Enabled = false;
             this.ارسالعکسToolStripMenuItem.Name = "ارسالعکسToolStripMenuItem";
-            this.ارسالعکسToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.ارسالعکسToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.ارسالعکسToolStripMenuItem.Text = "ارسال عکس";
             this.ارسالعکسToolStripMenuItem.Click += new System.EventHandler(this.ارسالعکسToolStripMenuItem_Click);
             // 
@@ -564,37 +575,30 @@
             // 
             this.مشاهدهعکسهاToolStripMenuItem.Enabled = false;
             this.مشاهدهعکسهاToolStripMenuItem.Name = "مشاهدهعکسهاToolStripMenuItem";
-            this.مشاهدهعکسهاToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.مشاهدهعکسهاToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.مشاهدهعکسهاToolStripMenuItem.Text = "مشاهده عکس ها";
-            // 
-            // حذفعکسهاToolStripMenuItem
-            // 
-            this.حذفعکسهاToolStripMenuItem.Enabled = false;
-            this.حذفعکسهاToolStripMenuItem.Name = "حذفعکسهاToolStripMenuItem";
-            this.حذفعکسهاToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.حذفعکسهاToolStripMenuItem.Text = "حذف عکس ها";
+            this.مشاهدهعکسهاToolStripMenuItem.Click += new System.EventHandler(this.مشاهدهعکسهاToolStripMenuItem_Click);
             // 
             // درخواستصدورقبضToolStripMenuItem
             // 
             this.درخواستصدورقبضToolStripMenuItem.Enabled = false;
             this.درخواستصدورقبضToolStripMenuItem.Name = "درخواستصدورقبضToolStripMenuItem";
-            this.درخواستصدورقبضToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.درخواستصدورقبضToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.درخواستصدورقبضToolStripMenuItem.Text = "درخواست صدور قبض";
+            this.درخواستصدورقبضToolStripMenuItem.Click += new System.EventHandler(this.درخواستصدورقبضToolStripMenuItem_Click);
+            // 
+            // درخواستمجوزحذفعکسToolStripMenuItem
+            // 
+            this.درخواستمجوزحذفعکسToolStripMenuItem.Enabled = false;
+            this.درخواستمجوزحذفعکسToolStripMenuItem.Name = "درخواستمجوزحذفعکسToolStripMenuItem";
+            this.درخواستمجوزحذفعکسToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.درخواستمجوزحذفعکسToolStripMenuItem.Text = "درخواست مجوز حذف عکس";
+            this.درخواستمجوزحذفعکسToolStripMenuItem.Click += new System.EventHandler(this.درخواستمجوزحذفعکسToolStripMenuItem_Click);
             // 
             // styleManager1
             // 
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2010Silver;
             this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255))))), System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199))))));
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1022, 36);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 13);
-            this.label1.TabIndex = 84;
-            this.label1.Text = "جستجو بر اساس:";
             // 
             // menuStrip1
             // 
@@ -603,6 +607,11 @@
             this.menuStrip1.Size = new System.Drawing.Size(1147, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // backgroundWorker
+            // 
+            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
+            this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
             // 
             // FrmShowIncommingBookings
             // 
@@ -675,9 +684,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmStatusName;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmCreatedDateTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmModifiedDateTime;
-        private System.Windows.Forms.ToolStripMenuItem حذفعکسهاToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem درخواستصدورقبضToolStripMenuItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem درخواستمجوزحذفعکسToolStripMenuItem;
+        private System.ComponentModel.BackgroundWorker backgroundWorker;
     }
 }
