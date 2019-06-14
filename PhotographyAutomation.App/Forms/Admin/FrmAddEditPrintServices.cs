@@ -14,29 +14,32 @@ namespace PhotographyAutomation.App.Forms.Admin
     {
         #region Variables
 
-        private int _selectedPrintSizeId = 0;
-        private int _selectedPrintServiceId = 0;
+        private int _selectedPrintSizeId;
+        private int _selectedPrintServiceId;
 
         #endregion
         public FrmAddEditPrintServices()
         {
             InitializeComponent();
-            //cmbPrintSizes.Enabled = false;
-            //cmbPrintServiceType.Enabled = false;
         }
 
         private void FrmAddEditPrintServices_Load(object sender, EventArgs e)
         {
             bgWorkerLoadPrintSizes.RunWorkerAsync();
+            bgWorkerLoadPrintServices.RunWorkerAsync();
+
+
+            circularProgressLoadPrintSizes.IsRunning = bgWorkerLoadPrintSizes.IsBusy;
+            
             cmbPrintSizes.Enabled = !bgWorkerLoadPrintSizes.IsBusy;
 
-            bgWorkerLoadPrintServices.RunWorkerAsync();
+            
+            circularProgressLoadPrintServices.IsRunning = bgWorkerLoadPrintServices.IsBusy;
+
             cmbPrintServiceType.Enabled = !bgWorkerLoadPrintServices.IsBusy;
             panelHasPrintService.Enabled = !bgWorkerLoadPrintServices.IsBusy;
 
             rbHasNotPrintService.Checked = bgWorkerLoadPrintServices.IsBusy;
-
-            //bgWorkerLoadTable.RunWorkerAsync();
         }
 
         private void bgWorkerLoadTable_DoWork(object sender, DoWorkEventArgs e)
@@ -92,7 +95,9 @@ namespace PhotographyAutomation.App.Forms.Admin
                 cmbPrintSizes.ValueMember = "Id";
             }
             cmbPrintSizes.Enabled = !bgWorkerLoadPrintSizes.IsBusy;
-
+            circularProgressLoadPrintSizes.IsRunning = bgWorkerLoadPrintSizes.IsBusy;
+            if (bgWorkerLoadPrintSizes.IsBusy == false)
+                circularProgressLoadPrintSizes.Hide();
         }
 
 
@@ -132,6 +137,11 @@ namespace PhotographyAutomation.App.Forms.Admin
             cmbPrintServiceType.Enabled = !bgWorkerLoadPrintServices.IsBusy;
             panelHasPrintService.Enabled = !bgWorkerLoadPrintServices.IsBusy;
             rbHasNotPrintService.Checked = !bgWorkerLoadPrintServices.IsBusy;
+
+            circularProgressLoadPrintServices.IsRunning = bgWorkerLoadPrintServices.IsBusy;
+            if (bgWorkerLoadPrintServices.IsBusy == false)
+                circularProgressLoadPrintServices.Hide();
+
             rbHasNotPrintService_CheckedChanged(null, null);
         }
 
@@ -317,7 +327,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                             PrintSizePriceId = _selectedPrintSizeId,
                             PrintServiceId = _selectedPrintServiceId
                         };
-                        
+
                         var itemPrintSizePrintService = db.PrintServices_PrintSizePriceGenericRepository.Get(x =>
                             x.PrintServiceId == _selectedPrintServiceId &&
                             x.PrintSizePriceId == _selectedPrintSizeId).SingleOrDefault();
@@ -403,11 +413,6 @@ namespace PhotographyAutomation.App.Forms.Admin
                 cmbPrintServiceType.Enabled = false;
                 integerInputPrintServicePrice.Enabled = false;
             }
-        }
-
-        private void circularProgress1_ValueChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void bgWorkerGetPrintServicePrice_DoWork(object sender, DoWorkEventArgs e)

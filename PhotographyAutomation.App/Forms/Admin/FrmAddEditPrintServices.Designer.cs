@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbPrintSizes = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -71,10 +71,11 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.circularProgress1 = new DevComponents.DotNetBar.Controls.CircularProgress();
+            this.circularProgressLoadPrintSizes = new DevComponents.DotNetBar.Controls.CircularProgress();
             this.doubleInputWidth = new DevComponents.Editors.DoubleInput();
             this.doubleInputHeight = new DevComponents.Editors.DoubleInput();
             this.bgWorkerGetPrintServicePrice = new System.ComponentModel.BackgroundWorker();
+            this.circularProgressLoadPrintServices = new DevComponents.DotNetBar.Controls.CircularProgress();
             this.panelHasPrintService.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.integerInputPrintServicePrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.integerInputOriginalPrintPrice)).BeginInit();
@@ -87,7 +88,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(928, 67);
+            this.label1.Location = new System.Drawing.Point(927, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 0;
@@ -97,7 +98,7 @@
             // 
             this.cmbPrintSizes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPrintSizes.FormattingEnabled = true;
-            this.cmbPrintSizes.Location = new System.Drawing.Point(783, 63);
+            this.cmbPrintSizes.Location = new System.Drawing.Point(782, 33);
             this.cmbPrintSizes.Name = "cmbPrintSizes";
             this.cmbPrintSizes.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cmbPrintSizes.Size = new System.Drawing.Size(100, 21);
@@ -108,7 +109,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(889, 116);
+            this.label2.Location = new System.Drawing.Point(888, 86);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(92, 13);
             this.label2.TabIndex = 3;
@@ -118,7 +119,7 @@
             // 
             this.panelHasPrintService.Controls.Add(this.rbHasNotPrintService);
             this.panelHasPrintService.Controls.Add(this.rbHasPrintService);
-            this.panelHasPrintService.Location = new System.Drawing.Point(783, 102);
+            this.panelHasPrintService.Location = new System.Drawing.Point(782, 72);
             this.panelHasPrintService.Name = "panelHasPrintService";
             this.panelHasPrintService.Size = new System.Drawing.Size(100, 41);
             this.panelHasPrintService.TabIndex = 6;
@@ -153,9 +154,9 @@
             this.cmbPrintServiceType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPrintServiceType.DropDownWidth = 130;
             this.cmbPrintServiceType.FormattingEnabled = true;
-            this.cmbPrintServiceType.Location = new System.Drawing.Point(570, 112);
+            this.cmbPrintServiceType.Location = new System.Drawing.Point(561, 82);
             this.cmbPrintServiceType.Name = "cmbPrintServiceType";
-            this.cmbPrintServiceType.Size = new System.Drawing.Size(126, 21);
+            this.cmbPrintServiceType.Size = new System.Drawing.Size(115, 21);
             this.cmbPrintServiceType.TabIndex = 7;
             this.cmbPrintServiceType.SelectedIndexChanged += new System.EventHandler(this.cmbPrintServiceType_SelectedIndexChanged);
             this.cmbPrintServiceType.EnabledChanged += new System.EventHandler(this.cmbPrintServiceType_EnabledChanged);
@@ -163,7 +164,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(702, 116);
+            this.label3.Location = new System.Drawing.Point(693, 86);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 5;
@@ -172,7 +173,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(275, 116);
+            this.label4.Location = new System.Drawing.Point(270, 86);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 13);
             this.label4.TabIndex = 7;
@@ -194,7 +195,7 @@
             this.integerInputPrintServicePrice.DisplayFormat = "N0";
             this.integerInputPrintServicePrice.FocusHighlightEnabled = true;
             this.integerInputPrintServicePrice.Increment = 10000;
-            this.integerInputPrintServicePrice.Location = new System.Drawing.Point(159, 112);
+            this.integerInputPrintServicePrice.Location = new System.Drawing.Point(154, 82);
             this.integerInputPrintServicePrice.Name = "integerInputPrintServicePrice";
             this.integerInputPrintServicePrice.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.integerInputPrintServicePrice.Size = new System.Drawing.Size(100, 21);
@@ -204,7 +205,7 @@
             // 
             this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSave.Location = new System.Drawing.Point(12, 111);
+            this.btnSave.Location = new System.Drawing.Point(11, 81);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
@@ -227,7 +228,7 @@
             this.integerInputOriginalPrintPrice.FocusHighlightEnabled = true;
             this.integerInputOriginalPrintPrice.Increment = 10000;
             this.integerInputOriginalPrintPrice.IsInputReadOnly = true;
-            this.integerInputOriginalPrintPrice.Location = new System.Drawing.Point(365, 63);
+            this.integerInputOriginalPrintPrice.Location = new System.Drawing.Point(354, 33);
             this.integerInputOriginalPrintPrice.MinValue = 0;
             this.integerInputOriginalPrintPrice.Name = "integerInputOriginalPrintPrice";
             this.integerInputOriginalPrintPrice.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -237,7 +238,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(471, 67);
+            this.label5.Location = new System.Drawing.Point(460, 37);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(78, 13);
             this.label5.TabIndex = 14;
@@ -258,7 +259,7 @@
             this.integerInputSecondPrintPrice.FocusHighlightEnabled = true;
             this.integerInputSecondPrintPrice.Increment = 10000;
             this.integerInputSecondPrintPrice.IsInputReadOnly = true;
-            this.integerInputSecondPrintPrice.Location = new System.Drawing.Point(159, 63);
+            this.integerInputSecondPrintPrice.Location = new System.Drawing.Point(154, 33);
             this.integerInputSecondPrintPrice.MinValue = 0;
             this.integerInputSecondPrintPrice.Name = "integerInputSecondPrintPrice";
             this.integerInputSecondPrintPrice.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -268,7 +269,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(265, 67);
+            this.label6.Location = new System.Drawing.Point(260, 37);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(84, 13);
             this.label6.TabIndex = 16;
@@ -297,7 +298,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(490, 116);
+            this.label7.Location = new System.Drawing.Point(479, 86);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(59, 13);
             this.label7.TabIndex = 19;
@@ -311,7 +312,7 @@
             this.txtPrintServiceCode.Border.Class = "TextBoxBorder";
             this.txtPrintServiceCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtPrintServiceCode.FocusHighlightEnabled = true;
-            this.txtPrintServiceCode.Location = new System.Drawing.Point(365, 112);
+            this.txtPrintServiceCode.Location = new System.Drawing.Point(354, 82);
             this.txtPrintServiceCode.Name = "txtPrintServiceCode";
             this.txtPrintServiceCode.PreventEnterBeep = true;
             this.txtPrintServiceCode.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -321,7 +322,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(621, 67);
+            this.label8.Location = new System.Drawing.Point(612, 37);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(13, 13);
             this.label8.TabIndex = 22;
@@ -330,7 +331,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(695, 67);
+            this.label9.Location = new System.Drawing.Point(686, 37);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(51, 13);
             this.label9.TabIndex = 23;
@@ -342,7 +343,7 @@
             // 
             // 
             this.checkBoxEnablePrintSizeItems.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxEnablePrintSizeItems.Location = new System.Drawing.Point(748, 66);
+            this.checkBoxEnablePrintSizeItems.Location = new System.Drawing.Point(739, 38);
             this.checkBoxEnablePrintSizeItems.Name = "checkBoxEnablePrintSizeItems";
             this.checkBoxEnablePrintSizeItems.Size = new System.Drawing.Size(14, 14);
             this.checkBoxEnablePrintSizeItems.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -354,7 +355,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label10.Location = new System.Drawing.Point(598, 86);
+            this.label10.Location = new System.Drawing.Point(589, 56);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(20, 13);
             this.label10.TabIndex = 26;
@@ -364,7 +365,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label11.Location = new System.Drawing.Point(669, 86);
+            this.label11.Location = new System.Drawing.Point(660, 56);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(20, 13);
             this.label11.TabIndex = 27;
@@ -374,7 +375,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label12.Location = new System.Drawing.Point(568, 86);
+            this.label12.Location = new System.Drawing.Point(559, 56);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(17, 13);
             this.label12.TabIndex = 29;
@@ -384,7 +385,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label13.Location = new System.Drawing.Point(638, 87);
+            this.label13.Location = new System.Drawing.Point(629, 57);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(14, 13);
             this.label13.TabIndex = 30;
@@ -443,14 +444,14 @@
             this.dataGridViewX1.AllowUserToAddRows = false;
             this.dataGridViewX1.AllowUserToDeleteRows = false;
             this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -461,42 +462,44 @@
             this.Column7,
             this.Column8,
             this.Column6});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle20;
             this.dataGridViewX1.EnableHeadersVisualStyles = false;
-            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(12, 171);
+            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.dataGridViewX1.Location = new System.Drawing.Point(11, 135);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.ReadOnly = true;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dataGridViewX1.Size = new System.Drawing.Size(966, 224);
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            this.dataGridViewX1.Size = new System.Drawing.Size(966, 208);
             this.dataGridViewX1.TabIndex = 11;
             // 
-            // circularProgress1
+            // circularProgressLoadPrintSizes
             // 
             // 
             // 
             // 
-            this.circularProgress1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.circularProgress1.Location = new System.Drawing.Point(887, 63);
-            this.circularProgress1.Name = "circularProgress1";
-            this.circularProgress1.Size = new System.Drawing.Size(35, 23);
-            this.circularProgress1.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
-            this.circularProgress1.TabIndex = 31;
-            this.circularProgress1.ValueChanged += new System.EventHandler(this.circularProgress1_ValueChanged);
+            this.circularProgressLoadPrintSizes.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.circularProgressLoadPrintSizes.Location = new System.Drawing.Point(884, 33);
+            this.circularProgressLoadPrintSizes.Name = "circularProgressLoadPrintSizes";
+            this.circularProgressLoadPrintSizes.ProgressColor = System.Drawing.Color.Green;
+            this.circularProgressLoadPrintSizes.Size = new System.Drawing.Size(14, 21);
+            this.circularProgressLoadPrintSizes.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
+            this.circularProgressLoadPrintSizes.TabIndex = 31;
+            this.circularProgressLoadPrintSizes.TabStop = false;
+            this.circularProgressLoadPrintSizes.UseWaitCursor = true;
             // 
             // doubleInputWidth
             // 
@@ -508,7 +511,7 @@
             this.doubleInputWidth.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.doubleInputWidth.FocusHighlightEnabled = true;
             this.doubleInputWidth.Increment = 1D;
-            this.doubleInputWidth.Location = new System.Drawing.Point(570, 63);
+            this.doubleInputWidth.Location = new System.Drawing.Point(561, 33);
             this.doubleInputWidth.MinValue = 0D;
             this.doubleInputWidth.Name = "doubleInputWidth";
             this.doubleInputWidth.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -525,7 +528,7 @@
             this.doubleInputHeight.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.doubleInputHeight.FocusHighlightEnabled = true;
             this.doubleInputHeight.Increment = 1D;
-            this.doubleInputHeight.Location = new System.Drawing.Point(640, 63);
+            this.doubleInputHeight.Location = new System.Drawing.Point(631, 33);
             this.doubleInputHeight.MinValue = 0D;
             this.doubleInputHeight.Name = "doubleInputHeight";
             this.doubleInputHeight.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -537,14 +540,29 @@
             this.bgWorkerGetPrintServicePrice.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerGetPrintServicePrice_DoWork);
             this.bgWorkerGetPrintServicePrice.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerGetPrintServicePrice_RunWorkerCompleted);
             // 
+            // circularProgressLoadPrintServices
+            // 
+            // 
+            // 
+            // 
+            this.circularProgressLoadPrintServices.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.circularProgressLoadPrintServices.Location = new System.Drawing.Point(677, 82);
+            this.circularProgressLoadPrintServices.Name = "circularProgressLoadPrintServices";
+            this.circularProgressLoadPrintServices.ProgressColor = System.Drawing.Color.Green;
+            this.circularProgressLoadPrintServices.Size = new System.Drawing.Size(14, 21);
+            this.circularProgressLoadPrintServices.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
+            this.circularProgressLoadPrintServices.TabIndex = 31;
+            this.circularProgressLoadPrintServices.TabStop = false;
+            this.circularProgressLoadPrintServices.UseWaitCursor = true;
+            // 
             // FrmAddEditPrintServices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(992, 406);
+            this.ClientSize = new System.Drawing.Size(992, 364);
+            this.Controls.Add(this.circularProgressLoadPrintServices);
             this.Controls.Add(this.doubleInputHeight);
             this.Controls.Add(this.doubleInputWidth);
-            this.Controls.Add(this.circularProgress1);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -568,6 +586,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbPrintSizes);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.circularProgressLoadPrintSizes);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.KeyPreview = true;
             this.Name = "FrmAddEditPrintServices";
@@ -632,7 +651,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private DevComponents.Editors.DoubleInput doubleInputHeight;
         private DevComponents.Editors.DoubleInput doubleInputWidth;
-        private DevComponents.DotNetBar.Controls.CircularProgress circularProgress1;
+        private DevComponents.DotNetBar.Controls.CircularProgress circularProgressLoadPrintSizes;
         private System.ComponentModel.BackgroundWorker bgWorkerGetPrintServicePrice;
+        private DevComponents.DotNetBar.Controls.CircularProgress circularProgressLoadPrintServices;
     }
 }
