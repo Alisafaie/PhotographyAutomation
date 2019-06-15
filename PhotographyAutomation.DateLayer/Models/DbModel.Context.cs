@@ -49,6 +49,7 @@ namespace PhotographyAutomation.DateLayer.Models
         public virtual DbSet<TblPrintServices> TblPrintServices { get; set; }
         public virtual DbSet<TblPrintServices_TblPrintSizePrice> TblPrintServices_TblPrintSizePrice { get; set; }
         public virtual DbSet<TblPrintSizePrices> TblPrintSizePrices { get; set; }
+        public virtual DbSet<View_PrintSizesPrices> View_PrintSizesPrices { get; set; }
     
         public virtual ObjectResult<string> usp_CreateCustomerFinancialDirectory(string customerFinancialNumber, string monthNumber, Nullable<byte> parent_level, ObjectParameter returnValue)
         {

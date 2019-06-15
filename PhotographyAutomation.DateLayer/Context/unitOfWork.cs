@@ -11,6 +11,20 @@ namespace PhotographyAutomation.DateLayer.Context
         private readonly PhotographyAutomationDBEntities _db = new PhotographyAutomationDBEntities();
 
 
+        private IPrintSizePriceServiceRepository _printSizePriceRepository;
+
+        public IPrintSizePriceServiceRepository PrintSizePriceServiceRepository
+        {
+            get
+            {
+                if (_printSizePriceRepository == null)
+                {
+                    _printSizePriceRepository = new PrintSizePriceServiceRepository(_db);
+                }
+                return _printSizePriceRepository;
+            }
+        }
+
         private ICustomerRepository _customerRepository;
 
         public ICustomerRepository CustomerRepository

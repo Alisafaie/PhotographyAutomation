@@ -151,28 +151,41 @@ namespace PhotographyAutomation.App.Forms.Admin
                         db.PrintSizePricesGenericRepository.Update(itemSizePrice);
                     }
 
-                    var itemServiceTypePrice = new TblPrintServices_TblPrintSizePrice
+                    if (rbHasPrintService.Checked)
                     {
-                        Code = txtPrintServiceCode.Text,
-                        Price = integerInputPrintServicePrice.Value,
-                        PrintSizePriceId = _selectedPrintSizeId,
-                        PrintServiceId = _selectedPrintServiceId
-                    };
-
-                    var itemPrintSizePrintService = db.PrintServices_PrintSizePriceGenericRepository.Get(x =>
-                        x.PrintServiceId == _selectedPrintServiceId &&
-                        x.PrintSizePriceId == _selectedPrintSizeId).SingleOrDefault();
-                    if (itemPrintSizePrintService == null)
-                    {
-                        db.PrintServices_PrintSizePriceGenericRepository.Insert(itemServiceTypePrice);
+                        var itemServiceTypePrice = new TblPrintServices_TblPrintSizePrice
+                        {
+                            Code = txtPrintServiceCode.Text,
+                            Price = integerInputPrintServicePrice.Value,
+                            PrintSizePriceId = _selectedPrintSizeId,
+                            PrintServiceId = _selectedPrintServiceId
+                        };
+                        var itemPrintSizePrintService = db.PrintServices_PrintSizePriceGenericRepository.Get(x =>
+                            x.PrintServiceId == _selectedPrintServiceId &&
+                            x.PrintSizePriceId == _selectedPrintSizeId).SingleOrDefault();
+                        if (itemPrintSizePrintService == null)
+                        {
+                            db.PrintServices_PrintSizePriceGenericRepository.Insert(itemServiceTypePrice);
+                        }
+                        else
+                        {
+                            itemPrintSizePrintService.PrintServiceId = _selectedPrintServiceId;
+                            itemPrintSizePrintService.PrintSizePriceId = _selectedPrintSizeId;
+                            itemPrintSizePrintService.Code = txtPrintServiceCode.Text;
+                            itemPrintSizePrintService.Price = integerInputPrintServicePrice.Value;
+                            db.PrintServices_PrintSizePriceGenericRepository.Update(itemPrintSizePrintService);
+                        }
                     }
-                    else
+                    else if (rbHasNotPrintService.Checked)
                     {
-                        itemPrintSizePrintService.PrintServiceId = _selectedPrintServiceId;
-                        itemPrintSizePrintService.PrintSizePriceId = _selectedPrintSizeId;
-                        itemPrintSizePrintService.Code = txtPrintServiceCode.Text;
-                        itemPrintSizePrintService.Price = integerInputPrintServicePrice.Value;
-                        db.PrintServices_PrintSizePriceGenericRepository.Update(itemPrintSizePrintService);
+                        var itemPrintSizePrintService=db.PrintServices_PrintSizePriceGenericRepository.Get(x =>
+                            x.PrintServiceId == _selectedPrintServiceId &&
+                            x.PrintSizePriceId == _selectedPrintSizeId).SingleOrDefault();
+
+                        if (itemPrintSizePrintService != null)
+                        {
+                            db.PrintServices_PrintSizePriceGenericRepository.Delete(itemPrintSizePrintService);
+                        }
                     }
 
                     db.Save();
@@ -316,7 +329,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                 using (var db = new UnitOfWork())
                 {
                     var printSizeList = db.PrintSizePricesGenericRepository.Get(
-                        x =>(x.SizeWidth == (decimal)width && x.SizeHeight == (decimal)height) || 
+                        x => (x.SizeWidth == (decimal)width && x.SizeHeight == (decimal)height) ||
                                  (x.SizeWidth == (decimal)height && x.SizeHeight == (decimal)width))
                         .ToList();
 
@@ -398,7 +411,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                 dgvPrintServices.AutoGenerateColumns = false;
 
                 dgvPrintServices.Columns["clmSizeName"].DefaultCellStyle.Alignment =
-                    DataGridViewContentAlignment.MiddleLeft;
+                    DataGridViewContentAlignment.MiddleRight;
 
                 dgvPrintServices.Columns["clmOriginalPrintPrice"].DefaultCellStyle.Alignment =
                     DataGridViewContentAlignment.MiddleRight;
@@ -414,21 +427,33 @@ namespace PhotographyAutomation.App.Forms.Admin
 
                 for (int i = 0; i < printSizeServiceList.Count; i++)
                 {
-                    dgvPrintServices.Rows[i].Cells["clmId"].Value = printSizeServiceList[i].Id;
-                    dgvPrintServices.Rows[i].Cells["clmPrintServiceId"].Value = printSizeServiceList[i].PrintServiceId;
+                    dgvPrintServices.Rows[i].Cells["clmId"].Value = 
+                        printSizeServiceList[i].Id;
+                    
+                    dgvPrintServices.Rows[i].Cells["clmPrintServiceId"].Value = 
+                        printSizeServiceList[i].PrintServiceId;
+                    
                     dgvPrintServices.Rows[i].Cells["clmPrintSizePriceId"].Value =
                         printSizeServiceList[i].PrintSizePriceId;
 
-                    dgvPrintServices.Rows[i].Cells["clmSizeName"].Value = printSizeServiceList[i].PrintSizeName;
+                    dgvPrintServices.Rows[i].Cells["clmSizeName"].Value = 
+                        printSizeServiceList[i].PrintSizeName;
 
                     dgvPrintServices.Rows[i].Cells["clmOriginalPrintPrice"].Value =
                         printSizeServiceList[i].OriginalPrintPrice.ToString("N0");
+                    
                     dgvPrintServices.Rows[i].Cells["clmSecondPrintPrice"].Value =
                         printSizeServiceList[i].SecondPrintPrice.ToString("N0");
-                    dgvPrintServices.Rows[i].Cells["clmCode"].Value = printSizeServiceList[i].Code;
+                    
+                    dgvPrintServices.Rows[i].Cells["clmCode"].Value = printSizeServiceList[i].Code ?? "-";
+                    
                     dgvPrintServices.Rows[i].Cells["clmPrintServiceName"].Value =
-                        printSizeServiceList[i].PrintServiceName;
-                    dgvPrintServices.Rows[i].Cells["clmPrice"].Value = printSizeServiceList[i].Price.ToString("N0");
+                        printSizeServiceList[i].PrintServiceName ?? "-";
+                    
+                    dgvPrintServices.Rows[i].Cells["clmPrice"].Value = 
+                        printSizeServiceList[i].Price.HasValue ? 
+                            printSizeServiceList[i].Price?.ToString("N0") : "-";
+
                     dgvPrintServices.Rows[i].Cells["clmDescription"].Value = printSizeServiceList[i].Description;
                 }
             }
@@ -446,27 +471,28 @@ namespace PhotographyAutomation.App.Forms.Admin
             {
                 using (var db = new UnitOfWork())
                 {
-                    var result = db.PrintServices_PrintSizePriceGenericRepository.Get()
-                        .Select(x => new PrintServiceType_PrintSizePriceViewModel
-                        {
-                            Id = x.Id,
-                            PrintSizePriceId = x.PrintSizePriceId,
-                            PrintServiceId = x.PrintServiceId,
-                            PrintSizeWidth = x.TblPrintSizePrices.SizeWidth,
-                            PrintSizeHeight = x.TblPrintSizePrices.SizeHeight,
-                            PrintSizeName = x.TblPrintSizePrices.SizeWidth.ToString("####.#") +
-                                            "x" +
-                                            x.TblPrintSizePrices.SizeHeight.ToString("####.#"),
-                            Price = x.Price,
-                            Code = x.Code,
-                            Description = x.Description,
-                            OriginalPrintPrice = x.TblPrintSizePrices.OriginalPrintPrice,
-                            SecondPrintPrice = x.TblPrintSizePrices.SecondPrintPrice,
-                            PrintServiceName = x.TblPrintServices.PrintServiceName
-                        })
-                        .OrderBy(x => x.PrintSizeWidth)
-                        .ThenBy(x => x.PrintSizeHeight)
-                        .ToList();
+                    //var result = db.PrintServices_PrintSizePriceGenericRepository.Get()
+                    //    .Select(x => new PrintServiceType_PrintSizePriceViewModel
+                    //    {
+                    //        Id = x.Id,
+                    //        PrintSizePriceId = x.PrintSizePriceId,
+                    //        PrintServiceId = x.PrintServiceId,
+                    //        PrintSizeWidth = x.TblPrintSizePrices.SizeWidth,
+                    //        PrintSizeHeight = x.TblPrintSizePrices.SizeHeight,
+                    //        PrintSizeName = x.TblPrintSizePrices.SizeWidth.ToString("####.#") +
+                    //                        "x" +
+                    //                        x.TblPrintSizePrices.SizeHeight.ToString("####.#"),
+                    //        Price = x.Price,
+                    //        Code = x.Code,
+                    //        Description = x.Description,
+                    //        OriginalPrintPrice = x.TblPrintSizePrices.OriginalPrintPrice,
+                    //        SecondPrintPrice = x.TblPrintSizePrices.SecondPrintPrice,
+                    //        PrintServiceName = x.TblPrintServices.PrintServiceName
+                    //    })
+                    //    .OrderBy(x => x.PrintSizeWidth)
+                    //    .ThenBy(x => x.PrintSizeHeight)
+                    //    .ToList();
+                    var result = db.PrintSizePriceServiceRepository.GetAllPrintSizePriceServices();
                     e.Result = result;
                 }
             }
@@ -663,7 +689,8 @@ namespace PhotographyAutomation.App.Forms.Admin
                     if (result.Any())
                     {
                         txtPrintServiceCode.Text = result[0].Code;
-                        integerInputPrintServicePrice.Value = result[0].Price;
+                        var price = result[0].Price;
+                        if (price != null) integerInputPrintServicePrice.Value = price.Value;
                     }
                     else
                     {
