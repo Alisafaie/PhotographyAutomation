@@ -32,6 +32,8 @@ namespace PhotographyAutomation.App.Forms.Admin
             LoadPrintSizes();
             LoadPrintServices();
             LoadTable();
+
+            cmbPrintSizes.Focus();
         }
 
         #endregion Form Events
@@ -41,7 +43,7 @@ namespace PhotographyAutomation.App.Forms.Admin
         {
             if (CheckInputs())
             {
-                ClearHighLighters();
+                //ClearHighLighters();
 
                 SaveOrUpdate();
 
@@ -54,18 +56,18 @@ namespace PhotographyAutomation.App.Forms.Admin
         #endregion Buttons
 
         #region Methods
-        private void ClearHighLighters()
-        {
-            foreach (Control control in Controls)
-            {
-                if (control is DevComponents.Editors.DoubleInput ||
-                    control is DevComponents.Editors.IntegerInput)
-                {
-                    highlighter1.SetHighlightColor(control, eHighlightColor.None);
-                    highlighter1.SetHighlightOnFocus(control, false);
-                }
-            }
-        }
+        //private void ClearHighLighters()
+        //{
+        //    foreach (Control control in Controls)
+        //    {
+        //        if (control is DevComponents.Editors.DoubleInput ||
+        //            control is DevComponents.Editors.IntegerInput)
+        //        {
+        //            highlighter1.SetHighlightColor(control, eHighlightColor.None);
+        //            highlighter1.SetHighlightOnFocus(control, false);
+        //        }
+        //    }
+        //}
 
         private void SaveOrUpdate()
         {
@@ -187,8 +189,12 @@ namespace PhotographyAutomation.App.Forms.Admin
                     highlighter1.SetHighlightColor(doubleInputWidth, eHighlightColor.Red);
                     highlighter1.SetHighlightOnFocus(doubleInputWidth, true);
 
-                    toolTip1.SetToolTip(doubleInputWidth, "مقداری برای عرض چاپ وارد نشده است.");
-                    toolTip1.Show("مقداری برای عرض چاپ وارد نشده است.", doubleInputWidth, 5000);
+                    toolTip1.SetToolTip(
+                        doubleInputWidth,
+                        "مقداری برای عرض چاپ وارد نشده است.");
+                    toolTip1.Show(
+                        "مقداری برای عرض چاپ وارد نشده است.",
+                        doubleInputWidth, 5000);
                     return false;
                 }
 
@@ -198,8 +204,12 @@ namespace PhotographyAutomation.App.Forms.Admin
                     highlighter1.SetHighlightOnFocus(doubleInputWidth, true);
 
                     doubleInputWidth.Focus();
-                    toolTip1.SetToolTip(doubleInputWidth, "مقدار وارد شده برای عرض چاپ می بایست بیشتر از 0 باشد.");
-                    toolTip1.Show("مقدار وارد شده برای عرض چاپ می بایست بیشتر از 0 باشد.", doubleInputWidth, 5000);
+                    toolTip1.SetToolTip(
+                        doubleInputWidth,
+                        "مقدار وارد شده برای عرض چاپ می بایست بیشتر از 0 باشد.");
+                    toolTip1.Show(
+                        "مقدار وارد شده برای عرض چاپ می بایست بیشتر از 0 باشد.",
+                        doubleInputWidth, 5000);
                     return false;
                 }
 
@@ -209,8 +219,12 @@ namespace PhotographyAutomation.App.Forms.Admin
                     highlighter1.SetHighlightOnFocus(doubleInputHeight, true);
 
                     doubleInputHeight.Focus();
-                    toolTip1.SetToolTip(doubleInputWidth, "مقداری برای طول چاپ وارد نشده است.");
-                    toolTip1.Show("مقداری برای طول چاپ وارد نشده است.", doubleInputHeight, 5000);
+                    toolTip1.SetToolTip(
+                        doubleInputWidth,
+                        "مقداری برای طول چاپ وارد نشده است.");
+                    toolTip1.Show(
+                        "مقداری برای طول چاپ وارد نشده است.",
+                        doubleInputHeight, 5000);
                     return false;
                 }
 
@@ -220,8 +234,12 @@ namespace PhotographyAutomation.App.Forms.Admin
                     highlighter1.SetHighlightOnFocus(doubleInputHeight, true);
 
                     doubleInputHeight.Focus();
-                    toolTip1.SetToolTip(doubleInputHeight, "مقدار وارد شده برای طول چاپ می بایست بیشتر از 0 باشد.");
-                    toolTip1.Show("مقدار وارد شده برای طول چاپ می بایست بیشتر از 0 باشد.", doubleInputHeight, 5000);
+                    toolTip1.SetToolTip(
+                        doubleInputHeight,
+                        "مقدار وارد شده برای طول چاپ می بایست بیشتر از 0 باشد.");
+                    toolTip1.Show(
+                        "مقدار وارد شده برای طول چاپ می بایست بیشتر از 0 باشد.",
+                        doubleInputHeight, 5000);
                     return false;
                 }
 
@@ -231,8 +249,12 @@ namespace PhotographyAutomation.App.Forms.Admin
                     highlighter1.SetHighlightOnFocus(integerInputOriginalPrintPrice, true);
 
                     integerInputOriginalPrintPrice.Focus();
-                    toolTip1.SetToolTip(integerInputOriginalPrintPrice, "مقداری برای قیمت اصل چاپ وارد نشده است.");
-                    toolTip1.Show("مقداری برای قیمت اصل چاپ وارد نشده است.", integerInputOriginalPrintPrice, 5000);
+                    toolTip1.SetToolTip(
+                        integerInputOriginalPrintPrice,
+                        "مقداری برای قیمت اصل چاپ وارد نشده است.");
+                    toolTip1.Show(
+                        "مقداری برای قیمت اصل چاپ وارد نشده است.",
+                        integerInputOriginalPrintPrice, 5000);
                     return false;
                 }
 
@@ -242,8 +264,12 @@ namespace PhotographyAutomation.App.Forms.Admin
                     highlighter1.SetHighlightOnFocus(integerInputSecondPrintPrice, true);
 
                     integerInputSecondPrintPrice.Focus();
-                    toolTip1.SetToolTip(integerInputSecondPrintPrice, "مقداری برای قیمت اضافه چاپ وارد نشده است.");
-                    toolTip1.Show("مقداری برای قیمت اضافه چاپ وارد نشده است.", integerInputSecondPrintPrice, 5000);
+                    toolTip1.SetToolTip(
+                        integerInputSecondPrintPrice,
+                        "مقداری برای قیمت اضافه چاپ وارد نشده است.");
+                    toolTip1.Show(
+                        "مقداری برای قیمت اضافه چاپ وارد نشده است.",
+                        integerInputSecondPrintPrice, 5000);
                     return false;
                 }
 
@@ -255,13 +281,58 @@ namespace PhotographyAutomation.App.Forms.Admin
                         highlighter1.SetHighlightOnFocus(integerInputPrintServicePrice, true);
 
                         integerInputPrintServicePrice.Focus();
-                        toolTip1.SetToolTip(integerInputPrintServicePrice, "مقداری برای قیمت سرویس چاپ انتخابی وارد نشده است.");
-                        toolTip1.Show("مقداری برای قیمت سرویس چاپ انتخابی وارد نشده است.", integerInputPrintServicePrice, 5000);
+                        toolTip1.SetToolTip(
+                            integerInputPrintServicePrice,
+                            "مقداری برای قیمت سرویس چاپ انتخابی وارد نشده است.");
+                        toolTip1.Show(
+                            "مقداری برای قیمت سرویس چاپ انتخابی وارد نشده است.",
+                            integerInputPrintServicePrice, 5000);
                         return false;
                     }
                 }
+
+                if (CheckPrintSize(doubleInputWidth.Value, doubleInputHeight.Value) == false)
+                {
+                    highlighter1.SetHighlightColor(doubleInputWidth, eHighlightColor.Red);
+                    highlighter1.SetHighlightOnFocus(doubleInputWidth, true);
+
+                    doubleInputWidth.Focus();
+                    toolTip1.SetToolTip(
+                        doubleInputWidth,
+                        "این مقدار اندازه چاپ قبلا وارد شده است.");
+                    toolTip1.Show(
+                        "این مقدار اندازه چاپ قبلا وارد شده است.",
+                        doubleInputWidth, 5000);
+                    return false;
+                }
             }
             return true;
+        }
+
+        private static bool CheckPrintSize(double width, double height)
+        {
+            try
+            {
+                using (var db = new UnitOfWork())
+                {
+                    var printSizeList = db.PrintSizePricesGenericRepository.Get(
+                        x =>(x.SizeWidth == (decimal)width && x.SizeHeight == (decimal)height) || 
+                                 (x.SizeWidth == (decimal)height && x.SizeHeight == (decimal)width))
+                        .ToList();
+
+                    if (printSizeList.Any())
+                    {
+                        return false;
+                    }
+
+                    return true;
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(@"exception: " + exception.Message);
+                return false;
+            }
         }
 
         private void LoadTable()
@@ -287,6 +358,8 @@ namespace PhotographyAutomation.App.Forms.Admin
 
             circularProgressLoadPrintSizes.IsRunning = bgWorkerLoadPrintSizes.IsBusy;
             cmbPrintSizes.Enabled = !bgWorkerLoadPrintSizes.IsBusy;
+            checkBoxEnablePrintSizeItems.Enabled = !bgWorkerLoadPrintSizes.IsBusy;
+            doubleInputWidth.Enabled = doubleInputHeight.Enabled = !bgWorkerLoadPrintSizes.IsBusy;
         }
 
         private void DisableInputComponents()
@@ -459,6 +532,7 @@ namespace PhotographyAutomation.App.Forms.Admin
             }
             cmbPrintSizes.Enabled = !bgWorkerLoadPrintSizes.IsBusy;
             circularProgressLoadPrintSizes.IsRunning = bgWorkerLoadPrintSizes.IsBusy;
+            checkBoxEnablePrintSizeItems.Enabled = !bgWorkerLoadPrintSizes.IsBusy;
             if (bgWorkerLoadPrintSizes.IsBusy == false)
                 circularProgressLoadPrintSizes.Hide();
         }
@@ -634,6 +708,8 @@ namespace PhotographyAutomation.App.Forms.Admin
                 else
                 {
                     EnableInputComponents();
+                    doubleInputWidth.ResetText();
+                    doubleInputHeight.ResetText();
                     integerInputOriginalPrintPrice.ResetText();
                     integerInputSecondPrintPrice.ResetText();
                     checkBoxEnablePrintSizeItems.Checked = true;
