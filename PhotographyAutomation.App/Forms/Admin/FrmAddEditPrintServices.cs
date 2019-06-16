@@ -178,9 +178,9 @@ namespace PhotographyAutomation.App.Forms.Admin
                     }
                     else if (rbHasNotPrintService.Checked)
                     {
-                        var itemPrintSizePrintService=db.PrintServices_PrintSizePriceGenericRepository.Get(x =>
-                            x.PrintServiceId == _selectedPrintServiceId &&
-                            x.PrintSizePriceId == _selectedPrintSizeId).SingleOrDefault();
+                        var itemPrintSizePrintService = db.PrintServices_PrintSizePriceGenericRepository.Get(x =>
+                              x.PrintServiceId == _selectedPrintServiceId &&
+                              x.PrintSizePriceId == _selectedPrintSizeId).SingleOrDefault();
 
                         if (itemPrintSizePrintService != null)
                         {
@@ -427,31 +427,31 @@ namespace PhotographyAutomation.App.Forms.Admin
 
                 for (int i = 0; i < printSizeServiceList.Count; i++)
                 {
-                    dgvPrintServices.Rows[i].Cells["clmId"].Value = 
+                    dgvPrintServices.Rows[i].Cells["clmId"].Value =
                         printSizeServiceList[i].Id;
-                    
-                    dgvPrintServices.Rows[i].Cells["clmPrintServiceId"].Value = 
+
+                    dgvPrintServices.Rows[i].Cells["clmPrintServiceId"].Value =
                         printSizeServiceList[i].PrintServiceId;
-                    
+
                     dgvPrintServices.Rows[i].Cells["clmPrintSizePriceId"].Value =
                         printSizeServiceList[i].PrintSizePriceId;
 
-                    dgvPrintServices.Rows[i].Cells["clmSizeName"].Value = 
+                    dgvPrintServices.Rows[i].Cells["clmSizeName"].Value =
                         printSizeServiceList[i].PrintSizeName;
 
                     dgvPrintServices.Rows[i].Cells["clmOriginalPrintPrice"].Value =
                         printSizeServiceList[i].OriginalPrintPrice.ToString("N0");
-                    
+
                     dgvPrintServices.Rows[i].Cells["clmSecondPrintPrice"].Value =
                         printSizeServiceList[i].SecondPrintPrice.ToString("N0");
-                    
+
                     dgvPrintServices.Rows[i].Cells["clmCode"].Value = printSizeServiceList[i].Code ?? "-";
-                    
+
                     dgvPrintServices.Rows[i].Cells["clmPrintServiceName"].Value =
                         printSizeServiceList[i].PrintServiceName ?? "-";
-                    
-                    dgvPrintServices.Rows[i].Cells["clmPrice"].Value = 
-                        printSizeServiceList[i].Price.HasValue ? 
+
+                    dgvPrintServices.Rows[i].Cells["clmPrice"].Value =
+                        printSizeServiceList[i].Price.HasValue ?
                             printSizeServiceList[i].Price?.ToString("N0") : "-";
 
                     dgvPrintServices.Rows[i].Cells["clmDescription"].Value = printSizeServiceList[i].Description;
@@ -461,7 +461,6 @@ namespace PhotographyAutomation.App.Forms.Admin
 
 
         #endregion Methods
-
 
         #region BackgroundWorkers
 
@@ -508,7 +507,14 @@ namespace PhotographyAutomation.App.Forms.Admin
                 IReadOnlyList<PrintServiceType_PrintSizePriceViewModel> printSizeServiceList =
                     e.Result as List<PrintServiceType_PrintSizePriceViewModel>;
 
-                PopulateDatagridView(printSizeServiceList);
+                if (printSizeServiceList != null)
+                {
+                    printSizeServiceList = printSizeServiceList.OrderBy(x => x.PrintSizeWidth)
+                        .ThenBy(x => x.PrintSizeHeight).ToList();
+
+                    PopulateDatagridView(printSizeServiceList);
+                }
+
                 circularProgressLoadDataGridView.IsRunning = bgWorkerLoadTable.IsBusy;
                 if (bgWorkerLoadTable.IsBusy == false)
                     circularProgressLoadDataGridView.Hide();
@@ -526,10 +532,17 @@ namespace PhotographyAutomation.App.Forms.Admin
                         .Select(x => new PrintSizePriceViewModel
                         {
                             Id = x.Id,
-                            SizeName = x.SizeWidth.ToString("####.#") + " x " + x.SizeHeight.ToString("####.#")
-                        }).ToList();
+                            SizeName = x.SizeWidth.ToString("####.#") +
+                                       " x " +
+                                       x.SizeHeight.ToString("####.#"),
+                            SizeWidth = x.SizeWidth,
+                            SizeHeight = x.SizeHeight
+                        })
+                        .OrderBy(x => x.SizeWidth)
+                        .ThenBy(x => x.SizeHeight)
+                        .ToList();
                     int maxId = result.Last().Id;
-                    PrintSizePriceViewModel psItem = new PrintSizePriceViewModel
+                    var psItem = new PrintSizePriceViewModel
                     {
                         Id = maxId + 1,
                         SizeName = "جدید",
@@ -618,7 +631,9 @@ namespace PhotographyAutomation.App.Forms.Admin
                             Code = x.Code,
                             PrintServiceName = x.PrintServiceName,
                             PrintServiceDescription = x.PrintServiceDescription
-                        }).ToList();
+                        })
+                        .OrderBy(x => x.PrintServiceName)
+                        .ToList();
 
                     e.Result = result;
                 }
@@ -772,7 +787,6 @@ namespace PhotographyAutomation.App.Forms.Admin
         }
 
         #endregion Check Boxes
-
 
         #region RadioButtons
 

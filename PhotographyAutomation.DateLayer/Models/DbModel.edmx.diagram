@@ -27,12 +27,10 @@
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblBooking_TblPhotographyType" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblBooking_TblUser" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderPrint_TblCustomer" ManuallyRouted="true" >
-          <ConnectorPoint PointX="4.5" PointY="10.459408801398624" />
-          <ConnectorPoint PointX="4.9421982572879628" PointY="10.000176411923158" />
-          <ConnectorPoint PointX="5.0578017427120372" PointY="9.8801197089216881" />
+          <ConnectorPoint PointX="4.5" PointY="10.459408801261361" />
           <ConnectorPoint PointX="7.4700000000000006" PointY="7.375" />
-          <ConnectorPoint PointX="7.7447894166666673" PointY="7.3749999999999991" />
-          <ConnectorPoint PointX="7.9114560833333334" PointY="7.375" />
+          <ConnectorPoint PointX="7.9166669166666663" PointY="7.3749999999999991" />
+          <ConnectorPoint PointX="8.0833335833333333" PointY="7.375" />
           <ConnectorPoint PointX="8.2604166666666661" PointY="7.3749999999999991" />
           <ConnectorPoint PointX="8.4270833333333339" PointY="7.375" />
           <ConnectorPoint PointX="9.0104166666666661" PointY="7.3749999999999991" />
@@ -65,7 +63,7 @@
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblPrintServicePrice_TblPrintServices" />
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPrintSizePrices" Width="1.5" PointX="20.25" PointY="10.625" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblPrintServicePrice_TblPrintSizePrices" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.View_PrintSizesPrices" Width="1.875" PointX="15" PointY="0.75" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.View_PrintSizesPrices" Width="1.5" PointX="15.375" PointY="0.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
