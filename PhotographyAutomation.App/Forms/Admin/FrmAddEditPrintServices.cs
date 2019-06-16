@@ -584,7 +584,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                 using (var db = new UnitOfWork())
                 {
                     var result = db.PrintSizePricesGenericRepository.Get(x => x.Id == (int)e.Argument)
-                        .Select(x => new PrintSizePriceViewModel()
+                        .Select(x => new PrintSizePriceViewModel
                         {
                             Id = x.Id,
                             SizeName = x.SizeName,

@@ -115,7 +115,7 @@
             this.cmbSecondPrintSize2 = new System.Windows.Forms.ComboBox();
             this.cmbOriginalPrintService = new System.Windows.Forms.ComboBox();
             this.cmbSecondPrintSize1 = new System.Windows.Forms.ComboBox();
-            this.cmbPrintSize = new System.Windows.Forms.ComboBox();
+            this.cmbOriginalPrintSize = new System.Windows.Forms.ComboBox();
             this.txtPhotoNumber = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtOriginalPrintSizePrice = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtCustomerLastName = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -149,6 +149,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.labelX11 = new DevComponents.DotNetBar.LabelX();
             this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.bgWorkerLoadOriginalPringSizes = new System.ComponentModel.BackgroundWorker();
+            this.circularOriginalPrintServices = new DevComponents.DotNetBar.Controls.CircularProgress();
+            this.bgWorkerLoadPrintSizeServices = new System.ComponentModel.BackgroundWorker();
+            this.bgWorkerGetOriginalPrintPrice = new System.ComponentModel.BackgroundWorker();
+            this.bgWorkerGetPrintServicePrice = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1.SuspendLayout();
             this.panelEx1.SuspendLayout();
             this.groupBoxPreviewPictures.SuspendLayout();
@@ -581,11 +586,13 @@
             this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "انصراف";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // panelEx3
             // 
             this.panelEx3.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx3.Controls.Add(this.circularOriginalPrintServices);
             this.panelEx3.Controls.Add(this.label1);
             this.panelEx3.Controls.Add(this.label14);
             this.panelEx3.Controls.Add(this.circularOriginalPrintSize);
@@ -644,7 +651,7 @@
             this.panelEx3.Controls.Add(this.cmbSecondPrintSize2);
             this.panelEx3.Controls.Add(this.cmbOriginalPrintService);
             this.panelEx3.Controls.Add(this.cmbSecondPrintSize1);
-            this.panelEx3.Controls.Add(this.cmbPrintSize);
+            this.panelEx3.Controls.Add(this.cmbOriginalPrintSize);
             this.panelEx3.Controls.Add(this.txtPhotoNumber);
             this.panelEx3.Controls.Add(this.txtOriginalPrintSizePrice);
             this.panelEx3.Controls.Add(this.txtCustomerLastName);
@@ -1456,6 +1463,7 @@
             this.cmbOriginalPrintService.Name = "cmbOriginalPrintService";
             this.cmbOriginalPrintService.Size = new System.Drawing.Size(121, 21);
             this.cmbOriginalPrintService.TabIndex = 3;
+            this.cmbOriginalPrintService.SelectedIndexChanged += new System.EventHandler(this.cmbOriginalPrintService_SelectedIndexChanged);
             // 
             // cmbSecondPrintSize1
             // 
@@ -1469,16 +1477,17 @@
             this.cmbSecondPrintSize1.Size = new System.Drawing.Size(99, 21);
             this.cmbSecondPrintSize1.TabIndex = 5;
             // 
-            // cmbPrintSize
+            // cmbOriginalPrintSize
             // 
-            this.cmbPrintSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPrintSize.FormattingEnabled = true;
-            this.highlighter1.SetHighlightOnFocus(this.cmbPrintSize, true);
-            this.cmbPrintSize.Location = new System.Drawing.Point(655, 106);
-            this.cmbPrintSize.Name = "cmbPrintSize";
-            this.cmbPrintSize.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.cmbPrintSize.Size = new System.Drawing.Size(133, 21);
-            this.cmbPrintSize.TabIndex = 2;
+            this.cmbOriginalPrintSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbOriginalPrintSize.FormattingEnabled = true;
+            this.highlighter1.SetHighlightOnFocus(this.cmbOriginalPrintSize, true);
+            this.cmbOriginalPrintSize.Location = new System.Drawing.Point(655, 106);
+            this.cmbOriginalPrintSize.Name = "cmbOriginalPrintSize";
+            this.cmbOriginalPrintSize.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cmbOriginalPrintSize.Size = new System.Drawing.Size(133, 21);
+            this.cmbOriginalPrintSize.TabIndex = 2;
+            this.cmbOriginalPrintSize.SelectedIndexChanged += new System.EventHandler(this.cmbOriginalPrintSize_SelectedIndexChanged);
             // 
             // txtPhotoNumber
             // 
@@ -1941,6 +1950,41 @@
             this.textBoxX1.TabIndex = 87;
             this.textBoxX1.TabStop = false;
             // 
+            // bgWorkerLoadOriginalPringSizes
+            // 
+            this.bgWorkerLoadOriginalPringSizes.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerLoadOriginalPringSizes_DoWork);
+            this.bgWorkerLoadOriginalPringSizes.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerLoadOriginalPringSizes_RunWorkerCompleted);
+            // 
+            // circularOriginalPrintServices
+            // 
+            // 
+            // 
+            // 
+            this.circularOriginalPrintServices.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.circularOriginalPrintServices.Location = new System.Drawing.Point(267, 106);
+            this.circularOriginalPrintServices.Name = "circularOriginalPrintServices";
+            this.circularOriginalPrintServices.ProgressColor = System.Drawing.Color.Green;
+            this.circularOriginalPrintServices.Size = new System.Drawing.Size(15, 21);
+            this.circularOriginalPrintServices.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
+            this.circularOriginalPrintServices.TabIndex = 103;
+            this.circularOriginalPrintServices.TabStop = false;
+            this.circularOriginalPrintServices.UseWaitCursor = true;
+            // 
+            // bgWorkerLoadPrintSizeServices
+            // 
+            this.bgWorkerLoadPrintSizeServices.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerLoadPrintSizeServices_DoWork);
+            this.bgWorkerLoadPrintSizeServices.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerLoadPrintSizeServices_RunWorkerCompleted);
+            // 
+            // bgWorkerGetOriginalPrintPrice
+            // 
+            this.bgWorkerGetOriginalPrintPrice.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerGetOriginalPrintPrice_DoWork);
+            this.bgWorkerGetOriginalPrintPrice.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerGetOriginalPrintPrice_RunWorkerCompleted);
+            // 
+            // bgWorkerGetPrintServicePrice
+            // 
+            this.bgWorkerGetPrintServicePrice.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerGetPrintServicePrice_DoWork);
+            this.bgWorkerGetPrintServicePrice.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerGetPrintServicePrice_RunWorkerCompleted);
+            // 
             // FrmAddEditPreFactor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2053,7 +2097,7 @@
         private System.Windows.Forms.ComboBox cmbSecondPrintSize2;
         private System.Windows.Forms.ComboBox cmbOriginalPrintService;
         private System.Windows.Forms.ComboBox cmbSecondPrintSize1;
-        private System.Windows.Forms.ComboBox cmbPrintSize;
+        private System.Windows.Forms.ComboBox cmbOriginalPrintSize;
         private DevComponents.DotNetBar.Controls.TextBoxX txtPhotoNumber;
         private DevComponents.DotNetBar.Controls.TextBoxX txtOriginalPrintSizePrice;
         private DevComponents.DotNetBar.Controls.TextBoxX txtCustomerLastName;
@@ -2104,5 +2148,10 @@
         private System.Windows.Forms.Label label14;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
         private DevComponents.DotNetBar.LabelX labelX11;
+        private System.ComponentModel.BackgroundWorker bgWorkerLoadOriginalPringSizes;
+        private DevComponents.DotNetBar.Controls.CircularProgress circularOriginalPrintServices;
+        private System.ComponentModel.BackgroundWorker bgWorkerLoadPrintSizeServices;
+        private System.ComponentModel.BackgroundWorker bgWorkerGetOriginalPrintPrice;
+        private System.ComponentModel.BackgroundWorker bgWorkerGetPrintServicePrice;
     }
 }
