@@ -77,6 +77,7 @@
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.ارسالپیامکبهمشتریToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
@@ -550,10 +551,11 @@
             this.ارسالعکسToolStripMenuItem,
             this.مشاهدهعکسهاToolStripMenuItem,
             this.درخواستصدورقبضToolStripMenuItem,
-            this.درخواستمجوزحذفعکسToolStripMenuItem});
+            this.درخواستمجوزحذفعکسToolStripMenuItem,
+            this.ارسالپیامکبهمشتریToolStripMenuItem});
             this.contextMenuStripDgvBookings.Name = "contextMenuStripDgvBookings";
             this.contextMenuStripDgvBookings.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStripDgvBookings.Size = new System.Drawing.Size(213, 114);
+            this.contextMenuStripDgvBookings.Size = new System.Drawing.Size(213, 158);
             this.contextMenuStripDgvBookings.Paint += new System.Windows.Forms.PaintEventHandler(this.contextMenuStripDgvBookings_Paint);
             // 
             // ویرایشاطلاعاتمشتریToolStripMenuItem
@@ -612,6 +614,14 @@
             // 
             this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
             this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
+            // 
+            // ارسالپیامکبهمشتریToolStripMenuItem
+            // 
+            this.ارسالپیامکبهمشتریToolStripMenuItem.Enabled = false;
+            this.ارسالپیامکبهمشتریToolStripMenuItem.Name = "ارسالپیامکبهمشتریToolStripMenuItem";
+            this.ارسالپیامکبهمشتریToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.ارسالپیامکبهمشتریToolStripMenuItem.Text = "ارسال پیامک به مشتری";
+            this.ارسالپیامکبهمشتریToolStripMenuItem.Click += new System.EventHandler(this.ارسالپیامکبهمشتریToolStripMenuItem_Click);
             // 
             // FrmShowIncommingBookings
             // 
@@ -689,5 +699,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem درخواستمجوزحذفعکسToolStripMenuItem;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
+        private System.Windows.Forms.ToolStripMenuItem ارسالپیامکبهمشتریToolStripMenuItem;
     }
 }

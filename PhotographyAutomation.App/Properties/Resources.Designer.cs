@@ -2683,6 +2683,16 @@ namespace PhotographyAutomation.App.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_document_image_add_103475 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_document_image_add_103475", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconfinder_Flickr_2745005 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_Flickr_2745005", resourceCulture);
@@ -2853,6 +2863,16 @@ namespace PhotographyAutomation.App.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_icon_112_search_plus_314479 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_icon_112_search_plus_314479", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconfinder_Illustration_60746 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_Illustration_60746", resourceCulture);
@@ -2986,6 +3006,26 @@ namespace PhotographyAutomation.App.Properties {
         internal static System.Drawing.Bitmap iconfinder_settings_1167993 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_settings_1167993", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_sign_add_299068 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_sign_add_299068", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_Untitled_1_26_3773918 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_Untitled_1_26_3773918", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

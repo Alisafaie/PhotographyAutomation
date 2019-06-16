@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Kavenegar.Models;
 
 namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 {
@@ -217,7 +218,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 
         #region Methods
 
-        
+
 
         private void ShowOrders(string customerInfo)
         {
@@ -498,6 +499,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
             مشاهدهعکسهاToolStripMenuItem.Enabled = orderStatusCode != 10;
             درخواستمجوزحذفعکسToolStripMenuItem.Enabled = orderStatusCode != 10;
             درخواستصدورقبضToolStripMenuItem.Enabled = orderStatusCode != 10;
+            ارسالپیامکبهمشتریToolStripMenuItem.Enabled = orderStatusCode != 10;
         }
 
         private void PopulateComboBoxBookingStatus()
@@ -511,15 +513,15 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
             {
                 using (var db = new UnitOfWork())
                 {
-                     var result=db.OrderStatusGenericRepository.Get()
-                        .Select(x => new OrderStatusViewModel
-                        {
-                            Id = x.Id,
-                            StatusCode = x.Code,
-                            Name = x.Name
-                        }).ToList();
+                    var result = db.OrderStatusGenericRepository.Get()
+                       .Select(x => new OrderStatusViewModel
+                       {
+                           Id = x.Id,
+                           StatusCode = x.Code,
+                           Name = x.Name
+                       }).ToList();
 
-                     e.Result = result;
+                    e.Result = result;
                 }
             }
             catch (Exception exception)
@@ -548,6 +550,37 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 
             btnShowBookings.Enabled = !backgroundWorker.IsBusy;
             btnClearSearch.Enabled = !backgroundWorker.IsBusy;
+        }
+
+        private void ارسالپیامکبهمشتریToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Kavenegar.KavenegarApi api = 
+                    new Kavenegar.KavenegarApi("3235536372716D7A42464C4C344A54374E6A324271644F65317766784E46372B");
+                var res = api.Send("10004346", "00989133138675", "استودیو عکاسی سایان.");
+                //Console.Write(res.Messageid.ToString());
+                MessageBox.Show(res.Messageid.ToString());
+
+                //foreach (SendResult r in res)
+                //{
+                //    Console.Write(r.Messageid.ToString());  //Collect MessageId(s) and store them
+                //}
+            }
+            catch (Kavenegar.Exceptions.ApiException ex)
+            {
+                // در صورتی که خروجی وب سرویس 200 نباشد این خطارخ می دهد.
+                MessageBox.Show("Message : " + ex.Message);
+            }
+            catch (Kavenegar.Exceptions.HttpException ex)
+            {
+                // در زمانی که مشکلی در برقرای ارتباط با وب سرویس وجود داشته باشد این خطا رخ می دهد
+                MessageBox.Show("Message : " + ex.Message);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Message : " + exception.Message);
+            }
         }
     }
 }
