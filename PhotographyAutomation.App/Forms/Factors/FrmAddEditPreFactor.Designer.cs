@@ -35,7 +35,6 @@
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.groupBoxPreviewPictures = new System.Windows.Forms.GroupBox();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
-            this.circularSavePreFactor = new DevComponents.DotNetBar.Controls.CircularProgress();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
             this.txtRemainingPayment = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtCusstomerDeposit = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -59,8 +58,13 @@
             this.btnSavePreFactor = new DevComponents.DotNetBar.ButtonX();
             this.btnCancel = new DevComponents.DotNetBar.ButtonX();
             this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
-            this.circularOriginalPrintSize = new DevComponents.DotNetBar.Controls.CircularProgress();
-            this.circularOkPhoto = new DevComponents.DotNetBar.Controls.CircularProgress();
+            this.checkBoxLoadPrintSizeServices = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxLoadSecondPrintSize4 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxLoadSecondPrintSize3 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxLoadSecondPrintSize2 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxLoadSecondPrintSize1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.circularProgress1 = new DevComponents.DotNetBar.Controls.CircularProgress();
+            this.circularProgress = new DevComponents.DotNetBar.Controls.CircularProgress();
             this.integerInputTotalPhotos = new DevComponents.Editors.IntegerInput();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.integerInputPhotoOf = new DevComponents.Editors.IntegerInput();
@@ -72,10 +76,6 @@
             this.labelX52 = new DevComponents.DotNetBar.LabelX();
             this.txtSecondPrintServicePrice2 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX50 = new DevComponents.DotNetBar.LabelX();
-            this.labelX46 = new DevComponents.DotNetBar.LabelX();
-            this.labelX30 = new DevComponents.DotNetBar.LabelX();
-            this.labelX27 = new DevComponents.DotNetBar.LabelX();
-            this.labelX26 = new DevComponents.DotNetBar.LabelX();
             this.txtOriginalPrintServicePrice = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX38 = new DevComponents.DotNetBar.LabelX();
             this.txtSecondPrintSizePrice4 = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -124,14 +124,17 @@
             this.textPhotoRetouchDescription = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX29 = new DevComponents.DotNetBar.LabelX();
             this.labelX31 = new DevComponents.DotNetBar.LabelX();
-            this.labelX32 = new DevComponents.DotNetBar.LabelX();
             this.labelX34 = new DevComponents.DotNetBar.LabelX();
             this.labelX37 = new DevComponents.DotNetBar.LabelX();
             this.labelX24 = new DevComponents.DotNetBar.LabelX();
             this.labelX44 = new DevComponents.DotNetBar.LabelX();
             this.labelX45 = new DevComponents.DotNetBar.LabelX();
             this.pictureBoxPreview = new System.Windows.Forms.PictureBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX11 = new DevComponents.DotNetBar.LabelX();
             this.txtPhotographyType = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX55 = new DevComponents.DotNetBar.LabelX();
             this.txtCustomerInfo = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -144,13 +147,7 @@
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
-            this.circularNextPhoto = new DevComponents.DotNetBar.Controls.CircularProgress();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.labelX11 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.bgWorkerLoadOriginalPringSizes = new System.ComponentModel.BackgroundWorker();
-            this.circularOriginalPrintServices = new DevComponents.DotNetBar.Controls.CircularProgress();
             this.bgWorkerLoadPrintSizeServices = new System.ComponentModel.BackgroundWorker();
             this.bgWorkerGetOriginalPrintPrice = new System.ComponentModel.BackgroundWorker();
             this.bgWorkerGetPrintServicePrice = new System.ComponentModel.BackgroundWorker();
@@ -224,8 +221,6 @@
             // 
             this.panelEx2.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx2.Controls.Add(this.circularNextPhoto);
-            this.panelEx2.Controls.Add(this.circularSavePreFactor);
             this.panelEx2.Controls.Add(this.labelX10);
             this.panelEx2.Controls.Add(this.txtRemainingPayment);
             this.panelEx2.Controls.Add(this.txtCusstomerDeposit);
@@ -260,21 +255,6 @@
             this.panelEx2.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx2.Style.GradientAngle = 90;
             this.panelEx2.TabIndex = 1;
-            // 
-            // circularSavePreFactor
-            // 
-            // 
-            // 
-            // 
-            this.circularSavePreFactor.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.circularSavePreFactor.Location = new System.Drawing.Point(186, 118);
-            this.circularSavePreFactor.Name = "circularSavePreFactor";
-            this.circularSavePreFactor.ProgressColor = System.Drawing.Color.Green;
-            this.circularSavePreFactor.Size = new System.Drawing.Size(15, 23);
-            this.circularSavePreFactor.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
-            this.circularSavePreFactor.TabIndex = 101;
-            this.circularSavePreFactor.TabStop = false;
-            this.circularSavePreFactor.UseWaitCursor = true;
             // 
             // labelX10
             // 
@@ -462,8 +442,8 @@
             // 
             // 
             // 
-            this.textBoxX1.Border.Class = "TextBoxBorder";
-            this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTotalPrintCosts.Border.Class = "TextBoxBorder";
+            this.txtTotalPrintCosts.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.txtTotalPrintCosts, true);
             this.txtTotalPrintCosts.Location = new System.Drawing.Point(688, 15);
             this.txtTotalPrintCosts.Name = "txtTotalPrintCosts";
@@ -592,11 +572,13 @@
             // 
             this.panelEx3.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx3.Controls.Add(this.circularOriginalPrintServices);
-            this.panelEx3.Controls.Add(this.label1);
-            this.panelEx3.Controls.Add(this.label14);
-            this.panelEx3.Controls.Add(this.circularOriginalPrintSize);
-            this.panelEx3.Controls.Add(this.circularOkPhoto);
+            this.panelEx3.Controls.Add(this.checkBoxLoadPrintSizeServices);
+            this.panelEx3.Controls.Add(this.checkBoxLoadSecondPrintSize4);
+            this.panelEx3.Controls.Add(this.checkBoxLoadSecondPrintSize3);
+            this.panelEx3.Controls.Add(this.checkBoxLoadSecondPrintSize2);
+            this.panelEx3.Controls.Add(this.checkBoxLoadSecondPrintSize1);
+            this.panelEx3.Controls.Add(this.circularProgress1);
+            this.panelEx3.Controls.Add(this.circularProgress);
             this.panelEx3.Controls.Add(this.integerInputTotalPhotos);
             this.panelEx3.Controls.Add(this.labelX2);
             this.panelEx3.Controls.Add(this.integerInputPhotoOf);
@@ -608,10 +590,6 @@
             this.panelEx3.Controls.Add(this.labelX52);
             this.panelEx3.Controls.Add(this.txtSecondPrintServicePrice2);
             this.panelEx3.Controls.Add(this.labelX50);
-            this.panelEx3.Controls.Add(this.labelX46);
-            this.panelEx3.Controls.Add(this.labelX30);
-            this.panelEx3.Controls.Add(this.labelX27);
-            this.panelEx3.Controls.Add(this.labelX26);
             this.panelEx3.Controls.Add(this.txtOriginalPrintServicePrice);
             this.panelEx3.Controls.Add(this.labelX38);
             this.panelEx3.Controls.Add(this.txtSecondPrintSizePrice4);
@@ -660,13 +638,14 @@
             this.panelEx3.Controls.Add(this.textPhotoRetouchDescription);
             this.panelEx3.Controls.Add(this.labelX29);
             this.panelEx3.Controls.Add(this.labelX31);
-            this.panelEx3.Controls.Add(this.labelX32);
             this.panelEx3.Controls.Add(this.labelX34);
             this.panelEx3.Controls.Add(this.labelX37);
             this.panelEx3.Controls.Add(this.labelX24);
             this.panelEx3.Controls.Add(this.labelX44);
             this.panelEx3.Controls.Add(this.labelX45);
             this.panelEx3.Controls.Add(this.pictureBoxPreview);
+            this.panelEx3.Controls.Add(this.label14);
+            this.panelEx3.Controls.Add(this.label1);
             this.panelEx3.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelEx3.Location = new System.Drawing.Point(3, 17);
@@ -681,35 +660,116 @@
             this.panelEx3.Style.GradientAngle = 90;
             this.panelEx3.TabIndex = 0;
             // 
-            // circularOriginalPrintSize
+            // checkBoxLoadPrintSizeServices
+            // 
+            this.checkBoxLoadPrintSizeServices.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxLoadPrintSizeServices.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.highlighter1.SetHighlightOnFocus(this.checkBoxLoadPrintSizeServices, true);
+            this.checkBoxLoadPrintSizeServices.Location = new System.Drawing.Point(398, 108);
+            this.checkBoxLoadPrintSizeServices.Name = "checkBoxLoadPrintSizeServices";
+            this.checkBoxLoadPrintSizeServices.Size = new System.Drawing.Size(76, 16);
+            this.checkBoxLoadPrintSizeServices.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxLoadPrintSizeServices.TabIndex = 106;
+            this.checkBoxLoadPrintSizeServices.Text = "خدمات چاپ";
+            this.checkBoxLoadPrintSizeServices.CheckedChanged += new System.EventHandler(this.checkBoxLoadPrintSizeServices_CheckedChanged);
+            // 
+            // checkBoxLoadSecondPrintSize4
+            // 
+            this.checkBoxLoadSecondPrintSize4.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxLoadSecondPrintSize4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxLoadSecondPrintSize4.Enabled = false;
+            this.checkBoxLoadSecondPrintSize4.Location = new System.Drawing.Point(398, 241);
+            this.checkBoxLoadSecondPrintSize4.Name = "checkBoxLoadSecondPrintSize4";
+            this.checkBoxLoadSecondPrintSize4.Size = new System.Drawing.Size(76, 16);
+            this.checkBoxLoadSecondPrintSize4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxLoadSecondPrintSize4.TabIndex = 105;
+            this.checkBoxLoadSecondPrintSize4.Text = "خدمات چاپ";
+            this.checkBoxLoadSecondPrintSize4.CheckedChanged += new System.EventHandler(this.checkBoxLoadSecondPrintSize4_CheckedChanged);
+            // 
+            // checkBoxLoadSecondPrintSize3
+            // 
+            this.checkBoxLoadSecondPrintSize3.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxLoadSecondPrintSize3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxLoadSecondPrintSize3.Enabled = false;
+            this.checkBoxLoadSecondPrintSize3.Location = new System.Drawing.Point(398, 216);
+            this.checkBoxLoadSecondPrintSize3.Name = "checkBoxLoadSecondPrintSize3";
+            this.checkBoxLoadSecondPrintSize3.Size = new System.Drawing.Size(76, 16);
+            this.checkBoxLoadSecondPrintSize3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxLoadSecondPrintSize3.TabIndex = 105;
+            this.checkBoxLoadSecondPrintSize3.Text = "خدمات چاپ";
+            this.checkBoxLoadSecondPrintSize3.CheckedChanged += new System.EventHandler(this.checkBoxLoadSecondPrintSize3_CheckedChanged);
+            // 
+            // checkBoxLoadSecondPrintSize2
+            // 
+            this.checkBoxLoadSecondPrintSize2.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxLoadSecondPrintSize2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxLoadSecondPrintSize2.Enabled = false;
+            this.checkBoxLoadSecondPrintSize2.Location = new System.Drawing.Point(398, 191);
+            this.checkBoxLoadSecondPrintSize2.Name = "checkBoxLoadSecondPrintSize2";
+            this.checkBoxLoadSecondPrintSize2.Size = new System.Drawing.Size(76, 16);
+            this.checkBoxLoadSecondPrintSize2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxLoadSecondPrintSize2.TabIndex = 105;
+            this.checkBoxLoadSecondPrintSize2.Text = "خدمات چاپ";
+            this.checkBoxLoadSecondPrintSize2.CheckedChanged += new System.EventHandler(this.checkBoxLoadSecondPrintSize2_CheckedChanged);
+            // 
+            // checkBoxLoadSecondPrintSize1
+            // 
+            this.checkBoxLoadSecondPrintSize1.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxLoadSecondPrintSize1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxLoadSecondPrintSize1.Enabled = false;
+            this.highlighter1.SetHighlightOnFocus(this.checkBoxLoadSecondPrintSize1, true);
+            this.checkBoxLoadSecondPrintSize1.Location = new System.Drawing.Point(398, 166);
+            this.checkBoxLoadSecondPrintSize1.Name = "checkBoxLoadSecondPrintSize1";
+            this.checkBoxLoadSecondPrintSize1.Size = new System.Drawing.Size(76, 16);
+            this.checkBoxLoadSecondPrintSize1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxLoadSecondPrintSize1.TabIndex = 105;
+            this.checkBoxLoadSecondPrintSize1.Text = "خدمات چاپ";
+            this.checkBoxLoadSecondPrintSize1.CheckedChanged += new System.EventHandler(this.checkBoxLoadSecondPrintSize1_CheckedChanged);
+            // 
+            // circularProgress1
             // 
             // 
             // 
             // 
-            this.circularOriginalPrintSize.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.circularOriginalPrintSize.Location = new System.Drawing.Point(637, 107);
-            this.circularOriginalPrintSize.Name = "circularOriginalPrintSize";
-            this.circularOriginalPrintSize.ProgressColor = System.Drawing.Color.Green;
-            this.circularOriginalPrintSize.Size = new System.Drawing.Size(15, 21);
-            this.circularOriginalPrintSize.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
-            this.circularOriginalPrintSize.TabIndex = 101;
-            this.circularOriginalPrintSize.TabStop = false;
-            this.circularOriginalPrintSize.UseWaitCursor = true;
+            this.circularProgress1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.circularProgress1.Location = new System.Drawing.Point(893, 290);
+            this.circularProgress1.Name = "circularProgress1";
+            this.circularProgress1.ProgressColor = System.Drawing.Color.Blue;
+            this.circularProgress1.Size = new System.Drawing.Size(30, 30);
+            this.circularProgress1.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
+            this.circularProgress1.TabIndex = 103;
+            this.circularProgress1.TabStop = false;
+            this.circularProgress1.UseWaitCursor = true;
             // 
-            // circularOkPhoto
-            // 
-            // 
+            // circularProgress
             // 
             // 
-            this.circularOkPhoto.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.circularOkPhoto.Location = new System.Drawing.Point(186, 300);
-            this.circularOkPhoto.Name = "circularOkPhoto";
-            this.circularOkPhoto.ProgressColor = System.Drawing.Color.Green;
-            this.circularOkPhoto.Size = new System.Drawing.Size(15, 23);
-            this.circularOkPhoto.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
-            this.circularOkPhoto.TabIndex = 100;
-            this.circularOkPhoto.TabStop = false;
-            this.circularOkPhoto.UseWaitCursor = true;
+            // 
+            // 
+            this.circularProgress.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.circularProgress.Location = new System.Drawing.Point(3, 3);
+            this.circularProgress.Name = "circularProgress";
+            this.circularProgress.ProgressColor = System.Drawing.Color.Blue;
+            this.circularProgress.Size = new System.Drawing.Size(30, 30);
+            this.circularProgress.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
+            this.circularProgress.TabIndex = 103;
+            this.circularProgress.TabStop = false;
+            this.circularProgress.UseWaitCursor = true;
             // 
             // integerInputTotalPhotos
             // 
@@ -720,7 +780,7 @@
             this.integerInputTotalPhotos.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.integerInputTotalPhotos.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.highlighter1.SetHighlightOnFocus(this.integerInputTotalPhotos, true);
-            this.integerInputTotalPhotos.Location = new System.Drawing.Point(11, 25);
+            this.integerInputTotalPhotos.Location = new System.Drawing.Point(11, 52);
             this.integerInputTotalPhotos.Name = "integerInputTotalPhotos";
             this.integerInputTotalPhotos.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.integerInputTotalPhotos.Size = new System.Drawing.Size(48, 21);
@@ -734,7 +794,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(64, 27);
+            this.labelX2.Location = new System.Drawing.Point(64, 54);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(9, 16);
             this.labelX2.TabIndex = 98;
@@ -749,7 +809,7 @@
             this.integerInputPhotoOf.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.integerInputPhotoOf.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.highlighter1.SetHighlightOnFocus(this.integerInputPhotoOf, true);
-            this.integerInputPhotoOf.Location = new System.Drawing.Point(80, 25);
+            this.integerInputPhotoOf.Location = new System.Drawing.Point(80, 52);
             this.integerInputPhotoOf.Name = "integerInputPhotoOf";
             this.integerInputPhotoOf.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.integerInputPhotoOf.Size = new System.Drawing.Size(48, 21);
@@ -763,7 +823,7 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(134, 27);
+            this.labelX1.Location = new System.Drawing.Point(134, 54);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(29, 16);
             this.labelX1.TabIndex = 96;
@@ -878,62 +938,6 @@
             this.labelX50.Size = new System.Drawing.Size(68, 16);
             this.labelX50.TabIndex = 86;
             this.labelX50.Text = "هزینه سرویس";
-            // 
-            // labelX46
-            // 
-            this.labelX46.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX46.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX46.Enabled = false;
-            this.labelX46.Location = new System.Drawing.Point(411, 241);
-            this.labelX46.Name = "labelX46";
-            this.labelX46.Size = new System.Drawing.Size(63, 16);
-            this.labelX46.TabIndex = 85;
-            this.labelX46.Text = "سرویس چاپ";
-            // 
-            // labelX30
-            // 
-            this.labelX30.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX30.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX30.Enabled = false;
-            this.labelX30.Location = new System.Drawing.Point(411, 216);
-            this.labelX30.Name = "labelX30";
-            this.labelX30.Size = new System.Drawing.Size(63, 16);
-            this.labelX30.TabIndex = 84;
-            this.labelX30.Text = "سرویس چاپ";
-            // 
-            // labelX27
-            // 
-            this.labelX27.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX27.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX27.Enabled = false;
-            this.labelX27.Location = new System.Drawing.Point(411, 191);
-            this.labelX27.Name = "labelX27";
-            this.labelX27.Size = new System.Drawing.Size(63, 16);
-            this.labelX27.TabIndex = 85;
-            this.labelX27.Text = "سرویس چاپ";
-            // 
-            // labelX26
-            // 
-            this.labelX26.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX26.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX26.Enabled = false;
-            this.labelX26.Location = new System.Drawing.Point(411, 166);
-            this.labelX26.Name = "labelX26";
-            this.labelX26.Size = new System.Drawing.Size(63, 16);
-            this.labelX26.TabIndex = 84;
-            this.labelX26.Text = "سرویس چاپ";
             // 
             // txtOriginalPrintServicePrice
             // 
@@ -1100,13 +1104,15 @@
             // 
             // 
             this.checkBoxSecondPrint4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxSecondPrint4.Enabled = false;
             this.highlighter1.SetHighlightOnFocus(this.checkBoxSecondPrint4, true);
-            this.checkBoxSecondPrint4.Location = new System.Drawing.Point(799, 241);
+            this.checkBoxSecondPrint4.Location = new System.Drawing.Point(812, 241);
             this.checkBoxSecondPrint4.Name = "checkBoxSecondPrint4";
             this.checkBoxSecondPrint4.Size = new System.Drawing.Size(70, 16);
             this.checkBoxSecondPrint4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.checkBoxSecondPrint4.TabIndex = 16;
             this.checkBoxSecondPrint4.Text = "اضافه چاپ";
+            this.checkBoxSecondPrint4.CheckedChanged += new System.EventHandler(this.checkBoxSecondPrint4_CheckedChanged);
             // 
             // checkBoxSecondPrint3
             // 
@@ -1115,13 +1121,15 @@
             // 
             // 
             this.checkBoxSecondPrint3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxSecondPrint3.Enabled = false;
             this.highlighter1.SetHighlightOnFocus(this.checkBoxSecondPrint3, true);
-            this.checkBoxSecondPrint3.Location = new System.Drawing.Point(799, 216);
+            this.checkBoxSecondPrint3.Location = new System.Drawing.Point(812, 216);
             this.checkBoxSecondPrint3.Name = "checkBoxSecondPrint3";
             this.checkBoxSecondPrint3.Size = new System.Drawing.Size(70, 16);
             this.checkBoxSecondPrint3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.checkBoxSecondPrint3.TabIndex = 12;
             this.checkBoxSecondPrint3.Text = "اضافه چاپ";
+            this.checkBoxSecondPrint3.CheckedChanged += new System.EventHandler(this.checkBoxSecondPrint3_CheckedChanged);
             // 
             // checkBoxSecondPrint2
             // 
@@ -1130,13 +1138,15 @@
             // 
             // 
             this.checkBoxSecondPrint2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxSecondPrint2.Enabled = false;
             this.highlighter1.SetHighlightOnFocus(this.checkBoxSecondPrint2, true);
-            this.checkBoxSecondPrint2.Location = new System.Drawing.Point(799, 191);
+            this.checkBoxSecondPrint2.Location = new System.Drawing.Point(812, 191);
             this.checkBoxSecondPrint2.Name = "checkBoxSecondPrint2";
             this.checkBoxSecondPrint2.Size = new System.Drawing.Size(70, 16);
             this.checkBoxSecondPrint2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.checkBoxSecondPrint2.TabIndex = 8;
             this.checkBoxSecondPrint2.Text = "اضافه چاپ";
+            this.checkBoxSecondPrint2.CheckedChanged += new System.EventHandler(this.checkBoxSecondPrint2_CheckedChanged);
             // 
             // checkBoxSecondPrint1
             // 
@@ -1145,13 +1155,15 @@
             // 
             // 
             this.checkBoxSecondPrint1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxSecondPrint1.Enabled = false;
             this.highlighter1.SetHighlightOnFocus(this.checkBoxSecondPrint1, true);
-            this.checkBoxSecondPrint1.Location = new System.Drawing.Point(799, 166);
+            this.checkBoxSecondPrint1.Location = new System.Drawing.Point(812, 166);
             this.checkBoxSecondPrint1.Name = "checkBoxSecondPrint1";
             this.checkBoxSecondPrint1.Size = new System.Drawing.Size(70, 16);
             this.checkBoxSecondPrint1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.checkBoxSecondPrint1.TabIndex = 4;
             this.checkBoxSecondPrint1.Text = "اضافه چاپ";
+            this.checkBoxSecondPrint1.CheckedChanged += new System.EventHandler(this.checkBoxSecondPrint1_CheckedChanged);
             // 
             // integerInputSecontPrintTotal4
             // 
@@ -1164,6 +1176,7 @@
             this.integerInputSecontPrintTotal4.Enabled = false;
             this.highlighter1.SetHighlightOnFocus(this.integerInputSecontPrintTotal4, true);
             this.integerInputSecontPrintTotal4.Location = new System.Drawing.Point(11, 239);
+            this.integerInputSecontPrintTotal4.MinValue = 0;
             this.integerInputSecontPrintTotal4.Name = "integerInputSecontPrintTotal4";
             this.integerInputSecontPrintTotal4.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.integerInputSecontPrintTotal4.Size = new System.Drawing.Size(48, 21);
@@ -1180,6 +1193,7 @@
             this.integerInputSecontPrintTotal3.Enabled = false;
             this.highlighter1.SetHighlightOnFocus(this.integerInputSecontPrintTotal3, true);
             this.integerInputSecontPrintTotal3.Location = new System.Drawing.Point(11, 214);
+            this.integerInputSecontPrintTotal3.MinValue = 0;
             this.integerInputSecontPrintTotal3.Name = "integerInputSecontPrintTotal3";
             this.integerInputSecontPrintTotal3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.integerInputSecontPrintTotal3.Size = new System.Drawing.Size(48, 21);
@@ -1196,6 +1210,7 @@
             this.integerInputSecontPrintTotal2.Enabled = false;
             this.highlighter1.SetHighlightOnFocus(this.integerInputSecontPrintTotal2, true);
             this.integerInputSecontPrintTotal2.Location = new System.Drawing.Point(11, 189);
+            this.integerInputSecontPrintTotal2.MinValue = 0;
             this.integerInputSecontPrintTotal2.Name = "integerInputSecontPrintTotal2";
             this.integerInputSecontPrintTotal2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.integerInputSecontPrintTotal2.Size = new System.Drawing.Size(48, 21);
@@ -1212,6 +1227,7 @@
             this.integerInputSecontPrintTotal1.Enabled = false;
             this.highlighter1.SetHighlightOnFocus(this.integerInputSecontPrintTotal1, true);
             this.integerInputSecontPrintTotal1.Location = new System.Drawing.Point(11, 164);
+            this.integerInputSecontPrintTotal1.MinValue = 0;
             this.integerInputSecontPrintTotal1.Name = "integerInputSecontPrintTotal1";
             this.integerInputSecontPrintTotal1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.integerInputSecontPrintTotal1.Size = new System.Drawing.Size(48, 21);
@@ -1277,9 +1293,9 @@
             // 
             this.line5.DashOffset = 1F;
             this.line5.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.line5.Location = new System.Drawing.Point(11, 134);
+            this.line5.Location = new System.Drawing.Point(11, 147);
             this.line5.Name = "line5";
-            this.line5.Size = new System.Drawing.Size(823, 23);
+            this.line5.Size = new System.Drawing.Size(823, 10);
             this.line5.TabIndex = 69;
             this.line5.Text = "line1";
             // 
@@ -1309,7 +1325,7 @@
             this.txtCustomerFirstName.Border.Class = "TextBoxBorder";
             this.txtCustomerFirstName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.txtCustomerFirstName, true);
-            this.txtCustomerFirstName.Location = new System.Drawing.Point(667, 25);
+            this.txtCustomerFirstName.Location = new System.Drawing.Point(686, 25);
             this.txtCustomerFirstName.Name = "txtCustomerFirstName";
             this.txtCustomerFirstName.PreventEnterBeep = true;
             this.txtCustomerFirstName.Size = new System.Drawing.Size(121, 21);
@@ -1321,7 +1337,7 @@
             // 
             // 
             this.labelX25.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX25.Location = new System.Drawing.Point(794, 24);
+            this.labelX25.Location = new System.Drawing.Point(807, 24);
             this.labelX25.Name = "labelX25";
             this.labelX25.Size = new System.Drawing.Size(75, 23);
             this.labelX25.TabIndex = 65;
@@ -1368,10 +1384,12 @@
             this.cmbSecondPrintService4.Enabled = false;
             this.cmbSecondPrintService4.FormattingEnabled = true;
             this.highlighter1.SetHighlightOnFocus(this.cmbSecondPrintService4, true);
-            this.cmbSecondPrintService4.Location = new System.Drawing.Point(283, 239);
+            this.cmbSecondPrintService4.Location = new System.Drawing.Point(271, 239);
             this.cmbSecondPrintService4.Name = "cmbSecondPrintService4";
             this.cmbSecondPrintService4.Size = new System.Drawing.Size(121, 21);
             this.cmbSecondPrintService4.TabIndex = 18;
+            this.cmbSecondPrintService4.SelectedIndexChanged += new System.EventHandler(this.cmbSecondPrintService4_SelectedIndexChanged);
+            this.cmbSecondPrintService4.EnabledChanged += new System.EventHandler(this.cmbSecondPrintService4_EnabledChanged);
             // 
             // cmbSecondPrintService3
             // 
@@ -1379,10 +1397,12 @@
             this.cmbSecondPrintService3.Enabled = false;
             this.cmbSecondPrintService3.FormattingEnabled = true;
             this.highlighter1.SetHighlightOnFocus(this.cmbSecondPrintService3, true);
-            this.cmbSecondPrintService3.Location = new System.Drawing.Point(283, 214);
+            this.cmbSecondPrintService3.Location = new System.Drawing.Point(271, 214);
             this.cmbSecondPrintService3.Name = "cmbSecondPrintService3";
             this.cmbSecondPrintService3.Size = new System.Drawing.Size(121, 21);
             this.cmbSecondPrintService3.TabIndex = 14;
+            this.cmbSecondPrintService3.SelectedIndexChanged += new System.EventHandler(this.cmbSecondPrintService3_SelectedIndexChanged);
+            this.cmbSecondPrintService3.EnabledChanged += new System.EventHandler(this.cmbSecondPrintService3_EnabledChanged);
             // 
             // cmbSecondPrintService2
             // 
@@ -1390,10 +1410,12 @@
             this.cmbSecondPrintService2.Enabled = false;
             this.cmbSecondPrintService2.FormattingEnabled = true;
             this.highlighter1.SetHighlightOnFocus(this.cmbSecondPrintService2, true);
-            this.cmbSecondPrintService2.Location = new System.Drawing.Point(283, 189);
+            this.cmbSecondPrintService2.Location = new System.Drawing.Point(271, 189);
             this.cmbSecondPrintService2.Name = "cmbSecondPrintService2";
             this.cmbSecondPrintService2.Size = new System.Drawing.Size(121, 21);
             this.cmbSecondPrintService2.TabIndex = 10;
+            this.cmbSecondPrintService2.SelectedIndexChanged += new System.EventHandler(this.cmbSecondPrintService2_SelectedIndexChanged);
+            this.cmbSecondPrintService2.EnabledChanged += new System.EventHandler(this.cmbSecondPrintService2_EnabledChanged);
             // 
             // btnOkPhoto
             // 
@@ -1413,11 +1435,13 @@
             this.cmbSecondPrintSize4.Enabled = false;
             this.cmbSecondPrintSize4.FormattingEnabled = true;
             this.highlighter1.SetHighlightOnFocus(this.cmbSecondPrintSize4, true);
-            this.cmbSecondPrintSize4.Location = new System.Drawing.Point(634, 239);
+            this.cmbSecondPrintSize4.Location = new System.Drawing.Point(653, 239);
             this.cmbSecondPrintSize4.Name = "cmbSecondPrintSize4";
             this.cmbSecondPrintSize4.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cmbSecondPrintSize4.Size = new System.Drawing.Size(99, 21);
             this.cmbSecondPrintSize4.TabIndex = 17;
+            this.cmbSecondPrintSize4.SelectedIndexChanged += new System.EventHandler(this.cmbSecondPrintSize4_SelectedIndexChanged);
+            this.cmbSecondPrintSize4.EnabledChanged += new System.EventHandler(this.cmbSecondPrintSize4_EnabledChanged);
             // 
             // cmbSecondPrintSize3
             // 
@@ -1425,11 +1449,13 @@
             this.cmbSecondPrintSize3.Enabled = false;
             this.cmbSecondPrintSize3.FormattingEnabled = true;
             this.highlighter1.SetHighlightOnFocus(this.cmbSecondPrintSize3, true);
-            this.cmbSecondPrintSize3.Location = new System.Drawing.Point(634, 214);
+            this.cmbSecondPrintSize3.Location = new System.Drawing.Point(653, 214);
             this.cmbSecondPrintSize3.Name = "cmbSecondPrintSize3";
             this.cmbSecondPrintSize3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cmbSecondPrintSize3.Size = new System.Drawing.Size(99, 21);
             this.cmbSecondPrintSize3.TabIndex = 13;
+            this.cmbSecondPrintSize3.SelectedIndexChanged += new System.EventHandler(this.cmbSecondPrintSize3_SelectedIndexChanged);
+            this.cmbSecondPrintSize3.EnabledChanged += new System.EventHandler(this.cmbSecondPrintSize3_EnabledChanged);
             // 
             // cmbSecondPrintService1
             // 
@@ -1437,10 +1463,12 @@
             this.cmbSecondPrintService1.Enabled = false;
             this.cmbSecondPrintService1.FormattingEnabled = true;
             this.highlighter1.SetHighlightOnFocus(this.cmbSecondPrintService1, true);
-            this.cmbSecondPrintService1.Location = new System.Drawing.Point(283, 164);
+            this.cmbSecondPrintService1.Location = new System.Drawing.Point(271, 164);
             this.cmbSecondPrintService1.Name = "cmbSecondPrintService1";
             this.cmbSecondPrintService1.Size = new System.Drawing.Size(121, 21);
             this.cmbSecondPrintService1.TabIndex = 6;
+            this.cmbSecondPrintService1.SelectedIndexChanged += new System.EventHandler(this.cmbSecondPrintService1_SelectedIndexChanged);
+            this.cmbSecondPrintService1.EnabledChanged += new System.EventHandler(this.cmbSecondPrintService1_EnabledChanged);
             // 
             // cmbSecondPrintSize2
             // 
@@ -1448,22 +1476,26 @@
             this.cmbSecondPrintSize2.Enabled = false;
             this.cmbSecondPrintSize2.FormattingEnabled = true;
             this.highlighter1.SetHighlightOnFocus(this.cmbSecondPrintSize2, true);
-            this.cmbSecondPrintSize2.Location = new System.Drawing.Point(634, 189);
+            this.cmbSecondPrintSize2.Location = new System.Drawing.Point(653, 189);
             this.cmbSecondPrintSize2.Name = "cmbSecondPrintSize2";
             this.cmbSecondPrintSize2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cmbSecondPrintSize2.Size = new System.Drawing.Size(99, 21);
             this.cmbSecondPrintSize2.TabIndex = 9;
+            this.cmbSecondPrintSize2.SelectedIndexChanged += new System.EventHandler(this.cmbSecondPrintSize2_SelectedIndexChanged);
+            this.cmbSecondPrintSize2.EnabledChanged += new System.EventHandler(this.cmbSecondPrintSize2_EnabledChanged);
             // 
             // cmbOriginalPrintService
             // 
             this.cmbOriginalPrintService.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbOriginalPrintService.Enabled = false;
             this.cmbOriginalPrintService.FormattingEnabled = true;
             this.highlighter1.SetHighlightOnFocus(this.cmbOriginalPrintService, true);
-            this.cmbOriginalPrintService.Location = new System.Drawing.Point(283, 106);
+            this.cmbOriginalPrintService.Location = new System.Drawing.Point(271, 106);
             this.cmbOriginalPrintService.Name = "cmbOriginalPrintService";
             this.cmbOriginalPrintService.Size = new System.Drawing.Size(121, 21);
             this.cmbOriginalPrintService.TabIndex = 3;
             this.cmbOriginalPrintService.SelectedIndexChanged += new System.EventHandler(this.cmbOriginalPrintService_SelectedIndexChanged);
+            this.cmbOriginalPrintService.EnabledChanged += new System.EventHandler(this.cmbOriginalPrintService_EnabledChanged);
             // 
             // cmbSecondPrintSize1
             // 
@@ -1471,11 +1503,13 @@
             this.cmbSecondPrintSize1.Enabled = false;
             this.cmbSecondPrintSize1.FormattingEnabled = true;
             this.highlighter1.SetHighlightOnFocus(this.cmbSecondPrintSize1, true);
-            this.cmbSecondPrintSize1.Location = new System.Drawing.Point(634, 163);
+            this.cmbSecondPrintSize1.Location = new System.Drawing.Point(653, 163);
             this.cmbSecondPrintSize1.Name = "cmbSecondPrintSize1";
             this.cmbSecondPrintSize1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cmbSecondPrintSize1.Size = new System.Drawing.Size(99, 21);
             this.cmbSecondPrintSize1.TabIndex = 5;
+            this.cmbSecondPrintSize1.SelectedIndexChanged += new System.EventHandler(this.cmbSecondPrintSize1_SelectedIndexChanged);
+            this.cmbSecondPrintSize1.EnabledChanged += new System.EventHandler(this.cmbSecondPrintSize1_EnabledChanged);
             // 
             // cmbOriginalPrintSize
             // 
@@ -1485,7 +1519,7 @@
             this.cmbOriginalPrintSize.Location = new System.Drawing.Point(655, 106);
             this.cmbOriginalPrintSize.Name = "cmbOriginalPrintSize";
             this.cmbOriginalPrintSize.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.cmbOriginalPrintSize.Size = new System.Drawing.Size(133, 21);
+            this.cmbOriginalPrintSize.Size = new System.Drawing.Size(152, 21);
             this.cmbOriginalPrintSize.TabIndex = 2;
             this.cmbOriginalPrintSize.SelectedIndexChanged += new System.EventHandler(this.cmbOriginalPrintSize_SelectedIndexChanged);
             // 
@@ -1497,7 +1531,7 @@
             this.txtPhotoNumber.Border.Class = "TextBoxBorder";
             this.txtPhotoNumber.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.txtPhotoNumber, true);
-            this.txtPhotoNumber.Location = new System.Drawing.Point(486, 79);
+            this.txtPhotoNumber.Location = new System.Drawing.Point(505, 79);
             this.txtPhotoNumber.Name = "txtPhotoNumber";
             this.txtPhotoNumber.PreventEnterBeep = true;
             this.txtPhotoNumber.ReadOnly = true;
@@ -1531,7 +1565,7 @@
             this.txtCustomerLastName.Border.Class = "TextBoxBorder";
             this.txtCustomerLastName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.txtCustomerLastName, true);
-            this.txtCustomerLastName.Location = new System.Drawing.Point(667, 52);
+            this.txtCustomerLastName.Location = new System.Drawing.Point(686, 52);
             this.txtCustomerLastName.Name = "txtCustomerLastName";
             this.txtCustomerLastName.PreventEnterBeep = true;
             this.txtCustomerLastName.Size = new System.Drawing.Size(121, 21);
@@ -1545,7 +1579,7 @@
             // 
             this.labelX49.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX49.Enabled = false;
-            this.labelX49.Location = new System.Drawing.Point(739, 241);
+            this.labelX49.Location = new System.Drawing.Point(758, 241);
             this.labelX49.Name = "labelX49";
             this.labelX49.Size = new System.Drawing.Size(49, 16);
             this.labelX49.TabIndex = 8;
@@ -1559,7 +1593,7 @@
             // 
             this.labelX28.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX28.Enabled = false;
-            this.labelX28.Location = new System.Drawing.Point(739, 216);
+            this.labelX28.Location = new System.Drawing.Point(758, 216);
             this.labelX28.Name = "labelX28";
             this.labelX28.Size = new System.Drawing.Size(49, 16);
             this.labelX28.TabIndex = 8;
@@ -1573,7 +1607,7 @@
             this.textPhotoRetouchDescription.Border.Class = "TextBoxBorder";
             this.textPhotoRetouchDescription.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.textPhotoRetouchDescription, true);
-            this.textPhotoRetouchDescription.Location = new System.Drawing.Point(283, 266);
+            this.textPhotoRetouchDescription.Location = new System.Drawing.Point(302, 266);
             this.textPhotoRetouchDescription.Multiline = true;
             this.textPhotoRetouchDescription.Name = "textPhotoRetouchDescription";
             this.textPhotoRetouchDescription.PreventEnterBeep = true;
@@ -1588,7 +1622,7 @@
             // 
             this.labelX29.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX29.Enabled = false;
-            this.labelX29.Location = new System.Drawing.Point(739, 191);
+            this.labelX29.Location = new System.Drawing.Point(758, 191);
             this.labelX29.Name = "labelX29";
             this.labelX29.Size = new System.Drawing.Size(49, 16);
             this.labelX29.TabIndex = 8;
@@ -1602,24 +1636,11 @@
             // 
             this.labelX31.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX31.Enabled = false;
-            this.labelX31.Location = new System.Drawing.Point(739, 166);
+            this.labelX31.Location = new System.Drawing.Point(758, 166);
             this.labelX31.Name = "labelX31";
             this.labelX31.Size = new System.Drawing.Size(49, 16);
             this.labelX31.TabIndex = 8;
             this.labelX31.Text = "اندازه چاپ";
-            // 
-            // labelX32
-            // 
-            this.labelX32.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX32.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX32.Location = new System.Drawing.Point(411, 108);
-            this.labelX32.Name = "labelX32";
-            this.labelX32.Size = new System.Drawing.Size(63, 16);
-            this.labelX32.TabIndex = 7;
-            this.labelX32.Text = "سرویس چاپ";
             // 
             // labelX34
             // 
@@ -1627,7 +1648,7 @@
             // 
             // 
             this.labelX34.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX34.Location = new System.Drawing.Point(794, 105);
+            this.labelX34.Location = new System.Drawing.Point(807, 105);
             this.labelX34.Name = "labelX34";
             this.labelX34.Size = new System.Drawing.Size(75, 23);
             this.labelX34.TabIndex = 8;
@@ -1639,7 +1660,7 @@
             // 
             // 
             this.labelX37.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX37.Location = new System.Drawing.Point(794, 78);
+            this.labelX37.Location = new System.Drawing.Point(807, 78);
             this.labelX37.Name = "labelX37";
             this.labelX37.Size = new System.Drawing.Size(75, 23);
             this.labelX37.TabIndex = 9;
@@ -1664,7 +1685,7 @@
             // 
             // 
             this.labelX44.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX44.Location = new System.Drawing.Point(794, 51);
+            this.labelX44.Location = new System.Drawing.Point(807, 51);
             this.labelX44.Name = "labelX44";
             this.labelX44.Size = new System.Drawing.Size(75, 23);
             this.labelX44.TabIndex = 10;
@@ -1677,7 +1698,7 @@
             // 
             // 
             this.labelX45.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX45.Location = new System.Drawing.Point(827, 266);
+            this.labelX45.Location = new System.Drawing.Point(840, 266);
             this.labelX45.Name = "labelX45";
             this.labelX45.Size = new System.Drawing.Size(42, 16);
             this.labelX45.TabIndex = 11;
@@ -1692,6 +1713,26 @@
             this.pictureBoxPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxPreview.TabIndex = 5;
             this.pictureBoxPreview.TabStop = false;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label14.Location = new System.Drawing.Point(484, 126);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(22, 13);
+            this.label14.TabIndex = 35;
+            this.label14.Text = "ريال";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label1.Location = new System.Drawing.Point(110, 126);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(22, 13);
+            this.label1.TabIndex = 102;
+            this.label1.Text = "ريال";
             // 
             // groupBox2
             // 
@@ -1715,6 +1756,35 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "اطلاعات سفارش";
+            // 
+            // textBoxX1
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX1.Border.Class = "TextBoxBorder";
+            this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX1.Enabled = false;
+            this.textBoxX1.Location = new System.Drawing.Point(14, 25);
+            this.textBoxX1.Name = "textBoxX1";
+            this.textBoxX1.PreventEnterBeep = true;
+            this.textBoxX1.ReadOnly = true;
+            this.textBoxX1.Size = new System.Drawing.Size(96, 21);
+            this.textBoxX1.TabIndex = 87;
+            this.textBoxX1.TabStop = false;
+            // 
+            // labelX11
+            // 
+            this.labelX11.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX11.Location = new System.Drawing.Point(116, 27);
+            this.labelX11.Name = "labelX11";
+            this.labelX11.Size = new System.Drawing.Size(75, 16);
+            this.labelX11.TabIndex = 86;
+            this.labelX11.Text = "وضعیت سفارش";
             // 
             // txtPhotographyType
             // 
@@ -1886,89 +1956,10 @@
             this.highlighter1.FocusHighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Orange;
             this.highlighter1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F";
             // 
-            // circularNextPhoto
-            // 
-            // 
-            // 
-            // 
-            this.circularNextPhoto.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.circularNextPhoto.Location = new System.Drawing.Point(983, 118);
-            this.circularNextPhoto.Name = "circularNextPhoto";
-            this.circularNextPhoto.ProgressColor = System.Drawing.Color.Green;
-            this.circularNextPhoto.Size = new System.Drawing.Size(15, 23);
-            this.circularNextPhoto.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
-            this.circularNextPhoto.TabIndex = 107;
-            this.circularNextPhoto.TabStop = false;
-            this.circularNextPhoto.UseWaitCursor = true;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label14.Location = new System.Drawing.Point(489, 129);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(22, 13);
-            this.label14.TabIndex = 35;
-            this.label14.Text = "ريال";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label1.Location = new System.Drawing.Point(116, 129);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(22, 13);
-            this.label1.TabIndex = 102;
-            this.label1.Text = "ريال";
-            // 
-            // labelX11
-            // 
-            this.labelX11.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX11.Location = new System.Drawing.Point(116, 27);
-            this.labelX11.Name = "labelX11";
-            this.labelX11.Size = new System.Drawing.Size(75, 16);
-            this.labelX11.TabIndex = 86;
-            this.labelX11.Text = "وضعیت سفارش";
-            // 
-            // textBoxX1
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX1.Border.Class = "TextBoxBorder";
-            this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX1.Enabled = false;
-            this.textBoxX1.Location = new System.Drawing.Point(14, 25);
-            this.textBoxX1.Name = "textBoxX1";
-            this.textBoxX1.PreventEnterBeep = true;
-            this.textBoxX1.ReadOnly = true;
-            this.textBoxX1.Size = new System.Drawing.Size(96, 21);
-            this.textBoxX1.TabIndex = 87;
-            this.textBoxX1.TabStop = false;
-            // 
             // bgWorkerLoadOriginalPringSizes
             // 
             this.bgWorkerLoadOriginalPringSizes.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerLoadOriginalPringSizes_DoWork);
             this.bgWorkerLoadOriginalPringSizes.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerLoadOriginalPringSizes_RunWorkerCompleted);
-            // 
-            // circularOriginalPrintServices
-            // 
-            // 
-            // 
-            // 
-            this.circularOriginalPrintServices.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.circularOriginalPrintServices.Location = new System.Drawing.Point(267, 106);
-            this.circularOriginalPrintServices.Name = "circularOriginalPrintServices";
-            this.circularOriginalPrintServices.ProgressColor = System.Drawing.Color.Green;
-            this.circularOriginalPrintServices.Size = new System.Drawing.Size(15, 21);
-            this.circularOriginalPrintServices.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
-            this.circularOriginalPrintServices.TabIndex = 103;
-            this.circularOriginalPrintServices.TabStop = false;
-            this.circularOriginalPrintServices.UseWaitCursor = true;
             // 
             // bgWorkerLoadPrintSizeServices
             // 
@@ -2054,10 +2045,6 @@
         private DevComponents.DotNetBar.LabelX labelX52;
         private DevComponents.DotNetBar.Controls.TextBoxX txtSecondPrintServicePrice2;
         private DevComponents.DotNetBar.LabelX labelX50;
-        private DevComponents.DotNetBar.LabelX labelX46;
-        private DevComponents.DotNetBar.LabelX labelX30;
-        private DevComponents.DotNetBar.LabelX labelX27;
-        private DevComponents.DotNetBar.LabelX labelX26;
         private DevComponents.DotNetBar.Controls.TextBoxX txtOriginalPrintServicePrice;
         private DevComponents.DotNetBar.LabelX labelX38;
         private DevComponents.DotNetBar.Controls.TextBoxX txtSecondPrintSizePrice4;
@@ -2106,7 +2093,6 @@
         private DevComponents.DotNetBar.Controls.TextBoxX textPhotoRetouchDescription;
         private DevComponents.DotNetBar.LabelX labelX29;
         private DevComponents.DotNetBar.LabelX labelX31;
-        private DevComponents.DotNetBar.LabelX labelX32;
         private DevComponents.DotNetBar.LabelX labelX34;
         private DevComponents.DotNetBar.LabelX labelX37;
         private DevComponents.DotNetBar.LabelX labelX24;
@@ -2140,18 +2126,20 @@
         private DevComponents.DotNetBar.LabelX labelX10;
         private DevComponents.DotNetBar.Controls.TextBoxX txtRemainingPayment;
         private System.Windows.Forms.ToolStripMenuItem منوToolStripMenuItem;
-        private DevComponents.DotNetBar.Controls.CircularProgress circularOkPhoto;
-        private DevComponents.DotNetBar.Controls.CircularProgress circularSavePreFactor;
-        private DevComponents.DotNetBar.Controls.CircularProgress circularOriginalPrintSize;
-        private DevComponents.DotNetBar.Controls.CircularProgress circularNextPhoto;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label14;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
         private DevComponents.DotNetBar.LabelX labelX11;
         private System.ComponentModel.BackgroundWorker bgWorkerLoadOriginalPringSizes;
-        private DevComponents.DotNetBar.Controls.CircularProgress circularOriginalPrintServices;
+        private DevComponents.DotNetBar.Controls.CircularProgress circularProgress;
         private System.ComponentModel.BackgroundWorker bgWorkerLoadPrintSizeServices;
         private System.ComponentModel.BackgroundWorker bgWorkerGetOriginalPrintPrice;
         private System.ComponentModel.BackgroundWorker bgWorkerGetPrintServicePrice;
+        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxLoadSecondPrintSize4;
+        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxLoadSecondPrintSize3;
+        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxLoadSecondPrintSize2;
+        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxLoadSecondPrintSize1;
+        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxLoadPrintSizeServices;
+        private DevComponents.DotNetBar.Controls.CircularProgress circularProgress1;
     }
 }
