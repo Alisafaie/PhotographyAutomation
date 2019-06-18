@@ -111,7 +111,11 @@ namespace PhotographyAutomation.App.Forms.Admin
                     };
 
                     db.PrintSizePricesGenericRepository.Insert(itemSizePrice);
+
                     var resultNewPrintSize = db.Save();
+
+                    LoadPrintSizes();
+
                     _selectedPrintSizeId = itemSizePrice.Id;
 
                     if (rbHasPrintService.Checked)
@@ -189,12 +193,14 @@ namespace PhotographyAutomation.App.Forms.Admin
                     }
 
                     db.Save();
+
                 }
             }
         }
 
         private bool CheckInputs()
         {
+            bool result = false;
             if (checkBoxEnablePrintSizeItems.Checked)
             {
                 if (doubleInputWidth.IsEmpty)
@@ -304,7 +310,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                     }
                 }
 
-                if (CheckPrintSize(doubleInputWidth.Value, doubleInputHeight.Value) == false)
+                if (CheckPrintSize(doubleInputWidth.Value, doubleInputHeight.Value).Any())
                 {
                     highlighter1.SetHighlightColor(doubleInputWidth, eHighlightColor.Red);
                     highlighter1.SetHighlightOnFocus(doubleInputWidth, true);
@@ -316,35 +322,46 @@ namespace PhotographyAutomation.App.Forms.Admin
                     toolTip1.Show(
                         "این مقدار اندازه چاپ قبلا وارد شده است.",
                         doubleInputWidth, 5000);
-                    return false;
+
+                    DialogResult dr = RtlMessageBox.Show(
+                        "این مقدار اندازه چاپ قبلا وارد شده است. " +
+                        "آیا می خواهید آن را ویرایش کنید؟",
+                        "",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning,
+                        MessageBoxDefaultButton.Button1);
+
+                    if (dr == DialogResult.No)
+                        result = false;
+                    result = true;
                 }
+
+
+                var tt = cmbPrintSizes.SelectedItem as PrintSizePriceViewModel;
+                if (tt.SizeName == "جدید")
+                    result = true;
+
             }
-            return true;
+            return result;
         }
 
-        private static bool CheckPrintSize(double width, double height)
+        private static List<TblPrintSizePrices> CheckPrintSize(double width, double height)
         {
             try
             {
                 using (var db = new UnitOfWork())
                 {
-                    var printSizeList = db.PrintSizePricesGenericRepository.Get(
+                    List<TblPrintSizePrices> printSizeList = db.PrintSizePricesGenericRepository.Get(
                         x => (x.SizeWidth == (decimal)width && x.SizeHeight == (decimal)height) ||
                                  (x.SizeWidth == (decimal)height && x.SizeHeight == (decimal)width))
                         .ToList();
 
-                    if (printSizeList.Any())
-                    {
-                        return false;
-                    }
-
-                    return true;
+                    return printSizeList;
                 }
             }
             catch (Exception exception)
             {
                 MessageBox.Show(@"exception: " + exception.Message);
-                return false;
+                return null;
             }
         }
 
@@ -378,7 +395,11 @@ namespace PhotographyAutomation.App.Forms.Admin
         private void DisableInputComponents()
         {
             doubleInputHeight.Enabled = false;
+            doubleInputHeight.ResetText();
+
             doubleInputWidth.Enabled = false;
+            doubleInputWidth.ResetText();
+
             doubleInputHeight.IsInputReadOnly = true;
             doubleInputWidth.IsInputReadOnly = true;
 
@@ -541,19 +562,37 @@ namespace PhotographyAutomation.App.Forms.Admin
                         .OrderBy(x => x.SizeWidth)
                         .ThenBy(x => x.SizeHeight)
                         .ToList();
-                    int maxId = result.Last().Id;
-                    var psItem = new PrintSizePriceViewModel
+                    if (result.Any())
                     {
-                        Id = maxId + 1,
-                        SizeName = "جدید",
-                        OriginalPrintPrice = 0,
-                        SecontPrintPrice = 0,
-                        SizeWidth = 0,
-                        SizeHeight = 0,
-                        SizeDescription = null
-                    };
-                    result.Add(psItem);
-                    e.Result = result;
+                        //int maxId = result.Last().Id;
+                        var psItem = new PrintSizePriceViewModel
+                        {
+                            //Id = maxId + 1,
+                            SizeName = "جدید",
+                            OriginalPrintPrice = 0,
+                            SecontPrintPrice = 0,
+                            SizeWidth = 0,
+                            SizeHeight = 0,
+                            SizeDescription = null
+                        };
+                        result.Add(psItem);
+                        e.Result = result;
+                    }
+                    else
+                    {
+                        var psItem = new PrintSizePriceViewModel
+                        {
+                            SizeName = "جدید",
+                            OriginalPrintPrice = 0,
+                            SecontPrintPrice = 0,
+                            SizeWidth = 0,
+                            SizeHeight = 0,
+                            SizeDescription = null
+                        };
+                        result.Add(psItem);
+                        e.Result = result;
+                    }
+
                 }
             }
             catch (Exception exception)
@@ -740,12 +779,15 @@ namespace PhotographyAutomation.App.Forms.Admin
             if (cmbPrintSizes.Enabled && cmbPrintSizes.SelectedValue != null)
             {
                 _selectedPrintSizeId = (int)cmbPrintSizes.SelectedValue;
+                checkBoxEnablePrintSizeItems.Checked = false;
 
+                var tt = cmbPrintSizes.SelectedItem as PrintSizePriceViewModel;
                 //برای اینکه جدید انتخاب نشود
-                if (cmbPrintSizes.SelectedIndex != cmbPrintSizes.Items.Count - 1)
+                if (tt.SizeName != "جدید")
                 {
                     DisableInputComponents();
-                    bgWorkerGetPrintSizePrices.RunWorkerAsync(_selectedPrintSizeId);
+                    while (bgWorkerGetPrintSizePrices.IsBusy == false)
+                        bgWorkerGetPrintSizePrices.RunWorkerAsync(_selectedPrintSizeId);
                 }
                 else
                 {

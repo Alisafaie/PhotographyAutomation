@@ -106,6 +106,12 @@
     <Compile Include="Forms\Admin\FrmAddEditPrintServices.Designer.cs">
       <DependentUpon>FrmAddEditPrintServices.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Admin\FrmAddEditPrintSizeAndServices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\FrmAddEditPrintSizeAndServices.Designer.cs">
+      <DependentUpon>FrmAddEditPrintSizeAndServices.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Booking\FrmAddEditBooking.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,6 +197,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Admin\FrmAddEditPrintServices.resx">
       <DependentUpon>FrmAddEditPrintServices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Admin\FrmAddEditPrintSizeAndServices.resx">
+      <DependentUpon>FrmAddEditPrintSizeAndServices.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Booking\FrmAddEditBooking.resx">
       <DependentUpon>FrmAddEditBooking.cs</DependentUpon>

@@ -676,6 +676,32 @@ namespace PhotographyAutomation.App.Forms.Factors
 
 
 
+        private string GetSecondPrintServicePrice()
+        {
+            string returnValue = "---";
+            try
+            {
+                using (var db = new UnitOfWork())
+                {
+                    var result = db.PrintServices_PrintSizePriceGenericRepository.Get(x =>
+                            x.PrintSizePriceId == (int)cmbSecondPrintSize1.SelectedValue &&
+                            x.PrintServiceId == (int)cmbSecondPrintService1.SelectedValue)
+                        .Select(x => new PrintServiceType_PrintSizePriceViewModel
+                        {
+                            Price = x.Price
+                        }).ToList();
+
+                    if (result.Any())
+                        returnValue = result[0].Price?.ToString("##,###");
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(@"exception: " + exception.Message);
+            }
+
+            return returnValue;
+        }
 
         private void checkBoxLoadSecondPrintSize1_CheckedChanged(object sender, EventArgs e)
         {
@@ -748,32 +774,7 @@ namespace PhotographyAutomation.App.Forms.Factors
             }
         }
 
-        private string GetSecondPrintServicePrice()
-        {
-            string returnValue = "---";
-            try
-            {
-                using (var db = new UnitOfWork())
-                {
-                    var result = db.PrintServices_PrintSizePriceGenericRepository.Get(x =>
-                            x.PrintSizePriceId == (int)cmbSecondPrintSize1.SelectedValue &&
-                            x.PrintServiceId == (int)cmbSecondPrintService1.SelectedValue)
-                        .Select(x => new PrintServiceType_PrintSizePriceViewModel
-                        {
-                            Price = x.Price
-                        }).ToList();
-
-                    if (result.Any())
-                        returnValue = result[0].Price?.ToString("##,###");
-                }
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(@"exception: " + exception.Message);
-            }
-
-            return returnValue;
-        }
+        
 
 
 

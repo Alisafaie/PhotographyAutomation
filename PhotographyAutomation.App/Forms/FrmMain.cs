@@ -86,9 +86,13 @@ namespace PhotographyAutomation.App.Forms
 
         private void btnShowFrmAddEditPrintServices_Click(object sender, EventArgs e)
         {
-            using (FrmAddEditPrintServices frmPrintServices=new FrmAddEditPrintServices())
+            //using (FrmAddEditPrintServices frmPrintServices=new FrmAddEditPrintServices())
+            //{
+            //    frmPrintServices.ShowDialog();
+            //}
+            using (var frmAddPrintService=new FrmAddEditPrintSizeAndServices())
             {
-                frmPrintServices.ShowDialog();
+                frmAddPrintService.ShowDialog();
             }
         }
     }
