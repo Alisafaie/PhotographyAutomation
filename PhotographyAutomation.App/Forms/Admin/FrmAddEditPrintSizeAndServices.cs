@@ -148,7 +148,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                         using (var frmInput = new FrmAddEditInput())
                         {
                             frmInput.lblFormQuestion.Text =
-                                @"لطفا توضیحات مورد نظر خود در رابطه با سایز چاپ مورد نظر را وارد نمایید.";
+                                "لطفا توضیحات مورد نظر خود در رابطه با سایز چاپ مورد نظر را وارد نمایید.";
                             frmInput.ShowDialog();
                             sizeDescription = frmInput.txtContent.Text;
                         }
@@ -230,7 +230,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                     //checkBoxNewSize.CheckState = CheckState.Checked;
                 }
 
-                groupBoxPrintSize.Text = @"ویرایش اندازه و قیمت چاپ";
+                groupBoxPrintSize.Text = "ویرایش اندازه و قیمت چاپ";
             }
             else if (ویرایش_اندازه_چاپ_ToolStripMenuItem.Checked)
             {
@@ -281,7 +281,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                     panelSecondPrintPrice.Enabled = false;
                 }
 
-                groupBoxPrintSize.Text = @"حذف اندازه چاپ";
+                groupBoxPrintSize.Text = "حذف اندازه چاپ";
             }
             else if (حذف_اندازه_چاپ_ToolStripMenuItem.Checked)
             {
@@ -480,7 +480,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                 };
                 using (var frmInput = new FrmAddEditInput())
                 {
-                    frmInput.lblFormQuestion.Text = @"آیا برای این اندازه چاپ توضیح خاصی در نظر دارید؟";
+                    frmInput.lblFormQuestion.Text = "آیا برای این اندازه چاپ توضیح خاصی در نظر دارید؟";
                     frmInput.txtContent.Text = sizePrintInDb.SizeDescription;
                     frmInput.ShowDialog();
                     editedSizePrint.SizeDescription = frmInput.txtContent.Text;

@@ -29,28 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.groupBoxPrintSize = new System.Windows.Forms.GroupBox();
             this.cpBtnSave = new DevComponents.DotNetBar.Controls.CircularProgress();
             this.panelHasPrintService = new System.Windows.Forms.Panel();
             this.checkBoxEnableGroupBoxPrintServices = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.label20 = new System.Windows.Forms.Label();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
             this.panelOriginalPrintPrice = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.integerInputOriginalPrintPrice = new DevComponents.Editors.IntegerInput();
             this.label7 = new System.Windows.Forms.Label();
             this.panelSecondPrintPrice = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.integerInputSecondPrintPrice = new DevComponents.Editors.IntegerInput();
             this.label15 = new System.Windows.Forms.Label();
             this.panelNewEditPrintSize = new System.Windows.Forms.Panel();
@@ -69,10 +63,8 @@
             this.label16 = new System.Windows.Forms.Label();
             this.integerInputPrintServicePrice = new DevComponents.Editors.IntegerInput();
             this.label19 = new System.Windows.Forms.Label();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.txtPrintServiceCode = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.label9 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.cpPrintServices = new DevComponents.DotNetBar.Controls.CircularProgress();
@@ -103,27 +95,24 @@
             this.bgWorkerLoadPrintSizes2 = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.تنظیماتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.تعریفToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.تعریف_خدمات_چاپ_جدید_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ویرایشToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ویرایش_اندازه_چاپ_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.حذف_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.حذف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.حذف_اندازه_چاپ_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bgWorkerSaveNewPrintSize = new System.ComponentModel.BackgroundWorker();
             this.bgWorkerDeletePrintSize = new System.ComponentModel.BackgroundWorker();
             this.bgWorkerUpdatePrintSize = new System.ComponentModel.BackgroundWorker();
             this.bgWorkerGetPrintSizeInfo = new System.ComponentModel.BackgroundWorker();
             this.bgWorkerGetPrintSizePrice = new System.ComponentModel.BackgroundWorker();
-            this.تعریفToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.تعریف_خدمات_چاپ_جدید_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ویرایشToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.حذف_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.حذف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.حذف_اندازه_چاپ_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ویرایش_اندازه_چاپ_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtPrintServiceCode = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.panelEx1.SuspendLayout();
             this.groupBoxPrintSize.SuspendLayout();
             this.panelHasPrintService.SuspendLayout();
-            this.panel12.SuspendLayout();
             this.panelOriginalPrintPrice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.integerInputOriginalPrintPrice)).BeginInit();
             this.panelSecondPrintPrice.SuspendLayout();
-            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.integerInputSecondPrintPrice)).BeginInit();
             this.panelNewEditPrintSize.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.doubleInputHeight)).BeginInit();
@@ -133,7 +122,6 @@
             this.groupBoxPrintServices.SuspendLayout();
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.integerInputPrintServicePrice)).BeginInit();
-            this.panel10.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panelPrintSize2.SuspendLayout();
@@ -199,7 +187,6 @@
             this.panelHasPrintService.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelHasPrintService.Controls.Add(this.checkBoxEnableGroupBoxPrintServices);
             this.panelHasPrintService.Controls.Add(this.label20);
-            this.panelHasPrintService.Controls.Add(this.panel12);
             this.panelHasPrintService.Location = new System.Drawing.Point(150, 23);
             this.panelHasPrintService.Name = "panelHasPrintService";
             this.panelHasPrintService.Size = new System.Drawing.Size(117, 37);
@@ -231,36 +218,6 @@
             this.label20.Size = new System.Drawing.Size(60, 13);
             this.label20.TabIndex = 48;
             this.label20.Text = "خدمات چاپ";
-            // 
-            // panel12
-            // 
-            this.panel12.Controls.Add(this.label21);
-            this.panel12.Controls.Add(this.label22);
-            this.panel12.Location = new System.Drawing.Point(225, 0);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(211, 46);
-            this.panel12.TabIndex = 0;
-            // 
-            // label21
-            // 
-            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label21.AutoSize = true;
-            this.label21.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label21.Location = new System.Drawing.Point(3, 10);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(22, 13);
-            this.label21.TabIndex = 43;
-            this.label21.Text = "ريال";
-            // 
-            // label22
-            // 
-            this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(130, 10);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(78, 13);
-            this.label22.TabIndex = 42;
-            this.label22.Text = "قیمت اصل چاپ";
             // 
             // panelOriginalPrintPrice
             // 
@@ -321,7 +278,6 @@
             // 
             this.panelSecondPrintPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelSecondPrintPrice.Controls.Add(this.label6);
-            this.panelSecondPrintPrice.Controls.Add(this.panel3);
             this.panelSecondPrintPrice.Controls.Add(this.integerInputSecondPrintPrice);
             this.panelSecondPrintPrice.Controls.Add(this.label15);
             this.panelSecondPrintPrice.Location = new System.Drawing.Point(273, 23);
@@ -338,36 +294,6 @@
             this.label6.Size = new System.Drawing.Size(84, 13);
             this.label6.TabIndex = 42;
             this.label6.Text = "قیمت اضافه چاپ";
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.label14);
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.Location = new System.Drawing.Point(225, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(211, 46);
-            this.panel3.TabIndex = 47;
-            // 
-            // label14
-            // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label14.AutoSize = true;
-            this.label14.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label14.Location = new System.Drawing.Point(3, 10);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(22, 13);
-            this.label14.TabIndex = 43;
-            this.label14.Text = "ريال";
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(130, 10);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(78, 13);
-            this.label5.TabIndex = 42;
-            this.label5.Text = "قیمت اصل چاپ";
             // 
             // integerInputSecondPrintPrice
             // 
@@ -587,11 +513,10 @@
             this.panel9.Controls.Add(this.label16);
             this.panel9.Controls.Add(this.integerInputPrintServicePrice);
             this.panel9.Controls.Add(this.label19);
-            this.panel9.Controls.Add(this.panel10);
             this.panel9.Location = new System.Drawing.Point(273, 20);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(222, 34);
-            this.panel9.TabIndex = 49;
+            this.panel9.TabIndex = 2;
             // 
             // label16
             // 
@@ -623,7 +548,7 @@
             this.integerInputPrintServicePrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.integerInputPrintServicePrice.ShowCheckBox = true;
             this.integerInputPrintServicePrice.Size = new System.Drawing.Size(100, 21);
-            this.integerInputPrintServicePrice.TabIndex = 0;
+            this.integerInputPrintServicePrice.TabIndex = 2;
             // 
             // label19
             // 
@@ -635,36 +560,6 @@
             this.label19.TabIndex = 48;
             this.label19.Text = "هزینه سرویس";
             // 
-            // panel10
-            // 
-            this.panel10.Controls.Add(this.label17);
-            this.panel10.Controls.Add(this.label18);
-            this.panel10.Location = new System.Drawing.Point(225, 0);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(211, 46);
-            this.panel10.TabIndex = 47;
-            // 
-            // label17
-            // 
-            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label17.AutoSize = true;
-            this.label17.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label17.Location = new System.Drawing.Point(3, 10);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(22, 13);
-            this.label17.TabIndex = 43;
-            this.label17.Text = "ريال";
-            // 
-            // label18
-            // 
-            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(130, 10);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(78, 13);
-            this.label18.TabIndex = 42;
-            this.label18.Text = "قیمت اصل چاپ";
-            // 
             // panel8
             // 
             this.panel8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -674,6 +569,19 @@
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(211, 34);
             this.panel8.TabIndex = 49;
+            // 
+            // txtPrintServiceCode
+            // 
+            // 
+            // 
+            // 
+            this.txtPrintServiceCode.Border.Class = "TextBoxBorder";
+            this.txtPrintServiceCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtPrintServiceCode.Location = new System.Drawing.Point(27, 7);
+            this.txtPrintServiceCode.Name = "txtPrintServiceCode";
+            this.txtPrintServiceCode.PreventEnterBeep = true;
+            this.txtPrintServiceCode.Size = new System.Drawing.Size(100, 21);
+            this.txtPrintServiceCode.TabIndex = 22;
             // 
             // label9
             // 
@@ -694,7 +602,7 @@
             this.panel6.Location = new System.Drawing.Point(715, 20);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(221, 34);
-            this.panel6.TabIndex = 46;
+            this.panel6.TabIndex = 1;
             // 
             // cpPrintServices
             // 
@@ -741,7 +649,7 @@
             this.panelPrintSize2.Location = new System.Drawing.Point(942, 20);
             this.panelPrintSize2.Name = "panelPrintSize2";
             this.panelPrintSize2.Size = new System.Drawing.Size(200, 34);
-            this.panelPrintSize2.TabIndex = 46;
+            this.panelPrintSize2.TabIndex = 0;
             // 
             // cpLoadPrintSizes2
             // 
@@ -788,7 +696,7 @@
             this.btnSavePrintServicePrice.Name = "btnSavePrintServicePrice";
             this.btnSavePrintServicePrice.Size = new System.Drawing.Size(75, 23);
             this.btnSavePrintServicePrice.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
-            this.btnSavePrintServicePrice.TabIndex = 0;
+            this.btnSavePrintServicePrice.TabIndex = 3;
             this.btnSavePrintServicePrice.Text = "ثبت";
             // 
             // panelEx3
@@ -830,17 +738,17 @@
             // 
             this.dgvPrintServices.AllowUserToAddRows = false;
             this.dgvPrintServices.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvPrintServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvPrintServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvPrintServices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPrintServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPrintServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvPrintServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPrintServices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmId,
@@ -854,28 +762,28 @@
             this.clmPrintServiceName,
             this.clmPrice,
             this.clmDescription});
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPrintServices.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPrintServices.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvPrintServices.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPrintServices.EnableHeadersVisualStyles = false;
             this.dgvPrintServices.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.dgvPrintServices.Location = new System.Drawing.Point(0, 0);
             this.dgvPrintServices.Name = "dgvPrintServices";
             this.dgvPrintServices.ReadOnly = true;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPrintServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPrintServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvPrintServices.RowHeadersVisible = false;
             this.dgvPrintServices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPrintServices.Size = new System.Drawing.Size(1172, 362);
@@ -995,7 +903,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1172, 24);
-            this.menuStrip1.TabIndex = 18;
+            this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // تنظیماتToolStripMenuItem
@@ -1007,6 +915,59 @@
             this.تنظیماتToolStripMenuItem.Name = "تنظیماتToolStripMenuItem";
             this.تنظیماتToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.تنظیماتToolStripMenuItem.Text = "تنظیمات";
+            // 
+            // تعریفToolStripMenuItem
+            // 
+            this.تعریفToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.تعریف_خدمات_چاپ_جدید_ToolStripMenuItem});
+            this.تعریفToolStripMenuItem.Name = "تعریفToolStripMenuItem";
+            this.تعریفToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.تعریفToolStripMenuItem.Text = "تعریف";
+            // 
+            // تعریف_خدمات_چاپ_جدید_ToolStripMenuItem
+            // 
+            this.تعریف_خدمات_چاپ_جدید_ToolStripMenuItem.Name = "تعریف_خدمات_چاپ_جدید_ToolStripMenuItem";
+            this.تعریف_خدمات_چاپ_جدید_ToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.تعریف_خدمات_چاپ_جدید_ToolStripMenuItem.Text = "تعریف خدمات چاپ";
+            this.تعریف_خدمات_چاپ_جدید_ToolStripMenuItem.Click += new System.EventHandler(this.تعریف_خدمات_چاپ_جدید_ToolStripMenuItem_Click);
+            // 
+            // ویرایشToolStripMenuItem
+            // 
+            this.ویرایشToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ویرایش_اندازه_چاپ_ToolStripMenuItem});
+            this.ویرایشToolStripMenuItem.Name = "ویرایشToolStripMenuItem";
+            this.ویرایشToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.ویرایشToolStripMenuItem.Text = "ویرایش";
+            // 
+            // ویرایش_اندازه_چاپ_ToolStripMenuItem
+            // 
+            this.ویرایش_اندازه_چاپ_ToolStripMenuItem.Name = "ویرایش_اندازه_چاپ_ToolStripMenuItem";
+            this.ویرایش_اندازه_چاپ_ToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.ویرایش_اندازه_چاپ_ToolStripMenuItem.Text = "ویرایش اندازه چاپ";
+            this.ویرایش_اندازه_چاپ_ToolStripMenuItem.Click += new System.EventHandler(this.ویرایش_اندازه_چاپ_ToolStripMenuItem_Click);
+            // 
+            // حذف_ToolStripMenuItem
+            // 
+            this.حذف_ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.حذف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem,
+            this.حذف_اندازه_چاپ_ToolStripMenuItem});
+            this.حذف_ToolStripMenuItem.Name = "حذف_ToolStripMenuItem";
+            this.حذف_ToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.حذف_ToolStripMenuItem.Text = "حذف";
+            // 
+            // حذف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem
+            // 
+            this.حذف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem.Name = "حذف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem";
+            this.حذف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.حذف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem.Text = "حذف خدمات چاپ مربوط به اندازه چاپ";
+            this.حذف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem.Click += new System.EventHandler(this.حذف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem_Click);
+            // 
+            // حذف_اندازه_چاپ_ToolStripMenuItem
+            // 
+            this.حذف_اندازه_چاپ_ToolStripMenuItem.Name = "حذف_اندازه_چاپ_ToolStripMenuItem";
+            this.حذف_اندازه_چاپ_ToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.حذف_اندازه_چاپ_ToolStripMenuItem.Text = "حذف اندازه چاپ";
+            this.حذف_اندازه_چاپ_ToolStripMenuItem.Click += new System.EventHandler(this.حذف_اندازه_چاپ_ToolStripMenuItem_Click);
             // 
             // bgWorkerSaveNewPrintSize
             // 
@@ -1033,72 +994,6 @@
             this.bgWorkerGetPrintSizePrice.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerGetPrintSizePrice_DoWork);
             this.bgWorkerGetPrintSizePrice.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerGetPrintSizePrice_RunWorkerCompleted);
             // 
-            // تعریفToolStripMenuItem
-            // 
-            this.تعریفToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.تعریف_خدمات_چاپ_جدید_ToolStripMenuItem});
-            this.تعریفToolStripMenuItem.Name = "تعریفToolStripMenuItem";
-            this.تعریفToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.تعریفToolStripMenuItem.Text = "تعریف";
-            // 
-            // تعریف_خدمات_چاپ_جدید_ToolStripMenuItem
-            // 
-            this.تعریف_خدمات_چاپ_جدید_ToolStripMenuItem.Name = "تعریف_خدمات_چاپ_جدید_ToolStripMenuItem";
-            this.تعریف_خدمات_چاپ_جدید_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.تعریف_خدمات_چاپ_جدید_ToolStripMenuItem.Text = "تعریف خدمات چاپ";
-            this.تعریف_خدمات_چاپ_جدید_ToolStripMenuItem.Click += new System.EventHandler(this.تعریف_خدمات_چاپ_جدید_ToolStripMenuItem_Click);
-            // 
-            // ویرایشToolStripMenuItem
-            // 
-            this.ویرایشToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ویرایش_اندازه_چاپ_ToolStripMenuItem});
-            this.ویرایشToolStripMenuItem.Name = "ویرایشToolStripMenuItem";
-            this.ویرایشToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.ویرایشToolStripMenuItem.Text = "ویرایش";
-            // 
-            // حذف_ToolStripMenuItem
-            // 
-            this.حذف_ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.حذف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem,
-            this.حذف_اندازه_چاپ_ToolStripMenuItem});
-            this.حذف_ToolStripMenuItem.Name = "حذف_ToolStripMenuItem";
-            this.حذف_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.حذف_ToolStripMenuItem.Text = "حذف";
-            // 
-            // حذف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem
-            // 
-            this.حذف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem.Name = "حذف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem";
-            this.حذف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
-            this.حذف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem.Text = "حذف خدمات چاپ مربوط به اندازه چاپ";
-            this.حذف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem.Click += new System.EventHandler(this.حذف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem_Click);
-            // 
-            // حذف_اندازه_چاپ_ToolStripMenuItem
-            // 
-            this.حذف_اندازه_چاپ_ToolStripMenuItem.Name = "حذف_اندازه_چاپ_ToolStripMenuItem";
-            this.حذف_اندازه_چاپ_ToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
-            this.حذف_اندازه_چاپ_ToolStripMenuItem.Text = "حذف اندازه چاپ";
-            this.حذف_اندازه_چاپ_ToolStripMenuItem.Click += new System.EventHandler(this.حذف_اندازه_چاپ_ToolStripMenuItem_Click);
-            // 
-            // ویرایش_اندازه_چاپ_ToolStripMenuItem
-            // 
-            this.ویرایش_اندازه_چاپ_ToolStripMenuItem.Name = "ویرایش_اندازه_چاپ_ToolStripMenuItem";
-            this.ویرایش_اندازه_چاپ_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.ویرایش_اندازه_چاپ_ToolStripMenuItem.Text = "ویرایش اندازه چاپ";
-            this.ویرایش_اندازه_چاپ_ToolStripMenuItem.Click += new System.EventHandler(this.ویرایش_اندازه_چاپ_ToolStripMenuItem_Click);
-            // 
-            // txtPrintServiceCode
-            // 
-            // 
-            // 
-            // 
-            this.txtPrintServiceCode.Border.Class = "TextBoxBorder";
-            this.txtPrintServiceCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtPrintServiceCode.Location = new System.Drawing.Point(27, 7);
-            this.txtPrintServiceCode.Name = "txtPrintServiceCode";
-            this.txtPrintServiceCode.PreventEnterBeep = true;
-            this.txtPrintServiceCode.Size = new System.Drawing.Size(100, 21);
-            this.txtPrintServiceCode.TabIndex = 22;
-            // 
             // FrmAddEditPrintSizeAndServices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1124,15 +1019,11 @@
             this.groupBoxPrintSize.ResumeLayout(false);
             this.panelHasPrintService.ResumeLayout(false);
             this.panelHasPrintService.PerformLayout();
-            this.panel12.ResumeLayout(false);
-            this.panel12.PerformLayout();
             this.panelOriginalPrintPrice.ResumeLayout(false);
             this.panelOriginalPrintPrice.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.integerInputOriginalPrintPrice)).EndInit();
             this.panelSecondPrintPrice.ResumeLayout(false);
             this.panelSecondPrintPrice.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.integerInputSecondPrintPrice)).EndInit();
             this.panelNewEditPrintSize.ResumeLayout(false);
             this.panelNewEditPrintSize.PerformLayout();
@@ -1145,8 +1036,6 @@
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.integerInputPrintServicePrice)).EndInit();
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.panel6.ResumeLayout(false);
@@ -1174,10 +1063,6 @@
         private DevComponents.Editors.IntegerInput integerInputSecondPrintPrice;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panelSecondPrintPrice;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label14;
-        //private DevComponents.Editors.IntegerInput integerInputOriginalPrintPrice;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panelNewEditPrintSize;
         private DevComponents.Editors.DoubleInput doubleInputHeight;
         private DevComponents.Editors.DoubleInput doubleInputWidth;
@@ -1200,20 +1085,12 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Label label17;
-        //private DevComponents.Editors.IntegerInput integerInput2;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label16;
         private DevComponents.Editors.IntegerInput integerInputPrintServicePrice;
         private System.Windows.Forms.Label label19;
         private DevComponents.DotNetBar.ButtonX btnSavePrintServicePrice;
         private DevComponents.DotNetBar.Controls.CircularProgress cpLoadPrintSizes1;
         private System.Windows.Forms.Panel panelHasPrintService;
-        private System.Windows.Forms.Panel panel12;
-        private System.Windows.Forms.Label label21;
-        //private DevComponents.Editors.IntegerInput integerInput3;
-        private System.Windows.Forms.Label label22;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxEnableGroupBoxPrintServices;
         private System.Windows.Forms.Label label20;
         private DevComponents.DotNetBar.Controls.CircularProgress cpLoadDataGridView;
