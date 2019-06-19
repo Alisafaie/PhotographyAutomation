@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.toolStripTopMenu = new System.Windows.Forms.ToolStrip();
+            this.btnConfigurations = new System.Windows.Forms.ToolStripDropDownButton();
+            this.btnSystemConfiguration = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnShowFrmAddEditPrintServices = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.ribbonControl1 = new DevComponents.DotNetBar.RibbonControl();
@@ -69,9 +72,6 @@
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.persianMonthCalendar = new FreeControls.PersianMonthCalendar();
             this.buttonItem16 = new DevComponents.DotNetBar.ButtonItem();
-            this.btnConfigurations = new System.Windows.Forms.ToolStripDropDownButton();
-            this.btnSystemConfiguration = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnShowFrmAddEditPrintServices = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTopMenu.SuspendLayout();
             this.ribbonControl1.SuspendLayout();
             this.ribbonPanel4.SuspendLayout();
@@ -91,6 +91,30 @@
             this.toolStripTopMenu.Size = new System.Drawing.Size(1085, 25);
             this.toolStripTopMenu.TabIndex = 0;
             this.toolStripTopMenu.Text = "toolStrip1";
+            // 
+            // btnConfigurations
+            // 
+            this.btnConfigurations.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnSystemConfiguration,
+            this.btnShowFrmAddEditPrintServices});
+            this.btnConfigurations.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_settings_1167993;
+            this.btnConfigurations.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnConfigurations.Name = "btnConfigurations";
+            this.btnConfigurations.Size = new System.Drawing.Size(74, 22);
+            this.btnConfigurations.Text = "تنظیمات";
+            // 
+            // btnSystemConfiguration
+            // 
+            this.btnSystemConfiguration.Name = "btnSystemConfiguration";
+            this.btnSystemConfiguration.Size = new System.Drawing.Size(183, 22);
+            this.btnSystemConfiguration.Text = "تنظیمات سیستم";
+            // 
+            // btnShowFrmAddEditPrintServices
+            // 
+            this.btnShowFrmAddEditPrintServices.Name = "btnShowFrmAddEditPrintServices";
+            this.btnShowFrmAddEditPrintServices.Size = new System.Drawing.Size(183, 22);
+            this.btnShowFrmAddEditPrintServices.Text = "ثبت قیمت سرویس چاپ";
+            this.btnShowFrmAddEditPrintServices.Click += new System.EventHandler(this.btnShowFrmAddEditPrintServices_Click);
             // 
             // statusStrip
             // 
@@ -723,30 +747,6 @@
             this.buttonItem16.PopupWidth = 100;
             this.buttonItem16.SubItemsExpandWidth = 14;
             this.buttonItem16.Text = "ثبت نوبت دستی";
-            // 
-            // btnConfigurations
-            // 
-            this.btnConfigurations.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnSystemConfiguration,
-            this.btnShowFrmAddEditPrintServices});
-            this.btnConfigurations.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_settings_1167993;
-            this.btnConfigurations.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnConfigurations.Name = "btnConfigurations";
-            this.btnConfigurations.Size = new System.Drawing.Size(74, 22);
-            this.btnConfigurations.Text = "تنظیمات";
-            // 
-            // btnSystemConfiguration
-            // 
-            this.btnSystemConfiguration.Name = "btnSystemConfiguration";
-            this.btnSystemConfiguration.Size = new System.Drawing.Size(183, 22);
-            this.btnSystemConfiguration.Text = "تنظیمات سیستم";
-            // 
-            // btnShowFrmAddEditPrintServices
-            // 
-            this.btnShowFrmAddEditPrintServices.Name = "btnShowFrmAddEditPrintServices";
-            this.btnShowFrmAddEditPrintServices.Size = new System.Drawing.Size(183, 22);
-            this.btnShowFrmAddEditPrintServices.Text = "ثبت قیمت سرویس چاپ";
-            this.btnShowFrmAddEditPrintServices.Click += new System.EventHandler(this.btnShowFrmAddEditPrintServices_Click);
             // 
             // FrmMain
             // 
