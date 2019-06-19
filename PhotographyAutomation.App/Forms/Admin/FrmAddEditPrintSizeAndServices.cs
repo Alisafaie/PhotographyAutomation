@@ -187,11 +187,15 @@ namespace PhotographyAutomation.App.Forms.Admin
                 {
                     UpdateOldPrintSize((int)cmbPrintSizes.SelectedValue);
                     btnSavePrintSizePrice.Enabled = !bgWorkerUpdatePrintSize.IsBusy;
+
+                    ویرایشاندازهچاپToolStripMenuItem.Checked = false;
                 }
                 else if (_deleteSizeFlag)
                 {
                     DeletePrintSize((int)cmbPrintSizes.SelectedValue);
                     btnSavePrintServicePrice.Enabled = !bgWorkerDeletePrintSize.IsBusy;
+
+                    حذفاندازهچاپToolStripMenuItem.Checked = false;
                 }
             }
         }
@@ -487,7 +491,12 @@ namespace PhotographyAutomation.App.Forms.Admin
                 if (cmbPrintSizes.SelectedItem is PrintSizePriceViewModel tt)
                 {
                     doubleInputWidth.Value = (double) tt.SizeWidth;
+                    doubleInputWidth.Enabled = true;
+                    doubleInputWidth.IsInputReadOnly = false;
+
                     doubleInputHeight.Value = (double) tt.SizeHeight;
+                    doubleInputHeight.Enabled = true;
+                    doubleInputHeight.IsInputReadOnly = false;
                     integerInputOriginalPrintPrice.Value = tt.OriginalPrintPrice;
                     integerInputSecondPrintPrice.Value = tt.SecontPrintPrice;
                 }
@@ -504,6 +513,8 @@ namespace PhotographyAutomation.App.Forms.Admin
                 groupBoxPrintSize.Text = gbText;
             }
         }
+
+        
 
         private void حذفاندازهچاپToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -548,5 +559,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                 groupBoxPrintSize.Text = gbText;
             }
         }
+
+        
     }
 }
