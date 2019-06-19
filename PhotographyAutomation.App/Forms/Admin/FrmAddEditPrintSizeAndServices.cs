@@ -37,10 +37,10 @@ namespace PhotographyAutomation.App.Forms.Admin
             {
                 _newSizeFlag = true;
                 doubleInputWidth.Enabled = doubleInputHeight.Enabled = true;
-                integerInputOriginalPrice.ResetText();
+                integerInputOriginalPrintPrice.ResetText();
                 integerInputSecondPrintPrice.ResetText();
-                integerInputOriginalPrice.LockUpdateChecked = true;
-                integerInputSecondPrintPrice.LockUpdateChecked = true;
+                //integerInputOriginalPrice.LockUpdateChecked = true;
+                //integerInputSecondPrintPrice.LockUpdateChecked = true;
                 panelPrintSize1.Enabled = false;
 
                 doubleInputWidth.Focus();
@@ -97,7 +97,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                 bgWorkerGetPrintSizePrice.RunWorkerAsync((int)cmbPrintSizes.SelectedValue);
                 cpGetPrintSizePrice.IsRunning = bgWorkerGetPrintSizePrice.IsBusy;
 
-                integerInputOriginalPrice.LockUpdateChecked = false;
+                integerInputOriginalPrintPrice.LockUpdateChecked = false;
                 integerInputSecondPrintPrice.LockUpdateChecked = false;
 
             }
@@ -122,10 +122,8 @@ namespace PhotographyAutomation.App.Forms.Admin
                            SecontPrintPrice = x.SecondPrintPrice,
                            SizeDescription = x.SizeDescription
                        }).ToList();
-                    if (e.Result != null)
-                    {
-                        e.Result = result;
-                    }
+                    e.Result = result;
+
                 }
             }
             catch (Exception exception)
@@ -139,8 +137,8 @@ namespace PhotographyAutomation.App.Forms.Admin
             {
                 if (e.Result is List<PrintSizePriceViewModel> sizePriceList)
                 {
-                    doubleInputWidth.Value = (double) sizePriceList[0].SizeWidth;
-                    doubleInputHeight.Value = (double) sizePriceList[0].SizeHeight;
+                    doubleInputWidth.Value = (double)sizePriceList[0].SizeWidth;
+                    doubleInputHeight.Value = (double)sizePriceList[0].SizeHeight;
                     integerInputOriginalPrintPrice.Value = sizePriceList[0].OriginalPrintPrice;
                     integerInputSecondPrintPrice.Value = sizePriceList[0].SecontPrintPrice;
                 }
@@ -170,18 +168,18 @@ namespace PhotographyAutomation.App.Forms.Admin
                         using (var frmInput = new FrmAddEditInput())
                         {
                             frmInput.lblFormQuestion.Text =
-                                "لطفا توضیحات مورد نظر خود در رابطه با سایز چاپ مورد نظر را وارد نمایید.";
+                                @"لطفا توضیحات مورد نظر خود در رابطه با سایز چاپ مورد نظر را وارد نمایید.";
                             frmInput.ShowDialog();
                             sizeDescription = frmInput.txtContent.Text;
                         }
                     }
 
-                    SaveNewPrintSize(doubleInputWidth.Value, doubleInputHeight.Value, integerInputOriginalPrice.Value,
+                    SaveNewPrintSize(doubleInputWidth.Value, doubleInputHeight.Value, integerInputOriginalPrintPrice.Value,
                         integerInputSecondPrintPrice.Value, sizeDescription);
 
                     doubleInputWidth.ResetText();
                     doubleInputHeight.ResetText();
-                    integerInputOriginalPrice.ResetText();
+                    integerInputOriginalPrintPrice.ResetText();
                     integerInputSecondPrintPrice.ResetText();
                     checkBoxNewSize.Checked = false;
                 }
@@ -220,7 +218,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                                 db.PrintServices_PrintSizePriceGenericRepository
                                     .Get(x => x.PrintSizePriceId == printSizeId)
                                     .ToList();
-                            
+
                             if (sizePriceServiceList.Any())
                             {
                                 e.Result = sizePriceServiceList;
@@ -260,7 +258,7 @@ namespace PhotographyAutomation.App.Forms.Admin
             }
         }
 
-        
+
 
         // قبلش چک کن که این سایز چاپ قبلا در سیستم نباشه
         private void SaveNewPrintSize(double width, double height, int originalPrintPrice, int secondPrintPrice,
@@ -329,14 +327,14 @@ namespace PhotographyAutomation.App.Forms.Admin
 
         private void bgWorkerGetPrintSizeInfo_DoWork(object sender, DoWorkEventArgs e)
         {
-            if ((int) e.Argument > 0)
+            if ((int)e.Argument > 0)
             {
                 try
                 {
-                    using (var db=new UnitOfWork())
+                    using (var db = new UnitOfWork())
                     {
-                        var sizePrintInDb = db.PrintSizePricesGenericRepository.GetById((int) e.Argument);
-                        e.Result = sizePrintInDb ?? null;
+                        var sizePrintInDb = db.PrintSizePricesGenericRepository.GetById((int)e.Argument);
+                        e.Result = sizePrintInDb;
                     }
                 }
                 catch (Exception exception)
@@ -349,25 +347,25 @@ namespace PhotographyAutomation.App.Forms.Admin
         {
             if (e.Result != null)
             {
-                var sizePrintInDb = (TblPrintSizePrices) e.Result;
+                var sizePrintInDb = (TblPrintSizePrices)e.Result;
                 var editedSizePrint = new TblPrintSizePrices
                 {
                     Id = sizePrintInDb.Id,
                     OriginalPrintPrice = integerInputOriginalPrintPrice.Value,
                     SecondPrintPrice = integerInputSecondPrintPrice.Value,
-                    SizeWidth = (decimal) doubleInputWidth.Value,
-                    SizeHeight = (decimal) doubleInputHeight.Value,
+                    SizeWidth = (decimal)doubleInputWidth.Value,
+                    SizeHeight = (decimal)doubleInputHeight.Value,
                     SizeName = doubleInputWidth.Value.ToString("###.#") + " x " +
                                doubleInputHeight.Value.ToString("###.#")
                 };
-                using (var frmInput=new FrmAddEditInput())
+                using (var frmInput = new FrmAddEditInput())
                 {
-                    frmInput.lblFormQuestion.Text = "آیا برای این اندازه چاپ توضیح خاصی در نظر دارید؟";
+                    frmInput.lblFormQuestion.Text = @"آیا برای این اندازه چاپ توضیح خاصی در نظر دارید؟";
                     frmInput.txtContent.Text = sizePrintInDb.SizeDescription;
                     frmInput.ShowDialog();
                     editedSizePrint.SizeDescription = frmInput.txtContent.Text;
                 }
-                
+
 
                 bgWorkerUpdatePrintSize.RunWorkerAsync(editedSizePrint);
 
@@ -381,7 +379,7 @@ namespace PhotographyAutomation.App.Forms.Admin
 
         private void bgWorkerUpdatePrintSize_DoWork(object sender, DoWorkEventArgs e)
         {
-            var editedSizePrice = (TblPrintSizePrices) e.Argument;
+            var editedSizePrice = (TblPrintSizePrices)e.Argument;
             if (editedSizePrice != null)
             {
                 try
@@ -403,7 +401,7 @@ namespace PhotographyAutomation.App.Forms.Admin
             if (e.Result != null)
             {
                 RtlMessageBox.Show("اندازه چاپ مورد نظر با موفقیت ویرایش گردید.");
-                if(bgWorkerLoadPrintSizes1.IsBusy==false )
+                if (bgWorkerLoadPrintSizes1.IsBusy == false)
                     bgWorkerLoadPrintSizes1.RunWorkerAsync();
             }
 
@@ -431,7 +429,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                 }
             }
 
-            if (rbEditPrintSize.Checked)
+            if (ویرایشاندازهچاپToolStripMenuItem.Checked)
             {
                 if (string.IsNullOrEmpty(doubleInputWidth.Text.Trim()) ||
                     string.IsNullOrEmpty(doubleInputHeight.Text.Trim()))
@@ -440,7 +438,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                 }
             }
 
-            if (string.IsNullOrEmpty(integerInputOriginalPrice.Text.Trim()))
+            if (string.IsNullOrEmpty(integerInputOriginalPrintPrice.Text.Trim()))
             {
                 return false;
             }
@@ -452,33 +450,7 @@ namespace PhotographyAutomation.App.Forms.Admin
 
             return true;
         }
-
-        private void rbEditPrintSize_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rbEditPrintSize.Checked)
-            {
-                _editSizeFlag = true;
-                checkBoxNewSize.Checked = true;
-                doubleInputWidth.Focus();
-            }
-            else
-            {
-                _editSizeFlag = false;
-            }
-        }
-
-        private void rbDeletePrintSize_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rbDeletePrintSize.Checked)
-            {
-                _deleteSizeFlag = true;
-                checkBoxNewSize.Checked = false;
-            }
-            else
-            {
-                _deleteSizeFlag = false;
-            }
-        }
+        
 
 
 
@@ -498,8 +470,82 @@ namespace PhotographyAutomation.App.Forms.Admin
 
                 // while (bgWorkerGetPrintSizePrice.IsBusy == false)
                 bgWorkerGetPrintSizePrice.RunWorkerAsync((int)cmbPrintSizes.SelectedValue);
-                integerInputOriginalPrice.LockUpdateChecked = false;
+                integerInputOriginalPrintPrice.LockUpdateChecked = false;
                 integerInputSecondPrintPrice.LockUpdateChecked = false;
+            }
+        }
+
+        private void ویرایشاندازهچاپToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string gbText = groupBoxPrintSize.Text;
+            if (ویرایشاندازهچاپToolStripMenuItem.Checked == false)
+            {
+                _editSizeFlag = true;
+                ویرایشاندازهچاپToolStripMenuItem.Checked = true;
+                حذفاندازهچاپToolStripMenuItem.Checked = false;
+                cmbPrintSizes.Enabled = false;
+                if (cmbPrintSizes.SelectedItem is PrintSizePriceViewModel tt)
+                {
+                    doubleInputWidth.Value = (double) tt.SizeWidth;
+                    doubleInputHeight.Value = (double) tt.SizeHeight;
+                    integerInputOriginalPrintPrice.Value = tt.OriginalPrintPrice;
+                    integerInputSecondPrintPrice.Value = tt.SecontPrintPrice;
+                }
+
+                groupBoxPrintSize.Text = @"ویرایش اندازه چاپ";
+            }
+            else if (ویرایشاندازهچاپToolStripMenuItem.Checked)
+            {
+                _editSizeFlag = false;
+                ویرایشاندازهچاپToolStripMenuItem.Checked = false;
+                حذفاندازهچاپToolStripMenuItem.Checked = false;
+                cmbPrintSizes.Enabled = true;
+
+                groupBoxPrintSize.Text = gbText;
+            }
+        }
+
+        private void حذفاندازهچاپToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string gbText = groupBoxPrintSize.Text;
+            if (حذفاندازهچاپToolStripMenuItem.Checked == false)
+            {
+                _deleteSizeFlag = true;
+                ویرایشاندازهچاپToolStripMenuItem.Checked = false;
+                حذفاندازهچاپToolStripMenuItem.Checked = true;
+                cmbPrintSizes.Enabled = false;
+                if (cmbPrintSizes.SelectedItem is PrintSizePriceViewModel tt)
+                {
+                    doubleInputWidth.Value = (double) tt.SizeWidth;
+                    doubleInputHeight.Value = (double) tt.SizeHeight;
+                    integerInputOriginalPrintPrice.Value = tt.OriginalPrintPrice;
+                    integerInputSecondPrintPrice.Value = tt.SecontPrintPrice;
+
+                    integerInputOriginalPrintPrice.Enabled = false;
+                    integerInputSecondPrintPrice.Enabled = false;
+                    doubleInputWidth.Enabled = false;
+                    doubleInputHeight.Enabled = false;
+                    checkBoxNewSize.Enabled = false;
+                    panelHasPrintService.Enabled = false;
+                }
+
+                groupBoxPrintSize.Text = @"حذف اندازه چاپ";
+            }
+            else if (حذفاندازهچاپToolStripMenuItem.Checked)
+            {
+                _deleteSizeFlag = false;
+                ویرایشاندازهچاپToolStripMenuItem.Checked = false;
+                حذفاندازهچاپToolStripMenuItem.Checked = false;
+                cmbPrintSizes.Enabled = true;
+
+                integerInputOriginalPrintPrice.Enabled = true;
+                integerInputSecondPrintPrice.Enabled = true;
+                doubleInputWidth.Enabled = true;
+                doubleInputHeight.Enabled = true;
+                checkBoxNewSize.Enabled = true;
+                panelHasPrintService.Enabled = true;
+
+                groupBoxPrintSize.Text = gbText;
             }
         }
     }
