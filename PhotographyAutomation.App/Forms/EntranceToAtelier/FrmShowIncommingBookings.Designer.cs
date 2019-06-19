@@ -74,10 +74,10 @@
             this.مشاهدهعکسهاToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.درخواستصدورقبضToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.درخواستمجوزحذفعکسToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ارسالپیامکبهمشتریToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.ارسالپیامکبهمشتریToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
@@ -337,6 +337,7 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvOrders.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvOrders.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvOrders.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
@@ -395,6 +396,7 @@
             this.dgvOrders.ShowEditingIcon = false;
             this.dgvOrders.Size = new System.Drawing.Size(1117, 414);
             this.dgvOrders.TabIndex = 0;
+            this.dgvOrders.UseCustomBackgroundColor = true;
             this.dgvOrders.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dgvBookings_MouseUp);
             // 
             // clmId
@@ -555,7 +557,7 @@
             this.ارسالپیامکبهمشتریToolStripMenuItem});
             this.contextMenuStripDgvBookings.Name = "contextMenuStripDgvBookings";
             this.contextMenuStripDgvBookings.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuStripDgvBookings.Size = new System.Drawing.Size(213, 158);
+            this.contextMenuStripDgvBookings.Size = new System.Drawing.Size(213, 136);
             this.contextMenuStripDgvBookings.Paint += new System.Windows.Forms.PaintEventHandler(this.contextMenuStripDgvBookings_Paint);
             // 
             // ویرایشاطلاعاتمشتریToolStripMenuItem
@@ -597,6 +599,14 @@
             this.درخواستمجوزحذفعکسToolStripMenuItem.Text = "درخواست مجوز حذف عکس";
             this.درخواستمجوزحذفعکسToolStripMenuItem.Click += new System.EventHandler(this.درخواستمجوزحذفعکسToolStripMenuItem_Click);
             // 
+            // ارسالپیامکبهمشتریToolStripMenuItem
+            // 
+            this.ارسالپیامکبهمشتریToolStripMenuItem.Enabled = false;
+            this.ارسالپیامکبهمشتریToolStripMenuItem.Name = "ارسالپیامکبهمشتریToolStripMenuItem";
+            this.ارسالپیامکبهمشتریToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.ارسالپیامکبهمشتریToolStripMenuItem.Text = "ارسال پیامک به مشتری";
+            this.ارسالپیامکبهمشتریToolStripMenuItem.Click += new System.EventHandler(this.ارسالپیامکبهمشتریToolStripMenuItem_Click);
+            // 
             // styleManager1
             // 
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2010Silver;
@@ -614,14 +624,6 @@
             // 
             this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
             this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
-            // 
-            // ارسالپیامکبهمشتریToolStripMenuItem
-            // 
-            this.ارسالپیامکبهمشتریToolStripMenuItem.Enabled = false;
-            this.ارسالپیامکبهمشتریToolStripMenuItem.Name = "ارسالپیامکبهمشتریToolStripMenuItem";
-            this.ارسالپیامکبهمشتریToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
-            this.ارسالپیامکبهمشتریToolStripMenuItem.Text = "ارسال پیامک به مشتری";
-            this.ارسالپیامکبهمشتریToolStripMenuItem.Click += new System.EventHandler(this.ارسالپیامکبهمشتریToolStripMenuItem_Click);
             // 
             // FrmShowIncommingBookings
             // 

@@ -754,7 +754,6 @@
             this.circularProgress1.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.circularProgress1.TabIndex = 103;
             this.circularProgress1.TabStop = false;
-            this.circularProgress1.UseWaitCursor = true;
             // 
             // circularProgress
             // 
@@ -769,7 +768,6 @@
             this.circularProgress.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.circularProgress.TabIndex = 103;
             this.circularProgress.TabStop = false;
-            this.circularProgress.UseWaitCursor = true;
             // 
             // integerInputTotalPhotos
             // 
@@ -1531,12 +1529,12 @@
             this.txtPhotoNumber.Border.Class = "TextBoxBorder";
             this.txtPhotoNumber.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.txtPhotoNumber, true);
-            this.txtPhotoNumber.Location = new System.Drawing.Point(505, 79);
+            this.txtPhotoNumber.Location = new System.Drawing.Point(486, 79);
             this.txtPhotoNumber.Name = "txtPhotoNumber";
             this.txtPhotoNumber.PreventEnterBeep = true;
             this.txtPhotoNumber.ReadOnly = true;
             this.txtPhotoNumber.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtPhotoNumber.Size = new System.Drawing.Size(302, 21);
+            this.txtPhotoNumber.Size = new System.Drawing.Size(321, 21);
             this.txtPhotoNumber.TabIndex = 2;
             this.txtPhotoNumber.TabStop = false;
             // 

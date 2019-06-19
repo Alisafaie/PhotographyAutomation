@@ -88,9 +88,9 @@
             this.مشاهدهاطلاعاترزروToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.ارسالعکسهایانتخابشدهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ثبتپیشفاکتورToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.ثبتپیشفاکتورToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panelEx3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -449,6 +449,7 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvUploads.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvUploads.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvUploads.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvUploads.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
@@ -485,7 +486,7 @@
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvUploads.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvUploads.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -509,6 +510,7 @@
             this.dgvUploads.ShowEditingIcon = false;
             this.dgvUploads.Size = new System.Drawing.Size(1117, 414);
             this.dgvUploads.TabIndex = 0;
+            this.dgvUploads.UseCustomBackgroundColor = true;
             this.dgvUploads.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUploads_CellContentClick);
             this.dgvUploads.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dgvUploads_MouseUp);
             // 
@@ -687,7 +689,7 @@
             this.ثبتپیشفاکتورToolStripMenuItem});
             this.contextMenuDgvUploads.Name = "contextMenuStrip1";
             this.contextMenuDgvUploads.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuDgvUploads.Size = new System.Drawing.Size(214, 170);
+            this.contextMenuDgvUploads.Size = new System.Drawing.Size(214, 148);
             // 
             // مشاهدهعکسهاToolStripMenuItem
             // 
@@ -734,6 +736,12 @@
             this.ارسالعکسهایانتخابشدهToolStripMenuItem.Text = "ارسال عکس های انتخاب شده";
             this.ارسالعکسهایانتخابشدهToolStripMenuItem.Click += new System.EventHandler(this.ارسالعکسهایانتخابشدهToolStripMenuItem_Click);
             // 
+            // ثبتپیشفاکتورToolStripMenuItem
+            // 
+            this.ثبتپیشفاکتورToolStripMenuItem.Name = "ثبتپیشفاکتورToolStripMenuItem";
+            this.ثبتپیشفاکتورToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.ثبتپیشفاکتورToolStripMenuItem.Text = "ثبت پیش فاکتور";
+            // 
             // styleManager1
             // 
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2010Silver;
@@ -743,12 +751,6 @@
             // 
             this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
             this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
-            // 
-            // ثبتپیشفاکتورToolStripMenuItem
-            // 
-            this.ثبتپیشفاکتورToolStripMenuItem.Name = "ثبتپیشفاکتورToolStripMenuItem";
-            this.ثبتپیشفاکتورToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
-            this.ثبتپیشفاکتورToolStripMenuItem.Text = "ثبت پیش فاکتور";
             // 
             // FrmShowUploadedPhotos
             // 

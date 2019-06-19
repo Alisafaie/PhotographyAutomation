@@ -76,6 +76,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnSavePrintServicePrice = new DevComponents.DotNetBar.ButtonX();
             this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cpLoadDataGridView = new DevComponents.DotNetBar.Controls.CircularProgress();
             this.dgvPrintServices = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.clmId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -126,6 +127,7 @@
             this.panel6.SuspendLayout();
             this.panelPrintSize2.SuspendLayout();
             this.panelEx3.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrintServices)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -139,7 +141,7 @@
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelEx1.Location = new System.Drawing.Point(0, 24);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(1172, 81);
+            this.panelEx1.Size = new System.Drawing.Size(1172, 86);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -161,9 +163,9 @@
             this.groupBoxPrintSize.Controls.Add(this.panelNewEditPrintSize);
             this.groupBoxPrintSize.Controls.Add(this.panelPrintSize1);
             this.groupBoxPrintSize.Controls.Add(this.btnSavePrintSizePrice);
-            this.groupBoxPrintSize.Location = new System.Drawing.Point(12, 3);
+            this.groupBoxPrintSize.Location = new System.Drawing.Point(12, 10);
             this.groupBoxPrintSize.Name = "groupBoxPrintSize";
-            this.groupBoxPrintSize.Size = new System.Drawing.Size(1148, 72);
+            this.groupBoxPrintSize.Size = new System.Drawing.Size(1148, 67);
             this.groupBoxPrintSize.TabIndex = 0;
             this.groupBoxPrintSize.TabStop = false;
             this.groupBoxPrintSize.Text = "اندازه و قیمت چاپ عکس";
@@ -477,9 +479,9 @@
             this.panelEx2.Controls.Add(this.groupBoxPrintServices);
             this.panelEx2.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelEx2.Location = new System.Drawing.Point(0, 105);
+            this.panelEx2.Location = new System.Drawing.Point(0, 110);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(1172, 79);
+            this.panelEx2.Size = new System.Drawing.Size(1172, 86);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -500,7 +502,7 @@
             this.groupBoxPrintServices.Controls.Add(this.panelPrintSize2);
             this.groupBoxPrintServices.Controls.Add(this.btnSavePrintServicePrice);
             this.groupBoxPrintServices.Enabled = false;
-            this.groupBoxPrintServices.Location = new System.Drawing.Point(12, 6);
+            this.groupBoxPrintServices.Location = new System.Drawing.Point(12, 10);
             this.groupBoxPrintServices.Name = "groupBoxPrintServices";
             this.groupBoxPrintServices.Size = new System.Drawing.Size(1148, 67);
             this.groupBoxPrintServices.TabIndex = 0;
@@ -577,6 +579,7 @@
             // 
             this.txtPrintServiceCode.Border.Class = "TextBoxBorder";
             this.txtPrintServiceCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtPrintServiceCode.DisabledBackColor = System.Drawing.Color.White;
             this.txtPrintServiceCode.Location = new System.Drawing.Point(27, 7);
             this.txtPrintServiceCode.Name = "txtPrintServiceCode";
             this.txtPrintServiceCode.PreventEnterBeep = true;
@@ -703,13 +706,12 @@
             // 
             this.panelEx3.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx3.Controls.Add(this.cpLoadDataGridView);
-            this.panelEx3.Controls.Add(this.dgvPrintServices);
+            this.panelEx3.Controls.Add(this.groupBox1);
             this.panelEx3.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx3.Location = new System.Drawing.Point(0, 184);
+            this.panelEx3.Location = new System.Drawing.Point(0, 196);
             this.panelEx3.Name = "panelEx3";
-            this.panelEx3.Size = new System.Drawing.Size(1172, 362);
+            this.panelEx3.Size = new System.Drawing.Size(1172, 350);
             this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx3.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx3.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -718,16 +720,25 @@
             this.panelEx3.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx3.Style.GradientAngle = 90;
             this.panelEx3.TabIndex = 8;
-            this.panelEx3.Text = "panelEx3";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.cpLoadDataGridView);
+            this.groupBox1.Controls.Add(this.dgvPrintServices);
+            this.groupBox1.Location = new System.Drawing.Point(12, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1148, 338);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
             // 
             // cpLoadDataGridView
             // 
-            this.cpLoadDataGridView.BackColor = System.Drawing.Color.DarkGray;
+            this.cpLoadDataGridView.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             // 
             // 
             // 
             this.cpLoadDataGridView.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.cpLoadDataGridView.Location = new System.Drawing.Point(541, 161);
+            this.cpLoadDataGridView.Location = new System.Drawing.Point(545, 157);
             this.cpLoadDataGridView.Name = "cpLoadDataGridView";
             this.cpLoadDataGridView.ProgressColor = System.Drawing.Color.Blue;
             this.cpLoadDataGridView.Size = new System.Drawing.Size(57, 63);
@@ -741,6 +752,8 @@
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvPrintServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvPrintServices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvPrintServices.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgvPrintServices.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 8.25F);
@@ -767,13 +780,13 @@
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 8.25F);
             dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvPrintServices.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvPrintServices.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPrintServices.EnableHeadersVisualStyles = false;
             this.dgvPrintServices.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.dgvPrintServices.Location = new System.Drawing.Point(0, 0);
+            this.dgvPrintServices.Location = new System.Drawing.Point(3, 17);
             this.dgvPrintServices.Name = "dgvPrintServices";
             this.dgvPrintServices.ReadOnly = true;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -786,8 +799,9 @@
             this.dgvPrintServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvPrintServices.RowHeadersVisible = false;
             this.dgvPrintServices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPrintServices.Size = new System.Drawing.Size(1172, 362);
-            this.dgvPrintServices.TabIndex = 0;
+            this.dgvPrintServices.Size = new System.Drawing.Size(1142, 318);
+            this.dgvPrintServices.TabIndex = 3;
+            this.dgvPrintServices.UseCustomBackgroundColor = true;
             // 
             // clmId
             // 
@@ -1043,6 +1057,7 @@
             this.panelPrintSize2.ResumeLayout(false);
             this.panelPrintSize2.PerformLayout();
             this.panelEx3.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrintServices)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -1056,7 +1071,6 @@
         private DevComponents.DotNetBar.PanelEx panelEx1;
         private DevComponents.DotNetBar.PanelEx panelEx2;
         private DevComponents.DotNetBar.PanelEx panelEx3;
-        private DevComponents.DotNetBar.Controls.DataGridViewX dgvPrintServices;
         private System.Windows.Forms.GroupBox groupBoxPrintSize;
         private System.Windows.Forms.GroupBox groupBoxPrintServices;
         private System.Windows.Forms.Label label15;
@@ -1096,17 +1110,6 @@
         private DevComponents.DotNetBar.Controls.CircularProgress cpLoadDataGridView;
         private DevComponents.DotNetBar.Controls.CircularProgress cpPrintServices;
         private DevComponents.DotNetBar.Controls.CircularProgress cpLoadPrintSizes2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmPrintServiceId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmPrintSizePriceId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmSizeName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmOriginalPrintPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmSecondPrintPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmPrintSizeDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmPrintServiceName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmDescription;
         private DevComponents.DotNetBar.StyleManager styleManager1;
         private DevComponents.DotNetBar.Validator.Highlighter highlighter1;
         private System.ComponentModel.BackgroundWorker bgWorkerLoadPrintSizes1;
@@ -1127,5 +1130,18 @@
         private System.Windows.Forms.ToolStripMenuItem حذف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem حذف_اندازه_چاپ_ToolStripMenuItem;
         private DevComponents.DotNetBar.Controls.TextBoxX txtPrintServiceCode;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private DevComponents.DotNetBar.Controls.DataGridViewX dgvPrintServices;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmPrintServiceId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmPrintSizePriceId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmSizeName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmOriginalPrintPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmSecondPrintPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmPrintSizeDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmPrintServiceName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmDescription;
     }
 }
