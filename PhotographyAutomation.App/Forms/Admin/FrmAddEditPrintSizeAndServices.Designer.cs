@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.groupBoxPrintSize = new System.Windows.Forms.GroupBox();
             this.cpBtnSave = new DevComponents.DotNetBar.Controls.CircularProgress();
@@ -43,7 +43,6 @@
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.panelOriginalPrintPrice = new System.Windows.Forms.Panel();
-            this.cpGetPrintSizePrice = new DevComponents.DotNetBar.Controls.CircularProgress();
             this.label4 = new System.Windows.Forms.Label();
             this.integerInputOriginalPrintPrice = new DevComponents.Editors.IntegerInput();
             this.label7 = new System.Windows.Forms.Label();
@@ -116,6 +115,7 @@
             this.حذف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.حذف_اندازه_چاپ_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ویرایش_اندازه_چاپ_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtPrintServiceCode = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.panelEx1.SuspendLayout();
             this.groupBoxPrintSize.SuspendLayout();
             this.panelHasPrintService.SuspendLayout();
@@ -193,7 +193,6 @@
             this.cpBtnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.cpBtnSave.TabIndex = 44;
             this.cpBtnSave.TabStop = false;
-            this.cpBtnSave.UseWaitCursor = true;
             // 
             // panelHasPrintService
             // 
@@ -266,7 +265,6 @@
             // panelOriginalPrintPrice
             // 
             this.panelOriginalPrintPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelOriginalPrintPrice.Controls.Add(this.cpGetPrintSizePrice);
             this.panelOriginalPrintPrice.Controls.Add(this.label4);
             this.panelOriginalPrintPrice.Controls.Add(this.integerInputOriginalPrintPrice);
             this.panelOriginalPrintPrice.Controls.Add(this.label7);
@@ -275,27 +273,12 @@
             this.panelOriginalPrintPrice.Size = new System.Drawing.Size(211, 37);
             this.panelOriginalPrintPrice.TabIndex = 2;
             // 
-            // cpGetPrintSizePrice
-            // 
-            // 
-            // 
-            // 
-            this.cpGetPrintSizePrice.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.cpGetPrintSizePrice.Location = new System.Drawing.Point(7, 9);
-            this.cpGetPrintSizePrice.Name = "cpGetPrintSizePrice";
-            this.cpGetPrintSizePrice.ProgressColor = System.Drawing.Color.Blue;
-            this.cpGetPrintSizePrice.Size = new System.Drawing.Size(14, 21);
-            this.cpGetPrintSizePrice.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
-            this.cpGetPrintSizePrice.TabIndex = 33;
-            this.cpGetPrintSizePrice.TabStop = false;
-            this.cpGetPrintSizePrice.UseWaitCursor = true;
-            // 
             // label4
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label4.Location = new System.Drawing.Point(3, 10);
+            this.label4.Location = new System.Drawing.Point(3, 13);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(22, 13);
             this.label4.TabIndex = 43;
@@ -466,7 +449,7 @@
             this.highlighter1.SetHighlightOnFocus(this.doubleInputWidth, true);
             this.doubleInputWidth.Increment = 1D;
             this.doubleInputWidth.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
-            this.doubleInputWidth.Location = new System.Drawing.Point(21, 9);
+            this.doubleInputWidth.Location = new System.Drawing.Point(17, 9);
             this.doubleInputWidth.MinValue = 0D;
             this.doubleInputWidth.Name = "doubleInputWidth";
             this.doubleInputWidth.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -525,7 +508,6 @@
             this.cpLoadPrintSizes1.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.cpLoadPrintSizes1.TabIndex = 32;
             this.cpLoadPrintSizes1.TabStop = false;
-            this.cpLoadPrintSizes1.UseWaitCursor = true;
             // 
             // cmbPrintSizes
             // 
@@ -686,6 +668,7 @@
             // panel8
             // 
             this.panel8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel8.Controls.Add(this.txtPrintServiceCode);
             this.panel8.Controls.Add(this.label9);
             this.panel8.Location = new System.Drawing.Point(501, 20);
             this.panel8.Name = "panel8";
@@ -726,7 +709,6 @@
             this.cpPrintServices.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.cpPrintServices.TabIndex = 33;
             this.cpPrintServices.TabStop = false;
-            this.cpPrintServices.UseWaitCursor = true;
             // 
             // cmbPrintServices
             // 
@@ -734,10 +716,10 @@
             this.cmbPrintServices.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPrintServices.FormattingEnabled = true;
             this.highlighter1.SetHighlightOnFocus(this.cmbPrintServices, true);
-            this.cmbPrintServices.Location = new System.Drawing.Point(24, 6);
+            this.cmbPrintServices.Location = new System.Drawing.Point(20, 6);
             this.cmbPrintServices.Name = "cmbPrintServices";
             this.cmbPrintServices.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.cmbPrintServices.Size = new System.Drawing.Size(124, 21);
+            this.cmbPrintServices.Size = new System.Drawing.Size(128, 21);
             this.cmbPrintServices.TabIndex = 0;
             // 
             // label3
@@ -774,7 +756,6 @@
             this.cpLoadPrintSizes2.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.cpLoadPrintSizes2.TabIndex = 33;
             this.cpLoadPrintSizes2.TabStop = false;
-            this.cpLoadPrintSizes2.UseWaitCursor = true;
             // 
             // cmbPrintSizes2
             // 
@@ -849,17 +830,17 @@
             // 
             this.dgvPrintServices.AllowUserToAddRows = false;
             this.dgvPrintServices.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvPrintServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle37;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvPrintServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
             this.dgvPrintServices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle38.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle38.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle38.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle38.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle38.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPrintServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle38;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPrintServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
             this.dgvPrintServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPrintServices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmId,
@@ -873,28 +854,28 @@
             this.clmPrintServiceName,
             this.clmPrice,
             this.clmDescription});
-            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle39.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle39.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPrintServices.DefaultCellStyle = dataGridViewCellStyle39;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPrintServices.DefaultCellStyle = dataGridViewCellStyle23;
             this.dgvPrintServices.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPrintServices.EnableHeadersVisualStyles = false;
             this.dgvPrintServices.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.dgvPrintServices.Location = new System.Drawing.Point(0, 0);
             this.dgvPrintServices.Name = "dgvPrintServices";
             this.dgvPrintServices.ReadOnly = true;
-            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle40.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle40.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle40.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle40.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle40.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle40.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPrintServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle40;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPrintServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
             this.dgvPrintServices.RowHeadersVisible = false;
             this.dgvPrintServices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPrintServices.Size = new System.Drawing.Size(1172, 362);
@@ -1105,6 +1086,19 @@
             this.ویرایش_اندازه_چاپ_ToolStripMenuItem.Text = "ویرایش اندازه چاپ";
             this.ویرایش_اندازه_چاپ_ToolStripMenuItem.Click += new System.EventHandler(this.ویرایش_اندازه_چاپ_ToolStripMenuItem_Click);
             // 
+            // txtPrintServiceCode
+            // 
+            // 
+            // 
+            // 
+            this.txtPrintServiceCode.Border.Class = "TextBoxBorder";
+            this.txtPrintServiceCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtPrintServiceCode.Location = new System.Drawing.Point(27, 7);
+            this.txtPrintServiceCode.Name = "txtPrintServiceCode";
+            this.txtPrintServiceCode.PreventEnterBeep = true;
+            this.txtPrintServiceCode.Size = new System.Drawing.Size(100, 21);
+            this.txtPrintServiceCode.TabIndex = 22;
+            // 
             // FrmAddEditPrintSizeAndServices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1225,7 +1219,6 @@
         private DevComponents.DotNetBar.Controls.CircularProgress cpLoadDataGridView;
         private DevComponents.DotNetBar.Controls.CircularProgress cpPrintServices;
         private DevComponents.DotNetBar.Controls.CircularProgress cpLoadPrintSizes2;
-        private DevComponents.DotNetBar.Controls.CircularProgress cpGetPrintSizePrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmId;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPrintServiceId;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPrintSizePriceId;
@@ -1256,5 +1249,6 @@
         private System.Windows.Forms.ToolStripMenuItem حذف_ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem حذف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem حذف_اندازه_چاپ_ToolStripMenuItem;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtPrintServiceCode;
     }
 }
