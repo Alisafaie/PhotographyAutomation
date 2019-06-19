@@ -188,14 +188,25 @@ namespace PhotographyAutomation.App.Forms.Admin
                     UpdateOldPrintSize((int)cmbPrintSizes.SelectedValue);
                     btnSavePrintSizePrice.Enabled = !bgWorkerUpdatePrintSize.IsBusy;
 
-                    ویرایشاندازهچاپToolStripMenuItem.Checked = false;
+                    ویرایش_اندازه_چاپ_ToolStripMenuItem_Click(null, null);
                 }
                 else if (_deleteSizeFlag)
                 {
-                    DeletePrintSize((int)cmbPrintSizes.SelectedValue);
-                    btnSavePrintServicePrice.Enabled = !bgWorkerDeletePrintSize.IsBusy;
+                    var dr = RtlMessageBox.Show(
+                        "آیا از حذف اندازه چاپ اطمینان دارید؟" + Environment.NewLine +
+                        "در صورتی که برای این اندازه چاپ قبلا خدمات چاپ تعریف شده باشد،" + Environment.NewLine +
+                        "قادر به حذف آن نبوده و ابتدا می بایست خدمات چاپ زیر مجموعه آن را حذف نمایید.",
+                        "تایید حذف اندازه چاپ",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning,
+                        MessageBoxDefaultButton.Button2);
 
-                    حذفاندازهچاپToolStripMenuItem.Checked = false;
+                    if (dr == DialogResult.Yes)
+                    {
+                        DeletePrintSize((int)cmbPrintSizes.SelectedValue);
+                        btnSavePrintServicePrice.Enabled = !bgWorkerDeletePrintSize.IsBusy;
+                    }
+                    حذف_اندازه_چاپ_ToolStripMenuItem_Click(null, null);
                 }
             }
         }
@@ -433,7 +444,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                 }
             }
 
-            if (ویرایشاندازهچاپToolStripMenuItem.Checked)
+            if (ویرایش_اندازه_چاپ_ToolStripMenuItem.Checked)
             {
                 if (string.IsNullOrEmpty(doubleInputWidth.Text.Trim()) ||
                     string.IsNullOrEmpty(doubleInputHeight.Text.Trim()))
@@ -454,7 +465,7 @@ namespace PhotographyAutomation.App.Forms.Admin
 
             return true;
         }
-        
+
 
 
 
@@ -472,81 +483,105 @@ namespace PhotographyAutomation.App.Forms.Admin
             {
                 //var tt = cmbPrintSizes.SelectedItem as PrintSizePriceViewModel;
 
-                // while (bgWorkerGetPrintSizePrice.IsBusy == false)
-                bgWorkerGetPrintSizePrice.RunWorkerAsync((int)cmbPrintSizes.SelectedValue);
+                while (bgWorkerGetPrintSizePrice.IsBusy == false)
+                    bgWorkerGetPrintSizePrice.RunWorkerAsync((int)cmbPrintSizes.SelectedValue);
                 integerInputOriginalPrintPrice.LockUpdateChecked = false;
                 integerInputSecondPrintPrice.LockUpdateChecked = false;
             }
         }
 
-        private void ویرایشاندازهچاپToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void تعریف_خدمات_چاپ_جدید_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ویرایش_اندازه_چاپ_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string gbText = groupBoxPrintSize.Text;
-            if (ویرایشاندازهچاپToolStripMenuItem.Checked == false)
+            if (ویرایش_اندازه_چاپ_ToolStripMenuItem.Checked == false)
             {
                 _editSizeFlag = true;
-                ویرایشاندازهچاپToolStripMenuItem.Checked = true;
-                حذفاندازهچاپToolStripMenuItem.Checked = false;
+                ویرایش_اندازه_چاپ_ToolStripMenuItem.Checked = true;
+                حذف_اندازه_چاپ_ToolStripMenuItem.Checked = false;
                 cmbPrintSizes.Enabled = false;
-                if (cmbPrintSizes.SelectedItem is PrintSizePriceViewModel tt)
+                if (cmbPrintSizes.SelectedItem is TblPrintSizePrices tt)
                 {
-                    doubleInputWidth.Value = (double) tt.SizeWidth;
+                    doubleInputWidth.Value = (double)tt.SizeWidth;
                     doubleInputWidth.Enabled = true;
                     doubleInputWidth.IsInputReadOnly = false;
 
-                    doubleInputHeight.Value = (double) tt.SizeHeight;
+                    doubleInputHeight.Value = (double)tt.SizeHeight;
                     doubleInputHeight.Enabled = true;
                     doubleInputHeight.IsInputReadOnly = false;
                     integerInputOriginalPrintPrice.Value = tt.OriginalPrintPrice;
-                    integerInputSecondPrintPrice.Value = tt.SecontPrintPrice;
+                    integerInputSecondPrintPrice.Value = tt.SecondPrintPrice;
+
+                    integerInputOriginalPrintPrice.LockUpdateChecked = false;
+                    integerInputSecondPrintPrice.LockUpdateChecked = false;
+
+                    //checkBoxNewSize.CheckState = CheckState.Checked;
                 }
 
                 groupBoxPrintSize.Text = @"ویرایش اندازه چاپ";
             }
-            else if (ویرایشاندازهچاپToolStripMenuItem.Checked)
+            else if (ویرایش_اندازه_چاپ_ToolStripMenuItem.Checked)
             {
                 _editSizeFlag = false;
-                ویرایشاندازهچاپToolStripMenuItem.Checked = false;
-                حذفاندازهچاپToolStripMenuItem.Checked = false;
+                ویرایش_اندازه_چاپ_ToolStripMenuItem.Checked = false;
+                حذف_اندازه_چاپ_ToolStripMenuItem.Checked = false;
                 cmbPrintSizes.Enabled = true;
-
+                checkBoxNewSize.Checked = false;
                 groupBoxPrintSize.Text = gbText;
             }
         }
 
-        
 
-        private void حذفاندازهچاپToolStripMenuItem_Click(object sender, EventArgs e)
+        private void حذف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+
+
+        private void حذف_اندازه_چاپ_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string gbText = groupBoxPrintSize.Text;
-            if (حذفاندازهچاپToolStripMenuItem.Checked == false)
+            if (حذف_اندازه_چاپ_ToolStripMenuItem.Checked == false)
             {
                 _deleteSizeFlag = true;
-                ویرایشاندازهچاپToolStripMenuItem.Checked = false;
-                حذفاندازهچاپToolStripMenuItem.Checked = true;
+                ویرایش_اندازه_چاپ_ToolStripMenuItem.Checked = false;
+                حذف_اندازه_چاپ_ToolStripMenuItem.Checked = true;
                 cmbPrintSizes.Enabled = false;
-                if (cmbPrintSizes.SelectedItem is PrintSizePriceViewModel tt)
+                if (cmbPrintSizes.SelectedItem is TblPrintSizePrices tt)
                 {
-                    doubleInputWidth.Value = (double) tt.SizeWidth;
-                    doubleInputHeight.Value = (double) tt.SizeHeight;
+                    doubleInputWidth.Value = (double)tt.SizeWidth;
+                    doubleInputHeight.Value = (double)tt.SizeHeight;
                     integerInputOriginalPrintPrice.Value = tt.OriginalPrintPrice;
-                    integerInputSecondPrintPrice.Value = tt.SecontPrintPrice;
+                    integerInputSecondPrintPrice.Value = tt.SecondPrintPrice;
 
                     integerInputOriginalPrintPrice.Enabled = false;
                     integerInputSecondPrintPrice.Enabled = false;
                     doubleInputWidth.Enabled = false;
                     doubleInputHeight.Enabled = false;
                     checkBoxNewSize.Enabled = false;
+
+                    panelPrintSize1.Enabled = false;
                     panelHasPrintService.Enabled = false;
+                    panelNewEditPrintSize.Enabled = false;
+                    panelOriginalPrintPrice.Enabled = false;
+                    panelSecondPrintPrice.Enabled = false;
                 }
 
                 groupBoxPrintSize.Text = @"حذف اندازه چاپ";
             }
-            else if (حذفاندازهچاپToolStripMenuItem.Checked)
+            else if (حذف_اندازه_چاپ_ToolStripMenuItem.Checked)
             {
                 _deleteSizeFlag = false;
-                ویرایشاندازهچاپToolStripMenuItem.Checked = false;
-                حذفاندازهچاپToolStripMenuItem.Checked = false;
+                ویرایش_اندازه_چاپ_ToolStripMenuItem.Checked = false;
+                حذف_اندازه_چاپ_ToolStripMenuItem.Checked = false;
                 cmbPrintSizes.Enabled = true;
 
                 integerInputOriginalPrintPrice.Enabled = true;
@@ -554,12 +589,15 @@ namespace PhotographyAutomation.App.Forms.Admin
                 doubleInputWidth.Enabled = true;
                 doubleInputHeight.Enabled = true;
                 checkBoxNewSize.Enabled = true;
+
+                panelPrintSize1.Enabled = true;
                 panelHasPrintService.Enabled = true;
+                panelNewEditPrintSize.Enabled = true;
+                panelOriginalPrintPrice.Enabled = true;
+                panelSecondPrintPrice.Enabled = true;
 
                 groupBoxPrintSize.Text = gbText;
             }
         }
-
-        
     }
 }
