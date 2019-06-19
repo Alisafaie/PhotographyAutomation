@@ -115,12 +115,7 @@ namespace PhotographyAutomation.DateLayer.Services
                 return null;
             }
         }
-
-        //public BindingList<TblBooking> LoadBindingList()
-        //{
-        //    _db.TblBooking.Load();
-        //    return _db.TblBooking.Local.ToBindingList();
-        //}
+        
 
         public List<BookingHistoryAddEditBookingViewModel> GetBookingBetweenDates(DateTime dtFrom, DateTime dtTo, string customerInfo)
         {
