@@ -37,7 +37,7 @@
             this.groupBoxPrintSize = new System.Windows.Forms.GroupBox();
             this.cpBtnSave = new DevComponents.DotNetBar.Controls.CircularProgress();
             this.panelHasPrintService = new System.Windows.Forms.Panel();
-            this.checkBoxEnableGroupBoxPrintServices = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxHasPrintServices = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.label20 = new System.Windows.Forms.Label();
             this.panelOriginalPrintPrice = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -70,10 +70,7 @@
             this.cpPrintServices = new DevComponents.DotNetBar.Controls.CircularProgress();
             this.cmbPrintServices = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.panelPrintSize2 = new System.Windows.Forms.Panel();
-            this.cpLoadPrintSizes2 = new DevComponents.DotNetBar.Controls.CircularProgress();
-            this.cmbPrintSizes2 = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.btnCancelPrintServices = new DevComponents.DotNetBar.ButtonX();
             this.btnSavePrintServicePrice = new DevComponents.DotNetBar.ButtonX();
             this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -100,6 +97,7 @@
             this.تعریف_خدمات_چاپ_جدید_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ویرایشToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ویرایش_اندازه_چاپ_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ویرایشخدماتچاپToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.حذف_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.حذف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.حذف_اندازه_چاپ_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -108,6 +106,8 @@
             this.bgWorkerUpdatePrintSize = new System.ComponentModel.BackgroundWorker();
             this.bgWorkerGetPrintSizeInfo = new System.ComponentModel.BackgroundWorker();
             this.bgWorkerGetPrintSizePrice = new System.ComponentModel.BackgroundWorker();
+            this.bgWorkerLoadPrintServices = new System.ComponentModel.BackgroundWorker();
+            this.bgWorkerGetPrintSizeServicePrice = new System.ComponentModel.BackgroundWorker();
             this.panelEx1.SuspendLayout();
             this.groupBoxPrintSize.SuspendLayout();
             this.panelHasPrintService.SuspendLayout();
@@ -125,7 +125,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.integerInputPrintServicePrice)).BeginInit();
             this.panel8.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.panelPrintSize2.SuspendLayout();
             this.panelEx3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrintServices)).BeginInit();
@@ -187,29 +186,28 @@
             // panelHasPrintService
             // 
             this.panelHasPrintService.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelHasPrintService.Controls.Add(this.checkBoxEnableGroupBoxPrintServices);
+            this.panelHasPrintService.Controls.Add(this.checkBoxHasPrintServices);
             this.panelHasPrintService.Controls.Add(this.label20);
             this.panelHasPrintService.Location = new System.Drawing.Point(150, 23);
             this.panelHasPrintService.Name = "panelHasPrintService";
             this.panelHasPrintService.Size = new System.Drawing.Size(117, 37);
             this.panelHasPrintService.TabIndex = 4;
             // 
-            // checkBoxEnableGroupBoxPrintServices
+            // checkBoxHasPrintServices
             // 
-            this.checkBoxEnableGroupBoxPrintServices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxEnableGroupBoxPrintServices.AutoSize = true;
+            this.checkBoxHasPrintServices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxHasPrintServices.AutoSize = true;
             // 
             // 
             // 
-            this.checkBoxEnableGroupBoxPrintServices.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.highlighter1.SetHighlightOnFocus(this.checkBoxEnableGroupBoxPrintServices, true);
-            this.checkBoxEnableGroupBoxPrintServices.Location = new System.Drawing.Point(9, 13);
-            this.checkBoxEnableGroupBoxPrintServices.Name = "checkBoxEnableGroupBoxPrintServices";
-            this.checkBoxEnableGroupBoxPrintServices.Size = new System.Drawing.Size(39, 16);
-            this.checkBoxEnableGroupBoxPrintServices.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxEnableGroupBoxPrintServices.TabIndex = 0;
-            this.checkBoxEnableGroupBoxPrintServices.Text = "دارد";
-            this.checkBoxEnableGroupBoxPrintServices.CheckedChanged += new System.EventHandler(this.checkBoxEnableGroupBoxPrintServices_CheckedChanged);
+            this.checkBoxHasPrintServices.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.highlighter1.SetHighlightOnFocus(this.checkBoxHasPrintServices, true);
+            this.checkBoxHasPrintServices.Location = new System.Drawing.Point(9, 12);
+            this.checkBoxHasPrintServices.Name = "checkBoxHasPrintServices";
+            this.checkBoxHasPrintServices.Size = new System.Drawing.Size(39, 16);
+            this.checkBoxHasPrintServices.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxHasPrintServices.TabIndex = 0;
+            this.checkBoxHasPrintServices.Text = "دارد";
             // 
             // label20
             // 
@@ -356,13 +354,13 @@
             this.highlighter1.SetHighlightOnFocus(this.doubleInputHeight, true);
             this.doubleInputHeight.Increment = 1D;
             this.doubleInputHeight.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
-            this.doubleInputHeight.Location = new System.Drawing.Point(92, 9);
+            this.doubleInputHeight.Location = new System.Drawing.Point(93, 9);
             this.doubleInputHeight.MinValue = 0D;
             this.doubleInputHeight.Name = "doubleInputHeight";
             this.doubleInputHeight.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.doubleInputHeight.Size = new System.Drawing.Size(50, 21);
+            this.doubleInputHeight.Size = new System.Drawing.Size(49, 21);
             this.doubleInputHeight.TabIndex = 2;
-            this.doubleInputHeight.WatermarkText = "طول(cm)";
+            this.doubleInputHeight.WatermarkText = "(cm)طول";
             // 
             // doubleInputWidth
             // 
@@ -383,7 +381,7 @@
             this.doubleInputWidth.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.doubleInputWidth.Size = new System.Drawing.Size(54, 21);
             this.doubleInputWidth.TabIndex = 1;
-            this.doubleInputWidth.WatermarkText = "عرض(cm)";
+            this.doubleInputWidth.WatermarkText = "(cm)عرض";
             // 
             // checkBoxNewSize
             // 
@@ -406,7 +404,7 @@
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(76, 13);
+            this.label8.Location = new System.Drawing.Point(74, 13);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(13, 13);
             this.label8.TabIndex = 41;
@@ -499,9 +497,8 @@
             this.groupBoxPrintServices.Controls.Add(this.panel9);
             this.groupBoxPrintServices.Controls.Add(this.panel8);
             this.groupBoxPrintServices.Controls.Add(this.panel6);
-            this.groupBoxPrintServices.Controls.Add(this.panelPrintSize2);
+            this.groupBoxPrintServices.Controls.Add(this.btnCancelPrintServices);
             this.groupBoxPrintServices.Controls.Add(this.btnSavePrintServicePrice);
-            this.groupBoxPrintServices.Enabled = false;
             this.groupBoxPrintServices.Location = new System.Drawing.Point(12, 10);
             this.groupBoxPrintServices.Name = "groupBoxPrintServices";
             this.groupBoxPrintServices.Size = new System.Drawing.Size(1148, 67);
@@ -515,7 +512,7 @@
             this.panel9.Controls.Add(this.label16);
             this.panel9.Controls.Add(this.integerInputPrintServicePrice);
             this.panel9.Controls.Add(this.label19);
-            this.panel9.Location = new System.Drawing.Point(273, 20);
+            this.panel9.Location = new System.Drawing.Point(476, 20);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(222, 34);
             this.panel9.TabIndex = 2;
@@ -567,7 +564,7 @@
             this.panel8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel8.Controls.Add(this.txtPrintServiceCode);
             this.panel8.Controls.Add(this.label9);
-            this.panel8.Location = new System.Drawing.Point(501, 20);
+            this.panel8.Location = new System.Drawing.Point(704, 20);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(211, 34);
             this.panel8.TabIndex = 49;
@@ -602,7 +599,7 @@
             this.panel6.Controls.Add(this.cpPrintServices);
             this.panel6.Controls.Add(this.cmbPrintServices);
             this.panel6.Controls.Add(this.label3);
-            this.panel6.Location = new System.Drawing.Point(715, 20);
+            this.panel6.Location = new System.Drawing.Point(921, 20);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(221, 34);
             this.panel6.TabIndex = 1;
@@ -629,9 +626,10 @@
             this.highlighter1.SetHighlightOnFocus(this.cmbPrintServices, true);
             this.cmbPrintServices.Location = new System.Drawing.Point(20, 6);
             this.cmbPrintServices.Name = "cmbPrintServices";
-            this.cmbPrintServices.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cmbPrintServices.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.cmbPrintServices.Size = new System.Drawing.Size(128, 21);
             this.cmbPrintServices.TabIndex = 0;
+            this.cmbPrintServices.SelectedIndexChanged += new System.EventHandler(this.cmbPrintServices_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -643,52 +641,16 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "خدمات چاپ";
             // 
-            // panelPrintSize2
+            // btnCancelPrintServices
             // 
-            this.panelPrintSize2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelPrintSize2.Controls.Add(this.cpLoadPrintSizes2);
-            this.panelPrintSize2.Controls.Add(this.cmbPrintSizes2);
-            this.panelPrintSize2.Controls.Add(this.label2);
-            this.panelPrintSize2.Location = new System.Drawing.Point(942, 20);
-            this.panelPrintSize2.Name = "panelPrintSize2";
-            this.panelPrintSize2.Size = new System.Drawing.Size(200, 34);
-            this.panelPrintSize2.TabIndex = 0;
-            // 
-            // cpLoadPrintSizes2
-            // 
-            // 
-            // 
-            // 
-            this.cpLoadPrintSizes2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.cpLoadPrintSizes2.Location = new System.Drawing.Point(3, 6);
-            this.cpLoadPrintSizes2.Name = "cpLoadPrintSizes2";
-            this.cpLoadPrintSizes2.ProgressColor = System.Drawing.Color.Blue;
-            this.cpLoadPrintSizes2.Size = new System.Drawing.Size(14, 21);
-            this.cpLoadPrintSizes2.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
-            this.cpLoadPrintSizes2.TabIndex = 33;
-            this.cpLoadPrintSizes2.TabStop = false;
-            // 
-            // cmbPrintSizes2
-            // 
-            this.cmbPrintSizes2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbPrintSizes2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPrintSizes2.FormattingEnabled = true;
-            this.highlighter1.SetHighlightOnFocus(this.cmbPrintSizes2, true);
-            this.cmbPrintSizes2.Location = new System.Drawing.Point(23, 6);
-            this.cmbPrintSizes2.Name = "cmbPrintSizes2";
-            this.cmbPrintSizes2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.cmbPrintSizes2.Size = new System.Drawing.Size(112, 21);
-            this.cmbPrintSizes2.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(144, 10);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "اندازه چاپ";
+            this.btnCancelPrintServices.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnCancelPrintServices.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnCancelPrintServices.Location = new System.Drawing.Point(83, 24);
+            this.btnCancelPrintServices.Name = "btnCancelPrintServices";
+            this.btnCancelPrintServices.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelPrintServices.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
+            this.btnCancelPrintServices.TabIndex = 3;
+            this.btnCancelPrintServices.Text = "انصراف";
             // 
             // btnSavePrintServicePrice
             // 
@@ -701,6 +663,7 @@
             this.btnSavePrintServicePrice.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
             this.btnSavePrintServicePrice.TabIndex = 3;
             this.btnSavePrintServicePrice.Text = "ثبت";
+            this.btnSavePrintServicePrice.Click += new System.EventHandler(this.btnSavePrintServicePrice_Click);
             // 
             // panelEx3
             // 
@@ -780,7 +743,7 @@
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 8.25F);
             dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvPrintServices.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvPrintServices.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -948,7 +911,8 @@
             // ویرایشToolStripMenuItem
             // 
             this.ویرایشToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ویرایش_اندازه_چاپ_ToolStripMenuItem});
+            this.ویرایش_اندازه_چاپ_ToolStripMenuItem,
+            this.ویرایشخدماتچاپToolStripMenuItem});
             this.ویرایشToolStripMenuItem.Name = "ویرایشToolStripMenuItem";
             this.ویرایشToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.ویرایشToolStripMenuItem.Text = "ویرایش";
@@ -956,9 +920,15 @@
             // ویرایش_اندازه_چاپ_ToolStripMenuItem
             // 
             this.ویرایش_اندازه_چاپ_ToolStripMenuItem.Name = "ویرایش_اندازه_چاپ_ToolStripMenuItem";
-            this.ویرایش_اندازه_چاپ_ToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.ویرایش_اندازه_چاپ_ToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.ویرایش_اندازه_چاپ_ToolStripMenuItem.Text = "ویرایش اندازه چاپ";
             this.ویرایش_اندازه_چاپ_ToolStripMenuItem.Click += new System.EventHandler(this.ویرایش_اندازه_چاپ_ToolStripMenuItem_Click);
+            // 
+            // ویرایشخدماتچاپToolStripMenuItem
+            // 
+            this.ویرایشخدماتچاپToolStripMenuItem.Name = "ویرایشخدماتچاپToolStripMenuItem";
+            this.ویرایشخدماتچاپToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.ویرایشخدماتچاپToolStripMenuItem.Text = "ویرایش خدمات چاپ";
             // 
             // حذف_ToolStripMenuItem
             // 
@@ -1008,6 +978,16 @@
             this.bgWorkerGetPrintSizePrice.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerGetPrintSizePrice_DoWork);
             this.bgWorkerGetPrintSizePrice.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerGetPrintSizePrice_RunWorkerCompleted);
             // 
+            // bgWorkerLoadPrintServices
+            // 
+            this.bgWorkerLoadPrintServices.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerLoadPrintServices_DoWork);
+            this.bgWorkerLoadPrintServices.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerLoadPrintServices_RunWorkerCompleted);
+            // 
+            // bgWorkerGetPrintSizeServicePrice
+            // 
+            this.bgWorkerGetPrintSizeServicePrice.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerGetPrintSizeServicePrice_DoWork);
+            this.bgWorkerGetPrintSizeServicePrice.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerGetPrintSizeServicePrice_RunWorkerCompleted);
+            // 
             // FrmAddEditPrintSizeAndServices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1054,8 +1034,6 @@
             this.panel8.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            this.panelPrintSize2.ResumeLayout(false);
-            this.panelPrintSize2.PerformLayout();
             this.panelEx3.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrintServices)).EndInit();
@@ -1089,9 +1067,6 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.ComboBox cmbPrintServices;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel panelPrintSize2;
-        private System.Windows.Forms.ComboBox cmbPrintSizes2;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panelOriginalPrintPrice;
         private System.Windows.Forms.Label label4;
         private DevComponents.Editors.IntegerInput integerInputOriginalPrintPrice;
@@ -1105,11 +1080,10 @@
         private DevComponents.DotNetBar.ButtonX btnSavePrintServicePrice;
         private DevComponents.DotNetBar.Controls.CircularProgress cpLoadPrintSizes1;
         private System.Windows.Forms.Panel panelHasPrintService;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxEnableGroupBoxPrintServices;
+        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxHasPrintServices;
         private System.Windows.Forms.Label label20;
         private DevComponents.DotNetBar.Controls.CircularProgress cpLoadDataGridView;
         private DevComponents.DotNetBar.Controls.CircularProgress cpPrintServices;
-        private DevComponents.DotNetBar.Controls.CircularProgress cpLoadPrintSizes2;
         private DevComponents.DotNetBar.StyleManager styleManager1;
         private DevComponents.DotNetBar.Validator.Highlighter highlighter1;
         private System.ComponentModel.BackgroundWorker bgWorkerLoadPrintSizes1;
@@ -1143,5 +1117,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPrintServiceName;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmDescription;
+        private System.ComponentModel.BackgroundWorker bgWorkerLoadPrintServices;
+        private System.Windows.Forms.ToolStripMenuItem ویرایشخدماتچاپToolStripMenuItem;
+        private DevComponents.DotNetBar.ButtonX btnCancelPrintServices;
+        private System.ComponentModel.BackgroundWorker bgWorkerGetPrintSizeServicePrice;
     }
 }
