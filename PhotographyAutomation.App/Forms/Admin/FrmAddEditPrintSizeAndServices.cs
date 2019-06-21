@@ -22,6 +22,9 @@ namespace PhotographyAutomation.App.Forms.Admin
         private int _selectedPrintServiceId;
         private int _selectedPrintSizeServiceId;
 
+
+        private readonly BackgroundWorker _bgWorkerUpdatePrintSizeService = new BackgroundWorker();
+        private readonly BackgroundWorker _bgWorkerSaveNewPrintSizeService = new BackgroundWorker();
         #endregion Variables
 
 
@@ -30,6 +33,12 @@ namespace PhotographyAutomation.App.Forms.Admin
         public FrmAddEditPrintSizeAndServices()
         {
             InitializeComponent();
+
+            _bgWorkerSaveNewPrintSizeService.DoWork += bgWorkerSaveNewPrintSizeService_DoWork;
+            _bgWorkerSaveNewPrintSizeService.RunWorkerCompleted += bgWorkerSaveNewPrintSizeService_RunWorkerCompleted;
+
+            _bgWorkerUpdatePrintSizeService.DoWork += bgWorkerUpdatePrintSizeService_DoWork;
+            _bgWorkerUpdatePrintSizeService.RunWorkerCompleted += bgWorkerUpdatePrintSizeService_RunWorkerCompleted;
         }
 
         private void FrmAddEditPrintSizeAndServices_Load(object sender, EventArgs e)
@@ -37,6 +46,7 @@ namespace PhotographyAutomation.App.Forms.Admin
             bgWorkerLoadPrintSizes1.RunWorkerAsync();
             cpLoadPrintSizes1.IsRunning = bgWorkerLoadPrintSizes1.IsBusy;
             cmbPrintSizes.Enabled = !bgWorkerLoadPrintSizes1.IsBusy;
+            cmbPrintSizes.Focus();
         }
 
 
@@ -79,6 +89,8 @@ namespace PhotographyAutomation.App.Forms.Admin
                 integerInputOriginalPrintPrice.LockUpdateChecked = false;
                 integerInputSecondPrintPrice.LockUpdateChecked = false;
 
+                cmbPrintSizes.Focus();
+                cmbPrintSizes.DroppedDown = true;
             }
         }
 
@@ -229,21 +241,16 @@ namespace PhotographyAutomation.App.Forms.Admin
                     groupBoxPrintSize.Enabled = false;
                     groupBoxPrintServices.Enabled = true;
 
-                    if (_newSizeFlag)
-                    {
-                        if (_selectedPrintSizeId > 0)
-                        {
-                            cmbPrintSizes.SelectedValue = _selectedPrintSizeId;
-                            cmbPrintSizes.Enabled = false;
-                        }
-                    }
-
+                    //if (_newSizeFlag)
+                    //{
+                    //    if (_selectedPrintSizeId > 0)
+                    //    {
+                    //        cmbPrintSizes.SelectedValue = _selectedPrintSizeId;
+                    //        cmbPrintSizes.Enabled = false;
+                    //    }
+                    //}
                     bgWorkerLoadPrintServices.RunWorkerAsync();
                     cpPrintServices.IsRunning = bgWorkerLoadPrintServices.IsBusy;
-
-
-                    // To Do
-
                 }
             }
             else
@@ -722,6 +729,8 @@ namespace PhotographyAutomation.App.Forms.Admin
             {
                 bgWorkerGetPrintSizeServicePrice.RunWorkerAsync(_selectedPrintServiceId);
                 cpPrintServices.IsRunning = bgWorkerGetPrintSizeServicePrice.IsBusy;
+                if (bgWorkerGetPrintSizeServicePrice.IsBusy == false)
+                    txtPrintServiceCode.Focus();
             }
         }
 
@@ -742,15 +751,21 @@ namespace PhotographyAutomation.App.Forms.Admin
                 Console.WriteLine(exception);
             }
         }
-
         private void bgWorkerGetPrintSizeServicePrice_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            txtPrintServiceCode.ResetText();
+            integerInputPrintServicePrice.ResetText();
             if (e.Result is TblPrintServices_TblPrintSizePrice printSizeService)
             {
                 txtPrintServiceCode.Text = printSizeService.Code;
-                integerInputPrintServicePrice.Value = printSizeService.Price;
-                _selectedPrintSizeServiceId = printSizeService.Id;
 
+                integerInputPrintServicePrice.Value = printSizeService.Price;
+
+                _selectedPrintSizeServiceId = printSizeService.Id;
+            }
+            else
+            {
+                _selectedPrintSizeServiceId = 0;
             }
             cpPrintServices.IsRunning = bgWorkerGetPrintSizeServicePrice.IsBusy;
         }
@@ -768,22 +783,74 @@ namespace PhotographyAutomation.App.Forms.Admin
             if (_selectedPrintSizeServiceId > 0)
             {
                 printSizeService.Id = _selectedPrintSizeServiceId;
-                UpdatePrintSizeService(printSizeService);
+
+                _bgWorkerUpdatePrintSizeService.RunWorkerAsync(printSizeService);
+
+                btnSavePrintServicePrice.Enabled = !_bgWorkerUpdatePrintSizeService.IsBusy;
+                cpBtnSavePrintService.IsRunning = _bgWorkerUpdatePrintSizeService.IsBusy;
+
+                //if (_bgWorkerUpdatePrintSizeService.IsBusy == false)
+                //{
+                //    cpBtnSavePrintService.IsRunning = false;
+                //    cpBtnSavePrintService.Hide();
+                //}
             }
             else
             {
-                SaveNewPrintSizeService(printSizeService);
+                _bgWorkerSaveNewPrintSizeService.RunWorkerAsync(printSizeService);
+
+                btnSavePrintServicePrice.Enabled = !_bgWorkerSaveNewPrintSizeService.IsBusy;
+                cpBtnSavePrintService.IsRunning = _bgWorkerSaveNewPrintSizeService.IsBusy;
+
+                //if (_bgWorkerSaveNewPrintSizeService.IsBusy == false)
+                //{
+                //    cpBtnSavePrintService.IsRunning = false;
+                //    cpBtnSavePrintService.Hide();
+                //}
             }
         }
 
-        private void UpdatePrintSizeService(TblPrintServices_TblPrintSizePrice printSizeService)
+        private void bgWorkerSaveNewPrintSizeService_DoWork(object sender, DoWorkEventArgs e)
         {
             try
             {
-                using (var db=new UnitOfWork())
+                using (var db = new UnitOfWork())
                 {
-                    db.PrintServices_PrintSizePriceGenericRepository.Update(printSizeService);
-                    db.Save();
+                    //var newPrintSizeService = e.Argument as TblPrintServices_TblPrintSizePrice;
+                    if (e.Argument is TblPrintServices_TblPrintSizePrice newPrintSizeService)
+                    {
+                        db.PrintServices_PrintSizePriceGenericRepository.Insert(newPrintSizeService);
+                        if (db.Save() > 0)
+                            e.Result = newPrintSizeService.Id;
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception.Message);
+            }
+        }
+        private void bgWorkerSaveNewPrintSizeService_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Result != null && int.TryParse(e.Result.ToString(), out _))
+            {
+                btnSavePrintServicePrice.Enabled = !_bgWorkerSaveNewPrintSizeService.IsBusy;
+                cpBtnSavePrintService.IsRunning = _bgWorkerSaveNewPrintSizeService.IsBusy;
+                var printSize = cmbPrintSizes.SelectedItem as TblPrintSizePrices;
+                RtlMessageBox.Show($"خدمات چاپ جدید برای اندازه چاپ {printSize.SizeHeight:F1} × {printSize.SizeWidth:F1} با موفقیت ثبت گردید.");
+            }
+        }
+
+
+
+        private void bgWorkerUpdatePrintSizeService_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                using (var db = new UnitOfWork())
+                {
+                    db.PrintServices_PrintSizePriceGenericRepository.Update(e.Argument as TblPrintServices_TblPrintSizePrice);
+                    e.Result = db.Save();
                 }
             }
             catch (Exception exception)
@@ -791,21 +858,27 @@ namespace PhotographyAutomation.App.Forms.Admin
                 Console.WriteLine(exception);
             }
         }
-
-        private void SaveNewPrintSizeService(TblPrintServices_TblPrintSizePrice printSizeService)
+        private void bgWorkerUpdatePrintSizeService_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            try
+            if (e.Result != null && int.TryParse(e.Result.ToString(), out _))
             {
-                using (var db=new UnitOfWork())
-                {
-                    db.PrintServices_PrintSizePriceGenericRepository.Insert(printSizeService);
-                    db.Save();
-                }
+                btnSavePrintServicePrice.Enabled = !_bgWorkerUpdatePrintSizeService.IsBusy;
+                cpBtnSavePrintService.IsRunning = _bgWorkerUpdatePrintSizeService.IsBusy;
+
+                RtlMessageBox.Show("خدمات چاپ مورد نظر با موفقیت تغییر یافت.");
             }
-            catch (Exception exception)
-            {
-                Console.WriteLine(exception.Message);
-            }
+        }
+
+
+
+
+
+
+
+        private void btnCancelPrintServices_Click(object sender, EventArgs e)
+        {
+            groupBoxPrintServices.Enabled = false;
+            groupBoxPrintSize.Enabled = true;
         }
     }
 }
