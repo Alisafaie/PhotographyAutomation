@@ -10,8 +10,13 @@ namespace PhotographyAutomation.App.Forms.Factors
 {
     public partial class FrmAddEditPreFactor : Form
     {
+        #region Variables
+
         private int _selectedOriginalSizeId;
         private int _selectedPrintServiceId;
+
+        #endregion
+
 
         public FrmAddEditPreFactor()
         {
@@ -23,14 +28,19 @@ namespace PhotographyAutomation.App.Forms.Factors
             LoadOriginalPrintSizes();
         }
 
+
+
+        #region Buttons
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
         }
 
+        #endregion
 
 
-
+        #region LoadOriginalPrintSizes
 
         private void LoadOriginalPrintSizes()
         {
@@ -95,8 +105,11 @@ namespace PhotographyAutomation.App.Forms.Factors
                 circularProgress.Hide();
         }
 
+        #endregion
 
 
+
+        #region cmbOriginalPrintSize
 
         private void cmbOriginalPrintSize_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -111,8 +124,11 @@ namespace PhotographyAutomation.App.Forms.Factors
             }
         }
 
+        #endregion
 
 
+
+        #region GetOriginalPrintSizePrice
 
         private void GetOriginalPrintSizePrice(int printSizeId)
         {
@@ -161,7 +177,11 @@ namespace PhotographyAutomation.App.Forms.Factors
                 circularProgress.Hide();
         }
 
+        #endregion
 
+
+
+        #region checkBoxLoadPrintSizeServices
 
         private void checkBoxLoadPrintSizeServices_CheckedChanged(object sender, EventArgs e)
         {
@@ -176,7 +196,11 @@ namespace PhotographyAutomation.App.Forms.Factors
             }
         }
 
+        #endregion
+        
 
+
+        #region LoadPrintSizeService
 
         private void LoadPrintSizeService(int printSizeId)
         {
@@ -239,7 +263,11 @@ namespace PhotographyAutomation.App.Forms.Factors
             }
         }
 
+        #endregion
 
+
+
+        #region cmbOriginalPrintService
 
         private void cmbOriginalPrintService_EnabledChanged(object sender, EventArgs e)
         {
@@ -271,7 +299,11 @@ namespace PhotographyAutomation.App.Forms.Factors
             }
         }
 
+        #endregion
+        
 
+
+        #region GetPrintServicePrice
 
         private void GetPrintServicePrice(int printServiceId)
         {
@@ -325,14 +357,11 @@ namespace PhotographyAutomation.App.Forms.Factors
             }
         }
 
+        #endregion
 
 
 
-
-
-
-
-
+        #region GetSecondPrintSizePrice
 
         private static string GetSecondPrintSizePrice(int printSizeId)
         {
@@ -437,8 +466,11 @@ namespace PhotographyAutomation.App.Forms.Factors
             }
         }
 
+        #endregion
 
 
+
+        #region SecondPrint2
 
 
         private void checkBoxSecondPrint2_CheckedChanged(object sender, EventArgs e)
@@ -515,9 +547,13 @@ namespace PhotographyAutomation.App.Forms.Factors
                 }
             }
         }
+        
+
+        #endregion
 
 
 
+        #region SecondPrint3
 
         private void checkBoxSecondPrint3_CheckedChanged(object sender, EventArgs e)
         {
@@ -594,8 +630,11 @@ namespace PhotographyAutomation.App.Forms.Factors
             }
         }
 
+        #endregion
 
 
+
+        #region SecondPrint4
 
         private void checkBoxSecondPrint4_CheckedChanged(object sender, EventArgs e)
         {
@@ -672,9 +711,11 @@ namespace PhotographyAutomation.App.Forms.Factors
             }
         }
 
+        #endregion
 
 
 
+        #region GetSecondPrintServicePrice
 
         private string GetSecondPrintServicePrice()
         {
@@ -774,10 +815,12 @@ namespace PhotographyAutomation.App.Forms.Factors
             }
         }
 
-        
+
+        #endregion
 
 
 
+        #region SecondPrintService2
 
         private void checkBoxLoadSecondPrintSize2_CheckedChanged(object sender, EventArgs e)
         {
@@ -849,11 +892,12 @@ namespace PhotographyAutomation.App.Forms.Factors
             }
         }
 
+        #endregion
 
 
 
-
-
+        #region SecondPrintSize3
+        
         private void checkBoxLoadSecondPrintSize3_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxLoadSecondPrintSize3.Checked)
@@ -923,10 +967,11 @@ namespace PhotographyAutomation.App.Forms.Factors
                 }
             }
         }
+        
+        #endregion
 
 
-
-
+        #region SecondPrintSize4
 
         private void checkBoxLoadSecondPrintSize4_CheckedChanged(object sender, EventArgs e)
         {
@@ -997,5 +1042,9 @@ namespace PhotographyAutomation.App.Forms.Factors
                 }
             }
         }
+
+        #endregion
+
+        
     }
 }

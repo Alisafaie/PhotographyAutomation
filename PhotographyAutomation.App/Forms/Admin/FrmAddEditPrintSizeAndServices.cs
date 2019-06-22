@@ -53,7 +53,7 @@ namespace PhotographyAutomation.App.Forms.Admin
         #endregion Form Events
 
 
-        #region Load Print Size Backgroud Worker
+        #region Load Print Size BackgroudWorker
 
         private void bgWorkerLoadPrintSizes1_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -95,9 +95,10 @@ namespace PhotographyAutomation.App.Forms.Admin
             }
         }
 
-        #endregion Load Print Size Backgroud Worker
+        #endregion Load Print Size BackgroudWorker
 
-        #region Load Print Services Background Worker
+
+        #region Load Print Services BackgroundWorker
         private void bgWorkerLoadPrintServices_DoWork(object sender, DoWorkEventArgs e)
         {
             try
@@ -123,12 +124,13 @@ namespace PhotographyAutomation.App.Forms.Admin
             cmbPrintServices.ValueMember = "Id";
 
             cpPrintServices.IsRunning = bgWorkerLoadPrintServices.IsBusy;
-            cmbPrintServices_SelectedIndexChanged(null,null);
+            cmbPrintServices_SelectedIndexChanged(null, null);
         }
 
-        #endregion Load Print Services Background Worker
+        #endregion Load Print Services BackgroundWorker
 
-        #region Get Print Size Price
+
+        #region Get Print Size Price BackgroudWorker
 
         private void bgWorkerGetPrintSizePrice_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -170,11 +172,16 @@ namespace PhotographyAutomation.App.Forms.Admin
             }
         }
 
-        #endregion Get Print Size Price
+        #endregion Get Print Size Price BackgroudWorker
 
 
         #region Buttons
 
+        private void btnCancelPrintServices_Click(object sender, EventArgs e)
+        {
+            groupBoxPrintServices.Enabled = false;
+            groupBoxPrintSize.Enabled = true;
+        }
         private void btnSavePrintSizePrice_Click(object sender, EventArgs e)
         {
             if (!CheckInputs()) return;
@@ -193,7 +200,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                     using (var frmInput = new FrmAddEditInput())
                     {
                         frmInput.lblFormQuestion.Text =
-                            "لطفا توضیحات مورد نظر خود در رابطه با سایز چاپ مورد نظر را وارد نمایید.";
+                            @"لطفا توضیحات مورد نظر خود در رابطه با سایز چاپ مورد نظر را وارد نمایید.";
                         frmInput.ShowDialog();
                         sizeDescription = frmInput.txtContent.Text;
                     }
@@ -246,7 +253,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                     bgWorkerLoadPrintServices.RunWorkerAsync();
                     cpPrintServices.IsRunning = bgWorkerLoadPrintServices.IsBusy;
 
-                    
+
                 }
             }
             else
@@ -258,7 +265,33 @@ namespace PhotographyAutomation.App.Forms.Admin
                 checkBoxNewSize.Checked = false;
             }
         }
-        
+        private void btnSavePrintServicePrice_Click(object sender, EventArgs e)
+        {
+            var printSizeService = new TblPrintServices_TblPrintSizePrice
+            {
+                PrintSizePriceId = _selectedPrintSizeId,
+                PrintServiceId = _selectedPrintServiceId,
+                Code = txtPrintServiceCode.Text,
+                Price = integerInputPrintServicePrice.Value,
+            };
+
+            if (_selectedPrintSizeServiceId > 0)
+            {
+                printSizeService.Id = _selectedPrintSizeServiceId;
+
+                _bgWorkerUpdatePrintSizeService.RunWorkerAsync(printSizeService);
+
+                btnSavePrintServicePrice.Enabled = !_bgWorkerUpdatePrintSizeService.IsBusy;
+                cpBtnSavePrintService.IsRunning = _bgWorkerUpdatePrintSizeService.IsBusy;
+            }
+            else
+            {
+                _bgWorkerSaveNewPrintSizeService.RunWorkerAsync(printSizeService);
+
+                btnSavePrintServicePrice.Enabled = !_bgWorkerSaveNewPrintSizeService.IsBusy;
+                cpBtnSavePrintService.IsRunning = _bgWorkerSaveNewPrintSizeService.IsBusy;
+            }
+        }
 
         #endregion Buttons
 
@@ -299,7 +332,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                     //checkBoxNewSize.CheckState = CheckState.Checked;
                 }
 
-                groupBoxPrintSize.Text = "ویرایش اندازه و قیمت چاپ";
+                groupBoxPrintSize.Text = @"ویرایش اندازه و قیمت چاپ";
             }
             else if (ویرایش_اندازه_چاپ_ToolStripMenuItem.Checked)
             {
@@ -350,7 +383,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                     panelSecondPrintPrice.Enabled = false;
                 }
 
-                groupBoxPrintSize.Text = "حذف اندازه چاپ";
+                groupBoxPrintSize.Text = @"حذف اندازه چاپ";
             }
             else if (حذف_اندازه_چاپ_ToolStripMenuItem.Checked)
             {
@@ -548,7 +581,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                 };
                 using (var frmInput = new FrmAddEditInput())
                 {
-                    frmInput.lblFormQuestion.Text = "آیا برای این اندازه چاپ توضیح خاصی در نظر دارید؟";
+                    frmInput.lblFormQuestion.Text = @"آیا برای این اندازه چاپ توضیح خاصی در نظر دارید؟";
                     frmInput.txtContent.Text = sizePrintInDb.SizeDescription;
                     frmInput.ShowDialog();
                     editedSizePrint.SizeDescription = frmInput.txtContent.Text;
@@ -694,6 +727,9 @@ namespace PhotographyAutomation.App.Forms.Admin
 
         #endregion cmbPrintSizes
 
+
+        #region checkBoxNewSize
+
         private void checkBoxNewSize_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxNewSize.Checked)
@@ -714,7 +750,10 @@ namespace PhotographyAutomation.App.Forms.Admin
             }
         }
 
+        #endregion
 
+
+        #region cmbPrintServices
 
         private void cmbPrintServices_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -728,6 +767,11 @@ namespace PhotographyAutomation.App.Forms.Admin
                     txtPrintServiceCode.Focus();
             }
         }
+
+        #endregion
+       
+
+        #region GetPrintSizeServicePrice Backgroundworker
 
         private void bgWorkerGetPrintSizeServicePrice_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -765,33 +809,10 @@ namespace PhotographyAutomation.App.Forms.Admin
             cpPrintServices.IsRunning = bgWorkerGetPrintSizeServicePrice.IsBusy;
         }
 
-        private void btnSavePrintServicePrice_Click(object sender, EventArgs e)
-        {
-            var printSizeService = new TblPrintServices_TblPrintSizePrice
-            {
-                PrintSizePriceId = _selectedPrintSizeId,
-                PrintServiceId = _selectedPrintServiceId,
-                Code = txtPrintServiceCode.Text,
-                Price = integerInputPrintServicePrice.Value,
-            };
+        #endregion GetPrintSizeServicePrice Backgroundworker
 
-            if (_selectedPrintSizeServiceId > 0)
-            {
-                printSizeService.Id = _selectedPrintSizeServiceId;
 
-                _bgWorkerUpdatePrintSizeService.RunWorkerAsync(printSizeService);
-
-                btnSavePrintServicePrice.Enabled = !_bgWorkerUpdatePrintSizeService.IsBusy;
-                cpBtnSavePrintService.IsRunning = _bgWorkerUpdatePrintSizeService.IsBusy;
-            }
-            else
-            {
-                _bgWorkerSaveNewPrintSizeService.RunWorkerAsync(printSizeService);
-
-                btnSavePrintServicePrice.Enabled = !_bgWorkerSaveNewPrintSizeService.IsBusy;
-                cpBtnSavePrintService.IsRunning = _bgWorkerSaveNewPrintSizeService.IsBusy;
-            }
-        }
+        #region Save New Print Size Service Backgroundworker
 
         private static void bgWorkerSaveNewPrintSizeService_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -818,13 +839,15 @@ namespace PhotographyAutomation.App.Forms.Admin
             {
                 btnSavePrintServicePrice.Enabled = !_bgWorkerSaveNewPrintSizeService.IsBusy;
                 cpBtnSavePrintService.IsRunning = _bgWorkerSaveNewPrintSizeService.IsBusy;
-                if (cmbPrintSizes.SelectedItem is TblPrintSizePrices printSize)
-                    RtlMessageBox.Show(
-                        $"خدمات چاپ جدید برای اندازه چاپ {printSize.SizeHeight:F1} × {printSize.SizeWidth:F1} با موفقیت ثبت گردید.");
+                if (cmbPrintSizes.SelectedItem is TblPrintSizePrices printSize && cmbPrintServices.SelectedItem is TblPrintServices printService)
+                    RtlMessageBox.Show($"خدمات {printService.PrintServiceName} برای اندازه چاپ {printSize.SizeHeight:F1} × {printSize.SizeWidth:F1} با موفقیت ثبت گردید.");
             }
         }
 
+        #endregion Save New Print Size Service Backgroundworker
 
+
+        #region UpdatePrintSizeService Backgroundworker
 
         private static void bgWorkerUpdatePrintSizeService_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -847,17 +870,11 @@ namespace PhotographyAutomation.App.Forms.Admin
             {
                 btnSavePrintServicePrice.Enabled = !_bgWorkerUpdatePrintSizeService.IsBusy;
                 cpBtnSavePrintService.IsRunning = _bgWorkerUpdatePrintSizeService.IsBusy;
-
-                RtlMessageBox.Show("خدمات چاپ مورد نظر با موفقیت تغییر یافت.");
+                if (cmbPrintSizes.SelectedItem is TblPrintSizePrices printSize && cmbPrintServices.SelectedItem is TblPrintServices printService)
+                    RtlMessageBox.Show($"خدمات {printService.PrintServiceName} برای اندازه چاپ {printSize.SizeHeight:F1} × {printSize.SizeWidth:F1} با موفقیت ویرایش گردید.");
             }
         }
 
-
-
-        private void btnCancelPrintServices_Click(object sender, EventArgs e)
-        {
-            groupBoxPrintServices.Enabled = false;
-            groupBoxPrintSize.Enabled = true;
-        }
+        #endregion UpdatePrintSizeService Backgroundworker
     }
 }

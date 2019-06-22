@@ -1,4 +1,5 @@
-﻿using PhotographyAutomation.App.Forms.Photos;
+﻿using DevComponents.DotNetBar.Controls;
+using PhotographyAutomation.App.Forms.Photos;
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.DateLayer.Models;
 using PhotographyAutomation.Utilities;
@@ -13,11 +14,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace PhotographyAutomation.App.Forms.EntranceToAtelier
+namespace PhotographyAutomation.App.Forms.Orders
 {
     public partial class FrmUploadSelectedPhotos : Form
     {
-
+        #region Variables
         private readonly List<string> _fileNamesList = new List<string>();
         private readonly List<string> _fileNamesAndPathsList = new List<string>();
 
@@ -31,6 +32,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
         public int CustomerId = 0;
         public int OrderId = 0;
 
+        #endregion Variables
 
         public FrmUploadSelectedPhotos()
         {
@@ -43,15 +45,26 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
             _locY = 10;
             _sizeWidth = 128;
             _sizeHeight = 128;
-            txtOrderCode.Text = OrderCode;
+            toolStripMenuItemOrderCode.Text = OrderCode;
         }
 
 
+        #region Top Menu
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             btnChoosePhotoPath_Click(null, null);
         }
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnUploadPhotos_Click(null, null);
+        }
+
+        #endregion
+
+
+        #region Buttons
+
         private void btnChoosePhotoPath_Click(object sender, EventArgs e)
         {
             var openFileDialogBrowsePictures = new OpenFileDialog
@@ -70,7 +83,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 
             if (openFileDialogBrowsePictures.ShowDialog() != DialogResult.OK) return;
 
-            panelPreviewPictures.Controls.Clear();
+            panelPreviewPictures_1.Controls.Clear();
             var locnewX = _locX;
             // ReSharper disable once UnusedVariable
             var locnewY = _locY;
@@ -89,13 +102,8 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                     RtlMessageBox.Show(exception.Message);
                 }
             }
-            txtOrderCode.Focus();
         }
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            btnUploadPhotos_Click(null, null);
-        }
         private void btnUploadPhotos_Click(object sender, EventArgs e)
         {
             //string uploadPath = string.Empty;
@@ -104,7 +112,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 
             if (!CheckInputs()) return;
 
-            foreach (var checkbox in panelPreviewPictures.Controls.OfType<DevComponents.DotNetBar.Controls.CheckBoxX>())
+            foreach (var checkbox in panelPreviewPictures_1.Controls.OfType<CheckBoxX>())
             {
                 if (checkbox.Checked && checkbox.CheckState == CheckState.Checked)
                 {
@@ -146,7 +154,8 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 
                     //var checkCustomerOrderFolder = db.PhotoRepository.CheckCustomerOrderFolderIsCreatedReturnsPath(OrderCode);
                     //var checkCustomerOrderFolder = db.PhotoRepository.CheckCustomerOrderFolderIsCreatedReturnsPathStreamId(OrderCode);
-                    var orderFolderFullData = db.PhotoRepository.CheckCustomerOrderFolderIsCreatedReturnsFullData(OrderCode);
+                    var orderFolderFullData = db.PhotoRepository
+                                                .CheckCustomerOrderFolderIsCreatedReturnsFullData(OrderCode);
                     if (orderFolderFullData == null)
                     {
                         var orderFolderPath = db.PhotoRepository.CreateCustomerFinancialFolder(OrderCode, month);
@@ -165,8 +174,8 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                             string fileName = OrderCode + "--" + _fileNamesList[i];
 
                             var fileUploadResult2 =
-                                db.PhotoRepository.CreateFileTableFileReturnCreateFileViewModel(
-                                fileName, parentPathName, 4, filesToUpload[i]);
+                                db.PhotoRepository
+                                  .CreateFileTableFileReturnCreateFileViewModel(fileName, parentPathName, 4, filesToUpload[i]);
 
                             if (fileUploadResult2 != null)
                             {
@@ -187,7 +196,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                             else
                             {
                                 RtlMessageBox.Show(
-                                    "ارسال فایل " + fileNamesUpload[i] + " با خطا مواجه شد.",
+                                    $"ارسال فایل {fileNamesUpload[i]} با خطا مواجه شد.",
                                     "خطا در ارسال فایل", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                                 errorInUpload.Add(fileNamesUpload[i]);
@@ -212,7 +221,8 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 
                         if (totalFilesUploaded == filesToUpload.Count && order != null)
                         {
-                            orderFolderFullData = db.PhotoRepository.CheckCustomerOrderFolderIsCreatedReturnsFullData(OrderCode);
+                            orderFolderFullData = db.PhotoRepository
+                                                    .CheckCustomerOrderFolderIsCreatedReturnsFullData(OrderCode);
                             if (orderFolderFullData != null)
                             {
                                 order.OrderStatusId = orderStatusList.First(x => x.Code == 20).Id;
@@ -239,7 +249,8 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                             //    }
                             //}
 
-                            RtlMessageBox.Show("تمامی فایل ها با موفقیت ارسال گردید.", "", MessageBoxButtons.OK,
+                            RtlMessageBox.Show("تمامی فایل ها با موفقیت ارسال گردید.", "",
+                                MessageBoxButtons.OK,
                                 MessageBoxIcon.Information);
                         }
                         else
@@ -391,17 +402,6 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                                 db.Save();
                                 RtlMessageBox.Show(sb.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
-                            //}
-                            //else  becuase of void
-                            //{
-                            //    DialogResult dr = RtlMessageBox.Show(
-                            //        "سیستم قادر به پاک کردن داده های قبلی نمی باشد. " + Environment.NewLine +
-                            //        "دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.",
-                            //        "خطا در حذف داده های قبلی");
-                            //    if (dr == DialogResult.OK)
-                            //        goto retryUpload;
-                            //}
-
                         } // upload new fileas near old files
                         else if (dialogResultReplaceFiles != DialogResult.OK)
                         {
@@ -539,21 +539,6 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                             #endregion
                         }
                     }
-
-
-
-                    //var dr = RtlMessageBox.Show("آیا بازهم عکسی برای ارسال دارید؟", "",
-                    //    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                    //if (dr == DialogResult.Yes)
-                    //{
-
-                    //    txtOrderCode.Text = string.Empty;
-                    //    _fileNamesAndPathsList.Clear();
-                    //    _fileNamesList.Clear();
-                    //    panelPreviewPictures.Controls.Clear();
-                    //}
-                    //else
                     DialogResult = DialogResult.OK;
                 }
             }
@@ -567,33 +552,19 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
             }
         }
 
-        private bool CheckInputs()
-        {
-            if (string.IsNullOrEmpty(txtOrderCode.Text.Trim()))
-            {
-                RtlMessageBox.Show("مقداری برای شماره فاکتور مشتری وارد نشده است.", "", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                txtOrderCode.Focus();
-                return false;
-            }
+        #endregion
 
-            if (_fileNamesAndPathsList.Count == 0)
-            {
-                RtlMessageBox.Show("عکسی برای ارسال انتخاب نشده است.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            return true;
-        }
 
 
         private void control_MouseClick(object sender, MouseEventArgs e)
         {
             Control control = (Control)sender;
             PictureBox pic = (PictureBox)control;
-            pictureBoxPreview.Image = pic.Image;
-
+            pictureBoxPreview_1.Image = pic.Image;
+            
+            
             // File Location
-            pictureBoxPreview.Tag = pic.AccessibleDescription;
+            pictureBoxPreview_1.Tag = pic.AccessibleDescription;
 
             //File Name
             labelPicturePreviewName.Text = pic.Tag.ToString();
@@ -603,7 +574,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
         {
             Control control = (Control)sender;
 
-            foreach (var checkBox in panelPreviewPictures.Controls.OfType<DevComponents.DotNetBar.Controls.CheckBoxX>())
+            foreach (var checkBox in panelPreviewPictures_1.Controls.OfType<CheckBoxX>())
             {
                 if (control.Tag == checkBox.Tag)
                 {
@@ -615,11 +586,52 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
             checkBoxSelectAll.CheckState = CheckState.Unchecked;
         }
 
+        private void pictureBoxPreview_DoubleClick(object sender, EventArgs e)
+        {
+            FrmPhotoViewer pv = new FrmPhotoViewer
+            {
+                MyImageList = _fileNamesAndPathsList,
+                SelectedImageFilePath = pictureBoxPreview_1.Tag.ToString()
+            };
+
+            pv.ShowDialog();
+        }
+
+        private void checkBoxSelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxSelectAll.Checked && checkBoxSelectAll.CheckState == CheckState.Checked)
+            {
+                foreach (var checkBox in pictureBoxPreview_1.Controls.OfType<CheckBoxX>())
+                {
+                    checkBox.CheckState = CheckState.Checked;
+                }
+            }
+        }
+
+        #region Methods
+
+        private bool CheckInputs()
+        {
+            if (string.IsNullOrEmpty(toolStripMenuItemOrderCode.Text.Trim()))
+            {
+                RtlMessageBox.Show("مقداری برای شماره فاکتور مشتری وارد نشده است.", "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                toolStripMenuItemOrderCode.Focus();
+                return false;
+            }
+
+            if (_fileNamesAndPathsList.Count == 0)
+            {
+                RtlMessageBox.Show("عکسی برای ارسال انتخاب نشده است.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
 
         private int ShowImagePreview(int locnewX, OpenFileDialog openFileDialogBrowsePictures, int i)
         {
             int locnewY;
-            if (locnewX >= panelPreviewPictures.Width - _sizeWidth - 10)
+            if (locnewX >= panelPreviewPictures_1.Width - _sizeWidth - 10)
             {
                 locnewX = _locX;
                 _locY = _locY + _sizeHeight + 30;
@@ -649,12 +661,9 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                 SizeMode = PictureBoxSizeMode.Zoom,
                 BorderStyle = BorderStyle.FixedSingle,
                 Tag = imageName,
-                AccessibleDescription = imageFullName
+                AccessibleDescription = imageFullName,
+                Image = imageFullName.FileToByteArray().GetPhotoAndRotateIt()
             };
-
-            byte[] originalPhotoBytes = imageFullName.FileToByteArray();
-            pictureBoxControl.Image = originalPhotoBytes.GetPhotoAndRotateIt();
-
 
             Label pictureBoxLabel = new Label
             {
@@ -668,53 +677,37 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                 ClientSize = new Size(_sizeWidth, 30)
             };
 
-            var pictureBoxCheckBox = new DevComponents.DotNetBar.Controls.CheckBoxX
+            CheckBoxX pictureBoxCheckBox = new CheckBoxX
             {
                 BackColor = Color.Transparent,
                 Font = SystemFonts.DefaultFont,
-                Location = new Point(newLocX + 3, newLocY + 13),
+                Location = new Point(newLocX + 2, newLocY + 13),
                 CheckState = CheckState.Checked,
                 Checked = true,
                 Tag = imageName,
                 Text = "",
                 AutoSize = false,
                 Size = new Size(17, 17),
-                MaximumSize = new Size(13, 13),
+                MaximumSize = new Size(17, 17),
                 Parent = pictureBoxControl,
                 AccessibleDescription = imageFullName,
-                AccessibleName = imageName
+                AccessibleName = imageName,
+
             };
 
 
             pictureBoxControl.MouseClick += control_MouseClick;
             pictureBoxControl.DoubleClick += pictureBox_DoubleClick;
 
-            panelPreviewPictures.Controls.Add(pictureBoxLabel);
-            panelPreviewPictures.Controls.Add(pictureBoxCheckBox);
-            panelPreviewPictures.Controls.Add(pictureBoxControl);
-
+            panelPreviewPictures_1.Controls.Add(pictureBoxLabel);
+            panelPreviewPictures_1.Controls.Add(pictureBoxCheckBox);
+            panelPreviewPictures_1.Controls.Add(pictureBoxControl);
         }
 
-        private void pictureBoxPreview_DoubleClick(object sender, EventArgs e)
-        {
-            FrmPhotoViewer pv = new FrmPhotoViewer
-            {
-                MyImageList = _fileNamesAndPathsList,
-                SelectedImageFilePath = pictureBoxPreview.Tag.ToString()
-            };
+        #endregion
 
-            pv.ShowDialog();
-        }
 
-        private void checkBoxSelectAll_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxSelectAll.Checked && checkBoxSelectAll.CheckState == CheckState.Checked)
-            {
-                foreach (var checkBox in panelPreviewPictures.Controls.OfType<DevComponents.DotNetBar.Controls.CheckBoxX>())
-                {
-                    checkBox.CheckState = CheckState.Checked;
-                }
-            }
-        }
+
+
     }
 }
