@@ -35,6 +35,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnClearSearch = new DevComponents.DotNetBar.ButtonX();
+            this.btnShowBookings = new DevComponents.DotNetBar.ButtonX();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbOrderStatus = new System.Windows.Forms.ComboBox();
             this.chkSpecialBookings = new DevComponents.DotNetBar.Controls.CheckBoxX();
@@ -45,8 +47,6 @@
             this.lblToDate = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.txtCustomerInfo = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.btnShowBookings = new System.Windows.Forms.Button();
-            this.btnClearSearch = new System.Windows.Forms.Button();
             this.datePickerBookingDateTo = new FreeControls.PersianDateTimePicker();
             this.datePickerBookingDateFrom = new FreeControls.PersianDateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -78,8 +78,6 @@
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
-            this.btnShowOrders = new DevComponents.DotNetBar.ButtonX();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
@@ -90,8 +88,8 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.buttonX1);
-            this.groupBox2.Controls.Add(this.btnShowOrders);
+            this.groupBox2.Controls.Add(this.btnClearSearch);
+            this.groupBox2.Controls.Add(this.btnShowBookings);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.cmbOrderStatus);
             this.groupBox2.Controls.Add(this.chkSpecialBookings);
@@ -102,16 +100,45 @@
             this.groupBox2.Controls.Add(this.lblToDate);
             this.groupBox2.Controls.Add(this.labelX1);
             this.groupBox2.Controls.Add(this.txtCustomerInfo);
-            this.groupBox2.Controls.Add(this.btnShowBookings);
-            this.groupBox2.Controls.Add(this.btnClearSearch);
             this.groupBox2.Controls.Add(this.datePickerBookingDateTo);
             this.groupBox2.Controls.Add(this.datePickerBookingDateFrom);
             this.groupBox2.Location = new System.Drawing.Point(12, 27);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1118, 100);
-            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "مشاهده رزرو ها بر اساس";
+            // 
+            // btnClearSearch
+            // 
+            this.btnClearSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnClearSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnClearSearch.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClearSearch.Location = new System.Drawing.Point(6, 62);
+            this.btnClearSearch.Name = "btnClearSearch";
+            this.btnClearSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnClearSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnClearSearch.Symbol = "";
+            this.btnClearSearch.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnClearSearch.SymbolSize = 10F;
+            this.btnClearSearch.TabIndex = 10;
+            this.btnClearSearch.Text = "انصراف";
+            this.btnClearSearch.Click += new System.EventHandler(this.btnClearSearch_Click);
+            // 
+            // btnShowBookings
+            // 
+            this.btnShowBookings.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnShowBookings.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnShowBookings.Location = new System.Drawing.Point(87, 62);
+            this.btnShowBookings.Name = "btnShowBookings";
+            this.btnShowBookings.Size = new System.Drawing.Size(75, 23);
+            this.btnShowBookings.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnShowBookings.Symbol = "";
+            this.btnShowBookings.SymbolColor = System.Drawing.Color.RoyalBlue;
+            this.btnShowBookings.SymbolSize = 10F;
+            this.btnShowBookings.TabIndex = 9;
+            this.btnShowBookings.Text = "جستجو";
+            this.btnShowBookings.Click += new System.EventHandler(this.btnShowBookings_Click);
             // 
             // label1
             // 
@@ -231,7 +258,7 @@
             this.lblToDate.Location = new System.Drawing.Point(382, 36);
             this.lblToDate.Name = "lblToDate";
             this.lblToDate.Size = new System.Drawing.Size(33, 16);
-            this.lblToDate.TabIndex = 23;
+            this.lblToDate.TabIndex = 6;
             this.lblToDate.Text = "تا تاریخ";
             this.lblToDate.Visible = false;
             // 
@@ -265,30 +292,6 @@
             this.txtCustomerInfo.Size = new System.Drawing.Size(238, 21);
             this.txtCustomerInfo.TabIndex = 3;
             this.txtCustomerInfo.WatermarkText = "(نام ، نام خانوادگی ، تلفن ثابت، تلفن همراه)";
-            // 
-            // btnShowBookings
-            // 
-            this.btnShowBookings.FlatAppearance.BorderSize = 0;
-            this.btnShowBookings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnShowBookings.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_Search_text_131785;
-            this.btnShowBookings.Location = new System.Drawing.Point(47, 58);
-            this.btnShowBookings.Name = "btnShowBookings";
-            this.btnShowBookings.Size = new System.Drawing.Size(32, 32);
-            this.btnShowBookings.TabIndex = 9;
-            this.btnShowBookings.UseVisualStyleBackColor = true;
-            this.btnShowBookings.Click += new System.EventHandler(this.btnShowBookings_Click);
-            // 
-            // btnClearSearch
-            // 
-            this.btnClearSearch.FlatAppearance.BorderSize = 0;
-            this.btnClearSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClearSearch.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_Gnome_Edit_Clear_32_54970;
-            this.btnClearSearch.Location = new System.Drawing.Point(9, 58);
-            this.btnClearSearch.Name = "btnClearSearch";
-            this.btnClearSearch.Size = new System.Drawing.Size(32, 32);
-            this.btnClearSearch.TabIndex = 10;
-            this.btnClearSearch.UseVisualStyleBackColor = true;
-            this.btnClearSearch.Click += new System.EventHandler(this.btnClearSearch_Click);
             // 
             // datePickerBookingDateTo
             // 
@@ -329,7 +332,7 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 134);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1123, 434);
-            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "لیست رزرو ها";
             // 
@@ -629,40 +632,12 @@
             this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
             this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
             // 
-            // buttonX1
-            // 
-            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonX1.Location = new System.Drawing.Point(85, 62);
-            this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(75, 23);
-            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX1.Symbol = "";
-            this.buttonX1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.buttonX1.SymbolSize = 10F;
-            this.buttonX1.TabIndex = 86;
-            this.buttonX1.Text = "انصراف";
-            // 
-            // btnShowOrders
-            // 
-            this.btnShowOrders.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnShowOrders.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnShowOrders.Location = new System.Drawing.Point(166, 62);
-            this.btnShowOrders.Name = "btnShowOrders";
-            this.btnShowOrders.Size = new System.Drawing.Size(75, 23);
-            this.btnShowOrders.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnShowOrders.Symbol = "";
-            this.btnShowOrders.SymbolColor = System.Drawing.Color.RoyalBlue;
-            this.btnShowOrders.SymbolSize = 10F;
-            this.btnShowOrders.TabIndex = 85;
-            this.btnShowOrders.Text = "جستجو";
-            // 
             // FrmShowIncommingBookings
             // 
             this.AcceptButton = this.btnShowBookings;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnClearSearch;
             this.ClientSize = new System.Drawing.Size(1147, 580);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox1);
@@ -700,8 +675,6 @@
         private DevComponents.DotNetBar.LabelX lblToDate;
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.Controls.TextBoxX txtCustomerInfo;
-        private System.Windows.Forms.Button btnShowBookings;
-        private System.Windows.Forms.Button btnClearSearch;
         private FreeControls.PersianDateTimePicker datePickerBookingDateTo;
         private FreeControls.PersianDateTimePicker datePickerBookingDateFrom;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -735,7 +708,7 @@
         private System.Windows.Forms.ToolStripMenuItem درخواستمجوزحذفعکسToolStripMenuItem;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
         private System.Windows.Forms.ToolStripMenuItem ارسالپیامکبهمشتریToolStripMenuItem;
-        private DevComponents.DotNetBar.ButtonX buttonX1;
-        private DevComponents.DotNetBar.ButtonX btnShowOrders;
+        private DevComponents.DotNetBar.ButtonX btnClearSearch;
+        private DevComponents.DotNetBar.ButtonX btnShowBookings;
     }
 }
