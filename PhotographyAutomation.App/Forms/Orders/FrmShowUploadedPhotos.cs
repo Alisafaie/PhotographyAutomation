@@ -2,7 +2,6 @@
 using Ookii.Dialogs.WinForms;
 using PhotographyAutomation.App.Forms.Booking;
 using PhotographyAutomation.App.Forms.Customers;
-using PhotographyAutomation.App.Forms.EntranceToAtelier;
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.Utilities;
 using PhotographyAutomation.Utilities.Convertor;
@@ -418,7 +417,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         #region DataGridView Contextmenu
 
-        private void مشاهدهعکسهاToolStripMenuItem_Click(object sender, EventArgs e)
+        private void مشاهده_عکس_ها_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         RetryGetListOfPhotos:
@@ -476,7 +475,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             }
         }
 
-        private void دریافتعکسهاToolStripMenuItem_Click(object sender, EventArgs e)
+        private void دریافت_عکس_ها_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -539,10 +538,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             }
         }
 
-
-
-
-        private void مشاهدهاطلاعاتمشتریToolStripMenuItem_Click(object sender, EventArgs e)
+        private void مشاهده_اطلاعات_مشتری_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -580,7 +576,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             }
         }
 
-        private void مشاهدهاطلاعاترزروToolStripMenuItem_Click(object sender, EventArgs e)
+        private void مشاهده_اطلاعات_رزرو_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -621,6 +617,26 @@ namespace PhotographyAutomation.App.Forms.Orders
                 }
                 MessageBox.Show(exception.Message);
             }
+        }
+
+        private void ارسال_عکسهای_انتخاب_شده_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var frmUploadSelectedPhotos = new FrmUploadSelectedPhotos())
+            {
+                frmUploadSelectedPhotos.ShowDialog();
+            }
+        }
+
+        private void ویرایش_عکسهای_انتخاب_شده_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ثبت_پیش_فاکتور_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+
+
         }
 
         #endregion DataGridView Contextmenu
@@ -946,9 +962,8 @@ namespace PhotographyAutomation.App.Forms.Orders
                     if (fileStreamIdList != null)
                     {
                         var totalFiles = fileStreamIdList.Count;
-                        for (var index = 0; index < fileStreamIdList.Count; index++)
+                        foreach (var guid in fileStreamIdList)
                         {
-                            var guid = fileStreamIdList[index];
                             var file = db.PhotoRepository.DownloadOrderPhotos(guid);
                             if (file != null)
                             {
@@ -1196,29 +1211,6 @@ namespace PhotographyAutomation.App.Forms.Orders
             }
         }
 
-        #endregion
-
-        #region Top MenuStrip
-        private void مشاهدهعکسهاToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            مشاهدهعکسهاToolStripMenuItem_Click(null, null);
-        }
-
-        private void دریافتعکسهاToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            دریافتعکسهاToolStripMenuItem_Click(null, null);
-        }
-
-        private void مشاهدهاطلاعاتمشتریToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            مشاهدهاطلاعاتمشتریToolStripMenuItem_Click(null, null);
-        }
-
-        private void مشاهدهاطلاعاترزروToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            مشاهدهاطلاعاترزروToolStripMenuItem_Click(null, null);
-        }
-        #endregion Top MenuStrip
 
 
         private void PopulateComboBox()
@@ -1270,12 +1262,39 @@ namespace PhotographyAutomation.App.Forms.Orders
             btnClearSearch.Enabled = !backgroundWorker.IsBusy;
         }
 
-        private void ارسالعکسهایانتخابشدهToolStripMenuItem_Click(object sender, EventArgs e)
+        #endregion
+
+        #region Top MenuStrip
+
+        private void مشاهده_عکس_ها_ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            using (var frmUploadSelectedPhotos = new FrmUploadSelectedPhotos())
-            {
-                frmUploadSelectedPhotos.ShowDialog();
-            }
+            مشاهده_عکس_ها_ToolStripMenuItem_Click(null, null);
         }
+
+        private void دریافت_عکس_هاToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            دریافت_عکس_ها_ToolStripMenuItem_Click(null, null);
+        }
+
+        private void مشاهده_اطلاعات_مشتری_ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            مشاهده_اطلاعات_مشتری_ToolStripMenuItem_Click(null, null);
+        }
+
+        private void مشاهده_اطلاعات_رزرو_ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            مشاهده_اطلاعات_رزرو_ToolStripMenuItem_Click(null, null);
+
+        }
+
+        private void ثبت_پیش_فاکتور_ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ثبت_پیش_فاکتور_ToolStripMenuItem1_Click(null, null);
+        }
+
+
+        #endregion Top MenuStrip
+
+
     }
 }

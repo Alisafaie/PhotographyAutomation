@@ -35,9 +35,12 @@
             this.btnChoosePhotoPath = new DevComponents.DotNetBar.ButtonX();
             this.btnUploadPhotos = new DevComponents.DotNetBar.ButtonX();
             this.toolTipPictureBoxPreview = new System.Windows.Forms.ToolTip(this.components);
+            this.pictureBoxPreview = new System.Windows.Forms.PictureBox();
             this.collapsibleSplitContainer1 = new DevComponents.DotNetBar.Controls.CollapsibleSplitContainer();
             this.panelEx5 = new DevComponents.DotNetBar.PanelEx();
+            this.panelPreviewPictures = new DevComponents.DotNetBar.PanelEx();
             this.panelEx4 = new DevComponents.DotNetBar.PanelEx();
+            this.checkBoxSelectAll = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.labelPicturePreviewName = new DevComponents.DotNetBar.LabelX();
             this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,6 +50,7 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemOrderCode = new System.Windows.Forms.ToolStripTextBox();
             this.ناممشتریToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemCustomerName = new System.Windows.Forms.ToolStripMenuItem();
             this.تاریخعکسبرداریToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,11 +59,8 @@
             this.toolStripMenuItemTotalPhotos = new System.Windows.Forms.ToolStripMenuItem();
             this.وضعیتسفارشToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemOrderstatus = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemOrderCode = new System.Windows.Forms.ToolStripTextBox();
-            this.pictureBoxPreview_1 = new System.Windows.Forms.PictureBox();
-            this.panelPreviewPictures_1 = new DevComponents.DotNetBar.PanelEx();
-            this.checkBoxSelectAll = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.panelEx1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.collapsibleSplitContainer1)).BeginInit();
             this.collapsibleSplitContainer1.Panel1.SuspendLayout();
             this.collapsibleSplitContainer1.Panel2.SuspendLayout();
@@ -68,7 +69,6 @@
             this.panelEx4.SuspendLayout();
             this.panelEx3.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview_1)).BeginInit();
             this.SuspendLayout();
             // 
             // styleManager1
@@ -126,6 +126,19 @@
             this.btnUploadPhotos.Text = "ارسال عکس ها به سرور";
             this.btnUploadPhotos.Click += new System.EventHandler(this.btnUploadPhotos_Click);
             // 
+            // pictureBoxPreview
+            // 
+            this.pictureBoxPreview.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBoxPreview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxPreview.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxPreview.Name = "pictureBoxPreview";
+            this.pictureBoxPreview.Size = new System.Drawing.Size(273, 507);
+            this.pictureBoxPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxPreview.TabIndex = 21;
+            this.pictureBoxPreview.TabStop = false;
+            this.toolTipPictureBoxPreview.SetToolTip(this.pictureBoxPreview, "برای نمایش عکس در اندازه بزرگتر روی عکس دابل کلیک کنید.");
+            this.pictureBoxPreview.DoubleClick += new System.EventHandler(this.pictureBoxPreview_DoubleClick);
+            // 
             // collapsibleSplitContainer1
             // 
             this.collapsibleSplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -134,7 +147,7 @@
             // 
             // collapsibleSplitContainer1.Panel1
             // 
-            this.collapsibleSplitContainer1.Panel1.Controls.Add(this.pictureBoxPreview_1);
+            this.collapsibleSplitContainer1.Panel1.Controls.Add(this.pictureBoxPreview);
             this.collapsibleSplitContainer1.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             // 
             // collapsibleSplitContainer1.Panel2
@@ -151,7 +164,7 @@
             // 
             this.panelEx5.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx5.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx5.Controls.Add(this.panelPreviewPictures_1);
+            this.panelEx5.Controls.Add(this.panelPreviewPictures);
             this.panelEx5.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx5.Location = new System.Drawing.Point(0, 0);
@@ -166,6 +179,25 @@
             this.panelEx5.Style.GradientAngle = 90;
             this.panelEx5.TabIndex = 4;
             this.panelEx5.Text = "panelEx5";
+            // 
+            // panelPreviewPictures
+            // 
+            this.panelPreviewPictures.AutoScroll = true;
+            this.panelPreviewPictures.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelPreviewPictures.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelPreviewPictures.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelPreviewPictures.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelPreviewPictures.Location = new System.Drawing.Point(0, 0);
+            this.panelPreviewPictures.Name = "panelPreviewPictures";
+            this.panelPreviewPictures.Size = new System.Drawing.Size(781, 474);
+            this.panelPreviewPictures.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelPreviewPictures.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelPreviewPictures.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.panelPreviewPictures.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelPreviewPictures.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelPreviewPictures.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelPreviewPictures.Style.GradientAngle = 90;
+            this.panelPreviewPictures.TabIndex = 29;
             // 
             // panelEx4
             // 
@@ -186,6 +218,21 @@
             this.panelEx4.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx4.Style.GradientAngle = 90;
             this.panelEx4.TabIndex = 0;
+            // 
+            // checkBoxSelectAll
+            // 
+            this.checkBoxSelectAll.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxSelectAll.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxSelectAll.Location = new System.Drawing.Point(658, 9);
+            this.checkBoxSelectAll.Name = "checkBoxSelectAll";
+            this.checkBoxSelectAll.Size = new System.Drawing.Size(120, 16);
+            this.checkBoxSelectAll.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxSelectAll.TabIndex = 3;
+            this.checkBoxSelectAll.Text = "انتخاب همه عکس ها";
+            this.checkBoxSelectAll.CheckedChanged += new System.EventHandler(this.checkBoxSelectAll_CheckedChanged);
             // 
             // labelPicturePreviewName
             // 
@@ -292,6 +339,13 @@
             this.toolStripMenuItem2.Size = new System.Drawing.Size(98, 21);
             this.toolStripMenuItem2.Text = "شناسه سفارش:";
             // 
+            // toolStripMenuItemOrderCode
+            // 
+            this.toolStripMenuItemOrderCode.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.toolStripMenuItemOrderCode.Name = "toolStripMenuItemOrderCode";
+            this.toolStripMenuItemOrderCode.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.toolStripMenuItemOrderCode.Size = new System.Drawing.Size(100, 21);
+            // 
             // ناممشتریToolStripMenuItem
             // 
             this.ناممشتریToolStripMenuItem.Name = "ناممشتریToolStripMenuItem";
@@ -348,60 +402,6 @@
             this.toolStripMenuItemOrderstatus.Text = "--";
             this.toolStripMenuItemOrderstatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // toolStripMenuItemOrderCode
-            // 
-            this.toolStripMenuItemOrderCode.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.toolStripMenuItemOrderCode.Name = "toolStripMenuItemOrderCode";
-            this.toolStripMenuItemOrderCode.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStripMenuItemOrderCode.Size = new System.Drawing.Size(100, 21);
-            // 
-            // pictureBoxPreview_1
-            // 
-            this.pictureBoxPreview_1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBoxPreview_1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxPreview_1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxPreview_1.Name = "pictureBoxPreview_1";
-            this.pictureBoxPreview_1.Size = new System.Drawing.Size(273, 507);
-            this.pictureBoxPreview_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxPreview_1.TabIndex = 21;
-            this.pictureBoxPreview_1.TabStop = false;
-            this.toolTipPictureBoxPreview.SetToolTip(this.pictureBoxPreview_1, "برای نمایش عکس در اندازه بزرگتر روی عکس دابل کلیک کنید.");
-            this.pictureBoxPreview_1.DoubleClick += new System.EventHandler(this.pictureBoxPreview_DoubleClick);
-            // 
-            // panelPreviewPictures_1
-            // 
-            this.panelPreviewPictures_1.AutoScroll = true;
-            this.panelPreviewPictures_1.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelPreviewPictures_1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelPreviewPictures_1.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelPreviewPictures_1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelPreviewPictures_1.Location = new System.Drawing.Point(0, 0);
-            this.panelPreviewPictures_1.Name = "panelPreviewPictures_1";
-            this.panelPreviewPictures_1.Size = new System.Drawing.Size(781, 474);
-            this.panelPreviewPictures_1.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelPreviewPictures_1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelPreviewPictures_1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.panelPreviewPictures_1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelPreviewPictures_1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelPreviewPictures_1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelPreviewPictures_1.Style.GradientAngle = 90;
-            this.panelPreviewPictures_1.TabIndex = 29;
-            // 
-            // checkBoxSelectAll
-            // 
-            this.checkBoxSelectAll.AutoSize = true;
-            // 
-            // 
-            // 
-            this.checkBoxSelectAll.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxSelectAll.Location = new System.Drawing.Point(658, 9);
-            this.checkBoxSelectAll.Name = "checkBoxSelectAll";
-            this.checkBoxSelectAll.Size = new System.Drawing.Size(120, 16);
-            this.checkBoxSelectAll.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxSelectAll.TabIndex = 3;
-            this.checkBoxSelectAll.Text = "انتخاب همه عکس ها";
-            this.checkBoxSelectAll.CheckedChanged += new System.EventHandler(this.checkBoxSelectAll_CheckedChanged);
-            // 
             // FrmUploadSelectedPhotos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -421,6 +421,7 @@
             this.Text = "ارسال عکس های انتخاب شده مشتری به سرور";
             this.Load += new System.EventHandler(this.FrmUploadPhotos_Load);
             this.panelEx1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).EndInit();
             this.collapsibleSplitContainer1.Panel1.ResumeLayout(false);
             this.collapsibleSplitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.collapsibleSplitContainer1)).EndInit();
@@ -431,7 +432,6 @@
             this.panelEx3.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview_1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -465,8 +465,8 @@
         private System.Windows.Forms.ToolStripMenuItem وضعیتسفارشToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemOrderstatus;
         private System.Windows.Forms.ToolStripTextBox toolStripMenuItemOrderCode;
-        private System.Windows.Forms.PictureBox pictureBoxPreview_1;
-        private DevComponents.DotNetBar.PanelEx panelPreviewPictures_1;
+        private System.Windows.Forms.PictureBox pictureBoxPreview;
+        private DevComponents.DotNetBar.PanelEx panelPreviewPictures;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxSelectAll;
     }
 }

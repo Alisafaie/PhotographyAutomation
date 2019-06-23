@@ -32,6 +32,14 @@ namespace PhotographyAutomation.App.Forms.Orders
         public int CustomerId = 0;
         public int OrderId = 0;
 
+        
+        public string CustomerName;
+        public string PhotographyDate;
+        public int TotalPhotos;
+        public string OrderStatus;
+
+       
+
         #endregion Variables
 
         public FrmUploadSelectedPhotos()
@@ -45,7 +53,12 @@ namespace PhotographyAutomation.App.Forms.Orders
             _locY = 10;
             _sizeWidth = 128;
             _sizeHeight = 128;
+
             toolStripMenuItemOrderCode.Text = OrderCode;
+            toolStripMenuItemOrderCode.Text = OrderCode;
+            toolStripMenuItemCustomerName.Text = CustomerName;
+            toolStripMenuItemOrderstatus.Text = OrderStatus;
+            toolStripMenuItemPhotographyDate.Text = PhotographyDate;
         }
 
 
@@ -83,7 +96,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
             if (openFileDialogBrowsePictures.ShowDialog() != DialogResult.OK) return;
 
-            panelPreviewPictures_1.Controls.Clear();
+            panelPreviewPictures.Controls.Clear();
             var locnewX = _locX;
             // ReSharper disable once UnusedVariable
             var locnewY = _locY;
@@ -112,7 +125,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
             if (!CheckInputs()) return;
 
-            foreach (var checkbox in panelPreviewPictures_1.Controls.OfType<CheckBoxX>())
+            foreach (var checkbox in panelPreviewPictures.Controls.OfType<CheckBoxX>())
             {
                 if (checkbox.Checked && checkbox.CheckState == CheckState.Checked)
                 {
@@ -120,6 +133,8 @@ namespace PhotographyAutomation.App.Forms.Orders
                     fileNamesUpload.Add(checkbox.AccessibleName);
                 }
             }
+
+
             try
             {
                 using (var db = new UnitOfWork())
@@ -560,11 +575,11 @@ namespace PhotographyAutomation.App.Forms.Orders
         {
             Control control = (Control)sender;
             PictureBox pic = (PictureBox)control;
-            pictureBoxPreview_1.Image = pic.Image;
+            pictureBoxPreview.Image = pic.Image;
             
             
             // File Location
-            pictureBoxPreview_1.Tag = pic.AccessibleDescription;
+            pictureBoxPreview.Tag = pic.AccessibleDescription;
 
             //File Name
             labelPicturePreviewName.Text = pic.Tag.ToString();
@@ -574,7 +589,7 @@ namespace PhotographyAutomation.App.Forms.Orders
         {
             Control control = (Control)sender;
 
-            foreach (var checkBox in panelPreviewPictures_1.Controls.OfType<CheckBoxX>())
+            foreach (var checkBox in panelPreviewPictures.Controls.OfType<CheckBoxX>())
             {
                 if (control.Tag == checkBox.Tag)
                 {
@@ -591,7 +606,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             FrmPhotoViewer pv = new FrmPhotoViewer
             {
                 MyImageList = _fileNamesAndPathsList,
-                SelectedImageFilePath = pictureBoxPreview_1.Tag.ToString()
+                SelectedImageFilePath = pictureBoxPreview.Tag.ToString()
             };
 
             pv.ShowDialog();
@@ -601,7 +616,7 @@ namespace PhotographyAutomation.App.Forms.Orders
         {
             if (checkBoxSelectAll.Checked && checkBoxSelectAll.CheckState == CheckState.Checked)
             {
-                foreach (var checkBox in pictureBoxPreview_1.Controls.OfType<CheckBoxX>())
+                foreach (var checkBox in pictureBoxPreview.Controls.OfType<CheckBoxX>())
                 {
                     checkBox.CheckState = CheckState.Checked;
                 }
@@ -631,7 +646,7 @@ namespace PhotographyAutomation.App.Forms.Orders
         private int ShowImagePreview(int locnewX, OpenFileDialog openFileDialogBrowsePictures, int i)
         {
             int locnewY;
-            if (locnewX >= panelPreviewPictures_1.Width - _sizeWidth - 10)
+            if (locnewX >= panelPreviewPictures.Width - _sizeWidth - 10)
             {
                 locnewX = _locX;
                 _locY = _locY + _sizeHeight + 30;
@@ -699,9 +714,9 @@ namespace PhotographyAutomation.App.Forms.Orders
             pictureBoxControl.MouseClick += control_MouseClick;
             pictureBoxControl.DoubleClick += pictureBox_DoubleClick;
 
-            panelPreviewPictures_1.Controls.Add(pictureBoxLabel);
-            panelPreviewPictures_1.Controls.Add(pictureBoxCheckBox);
-            panelPreviewPictures_1.Controls.Add(pictureBoxControl);
+            panelPreviewPictures.Controls.Add(pictureBoxLabel);
+            panelPreviewPictures.Controls.Add(pictureBoxCheckBox);
+            panelPreviewPictures.Controls.Add(pictureBoxControl);
         }
 
         #endregion

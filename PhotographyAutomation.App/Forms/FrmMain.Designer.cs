@@ -72,6 +72,8 @@
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.persianMonthCalendar = new FreeControls.PersianMonthCalendar();
             this.buttonItem16 = new DevComponents.DotNetBar.ButtonItem();
+            this.ribbonTabItem5 = new DevComponents.DotNetBar.RibbonTabItem();
+            this.ribbonPanel5 = new DevComponents.DotNetBar.RibbonPanel();
             this.toolStripTopMenu.SuspendLayout();
             this.ribbonControl1.SuspendLayout();
             this.ribbonPanel4.SuspendLayout();
@@ -132,6 +134,7 @@
             // 
             // 
             this.ribbonControl1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonControl1.Controls.Add(this.ribbonPanel5);
             this.ribbonControl1.Controls.Add(this.ribbonPanel4);
             this.ribbonControl1.Controls.Add(this.ribbonPanel1);
             this.ribbonControl1.Controls.Add(this.ribbonPanel3);
@@ -142,7 +145,8 @@
             this.ribbonTabItem1,
             this.ribbonTabItem3,
             this.ribbonTabItem4,
-            this.ribbonTabItem2});
+            this.ribbonTabItem2,
+            this.ribbonTabItem5});
             this.ribbonControl1.KeyTipsFont = new System.Drawing.Font("Tahoma", 7F);
             this.ribbonControl1.Location = new System.Drawing.Point(0, 25);
             this.ribbonControl1.Name = "ribbonControl1";
@@ -194,6 +198,7 @@
             // 
             this.ribbonPanel4.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.ribbonPanel4.TabIndex = 4;
+            this.ribbonPanel4.Visible = false;
             // 
             // ribbonBar4
             // 
@@ -675,7 +680,6 @@
             // 
             // ribbonTabItem4
             // 
-            this.ribbonTabItem4.Checked = true;
             this.ribbonTabItem4.Name = "ribbonTabItem4";
             this.ribbonTabItem4.Panel = this.ribbonPanel4;
             this.ribbonTabItem4.Text = "سفارشات";
@@ -747,6 +751,35 @@
             this.buttonItem16.PopupWidth = 100;
             this.buttonItem16.SubItemsExpandWidth = 14;
             this.buttonItem16.Text = "ثبت نوبت دستی";
+            // 
+            // ribbonTabItem5
+            // 
+            this.ribbonTabItem5.Checked = true;
+            this.ribbonTabItem5.Name = "ribbonTabItem5";
+            this.ribbonTabItem5.Panel = this.ribbonPanel5;
+            this.ribbonTabItem5.Text = "نمونه کار";
+            // 
+            // ribbonPanel5
+            // 
+            this.ribbonPanel5.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ribbonPanel5.Location = new System.Drawing.Point(0, 25);
+            this.ribbonPanel5.Name = "ribbonPanel5";
+            this.ribbonPanel5.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.ribbonPanel5.Size = new System.Drawing.Size(1085, 103);
+            // 
+            // 
+            // 
+            this.ribbonPanel5.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonPanel5.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonPanel5.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonPanel5.TabIndex = 5;
             // 
             // FrmMain
             // 
@@ -823,5 +856,7 @@
         private System.Windows.Forms.ToolStripDropDownButton btnConfigurations;
         private System.Windows.Forms.ToolStripMenuItem btnSystemConfiguration;
         private System.Windows.Forms.ToolStripMenuItem btnShowFrmAddEditPrintServices;
+        private DevComponents.DotNetBar.RibbonPanel ribbonPanel5;
+        private DevComponents.DotNetBar.RibbonTabItem ribbonTabItem5;
     }
 }
