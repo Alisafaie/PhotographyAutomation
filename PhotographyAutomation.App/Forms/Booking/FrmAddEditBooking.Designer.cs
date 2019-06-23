@@ -93,6 +93,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnClearSearch = new DevComponents.DotNetBar.ButtonX();
+            this.btnShowOrders = new DevComponents.DotNetBar.ButtonX();
             this.panelEx1.SuspendLayout();
             this.panelEx2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -107,6 +109,8 @@
             // 
             this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx1.Controls.Add(this.btnClearSearch);
+            this.panelEx1.Controls.Add(this.btnShowOrders);
             this.panelEx1.Controls.Add(this.btnOk);
             this.panelEx1.Controls.Add(this.btnCancelCurrentBooking);
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
@@ -233,7 +237,7 @@
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvBookingHistory.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvBookingHistory.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -831,6 +835,35 @@
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.RightToLeft = true;
             // 
+            // btnClearSearch
+            // 
+            this.btnClearSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnClearSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnClearSearch.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClearSearch.Location = new System.Drawing.Point(591, 25);
+            this.btnClearSearch.Name = "btnClearSearch";
+            this.btnClearSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnClearSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnClearSearch.Symbol = "";
+            this.btnClearSearch.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnClearSearch.SymbolSize = 10F;
+            this.btnClearSearch.TabIndex = 14;
+            this.btnClearSearch.Text = "انصراف";
+            // 
+            // btnShowOrders
+            // 
+            this.btnShowOrders.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnShowOrders.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnShowOrders.Location = new System.Drawing.Point(672, 25);
+            this.btnShowOrders.Name = "btnShowOrders";
+            this.btnShowOrders.Size = new System.Drawing.Size(75, 23);
+            this.btnShowOrders.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnShowOrders.Symbol = "";
+            this.btnShowOrders.SymbolColor = System.Drawing.Color.RoyalBlue;
+            this.btnShowOrders.SymbolSize = 10F;
+            this.btnShowOrders.TabIndex = 13;
+            this.btnShowOrders.Text = "ثبت رزرو";
+            // 
             // FrmAddEditBooking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -922,5 +955,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmBookingStatusCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmCreatedDateTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmModifiedDateTime;
+        private DevComponents.DotNetBar.ButtonX btnClearSearch;
+        private DevComponents.DotNetBar.ButtonX btnShowOrders;
     }
 }

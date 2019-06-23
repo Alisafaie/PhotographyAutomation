@@ -78,6 +78,8 @@
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
+            this.btnShowOrders = new DevComponents.DotNetBar.ButtonX();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
@@ -88,6 +90,8 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.buttonX1);
+            this.groupBox2.Controls.Add(this.btnShowOrders);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.cmbOrderStatus);
             this.groupBox2.Controls.Add(this.chkSpecialBookings);
@@ -625,6 +629,35 @@
             this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
             this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
             // 
+            // buttonX1
+            // 
+            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonX1.Location = new System.Drawing.Point(85, 62);
+            this.buttonX1.Name = "buttonX1";
+            this.buttonX1.Size = new System.Drawing.Size(75, 23);
+            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX1.Symbol = "";
+            this.buttonX1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonX1.SymbolSize = 10F;
+            this.buttonX1.TabIndex = 86;
+            this.buttonX1.Text = "انصراف";
+            // 
+            // btnShowOrders
+            // 
+            this.btnShowOrders.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnShowOrders.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnShowOrders.Location = new System.Drawing.Point(166, 62);
+            this.btnShowOrders.Name = "btnShowOrders";
+            this.btnShowOrders.Size = new System.Drawing.Size(75, 23);
+            this.btnShowOrders.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnShowOrders.Symbol = "";
+            this.btnShowOrders.SymbolColor = System.Drawing.Color.RoyalBlue;
+            this.btnShowOrders.SymbolSize = 10F;
+            this.btnShowOrders.TabIndex = 85;
+            this.btnShowOrders.Text = "جستجو";
+            // 
             // FrmShowIncommingBookings
             // 
             this.AcceptButton = this.btnShowBookings;
@@ -702,5 +735,7 @@
         private System.Windows.Forms.ToolStripMenuItem درخواستمجوزحذفعکسToolStripMenuItem;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
         private System.Windows.Forms.ToolStripMenuItem ارسالپیامکبهمشتریToolStripMenuItem;
+        private DevComponents.DotNetBar.ButtonX buttonX1;
+        private DevComponents.DotNetBar.ButtonX btnShowOrders;
     }
 }

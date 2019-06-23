@@ -55,6 +55,9 @@
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(133, 36);
             this.btnOk.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnOk.Symbol = "";
+            this.btnOk.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnOk.SymbolSize = 15F;
             this.btnOk.TabIndex = 26;
             this.btnOk.Text = "انتخاب";
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
@@ -68,6 +71,9 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(110, 36);
             this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnCancel.Symbol = "";
+            this.btnCancel.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnCancel.SymbolSize = 15F;
             this.btnCancel.TabIndex = 26;
             this.btnCancel.Text = "انصراف";
             // 

@@ -94,6 +94,8 @@
             this.ورودبهآتلیهToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.لغورزروToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
+            this.btnShowOrders = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panelEx2.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -137,6 +139,8 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.buttonX1);
+            this.groupBox2.Controls.Add(this.btnShowOrders);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.cmbBookinsStatus1);
             this.groupBox2.Controls.Add(this.chkSpecialBookings);
@@ -425,7 +429,7 @@
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvBookings.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvBookings.EnableHeadersVisualStyles = false;
@@ -778,6 +782,35 @@
             this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
             this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
             // 
+            // buttonX1
+            // 
+            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonX1.Location = new System.Drawing.Point(94, 62);
+            this.buttonX1.Name = "buttonX1";
+            this.buttonX1.Size = new System.Drawing.Size(75, 23);
+            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX1.Symbol = "";
+            this.buttonX1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonX1.SymbolSize = 10F;
+            this.buttonX1.TabIndex = 85;
+            this.buttonX1.Text = "انصراف";
+            // 
+            // btnShowOrders
+            // 
+            this.btnShowOrders.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnShowOrders.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnShowOrders.Location = new System.Drawing.Point(175, 62);
+            this.btnShowOrders.Name = "btnShowOrders";
+            this.btnShowOrders.Size = new System.Drawing.Size(75, 23);
+            this.btnShowOrders.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnShowOrders.Symbol = "";
+            this.btnShowOrders.SymbolColor = System.Drawing.Color.RoyalBlue;
+            this.btnShowOrders.SymbolSize = 10F;
+            this.btnShowOrders.TabIndex = 84;
+            this.btnShowOrders.Text = "جستجو";
+            // 
             // FrmShowBookings
             // 
             this.AcceptButton = this.btnShowBookings;
@@ -875,5 +908,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmCreatedDateTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmModifiedDateTime;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
+        private DevComponents.DotNetBar.ButtonX buttonX1;
+        private DevComponents.DotNetBar.ButtonX btnShowOrders;
     }
 }

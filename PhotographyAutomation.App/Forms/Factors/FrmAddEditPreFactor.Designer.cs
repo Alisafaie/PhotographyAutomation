@@ -58,6 +58,10 @@
             this.btnSavePreFactor = new DevComponents.DotNetBar.ButtonX();
             this.btnCancel = new DevComponents.DotNetBar.ButtonX();
             this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.checkBoxLoadPrintSizeServices = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.checkBoxLoadSecondPrintSize4 = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.checkBoxLoadSecondPrintSize3 = new DevComponents.DotNetBar.Controls.CheckBoxX();
@@ -147,12 +151,6 @@
             this.bgWorkerLoadPrintSizeServices = new System.ComponentModel.BackgroundWorker();
             this.bgWorkerGetOriginalPrintPrice = new System.ComponentModel.BackgroundWorker();
             this.bgWorkerGetPrintServicePrice = new System.ComponentModel.BackgroundWorker();
-            this.ارسالعکسهایانتخابشدهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ویرایشعکسهایانتخابشدهToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panelEx1.SuspendLayout();
             this.groupBoxPreviewPictures.SuspendLayout();
@@ -179,9 +177,6 @@
             // 
             // منوToolStripMenuItem
             // 
-            this.منوToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ارسالعکسهایانتخابشدهToolStripMenuItem,
-            this.ویرایشعکسهایانتخابشدهToolStripMenuItem});
             this.منوToolStripMenuItem.Name = "منوToolStripMenuItem";
             this.منوToolStripMenuItem.Size = new System.Drawing.Size(34, 20);
             this.منوToolStripMenuItem.Text = "منو";
@@ -355,6 +350,9 @@
             this.btnNextPhoto.Name = "btnNextPhoto";
             this.btnNextPhoto.Size = new System.Drawing.Size(75, 23);
             this.btnNextPhoto.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnNextPhoto.Symbol = "";
+            this.btnNextPhoto.SymbolColor = System.Drawing.Color.RoyalBlue;
+            this.btnNextPhoto.SymbolSize = 10F;
             this.btnNextPhoto.TabIndex = 1;
             this.btnNextPhoto.Text = "عکس بعدی";
             // 
@@ -367,6 +365,9 @@
             this.btnPreviousPhoto.Name = "btnPreviousPhoto";
             this.btnPreviousPhoto.Size = new System.Drawing.Size(75, 23);
             this.btnPreviousPhoto.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnPreviousPhoto.Symbol = "";
+            this.btnPreviousPhoto.SymbolColor = System.Drawing.Color.RoyalBlue;
+            this.btnPreviousPhoto.SymbolSize = 10F;
             this.btnPreviousPhoto.TabIndex = 0;
             this.btnPreviousPhoto.Text = "عکس قبلی";
             // 
@@ -550,10 +551,13 @@
             this.btnSavePreFactor.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnSavePreFactor.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.highlighter1.SetHighlightOnFocus(this.btnSavePreFactor, true);
-            this.btnSavePreFactor.Location = new System.Drawing.Point(92, 118);
+            this.btnSavePreFactor.Location = new System.Drawing.Point(11, 119);
             this.btnSavePreFactor.Name = "btnSavePreFactor";
-            this.btnSavePreFactor.Size = new System.Drawing.Size(92, 23);
+            this.btnSavePreFactor.Size = new System.Drawing.Size(108, 23);
             this.btnSavePreFactor.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSavePreFactor.Symbol = "";
+            this.btnSavePreFactor.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnSavePreFactor.SymbolSize = 12F;
             this.btnSavePreFactor.TabIndex = 3;
             this.btnSavePreFactor.Text = "ثبت پیش فاکتور";
             // 
@@ -563,10 +567,13 @@
             this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.highlighter1.SetHighlightOnFocus(this.btnCancel, true);
-            this.btnCancel.Location = new System.Drawing.Point(11, 118);
+            this.btnCancel.Location = new System.Drawing.Point(125, 119);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnCancel.Symbol = "";
+            this.btnCancel.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnCancel.SymbolSize = 13F;
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "انصراف";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -662,6 +669,49 @@
             this.panelEx3.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx3.Style.GradientAngle = 90;
             this.panelEx3.TabIndex = 0;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label5.Location = new System.Drawing.Point(1086, 326);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(14, 13);
+            this.label5.TabIndex = 110;
+            this.label5.Text = "از";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Underline);
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label4.Location = new System.Drawing.Point(1060, 326);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(25, 13);
+            this.label4.TabIndex = 109;
+            this.label4.Text = "999";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Underline);
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label3.Location = new System.Drawing.Point(1101, 326);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(25, 13);
+            this.label3.TabIndex = 108;
+            this.label3.Text = "999";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label2.Location = new System.Drawing.Point(1125, 326);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(34, 13);
+            this.label2.TabIndex = 107;
+            this.label2.Text = "عکس";
             // 
             // checkBoxLoadPrintSizeServices
             // 
@@ -1314,10 +1364,13 @@
             this.btnCancelPhoto.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnCancelPhoto.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.highlighter1.SetHighlightOnFocus(this.btnCancelPhoto, true);
-            this.btnCancelPhoto.Location = new System.Drawing.Point(11, 300);
+            this.btnCancelPhoto.Location = new System.Drawing.Point(125, 300);
             this.btnCancelPhoto.Name = "btnCancelPhoto";
             this.btnCancelPhoto.Size = new System.Drawing.Size(75, 23);
             this.btnCancelPhoto.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnCancelPhoto.Symbol = "";
+            this.btnCancelPhoto.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnCancelPhoto.SymbolSize = 10F;
             this.btnCancelPhoto.TabIndex = 22;
             this.btnCancelPhoto.Text = "حذف";
             // 
@@ -1365,10 +1418,13 @@
             this.btnOkPhoto.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnOkPhoto.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.highlighter1.SetHighlightOnFocus(this.btnOkPhoto, true);
-            this.btnOkPhoto.Location = new System.Drawing.Point(92, 300);
+            this.btnOkPhoto.Location = new System.Drawing.Point(11, 300);
             this.btnOkPhoto.Name = "btnOkPhoto";
-            this.btnOkPhoto.Size = new System.Drawing.Size(92, 23);
+            this.btnOkPhoto.Size = new System.Drawing.Size(108, 23);
             this.btnOkPhoto.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnOkPhoto.Symbol = "";
+            this.btnOkPhoto.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnOkPhoto.SymbolSize = 10F;
             this.btnOkPhoto.TabIndex = 21;
             this.btnOkPhoto.Text = "تائید";
             // 
@@ -1920,61 +1976,6 @@
             this.bgWorkerGetPrintServicePrice.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerGetPrintServicePrice_DoWork);
             this.bgWorkerGetPrintServicePrice.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerGetPrintServicePrice_RunWorkerCompleted);
             // 
-            // ارسالعکسهایانتخابشدهToolStripMenuItem
-            // 
-            this.ارسالعکسهایانتخابشدهToolStripMenuItem.Name = "ارسالعکسهایانتخابشدهToolStripMenuItem";
-            this.ارسالعکسهایانتخابشدهToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
-            this.ارسالعکسهایانتخابشدهToolStripMenuItem.Text = "ارسال عکس های انتخاب شده";
-            // 
-            // ویرایشعکسهایانتخابشدهToolStripMenuItem
-            // 
-            this.ویرایشعکسهایانتخابشدهToolStripMenuItem.Name = "ویرایشعکسهایانتخابشدهToolStripMenuItem";
-            this.ویرایشعکسهایانتخابشدهToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
-            this.ویرایشعکسهایانتخابشدهToolStripMenuItem.Text = "ویرایش عکس های انتخاب شده";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label2.Location = new System.Drawing.Point(1125, 326);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 13);
-            this.label2.TabIndex = 107;
-            this.label2.Text = "عکس";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Underline);
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label3.Location = new System.Drawing.Point(1101, 326);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(25, 13);
-            this.label3.TabIndex = 108;
-            this.label3.Text = "999";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Underline);
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label4.Location = new System.Drawing.Point(1060, 326);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(25, 13);
-            this.label4.TabIndex = 109;
-            this.label4.Text = "999";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label5.Location = new System.Drawing.Point(1086, 326);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(14, 13);
-            this.label5.TabIndex = 110;
-            this.label5.Text = "از";
-            // 
             // FrmAddEditPreFactor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2134,8 +2135,6 @@
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxLoadSecondPrintSize1;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxLoadPrintSizeServices;
         private DevComponents.DotNetBar.Controls.CircularProgress circularProgress1;
-        private System.Windows.Forms.ToolStripMenuItem ارسالعکسهایانتخابشدهToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ویرایشعکسهایانتخابشدهToolStripMenuItem;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
