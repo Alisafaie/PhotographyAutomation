@@ -1301,64 +1301,65 @@ namespace PhotographyAutomation.App.Forms.Orders
         {
             //بررسی وضعیت سفارش
             //    جهت ثبت پیش فاکتور
+            if (dgvUploads.CurrentRow == null || dgvUploads.SelectedRows[0] == null) return;
 
-            var customerId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmCustomerId"].Value);
-            if (CheckCustomerActivity(customerId) == false) return;
+            //var customerId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmCustomerId"].Value);
+            //if (CheckCustomerActivity(customerId) == false) return;
 
             var orderCode = dgvUploads.SelectedRows[0].Cells["clmOrderCode"].Value.ToString();
             var orderId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmId"].Value);
 
-            if (CheckIfOrderFilesUploaded(orderId) == false) //آیا عکس های اصلی آپلود شده است؟
+            if (CheckIfOrderFilesUploaded(orderId) == false) /*آیا عکس های اصلی آپلود شده است؟*/
             {
-                ShowUploadPhotosForm();
+                //ShowUploadPhotosForm();
             }
 
-            if (CheckPreFactorIssuedForThisCustomer() == false) //آیا فاکتور برای همین مشتری صادر شود؟
-            {
-                ShowCustomerSearchForm();
-                string downloadPath = null;
-                _customerId = GetNewCustomerId();
-                downloadPath = DownloadAllOrderPhotos();
-                ShowDownloadedFolder(downloadPath);
-                ShowUploadPhotosForm(); //ارسال عکس های انتخابی مشتری به سرور
-                _customerOrderFilesSelected = true;
-            }
+            //if (CheckPreFactorIssuedForThisCustomer() == false) /*آیا فاکتور برای همین مشتری صادر شود؟*/
+            //{
+            //    ShowCustomerSearchForm();
+            //    string downloadPath = null;
+            //    _customerId = GetNewCustomerId();
+            //    downloadPath = DownloadAllOrderPhotos();
+            //    ShowDownloadedFolder(downloadPath);
+            //    ShowUploadPhotosForm(); /*ارسال عکس های انتخابی مشتری به سرور*/
+            //    _customerOrderFilesSelected = true;
+            //}
 
-            if (CheckOrderPhotosIsSelected(_customerId, orderId) == true ||
-                _customerOrderFilesSelected == true) //آیا مشتری انتخاب عکس انجام داده است؟
-            {
-                if (CheckIfCustomerHasChangesInPhotosSelected()) //آیا مشتری در سفارش خود می خواهد تغییراتی انجام دهد؟
-                {
-                    if (CheckIfCustomerWantsToAddSomePhotosToSelectedPhotos())
-                    {
-                        string downloadPath = null;
-                        downloadPath = DownloadAllOrderPhotos();
-                        ShowDownloadedFolder(downloadPath);
-                        downloadPath = DownloadSelectedPhotos();
-                        ShowDownloadedFolder(downloadPath);
-                        ShowUploadPhotosForm();
-                        ShowPreFactorForm();
-                    }
-                    else if (CheckIfCustomerWantsToAddSomePhotosToSelectedPhotos() == false)
-                    {
-                        ShowUploadedPhotos();
-                        ShowPreFactorForm();
-                    }
-                }
-                else if (CheckIfCustomerHasChangesInPhotosSelected() == false)
-                {
-                    ShowUploadedPhotos();
-                    ShowPreFactorForm();
-                }
-            }
-            else if (CheckOrderPhotosIsSelected(customerId, orderId) == false)
-            {
-                string downloadPath = null;
-                downloadPath = DownloadAllOrderPhotos();
-                ShowDownloadedFolder(downloadPath);
-                ShowUploadPhotosForm();
-                ShowPreFactorForm();
-            }
+            //if (CheckOrderPhotosIsSelected(_customerId, orderId) == true ||
+            //    _customerOrderFilesSelected == true) /*آیا مشتری انتخاب عکس انجام داده است؟*/
+            //{
+            //    if (CheckIfCustomerHasChangesInPhotosSelected()) /*آیا مشتری در سفارش خود می خواهد تغییراتی انجام دهد؟*/
+            //    {
+            //        if (CheckIfCustomerWantsToAddSomePhotosToSelectedPhotos())
+            //        {
+            //            string downloadPath = null;
+            //            downloadPath = DownloadAllOrderPhotos();
+            //            ShowDownloadedFolder(downloadPath);
+            //            downloadPath = DownloadSelectedPhotos();
+            //            ShowDownloadedFolder(downloadPath);
+            //            ShowUploadPhotosForm();
+            //            ShowPreFactorForm();
+            //        }
+            //        else if (CheckIfCustomerWantsToAddSomePhotosToSelectedPhotos() == false)
+            //        {
+            //            ShowUploadedPhotos();
+            //            ShowPreFactorForm();
+            //        }
+            //    }
+            //    else if (CheckIfCustomerHasChangesInPhotosSelected() == false)
+            //    {
+            //        ShowUploadedPhotos();
+            //        ShowPreFactorForm();
+            //    }
+            //}
+            //else if (CheckOrderPhotosIsSelected(customerId, orderId) == false)
+            //{
+            //    string downloadPath = null;
+            //    downloadPath = DownloadAllOrderPhotos();
+            //    ShowDownloadedFolder(downloadPath);
+            //    ShowUploadPhotosForm();
+            //    ShowPreFactorForm();
+            //}
         }
 
         private bool CheckIfOrderFilesUploaded(int orderId)
@@ -1368,7 +1369,8 @@ namespace PhotographyAutomation.App.Forms.Orders
             {
                 using (var db=new UnitOfWork())
                 {
-                    var orderFiles=db.
+                    var orderFiles = db.OrderFilesGenericRepository.Get(x => x.OrderId == orderId).ToList();
+                    result = orderFiles.Any();
                 }
             }
             catch (Exception exception)
@@ -1376,6 +1378,8 @@ namespace PhotographyAutomation.App.Forms.Orders
                 Console.WriteLine(exception);
                 result = false;
             }
+
+            return result;
         }
 
         private bool CheckCustomerActivity(int customerId)
