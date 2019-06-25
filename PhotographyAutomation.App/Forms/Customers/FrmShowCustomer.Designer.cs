@@ -39,6 +39,32 @@
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvCustomers = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.menuDgvUsers = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ویرایشاطلاعاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ثبتنوبتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ویرایشاطلاعاتToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.ثبتنوبتToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnClearSearch = new DevComponents.DotNetBar.ButtonX();
+            this.btnSearch1 = new DevComponents.DotNetBar.ButtonX();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.txtFirstName = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.txtLastName = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.txtTell = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label3 = new System.Windows.Forms.Label();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.ثبتپیشفاکتورToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,27 +76,6 @@
             this.CreatedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ModifiedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MoreInfo = new DevComponents.DotNetBar.Controls.DataGridViewLabelXColumn();
-            this.menuDgvUsers = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ویرایشاطلاعاتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ثبتنوبتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ثبتفاکتورToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnSearch = new DevComponents.DotNetBar.ButtonX();
-            this.txtFirstName = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtLastName = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtTell = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ویرایشاطلاعاتToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.ثبتنوبتToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panelEx1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -78,6 +83,9 @@
             this.menuDgvUsers.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // errorProvider1
@@ -116,9 +124,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.dgvCustomers);
-            this.groupBox2.Location = new System.Drawing.Point(12, 105);
+            this.groupBox2.Location = new System.Drawing.Point(12, 95);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1125, 388);
+            this.groupBox2.Size = new System.Drawing.Size(1125, 398);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "فهرست مشتریان";
@@ -159,7 +167,7 @@
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvCustomers.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvCustomers.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -179,11 +187,278 @@
             this.dgvCustomers.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvCustomers.RowHeadersVisible = false;
             this.dgvCustomers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCustomers.Size = new System.Drawing.Size(1119, 368);
+            this.dgvCustomers.Size = new System.Drawing.Size(1119, 378);
             this.dgvCustomers.TabIndex = 0;
             this.dgvCustomers.UseCustomBackgroundColor = true;
             this.dgvCustomers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellDoubleClick);
             this.dgvCustomers.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dgvUsers_MouseUp);
+            // 
+            // menuDgvUsers
+            // 
+            this.menuDgvUsers.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.menuDgvUsers.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ویرایشاطلاعاتToolStripMenuItem,
+            this.ثبتنوبتToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.ثبتپیشفاکتورToolStripMenuItem});
+            this.menuDgvUsers.Name = "menuDgvUsers";
+            this.menuDgvUsers.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.menuDgvUsers.Size = new System.Drawing.Size(181, 98);
+            this.menuDgvUsers.Paint += new System.Windows.Forms.PaintEventHandler(this.menuDgvUsers_Paint);
+            // 
+            // ویرایشاطلاعاتToolStripMenuItem
+            // 
+            this.ویرایشاطلاعاتToolStripMenuItem.Name = "ویرایشاطلاعاتToolStripMenuItem";
+            this.ویرایشاطلاعاتToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ویرایشاطلاعاتToolStripMenuItem.Text = "ویرایش اطلاعات";
+            this.ویرایشاطلاعاتToolStripMenuItem.Click += new System.EventHandler(this.ویرایشاطلاعاتToolStripMenuItem_Click);
+            // 
+            // ثبتنوبتToolStripMenuItem
+            // 
+            this.ثبتنوبتToolStripMenuItem.Name = "ثبتنوبتToolStripMenuItem";
+            this.ثبتنوبتToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ثبتنوبتToolStripMenuItem.Text = "ثبت نوبت";
+            this.ثبتنوبتToolStripMenuItem.Click += new System.EventHandler(this.ثبتنوبتToolStripMenuItem_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.panel3);
+            this.groupBox1.Controls.Add(this.panel2);
+            this.groupBox1.Controls.Add(this.panel1);
+            this.groupBox1.Controls.Add(this.btnClearSearch);
+            this.groupBox1.Controls.Add(this.btnSearch1);
+            this.groupBox1.Location = new System.Drawing.Point(12, 27);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1125, 62);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "جستجوی مشتری";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1149, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newToolStripMenuItem,
+            this.ویرایشاطلاعاتToolStripMenuItem1,
+            this.searchToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.ثبتنوبتToolStripMenuItem1,
+            this.toolStripSeparator1,
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
+            this.fileToolStripMenuItem.Text = "&پرونده مشتریان";
+            // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripMenuItem.Image")));
+            this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.newToolStripMenuItem.Text = "مشتری جدید";
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
+            // 
+            // ویرایشاطلاعاتToolStripMenuItem1
+            // 
+            this.ویرایشاطلاعاتToolStripMenuItem1.Image = global::PhotographyAutomation.App.Properties.Resources._132685___modify;
+            this.ویرایشاطلاعاتToolStripMenuItem1.Name = "ویرایشاطلاعاتToolStripMenuItem1";
+            this.ویرایشاطلاعاتToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+            this.ویرایشاطلاعاتToolStripMenuItem1.Size = new System.Drawing.Size(185, 22);
+            this.ویرایشاطلاعاتToolStripMenuItem1.Text = "ویرایش اطلاعات";
+            this.ویرایشاطلاعاتToolStripMenuItem1.Click += new System.EventHandler(this.ویرایشاطلاعاتToolStripMenuItem1_Click);
+            // 
+            // searchToolStripMenuItem
+            // 
+            this.searchToolStripMenuItem.Image = global::PhotographyAutomation.App.Properties.Resources._132615___explore_eye_find_glass_loop_magnifier_magnifying_m;
+            this.searchToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
+            this.searchToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.searchToolStripMenuItem.Text = "جستجو";
+            this.searchToolStripMenuItem.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(182, 6);
+            // 
+            // ثبتنوبتToolStripMenuItem1
+            // 
+            this.ثبتنوبتToolStripMenuItem1.Image = global::PhotographyAutomation.App.Properties.Resources._132689___notes;
+            this.ثبتنوبتToolStripMenuItem1.Name = "ثبتنوبتToolStripMenuItem1";
+            this.ثبتنوبتToolStripMenuItem1.Size = new System.Drawing.Size(185, 22);
+            this.ثبتنوبتToolStripMenuItem1.Text = "ثبت نوبت";
+            this.ثبتنوبتToolStripMenuItem1.Click += new System.EventHandler(this.ثبتنوبتToolStripMenuItem1_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(182, 6);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.exitToolStripMenuItem.Text = "بازگشت";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // btnClearSearch
+            // 
+            this.btnClearSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnClearSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnClearSearch.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClearSearch.Location = new System.Drawing.Point(6, 24);
+            this.btnClearSearch.Name = "btnClearSearch";
+            this.btnClearSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnClearSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnClearSearch.Symbol = "";
+            this.btnClearSearch.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnClearSearch.SymbolSize = 10F;
+            this.btnClearSearch.TabIndex = 4;
+            this.btnClearSearch.Text = "انصراف";
+            // 
+            // btnSearch1
+            // 
+            this.btnSearch1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSearch1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSearch1.Location = new System.Drawing.Point(87, 24);
+            this.btnSearch1.Name = "btnSearch1";
+            this.btnSearch1.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSearch1.Symbol = "";
+            this.btnSearch1.SymbolColor = System.Drawing.Color.RoyalBlue;
+            this.btnSearch1.SymbolSize = 10F;
+            this.btnSearch1.TabIndex = 3;
+            this.btnSearch1.Text = "جستجو";
+            this.btnSearch1.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.txtFirstName);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(982, 17);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(137, 35);
+            this.panel1.TabIndex = 0;
+            // 
+            // txtFirstName
+            // 
+            this.txtFirstName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.txtFirstName.Border.Class = "TextBoxBorder";
+            this.txtFirstName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtFirstName.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.txtFirstName.Location = new System.Drawing.Point(7, 7);
+            this.txtFirstName.Name = "txtFirstName";
+            this.txtFirstName.PreventEnterBeep = true;
+            this.txtFirstName.Size = new System.Drawing.Size(100, 21);
+            this.txtFirstName.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(114, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(20, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "نام";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.txtLastName);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Location = new System.Drawing.Point(772, 17);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(204, 35);
+            this.panel2.TabIndex = 1;
+            // 
+            // txtLastName
+            // 
+            this.txtLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.txtLastName.Border.Class = "TextBoxBorder";
+            this.txtLastName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtLastName.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.txtLastName.Location = new System.Drawing.Point(7, 7);
+            this.txtLastName.Name = "txtLastName";
+            this.txtLastName.PreventEnterBeep = true;
+            this.txtLastName.Size = new System.Drawing.Size(124, 21);
+            this.txtLastName.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(136, 11);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "نام خانوادگی";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.txtTell);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Location = new System.Drawing.Point(527, 17);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(239, 35);
+            this.panel3.TabIndex = 2;
+            // 
+            // txtTell
+            // 
+            this.txtTell.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.txtTell.Border.Class = "TextBoxBorder";
+            this.txtTell.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTell.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.txtTell.Location = new System.Drawing.Point(8, 7);
+            this.txtTell.Name = "txtTell";
+            this.txtTell.PreventEnterBeep = true;
+            this.txtTell.Size = new System.Drawing.Size(124, 21);
+            this.txtTell.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(138, 11);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(98, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "تلفن (ثابت یا همراه)";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            // 
+            // ثبتپیشفاکتورToolStripMenuItem
+            // 
+            this.ثبتپیشفاکتورToolStripMenuItem.Enabled = false;
+            this.ثبتپیشفاکتورToolStripMenuItem.Name = "ثبتپیشفاکتورToolStripMenuItem";
+            this.ثبتپیشفاکتورToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ثبتپیشفاکتورToolStripMenuItem.Text = "ثبت پیش فاکتور";
+            this.ثبتپیشفاکتورToolStripMenuItem.Click += new System.EventHandler(this.ثبتپیشفاکتورToolStripMenuItem_Click);
             // 
             // Id
             // 
@@ -277,232 +552,8 @@
             this.MoreInfo.ReadOnly = true;
             this.MoreInfo.Width = 81;
             // 
-            // menuDgvUsers
-            // 
-            this.menuDgvUsers.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.menuDgvUsers.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ویرایشاطلاعاتToolStripMenuItem,
-            this.ثبتنوبتToolStripMenuItem,
-            this.ثبتفاکتورToolStripMenuItem});
-            this.menuDgvUsers.Name = "menuDgvUsers";
-            this.menuDgvUsers.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.menuDgvUsers.Size = new System.Drawing.Size(148, 70);
-            // 
-            // ویرایشاطلاعاتToolStripMenuItem
-            // 
-            this.ویرایشاطلاعاتToolStripMenuItem.Name = "ویرایشاطلاعاتToolStripMenuItem";
-            this.ویرایشاطلاعاتToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
-            this.ویرایشاطلاعاتToolStripMenuItem.Text = "ویرایش اطلاعات";
-            this.ویرایشاطلاعاتToolStripMenuItem.Click += new System.EventHandler(this.ویرایشاطلاعاتToolStripMenuItem_Click);
-            // 
-            // ثبتنوبتToolStripMenuItem
-            // 
-            this.ثبتنوبتToolStripMenuItem.Name = "ثبتنوبتToolStripMenuItem";
-            this.ثبتنوبتToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
-            this.ثبتنوبتToolStripMenuItem.Text = "ثبت نوبت";
-            this.ثبتنوبتToolStripMenuItem.Click += new System.EventHandler(this.ثبتنوبتToolStripMenuItem_Click);
-            // 
-            // ثبتفاکتورToolStripMenuItem
-            // 
-            this.ثبتفاکتورToolStripMenuItem.Name = "ثبتفاکتورToolStripMenuItem";
-            this.ثبتفاکتورToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
-            this.ثبتفاکتورToolStripMenuItem.Text = "ثبت فاکتور";
-            this.ثبتفاکتورToolStripMenuItem.Click += new System.EventHandler(this.ثبتفاکتورToolStripMenuItem_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.btnSearch);
-            this.groupBox1.Controls.Add(this.txtFirstName);
-            this.groupBox1.Controls.Add(this.txtLastName);
-            this.groupBox1.Controls.Add(this.txtTell);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 27);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1125, 72);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "جستجوی مشتری";
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSearch.Location = new System.Drawing.Point(6, 18);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(110, 36);
-            this.btnSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnSearch.TabIndex = 3;
-            this.btnSearch.Text = "جستجو";
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // txtFirstName
-            // 
-            this.txtFirstName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.txtFirstName.Border.Class = "TextBoxBorder";
-            this.txtFirstName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtFirstName.FocusHighlightColor = System.Drawing.SystemColors.Info;
-            this.txtFirstName.Location = new System.Drawing.Point(983, 26);
-            this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.PreventEnterBeep = true;
-            this.txtFirstName.Size = new System.Drawing.Size(100, 21);
-            this.txtFirstName.TabIndex = 0;
-            this.txtFirstName.Enter += new System.EventHandler(this.txtFirstName_Enter);
-            this.txtFirstName.Leave += new System.EventHandler(this.txtFirstName_Leave);
-            // 
-            // txtLastName
-            // 
-            this.txtLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.txtLastName.Border.Class = "TextBoxBorder";
-            this.txtLastName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtLastName.FocusHighlightColor = System.Drawing.SystemColors.Info;
-            this.txtLastName.Location = new System.Drawing.Point(784, 26);
-            this.txtLastName.Name = "txtLastName";
-            this.txtLastName.PreventEnterBeep = true;
-            this.txtLastName.Size = new System.Drawing.Size(100, 21);
-            this.txtLastName.TabIndex = 1;
-            this.txtLastName.Enter += new System.EventHandler(this.txtFirstName_Enter);
-            this.txtLastName.Leave += new System.EventHandler(this.txtFirstName_Leave);
-            // 
-            // txtTell
-            // 
-            this.txtTell.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.txtTell.Border.Class = "TextBoxBorder";
-            this.txtTell.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtTell.FocusHighlightColor = System.Drawing.SystemColors.Info;
-            this.txtTell.Location = new System.Drawing.Point(551, 26);
-            this.txtTell.Name = "txtTell";
-            this.txtTell.PreventEnterBeep = true;
-            this.txtTell.Size = new System.Drawing.Size(100, 21);
-            this.txtTell.TabIndex = 2;
-            this.txtTell.Enter += new System.EventHandler(this.txtFirstName_Enter);
-            this.txtTell.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTell_KeyPress);
-            this.txtTell.Leave += new System.EventHandler(this.txtFirstName_Leave);
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(657, 30);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "تلفن (ثابت یا همراه)";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(890, 30);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "نام خانوادگی";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1090, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(20, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "نام";
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1149, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripMenuItem,
-            this.ویرایشاطلاعاتToolStripMenuItem1,
-            this.searchToolStripMenuItem,
-            this.toolStripSeparator2,
-            this.ثبتنوبتToolStripMenuItem1,
-            this.toolStripSeparator1,
-            this.exitToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
-            this.fileToolStripMenuItem.Text = "&پرونده مشتریان";
-            // 
-            // newToolStripMenuItem
-            // 
-            this.newToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripMenuItem.Image")));
-            this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.newToolStripMenuItem.Text = "مشتری جدید";
-            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
-            // 
-            // ویرایشاطلاعاتToolStripMenuItem1
-            // 
-            this.ویرایشاطلاعاتToolStripMenuItem1.Image = global::PhotographyAutomation.App.Properties.Resources._132685___modify;
-            this.ویرایشاطلاعاتToolStripMenuItem1.Name = "ویرایشاطلاعاتToolStripMenuItem1";
-            this.ویرایشاطلاعاتToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.ویرایشاطلاعاتToolStripMenuItem1.Size = new System.Drawing.Size(185, 22);
-            this.ویرایشاطلاعاتToolStripMenuItem1.Text = "ویرایش اطلاعات";
-            this.ویرایشاطلاعاتToolStripMenuItem1.Click += new System.EventHandler(this.ویرایشاطلاعاتToolStripMenuItem1_Click);
-            // 
-            // searchToolStripMenuItem
-            // 
-            this.searchToolStripMenuItem.Image = global::PhotographyAutomation.App.Properties.Resources._132615___explore_eye_find_glass_loop_magnifier_magnifying_m;
-            this.searchToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.searchToolStripMenuItem.Text = "جستجو";
-            this.searchToolStripMenuItem.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(182, 6);
-            // 
-            // ثبتنوبتToolStripMenuItem1
-            // 
-            this.ثبتنوبتToolStripMenuItem1.Image = global::PhotographyAutomation.App.Properties.Resources._132689___notes;
-            this.ثبتنوبتToolStripMenuItem1.Name = "ثبتنوبتToolStripMenuItem1";
-            this.ثبتنوبتToolStripMenuItem1.Size = new System.Drawing.Size(185, 22);
-            this.ثبتنوبتToolStripMenuItem1.Text = "ثبت نوبت";
-            this.ثبتنوبتToolStripMenuItem1.Click += new System.EventHandler(this.ثبتنوبتToolStripMenuItem1_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(182, 6);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.exitToolStripMenuItem.Text = "بازگشت";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
             // FrmShowCustomer
             // 
-            this.AcceptButton = this.btnSearch;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1149, 496);
@@ -526,9 +577,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).EndInit();
             this.menuDgvUsers.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -541,14 +597,32 @@
         private DevComponents.DotNetBar.PanelEx panelEx1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private DevComponents.DotNetBar.Controls.DataGridViewX dgvCustomers;
         private System.Windows.Forms.ContextMenuStrip menuDgvUsers;
         private System.Windows.Forms.ToolStripMenuItem ثبتنوبتToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ویرایشاطلاعاتToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ثبتفاکتورToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ویرایشاطلاعاتToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem ثبتنوبتToolStripMenuItem1;
+        private DevComponents.DotNetBar.ButtonX btnClearSearch;
+        private DevComponents.DotNetBar.ButtonX btnSearch1;
+        private System.Windows.Forms.Panel panel3;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtTell;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel2;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtLastName;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel1;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtFirstName;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem ثبتپیشفاکتورToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
@@ -560,18 +634,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreatedDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ModifiedDate;
         private DevComponents.DotNetBar.Controls.DataGridViewLabelXColumn MoreInfo;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ویرایشاطلاعاتToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem ثبتنوبتToolStripMenuItem1;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtFirstName;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtLastName;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtTell;
-        private DevComponents.DotNetBar.ButtonX btnSearch;
     }
 }

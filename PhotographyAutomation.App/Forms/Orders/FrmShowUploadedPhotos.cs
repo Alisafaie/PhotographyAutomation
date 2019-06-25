@@ -2,6 +2,7 @@
 using Ookii.Dialogs.WinForms;
 using PhotographyAutomation.App.Forms.Booking;
 using PhotographyAutomation.App.Forms.Customers;
+using PhotographyAutomation.App.Forms.EntranceToAtelier;
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.Utilities;
 using PhotographyAutomation.Utilities.Convertor;
@@ -1311,19 +1312,19 @@ namespace PhotographyAutomation.App.Forms.Orders
 
             if (CheckIfOrderFilesUploaded(orderId) == false) /*آیا عکس های اصلی آپلود شده است؟*/
             {
-                //ShowUploadPhotosForm();
+                ShowUploadPhotosForm(orderId);  /*مشاهده فرم آپلود عکس ها*/
             }
 
-            //if (CheckPreFactorIssuedForThisCustomer() == false) /*آیا فاکتور برای همین مشتری صادر شود؟*/
-            //{
-            //    ShowCustomerSearchForm();
-            //    string downloadPath = null;
-            //    _customerId = GetNewCustomerId();
-            //    downloadPath = DownloadAllOrderPhotos();
-            //    ShowDownloadedFolder(downloadPath);
-            //    ShowUploadPhotosForm(); /*ارسال عکس های انتخابی مشتری به سرور*/
-            //    _customerOrderFilesSelected = true;
-            //}
+            var customerName = dgvUploads.SelectedRows[0].Cells["clmCustomerFullName"].Value.ToString();
+            if (CheckPreFactorIssuedForThisCustomer(customerName) == false) /*آیا فاکتور برای همین مشتری صادر شود؟*/
+            {
+                _customerId = ShowCustomerSearchForm();
+                string downloadPath = null;
+                downloadPath = DownloadAllOrderPhotos();
+                ShowDownloadedFolder(downloadPath);
+                ShowUploadPhotosForm(); /*ارسال عکس های انتخابی مشتری به سرور*/
+                _customerOrderFilesSelected = true;
+            }
 
             //if (CheckOrderPhotosIsSelected(_customerId, orderId) == true ||
             //    _customerOrderFilesSelected == true) /*آیا مشتری انتخاب عکس انجام داده است؟*/
@@ -1362,14 +1363,71 @@ namespace PhotographyAutomation.App.Forms.Orders
             //}
         }
 
+        private int ShowCustomerSearchForm()
+        {
+            int customerId = 0;
+            using (var searchCustomerForm = new FrmShowCustomer())
+            {
+                searchCustomerForm.CustomerIdForPreFactor = true;
+                if (searchCustomerForm.ShowDialog() == DialogResult.OK)
+                {
+                    customerId = searchCustomerForm.CustomerId;
+                }
+            }
+
+            return customerId;
+        }
+
+        private bool CheckPreFactorIssuedForThisCustomer(string customerName)
+        {
+            DialogResult dr = RtlMessageBox.Show(
+                $"آیا پیش فاکتور مشتری {customerName} به نام همین نام صادر شود؟",
+                "صدور فاکتور",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button1);
+
+            if (dr == DialogResult.Yes)
+                return true;
+            return false;
+        }
+
+        private void ShowUploadPhotosForm(int orderId)
+        {
+            try
+            {
+                using (var db = new UnitOfWork())
+                {
+                    var order = db.OrderGenericRepository.GetById(orderId);
+                    if (order != null)
+                    {
+                        using (var uploadForm = new FrmUploadPhotos())
+                        {
+                            uploadForm.OrderCode = order.OrderCode;
+                            uploadForm.BookingId = order.BookingId;
+                            uploadForm.CustomerId = order.CustomerId;
+                            uploadForm.OrderId = orderId;
+
+                            uploadForm.ShowDialog();
+                        }
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+            }
+        }
+
+
         private bool CheckIfOrderFilesUploaded(int orderId)
         {
             var result = false;
             try
             {
-                using (var db=new UnitOfWork())
+                using (var db = new UnitOfWork())
                 {
-                    var orderFiles = db.OrderFilesGenericRepository.Get(x => x.OrderId == orderId).ToList();
+                    var orderFiles = db.OrderFilesGenericRepository.Get(x => x.OrderId == orderId);
                     result = orderFiles.Any();
                 }
             }

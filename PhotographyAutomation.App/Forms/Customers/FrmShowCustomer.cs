@@ -14,6 +14,7 @@ namespace PhotographyAutomation.App.Forms.Customers
         public bool FromFrmAddEditBooking = false;
         public bool FromFrmShowBookings = false;
         public int CustomerId = 0;
+        public bool CustomerIdForPreFactor = false;
 
         public FrmShowCustomer()
         {
@@ -207,10 +208,6 @@ namespace PhotographyAutomation.App.Forms.Customers
             }
         }
 
-        private void ثبتفاکتورToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -270,6 +267,28 @@ namespace PhotographyAutomation.App.Forms.Customers
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void menuDgvUsers_Paint(object sender, PaintEventArgs e)
+        {
+            if (dgvCustomers.CurrentRow != null &&
+                int.TryParse(dgvCustomers.SelectedRows[0].Cells["Id"].Value.ToString(), out int customerId) == true &&
+                CustomerIdForPreFactor == true)
+            {
+                CustomerId = customerId;
+                ثبتپیشفاکتورToolStripMenuItem.Enabled = true;
+            }
+        }
+
+        private void ثبتپیشفاکتورToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvCustomers.CurrentRow != null &&
+               int.TryParse(dgvCustomers.SelectedRows[0].Cells["Id"].Value.ToString(), out int customerId) == true &&
+               CustomerIdForPreFactor == true)
+            {
+                CustomerId = customerId;
+                DialogResult = DialogResult.OK;
+            }
         }
     }
 }
