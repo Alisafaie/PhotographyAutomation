@@ -24,6 +24,9 @@ namespace PhotographyAutomation.App.Forms.Orders
         #region Variables
         private int _statusCode;
         private int _customerId;
+
+        private bool _customerOrderFilesSelected;
+
         #endregion
 
 
@@ -1074,6 +1077,11 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         #region DataGridView Contextmenu
 
+        private void contextMenuDgvUploads_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private void مشاهده_عکس_ها_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -1293,9 +1301,14 @@ namespace PhotographyAutomation.App.Forms.Orders
         {
             //بررسی وضعیت سفارش
             //    جهت ثبت پیش فاکتور
-            if (CheckCustomerActivity() == false) return;
 
-            if (CheckIfOrderFilesUploaded() == false) //آیا عکس های اصلی آپلود شده است؟
+            var customerId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmCustomerId"].Value);
+            if (CheckCustomerActivity(customerId) == false) return;
+
+            var orderCode = dgvUploads.SelectedRows[0].Cells["clmOrderCode"].Value.ToString();
+            var orderId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmId"].Value);
+
+            if (CheckIfOrderFilesUploaded(orderId) == false) //آیا عکس های اصلی آپلود شده است؟
             {
                 ShowUploadPhotosForm();
             }
@@ -1303,17 +1316,18 @@ namespace PhotographyAutomation.App.Forms.Orders
             if (CheckPreFactorIssuedForThisCustomer() == false) //آیا فاکتور برای همین مشتری صادر شود؟
             {
                 ShowCustomerSearchForm();
-                //string downloadPath = null;
-                 _customerId= GetNewCustomerId();
-                //downloadPath = DownloadAllOrderPhotos();
-                //ShowDownloadedFolder(downloadPath);
-                //ShowUploadPhotosForm(); //ارسال عکس های انتخابی مشتری به سرور
-                //ShowPreFactorForm();
+                string downloadPath = null;
+                _customerId = GetNewCustomerId();
+                downloadPath = DownloadAllOrderPhotos();
+                ShowDownloadedFolder(downloadPath);
+                ShowUploadPhotosForm(); //ارسال عکس های انتخابی مشتری به سرور
+                _customerOrderFilesSelected = true;
             }
 
-            if (CheckOrderPhotosIsSelected(_customerId, orderId))
+            if (CheckOrderPhotosIsSelected(_customerId, orderId) == true ||
+                _customerOrderFilesSelected == true) //آیا مشتری انتخاب عکس انجام داده است؟
             {
-                if (CheckIfCustomerHasChangesInPhotosSelected())
+                if (CheckIfCustomerHasChangesInPhotosSelected()) //آیا مشتری در سفارش خود می خواهد تغییراتی انجام دهد؟
                 {
                     if (CheckIfCustomerWantsToAddSomePhotosToSelectedPhotos())
                     {
@@ -1337,19 +1351,61 @@ namespace PhotographyAutomation.App.Forms.Orders
                     ShowPreFactorForm();
                 }
             }
-            else (CheckOrderPhotosIsSelected(customerId, orderId) == false))
-
-                {
+            else if (CheckOrderPhotosIsSelected(customerId, orderId) == false)
+            {
                 string downloadPath = null;
                 downloadPath = DownloadAllOrderPhotos();
                 ShowDownloadedFolder(downloadPath);
                 ShowUploadPhotosForm();
                 ShowPreFactorForm();
             }
-
         }
 
+        private bool CheckIfOrderFilesUploaded(int orderId)
+        {
+            var result = false;
+            try
+            {
+                using (var db=new UnitOfWork())
+                {
+                    var orderFiles=db.
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                result = false;
+            }
+        }
+
+        private bool CheckCustomerActivity(int customerId)
+        {
+            bool result = false;
+            try
+            {
+                using (var db = new UnitOfWork())
+                {
+                    var customer = db.CustomerGenericRepository.GetById(customerId);
+                    if (customer != null)
+                    {
+                        if (customer.IsActive != 0 && customer.IsDeleted != 0)
+                            result = true;
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                result = false;
+            }
+
+            return result;
+        }
+
+
+
         #endregion DataGridView Contextmenu
+
 
     }
 }

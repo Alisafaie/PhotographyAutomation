@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmShowUploadedPhotos));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.عکسToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.مشاهده_عکس_ها_ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,6 +50,8 @@
             this.ویرایش_پیش_فاکتور_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnClearSearch = new DevComponents.DotNetBar.ButtonX();
+            this.btnShowOrders = new DevComponents.DotNetBar.ButtonX();
             this.rbCustomerInfo = new System.Windows.Forms.RadioButton();
             this.txtCustomerInfo = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.rbOrderStatus = new System.Windows.Forms.RadioButton();
@@ -98,8 +100,6 @@
             this.ویرایش_پیش_فاکتورToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.btnShowOrders = new DevComponents.DotNetBar.ButtonX();
-            this.btnClearSearch = new DevComponents.DotNetBar.ButtonX();
             this.menuStrip1.SuspendLayout();
             this.panelEx3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -262,6 +262,37 @@
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "مشاهده سفارشات بر اساس";
+            // 
+            // btnClearSearch
+            // 
+            this.btnClearSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnClearSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnClearSearch.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClearSearch.Location = new System.Drawing.Point(6, 63);
+            this.btnClearSearch.Name = "btnClearSearch";
+            this.btnClearSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnClearSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnClearSearch.Symbol = "";
+            this.btnClearSearch.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnClearSearch.SymbolSize = 10F;
+            this.btnClearSearch.TabIndex = 12;
+            this.btnClearSearch.Text = "انصراف";
+            this.btnClearSearch.Click += new System.EventHandler(this.btnClearSearch_Click);
+            // 
+            // btnShowOrders
+            // 
+            this.btnShowOrders.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnShowOrders.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnShowOrders.Location = new System.Drawing.Point(87, 63);
+            this.btnShowOrders.Name = "btnShowOrders";
+            this.btnShowOrders.Size = new System.Drawing.Size(75, 23);
+            this.btnShowOrders.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnShowOrders.Symbol = "";
+            this.btnShowOrders.SymbolColor = System.Drawing.Color.RoyalBlue;
+            this.btnShowOrders.SymbolSize = 10F;
+            this.btnShowOrders.TabIndex = 11;
+            this.btnShowOrders.Text = "جستجو";
+            this.btnShowOrders.Click += new System.EventHandler(this.btnShowOrders_Click);
             // 
             // rbCustomerInfo
             // 
@@ -474,19 +505,19 @@
             this.dgvUploads.AllowUserToAddRows = false;
             this.dgvUploads.AllowUserToDeleteRows = false;
             this.dgvUploads.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvUploads.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvUploads.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvUploads.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvUploads.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvUploads.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUploads.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUploads.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvUploads.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUploads.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmId,
@@ -509,14 +540,14 @@
             this.clmPhotosFolderLink,
             this.clmViewPhotos});
             this.dgvUploads.ContextMenuStrip = this.contextMenuDgvUploads;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvUploads.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvUploads.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvUploads.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvUploads.EnableHeadersVisualStyles = false;
             this.dgvUploads.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
@@ -524,14 +555,14 @@
             this.dgvUploads.MultiSelect = false;
             this.dgvUploads.Name = "dgvUploads";
             this.dgvUploads.ReadOnly = true;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUploads.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUploads.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvUploads.RowHeadersVisible = false;
             this.dgvUploads.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvUploads.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -722,7 +753,8 @@
             this.ویرایش_پیش_فاکتورToolStripMenuItem1});
             this.contextMenuDgvUploads.Name = "contextMenuStrip1";
             this.contextMenuDgvUploads.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuDgvUploads.Size = new System.Drawing.Size(219, 198);
+            this.contextMenuDgvUploads.Size = new System.Drawing.Size(219, 220);
+            this.contextMenuDgvUploads.Paint += new System.Windows.Forms.PaintEventHandler(this.contextMenuDgvUploads_Paint);
             // 
             // مشاهده_عکس_ها_ToolStripMenuItem
             // 
@@ -803,37 +835,6 @@
             // 
             this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
             this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
-            // 
-            // btnShowOrders
-            // 
-            this.btnShowOrders.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnShowOrders.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnShowOrders.Location = new System.Drawing.Point(87, 63);
-            this.btnShowOrders.Name = "btnShowOrders";
-            this.btnShowOrders.Size = new System.Drawing.Size(75, 23);
-            this.btnShowOrders.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnShowOrders.Symbol = "";
-            this.btnShowOrders.SymbolColor = System.Drawing.Color.RoyalBlue;
-            this.btnShowOrders.SymbolSize = 10F;
-            this.btnShowOrders.TabIndex = 11;
-            this.btnShowOrders.Text = "جستجو";
-            this.btnShowOrders.Click += new System.EventHandler(this.btnShowOrders_Click);
-            // 
-            // btnClearSearch
-            // 
-            this.btnClearSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnClearSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnClearSearch.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClearSearch.Location = new System.Drawing.Point(6, 63);
-            this.btnClearSearch.Name = "btnClearSearch";
-            this.btnClearSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnClearSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnClearSearch.Symbol = "";
-            this.btnClearSearch.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnClearSearch.SymbolSize = 10F;
-            this.btnClearSearch.TabIndex = 12;
-            this.btnClearSearch.Text = "انصراف";
-            this.btnClearSearch.Click += new System.EventHandler(this.btnClearSearch_Click);
             // 
             // FrmShowUploadedPhotos
             // 
