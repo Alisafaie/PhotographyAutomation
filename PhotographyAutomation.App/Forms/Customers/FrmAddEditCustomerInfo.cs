@@ -177,24 +177,27 @@ namespace PhotographyAutomation.App.Forms.Customers
         private void btnOk_Click(object sender, EventArgs e)
         {
             if (!CheckInputs()) return;
-            var customer = new TblCustomer();
-            customer.FirstName = txtFirstName.Text.Trim();
-            customer.LastName = txtLastName.Text.Trim();
-            customer.Mobile = txtMobile.Text
-                .Replace("(", "")
-                .Replace(")", "")
-                .Replace("-", "")
-                .Replace("_", "")
-                .Replace(" ", "")
-                .Trim().Substring(1, 10);
-            customer.Tell = txtTell.Text.Replace(" ", "").Trim();
-            customer.Gender = Convert.ToByte(cmbGender.SelectedIndex == 0 ? 0 : 1);
-            customer.BirthDate = txtBirthDate.Text.ToMiladiDate();
-            customer.NationalId = txtNationalId.Text.Replace("-", "").Trim();
-            customer.IsMarried = Convert.ToByte(cmbMarriedStatus.SelectedIndex == 0 ? 0 : 1);
-            customer.Address = txtAddress.Text.Trim();
-            customer.Email = txtEmail.Text.Trim();
-            customer.IsDeleted = 0;
+            var customer = new TblCustomer
+            {
+                FirstName = txtFirstName.Text.Trim(),
+                LastName = txtLastName.Text.Trim(),
+                Mobile = txtMobile.Text
+                    .Replace("(", "")
+                    .Replace(")", "")
+                    .Replace("-", "")
+                    .Replace("_", "")
+                    .Replace(" ", "")
+                    .Trim().Substring(1, 10),
+                Tell = txtTell.Text.Replace(" ", "").Trim(),
+                Gender = Convert.ToByte(cmbGender.SelectedIndex == 0 ? 0 : 1),
+                BirthDate = txtBirthDate.Text.ToMiladiDate(),
+                NationalId = txtNationalId.Text.Replace("-", "").Trim(),
+                IsMarried = Convert.ToByte(cmbMarriedStatus.SelectedIndex == 0 ? 0 : 1),
+                Address = txtAddress.Text.Trim(),
+                Email = txtEmail.Text.Trim(),
+                IsDeleted = 0,
+                IsActive = 1
+            };
 
 
             //if (cmbMarriedStatus.SelectedIndex == 1)
@@ -263,6 +266,8 @@ namespace PhotographyAutomation.App.Forms.Customers
                             f.ShowDialog();
                         }
                     }
+                    else
+                        CustomerId = customer.Id;
 
                     DialogResult = DialogResult.OK;
                 }

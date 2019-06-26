@@ -4,6 +4,7 @@ using PhotographyAutomation.DateLayer.Models;
 using PhotographyAutomation.Utilities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -16,10 +17,19 @@ namespace PhotographyAutomation.App.Forms.Customers
         public int CustomerId = 0;
         public bool CustomerIdForPreFactor = false;
 
+
+        private readonly BackgroundWorker _bgWorkerSerachCustomer = new BackgroundWorker();
+
         public FrmShowCustomer()
         {
             InitializeComponent();
+            _bgWorkerSerachCustomer.DoWork += _bgWorkerSerachCustomer_DoWork;
+            _bgWorkerSerachCustomer.RunWorkerCompleted += _bgWorkerSerachCustomer_RunWorkerCompleted;
         }
+
+
+
+
 
         private void FrmSearchCustomer_Load(object sender, EventArgs e)
         {
@@ -30,80 +40,139 @@ namespace PhotographyAutomation.App.Forms.Customers
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtFirstName.Text) && string.IsNullOrEmpty(txtLastName.Text) &&
-                string.IsNullOrEmpty(txtTell.Text))
+            var cuInfo = new CustomerSearchInfo
+            {
+                FirstName = txtFirstName.Text,
+                LastName = txtLastName.Text,
+                Tell = txtTell.Text
+            };
+
+            if (CheckInputs(cuInfo))
             {
                 RtlMessageBox.Show("مقداری برای جستجو وارد نشده است.", "خطا - عدم ورود اطلاعات برای جستجو",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            dgvCustomers.Rows.Clear();
 
-            using (var db = new UnitOfWork())
+            _bgWorkerSerachCustomer.RunWorkerAsync(cuInfo);
+        }
+
+        private static bool CheckInputs(CustomerSearchInfo customerSearchInfo)
+        {
+            bool result = !(string.IsNullOrEmpty(customerSearchInfo.FirstName.Trim()) && string.IsNullOrEmpty(customerSearchInfo.LastName.Trim()) &&
+                            string.IsNullOrEmpty(customerSearchInfo.Tell.Trim()));
+
+            return result;
+        }
+
+        private static void _bgWorkerSerachCustomer_DoWork(object sender, DoWorkEventArgs e)
+        {
+            if (e.Argument != null)
             {
-                List<TblCustomer> users = db.CustomerGenericRepository.Get(
-                    x =>
-                        x.FirstName.StartsWith(txtFirstName.Text.Trim()) ||
-                        x.LastName.StartsWith(txtLastName.Text.Trim()) ||
-                        x.Tell.Contains(txtTell.Text.Trim()) ||
-                        x.Mobile.Contains(txtTell.Text.Trim())
-                        ).ToList();
-
-
-                dgvCustomers.AutoGenerateColumns = false;
-
-                if (users.Count > 0)
+                var cuInfo = e.Argument as CustomerSearchInfo;
+                try
                 {
-                    dgvCustomers.Rows.Clear();
-                    dgvCustomers.RowCount = users.Count;
-
-                    for (int i = 0; i < users.Count; i++)
+                    List<TblCustomer> users;
+                    using (var db = new UnitOfWork())
                     {
-                        dgvCustomers.Rows[i].Cells["Id"].Value = users[i].Id;
-                        dgvCustomers.Rows[i].Cells["FirstName"].Value = users[i].FirstName;
-                        dgvCustomers.Rows[i].Cells["LastName"].Value = users[i].LastName;
-                        dgvCustomers.Rows[i].Cells["Tell"].Value = users[i].Tell;
-                        dgvCustomers.Rows[i].Cells["Tell"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-                        dgvCustomers.Rows[i].Cells["Mobile"].Value = "0" + users[i].Mobile;
-                        dgvCustomers.Rows[i].Cells["Mobile"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-                        dgvCustomers.Rows[i].Cells["Email"].Value = users[i].Email;
-                        dgvCustomers.Rows[i].Cells["Email"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-                        dgvCustomers.Rows[i].Cells["NationalId"].Value = users[i].NationalId;
-                        dgvCustomers.Rows[i].Cells["NationalId"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-                        var createdDate = users[i].CreatedDate;
-                        if (createdDate != null)
-                            dgvCustomers.Rows[i].Cells["CreatedDate"].Value =
-                                createdDate.Value.ToString("HH:mm") + "   " +
-                                createdDate.Value.Date.ToShortDateString();
-
-                        dgvCustomers.Rows[i].Cells["CreatedDate"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-                        var modifiedDate = users[i].ModifiedDate;
-                        if (modifiedDate != null)
-                            dgvCustomers.Rows[i].Cells["CreatedDate"].Value =
-                                modifiedDate.Value.ToString("HH:mm") + "   " +
-                                modifiedDate.Value.Date.ToShortDateString();
-
-                        dgvCustomers.Rows[i].Cells["CreatedDate"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-                        dgvCustomers.Rows[i].Cells["MoreInfo"].Value = "...";
+                        users = db.CustomerGenericRepository.Get(
+                            x =>
+                                x.FirstName.StartsWith(cuInfo.FirstName.Trim()) ||
+                                x.LastName.StartsWith(cuInfo.LastName.Trim()) ||
+                                x.Tell.Contains(cuInfo.Tell.Trim()) ||
+                                x.Mobile.Contains(cuInfo.Tell.Trim())
+                        ).ToList();
                     }
 
-                    dgvCustomers.ClearSelection();
+                    e.Result = users;
                 }
-                else
+                catch (Exception exception)
                 {
-                    RtlMessageBox.Show("متاسفانه جستجوی شما در سیستم نتیجه ای در بر نداشت.", "", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                    dgvCustomers.Rows.Clear();
+                    Console.WriteLine(exception.Message);
+                    e.Result = null;
                 }
             }
         }
+        private void _bgWorkerSerachCustomer_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Result != null)
+            {
+                try
+                {
+                    var users = e.Result as List<TblCustomer>;
 
+                    dgvCustomers.Rows.Clear();
+                    dgvCustomers.AutoGenerateColumns = false;
+
+                    if ((users ?? throw new InvalidOperationException()).Any())
+                    {
+                        dgvCustomers.Rows.Clear();
+                        dgvCustomers.RowCount = users.Count;
+
+                        for (int i = 0; i < users.Count; i++)
+                        {
+                            dgvCustomers.Rows[i].Cells["Id"].Value = users[i].Id;
+                            dgvCustomers.Rows[i].Cells["FirstName"].Value = users[i].FirstName;
+                            dgvCustomers.Rows[i].Cells["LastName"].Value = users[i].LastName;
+                            dgvCustomers.Rows[i].Cells["Tell"].Value = users[i].Tell;
+                            dgvCustomers.Rows[i].Cells["Tell"].Style.Alignment =
+                                DataGridViewContentAlignment.MiddleRight;
+
+                            dgvCustomers.Rows[i].Cells["Mobile"].Value = "0" + users[i].Mobile;
+                            dgvCustomers.Rows[i].Cells["Mobile"].Style.Alignment =
+                                DataGridViewContentAlignment.MiddleRight;
+
+                            dgvCustomers.Rows[i].Cells["Email"].Value = users[i].Email;
+                            dgvCustomers.Rows[i].Cells["Email"].Style.Alignment =
+                                DataGridViewContentAlignment.MiddleRight;
+
+                            dgvCustomers.Rows[i].Cells["NationalId"].Value = users[i].NationalId;
+                            dgvCustomers.Rows[i].Cells["NationalId"].Style.Alignment =
+                                DataGridViewContentAlignment.MiddleRight;
+
+                            var createdDate = users[i].CreatedDate;
+                            if (createdDate != null)
+                                dgvCustomers.Rows[i].Cells["CreatedDate"].Value =
+                                    createdDate.Value.ToString("HH:mm") + "   " +
+                                    createdDate.Value.Date.ToShortDateString();
+
+                            dgvCustomers.Rows[i].Cells["CreatedDate"].Style.Alignment =
+                                DataGridViewContentAlignment.MiddleRight;
+
+                            var modifiedDate = users[i].ModifiedDate;
+                            if (modifiedDate != null)
+                                dgvCustomers.Rows[i].Cells["CreatedDate"].Value =
+                                    modifiedDate.Value.ToString("HH:mm") + "   " +
+                                    modifiedDate.Value.Date.ToShortDateString();
+
+                            dgvCustomers.Rows[i].Cells["CreatedDate"].Style.Alignment =
+                                DataGridViewContentAlignment.MiddleRight;
+
+                            dgvCustomers.Rows[i].Cells["MoreInfo"].Value = "...";
+                        }
+
+                        dgvCustomers.ClearSelection();
+                    }
+                }
+                catch (InvalidOperationException invalidOperationException)
+                {
+                    RtlMessageBox.Show("متاسفانه جستجوی شما در سیستم نتیجه ای در بر نداشت.", "", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    MessageBox.Show($@"invalidOperationException: {invalidOperationException.Message}");
+                    dgvCustomers.Rows.Clear();
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show($@"Exception: {exception.Message}");
+                }
+            }
+            else
+            {
+                RtlMessageBox.Show("متاسفانه جستجوی شما در سیستم نتیجه ای در بر نداشت.", "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                dgvCustomers.Rows.Clear();
+            }
+        }
 
 
 
@@ -218,7 +287,8 @@ namespace PhotographyAutomation.App.Forms.Customers
                 frmAddEditCustomer.JustSaveCustomerInfo = true;
 
 
-                frmAddEditCustomer.ShowDialog();
+                if (frmAddEditCustomer.ShowDialog() == DialogResult.OK)
+                    CustomerId = frmAddEditCustomer.CustomerId;
             }
         }
 
@@ -290,5 +360,28 @@ namespace PhotographyAutomation.App.Forms.Customers
                 DialogResult = DialogResult.OK;
             }
         }
+
+
+
+
+
     }
+
+}
+public class CustomerSearchInfo
+{
+    public string FirstName { get; internal set; }
+    public string LastName { get; internal set; }
+    public string Tell { get; internal set; }
+
+    public CustomerSearchInfo()
+    {
+
+    }
+    //public CustomerSearchInfo(string firstName, string lastName, string tell)
+    //{
+    //    FirstName = firstName;
+    //    LastName = lastName;
+    //    Tell = tell;
+    //}
 }
