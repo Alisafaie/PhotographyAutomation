@@ -1,4 +1,5 @@
-﻿using PhotographyAutomation.App.Forms.Booking;
+﻿using DevComponents.DotNetBar.Validator;
+using PhotographyAutomation.App.Forms.Booking;
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.DateLayer.Models;
 using PhotographyAutomation.Utilities;
@@ -12,31 +13,74 @@ namespace PhotographyAutomation.App.Forms.Customers
 {
     public partial class FrmShowCustomer : Form
     {
+        #region Variables
+
         public bool FromFrmAddEditBooking = false;
         public bool FromFrmShowBookings = false;
-        public int CustomerId = 0;
+        public int CustomerId;
         public bool CustomerIdForPreFactor = false;
-
 
         private readonly BackgroundWorker _bgWorkerSerachCustomer = new BackgroundWorker();
 
+        #endregion
+
+
+        #region Form Events
         public FrmShowCustomer()
         {
             InitializeComponent();
             _bgWorkerSerachCustomer.DoWork += _bgWorkerSerachCustomer_DoWork;
             _bgWorkerSerachCustomer.RunWorkerCompleted += _bgWorkerSerachCustomer_RunWorkerCompleted;
         }
-
-
-
-
-
-        private void FrmSearchCustomer_Load(object sender, EventArgs e)
+        private void FrmShowCustomer_Load(object sender, EventArgs e)
         {
             AddContextMenuToTxtTell();
         }
 
+        #endregion
 
+
+        #region Menthods
+        //جهت جلوگیری از کپی پیست و دور زدن قوانین برنامه
+        private void AddContextMenuToTxtTell()
+        {
+            var menu = new ContextMenuStrip();
+            menu.Items.Add("لطفا اعداد را به صورت کپی پیست وارد نکنید.");
+            //txtTell.TextBoxElement.TextBoxItem.HostedControl.ContextMenuStrip = menu;
+            txtTell.ContextMenuStrip = menu;
+        }
+        private bool CheckInputs(CustomerSearchInfo cuInfo)
+        {
+            if (string.IsNullOrEmpty(cuInfo.FirstName.Trim()) && string.IsNullOrEmpty(cuInfo.LastName.Trim()) &&
+                string.IsNullOrEmpty(cuInfo.Tell.Trim()))
+            {
+                if (string.IsNullOrEmpty(cuInfo.FirstName.Trim()))
+                {
+                    highlighter.SetHighlightColor(txtFirstName, eHighlightColor.Red);
+                    txtFirstName.Focus();
+                }
+                else if (string.IsNullOrEmpty(cuInfo.LastName.Trim()))
+                {
+                    highlighter.SetHighlightColor(txtLastName, eHighlightColor.Red);
+                    txtLastName.Focus();
+                }
+                else
+                {
+                    highlighter.SetHighlightColor(txtTell, eHighlightColor.Red);
+                    txtTell.Focus();
+                }
+                return false;
+            }
+            highlighter.SetHighlightColor(txtFirstName, eHighlightColor.None);
+            highlighter.SetHighlightColor(txtLastName, eHighlightColor.None);
+            highlighter.SetHighlightColor(txtTell, eHighlightColor.None);
+            return true;
+        }
+
+        #endregion
+
+
+        #region Search Customer
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -47,7 +91,7 @@ namespace PhotographyAutomation.App.Forms.Customers
                 Tell = txtTell.Text
             };
 
-            if (CheckInputs(cuInfo))
+            if (CheckInputs(cuInfo) == false)
             {
                 RtlMessageBox.Show("مقداری برای جستجو وارد نشده است.", "خطا - عدم ورود اطلاعات برای جستجو",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -55,14 +99,6 @@ namespace PhotographyAutomation.App.Forms.Customers
             }
 
             _bgWorkerSerachCustomer.RunWorkerAsync(cuInfo);
-        }
-
-        private static bool CheckInputs(CustomerSearchInfo customerSearchInfo)
-        {
-            bool result = !(string.IsNullOrEmpty(customerSearchInfo.FirstName.Trim()) && string.IsNullOrEmpty(customerSearchInfo.LastName.Trim()) &&
-                            string.IsNullOrEmpty(customerSearchInfo.Tell.Trim()));
-
-            return result;
         }
 
         private static void _bgWorkerSerachCustomer_DoWork(object sender, DoWorkEventArgs e)
@@ -174,7 +210,10 @@ namespace PhotographyAutomation.App.Forms.Customers
             }
         }
 
+        #endregion
 
+
+        #region Datagridview Events
 
         private void dgvUsers_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -194,35 +233,6 @@ namespace PhotographyAutomation.App.Forms.Customers
                     }
                 }
             }
-        }
-
-
-        private void txtFirstName_Enter(object sender, EventArgs e)
-        {
-            var language = new System.Globalization.CultureInfo("fa-IR");
-            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
-        }
-        private void txtFirstName_Leave(object sender, EventArgs e)
-        {
-            var language = new System.Globalization.CultureInfo("en-US");
-            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
-        }
-        private void txtTell_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)))
-            {
-                e.Handled = true;
-            }
-        }
-
-
-        //جهت جلوگیری از کپی پیست و دور زدن قوانین برنامه
-        private void AddContextMenuToTxtTell()
-        {
-            var menu = new ContextMenuStrip();
-            menu.Items.Add("لطفا اعداد را به صورت کپی پیست وارد نکنید.");
-            //txtTell.TextBoxElement.TextBoxItem.HostedControl.ContextMenuStrip = menu;
-            txtTell.ContextMenuStrip = menu;
         }
 
         private void dgvUsers_MouseUp(object sender, MouseEventArgs e)
@@ -245,6 +255,34 @@ namespace PhotographyAutomation.App.Forms.Customers
                 }
             }
         }
+
+        #endregion
+
+
+        #region Type Farsi and English
+
+        private void txtFirstName_Enter(object sender, EventArgs e)
+        {
+            var language = new System.Globalization.CultureInfo("fa-IR");
+            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
+        }
+        private void txtFirstName_Leave(object sender, EventArgs e)
+        {
+            var language = new System.Globalization.CultureInfo("en-US");
+            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
+        }
+        private void txtTell_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
+        }
+        #endregion
+
+
+        #region Datagridview Menu
+
         private void ویرایشاطلاعاتToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var customerId = Convert.ToInt32(dgvCustomers.SelectedRows[0].Cells["Id"].Value);
@@ -277,7 +315,10 @@ namespace PhotographyAutomation.App.Forms.Customers
             }
         }
 
+        #endregion
 
+
+        #region Top Menu
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (var frmAddEditCustomer = new FrmAddEditCustomerInfo())
@@ -289,6 +330,8 @@ namespace PhotographyAutomation.App.Forms.Customers
 
                 if (frmAddEditCustomer.ShowDialog() == DialogResult.OK)
                     CustomerId = frmAddEditCustomer.CustomerId;
+                if (CustomerIdForPreFactor)
+                    DialogResult = DialogResult.OK;
             }
         }
 
@@ -342,8 +385,8 @@ namespace PhotographyAutomation.App.Forms.Customers
         private void menuDgvUsers_Paint(object sender, PaintEventArgs e)
         {
             if (dgvCustomers.CurrentRow != null &&
-                int.TryParse(dgvCustomers.SelectedRows[0].Cells["Id"].Value.ToString(), out int customerId) == true &&
-                CustomerIdForPreFactor == true)
+                int.TryParse(dgvCustomers.SelectedRows[0].Cells["Id"].Value.ToString(), out int customerId) &&
+                CustomerIdForPreFactor)
             {
                 CustomerId = customerId;
                 ثبتپیشفاکتورToolStripMenuItem.Enabled = true;
@@ -353,18 +396,22 @@ namespace PhotographyAutomation.App.Forms.Customers
         private void ثبتپیشفاکتورToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (dgvCustomers.CurrentRow != null &&
-               int.TryParse(dgvCustomers.SelectedRows[0].Cells["Id"].Value.ToString(), out int customerId) == true &&
-               CustomerIdForPreFactor == true)
+               int.TryParse(dgvCustomers.SelectedRows[0].Cells["Id"].Value.ToString(), out int customerId) &&
+               CustomerIdForPreFactor)
             {
                 CustomerId = customerId;
                 DialogResult = DialogResult.OK;
             }
         }
 
+        #endregion
 
-
-
-
+        private void btnClearSearch_Click(object sender, EventArgs e)
+        {
+            txtFirstName.ResetText();
+            txtLastName.ResetText();
+            txtTell.ResetText();
+        }
     }
 
 }
@@ -373,15 +420,4 @@ public class CustomerSearchInfo
     public string FirstName { get; internal set; }
     public string LastName { get; internal set; }
     public string Tell { get; internal set; }
-
-    public CustomerSearchInfo()
-    {
-
-    }
-    //public CustomerSearchInfo(string firstName, string lastName, string tell)
-    //{
-    //    FirstName = firstName;
-    //    LastName = lastName;
-    //    Tell = tell;
-    //}
 }

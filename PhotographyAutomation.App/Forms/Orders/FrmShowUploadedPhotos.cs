@@ -1319,11 +1319,16 @@ namespace PhotographyAutomation.App.Forms.Orders
             if (CheckPreFactorIssuedForThisCustomer(customerName) == false) /*آیا فاکتور برای همین مشتری صادر شود؟*/
             {
                 _customerId = ShowCustomerSearchForm();
+                
+                if (_customerId == 0) // user clicked no
+                {
+                    _customerId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmCustomerId"].Value);
+                }
                 string downloadPath = null;
-                downloadPath = DownloadAllOrderPhotos();
-                ShowDownloadedFolder(downloadPath);
-                ShowUploadPhotosForm(); /*ارسال عکس های انتخابی مشتری به سرور*/
-                _customerOrderFilesSelected = true;
+                //downloadPath = DownloadAllOrderPhotos();
+                //ShowDownloadedFolder(downloadPath);
+                //ShowUploadPhotosForm(); /*ارسال عکس های انتخابی مشتری به سرور*/
+                //_customerOrderFilesSelected = true;
             }
 
             //if (CheckOrderPhotosIsSelected(_customerId, orderId) == true ||
@@ -1381,7 +1386,7 @@ namespace PhotographyAutomation.App.Forms.Orders
         private bool CheckPreFactorIssuedForThisCustomer(string customerName)
         {
             DialogResult dr = RtlMessageBox.Show(
-                $"آیا پیش فاکتور مشتری {customerName} به نام همین نام صادر شود؟",
+                $"آیا پیش فاکتور به نام {customerName} صادر گردد؟",
                 "صدور فاکتور",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question,

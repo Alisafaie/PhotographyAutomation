@@ -36,7 +36,9 @@
             this.groupBoxPreviewPictures = new System.Windows.Forms.GroupBox();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
+            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtRemainingPayment = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX11 = new DevComponents.DotNetBar.LabelX();
             this.txtCusstomerDeposit = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX9 = new DevComponents.DotNetBar.LabelX();
             this.txtTotalCosts = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -133,33 +135,31 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX11 = new DevComponents.DotNetBar.LabelX();
-            this.txtOrderCodeDate = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtOrderCodeCustomerIdBookingId = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX4 = new DevComponents.DotNetBar.LabelX();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.labelX17 = new DevComponents.DotNetBar.LabelX();
+            this.txtCustomerInfo = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.textBoxX3 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX2 = new DevComponents.DotNetBar.LabelX();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.txtPhotographyType = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX55 = new DevComponents.DotNetBar.LabelX();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.datePickerOrderDate = new FreeControls.PersianDateTimePicker();
+            this.labelX18 = new DevComponents.DotNetBar.LabelX();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
+            this.labelX4 = new DevComponents.DotNetBar.LabelX();
+            this.txtOrderCodeCustomerIdBookingId = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtOrderCodeDate = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
             this.bgWorkerLoadOriginalPringSizes = new System.ComponentModel.BackgroundWorker();
             this.bgWorkerLoadPrintSizeServices = new System.ComponentModel.BackgroundWorker();
             this.bgWorkerGetOriginalPrintPrice = new System.ComponentModel.BackgroundWorker();
             this.bgWorkerGetPrintServicePrice = new System.ComponentModel.BackgroundWorker();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.datePickerOrderDate = new FreeControls.PersianDateTimePicker();
-            this.labelX18 = new DevComponents.DotNetBar.LabelX();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.txtPhotographyType = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX55 = new DevComponents.DotNetBar.LabelX();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX3 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX2 = new DevComponents.DotNetBar.LabelX();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.labelX17 = new DevComponents.DotNetBar.LabelX();
-            this.txtCustomerInfo = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.menuStrip1.SuspendLayout();
             this.panelEx1.SuspendLayout();
             this.groupBoxPreviewPictures.SuspendLayout();
@@ -171,11 +171,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.integerInputSecontPrintTotal1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -284,6 +284,23 @@
             this.labelX10.TabIndex = 106;
             this.labelX10.Text = "الباقی";
             // 
+            // textBoxX1
+            // 
+            this.textBoxX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            // 
+            // 
+            // 
+            this.textBoxX1.Border.Class = "TextBoxBorder";
+            this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX1.Enabled = false;
+            this.textBoxX1.Location = new System.Drawing.Point(414, 105);
+            this.textBoxX1.Name = "textBoxX1";
+            this.textBoxX1.PreventEnterBeep = true;
+            this.textBoxX1.ReadOnly = true;
+            this.textBoxX1.Size = new System.Drawing.Size(132, 21);
+            this.textBoxX1.TabIndex = 87;
+            this.textBoxX1.TabStop = false;
+            // 
             // txtRemainingPayment
             // 
             this.txtRemainingPayment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -300,6 +317,20 @@
             this.txtRemainingPayment.Size = new System.Drawing.Size(100, 21);
             this.txtRemainingPayment.TabIndex = 105;
             this.txtRemainingPayment.TabStop = false;
+            // 
+            // labelX11
+            // 
+            this.labelX11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelX11.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX11.Location = new System.Drawing.Point(566, 107);
+            this.labelX11.Name = "labelX11";
+            this.labelX11.Size = new System.Drawing.Size(75, 16);
+            this.labelX11.TabIndex = 86;
+            this.labelX11.Text = "وضعیت سفارش";
             // 
             // txtCusstomerDeposit
             // 
@@ -410,6 +441,8 @@
             this.txtOrderDescriptions.PreventEnterBeep = true;
             this.txtOrderDescriptions.Size = new System.Drawing.Size(535, 52);
             this.txtOrderDescriptions.TabIndex = 2;
+            this.txtOrderDescriptions.Enter += new System.EventHandler(this.txt_TypeFarsi_Enter);
+            this.txtOrderDescriptions.Leave += new System.EventHandler(this.txt_TypeFarsi_Leave);
             // 
             // labelX6
             // 
@@ -1361,6 +1394,8 @@
             this.txtCustomerFirstName.PreventEnterBeep = true;
             this.txtCustomerFirstName.Size = new System.Drawing.Size(121, 21);
             this.txtCustomerFirstName.TabIndex = 0;
+            this.txtCustomerFirstName.Enter += new System.EventHandler(this.txt_TypeFarsi_Enter);
+            this.txtCustomerFirstName.Leave += new System.EventHandler(this.txt_TypeFarsi_Leave);
             // 
             // labelX25
             // 
@@ -1607,6 +1642,8 @@
             this.txtCustomerLastName.PreventEnterBeep = true;
             this.txtCustomerLastName.Size = new System.Drawing.Size(121, 21);
             this.txtCustomerLastName.TabIndex = 1;
+            this.txtCustomerLastName.Enter += new System.EventHandler(this.txt_TypeFarsi_Enter);
+            this.txtCustomerLastName.Leave += new System.EventHandler(this.txt_TypeFarsi_Leave);
             // 
             // labelX49
             // 
@@ -1650,6 +1687,8 @@
             this.textPhotoRetouchDescription.PreventEnterBeep = true;
             this.textPhotoRetouchDescription.Size = new System.Drawing.Size(536, 57);
             this.textPhotoRetouchDescription.TabIndex = 20;
+            this.textPhotoRetouchDescription.Enter += new System.EventHandler(this.txt_TypeFarsi_Enter);
+            this.textPhotoRetouchDescription.Leave += new System.EventHandler(this.txt_TypeFarsi_Leave);
             // 
             // labelX29
             // 
@@ -1788,194 +1827,46 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "اطلاعات سفارش";
             // 
-            // textBoxX1
+            // panel2
             // 
-            this.textBoxX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel2.Controls.Add(this.labelX17);
+            this.panel2.Controls.Add(this.txtCustomerInfo);
+            this.panel2.Location = new System.Drawing.Point(666, 20);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(247, 33);
+            this.panel2.TabIndex = 94;
             // 
+            // labelX17
             // 
-            // 
-            this.textBoxX1.Border.Class = "TextBoxBorder";
-            this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX1.Enabled = false;
-            this.textBoxX1.Location = new System.Drawing.Point(414, 105);
-            this.textBoxX1.Name = "textBoxX1";
-            this.textBoxX1.PreventEnterBeep = true;
-            this.textBoxX1.ReadOnly = true;
-            this.textBoxX1.Size = new System.Drawing.Size(132, 21);
-            this.textBoxX1.TabIndex = 87;
-            this.textBoxX1.TabStop = false;
-            // 
-            // labelX11
-            // 
-            this.labelX11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelX11.AutoSize = true;
+            this.labelX17.AutoSize = true;
             // 
             // 
             // 
-            this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX11.Location = new System.Drawing.Point(566, 107);
-            this.labelX11.Name = "labelX11";
-            this.labelX11.Size = new System.Drawing.Size(75, 16);
-            this.labelX11.TabIndex = 86;
-            this.labelX11.Text = "وضعیت سفارش";
+            this.labelX17.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX17.Location = new System.Drawing.Point(185, 8);
+            this.labelX17.Name = "labelX17";
+            this.labelX17.Size = new System.Drawing.Size(54, 16);
+            this.labelX17.TabIndex = 10;
+            this.labelX17.Text = "نام مشتری";
             // 
-            // txtOrderCodeDate
+            // txtCustomerInfo
             // 
-            this.txtOrderCodeDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.txtOrderCodeDate.Border.Class = "TextBoxBorder";
-            this.txtOrderCodeDate.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtOrderCodeDate.Enabled = false;
-            this.txtOrderCodeDate.FocusHighlightColor = System.Drawing.SystemColors.Info;
-            this.txtOrderCodeDate.FocusHighlightEnabled = true;
-            this.txtOrderCodeDate.Location = new System.Drawing.Point(7, 6);
-            this.txtOrderCodeDate.MaxLength = 7;
-            this.txtOrderCodeDate.Name = "txtOrderCodeDate";
-            this.txtOrderCodeDate.PreventEnterBeep = true;
-            this.txtOrderCodeDate.ReadOnly = true;
-            this.txtOrderCodeDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtOrderCodeDate.Size = new System.Drawing.Size(55, 21);
-            this.txtOrderCodeDate.TabIndex = 4;
-            this.txtOrderCodeDate.TabStop = false;
-            // 
-            // txtOrderCodeCustomerIdBookingId
-            // 
-            this.txtOrderCodeCustomerIdBookingId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCustomerInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
-            this.txtOrderCodeCustomerIdBookingId.Border.Class = "TextBoxBorder";
-            this.txtOrderCodeCustomerIdBookingId.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtOrderCodeCustomerIdBookingId.Enabled = false;
-            this.txtOrderCodeCustomerIdBookingId.FocusHighlightColor = System.Drawing.SystemColors.Info;
-            this.txtOrderCodeCustomerIdBookingId.FocusHighlightEnabled = true;
-            this.txtOrderCodeCustomerIdBookingId.Location = new System.Drawing.Point(75, 6);
-            this.txtOrderCodeCustomerIdBookingId.MaxLength = 6;
-            this.txtOrderCodeCustomerIdBookingId.Name = "txtOrderCodeCustomerIdBookingId";
-            this.txtOrderCodeCustomerIdBookingId.PreventEnterBeep = true;
-            this.txtOrderCodeCustomerIdBookingId.ReadOnly = true;
-            this.txtOrderCodeCustomerIdBookingId.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtOrderCodeCustomerIdBookingId.Size = new System.Drawing.Size(83, 21);
-            this.txtOrderCodeCustomerIdBookingId.TabIndex = 5;
-            this.txtOrderCodeCustomerIdBookingId.TabStop = false;
-            // 
-            // labelX4
-            // 
-            this.labelX4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelX4.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(65, 8);
-            this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(6, 16);
-            this.labelX4.TabIndex = 79;
-            this.labelX4.Text = "-";
-            // 
-            // labelX7
-            // 
-            this.labelX7.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.Location = new System.Drawing.Point(161, 8);
-            this.labelX7.Name = "labelX7";
-            this.labelX7.Size = new System.Drawing.Size(78, 16);
-            this.labelX7.TabIndex = 10;
-            this.labelX7.Text = "شناسه سفارش";
-            // 
-            // styleManager1
-            // 
-            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2010Silver;
-            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255))))), System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199))))));
-            // 
-            // highlighter1
-            // 
-            this.highlighter1.ContainerControl = this;
-            this.highlighter1.FocusHighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Orange;
-            this.highlighter1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F";
-            // 
-            // bgWorkerLoadOriginalPringSizes
-            // 
-            this.bgWorkerLoadOriginalPringSizes.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerLoadOriginalPringSizes_DoWork);
-            this.bgWorkerLoadOriginalPringSizes.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerLoadOriginalPringSizes_RunWorkerCompleted);
-            // 
-            // bgWorkerLoadPrintSizeServices
-            // 
-            this.bgWorkerLoadPrintSizeServices.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerLoadPrintSizeServices_DoWork);
-            this.bgWorkerLoadPrintSizeServices.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerLoadPrintSizeServices_RunWorkerCompleted);
-            // 
-            // bgWorkerGetOriginalPrintPrice
-            // 
-            this.bgWorkerGetOriginalPrintPrice.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerGetOriginalPrintPrice_DoWork);
-            this.bgWorkerGetOriginalPrintPrice.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerGetOriginalPrintPrice_RunWorkerCompleted);
-            // 
-            // bgWorkerGetPrintServicePrice
-            // 
-            this.bgWorkerGetPrintServicePrice.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerGetPrintServicePrice_DoWork);
-            this.bgWorkerGetPrintServicePrice.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerGetPrintServicePrice_RunWorkerCompleted);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.labelX7);
-            this.panel1.Controls.Add(this.labelX4);
-            this.panel1.Controls.Add(this.txtOrderCodeCustomerIdBookingId);
-            this.panel1.Controls.Add(this.txtOrderCodeDate);
-            this.panel1.Location = new System.Drawing.Point(919, 20);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(247, 33);
-            this.panel1.TabIndex = 89;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.datePickerOrderDate);
-            this.panel3.Controls.Add(this.labelX18);
-            this.panel3.Location = new System.Drawing.Point(448, 20);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(212, 33);
-            this.panel3.TabIndex = 91;
-            // 
-            // datePickerOrderDate
-            // 
-            this.datePickerOrderDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.datePickerOrderDate.BackColor = System.Drawing.Color.White;
-            this.datePickerOrderDate.Enabled = false;
-            this.datePickerOrderDate.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.datePickerOrderDate.Location = new System.Drawing.Point(13, 7);
-            this.datePickerOrderDate.Name = "datePickerOrderDate";
-            this.datePickerOrderDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.datePickerOrderDate.ShowTime = false;
-            this.datePickerOrderDate.Size = new System.Drawing.Size(117, 18);
-            this.datePickerOrderDate.TabIndex = 11;
-            this.datePickerOrderDate.TabStop = false;
-            this.datePickerOrderDate.Text = "persianDateTimePicker1";
-            this.datePickerOrderDate.Value = ((FreeControls.PersianDate)(resources.GetObject("datePickerOrderDate.Value")));
-            // 
-            // labelX18
-            // 
-            this.labelX18.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX18.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX18.Location = new System.Drawing.Point(135, 7);
-            this.labelX18.Name = "labelX18";
-            this.labelX18.Size = new System.Drawing.Size(64, 16);
-            this.labelX18.TabIndex = 12;
-            this.labelX18.Text = "تاریخ عکاسی";
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.txtPhotographyType);
-            this.panel4.Controls.Add(this.labelX55);
-            this.panel4.Location = new System.Drawing.Point(230, 20);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(212, 33);
-            this.panel4.TabIndex = 92;
+            this.txtCustomerInfo.Border.Class = "TextBoxBorder";
+            this.txtCustomerInfo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtCustomerInfo.Enabled = false;
+            this.txtCustomerInfo.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.txtCustomerInfo.FocusHighlightEnabled = true;
+            this.txtCustomerInfo.Location = new System.Drawing.Point(7, 6);
+            this.txtCustomerInfo.Name = "txtCustomerInfo";
+            this.txtCustomerInfo.PreventEnterBeep = true;
+            this.txtCustomerInfo.ReadOnly = true;
+            this.txtCustomerInfo.Size = new System.Drawing.Size(172, 21);
+            this.txtCustomerInfo.TabIndex = 6;
+            this.txtCustomerInfo.TabStop = false;
             // 
             // panel5
             // 
@@ -1987,35 +1878,6 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(212, 33);
             this.panel5.TabIndex = 93;
-            // 
-            // txtPhotographyType
-            // 
-            // 
-            // 
-            // 
-            this.txtPhotographyType.Border.Class = "TextBoxBorder";
-            this.txtPhotographyType.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtPhotographyType.Enabled = false;
-            this.txtPhotographyType.Location = new System.Drawing.Point(8, 6);
-            this.txtPhotographyType.Name = "txtPhotographyType";
-            this.txtPhotographyType.PreventEnterBeep = true;
-            this.txtPhotographyType.ReadOnly = true;
-            this.txtPhotographyType.Size = new System.Drawing.Size(132, 21);
-            this.txtPhotographyType.TabIndex = 87;
-            this.txtPhotographyType.TabStop = false;
-            // 
-            // labelX55
-            // 
-            this.labelX55.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX55.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX55.Location = new System.Drawing.Point(146, 8);
-            this.labelX55.Name = "labelX55";
-            this.labelX55.Size = new System.Drawing.Size(58, 16);
-            this.labelX55.TabIndex = 86;
-            this.labelX55.Text = "نوع عکاسی";
             // 
             // labelX1
             // 
@@ -2086,46 +1948,192 @@
             this.labelX2.TabIndex = 91;
             this.labelX2.Text = "-";
             // 
-            // panel2
+            // panel4
             // 
-            this.panel2.Controls.Add(this.labelX17);
-            this.panel2.Controls.Add(this.txtCustomerInfo);
-            this.panel2.Location = new System.Drawing.Point(666, 20);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(247, 33);
-            this.panel2.TabIndex = 94;
+            this.panel4.Controls.Add(this.txtPhotographyType);
+            this.panel4.Controls.Add(this.labelX55);
+            this.panel4.Location = new System.Drawing.Point(230, 20);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(212, 33);
+            this.panel4.TabIndex = 92;
             // 
-            // labelX17
-            // 
-            this.labelX17.AutoSize = true;
+            // txtPhotographyType
             // 
             // 
             // 
-            this.labelX17.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX17.Location = new System.Drawing.Point(185, 8);
-            this.labelX17.Name = "labelX17";
-            this.labelX17.Size = new System.Drawing.Size(54, 16);
-            this.labelX17.TabIndex = 10;
-            this.labelX17.Text = "نام مشتری";
             // 
-            // txtCustomerInfo
+            this.txtPhotographyType.Border.Class = "TextBoxBorder";
+            this.txtPhotographyType.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtPhotographyType.Enabled = false;
+            this.txtPhotographyType.Location = new System.Drawing.Point(8, 6);
+            this.txtPhotographyType.Name = "txtPhotographyType";
+            this.txtPhotographyType.PreventEnterBeep = true;
+            this.txtPhotographyType.ReadOnly = true;
+            this.txtPhotographyType.Size = new System.Drawing.Size(132, 21);
+            this.txtPhotographyType.TabIndex = 87;
+            this.txtPhotographyType.TabStop = false;
             // 
-            this.txtCustomerInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // labelX55
+            // 
+            this.labelX55.AutoSize = true;
             // 
             // 
             // 
-            this.txtCustomerInfo.Border.Class = "TextBoxBorder";
-            this.txtCustomerInfo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtCustomerInfo.Enabled = false;
-            this.txtCustomerInfo.FocusHighlightColor = System.Drawing.SystemColors.Info;
-            this.txtCustomerInfo.FocusHighlightEnabled = true;
-            this.txtCustomerInfo.Location = new System.Drawing.Point(7, 6);
-            this.txtCustomerInfo.Name = "txtCustomerInfo";
-            this.txtCustomerInfo.PreventEnterBeep = true;
-            this.txtCustomerInfo.ReadOnly = true;
-            this.txtCustomerInfo.Size = new System.Drawing.Size(172, 21);
-            this.txtCustomerInfo.TabIndex = 6;
-            this.txtCustomerInfo.TabStop = false;
+            this.labelX55.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX55.Location = new System.Drawing.Point(146, 8);
+            this.labelX55.Name = "labelX55";
+            this.labelX55.Size = new System.Drawing.Size(58, 16);
+            this.labelX55.TabIndex = 86;
+            this.labelX55.Text = "نوع عکاسی";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.datePickerOrderDate);
+            this.panel3.Controls.Add(this.labelX18);
+            this.panel3.Location = new System.Drawing.Point(448, 20);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(212, 33);
+            this.panel3.TabIndex = 91;
+            // 
+            // datePickerOrderDate
+            // 
+            this.datePickerOrderDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.datePickerOrderDate.BackColor = System.Drawing.Color.White;
+            this.datePickerOrderDate.Enabled = false;
+            this.datePickerOrderDate.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.datePickerOrderDate.Location = new System.Drawing.Point(13, 7);
+            this.datePickerOrderDate.Name = "datePickerOrderDate";
+            this.datePickerOrderDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.datePickerOrderDate.ShowTime = false;
+            this.datePickerOrderDate.Size = new System.Drawing.Size(117, 18);
+            this.datePickerOrderDate.TabIndex = 11;
+            this.datePickerOrderDate.TabStop = false;
+            this.datePickerOrderDate.Text = "persianDateTimePicker1";
+            this.datePickerOrderDate.Value = ((FreeControls.PersianDate)(resources.GetObject("datePickerOrderDate.Value")));
+            // 
+            // labelX18
+            // 
+            this.labelX18.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX18.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX18.Location = new System.Drawing.Point(135, 7);
+            this.labelX18.Name = "labelX18";
+            this.labelX18.Size = new System.Drawing.Size(64, 16);
+            this.labelX18.TabIndex = 12;
+            this.labelX18.Text = "تاریخ عکاسی";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.labelX7);
+            this.panel1.Controls.Add(this.labelX4);
+            this.panel1.Controls.Add(this.txtOrderCodeCustomerIdBookingId);
+            this.panel1.Controls.Add(this.txtOrderCodeDate);
+            this.panel1.Location = new System.Drawing.Point(919, 20);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(247, 33);
+            this.panel1.TabIndex = 89;
+            // 
+            // labelX7
+            // 
+            this.labelX7.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX7.Location = new System.Drawing.Point(161, 8);
+            this.labelX7.Name = "labelX7";
+            this.labelX7.Size = new System.Drawing.Size(78, 16);
+            this.labelX7.TabIndex = 10;
+            this.labelX7.Text = "شناسه سفارش";
+            // 
+            // labelX4
+            // 
+            this.labelX4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelX4.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX4.Location = new System.Drawing.Point(65, 8);
+            this.labelX4.Name = "labelX4";
+            this.labelX4.Size = new System.Drawing.Size(6, 16);
+            this.labelX4.TabIndex = 79;
+            this.labelX4.Text = "-";
+            // 
+            // txtOrderCodeCustomerIdBookingId
+            // 
+            this.txtOrderCodeCustomerIdBookingId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.txtOrderCodeCustomerIdBookingId.Border.Class = "TextBoxBorder";
+            this.txtOrderCodeCustomerIdBookingId.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtOrderCodeCustomerIdBookingId.Enabled = false;
+            this.txtOrderCodeCustomerIdBookingId.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.txtOrderCodeCustomerIdBookingId.FocusHighlightEnabled = true;
+            this.txtOrderCodeCustomerIdBookingId.Location = new System.Drawing.Point(75, 6);
+            this.txtOrderCodeCustomerIdBookingId.MaxLength = 6;
+            this.txtOrderCodeCustomerIdBookingId.Name = "txtOrderCodeCustomerIdBookingId";
+            this.txtOrderCodeCustomerIdBookingId.PreventEnterBeep = true;
+            this.txtOrderCodeCustomerIdBookingId.ReadOnly = true;
+            this.txtOrderCodeCustomerIdBookingId.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtOrderCodeCustomerIdBookingId.Size = new System.Drawing.Size(83, 21);
+            this.txtOrderCodeCustomerIdBookingId.TabIndex = 5;
+            this.txtOrderCodeCustomerIdBookingId.TabStop = false;
+            // 
+            // txtOrderCodeDate
+            // 
+            this.txtOrderCodeDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.txtOrderCodeDate.Border.Class = "TextBoxBorder";
+            this.txtOrderCodeDate.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtOrderCodeDate.Enabled = false;
+            this.txtOrderCodeDate.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.txtOrderCodeDate.FocusHighlightEnabled = true;
+            this.txtOrderCodeDate.Location = new System.Drawing.Point(7, 6);
+            this.txtOrderCodeDate.MaxLength = 7;
+            this.txtOrderCodeDate.Name = "txtOrderCodeDate";
+            this.txtOrderCodeDate.PreventEnterBeep = true;
+            this.txtOrderCodeDate.ReadOnly = true;
+            this.txtOrderCodeDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtOrderCodeDate.Size = new System.Drawing.Size(55, 21);
+            this.txtOrderCodeDate.TabIndex = 4;
+            this.txtOrderCodeDate.TabStop = false;
+            // 
+            // styleManager1
+            // 
+            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2010Silver;
+            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255))))), System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199))))));
+            // 
+            // highlighter1
+            // 
+            this.highlighter1.ContainerControl = this;
+            this.highlighter1.FocusHighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Orange;
+            this.highlighter1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F";
+            // 
+            // bgWorkerLoadOriginalPringSizes
+            // 
+            this.bgWorkerLoadOriginalPringSizes.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerLoadOriginalPringSizes_DoWork);
+            this.bgWorkerLoadOriginalPringSizes.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerLoadOriginalPringSizes_RunWorkerCompleted);
+            // 
+            // bgWorkerLoadPrintSizeServices
+            // 
+            this.bgWorkerLoadPrintSizeServices.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerLoadPrintSizeServices_DoWork);
+            this.bgWorkerLoadPrintSizeServices.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerLoadPrintSizeServices_RunWorkerCompleted);
+            // 
+            // bgWorkerGetOriginalPrintPrice
+            // 
+            this.bgWorkerGetOriginalPrintPrice.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerGetOriginalPrintPrice_DoWork);
+            this.bgWorkerGetOriginalPrintPrice.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerGetOriginalPrintPrice_RunWorkerCompleted);
+            // 
+            // bgWorkerGetPrintServicePrice
+            // 
+            this.bgWorkerGetPrintServicePrice.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerGetPrintServicePrice_DoWork);
+            this.bgWorkerGetPrintServicePrice.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerGetPrintServicePrice_RunWorkerCompleted);
             // 
             // FrmAddEditPreFactor
             // 
@@ -2161,16 +2169,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.integerInputSecontPrintTotal1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).EndInit();
             this.groupBox2.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

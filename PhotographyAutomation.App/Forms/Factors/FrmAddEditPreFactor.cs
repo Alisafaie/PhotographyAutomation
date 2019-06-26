@@ -1043,8 +1043,20 @@ namespace PhotographyAutomation.App.Forms.Factors
             }
         }
 
+
         #endregion
 
-        
+
+        private void txt_TypeFarsi_Enter(object sender, EventArgs e)
+        {
+            var language = new System.Globalization.CultureInfo("fa-IR");
+            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
+        }
+
+        private void txt_TypeFarsi_Leave(object sender, EventArgs e)
+        {
+            var language = new System.Globalization.CultureInfo("en-US");
+            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
+        }
     }
 }
