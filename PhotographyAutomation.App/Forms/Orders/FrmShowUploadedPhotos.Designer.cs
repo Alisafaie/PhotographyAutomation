@@ -67,6 +67,20 @@
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvUploads = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.contextMenuDgvUploads = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.مشاهده_عکس_ها_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.دریافت_عکس_ها_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.مشاهده_اطلاعات_مشتری_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.مشاهده_اطلاعات_رزرو_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.ارسال_عکسهای_انتخاب_شده_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ویرایش_عکسهای_انتخاب_شده_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.ثبت_پیش_فاکتور_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ویرایش_پیش_فاکتورToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
+            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.clmId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmCustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmBookingId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -86,20 +100,6 @@
             this.clmStatusName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmPhotosFolderLink = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmViewPhotos = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
-            this.contextMenuDgvUploads = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.مشاهده_عکس_ها_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.دریافت_عکس_ها_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.مشاهده_اطلاعات_مشتری_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.مشاهده_اطلاعات_رزرو_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.ارسال_عکسهای_انتخاب_شده_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ویرایش_عکسهای_انتخاب_شده_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.ثبت_پیش_فاکتور_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ویرایش_پیش_فاکتورToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1.SuspendLayout();
             this.panelEx3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -573,169 +573,6 @@
             this.dgvUploads.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUploads_CellContentClick);
             this.dgvUploads.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dgvUploads_MouseUp);
             // 
-            // clmId
-            // 
-            this.clmId.DataPropertyName = "Id";
-            this.clmId.HeaderText = "clmId";
-            this.clmId.Name = "clmId";
-            this.clmId.ReadOnly = true;
-            this.clmId.Visible = false;
-            // 
-            // clmCustomerId
-            // 
-            this.clmCustomerId.DataPropertyName = "CustomerId";
-            this.clmCustomerId.HeaderText = "clmCustomerId";
-            this.clmCustomerId.Name = "clmCustomerId";
-            this.clmCustomerId.ReadOnly = true;
-            this.clmCustomerId.Visible = false;
-            // 
-            // clmBookingId
-            // 
-            this.clmBookingId.DataPropertyName = "BookingId";
-            this.clmBookingId.HeaderText = "BookingId";
-            this.clmBookingId.Name = "clmBookingId";
-            this.clmBookingId.ReadOnly = true;
-            this.clmBookingId.Visible = false;
-            // 
-            // clmOrderCode
-            // 
-            this.clmOrderCode.DataPropertyName = "OrderCode";
-            this.clmOrderCode.HeaderText = "شناسه سفارش";
-            this.clmOrderCode.MinimumWidth = 130;
-            this.clmOrderCode.Name = "clmOrderCode";
-            this.clmOrderCode.ReadOnly = true;
-            // 
-            // clmCustomerFullName
-            // 
-            this.clmCustomerFullName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmCustomerFullName.DataPropertyName = "CustomerFullName";
-            this.clmCustomerFullName.HeaderText = "نام مشتری";
-            this.clmCustomerFullName.MinimumWidth = 150;
-            this.clmCustomerFullName.Name = "clmCustomerFullName";
-            this.clmCustomerFullName.ReadOnly = true;
-            // 
-            // clmDate
-            // 
-            this.clmDate.DataPropertyName = "Date";
-            this.clmDate.HeaderText = "تاریخ عکاسی";
-            this.clmDate.MinimumWidth = 100;
-            this.clmDate.Name = "clmDate";
-            this.clmDate.ReadOnly = true;
-            // 
-            // clmTime
-            // 
-            this.clmTime.DataPropertyName = "Time";
-            this.clmTime.HeaderText = "ساعت عکاسی";
-            this.clmTime.MinimumWidth = 110;
-            this.clmTime.Name = "clmTime";
-            this.clmTime.ReadOnly = true;
-            // 
-            // clmPhotographyTypeId
-            // 
-            this.clmPhotographyTypeId.DataPropertyName = "PhotographyTypeId";
-            this.clmPhotographyTypeId.HeaderText = "clmPhotographyTypeId";
-            this.clmPhotographyTypeId.Name = "clmPhotographyTypeId";
-            this.clmPhotographyTypeId.ReadOnly = true;
-            this.clmPhotographyTypeId.Visible = false;
-            // 
-            // clmPhotographyTypeName
-            // 
-            this.clmPhotographyTypeName.DataPropertyName = "PhotographyTypeName";
-            this.clmPhotographyTypeName.HeaderText = "نوع عکاسی";
-            this.clmPhotographyTypeName.MinimumWidth = 100;
-            this.clmPhotographyTypeName.Name = "clmPhotographyTypeName";
-            this.clmPhotographyTypeName.ReadOnly = true;
-            // 
-            // clmPersonCount
-            // 
-            this.clmPersonCount.DataPropertyName = "PersonCount";
-            this.clmPersonCount.HeaderText = "تعداد نفرات";
-            this.clmPersonCount.MinimumWidth = 70;
-            this.clmPersonCount.Name = "clmPersonCount";
-            this.clmPersonCount.ReadOnly = true;
-            // 
-            // clmTotalFiles
-            // 
-            this.clmTotalFiles.DataPropertyName = "TotalFiles";
-            this.clmTotalFiles.HeaderText = "تعداد عکس ها";
-            this.clmTotalFiles.MinimumWidth = 100;
-            this.clmTotalFiles.Name = "clmTotalFiles";
-            this.clmTotalFiles.ReadOnly = true;
-            // 
-            // clmCreatedDateTime
-            // 
-            this.clmCreatedDateTime.DataPropertyName = "CreatedDateTime";
-            this.clmCreatedDateTime.HeaderText = "تاریخ ثبت";
-            this.clmCreatedDateTime.MinimumWidth = 100;
-            this.clmCreatedDateTime.Name = "clmCreatedDateTime";
-            this.clmCreatedDateTime.ReadOnly = true;
-            this.clmCreatedDateTime.Visible = false;
-            // 
-            // clmUploadDate
-            // 
-            this.clmUploadDate.DataPropertyName = "UploadDate";
-            this.clmUploadDate.HeaderText = "تاریخ آپلود";
-            this.clmUploadDate.MinimumWidth = 70;
-            this.clmUploadDate.Name = "clmUploadDate";
-            this.clmUploadDate.ReadOnly = true;
-            // 
-            // clmModifiedDateTime
-            // 
-            this.clmModifiedDateTime.DataPropertyName = "ModifiedDateTime";
-            this.clmModifiedDateTime.HeaderText = "تاریخ ویرایش";
-            this.clmModifiedDateTime.Name = "clmModifiedDateTime";
-            this.clmModifiedDateTime.ReadOnly = true;
-            this.clmModifiedDateTime.Visible = false;
-            // 
-            // clmStatusId
-            // 
-            this.clmStatusId.DataPropertyName = "StatusId";
-            this.clmStatusId.HeaderText = "clmStatusId";
-            this.clmStatusId.Name = "clmStatusId";
-            this.clmStatusId.ReadOnly = true;
-            this.clmStatusId.Visible = false;
-            // 
-            // clmOrderStatusCode
-            // 
-            this.clmOrderStatusCode.DataPropertyName = "OrderStatusCode";
-            this.clmOrderStatusCode.HeaderText = "OrderStatusCode";
-            this.clmOrderStatusCode.Name = "clmOrderStatusCode";
-            this.clmOrderStatusCode.ReadOnly = true;
-            this.clmOrderStatusCode.Visible = false;
-            // 
-            // clmStatusName
-            // 
-            this.clmStatusName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.clmStatusName.DataPropertyName = "StatusName";
-            this.clmStatusName.HeaderText = "وضعیت سفارش";
-            this.clmStatusName.MinimumWidth = 120;
-            this.clmStatusName.Name = "clmStatusName";
-            this.clmStatusName.ReadOnly = true;
-            this.clmStatusName.Width = 120;
-            // 
-            // clmPhotosFolderLink
-            // 
-            this.clmPhotosFolderLink.HeaderText = "PhotosFolderLink";
-            this.clmPhotosFolderLink.Name = "clmPhotosFolderLink";
-            this.clmPhotosFolderLink.ReadOnly = true;
-            this.clmPhotosFolderLink.Visible = false;
-            // 
-            // clmViewPhotos
-            // 
-            this.clmViewPhotos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.clmViewPhotos.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
-            this.clmViewPhotos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.clmViewPhotos.HeaderText = "مشاهده عکس ها";
-            this.clmViewPhotos.Image = ((System.Drawing.Image)(resources.GetObject("clmViewPhotos.Image")));
-            this.clmViewPhotos.MinimumWidth = 110;
-            this.clmViewPhotos.Name = "clmViewPhotos";
-            this.clmViewPhotos.ReadOnly = true;
-            this.clmViewPhotos.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.clmViewPhotos.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.clmViewPhotos.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.clmViewPhotos.Text = "مشاهده عکس ها";
-            this.clmViewPhotos.Width = 120;
-            // 
             // contextMenuDgvUploads
             // 
             this.contextMenuDgvUploads.Font = new System.Drawing.Font("Tahoma", 8.25F);
@@ -753,7 +590,7 @@
             this.ویرایش_پیش_فاکتورToolStripMenuItem1});
             this.contextMenuDgvUploads.Name = "contextMenuStrip1";
             this.contextMenuDgvUploads.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuDgvUploads.Size = new System.Drawing.Size(219, 220);
+            this.contextMenuDgvUploads.Size = new System.Drawing.Size(219, 198);
             this.contextMenuDgvUploads.Paint += new System.Windows.Forms.PaintEventHandler(this.contextMenuDgvUploads_Paint);
             // 
             // مشاهده_عکس_ها_ToolStripMenuItem
@@ -836,6 +673,173 @@
             this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
             this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
             // 
+            // clmId
+            // 
+            this.clmId.DataPropertyName = "Id";
+            this.clmId.HeaderText = "clmId";
+            this.clmId.Name = "clmId";
+            this.clmId.ReadOnly = true;
+            this.clmId.Visible = false;
+            // 
+            // clmCustomerId
+            // 
+            this.clmCustomerId.DataPropertyName = "CustomerId";
+            this.clmCustomerId.HeaderText = "clmCustomerId";
+            this.clmCustomerId.Name = "clmCustomerId";
+            this.clmCustomerId.ReadOnly = true;
+            this.clmCustomerId.Visible = false;
+            // 
+            // clmBookingId
+            // 
+            this.clmBookingId.DataPropertyName = "BookingId";
+            this.clmBookingId.HeaderText = "BookingId";
+            this.clmBookingId.Name = "clmBookingId";
+            this.clmBookingId.ReadOnly = true;
+            this.clmBookingId.Visible = false;
+            // 
+            // clmOrderCode
+            // 
+            this.clmOrderCode.DataPropertyName = "OrderCode";
+            this.clmOrderCode.HeaderText = "شناسه سفارش";
+            this.clmOrderCode.MinimumWidth = 130;
+            this.clmOrderCode.Name = "clmOrderCode";
+            this.clmOrderCode.ReadOnly = true;
+            // 
+            // clmCustomerFullName
+            // 
+            this.clmCustomerFullName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmCustomerFullName.DataPropertyName = "CustomerFullName";
+            this.clmCustomerFullName.HeaderText = "نام مشتری";
+            this.clmCustomerFullName.MinimumWidth = 150;
+            this.clmCustomerFullName.Name = "clmCustomerFullName";
+            this.clmCustomerFullName.ReadOnly = true;
+            // 
+            // clmDate
+            // 
+            this.clmDate.DataPropertyName = "Date";
+            this.clmDate.HeaderText = "تاریخ عکاسی";
+            this.clmDate.MinimumWidth = 100;
+            this.clmDate.Name = "clmDate";
+            this.clmDate.ReadOnly = true;
+            // 
+            // clmTime
+            // 
+            this.clmTime.DataPropertyName = "Time";
+            this.clmTime.HeaderText = "ساعت عکاسی";
+            this.clmTime.MinimumWidth = 110;
+            this.clmTime.Name = "clmTime";
+            this.clmTime.ReadOnly = true;
+            // 
+            // clmPhotographyTypeId
+            // 
+            this.clmPhotographyTypeId.DataPropertyName = "PhotographyTypeId";
+            this.clmPhotographyTypeId.HeaderText = "clmPhotographyTypeId";
+            this.clmPhotographyTypeId.Name = "clmPhotographyTypeId";
+            this.clmPhotographyTypeId.ReadOnly = true;
+            this.clmPhotographyTypeId.Visible = false;
+            // 
+            // clmPhotographyTypeName
+            // 
+            this.clmPhotographyTypeName.DataPropertyName = "PhotographyTypeName";
+            this.clmPhotographyTypeName.HeaderText = "نوع عکاسی";
+            this.clmPhotographyTypeName.MinimumWidth = 100;
+            this.clmPhotographyTypeName.Name = "clmPhotographyTypeName";
+            this.clmPhotographyTypeName.ReadOnly = true;
+            // 
+            // clmPersonCount
+            // 
+            this.clmPersonCount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.clmPersonCount.DataPropertyName = "PersonCount";
+            this.clmPersonCount.HeaderText = "تعداد نفرات";
+            this.clmPersonCount.MinimumWidth = 70;
+            this.clmPersonCount.Name = "clmPersonCount";
+            this.clmPersonCount.ReadOnly = true;
+            this.clmPersonCount.Width = 84;
+            // 
+            // clmTotalFiles
+            // 
+            this.clmTotalFiles.DataPropertyName = "TotalFiles";
+            this.clmTotalFiles.HeaderText = "تعداد عکس ها";
+            this.clmTotalFiles.MinimumWidth = 100;
+            this.clmTotalFiles.Name = "clmTotalFiles";
+            this.clmTotalFiles.ReadOnly = true;
+            // 
+            // clmCreatedDateTime
+            // 
+            this.clmCreatedDateTime.DataPropertyName = "CreatedDateTime";
+            this.clmCreatedDateTime.HeaderText = "تاریخ ثبت";
+            this.clmCreatedDateTime.MinimumWidth = 100;
+            this.clmCreatedDateTime.Name = "clmCreatedDateTime";
+            this.clmCreatedDateTime.ReadOnly = true;
+            this.clmCreatedDateTime.Visible = false;
+            // 
+            // clmUploadDate
+            // 
+            this.clmUploadDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.clmUploadDate.DataPropertyName = "UploadDate";
+            this.clmUploadDate.HeaderText = "تاریخ آپلود";
+            this.clmUploadDate.MinimumWidth = 94;
+            this.clmUploadDate.Name = "clmUploadDate";
+            this.clmUploadDate.ReadOnly = true;
+            this.clmUploadDate.Width = 94;
+            // 
+            // clmModifiedDateTime
+            // 
+            this.clmModifiedDateTime.DataPropertyName = "ModifiedDateTime";
+            this.clmModifiedDateTime.HeaderText = "تاریخ ویرایش";
+            this.clmModifiedDateTime.Name = "clmModifiedDateTime";
+            this.clmModifiedDateTime.ReadOnly = true;
+            this.clmModifiedDateTime.Visible = false;
+            // 
+            // clmStatusId
+            // 
+            this.clmStatusId.DataPropertyName = "StatusId";
+            this.clmStatusId.HeaderText = "clmStatusId";
+            this.clmStatusId.Name = "clmStatusId";
+            this.clmStatusId.ReadOnly = true;
+            this.clmStatusId.Visible = false;
+            // 
+            // clmOrderStatusCode
+            // 
+            this.clmOrderStatusCode.DataPropertyName = "OrderStatusCode";
+            this.clmOrderStatusCode.HeaderText = "OrderStatusCode";
+            this.clmOrderStatusCode.Name = "clmOrderStatusCode";
+            this.clmOrderStatusCode.ReadOnly = true;
+            this.clmOrderStatusCode.Visible = false;
+            // 
+            // clmStatusName
+            // 
+            this.clmStatusName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.clmStatusName.DataPropertyName = "StatusName";
+            this.clmStatusName.HeaderText = "وضعیت سفارش";
+            this.clmStatusName.MinimumWidth = 120;
+            this.clmStatusName.Name = "clmStatusName";
+            this.clmStatusName.ReadOnly = true;
+            this.clmStatusName.Width = 120;
+            // 
+            // clmPhotosFolderLink
+            // 
+            this.clmPhotosFolderLink.HeaderText = "PhotosFolderLink";
+            this.clmPhotosFolderLink.Name = "clmPhotosFolderLink";
+            this.clmPhotosFolderLink.ReadOnly = true;
+            this.clmPhotosFolderLink.Visible = false;
+            // 
+            // clmViewPhotos
+            // 
+            this.clmViewPhotos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.clmViewPhotos.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
+            this.clmViewPhotos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clmViewPhotos.HeaderText = "مشاهده عکس ها";
+            this.clmViewPhotos.Image = ((System.Drawing.Image)(resources.GetObject("clmViewPhotos.Image")));
+            this.clmViewPhotos.MinimumWidth = 110;
+            this.clmViewPhotos.Name = "clmViewPhotos";
+            this.clmViewPhotos.ReadOnly = true;
+            this.clmViewPhotos.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clmViewPhotos.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.clmViewPhotos.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.clmViewPhotos.Text = "مشاهده عکس ها";
+            this.clmViewPhotos.Width = 120;
+            // 
             // FrmShowUploadedPhotos
             // 
             this.AcceptButton = this.btnShowOrders;
@@ -916,6 +920,8 @@
         private System.Windows.Forms.ToolStripMenuItem ویرایش_عکس_های_انتخاب_شده_ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem ویرایش_پیش_فاکتور_ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ویرایش_پیش_فاکتورToolStripMenuItem1;
+        private DevComponents.DotNetBar.ButtonX btnClearSearch;
+        private DevComponents.DotNetBar.ButtonX btnShowOrders;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmId;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmCustomerId;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmBookingId;
@@ -935,7 +941,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmStatusName;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPhotosFolderLink;
         private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn clmViewPhotos;
-        private DevComponents.DotNetBar.ButtonX btnClearSearch;
-        private DevComponents.DotNetBar.ButtonX btnShowOrders;
     }
 }

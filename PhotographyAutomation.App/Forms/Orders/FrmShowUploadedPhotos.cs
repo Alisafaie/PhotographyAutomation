@@ -26,6 +26,9 @@ namespace PhotographyAutomation.App.Forms.Orders
         private int _statusCode;
         private int _customerId;
 
+        private string _downloadSelectedPath;
+        private string _downloadedAllPhotosPath;
+
         private bool _customerOrderFilesSelected;
 
         #endregion
@@ -858,6 +861,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                     }
                 }
             }
+            #region catch
             catch (NotSupportedException notSupportedException)
             {
                 MessageBox.Show(notSupportedException.Message);
@@ -873,6 +877,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                 MessageBox.Show(exception.Message);
                 return false;
             }
+            #endregion
             return result;
         }
 
@@ -886,6 +891,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                     Directory.CreateDirectory(directoryPathOrderCode);
                 return directoryPathOrderCode;
             }
+            #region catch
             catch (IOException ioException)
             {
                 MessageBox.Show(@"ioException: " + Environment.NewLine +
@@ -916,6 +922,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                                 exception.Message);
                 return null;
             }
+            #endregion
         }
 
         private static string CreateOrderDirectory(string selectedPath)
@@ -928,6 +935,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                     Directory.CreateDirectory(directoryPathOrders);
                 return directoryPathOrders;
             }
+            #region catch
             catch (IOException ioException)
             {
                 MessageBox.Show(@"ioException: " + Environment.NewLine +
@@ -958,11 +966,13 @@ namespace PhotographyAutomation.App.Forms.Orders
                                 exception.Message);
                 return null;
             }
+            #endregion
         }
 
-        private void OpenFolder(string selectedPath)
+        private static void OpenFolder(string selectedPath)
         {
-            ////Method 1
+            #region Method 1
+
             //try
             //{
             //    Process.Start("explorer.exe", selectedPath);
@@ -972,7 +982,10 @@ namespace PhotographyAutomation.App.Forms.Orders
             //    MessageBox.Show(@"Exception: " + Environment.NewLine + exception.Message);
             //}
 
-            ////Method 2
+            #endregion Method 1
+
+            #region Method 2
+
             try
             {
                 Process.Start(new ProcessStartInfo()
@@ -988,6 +1001,8 @@ namespace PhotographyAutomation.App.Forms.Orders
             {
                 MessageBox.Show(@"Exception: " + Environment.NewLine + exception.Message);
             }
+
+            #endregion
         }
 
 
@@ -1163,32 +1178,21 @@ namespace PhotographyAutomation.App.Forms.Orders
                     return;
                 }
 
-                using (var folderBrowser = new VistaFolderBrowserDialog())
+
+                bool resultDownload = DowloadOrderPhotos(photoPath, orderCode);
+                if (resultDownload)
                 {
-                    folderBrowser.RootFolder = Environment.SpecialFolder.MyComputer;
-                    folderBrowser.ShowNewFolderButton = true;
-                    folderBrowser.Description = @"لطفا محل ذخیره عکس های مشتری را انتخاب نمایید";
-                    folderBrowser.UseDescriptionForTitle = true;
+                    if (RtlMessageBox.Show(
+                            "فایل ها با موفقیت در سیستم دریافت شد. آیا فولدر نگهداری آنها باز شود؟",
+                            "",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Information,
+                            MessageBoxDefaultButton.Button1) == DialogResult.Yes)
 
-
-                    if (folderBrowser.ShowDialog() == DialogResult.OK)
                     {
-                        string selectedPath = folderBrowser.SelectedPath;
-                        bool resultDownload = DownloadPhotos(selectedPath, photoPath, orderCode);
-                        if (resultDownload)
-                        {
-                            if (RtlMessageBox.Show(
-                                    "فایل ها با موفقیت در سیستم دریافت شد. آیا فولدر نگهداری آنها باز شود؟",
-                                    "",
-                                    MessageBoxButtons.YesNo,
-                                    MessageBoxIcon.Information,
-                                    MessageBoxDefaultButton.Button1) == DialogResult.Yes)
-
-                            {
-                                OpenFolder(selectedPath + "\\" + "Orders" + "\\" + orderCode);
-                                GC.Collect();
-                            }
-                        }
+                        _downloadedAllPhotosPath = _downloadSelectedPath + "\\" + "Orders" + "\\" + orderCode;
+                        OpenFolder(_downloadedAllPhotosPath);
+                        GC.Collect();
                     }
                 }
             }
@@ -1202,6 +1206,26 @@ namespace PhotographyAutomation.App.Forms.Orders
                 }
                 MessageBox.Show(exception.Message);
             }
+        }
+
+        private bool DowloadOrderPhotos(string photoPath, string orderCode)
+        {
+            bool resultDownload = false;
+            using (var folderBrowser = new VistaFolderBrowserDialog())
+            {
+                folderBrowser.RootFolder = Environment.SpecialFolder.MyComputer;
+                folderBrowser.ShowNewFolderButton = true;
+                folderBrowser.Description = @"لطفا محل ذخیره عکس های مشتری را انتخاب نمایید";
+                folderBrowser.UseDescriptionForTitle = true;
+
+                if (folderBrowser.ShowDialog() == DialogResult.OK)
+                {
+                    _downloadSelectedPath = folderBrowser.SelectedPath;
+                    resultDownload = DownloadPhotos(_downloadSelectedPath, photoPath, orderCode);
+                }
+            }
+
+            return resultDownload;
         }
 
         private void مشاهده_اطلاعات_مشتری_ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1319,16 +1343,41 @@ namespace PhotographyAutomation.App.Forms.Orders
             if (CheckPreFactorIssuedForThisCustomer(customerName) == false) /*آیا فاکتور برای همین مشتری صادر شود؟*/
             {
                 _customerId = ShowCustomerSearchForm();
-                
+
                 if (_customerId == 0) // user clicked no
                 {
+                    RtlMessageBox.Show(
+                        $"هیچ کاربری برای ثبت پیش فاکتور انتخاب نگردید. پیش فاکتور به نام {customerName} صادر می گردد.",
+                        "ثبت پیش فاکتور",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
                     _customerId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmCustomerId"].Value);
                 }
-                string downloadPath = null;
-                //downloadPath = DownloadAllOrderPhotos();
-                //ShowDownloadedFolder(downloadPath);
-                //ShowUploadPhotosForm(); /*ارسال عکس های انتخابی مشتری به سرور*/
-                //_customerOrderFilesSelected = true;
+
+
+                var photoPath = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
+
+                if (DowloadOrderPhotos(photoPath, orderCode)) //=>_downloadedAllPhotosPath
+                {
+                    if (RtlMessageBox.Show(
+                            "فایل ها با موفقیت در سیستم دریافت شد. آیا فولدر نگهداری آنها باز شود؟",
+                            "",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Information,
+                            MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+
+                    {
+                        _downloadedAllPhotosPath = _downloadSelectedPath + "\\" + "Orders" + "\\" + orderCode;
+                        OpenFolder(_downloadedAllPhotosPath);
+                        GC.Collect();
+                    }
+                }
+
+                if (ShowUploadPhotosForm(orderId)) /*ارسال عکس های انتخابی مشتری به سرور*/
+                {
+                    
+                    //_customerOrderFilesSelected = true;
+                }
             }
 
             //if (CheckOrderPhotosIsSelected(_customerId, orderId) == true ||
@@ -1368,7 +1417,8 @@ namespace PhotographyAutomation.App.Forms.Orders
             //}
         }
 
-        private int ShowCustomerSearchForm()
+
+        private static int ShowCustomerSearchForm()
         {
             int customerId = 0;
             using (var searchCustomerForm = new FrmShowCustomer())
@@ -1383,22 +1433,23 @@ namespace PhotographyAutomation.App.Forms.Orders
             return customerId;
         }
 
-        private bool CheckPreFactorIssuedForThisCustomer(string customerName)
+        private static bool CheckPreFactorIssuedForThisCustomer(string customerName)
         {
             DialogResult dr = RtlMessageBox.Show(
                 $"آیا پیش فاکتور به نام {customerName} صادر گردد؟",
                 "صدور فاکتور",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question,
-                MessageBoxDefaultButton.Button1);
+                MessageBoxDefaultButton.Button2);
 
             if (dr == DialogResult.Yes)
                 return true;
             return false;
         }
 
-        private void ShowUploadPhotosForm(int orderId)
+        private bool ShowUploadPhotosForm(int orderId)
         {
+            bool result = false;
             try
             {
                 using (var db = new UnitOfWork())
@@ -1413,7 +1464,10 @@ namespace PhotographyAutomation.App.Forms.Orders
                             uploadForm.CustomerId = order.CustomerId;
                             uploadForm.OrderId = orderId;
 
-                            uploadForm.ShowDialog();
+                            if (uploadForm.ShowDialog() == DialogResult.OK)
+                            {
+                                result = true;
+                            }
                         }
                     }
                 }
@@ -1422,10 +1476,12 @@ namespace PhotographyAutomation.App.Forms.Orders
             {
                 Console.WriteLine(exception);
             }
+
+            return result;
         }
 
 
-        private bool CheckIfOrderFilesUploaded(int orderId)
+        private static bool CheckIfOrderFilesUploaded(int orderId)
         {
             var result = false;
             try
@@ -1469,10 +1525,6 @@ namespace PhotographyAutomation.App.Forms.Orders
             return result;
         }
 
-
-
         #endregion DataGridView Contextmenu
-
-
     }
 }
