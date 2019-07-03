@@ -748,10 +748,10 @@
             // 
             // clmPersonCount
             // 
-            this.clmPersonCount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.clmPersonCount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.clmPersonCount.DataPropertyName = "PersonCount";
             this.clmPersonCount.HeaderText = "تعداد نفرات";
-            this.clmPersonCount.MinimumWidth = 70;
+            this.clmPersonCount.MinimumWidth = 80;
             this.clmPersonCount.Name = "clmPersonCount";
             this.clmPersonCount.ReadOnly = true;
             this.clmPersonCount.Width = 84;

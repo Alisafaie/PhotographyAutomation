@@ -29,7 +29,7 @@ namespace PhotographyAutomation.App.Forms.Orders
         private string _downloadSelectedPath;
         private string _downloadedAllPhotosPath;
 
-        private bool _customerOrderFilesSelected;
+        private bool _customerIsSelectedOrderFiles;
 
         #endregion
 
@@ -731,7 +731,21 @@ namespace PhotographyAutomation.App.Forms.Orders
                 return null;
             }
         }
+        private bool OrderDownloadedBefore(string folderBrowserSelectedPath, string orderCode)
+        {
+            bool result = false;
 
+            string downloadPath = folderBrowserSelectedPath + "\\" + "Orders" + "\\" + orderCode;
+            if (Directory.Exists(downloadPath))
+            {
+                DirectoryInfo directoryInfo = new DirectoryInfo(downloadPath);
+                var filesOfDirectory = directoryInfo.GetFiles().ToList();
+                if (filesOfDirectory.Any())
+                    result = true;
+            }
+
+            return result;
+        }
         private static bool DownloadPhotos(string selectedPath, string photoPath, string orderCode)
         {
             bool result = false;
@@ -1220,13 +1234,24 @@ namespace PhotographyAutomation.App.Forms.Orders
 
                 if (folderBrowser.ShowDialog() == DialogResult.OK)
                 {
-                    _downloadSelectedPath = folderBrowser.SelectedPath;
-                    resultDownload = DownloadPhotos(_downloadSelectedPath, photoPath, orderCode);
+                    //چک ببین قبلا در این مسیر این فایل ها دانلود شده است یا خیر؟
+                    if (OrderDownloadedBefore(folderBrowser.SelectedPath, orderCode) == false)
+                    {
+                        _downloadSelectedPath = folderBrowser.SelectedPath;
+                        resultDownload = DownloadPhotos(_downloadSelectedPath, photoPath, orderCode);
+                    }
+                    else
+                    {
+                        RtlMessageBox.Show("قبلا این عکس ها در مسیر انتخابی دریافت شده است.", "", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
                 }
             }
 
             return resultDownload;
         }
+
+
 
         private void مشاهده_اطلاعات_مشتری_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1336,7 +1361,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
             if (CheckIfOrderFilesUploaded(orderId) == false) /*آیا عکس های اصلی آپلود شده است؟*/
             {
-                ShowUploadPhotosForm(orderId);  /*مشاهده فرم آپلود عکس ها*/
+                ShowPhotoUploadingForm(orderId);  /*مشاهده فرم آپلود عکس ها*/
             }
 
             var customerName = dgvUploads.SelectedRows[0].Cells["clmCustomerFullName"].Value.ToString();
@@ -1347,41 +1372,68 @@ namespace PhotographyAutomation.App.Forms.Orders
                 if (_customerId == 0) // user clicked no
                 {
                     RtlMessageBox.Show(
-                        $"هیچ کاربری برای ثبت پیش فاکتور انتخاب نگردید. پیش فاکتور به نام {customerName} صادر می گردد.",
+                        "هیچ کاربری برای ثبت پیش فاکتور انتخاب نگردید. " +
+                        $"پیش فاکتور به نام {customerName} صادر می گردد.",
                         "ثبت پیش فاکتور",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
                     _customerId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmCustomerId"].Value);
                 }
 
+                //چک کن ببین قبلا فایل  ها دانلود شده است؟
 
-                var photoPath = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
-
-                if (DowloadOrderPhotos(photoPath, orderCode)) //=>_downloadedAllPhotosPath
+                var drDownloadAllCustomerPhotos = RtlMessageBox.Show(
+                    "آیا می خواهید تمامی عکس ها روی سیستم دانلود شود؟",
+                    "",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+                if (drDownloadAllCustomerPhotos == DialogResult.Yes)
                 {
-                    if (RtlMessageBox.Show(
-                            "فایل ها با موفقیت در سیستم دریافت شد. آیا فولدر نگهداری آنها باز شود؟",
-                            "",
-                            MessageBoxButtons.YesNo,
-                            MessageBoxIcon.Information,
-                            MessageBoxDefaultButton.Button1) == DialogResult.Yes)
-
+                    var photoPath = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
+                    if (DowloadOrderPhotos(photoPath, orderCode)) //=>_downloadedAllPhotosPath
                     {
-                        _downloadedAllPhotosPath = _downloadSelectedPath + "\\" + "Orders" + "\\" + orderCode;
-                        OpenFolder(_downloadedAllPhotosPath);
-                        GC.Collect();
+                        if (RtlMessageBox.Show(
+                                "فایل ها با موفقیت در سیستم دریافت شد. " +
+                                "آیا فولدر مربوطه باز شود؟",
+                                "",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Question,
+                                MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+                        {
+                            _downloadedAllPhotosPath = _downloadSelectedPath + "\\" + "Orders" + "\\" + orderCode;
+                            OpenFolder(_downloadedAllPhotosPath);
+                            GC.Collect();
+                        }
                     }
                 }
 
-                if (ShowUploadPhotosForm(orderId)) /*ارسال عکس های انتخابی مشتری به سرور*/
+
+                // چک ببین عکس های انتخابی مشتری آماده شده است یا خیر؟
+                var drCustomerSelectedPhotosReady = RtlMessageBox.Show(
+                    "آیا عکس های انتخابی مشتری آماده شده است؟",
+                    "",
+                    MessageBoxButtons.YesNo, 
+                    MessageBoxIcon.Question, 
+                    MessageBoxDefaultButton.Button2);
+                if (drCustomerSelectedPhotosReady == DialogResult.Yes)
+                {
+                    if (ShowPhotoUploadingForm(orderId)) /*نمایش فرم آپلود عکس های مشتری جهت ارسال عکس های انتخاب شده*/
+                    {
+                        _customerIsSelectedOrderFiles = true; //مشتری انتخاب عکس خود را انجام داده است.
+                    }
+                }
+                else
                 {
                     
-                    //_customerOrderFilesSelected = true;
                 }
+            }
+            else
+            {
+                _customerId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmCustomerId"].Value);
             }
 
             //if (CheckOrderPhotosIsSelected(_customerId, orderId) == true ||
-            //    _customerOrderFilesSelected == true) /*آیا مشتری انتخاب عکس انجام داده است؟*/
+            //    _customerIsSelectedOrderFiles == true) /*آیا مشتری انتخاب عکس انجام داده است؟*/
             //{
             //    if (CheckIfCustomerHasChangesInPhotosSelected()) /*آیا مشتری در سفارش خود می خواهد تغییراتی انجام دهد؟*/
             //    {
@@ -1392,7 +1444,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             //            ShowDownloadedFolder(downloadPath);
             //            downloadPath = DownloadSelectedPhotos();
             //            ShowDownloadedFolder(downloadPath);
-            //            ShowUploadPhotosForm();
+            //            ShowPhotoUploadingForm();
             //            ShowPreFactorForm();
             //        }
             //        else if (CheckIfCustomerWantsToAddSomePhotosToSelectedPhotos() == false)
@@ -1412,7 +1464,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             //    string downloadPath = null;
             //    downloadPath = DownloadAllOrderPhotos();
             //    ShowDownloadedFolder(downloadPath);
-            //    ShowUploadPhotosForm();
+            //    ShowPhotoUploadingForm();
             //    ShowPreFactorForm();
             //}
         }
@@ -1447,35 +1499,44 @@ namespace PhotographyAutomation.App.Forms.Orders
             return false;
         }
 
-        private bool ShowUploadPhotosForm(int orderId)
+        private bool ShowPhotoUploadingForm(int orderId)
         {
             bool result = false;
-            try
+            if (_customerIsSelectedOrderFiles) // Orderprint Id
             {
-                using (var db = new UnitOfWork())
-                {
-                    var order = db.OrderGenericRepository.GetById(orderId);
-                    if (order != null)
-                    {
-                        using (var uploadForm = new FrmUploadPhotos())
-                        {
-                            uploadForm.OrderCode = order.OrderCode;
-                            uploadForm.BookingId = order.BookingId;
-                            uploadForm.CustomerId = order.CustomerId;
-                            uploadForm.OrderId = orderId;
 
-                            if (uploadForm.ShowDialog() == DialogResult.OK)
+            }
+            else // Order Id
+            {
+                try
+                {
+                    using (var db = new UnitOfWork())
+                    {
+                        var order = db.OrderGenericRepository.GetById(orderId);
+                        if (order != null)
+                        {
+                            using (var uploadForm = new FrmUploadPhotos())
                             {
-                                result = true;
+                                uploadForm.OrderCode = order.OrderCode;
+                                uploadForm.BookingId = order.BookingId;
+                                uploadForm.CustomerId = order.CustomerId;
+                                uploadForm.OrderId = orderId;
+
+                                if (uploadForm.ShowDialog() == DialogResult.OK)
+                                {
+                                    result = true;
+                                }
                             }
                         }
                     }
                 }
+                catch (Exception exception)
+                {
+                    Console.WriteLine(exception);
+                }
             }
-            catch (Exception exception)
-            {
-                Console.WriteLine(exception);
-            }
+
+
 
             return result;
         }
