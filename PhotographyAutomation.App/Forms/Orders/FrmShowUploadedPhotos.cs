@@ -1359,29 +1359,19 @@ namespace PhotographyAutomation.App.Forms.Orders
             var orderCode = dgvUploads.SelectedRows[0].Cells["clmOrderCode"].Value.ToString();
             var orderId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmId"].Value);
 
-            if (CheckIfOrderFilesUploaded(orderId) == false) /*آیا عکس های اصلی آپلود شده است؟*/
+            /*آیا عکس های اصلی آپلود شده است؟*/
+            if (CheckIfOrderFilesUploaded(orderId) == false) 
             {
-                ShowPhotoUploadingForm(orderId);  /*مشاهده فرم آپلود عکس ها*/
+                //مشاهده فرم آپلود عکس ها
+                ShowPhotoUploadingForm(orderId);  
             }
 
-            var customerName = dgvUploads.SelectedRows[0].Cells["clmCustomerFullName"].Value.ToString();
-            if (CheckPreFactorIssuedForThisCustomer(customerName) == false) /*آیا فاکتور برای همین مشتری صادر شود؟*/
+
+
+            // چک کن ببین عکس های انتخابی مشتری ارسال شده است یا خیر؟
+            if (CustomerSelectedFilesIsUploadedBefore() == false)
             {
-                _customerId = ShowCustomerSearchForm();
-
-                if (_customerId == 0) // user clicked no
-                {
-                    RtlMessageBox.Show(
-                        "هیچ کاربری برای ثبت پیش فاکتور انتخاب نگردید. " +
-                        $"پیش فاکتور به نام {customerName} صادر می گردد.",
-                        "ثبت پیش فاکتور",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-                    _customerId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmCustomerId"].Value);
-                }
-
                 //چک کن ببین قبلا فایل  ها دانلود شده است؟
-
                 var drDownloadAllCustomerPhotos = RtlMessageBox.Show(
                     "آیا می خواهید تمامی عکس ها روی سیستم دانلود شود؟",
                     "",
@@ -1406,25 +1396,51 @@ namespace PhotographyAutomation.App.Forms.Orders
                         }
                     }
                 }
+                else
+                {
+                    return;
+                }
 
 
-                // چک ببین عکس های انتخابی مشتری آماده شده است یا خیر؟
+                //اگر عکس های انتخابی مشتری آماده شده است ولی هنوز آپلود نشده است. 
                 var drCustomerSelectedPhotosReady = RtlMessageBox.Show(
-                    "آیا عکس های انتخابی مشتری آماده شده است؟",
+                    "آیا عکس های انتخابی مشتری آماده آپلود است؟",
                     "",
-                    MessageBoxButtons.YesNo, 
-                    MessageBoxIcon.Question, 
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question,
                     MessageBoxDefaultButton.Button2);
                 if (drCustomerSelectedPhotosReady == DialogResult.Yes)
                 {
-                    if (ShowPhotoUploadingForm(orderId)) /*نمایش فرم آپلود عکس های مشتری جهت ارسال عکس های انتخاب شده*/
+                    /*نمایش فرم آپلود عکس های مشتری جهت ارسال عکس های انتخاب شده*/
+                    if (ShowPhotoUploadingForm(orderId))
                     {
-                        _customerIsSelectedOrderFiles = true; //مشتری انتخاب عکس خود را انجام داده است.
+                        //مشتری انتخاب عکس خود را انجام داده است.
+                        _customerIsSelectedOrderFiles = true;
                     }
                 }
                 else
                 {
-                    
+                    return;
+                }
+                //
+            }
+
+
+            /*آیا فاکتور برای همین مشتری صادر شود؟*/
+            var customerName = dgvUploads.SelectedRows[0].Cells["clmCustomerFullName"].Value.ToString();
+            if (CheckPreFactorIssuedForThisCustomer(customerName) == false) 
+            {
+                _customerId = ShowCustomerSearchForm();
+
+                if (_customerId == 0) // user clicked no
+                {
+                    RtlMessageBox.Show(
+                        "هیچ کاربری برای ثبت پیش فاکتور انتخاب نگردید. " +
+                        $"پیش فاکتور به نام {customerName} صادر می گردد.",
+                        "ثبت پیش فاکتور",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                    _customerId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmCustomerId"].Value);
                 }
             }
             else
