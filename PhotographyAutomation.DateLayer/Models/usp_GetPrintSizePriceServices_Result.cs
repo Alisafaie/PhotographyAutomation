@@ -10,19 +10,13 @@
 namespace PhotographyAutomation.DateLayer.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class TblPrintServices_TblPrintSizePrice
+    public partial class usp_GetPrintSizePriceServices_Result
     {
-        public int Id { get; set; }
-        public int PrintServiceId { get; set; }
-        public int PrintSizePriceId { get; set; }
-        public string Code { get; set; }
+        public string SizeName { get; set; }
+        public int OriginalPrintPrice { get; set; }
+        public int SecondPrintPrice { get; set; }
+        public string PrintServiceName { get; set; }
         public int Price { get; set; }
-        public string Description { get; set; }
-    
-        public virtual TblOrderPrintDetails TblOrderPrintDetails { get; set; }
-        public virtual TblPrintServices TblPrintServices { get; set; }
-        public virtual TblPrintSizePrices TblPrintSizePrices { get; set; }
     }
 }

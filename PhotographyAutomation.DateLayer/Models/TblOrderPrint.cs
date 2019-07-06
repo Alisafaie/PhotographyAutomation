@@ -19,12 +19,14 @@ namespace PhotographyAutomation.DateLayer.Models
         {
             this.TblAllOrderStatus = new HashSet<TblAllOrderStatus>();
             this.TblOrderPrintDetails = new HashSet<TblOrderPrintDetails>();
+            this.TblOrderPrintFiles = new HashSet<TblOrderPrintFiles>();
         }
     
         public int Id { get; set; }
         public int OrderId { get; set; }
         public bool OrderType { get; set; }
         public int OrderStatusId { get; set; }
+        public int OrderPrintStatusId { get; set; }
         public int FinancialCustomerId { get; set; }
         public string RetochDescriptions { get; set; }
         public Nullable<int> TotalPhotos { get; set; }
@@ -39,9 +41,12 @@ namespace PhotographyAutomation.DateLayer.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblAllOrderStatus> TblAllOrderStatus { get; set; }
         public virtual TblCustomer TblCustomer { get; set; }
+        public virtual TblOrder TblOrder { get; set; }
+        public virtual TblOrderPrintStatus TblOrderPrintStatus { get; set; }
         public virtual TblOrderStatus TblOrderStatus { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblOrderPrintDetails> TblOrderPrintDetails { get; set; }
-        public virtual TblOrder TblOrder { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblOrderPrintFiles> TblOrderPrintFiles { get; set; }
     }
 }

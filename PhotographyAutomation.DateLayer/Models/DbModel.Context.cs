@@ -32,23 +32,23 @@ namespace PhotographyAutomation.DateLayer.Models
         public virtual DbSet<TblBooking> TblBooking { get; set; }
         public virtual DbSet<TblBookingStatus> TblBookingStatus { get; set; }
         public virtual DbSet<TblCustomer> TblCustomer { get; set; }
-        public virtual DbSet<TblDocumentPhotos> TblDocumentPhotos { get; set; }
-        public virtual DbSet<TblDocuments> TblDocuments { get; set; }
         public virtual DbSet<TblEmployeeType> TblEmployeeType { get; set; }
         public virtual DbSet<TblEmpRole> TblEmpRole { get; set; }
+        public virtual DbSet<TblFilesError> TblFilesError { get; set; }
+        public virtual DbSet<TblOrder> TblOrder { get; set; }
+        public virtual DbSet<TblOrderFiles> TblOrderFiles { get; set; }
         public virtual DbSet<TblOrderPrint> TblOrderPrint { get; set; }
         public virtual DbSet<TblOrderPrintDetails> TblOrderPrintDetails { get; set; }
+        public virtual DbSet<TblOrderPrintFiles> TblOrderPrintFiles { get; set; }
+        public virtual DbSet<TblOrderPrintStatus> TblOrderPrintStatus { get; set; }
         public virtual DbSet<TblOrderStatus> TblOrderStatus { get; set; }
         public virtual DbSet<TblPhotographyType> TblPhotographyType { get; set; }
-        public virtual DbSet<TblRoleType> TblRoleType { get; set; }
-        public virtual DbSet<View_GetAllPhotos> View_GetAllPhotos { get; set; }
-        public virtual DbSet<View_GetDocumentsFolders> View_GetDocumentsFolders { get; set; }
-        public virtual DbSet<TblFilesError> TblFilesError { get; set; }
-        public virtual DbSet<TblOrderFiles> TblOrderFiles { get; set; }
-        public virtual DbSet<TblOrder> TblOrder { get; set; }
         public virtual DbSet<TblPrintServices> TblPrintServices { get; set; }
         public virtual DbSet<TblPrintServices_TblPrintSizePrice> TblPrintServices_TblPrintSizePrice { get; set; }
         public virtual DbSet<TblPrintSizePrices> TblPrintSizePrices { get; set; }
+        public virtual DbSet<TblRoleType> TblRoleType { get; set; }
+        public virtual DbSet<View_GetAllPhotos> View_GetAllPhotos { get; set; }
+        public virtual DbSet<View_GetDocumentsFolders> View_GetDocumentsFolders { get; set; }
         public virtual DbSet<View_PrintSizesPrices> View_PrintSizesPrices { get; set; }
     
         public virtual ObjectResult<string> usp_CreateCustomerFinancialDirectory(string customerFinancialNumber, string monthNumber, Nullable<byte> parent_level, ObjectParameter returnValue)
@@ -171,6 +171,11 @@ namespace PhotographyAutomation.DateLayer.Models
                 new ObjectParameter("photoStreamId", typeof(System.Guid));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_GetImageInfo_Result>("usp_GetImageInfo", photoStreamIdParameter);
+        }
+    
+        public virtual ObjectResult<usp_GetPrintSizePriceServices_Result> usp_GetPrintSizePriceServices()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_GetPrintSizePriceServices_Result>("usp_GetPrintSizePriceServices");
         }
     }
 }

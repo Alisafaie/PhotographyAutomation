@@ -12,22 +12,19 @@ namespace PhotographyAutomation.DateLayer.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TblDocuments
+    public partial class TblOrderPrintStatus
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TblDocuments()
+        public TblOrderPrintStatus()
         {
-            this.TblDocumentPhotos = new HashSet<TblDocumentPhotos>();
-            this.TblCustomer = new HashSet<TblCustomer>();
+            this.TblOrderPrint = new HashSet<TblOrderPrint>();
         }
     
         public int Id { get; set; }
-        public Nullable<int> DocumentNumber { get; set; }
-        public string FinacialDescription { get; set; }
+        public int Code { get; set; }
+        public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblDocumentPhotos> TblDocumentPhotos { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblCustomer> TblCustomer { get; set; }
+        public virtual ICollection<TblOrderPrint> TblOrderPrint { get; set; }
     }
 }

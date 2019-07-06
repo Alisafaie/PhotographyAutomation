@@ -1349,12 +1349,19 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         private void ثبت_پیش_فاکتور_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //بررسی وضعیت سفارش
-            //    جهت ثبت پیش فاکتور
-            if (dgvUploads.CurrentRow == null || dgvUploads.SelectedRows[0] == null) return;
-
             //var customerId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmCustomerId"].Value);
             //if (CheckCustomerActivity(customerId) == false) return;
+
+
+
+            //بررسی وضعیت سفارش
+            //    جهت ثبت پیش فاکتور
+
+
+            //آیا اصلا رکوردی از دیتاگرید ویو انتخاب شده است؟
+            if (dgvUploads.CurrentRow == null || dgvUploads.SelectedRows[0] == null) return;
+
+            
 
             var orderCode = dgvUploads.SelectedRows[0].Cells["clmOrderCode"].Value.ToString();
             var orderId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmId"].Value);
@@ -1369,61 +1376,61 @@ namespace PhotographyAutomation.App.Forms.Orders
 
 
             // چک کن ببین عکس های انتخابی مشتری ارسال شده است یا خیر؟
-            if (CustomerSelectedFilesIsUploadedBefore() == false)
-            {
-                //چک کن ببین قبلا فایل  ها دانلود شده است؟
-                var drDownloadAllCustomerPhotos = RtlMessageBox.Show(
-                    "آیا می خواهید تمامی عکس ها روی سیستم دانلود شود؟",
-                    "",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
-                if (drDownloadAllCustomerPhotos == DialogResult.Yes)
-                {
-                    var photoPath = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
-                    if (DowloadOrderPhotos(photoPath, orderCode)) //=>_downloadedAllPhotosPath
-                    {
-                        if (RtlMessageBox.Show(
-                                "فایل ها با موفقیت در سیستم دریافت شد. " +
-                                "آیا فولدر مربوطه باز شود؟",
-                                "",
-                                MessageBoxButtons.YesNo,
-                                MessageBoxIcon.Question,
-                                MessageBoxDefaultButton.Button1) == DialogResult.Yes)
-                        {
-                            _downloadedAllPhotosPath = _downloadSelectedPath + "\\" + "Orders" + "\\" + orderCode;
-                            OpenFolder(_downloadedAllPhotosPath);
-                            GC.Collect();
-                        }
-                    }
-                }
-                else
-                {
-                    return;
-                }
+            //if (CustomerSelectedFilesIsUploadedBefore() == false)
+            //{
+            //    //چک کن ببین قبلا فایل  ها دانلود شده است؟
+            //    var drDownloadAllCustomerPhotos = RtlMessageBox.Show(
+            //        "آیا می خواهید تمامی عکس ها روی سیستم دانلود شود؟",
+            //        "",
+            //        MessageBoxButtons.YesNo,
+            //        MessageBoxIcon.Question);
+            //    if (drDownloadAllCustomerPhotos == DialogResult.Yes)
+            //    {
+            //        var photoPath = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
+            //        if (DowloadOrderPhotos(photoPath, orderCode)) //=>_downloadedAllPhotosPath
+            //        {
+            //            if (RtlMessageBox.Show(
+            //                    "فایل ها با موفقیت در سیستم دریافت شد. " +
+            //                    "آیا فولدر مربوطه باز شود؟",
+            //                    "",
+            //                    MessageBoxButtons.YesNo,
+            //                    MessageBoxIcon.Question,
+            //                    MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+            //            {
+            //                _downloadedAllPhotosPath = _downloadSelectedPath + "\\" + "Orders" + "\\" + orderCode;
+            //                OpenFolder(_downloadedAllPhotosPath);
+            //                GC.Collect();
+            //            }
+            //        }
+            //    }
+            //    else
+            //    {
+            //        return;
+            //    }
 
 
-                //اگر عکس های انتخابی مشتری آماده شده است ولی هنوز آپلود نشده است. 
-                var drCustomerSelectedPhotosReady = RtlMessageBox.Show(
-                    "آیا عکس های انتخابی مشتری آماده آپلود است؟",
-                    "",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question,
-                    MessageBoxDefaultButton.Button2);
-                if (drCustomerSelectedPhotosReady == DialogResult.Yes)
-                {
-                    /*نمایش فرم آپلود عکس های مشتری جهت ارسال عکس های انتخاب شده*/
-                    if (ShowPhotoUploadingForm(orderId))
-                    {
-                        //مشتری انتخاب عکس خود را انجام داده است.
-                        _customerIsSelectedOrderFiles = true;
-                    }
-                }
-                else
-                {
-                    return;
-                }
-                //
-            }
+            //    //اگر عکس های انتخابی مشتری آماده شده است ولی هنوز آپلود نشده است. 
+            //    var drCustomerSelectedPhotosReady = RtlMessageBox.Show(
+            //        "آیا عکس های انتخابی مشتری آماده آپلود است؟",
+            //        "",
+            //        MessageBoxButtons.YesNo,
+            //        MessageBoxIcon.Question,
+            //        MessageBoxDefaultButton.Button2);
+            //    if (drCustomerSelectedPhotosReady == DialogResult.Yes)
+            //    {
+            //        /*نمایش فرم آپلود عکس های مشتری جهت ارسال عکس های انتخاب شده*/
+            //        if (ShowPhotoUploadingForm(orderId))
+            //        {
+            //            //مشتری انتخاب عکس خود را انجام داده است.
+            //            _customerIsSelectedOrderFiles = true;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        return;
+            //    }
+            //    //
+            //}
 
 
             /*آیا فاکتور برای همین مشتری صادر شود؟*/

@@ -12,16 +12,14 @@ namespace PhotographyAutomation.DateLayer.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TblDocumentPhotos
+    public partial class TblOrderPrintFiles
     {
         public int Id { get; set; }
-        public int DocumentId { get; set; }
-        public System.Guid StreamId { get; set; }
-        public int CustomerId { get; set; }
-        public bool IsSelected { get; set; }
-        public string path_locator { get; set; }
-        public string parent_path_locator { get; set; }
+        public int OrderPrintId { get; set; }
+        public string FileName { get; set; }
+        public string PathLocator { get; set; }
+        public Nullable<System.DateTime> CollectionDate { get; set; }
     
-        public virtual TblDocuments TblDocuments { get; set; }
+        public virtual TblOrderPrint TblOrderPrint { get; set; }
     }
 }
