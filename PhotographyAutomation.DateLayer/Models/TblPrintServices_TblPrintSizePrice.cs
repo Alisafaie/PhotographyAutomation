@@ -14,6 +14,12 @@ namespace PhotographyAutomation.DateLayer.Models
     
     public partial class TblPrintServices_TblPrintSizePrice
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TblPrintServices_TblPrintSizePrice()
+        {
+            this.TblOrderPrintDetails = new HashSet<TblOrderPrintDetails>();
+        }
+    
         public int Id { get; set; }
         public int PrintServiceId { get; set; }
         public int PrintSizePriceId { get; set; }
@@ -21,7 +27,8 @@ namespace PhotographyAutomation.DateLayer.Models
         public int Price { get; set; }
         public string Description { get; set; }
     
-        public virtual TblOrderPrintDetails TblOrderPrintDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblOrderPrintDetails> TblOrderPrintDetails { get; set; }
         public virtual TblPrintServices TblPrintServices { get; set; }
         public virtual TblPrintSizePrices TblPrintSizePrices { get; set; }
     }

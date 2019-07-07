@@ -18,14 +18,21 @@ namespace PhotographyAutomation.DateLayer.Models
         public int OrderPrintId { get; set; }
         public System.Guid StreamId { get; set; }
         public int CustomerId { get; set; }
-        public Nullable<int> PrintSizeServiceId { get; set; }
         public string FileName { get; set; }
         public string RetochDescription { get; set; }
-        public string CreatedDateTime { get; set; }
-        public string ModifiedDateTime { get; set; }
+        public Nullable<bool> IsFirstPrint { get; set; }
+        public Nullable<bool> HasPrintService { get; set; }
+        public Nullable<int> PrintServiceId { get; set; }
+        public Nullable<int> PrintSizePriceId { get; set; }
+        public Nullable<int> PrintSizeServiceId { get; set; }
+        public System.DateTime CreatedDateTime { get; set; }
+        public Nullable<System.DateTime> ModifiedDateTime { get; set; }
+        public string Description { get; set; }
     
         public virtual TblCustomer TblCustomer { get; set; }
         public virtual TblOrderPrint TblOrderPrint { get; set; }
+        public virtual TblPrintServices TblPrintServices { get; set; }
         public virtual TblPrintServices_TblPrintSizePrice TblPrintServices_TblPrintSizePrice { get; set; }
+        public virtual TblPrintSizePrices TblPrintSizePrices { get; set; }
     }
 }

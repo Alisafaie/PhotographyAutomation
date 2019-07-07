@@ -4,6 +4,7 @@ using PhotographyAutomation.App.Forms.Booking;
 using PhotographyAutomation.App.Forms.Customers;
 using PhotographyAutomation.App.Forms.EntranceToAtelier;
 using PhotographyAutomation.DateLayer.Context;
+using PhotographyAutomation.DateLayer.Models;
 using PhotographyAutomation.Utilities;
 using PhotographyAutomation.Utilities.Convertor;
 using PhotographyAutomation.Utilities.ExtentionMethods;
@@ -16,6 +17,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace PhotographyAutomation.App.Forms.Orders
@@ -331,25 +333,25 @@ namespace PhotographyAutomation.App.Forms.Orders
         #region DataGridView Events
         private void dgvUploads_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            var senderGrid = (DataGridViewX)sender;
+
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonXColumn &&
+                e.RowIndex >= 0)
             {
-                var senderGrid = (DataGridViewX)sender;
+            RetryGetListOfPhotos:
 
-                if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonXColumn &&
-                    e.RowIndex >= 0)
+                var pathLocator = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
+
+                if (pathLocator != null)
                 {
-                RetryGetListOfPhotos:
-
-                    var pathLocator = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
-
-                    if (pathLocator != null)
+                    var listOfFiles = GetListOfFilesOfOrder(pathLocator);
+                    if (listOfFiles is List<PhotoViewModel> list)
                     {
-                        List<PhotoViewModel> listOfFiles = GetListOfFilesOfOrder(pathLocator);
-                        if (listOfFiles != null)
+                        if (list.Any())
                         {
                             using (var frmViewUploadedPhotos = new FrmViewEditUploadedPhotos())
                             {
-                                frmViewUploadedPhotos.ListOfPhotos = listOfFiles;
+                                frmViewUploadedPhotos.ListOfPhotos = list;
                                 frmViewUploadedPhotos.OrderCode =
                                     dgvUploads.SelectedRows[0]?.Cells["clmOrderCode"].Value.ToString();
                                 frmViewUploadedPhotos.CustomerName = dgvUploads.SelectedRows[0]
@@ -381,20 +383,38 @@ namespace PhotographyAutomation.App.Forms.Orders
                             }
                         }
                     }
+                    else if (listOfFiles is Exception exception)
+                    {
+                        ShowException(exception);
+                    }
                     else
                     {
-                        RtlMessageBox.Show(
-                            "برای رزرو انتخابی هنوز عکسی در سیستم قرار داده نشده است.",
-                            "عدم آپلود عکس برای رزرو انتخابی",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);
+                        var dialogResult = RtlMessageBox.Show(
+                            "برای این سفارش در سیستم عکسی ثبت نشده است. " + Environment.NewLine +
+                            "لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
+                            "خطا در دریافت لیست عکس های سفارش",
+                            MessageBoxButtons.RetryCancel,
+                            MessageBoxIcon.Error);
+                        if (dialogResult == DialogResult.Retry)
+                        {
+                            goto RetryGetListOfPhotos;
+                        }
                     }
                 }
+                else
+                {
+                    RtlMessageBox.Show(
+                        "برای رزرو انتخابی هنوز عکسی در سیستم قرار داده نشده است.",
+                        "عدم آپلود عکس برای رزرو انتخابی",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
             }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message);
-            }
+            //}
+            //catch (Exception exception)
+            //{
+            //    MessageBox.Show(exception.Message);
+            //}
         }
 
         private void dgvUploads_MouseUp(object sender, MouseEventArgs e)
@@ -716,21 +736,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
 
 
-        public List<PhotoViewModel> GetListOfFilesOfOrder(string pathLocator)
-        {
-            try
-            {
-                using (var db = new UnitOfWork())
-                {
-                    return db.PhotoRepository.GetListOfFilesInFolder(pathLocator);
-                }
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(@"exception: " + Environment.NewLine + exception.Message);
-                return null;
-            }
-        }
+
         private bool OrderDownloadedBefore(string folderBrowserSelectedPath, string orderCode)
         {
             bool result = false;
@@ -746,6 +752,1102 @@ namespace PhotographyAutomation.App.Forms.Orders
 
             return result;
         }
+
+
+        private static string CreateOrderCodeDirectory(string orderCode, string directoryPathOrders)
+        {
+            try
+            {
+                string directoryPathOrderCode = directoryPathOrders + "\\" + orderCode + "\\";
+                bool folderExistsOrderCode = Directory.Exists(directoryPathOrderCode);
+                if (!folderExistsOrderCode)
+                    Directory.CreateDirectory(directoryPathOrderCode);
+                return directoryPathOrderCode;
+            }
+            #region catch
+            catch (IOException ioException)
+            {
+                MessageBox.Show(@"ioException: " + Environment.NewLine +
+                                ioException.Message);
+                return null;
+            }
+            catch (UnauthorizedAccessException accessException)
+            {
+                MessageBox.Show(@"accessException: " + Environment.NewLine +
+                                accessException.Message);
+                return null;
+            }
+            catch (ArgumentException argumentException)
+            {
+                MessageBox.Show(@"argumentException: " + Environment.NewLine +
+                                argumentException.Message);
+                return null;
+            }
+            catch (NotSupportedException notSupportedException)
+            {
+                MessageBox.Show(@"notSupportedException: " + Environment.NewLine +
+                                notSupportedException.Message);
+                return null;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(@"exception: " + Environment.NewLine +
+                                exception.Message);
+                return null;
+            }
+            #endregion
+        }
+
+        private static string CreateOrderDirectory(string selectedPath)
+        {
+            try
+            {
+                string directoryPathOrders = selectedPath + "\\" + "Orders";
+                bool folderExistsOrders = Directory.Exists(directoryPathOrders);
+                if (!folderExistsOrders)
+                    Directory.CreateDirectory(directoryPathOrders);
+                return directoryPathOrders;
+            }
+            #region catch
+            catch (IOException ioException)
+            {
+                MessageBox.Show(@"ioException: " + Environment.NewLine +
+                                ioException.Message);
+                return null;
+            }
+            catch (UnauthorizedAccessException accessException)
+            {
+                MessageBox.Show(@"accessException: " + Environment.NewLine +
+                                accessException.Message);
+                return null;
+            }
+            catch (ArgumentException argumentException)
+            {
+                MessageBox.Show(@"argumentException: " + Environment.NewLine +
+                                argumentException.Message);
+                return null;
+            }
+            catch (NotSupportedException notSupportedException)
+            {
+                MessageBox.Show(@"notSupportedException: " + Environment.NewLine +
+                                notSupportedException.Message);
+                return null;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(@"exception: " + Environment.NewLine +
+                                exception.Message);
+                return null;
+            }
+            #endregion
+        }
+
+
+
+
+
+        private void PopulateComboBox()
+        {
+            backgroundWorker.RunWorkerAsync();
+        }
+
+        private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                using (var db = new UnitOfWork())
+                {
+                    var result = db.OrderStatusGenericRepository.Get(x => x.Code > 10)
+                        .Select(x => new OrderStatusViewModel
+                        {
+                            Id = x.Id,
+                            StatusCode = x.Code,
+                            Name = x.Name
+                        }).ToList();
+
+                    e.Result = result;
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(@"exception: " + exception.Message);
+            }
+        }
+
+        private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Result != null)
+            {
+                cmbOrderStatus.DataSource = e.Result;
+                cmbOrderStatus.DisplayMember = "Name";
+                cmbOrderStatus.ValueMember = "Id";
+            }
+            else
+            {
+                RtlMessageBox.Show(
+                    "اطلاعات وضعیت رزروها از سیستم قابل دریافت نمی باشد." +
+                    " لطفا فرم را بسته و مجددا باز کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید. ",
+                    "خطا در دریافت اطلاعات از سیستم",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
+
+            btnShowOrders.Enabled = !backgroundWorker.IsBusy;
+            btnClearSearch.Enabled = !backgroundWorker.IsBusy;
+        }
+
+        #endregion
+
+
+        #region Top MenuStrip
+
+        private void مشاهده_عکس_ها_ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //مشاهده_عکس_ها_ToolStripMenuItem_Click(null, null);
+        }
+
+        private void دریافت_عکس_هاToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            دریافت_عکس_ها_ToolStripMenuItem_Click(null, null);
+        }
+
+        private void مشاهده_اطلاعات_مشتری_ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            مشاهده_اطلاعات_مشتری_ToolStripMenuItem_Click(null, null);
+        }
+
+        private void مشاهده_اطلاعات_رزرو_ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            مشاهده_اطلاعات_رزرو_ToolStripMenuItem_Click(null, null);
+
+        }
+
+        private void ثبت_پیش_فاکتور_ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ثبت_پیش_فاکتور_ToolStripMenuItem1_Click(null, null);
+        }
+
+
+        #endregion Top MenuStrip
+
+
+        #region DataGridView Contextmenu
+
+        private void contextMenuDgvUploads_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        //private void مشاهده_عکس_ها_ToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+
+        //RetryGetListOfPhotos:
+        //    try
+        //    {
+        //        if (dgvUploads.SelectedRows[0] == null || dgvUploads.CurrentRow == null)
+        //        {
+        //            RtlMessageBox.Show("رزروی برای مشاهده عکس انتخاب نشده است.");
+        //            return;
+        //        }
+
+        //        var pathLocator = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
+
+        //        if (pathLocator != null)
+        //        {
+        //            List<PhotoViewModel> listOfFiles = GetListOfFilesOfOrder(pathLocator);
+        //            if (listOfFiles != null)
+        //            {
+        //                using (var frmViewUploaded = new FrmViewEditUploadedPhotos())
+        //                {
+        //                    frmViewUploaded.ListOfPhotos = listOfFiles;
+        //                    frmViewUploaded.OrderCode = dgvUploads.SelectedRows[0]?.Cells["clmOrderCode"].Value.ToString();
+        //                    frmViewUploaded.CustomerName = dgvUploads.SelectedRows[0].Cells["clmCustomerFullName"].Value.ToString();
+        //                    frmViewUploaded.PhotographyDate = dgvUploads.SelectedRows[0].Cells["clmDate"].Value.ToString();
+        //                    frmViewUploaded.TotalPhotos = (int)dgvUploads.SelectedRows[0].Cells["clmTotalFiles"].Value;
+        //                    frmViewUploaded.OrderStatus = dgvUploads.SelectedRows[0].Cells["clmStatusName"].Value.ToString();
+        //                    frmViewUploaded.ShowDialog();
+        //                    GC.Collect();
+        //                }
+        //            }
+        //            else
+        //            {
+        //                var dialogResult = RtlMessageBox.Show(
+        //                    "برای این سفارش در سیستم عکسی ثبت نشده است. " + Environment.NewLine +
+        //                    "لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
+        //                    "خطا در دریافت لیست عکس های سفارش",
+        //                    MessageBoxButtons.RetryCancel,
+        //                    MessageBoxIcon.Error);
+        //                if (dialogResult == DialogResult.Retry)
+        //                {
+        //                    goto RetryGetListOfPhotos;
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception exception)
+        //    {
+        //        if (exception.HResult == -2146233086)
+        //        {
+        //            RtlMessageBox.Show("رزروی برای مشاهده عکس انتخاب نشده است.", "",
+        //                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //            return;
+        //        }
+        //        MessageBox.Show(exception.Message);
+        //    }
+        //}
+
+        private void دریافت_عکس_ها_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvUploads.SelectedRows[0] == null)
+                {
+                    RtlMessageBox.Show("رزروی برای دریافت عکس انتخاب نشده است.");
+                    return;
+                }
+
+                var photoPath = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
+                var orderCode = dgvUploads.SelectedRows[0]?.Cells["clmOrderCode"].Value.ToString();
+                if (photoPath == null)
+                {
+                    RtlMessageBox.Show(
+                        "عکسی برای این سفارش در سیستم ثبت نشده است.",
+                        "خطا در دریافت عکس های سفارش",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    return;
+                }
+
+
+                bool resultDownload = DowloadOrderPhotos(photoPath, orderCode);
+                if (resultDownload)
+                {
+                    if (RtlMessageBox.Show(
+                            "فایل ها با موفقیت در سیستم دریافت شد. آیا فولدر نگهداری آنها باز شود؟",
+                            "",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Information,
+                            MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+
+                    {
+                        _downloadedAllPhotosPath = _downloadSelectedPath + "\\" + "Orders" + "\\" + orderCode;
+                        OpenFolder(_downloadedAllPhotosPath);
+                        GC.Collect();
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                if (exception.HResult == -2146233086)
+                {
+                    RtlMessageBox.Show("رزروی برای دریافت عکس انتخاب نشده است.", "",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+
+
+
+
+        private void مشاهده_اطلاعات_مشتری_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvUploads.SelectedRows[0] == null || dgvUploads.CurrentRow == null)
+                {
+                    RtlMessageBox.Show("مشتری برای مشاهده اطلاعات انتخاب نشده است.");
+                    return;
+                }
+
+                if (!int.TryParse(dgvUploads.SelectedRows[0].Cells["clmCustomerId"].Value.ToString(),
+                    out int customerId))
+                {
+                    RtlMessageBox.Show(
+                        "مشتری برای مشاهده اطلاعات انتخاب نشده است و یا اطلاعات مشتری قابل دریافت نمی باشد.");
+                    return;
+                }
+
+                using (var frmCustomerInfo = new FrmAddEditCustomerInfo())
+                {
+                    frmCustomerInfo.CustomerId = customerId;
+                    frmCustomerInfo.NewCustomer = true;
+                    frmCustomerInfo.IsViewOnly = true;
+                    frmCustomerInfo.ShowDialog();
+                }
+            }
+            catch (Exception exception)
+            {
+                if (exception.HResult == -2146233086)
+                {
+                    RtlMessageBox.Show("مشتری برای مشاهده اطلاعات انتخاب نشده است.", "",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void مشاهده_اطلاعات_رزرو_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvUploads.SelectedRows[0] == null || dgvUploads.CurrentRow == null)
+                {
+                    RtlMessageBox.Show("رزروی برای مشاهده اطلاعات انتخاب نشده است.");
+                    return;
+                }
+
+                //clmBookingId
+                if (!int.TryParse(dgvUploads.SelectedRows[0].Cells["clmBookingId"].Value.ToString(),
+                        out int bookingId) ||
+                    !int.TryParse(dgvUploads.SelectedRows[0].Cells["clmCustomerId"].Value.ToString(),
+                        out int customerId))
+                {
+                    RtlMessageBox.Show(
+                        "رزروی برای مشاهده اطلاعات انتخاب نشده است و یا اطلاعات رزرو انتخابی قابل دریافت نمی باشد.");
+                    return;
+                }
+                //if (!int.TryParse(dgvUploads.SelectedRows[0].Cells["clmCustomerId"].Value.ToString(),
+                //    out int customerId)) return;
+
+                using (var frmAddEditBooking = new FrmAddEditBooking())
+                {
+                    frmAddEditBooking.BookingId = bookingId;
+                    frmAddEditBooking.CustomerId = customerId;
+                    frmAddEditBooking.IsViewOnly = true;
+                    frmAddEditBooking.ShowDialog();
+                }
+            }
+            catch (Exception exception)
+            {
+                if (exception.HResult == -2146233086)
+                {
+                    RtlMessageBox.Show("رزروی برای مشاهده اطلاعات انتخاب نشده است.", "",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void ارسال_عکسهای_انتخاب_شده_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var frmUploadSelectedPhotos = new FrmUploadSelectedPhotos())
+            {
+                frmUploadSelectedPhotos.ShowDialog();
+            }
+        }
+
+        private void ویرایش_عکسهای_انتخاب_شده_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //private void انتخاب_عکس_ToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    ////    آیا اصلا رکوردی از دیتاگرید ویو انتخاب شده است؟
+        //    if (dgvUploads.CurrentRow == null || dgvUploads.SelectedRows[0] == null) return;
+
+        //    var orderCode = dgvUploads.SelectedRows[0].Cells["clmOrderCode"].Value.ToString();
+        //    var orderId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmId"].Value);
+
+        //    ////    آیا عکس های اصلی آپلود شده است؟
+        //    if (CheckIfOrderFilesUploaded(orderId) == false)
+        //    {
+        //        ////    مشاهده فرم آپلود عکس ها
+        //        //ShowPhotoUploadingForm(orderId);  
+        //        RtlMessageBox.Show(
+        //            "لطفا در ابتدا عکس های اصلی را در سیستم آپلود نمایید.",
+        //            "ارسال عکس های اصلی به سرور",
+        //            MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        return;
+        //    }
+
+        //    ////    آیا فاکتور برای همین مشتری صادر شود؟
+        //    var customerName = dgvUploads.SelectedRows[0].Cells["clmCustomerFullName"].Value.ToString();
+        //    if (CheckPreFactorIssuedForThisCustomer(customerName) == false)
+        //    {
+        //        _customerId = ShowCustomerSearchForm();
+
+        //        if (_customerId == 0) // user clicked no
+        //        {
+        //            RtlMessageBox.Show(
+        //                "هیچ کاربری برای ثبت پیش فاکتور انتخاب نگردید. " +
+        //                $"پیش فاکتور به نام {customerName} صادر می گردد.",
+        //                "ثبت پیش فاکتور",
+        //                MessageBoxButtons.OK,
+        //                MessageBoxIcon.Information);
+        //            _customerId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmCustomerId"].Value);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        _customerId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmCustomerId"].Value);
+        //    }
+
+
+        //    ////    آیا قبلا این مشتری برای این اوردر پیش فاکتوری داشته است؟
+        //    var tt = CustomerHasOrderPrintForThisOrder(orderId, _customerId);
+        //    if (tt is List<TblOrderPrint> list)
+        //    {
+        //        /*
+        //        ////    فرایند انتخاب عکس
+        //        ////     1-دانلود عکس های اصلی روی سیستم رتوش کار
+        //        ////     1-1حذف عکس هایی که مشتری آنها را نمی خواهد از فلودر عکس های دانلود شده
+        //        ////     2-مشاهده عکس های اصلی مشتری
+        //        ////     3-انتخاب فولدر حاوی عکس های انتخابی مشتری
+        //        ////     4-همگام سازی عکس های داخل فولدر با عکس های نشان داده شده
+        //        ////     5-ارسال عکس های انتخابی به سرور
+        //        ////     6-مشاهده فرم پیش فاکتور
+        //        //////////////////////////////////////////////////////////////////////**/
+
+        //        ////     1-دانلود عکس های اصلی روی سیستم رتوش کار
+        //        ////
+        //        ////     2-مشاهده عکس های اصلی مشتری
+
+        //        var drDownloadAllCustomerPhotos = RtlMessageBox.Show(
+        //            "آیا می خواهید تمامی عکس ها روی سیستم دانلود شود؟",
+        //            "",
+        //            MessageBoxButtons.YesNo,
+        //            MessageBoxIcon.Question);
+        //        if (drDownloadAllCustomerPhotos == DialogResult.Yes)
+        //        {
+        //            var photoPath = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
+        //            if (DowloadOrderPhotos(photoPath, orderCode)) //=>_downloadedAllPhotosPath
+        //            {
+
+        //                ////     2-مشاهده عکس های اصلی مشتری
+        //                if (RtlMessageBox.Show(
+        //                        "فایل ها با موفقیت در سیستم دریافت شد. " +
+        //                        "آیا فولدر مربوطه باز شود؟",
+        //                        "",
+        //                        MessageBoxButtons.YesNo,
+        //                        MessageBoxIcon.Question,
+        //                        MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+        //                {
+        //                    _downloadedAllPhotosPath = _downloadSelectedPath + "\\" + "Orders" + "\\" + orderCode;
+        //                    OpenFolder(_downloadedAllPhotosPath);
+        //                    GC.Collect();
+        //                }
+        //            }
+        //        }
+        //        else
+        //        {
+        //            return;
+        //        }
+
+        //        ////     3-انتخاب فولدر حاوی عکس های انتخابی مشتری
+        //        var drCustomerSelectedPhotosReady = RtlMessageBox.Show(
+        //            "آیا عکس های انتخابی مشتری آماده آپلود است؟",
+        //            "",
+        //            MessageBoxButtons.YesNo,
+        //            MessageBoxIcon.Question,
+        //            MessageBoxDefaultButton.Button2);
+        //        if (drCustomerSelectedPhotosReady == DialogResult.Yes)
+        //        {
+        //            ////    نمایش فرم آپلود عکس های مشتری جهت ارسال عکس های انتخاب شده
+        //            if (ShowPhotoUploadingForm(orderId))
+        //            {
+        //                ////     5-ارسال عکس های انتخابی به سرور
+
+        //                ////    آیا مشتری انتخاب عکس خود را انجام داده است؟
+
+        //                if (list.Any())
+        //                {
+        //                    ////     6-مشاهده فرم پیش فاکتور
+        //                    ShowAddEditPreFactor(_customerId, orderId);
+        //                }
+        //            }
+        //        }
+        //        else
+        //        {
+        //            return;
+        //        }
+
+
+
+        //    }
+        //    else if (tt is Exception exception)
+        //    {
+        //        RtlMessageBox.Show(
+        //            "دریافت اطلاعات پیش فاکتورهای قبلی مشتری از سیستم با مشکل مواجه شد. " +
+        //            "لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید." + Environment.NewLine +
+        //            "Message: " + exception.Message + Environment.NewLine +
+        //            "Hresult: " + exception.HResult + Environment.NewLine +
+        //            "Inner Exception: " + exception.InnerException,
+        //            "بروز خطا در دریافت اطلاعات",
+        //            MessageBoxButtons.OK,
+        //            MessageBoxIcon.Error);
+
+        //    }
+        //    else
+        //    {
+        //        ////    چک کن ببین مشتری می خواهد تغییراتی در عکس های انتخابی خود داشته باشد یا خیر
+        //        ///     اگر تغییرات دارد، فرم عکس های اصلی نشان داده شود و عکس های انتخابی تیک بخورد
+        //        ///     عکس های انتخابی به سرور آپلود شود
+        //        ///     مشاهده فرم پیش فاکتور قبلی      
+        //        ///
+        //        ///     اگر مشتری تغییراتی ندارد فرم پیش فاکتور نمایش داده شود
+        //        ///     اگر قبلا پیش فاکتوری صادر شده است و وضعیت آن هنوز تکمیل نشده است، پیش فاکتور قبلی نمایش داده شود
+        //        ///     اگر 
+        //    }
+        //}
+
+        private object CustomerHasOrderPrintForThisOrder(int orderId, int customerId)
+        {
+            try
+            {
+                using (var db = new UnitOfWork())
+                {
+                    List<TblOrderPrint> customerOrderPrintsList = db.OrderPrintGenericRepository.Get(
+                            x =>
+                                x.OrderId == orderId &&
+                                x.CustomerId == customerId)
+                        .ToList();
+                    return customerOrderPrintsList;
+                }
+            }
+            catch (Exception exception)
+            {
+                return exception;
+            }
+        }
+
+
+        //private void ثبت_پیش_فاکتور_ToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    ////var customerId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmCustomerId"].Value);
+        //    ////if (CheckCustomerActivity(customerId) == false) return;
+
+
+
+        //    ////    بررسی وضعیت سفارش
+        //    ////    جهت ثبت پیش فاکتور
+
+
+        //    ////    آیا اصلا رکوردی از دیتاگرید ویو انتخاب شده است؟
+        //    if (dgvUploads.CurrentRow == null || dgvUploads.SelectedRows[0] == null) return;
+
+
+
+        //    var orderCode = dgvUploads.SelectedRows[0].Cells["clmOrderCode"].Value.ToString();
+        //    var orderId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmId"].Value);
+
+        //    ////    آیا عکس های اصلی آپلود شده است؟
+        //    if (CheckIfOrderFilesUploaded(orderId) == false)
+        //    {
+        //        ////    مشاهده فرم آپلود عکس ها
+        //        ShowPhotoUploadingForm(orderId);
+        //    }
+
+
+
+
+
+        //    ////    چک کن ببین عکس های انتخابی مشتری ارسال شده است یا خیر؟
+        //    if (CustomerSelectedFilesIsUploadedBefore() == false)
+        //    {
+        //        //چک کن ببین قبلا فایل  ها دانلود شده است؟
+        //        var drDownloadAllCustomerPhotos = RtlMessageBox.Show(
+        //            "آیا می خواهید تمامی عکس ها روی سیستم دانلود شود؟",
+        //            "",
+        //            MessageBoxButtons.YesNo,
+        //            MessageBoxIcon.Question);
+        //        if (drDownloadAllCustomerPhotos == DialogResult.Yes)
+        //        {
+        //            var photoPath = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
+        //            if (DowloadOrderPhotos(photoPath, orderCode)) //=>_downloadedAllPhotosPath
+        //            {
+        //                if (RtlMessageBox.Show(
+        //                        "فایل ها با موفقیت در سیستم دریافت شد. " +
+        //                        "آیا فولدر مربوطه باز شود؟",
+        //                        "",
+        //                        MessageBoxButtons.YesNo,
+        //                        MessageBoxIcon.Question,
+        //                        MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+        //                {
+        //                    _downloadedAllPhotosPath = _downloadSelectedPath + "\\" + "Orders" + "\\" + orderCode;
+        //                    OpenFolder(_downloadedAllPhotosPath);
+        //                    GC.Collect();
+        //                }
+        //            }
+        //        }
+        //        else
+        //        {
+        //            return;
+        //        }
+
+
+        //        ////اگر عکس های انتخابی مشتری آماده شده است ولی هنوز آپلود نشده است. 
+        //        var drCustomerSelectedPhotosReady = RtlMessageBox.Show(
+        //            "آیا عکس های انتخابی مشتری آماده آپلود است؟",
+        //            "",
+        //            MessageBoxButtons.YesNo,
+        //            MessageBoxIcon.Question,
+        //            MessageBoxDefaultButton.Button2);
+        //        if (drCustomerSelectedPhotosReady == DialogResult.Yes)
+        //        {
+        //            ////نمایش فرم آپلود عکس های مشتری جهت ارسال عکس های انتخاب شده
+        //            if (ShowPhotoUploadingForm(orderId))
+        //            {
+        //                ////مشتری انتخاب عکس خود را انجام داده است.
+        //                _customerIsSelectedOrderFiles = true;
+        //            }
+        //        }
+        //        else
+        //        {
+        //            return;
+        //        }
+        //        //
+        //    }
+
+
+        //    ////آیا فاکتور برای همین مشتری صادر شود؟
+        //    var customerName = dgvUploads.SelectedRows[0].Cells["clmCustomerFullName"].Value.ToString();
+        //    if (CheckPreFactorIssuedForThisCustomer(customerName) == false)
+        //    {
+        //        _customerId = ShowCustomerSearchForm();
+
+        //        if (_customerId == 0) // user clicked no
+        //        {
+        //            RtlMessageBox.Show(
+        //                "هیچ کاربری برای ثبت پیش فاکتور انتخاب نگردید. " +
+        //                $"پیش فاکتور به نام {customerName} صادر می گردد.",
+        //                "ثبت پیش فاکتور",
+        //                MessageBoxButtons.OK,
+        //                MessageBoxIcon.Information);
+        //            _customerId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmCustomerId"].Value);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        _customerId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmCustomerId"].Value);
+        //    }
+
+        //    //if (CheckOrderPhotosIsSelected(_customerId, orderId) == true ||
+        //    //    _customerIsSelectedOrderFiles == true) /*آیا مشتری انتخاب عکس انجام داده است؟*/
+        //    //{
+        //    //    if (CheckIfCustomerHasChangesInPhotosSelected()) /*آیا مشتری در سفارش خود می خواهد تغییراتی انجام دهد؟*/
+        //    //    {
+        //    //        if (CheckIfCustomerWantsToAddSomePhotosToSelectedPhotos())
+        //    //        {
+        //    //            string downloadPath = null;
+        //    //            downloadPath = DownloadAllOrderPhotos();
+        //    //            ShowDownloadedFolder(downloadPath);
+        //    //            downloadPath = DownloadSelectedPhotos();
+        //    //            ShowDownloadedFolder(downloadPath);
+        //    //            ShowPhotoUploadingForm();
+        //    //            ShowPreFactorForm();
+        //    //        }
+        //    //        else if (CheckIfCustomerWantsToAddSomePhotosToSelectedPhotos() == false)
+        //    //        {
+        //    //            ShowUploadedPhotos();
+        //    //            ShowPreFactorForm();
+        //    //        }
+        //    //    }
+        //    //    else if (CheckIfCustomerHasChangesInPhotosSelected() == false)
+        //    //    {
+        //    //        ShowUploadedPhotos();
+        //    //        ShowPreFactorForm();
+        //    //    }
+        //    //}
+        //    //else if (CheckOrderPhotosIsSelected(customerId, orderId) == false)
+        //    //{
+        //    //    string downloadPath = null;
+        //    //    downloadPath = DownloadAllOrderPhotos();
+        //    //    ShowDownloadedFolder(downloadPath);
+        //    //    ShowPhotoUploadingForm();
+        //    //    ShowPreFactorForm();
+        //    //}
+        //}
+
+
+        private static int ShowCustomerSearchForm()
+        {
+            int customerId = 0;
+            using (var searchCustomerForm = new FrmShowCustomer())
+            {
+                searchCustomerForm.CustomerIdForPreFactor = true;
+                if (searchCustomerForm.ShowDialog() == DialogResult.OK)
+                {
+                    customerId = searchCustomerForm.CustomerId;
+                }
+            }
+
+            return customerId;
+        }
+
+        private static bool CheckPreFactorIssuedForThisCustomer(string customerName)
+        {
+            DialogResult dr = RtlMessageBox.Show(
+                $"آیا پیش فاکتور به نام {customerName} صادر گردد؟",
+                "صدور فاکتور",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2);
+
+            if (dr == DialogResult.Yes)
+                return true;
+            return false;
+        }
+
+
+
+
+        private static bool CheckIfOrderFilesUploaded(int orderId)
+        {
+            var result = false;
+            try
+            {
+                using (var db = new UnitOfWork())
+                {
+                    var orderFiles = db.OrderFilesGenericRepository.Get(x => x.OrderId == orderId);
+                    result = orderFiles.Any();
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                result = false;
+            }
+
+            return result;
+        }
+
+        private bool CheckCustomerActivity(int customerId)
+        {
+            bool result = false;
+            try
+            {
+                using (var db = new UnitOfWork())
+                {
+                    var customer = db.CustomerGenericRepository.GetById(customerId);
+                    if (customer != null)
+                    {
+                        if (customer.IsActive != 0 && customer.IsDeleted != 0)
+                            result = true;
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                result = false;
+            }
+
+            return result;
+        }
+
+
+
+        #endregion DataGridView Contextmenu
+
+
+        /*********************************************************************************************************/
+        private void ShowException(Exception exception)
+        {
+            RtlMessageBox.Show("خطا در سیستم.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            
+            var sb = new StringBuilder();
+            sb.Append("Exception: " + Environment.NewLine);
+            sb.Append($" Message: {exception.Message}" + Environment.NewLine);
+            sb.Append($@"HResult: {exception.HResult}" + Environment.NewLine);
+            sb.Append($@"Inner Exception: {exception.InnerException}");
+
+            MessageBox.Show(sb.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+
+
+
+
+        private void ارسال_عکس_های_اصلی_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ////    آیا اصلا رکوردی از دیتاگرید ویو انتخاب شده است؟
+            if (dgvUploads.SelectedRows[0] == null || dgvUploads.CurrentRow == null)
+            {
+                RtlMessageBox.Show("رزروی برای مشاهده عکس انتخاب نشده است.");
+                return;
+            }
+
+
+            var orderCode = dgvUploads.SelectedRows[0].Cells["clmOrderCode"].Value.ToString();
+            var orderId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmId"].Value);
+
+            var resultOrderFilesIsUploaded = OrderFilesIsUploaded(orderId);
+            if (resultOrderFilesIsUploaded is List<TblOrderFiles> orderFilesIsUploaded)
+            {
+                if (orderFilesIsUploaded.Any())
+                {
+                    RtlMessageBox.Show(
+                        "عکس های این سفارش قبلا آپلود شده است.",
+                        "",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
+                else
+                {
+                    var tt = ShowPhotoUploadingForm(orderId);
+                    if (tt is bool resultShowPhotoUploadingForm)
+                    {
+                        if (resultShowPhotoUploadingForm)
+                        {
+                            //نمایش وضعیت دیتاگرید ویو به آپلود شده تغییر یابد
+                        }
+                        else
+                        {
+                            //نمایش وضعیت دیتاگرید ویو به آپلود نشده تغییر یابد
+                        }
+                    }
+                    else if (tt == null)
+                    {
+                        RtlMessageBox.Show("خطا در دریافت اطلاعات سفارش." +
+                                           "لطفا دوباره تلاش کنید و در صورت تکرار با مدیر  سیستم تماس بگیرید.");
+                    }
+                    else if (tt is Exception exception)
+                    {
+                        ShowException(exception);
+                    }
+                }
+            }
+            else if (resultOrderFilesIsUploaded is Exception exception)
+            {
+                ShowException(exception);
+            }
+        }
+
+        private static object OrderFilesIsUploaded(int orderId)
+        {
+            try
+            {
+                using (var db = new UnitOfWork())
+                {
+                    var result = db.OrderFilesGenericRepository.Get(x => x.OrderId == orderId).ToList();
+                    return result;
+                }
+            }
+            catch (Exception exception)
+            {
+                return exception;
+            }
+        }
+
+        private static object ShowPhotoUploadingForm(int orderId)
+        {
+            try
+            {
+                using (var db = new UnitOfWork())
+                {
+                    var order = db.OrderGenericRepository.GetById(orderId);
+                    if (order != null)
+                    {
+                        using (var uploadForm = new FrmUploadPhotos())
+                        {
+                            uploadForm.OrderCode = order.OrderCode;
+                            uploadForm.BookingId = order.BookingId;
+                            uploadForm.CustomerId = order.CustomerId;
+                            uploadForm.OrderId = orderId;
+
+                            if (uploadForm.ShowDialog() == DialogResult.OK)
+                            {
+                                return true;
+                            }
+
+                            return false;
+                        }
+                    }
+                    return null;
+                }
+            }
+            catch (Exception exception)
+            {
+                return exception;
+            }
+        }
+
+
+
+
+        private void مشاهده_همه_عکس_ها_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        RetryGetListOfPhotos:
+
+            ////    آیا اصلا رکوردی از دیتاگرید ویو انتخاب شده است؟
+            if (dgvUploads.SelectedRows[0] == null || dgvUploads.CurrentRow == null)
+            {
+                RtlMessageBox.Show("رزروی برای مشاهده عکس انتخاب نشده است.");
+                return;
+            }
+
+            var pathLocator = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
+
+            if (pathLocator != null)
+            {
+                var files = GetListOfFilesOfOrder(pathLocator);
+
+                if (files is List<PhotoViewModel> listOfFiles)
+                {
+                    if (listOfFiles.Any())
+                    {
+                        using (var frmViewUploaded = new FrmViewEditUploadedPhotos())
+                        {
+                            frmViewUploaded.ListOfPhotos = listOfFiles;
+
+                            frmViewUploaded.OrderCode =
+                                dgvUploads.SelectedRows[0]?.Cells["clmOrderCode"].Value.ToString();
+
+                            frmViewUploaded.CustomerName =
+                                dgvUploads.SelectedRows[0].Cells["clmCustomerFullName"].Value.ToString();
+
+                            frmViewUploaded.PhotographyDate =
+                                dgvUploads.SelectedRows[0].Cells["clmDate"].Value.ToString();
+
+                            frmViewUploaded.TotalPhotos =
+                                (int)dgvUploads.SelectedRows[0].Cells["clmTotalFiles"].Value;
+
+                            frmViewUploaded.OrderStatus =
+                                dgvUploads.SelectedRows[0].Cells["clmStatusName"].Value.ToString();
+
+                            frmViewUploaded.ShowDialog();
+                            GC.Collect();
+                        }
+                    }
+                    else
+                    {
+                        var dialogResult = RtlMessageBox.Show(
+                            "برای این سفارش در سیستم عکسی ثبت نشده است. " + Environment.NewLine +
+                            "لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
+                            "خطا در دریافت لیست عکس های سفارش",
+                            MessageBoxButtons.RetryCancel,
+                            MessageBoxIcon.Error);
+                        if (dialogResult == DialogResult.Retry)
+                        {
+                            goto RetryGetListOfPhotos;
+                        }
+                    }
+
+                }
+                else if (files is Exception exception)
+                {
+                    if (exception.HResult == -2146233086)
+                    {
+                        RtlMessageBox.Show("رزروی برای مشاهده عکس انتخاب نشده است.", "",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    else
+                        ShowException(exception);
+                }
+                else
+                {
+                    RtlMessageBox.Show("سیستم قادر به نمایش عکس های مشتری نمی باشد. " +
+                                       "لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.");
+                }
+            }
+        }
+
+        public object GetListOfFilesOfOrder(string pathLocator)
+        {
+            try
+            {
+                using (var db = new UnitOfWork())
+                {
+                    List<PhotoViewModel> tt = db.PhotoRepository.GetListOfFilesInFolder(pathLocator);
+                    return tt;
+                }
+            }
+            catch (Exception exception)
+            {
+                return exception;
+            }
+        }
+
+
+
+
+        private void دریافت_همه_عکس_ها_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvUploads.SelectedRows[0] == null)
+                {
+                    RtlMessageBox.Show("رزروی برای دریافت عکس انتخاب نشده است.");
+                    return;
+                }
+
+                var photoPath = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
+                var orderCode = dgvUploads.SelectedRows[0]?.Cells["clmOrderCode"].Value.ToString();
+                if (photoPath == null)
+                {
+                    RtlMessageBox.Show(
+                        "عکسی برای این سفارش در سیستم ثبت نشده است.",
+                        "خطا در دریافت عکس های سفارش",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    return;
+                }
+
+
+                bool resultDownload = DowloadOrderPhotos(photoPath, orderCode);
+                if (resultDownload)
+                {
+                    if (RtlMessageBox.Show(
+                            "فایل ها با موفقیت در سیستم دریافت شد. آیا فولدر نگهداری آنها باز شود؟",
+                            "",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Information,
+                            MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+
+                    {
+                        _downloadedAllPhotosPath = _downloadSelectedPath + "\\" + "Orders" + "\\" + orderCode;
+                        OpenFolder(_downloadedAllPhotosPath);
+                        GC.Collect();
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                if (exception.HResult == -2146233086)
+                {
+                    RtlMessageBox.Show("رزروی برای دریافت عکس انتخاب نشده است.", "",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private bool DowloadOrderPhotos(string photoPath, string orderCode)
+        {
+            bool resultDownload = false;
+            using (var folderBrowser = new VistaFolderBrowserDialog())
+            {
+                folderBrowser.RootFolder = Environment.SpecialFolder.MyComputer;
+                folderBrowser.ShowNewFolderButton = true;
+                folderBrowser.Description = @"لطفا محل ذخیره عکس های مشتری را انتخاب نمایید";
+                folderBrowser.UseDescriptionForTitle = true;
+
+                if (folderBrowser.ShowDialog() == DialogResult.OK)
+                {
+                    //چک ببین قبلا در این مسیر این فایل ها دانلود شده است یا خیر؟
+                    if (OrderDownloadedBefore(folderBrowser.SelectedPath, orderCode) == false)
+                    {
+                        _downloadSelectedPath = folderBrowser.SelectedPath;
+                        resultDownload = DownloadPhotos(_downloadSelectedPath, photoPath, orderCode);
+                    }
+                    else
+                    {
+                        RtlMessageBox.Show("قبلا این عکس ها در مسیر انتخابی دریافت شده است.", "", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+                }
+            }
+
+            return resultDownload;
+        }
+
         private static bool DownloadPhotos(string selectedPath, string photoPath, string orderCode)
         {
             bool result = false;
@@ -895,94 +1997,6 @@ namespace PhotographyAutomation.App.Forms.Orders
             return result;
         }
 
-        private static string CreateOrderCodeDirectory(string orderCode, string directoryPathOrders)
-        {
-            try
-            {
-                string directoryPathOrderCode = directoryPathOrders + "\\" + orderCode + "\\";
-                bool folderExistsOrderCode = Directory.Exists(directoryPathOrderCode);
-                if (!folderExistsOrderCode)
-                    Directory.CreateDirectory(directoryPathOrderCode);
-                return directoryPathOrderCode;
-            }
-            #region catch
-            catch (IOException ioException)
-            {
-                MessageBox.Show(@"ioException: " + Environment.NewLine +
-                                ioException.Message);
-                return null;
-            }
-            catch (UnauthorizedAccessException accessException)
-            {
-                MessageBox.Show(@"accessException: " + Environment.NewLine +
-                                accessException.Message);
-                return null;
-            }
-            catch (ArgumentException argumentException)
-            {
-                MessageBox.Show(@"argumentException: " + Environment.NewLine +
-                                argumentException.Message);
-                return null;
-            }
-            catch (NotSupportedException notSupportedException)
-            {
-                MessageBox.Show(@"notSupportedException: " + Environment.NewLine +
-                                notSupportedException.Message);
-                return null;
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(@"exception: " + Environment.NewLine +
-                                exception.Message);
-                return null;
-            }
-            #endregion
-        }
-
-        private static string CreateOrderDirectory(string selectedPath)
-        {
-            try
-            {
-                string directoryPathOrders = selectedPath + "\\" + "Orders";
-                bool folderExistsOrders = Directory.Exists(directoryPathOrders);
-                if (!folderExistsOrders)
-                    Directory.CreateDirectory(directoryPathOrders);
-                return directoryPathOrders;
-            }
-            #region catch
-            catch (IOException ioException)
-            {
-                MessageBox.Show(@"ioException: " + Environment.NewLine +
-                                ioException.Message);
-                return null;
-            }
-            catch (UnauthorizedAccessException accessException)
-            {
-                MessageBox.Show(@"accessException: " + Environment.NewLine +
-                                accessException.Message);
-                return null;
-            }
-            catch (ArgumentException argumentException)
-            {
-                MessageBox.Show(@"argumentException: " + Environment.NewLine +
-                                argumentException.Message);
-                return null;
-            }
-            catch (NotSupportedException notSupportedException)
-            {
-                MessageBox.Show(@"notSupportedException: " + Environment.NewLine +
-                                notSupportedException.Message);
-                return null;
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(@"exception: " + Environment.NewLine +
-                                exception.Message);
-                return null;
-            }
-            #endregion
-        }
-
         private static void OpenFolder(string selectedPath)
         {
             #region Method 1
@@ -1021,594 +2035,13 @@ namespace PhotographyAutomation.App.Forms.Orders
 
 
 
-        private void PopulateComboBox()
-        {
-            backgroundWorker.RunWorkerAsync();
-        }
 
-        private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            try
-            {
-                using (var db = new UnitOfWork())
-                {
-                    var result = db.OrderStatusGenericRepository.Get(x => x.Code > 10)
-                        .Select(x => new OrderStatusViewModel
-                        {
-                            Id = x.Id,
-                            StatusCode = x.Code,
-                            Name = x.Name
-                        }).ToList();
-
-                    e.Result = result;
-                }
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(@"exception: " + exception.Message);
-            }
-        }
-
-        private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if (e.Result != null)
-            {
-                cmbOrderStatus.DataSource = e.Result;
-                cmbOrderStatus.DisplayMember = "Name";
-                cmbOrderStatus.ValueMember = "Id";
-            }
-            else
-            {
-                RtlMessageBox.Show(
-                    "اطلاعات وضعیت رزروها از سیستم قابل دریافت نمی باشد." +
-                    " لطفا فرم را بسته و مجددا باز کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید. ",
-                    "خطا در دریافت اطلاعات از سیستم",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
-            }
-
-            btnShowOrders.Enabled = !backgroundWorker.IsBusy;
-            btnClearSearch.Enabled = !backgroundWorker.IsBusy;
-        }
-
-        #endregion
-
-
-        #region Top MenuStrip
-
-        private void مشاهده_عکس_ها_ToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            مشاهده_عکس_ها_ToolStripMenuItem_Click(null, null);
-        }
-
-        private void دریافت_عکس_هاToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            دریافت_عکس_ها_ToolStripMenuItem_Click(null, null);
-        }
-
-        private void مشاهده_اطلاعات_مشتری_ToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            مشاهده_اطلاعات_مشتری_ToolStripMenuItem_Click(null, null);
-        }
-
-        private void مشاهده_اطلاعات_رزرو_ToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            مشاهده_اطلاعات_رزرو_ToolStripMenuItem_Click(null, null);
-
-        }
-
-        private void ثبت_پیش_فاکتور_ToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            ثبت_پیش_فاکتور_ToolStripMenuItem1_Click(null, null);
-        }
-
-
-        #endregion Top MenuStrip
-
-
-        #region DataGridView Contextmenu
-
-        private void contextMenuDgvUploads_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void مشاهده_عکس_ها_ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        RetryGetListOfPhotos:
-            try
-            {
-                if (dgvUploads.SelectedRows[0] == null || dgvUploads.CurrentRow == null)
-                {
-                    RtlMessageBox.Show("رزروی برای مشاهده عکس انتخاب نشده است.");
-                    return;
-                }
-
-                var pathLocator = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
-
-                if (pathLocator != null)
-                {
-                    List<PhotoViewModel> listOfFiles = GetListOfFilesOfOrder(pathLocator);
-                    if (listOfFiles != null)
-                    {
-                        using (var frmViewUploaded = new FrmViewEditUploadedPhotos())
-                        {
-                            frmViewUploaded.ListOfPhotos = listOfFiles;
-                            frmViewUploaded.OrderCode = dgvUploads.SelectedRows[0]?.Cells["clmOrderCode"].Value.ToString();
-                            frmViewUploaded.CustomerName = dgvUploads.SelectedRows[0].Cells["clmCustomerFullName"].Value.ToString();
-                            frmViewUploaded.PhotographyDate = dgvUploads.SelectedRows[0].Cells["clmDate"].Value.ToString();
-                            frmViewUploaded.TotalPhotos = (int)dgvUploads.SelectedRows[0].Cells["clmTotalFiles"].Value;
-                            frmViewUploaded.OrderStatus = dgvUploads.SelectedRows[0].Cells["clmStatusName"].Value.ToString();
-                            frmViewUploaded.ShowDialog();
-                            GC.Collect();
-                        }
-                    }
-                    else
-                    {
-                        var dialogResult = RtlMessageBox.Show(
-                            "برای این سفارش در سیستم عکسی ثبت نشده است. " + Environment.NewLine +
-                            "لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
-                            "خطا در دریافت لیست عکس های سفارش",
-                            MessageBoxButtons.RetryCancel,
-                            MessageBoxIcon.Error);
-                        if (dialogResult == DialogResult.Retry)
-                        {
-                            goto RetryGetListOfPhotos;
-                        }
-                    }
-                }
-            }
-            catch (Exception exception)
-            {
-                if (exception.HResult == -2146233086)
-                {
-                    RtlMessageBox.Show("رزروی برای مشاهده عکس انتخاب نشده است.", "",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                MessageBox.Show(exception.Message);
-            }
-        }
-
-        private void دریافت_عکس_ها_ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (dgvUploads.SelectedRows[0] == null)
-                {
-                    RtlMessageBox.Show("رزروی برای دریافت عکس انتخاب نشده است.");
-                    return;
-                }
-
-                var photoPath = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
-                var orderCode = dgvUploads.SelectedRows[0]?.Cells["clmOrderCode"].Value.ToString();
-                if (photoPath == null)
-                {
-                    RtlMessageBox.Show(
-                        "عکسی برای این سفارش در سیستم ثبت نشده است.",
-                        "خطا در دریافت عکس های سفارش",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-                    return;
-                }
-
-
-                bool resultDownload = DowloadOrderPhotos(photoPath, orderCode);
-                if (resultDownload)
-                {
-                    if (RtlMessageBox.Show(
-                            "فایل ها با موفقیت در سیستم دریافت شد. آیا فولدر نگهداری آنها باز شود؟",
-                            "",
-                            MessageBoxButtons.YesNo,
-                            MessageBoxIcon.Information,
-                            MessageBoxDefaultButton.Button1) == DialogResult.Yes)
-
-                    {
-                        _downloadedAllPhotosPath = _downloadSelectedPath + "\\" + "Orders" + "\\" + orderCode;
-                        OpenFolder(_downloadedAllPhotosPath);
-                        GC.Collect();
-                    }
-                }
-            }
-            catch (Exception exception)
-            {
-                if (exception.HResult == -2146233086)
-                {
-                    RtlMessageBox.Show("رزروی برای دریافت عکس انتخاب نشده است.", "",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                MessageBox.Show(exception.Message);
-            }
-        }
-
-        private bool DowloadOrderPhotos(string photoPath, string orderCode)
-        {
-            bool resultDownload = false;
-            using (var folderBrowser = new VistaFolderBrowserDialog())
-            {
-                folderBrowser.RootFolder = Environment.SpecialFolder.MyComputer;
-                folderBrowser.ShowNewFolderButton = true;
-                folderBrowser.Description = @"لطفا محل ذخیره عکس های مشتری را انتخاب نمایید";
-                folderBrowser.UseDescriptionForTitle = true;
-
-                if (folderBrowser.ShowDialog() == DialogResult.OK)
-                {
-                    //چک ببین قبلا در این مسیر این فایل ها دانلود شده است یا خیر؟
-                    if (OrderDownloadedBefore(folderBrowser.SelectedPath, orderCode) == false)
-                    {
-                        _downloadSelectedPath = folderBrowser.SelectedPath;
-                        resultDownload = DownloadPhotos(_downloadSelectedPath, photoPath, orderCode);
-                    }
-                    else
-                    {
-                        RtlMessageBox.Show("قبلا این عکس ها در مسیر انتخابی دریافت شده است.", "", MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                    }
-                }
-            }
-
-            return resultDownload;
-        }
-
-
-
-        private void مشاهده_اطلاعات_مشتری_ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (dgvUploads.SelectedRows[0] == null || dgvUploads.CurrentRow == null)
-                {
-                    RtlMessageBox.Show("مشتری برای مشاهده اطلاعات انتخاب نشده است.");
-                    return;
-                }
-
-                if (!int.TryParse(dgvUploads.SelectedRows[0].Cells["clmCustomerId"].Value.ToString(),
-                    out int customerId))
-                {
-                    RtlMessageBox.Show(
-                        "مشتری برای مشاهده اطلاعات انتخاب نشده است و یا اطلاعات مشتری قابل دریافت نمی باشد.");
-                    return;
-                }
-
-                using (var frmCustomerInfo = new FrmAddEditCustomerInfo())
-                {
-                    frmCustomerInfo.CustomerId = customerId;
-                    frmCustomerInfo.NewCustomer = true;
-                    frmCustomerInfo.IsViewOnly = true;
-                    frmCustomerInfo.ShowDialog();
-                }
-            }
-            catch (Exception exception)
-            {
-                if (exception.HResult == -2146233086)
-                {
-                    RtlMessageBox.Show("مشتری برای مشاهده اطلاعات انتخاب نشده است.", "",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                MessageBox.Show(exception.Message);
-            }
-        }
-
-        private void مشاهده_اطلاعات_رزرو_ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (dgvUploads.SelectedRows[0] == null || dgvUploads.CurrentRow == null)
-                {
-                    RtlMessageBox.Show("رزروی برای مشاهده اطلاعات انتخاب نشده است.");
-                    return;
-                }
-
-                //clmBookingId
-                if (!int.TryParse(dgvUploads.SelectedRows[0].Cells["clmBookingId"].Value.ToString(),
-                        out int bookingId) ||
-                    !int.TryParse(dgvUploads.SelectedRows[0].Cells["clmCustomerId"].Value.ToString(),
-                        out int customerId))
-                {
-                    RtlMessageBox.Show(
-                        "رزروی برای مشاهده اطلاعات انتخاب نشده است و یا اطلاعات رزرو انتخابی قابل دریافت نمی باشد.");
-                    return;
-                }
-                //if (!int.TryParse(dgvUploads.SelectedRows[0].Cells["clmCustomerId"].Value.ToString(),
-                //    out int customerId)) return;
-
-                using (var frmAddEditBooking = new FrmAddEditBooking())
-                {
-                    frmAddEditBooking.BookingId = bookingId;
-                    frmAddEditBooking.CustomerId = customerId;
-                    frmAddEditBooking.IsViewOnly = true;
-                    frmAddEditBooking.ShowDialog();
-                }
-            }
-            catch (Exception exception)
-            {
-                if (exception.HResult == -2146233086)
-                {
-                    RtlMessageBox.Show("رزروی برای مشاهده اطلاعات انتخاب نشده است.", "",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                MessageBox.Show(exception.Message);
-            }
-        }
-
-        private void ارسال_عکسهای_انتخاب_شده_ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ارسال_عکس_های_انتخاب_شده_مشتری_به_سرور_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (var frmUploadSelectedPhotos = new FrmUploadSelectedPhotos())
             {
                 frmUploadSelectedPhotos.ShowDialog();
             }
         }
-
-        private void ویرایش_عکسهای_انتخاب_شده_ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ثبت_پیش_فاکتور_ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //var customerId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmCustomerId"].Value);
-            //if (CheckCustomerActivity(customerId) == false) return;
-
-
-
-            //بررسی وضعیت سفارش
-            //    جهت ثبت پیش فاکتور
-
-
-            //آیا اصلا رکوردی از دیتاگرید ویو انتخاب شده است؟
-            if (dgvUploads.CurrentRow == null || dgvUploads.SelectedRows[0] == null) return;
-
-            
-
-            var orderCode = dgvUploads.SelectedRows[0].Cells["clmOrderCode"].Value.ToString();
-            var orderId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmId"].Value);
-
-            /*آیا عکس های اصلی آپلود شده است؟*/
-            if (CheckIfOrderFilesUploaded(orderId) == false) 
-            {
-                //مشاهده فرم آپلود عکس ها
-                ShowPhotoUploadingForm(orderId);  
-            }
-
-
-
-            // چک کن ببین عکس های انتخابی مشتری ارسال شده است یا خیر؟
-            //if (CustomerSelectedFilesIsUploadedBefore() == false)
-            //{
-            //    //چک کن ببین قبلا فایل  ها دانلود شده است؟
-            //    var drDownloadAllCustomerPhotos = RtlMessageBox.Show(
-            //        "آیا می خواهید تمامی عکس ها روی سیستم دانلود شود؟",
-            //        "",
-            //        MessageBoxButtons.YesNo,
-            //        MessageBoxIcon.Question);
-            //    if (drDownloadAllCustomerPhotos == DialogResult.Yes)
-            //    {
-            //        var photoPath = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
-            //        if (DowloadOrderPhotos(photoPath, orderCode)) //=>_downloadedAllPhotosPath
-            //        {
-            //            if (RtlMessageBox.Show(
-            //                    "فایل ها با موفقیت در سیستم دریافت شد. " +
-            //                    "آیا فولدر مربوطه باز شود؟",
-            //                    "",
-            //                    MessageBoxButtons.YesNo,
-            //                    MessageBoxIcon.Question,
-            //                    MessageBoxDefaultButton.Button1) == DialogResult.Yes)
-            //            {
-            //                _downloadedAllPhotosPath = _downloadSelectedPath + "\\" + "Orders" + "\\" + orderCode;
-            //                OpenFolder(_downloadedAllPhotosPath);
-            //                GC.Collect();
-            //            }
-            //        }
-            //    }
-            //    else
-            //    {
-            //        return;
-            //    }
-
-
-            //    //اگر عکس های انتخابی مشتری آماده شده است ولی هنوز آپلود نشده است. 
-            //    var drCustomerSelectedPhotosReady = RtlMessageBox.Show(
-            //        "آیا عکس های انتخابی مشتری آماده آپلود است؟",
-            //        "",
-            //        MessageBoxButtons.YesNo,
-            //        MessageBoxIcon.Question,
-            //        MessageBoxDefaultButton.Button2);
-            //    if (drCustomerSelectedPhotosReady == DialogResult.Yes)
-            //    {
-            //        /*نمایش فرم آپلود عکس های مشتری جهت ارسال عکس های انتخاب شده*/
-            //        if (ShowPhotoUploadingForm(orderId))
-            //        {
-            //            //مشتری انتخاب عکس خود را انجام داده است.
-            //            _customerIsSelectedOrderFiles = true;
-            //        }
-            //    }
-            //    else
-            //    {
-            //        return;
-            //    }
-            //    //
-            //}
-
-
-            /*آیا فاکتور برای همین مشتری صادر شود؟*/
-            var customerName = dgvUploads.SelectedRows[0].Cells["clmCustomerFullName"].Value.ToString();
-            if (CheckPreFactorIssuedForThisCustomer(customerName) == false) 
-            {
-                _customerId = ShowCustomerSearchForm();
-
-                if (_customerId == 0) // user clicked no
-                {
-                    RtlMessageBox.Show(
-                        "هیچ کاربری برای ثبت پیش فاکتور انتخاب نگردید. " +
-                        $"پیش فاکتور به نام {customerName} صادر می گردد.",
-                        "ثبت پیش فاکتور",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-                    _customerId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmCustomerId"].Value);
-                }
-            }
-            else
-            {
-                _customerId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmCustomerId"].Value);
-            }
-
-            //if (CheckOrderPhotosIsSelected(_customerId, orderId) == true ||
-            //    _customerIsSelectedOrderFiles == true) /*آیا مشتری انتخاب عکس انجام داده است؟*/
-            //{
-            //    if (CheckIfCustomerHasChangesInPhotosSelected()) /*آیا مشتری در سفارش خود می خواهد تغییراتی انجام دهد؟*/
-            //    {
-            //        if (CheckIfCustomerWantsToAddSomePhotosToSelectedPhotos())
-            //        {
-            //            string downloadPath = null;
-            //            downloadPath = DownloadAllOrderPhotos();
-            //            ShowDownloadedFolder(downloadPath);
-            //            downloadPath = DownloadSelectedPhotos();
-            //            ShowDownloadedFolder(downloadPath);
-            //            ShowPhotoUploadingForm();
-            //            ShowPreFactorForm();
-            //        }
-            //        else if (CheckIfCustomerWantsToAddSomePhotosToSelectedPhotos() == false)
-            //        {
-            //            ShowUploadedPhotos();
-            //            ShowPreFactorForm();
-            //        }
-            //    }
-            //    else if (CheckIfCustomerHasChangesInPhotosSelected() == false)
-            //    {
-            //        ShowUploadedPhotos();
-            //        ShowPreFactorForm();
-            //    }
-            //}
-            //else if (CheckOrderPhotosIsSelected(customerId, orderId) == false)
-            //{
-            //    string downloadPath = null;
-            //    downloadPath = DownloadAllOrderPhotos();
-            //    ShowDownloadedFolder(downloadPath);
-            //    ShowPhotoUploadingForm();
-            //    ShowPreFactorForm();
-            //}
-        }
-
-
-        private static int ShowCustomerSearchForm()
-        {
-            int customerId = 0;
-            using (var searchCustomerForm = new FrmShowCustomer())
-            {
-                searchCustomerForm.CustomerIdForPreFactor = true;
-                if (searchCustomerForm.ShowDialog() == DialogResult.OK)
-                {
-                    customerId = searchCustomerForm.CustomerId;
-                }
-            }
-
-            return customerId;
-        }
-
-        private static bool CheckPreFactorIssuedForThisCustomer(string customerName)
-        {
-            DialogResult dr = RtlMessageBox.Show(
-                $"آیا پیش فاکتور به نام {customerName} صادر گردد؟",
-                "صدور فاکتور",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question,
-                MessageBoxDefaultButton.Button2);
-
-            if (dr == DialogResult.Yes)
-                return true;
-            return false;
-        }
-
-        private bool ShowPhotoUploadingForm(int orderId)
-        {
-            bool result = false;
-            if (_customerIsSelectedOrderFiles) // Orderprint Id
-            {
-
-            }
-            else // Order Id
-            {
-                try
-                {
-                    using (var db = new UnitOfWork())
-                    {
-                        var order = db.OrderGenericRepository.GetById(orderId);
-                        if (order != null)
-                        {
-                            using (var uploadForm = new FrmUploadPhotos())
-                            {
-                                uploadForm.OrderCode = order.OrderCode;
-                                uploadForm.BookingId = order.BookingId;
-                                uploadForm.CustomerId = order.CustomerId;
-                                uploadForm.OrderId = orderId;
-
-                                if (uploadForm.ShowDialog() == DialogResult.OK)
-                                {
-                                    result = true;
-                                }
-                            }
-                        }
-                    }
-                }
-                catch (Exception exception)
-                {
-                    Console.WriteLine(exception);
-                }
-            }
-
-
-
-            return result;
-        }
-
-
-        private static bool CheckIfOrderFilesUploaded(int orderId)
-        {
-            var result = false;
-            try
-            {
-                using (var db = new UnitOfWork())
-                {
-                    var orderFiles = db.OrderFilesGenericRepository.Get(x => x.OrderId == orderId);
-                    result = orderFiles.Any();
-                }
-            }
-            catch (Exception exception)
-            {
-                Console.WriteLine(exception);
-                result = false;
-            }
-
-            return result;
-        }
-
-        private bool CheckCustomerActivity(int customerId)
-        {
-            bool result = false;
-            try
-            {
-                using (var db = new UnitOfWork())
-                {
-                    var customer = db.CustomerGenericRepository.GetById(customerId);
-                    if (customer != null)
-                    {
-                        if (customer.IsActive != 0 && customer.IsDeleted != 0)
-                            result = true;
-                    }
-                }
-            }
-            catch (Exception exception)
-            {
-                Console.WriteLine(exception);
-                result = false;
-            }
-
-            return result;
-        }
-
-        #endregion DataGridView Contextmenu
     }
 }

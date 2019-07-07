@@ -18,7 +18,7 @@ namespace PhotographyAutomation.DateLayer.Models
         public int OrderPrintId { get; set; }
         public string FileName { get; set; }
         public string PathLocator { get; set; }
-        public Nullable<System.DateTime> CollectionDate { get; set; }
+        public Nullable<System.DateTime> CollectDate { get; set; }
     
         public virtual TblOrderPrint TblOrderPrint { get; set; }
     }

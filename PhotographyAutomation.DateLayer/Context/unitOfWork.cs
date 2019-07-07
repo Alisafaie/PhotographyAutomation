@@ -41,6 +41,9 @@ namespace PhotographyAutomation.DateLayer.Context
 
 
 
+
+
+
         private IBookingRepository _bookingRepository;
 
         public IBookingRepository BookingRepository
@@ -102,6 +105,21 @@ namespace PhotographyAutomation.DateLayer.Context
                     _orderFilesGenericRepository = new GenericRepository<TblOrderFiles>(_db);
                 }
                 return _orderFilesGenericRepository;
+            }
+        }
+
+        private GenericRepository<TblOrderPrint> _orderPrintGenericRepository;
+
+        public GenericRepository<TblOrderPrint> OrderPrintGenericRepository
+        {
+            get
+            {
+                if (_orderPrintGenericRepository == null)
+                {
+                    _orderPrintGenericRepository=new GenericRepository<TblOrderPrint>(_db);
+                }
+
+                return _orderPrintGenericRepository;
             }
         }
 

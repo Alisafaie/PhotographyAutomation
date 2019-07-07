@@ -42,11 +42,14 @@ namespace PhotographyAutomation.DateLayer.Models
         public Nullable<System.DateTime> ModifiedDateTime { get; set; }
         public Nullable<int> Submitter { get; set; }
         public Nullable<System.DateTime> UploadDate { get; set; }
+        public Nullable<bool> OrderPrintIssued { get; set; }
+        public Nullable<int> LastOrderPrintCustomerId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblAllOrderStatus> TblAllOrderStatus { get; set; }
         public virtual TblBooking TblBooking { get; set; }
         public virtual TblCustomer TblCustomer { get; set; }
+        public virtual TblCustomer TblCustomer1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblFilesError> TblFilesError { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
