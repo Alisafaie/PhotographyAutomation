@@ -1546,7 +1546,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
 
         /*********************************************************************************************************/
-        private void ShowException(Exception exception)
+        private static void ShowException(Exception exception)
         {
             RtlMessageBox.Show("خطا در سیستم.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             
