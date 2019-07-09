@@ -830,7 +830,7 @@
             this.مشاهده_عکس_ها_ToolStripMenuItem.Name = "مشاهده_عکس_ها_ToolStripMenuItem";
             this.مشاهده_عکس_ها_ToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
             this.مشاهده_عکس_ها_ToolStripMenuItem.Text = "مشاهده عکس ها";
-            this.مشاهده_عکس_ها_ToolStripMenuItem.Click += new System.EventHandler(this.مشاهده_عکس_ها_ToolStripMenuItem_Click);
+            //this.مشاهده_عکس_ها_ToolStripMenuItem.Click += new System.EventHandler(this.مشاهده_عکس_ها_ToolStripMenuItem_Click);
             // 
             // دریافت_عکس_ها_ToolStripMenuItem
             // 
