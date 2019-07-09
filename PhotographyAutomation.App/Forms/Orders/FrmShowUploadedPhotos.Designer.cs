@@ -822,7 +822,7 @@
             this.انتخاب_عکس_ToolStripMenuItem});
             this.contextMenuDgvUploads.Name = "contextMenuStrip1";
             this.contextMenuDgvUploads.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuDgvUploads.Size = new System.Drawing.Size(219, 226);
+            this.contextMenuDgvUploads.Size = new System.Drawing.Size(219, 248);
             this.contextMenuDgvUploads.Paint += new System.Windows.Forms.PaintEventHandler(this.contextMenuDgvUploads_Paint);
             // 
             // مشاهده_عکس_ها_ToolStripMenuItem
@@ -830,6 +830,7 @@
             this.مشاهده_عکس_ها_ToolStripMenuItem.Name = "مشاهده_عکس_ها_ToolStripMenuItem";
             this.مشاهده_عکس_ها_ToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
             this.مشاهده_عکس_ها_ToolStripMenuItem.Text = "مشاهده عکس ها";
+            this.مشاهده_عکس_ها_ToolStripMenuItem.Click += new System.EventHandler(this.مشاهده_عکس_ها_ToolStripMenuItem_Click);
             // 
             // دریافت_عکس_ها_ToolStripMenuItem
             // 

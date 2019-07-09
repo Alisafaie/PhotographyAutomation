@@ -1549,7 +1549,7 @@ namespace PhotographyAutomation.App.Forms.Orders
         private static void ShowException(Exception exception)
         {
             RtlMessageBox.Show("خطا در سیستم.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            
+
             var sb = new StringBuilder();
             sb.Append("Exception: " + Environment.NewLine);
             sb.Append($" Message: {exception.Message}" + Environment.NewLine);
@@ -2047,18 +2047,97 @@ namespace PhotographyAutomation.App.Forms.Orders
 
             var orderCode = dgvUploads.SelectedRows[0].Cells["clmOrderCode"].Value.ToString();
             var orderId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmId"].Value);
-            var parentPathLocator = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
+            //var parentPathLocator = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
 
 
-            using (var frmUploadSelectedPhotos = new FrmUploadSelectedPhotos())
+            //using (var frmUploadSelectedPhotos = new FrmUploadSelectedPhotos())
+            //{
+            //    frmUploadSelectedPhotos.OrderId = orderId;
+            //    frmUploadSelectedPhotos.ParentPathLocator = parentPathLocator;
+            //    if (frmUploadSelectedPhotos.ShowDialog() == DialogResult.OK)
+            //    {
+            //        ارسال_عکس_های_انتخاب_شده_مشتری_به_سرور_ToolStripMenuItem.Checked = true;
+            //    }
+            //}
+
+
+
+
+            var parentPathLocator =
+                dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
+
+            if (parentPathLocator != null)
             {
-                frmUploadSelectedPhotos.OrderId = orderId;
-                frmUploadSelectedPhotos.ParentPathLocator = parentPathLocator;
-                if (frmUploadSelectedPhotos.ShowDialog()==DialogResult.OK)
+                var listOfFiles = GetListOfFilesOfOrder(parentPathLocator);
+                if (listOfFiles is List<PhotoViewModel> list)
                 {
-                    ارسال_عکس_های_انتخاب_شده_مشتری_به_سرور_ToolStripMenuItem.Checked = true;
+                    if (list.Any())
+                    {
+                        using (var frmViewUploadedPhotos = new FrmUploadSelectedPhotos())
+                        {
+                            frmViewUploadedPhotos.ListOfPhotos = list;
+                            frmViewUploadedPhotos.OrderCode =
+                                dgvUploads.SelectedRows[0]?.Cells["clmOrderCode"].Value.ToString();
+                            frmViewUploadedPhotos.CustomerName = dgvUploads.SelectedRows[0]
+                                .Cells["clmCustomerFullName"]
+                                .Value.ToString();
+                            frmViewUploadedPhotos.PhotographyDate =
+                                dgvUploads.SelectedRows[0].Cells["clmDate"].Value.ToString();
+                            frmViewUploadedPhotos.TotalPhotos =
+                                (int)dgvUploads.SelectedRows[0].Cells["clmTotalFiles"].Value;
+                            frmViewUploadedPhotos.OrderStatus =
+                                dgvUploads.SelectedRows[0].Cells["clmStatusName"].Value.ToString();
+
+                            frmViewUploadedPhotos.ShowDialog();
+                        }
+                        GC.Collect();
+                    }
+                    else
+                    {
+                        var dialogResult = RtlMessageBox.Show(
+                            "برای این سفارش در سیستم عکسی ثبت نشده است. " + Environment.NewLine +
+                            "لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
+                            "خطا در دریافت لیست عکس های سفارش",
+                            MessageBoxButtons.RetryCancel,
+                            MessageBoxIcon.Error);
+                        if (dialogResult == DialogResult.Retry)
+                        {
+                            goto RetryGetListOfPhotos;
+                        }
+                    }
                 }
+                else if (listOfFiles is Exception exception)
+                {
+                    ShowException(exception);
+                }
+                else
+                {
+                    var dialogResult = RtlMessageBox.Show(
+                        "برای این سفارش در سیستم عکسی ثبت نشده است. " + Environment.NewLine +
+                        "لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
+                        "خطا در دریافت لیست عکس های سفارش",
+                        MessageBoxButtons.RetryCancel,
+                        MessageBoxIcon.Error);
+                    if (dialogResult == DialogResult.Retry)
+                    {
+                        goto RetryGetListOfPhotos;
+                    }
+                }
+            }
+            else
+            {
+                RtlMessageBox.Show(
+                    "برای رزرو انتخابی هنوز عکسی در سیستم قرار داده نشده است.",
+                    "عدم آپلود عکس برای رزرو انتخابی",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
             }
         }
     }
+
+    private void مشاهده_عکس_ها_ToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+
+    }
+}
 }

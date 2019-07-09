@@ -1548,5 +1548,32 @@
   <ItemGroup>
     <None Include="Resources\iconfinder_document_image_add_103475.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_refresh_reload_update_2_2571204.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Sync_32555.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_refresh02_47527.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_adept_update_7685.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_5_-_Refresh_1815572.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_arrow_circle_double_11450.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Synchronize_27883 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Synchronize_27883.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_adept_update_76851.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

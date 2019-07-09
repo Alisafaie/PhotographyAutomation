@@ -5,6 +5,7 @@ using PhotographyAutomation.DateLayer.Models;
 using PhotographyAutomation.Utilities;
 using PhotographyAutomation.Utilities.Convertor;
 using PhotographyAutomation.Utilities.ExtentionMethods;
+using PhotographyAutomation.ViewModels.Photo;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -19,6 +20,8 @@ namespace PhotographyAutomation.App.Forms.Orders
     public partial class FrmUploadSelectedPhotos : Form
     {
         #region Variables
+
+
         private readonly List<string> _fileNamesList = new List<string>();
         private readonly List<string> _fileNamesAndPathsList = new List<string>();
 
@@ -32,14 +35,20 @@ namespace PhotographyAutomation.App.Forms.Orders
         public int CustomerId = 0;
         public int OrderId = 0;
 
-        
+
         public string CustomerName;
         public string PhotographyDate;
         public int TotalPhotos;
         public string OrderStatus;
         public string ParentPathLocator;
 
+
        
+
+        
+
+        public List<PhotoViewModel> ListOfPhotos;
+
 
         #endregion Variables
 
@@ -60,7 +69,11 @@ namespace PhotographyAutomation.App.Forms.Orders
             toolStripMenuItemCustomerName.Text = CustomerName;
             toolStripMenuItemOrderstatus.Text = OrderStatus;
             toolStripMenuItemPhotographyDate.Text = PhotographyDate;
+
+            GetOrderFiles(OrderId, ParentPathLocator);
         }
+
+
 
 
         #region Top Menu
@@ -116,6 +129,11 @@ namespace PhotographyAutomation.App.Forms.Orders
                     RtlMessageBox.Show(exception.Message);
                 }
             }
+        }
+
+        private void btnSyncFolders_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void btnUploadPhotos_Click(object sender, EventArgs e)
@@ -577,8 +595,8 @@ namespace PhotographyAutomation.App.Forms.Orders
             Control control = (Control)sender;
             PictureBox pic = (PictureBox)control;
             pictureBoxPreview.Image = pic.Image;
-            
-            
+
+
             // File Location
             pictureBoxPreview.Tag = pic.AccessibleDescription;
 
@@ -720,9 +738,14 @@ namespace PhotographyAutomation.App.Forms.Orders
             panelPreviewPictures.Controls.Add(pictureBoxControl);
         }
 
+        private void GetOrderFiles(int orderId, string parentPathLocator)
+        {
+            List<PhotoViewModel> ListOfPhotos = new List<PhotoViewModel>();
+
+        }
+
+
         #endregion
-
-
 
 
     }

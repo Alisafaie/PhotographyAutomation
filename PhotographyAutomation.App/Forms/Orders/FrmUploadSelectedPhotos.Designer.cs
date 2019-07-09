@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmUploadSelectedPhotos));
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
+            this.btnSyncFolders = new DevComponents.DotNetBar.ButtonX();
             this.btnChoosePhotoPath = new DevComponents.DotNetBar.ButtonX();
             this.btnUploadPhotos = new DevComponents.DotNetBar.ButtonX();
             this.toolTipPictureBoxPreview = new System.Windows.Forms.ToolTip(this.components);
@@ -59,7 +60,6 @@
             this.toolStripMenuItemTotalPhotos = new System.Windows.Forms.ToolStripMenuItem();
             this.وضعیتسفارشToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemOrderstatus = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.panelEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.collapsibleSplitContainer1)).BeginInit();
@@ -81,7 +81,7 @@
             // 
             this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx1.Controls.Add(this.buttonX1);
+            this.panelEx1.Controls.Add(this.btnSyncFolders);
             this.panelEx1.Controls.Add(this.btnChoosePhotoPath);
             this.panelEx1.Controls.Add(this.btnUploadPhotos);
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
@@ -97,6 +97,20 @@
             this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx1.Style.GradientAngle = 90;
             this.panelEx1.TabIndex = 0;
+            // 
+            // btnSyncFolders
+            // 
+            this.btnSyncFolders.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSyncFolders.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSyncFolders.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSyncFolders.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_adept_update_76851;
+            this.btnSyncFolders.Location = new System.Drawing.Point(774, 20);
+            this.btnSyncFolders.Name = "btnSyncFolders";
+            this.btnSyncFolders.Size = new System.Drawing.Size(141, 36);
+            this.btnSyncFolders.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSyncFolders.TabIndex = 6;
+            this.btnSyncFolders.Text = "همگام سازی";
+            this.btnSyncFolders.Click += new System.EventHandler(this.btnSyncFolders_Click);
             // 
             // btnChoosePhotoPath
             // 
@@ -404,20 +418,6 @@
             this.toolStripMenuItemOrderstatus.Text = "--";
             this.toolStripMenuItemOrderstatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // buttonX1
-            // 
-            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Location = new System.Drawing.Point(774, 20);
-            this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(141, 36);
-            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX1.Symbol = "";
-            this.buttonX1.TabIndex = 6;
-            this.buttonX1.Text = "همگام سازی";
-            this.buttonX1.Click += new System.EventHandler(this.btnChoosePhotoPath_Click);
-            // 
             // FrmUploadSelectedPhotos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -484,6 +484,6 @@
         private System.Windows.Forms.PictureBox pictureBoxPreview;
         private DevComponents.DotNetBar.PanelEx panelPreviewPictures;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxSelectAll;
-        private DevComponents.DotNetBar.ButtonX buttonX1;
+        private DevComponents.DotNetBar.ButtonX btnSyncFolders;
     }
 }
