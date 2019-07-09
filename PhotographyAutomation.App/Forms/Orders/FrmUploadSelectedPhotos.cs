@@ -37,6 +37,7 @@ namespace PhotographyAutomation.App.Forms.Orders
         public string PhotographyDate;
         public int TotalPhotos;
         public string OrderStatus;
+        public string ParentPathLocator;
 
        
 
