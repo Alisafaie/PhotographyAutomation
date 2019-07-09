@@ -2038,8 +2038,21 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         private void ارسال_عکس_های_انتخاب_شده_مشتری_به_سرور_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (dgvUploads.SelectedRows[0] == null || dgvUploads.CurrentRow == null)
+            {
+                RtlMessageBox.Show("رزروی برای مشاهده عکس انتخاب نشده است.");
+                return;
+            }
+
+
+            var orderCode = dgvUploads.SelectedRows[0].Cells["clmOrderCode"].Value.ToString();
+            var orderId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmId"].Value);
+            var photoPath = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
+
+
             using (var frmUploadSelectedPhotos = new FrmUploadSelectedPhotos())
             {
+                frmUploadSelectedPhotos.OrderId = orderId;
                 frmUploadSelectedPhotos.ShowDialog();
             }
         }
