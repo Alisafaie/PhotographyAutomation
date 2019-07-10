@@ -172,11 +172,11 @@
     <Compile Include="Forms\Customers\FrmShowCustomer.Designer.cs">
       <DependentUpon>FrmShowCustomer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Orders\FrmShowUploadedPhotos.cs">
+    <Compile Include="Forms\Orders\FrmManagePreOrders.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Orders\FrmShowUploadedPhotos.Designer.cs">
-      <DependentUpon>FrmShowUploadedPhotos.cs</DependentUpon>
+    <Compile Include="Forms\Orders\FrmManagePreOrders.Designer.cs">
+      <DependentUpon>FrmManagePreOrders.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\EntranceToAtelier\FrmShowIncommingBookings.cs">
       <SubType>Form</SubType>
@@ -231,8 +231,8 @@
     <EmbeddedResource Include="Forms\Customers\FrmShowCustomer.resx">
       <DependentUpon>FrmShowCustomer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Orders\FrmShowUploadedPhotos.resx">
-      <DependentUpon>FrmShowUploadedPhotos.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Orders\FrmManagePreOrders.resx">
+      <DependentUpon>FrmManagePreOrders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EntranceToAtelier\FrmShowIncommingBookings.resx">
       <DependentUpon>FrmShowIncommingBookings.cs</DependentUpon>
