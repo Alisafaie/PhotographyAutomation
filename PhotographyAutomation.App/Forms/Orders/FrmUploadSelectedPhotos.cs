@@ -5,6 +5,7 @@ using PhotographyAutomation.DateLayer.Models;
 using PhotographyAutomation.Utilities;
 using PhotographyAutomation.Utilities.Convertor;
 using PhotographyAutomation.Utilities.ExtentionMethods;
+using PhotographyAutomation.ViewModels.Photo;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,12 +14,15 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DevComponents.DotNetBar;
 
 namespace PhotographyAutomation.App.Forms.Orders
 {
     public partial class FrmUploadSelectedPhotos : Form
     {
         #region Variables
+
+
         private readonly List<string> _fileNamesList = new List<string>();
         private readonly List<string> _fileNamesAndPathsList = new List<string>();
 
@@ -32,13 +36,16 @@ namespace PhotographyAutomation.App.Forms.Orders
         public int CustomerId = 0;
         public int OrderId = 0;
 
-        
+
         public string CustomerName;
         public string PhotographyDate;
         public int TotalPhotos;
         public string OrderStatus;
+        public string ParentPathLocator;
 
-       
+
+        public List<PhotoViewModel> ListOfPhotos;
+
 
         #endregion Variables
 
@@ -59,7 +66,29 @@ namespace PhotographyAutomation.App.Forms.Orders
             toolStripMenuItemCustomerName.Text = CustomerName;
             toolStripMenuItemOrderstatus.Text = OrderStatus;
             toolStripMenuItemPhotographyDate.Text = PhotographyDate;
+
+            ShowImages();
+            panelPreviewPictures.Focus();
+
+            if (panelPreviewPictures.Controls.Count > 0)
+            {
+                var control = panelPreviewPictures.Controls
+                                        .Find("chk_" + ListOfPhotos[0].Name, true);
+                if (control[0].GetType() == typeof(CheckBoxX))
+                {
+                    CheckBoxX x = (CheckBoxX)control[0];
+                    panelPreviewPictures.Focus();
+
+                    var loc = x.PointToScreen(Point.Empty);
+
+                    MouseSilulator.MoveCursorToPoint(loc.X + 6, loc.Y + 6);
+                    MouseSilulator.DoMouseClick();
+                    MouseSilulator.DoMouseClick();
+                }
+            }
         }
+
+
 
 
         #region Top Menu
@@ -96,10 +125,9 @@ namespace PhotographyAutomation.App.Forms.Orders
 
             if (openFileDialogBrowsePictures.ShowDialog() != DialogResult.OK) return;
 
-            panelPreviewPictures.Controls.Clear();
-            var locnewX = _locX;
-            // ReSharper disable once UnusedVariable
-            var locnewY = _locY;
+            //panelPreviewPictures.Controls.Clear();
+            //var locnewX = _locX;
+            //var locnewY = _locY;
 
 
             for (var i = 0; i < openFileDialogBrowsePictures.SafeFileNames.Length; i++)
@@ -108,7 +136,6 @@ namespace PhotographyAutomation.App.Forms.Orders
                 {
                     _fileNamesAndPathsList.Add(openFileDialogBrowsePictures.FileNames[i]);
                     _fileNamesList.Add(openFileDialogBrowsePictures.SafeFileNames[i]);
-                    locnewX = ShowImagePreview(locnewX, openFileDialogBrowsePictures, i);
                 }
                 catch (Exception exception)
                 {
@@ -116,6 +143,21 @@ namespace PhotographyAutomation.App.Forms.Orders
                 }
             }
         }
+
+        private void btnSyncFolders_Click(object sender, EventArgs e)
+        {
+            if (!_fileNamesList.Any())
+            {
+                RtlMessageBox.Show("عکس های انتخابی مشتری مشخص نشده است.",
+                    "خطا در مشخص کردن عکس های کاربر",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            EnableOrDisableCheckBoxes(_fileNamesList);
+        }
+
+
 
         private void btnUploadPhotos_Click(object sender, EventArgs e)
         {
@@ -576,8 +618,8 @@ namespace PhotographyAutomation.App.Forms.Orders
             Control control = (Control)sender;
             PictureBox pic = (PictureBox)control;
             pictureBoxPreview.Image = pic.Image;
-            
-            
+
+
             // File Location
             pictureBoxPreview.Tag = pic.AccessibleDescription;
 
@@ -643,13 +685,75 @@ namespace PhotographyAutomation.App.Forms.Orders
             return true;
         }
 
-        private int ShowImagePreview(int locnewX, OpenFileDialog openFileDialogBrowsePictures, int i)
+        private void EnableOrDisableCheckBoxes(IReadOnlyCollection<string> fileNamesList)
+        {
+            if (fileNamesList.Any())
+            {
+                foreach (var fileName in fileNamesList)
+                {
+                    foreach (Control control in panelPreviewPictures.Controls)
+                    {
+                        if (control is CheckBoxX checkBox)
+                        {
+                            if ((string) checkBox.Tag == fileName)
+                            {
+                                checkBox.Checked = true;
+                                checkBox.CheckState = CheckState.Checked;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void ShowImages()
+        {
+            panelPreviewPictures.Controls.Clear();
+            var locnewX = _locX;
+            // ReSharper disable once UnusedVariable
+            var locnewY = _locY;
+
+            for (var i = 0; i < ListOfPhotos.Count; i++)
+            {
+                try
+                {
+                    locnewX = ShowImagePreview(locnewX, ListOfPhotos, i);
+                }
+                catch (Exception exception)
+                {
+                    RtlMessageBox.Show(exception.Message);
+                }
+            }
+        }
+
+        //private int ShowImagePreview(int locnewX, OpenFileDialog ofdBrowsePictures, int i)
+        //{
+        //    int locnewY;
+        //    if (locnewX >= panelPreviewPictures.Width - _sizeWidth - 10)
+        //    {
+        //        locnewX = _locX;
+        //        _locY = _locY + _sizeHeight + 30;
+        //        locnewY = _locY;
+        //    }
+        //    else
+        //    {
+        //        locnewY = _locY;
+        //    }
+
+        //    LoadImagestoPanel(ofdBrowsePictures.SafeFileNames[i], ofdBrowsePictures.FileNames[i], locnewX, locnewY);
+
+        //    // ReSharper disable once RedundantAssignment
+        //    locnewY = _locY + _sizeHeight + 10;
+        //    locnewX = locnewX + _sizeWidth + 10;
+        //    return locnewX;
+        //}
+        private int ShowImagePreview(int locnewX, IReadOnlyList<PhotoViewModel> photoList, int i)
         {
             int locnewY;
             if (locnewX >= panelPreviewPictures.Width - _sizeWidth - 10)
             {
                 locnewX = _locX;
-                _locY = _locY + _sizeHeight + 30;
+                _locY = _locY + _sizeHeight + 40;
                 locnewY = _locY;
             }
             else
@@ -657,8 +761,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                 locnewY = _locY;
             }
 
-            LoadImagestoPanel(openFileDialogBrowsePictures.SafeFileNames[i],
-                openFileDialogBrowsePictures.FileNames[i], locnewX, locnewY);
+            LoadImagestoPanel(photoList[i].Name, photoList[i].FileStream, locnewX, locnewY, i);
 
             // ReSharper disable once RedundantAssignment
             locnewY = _locY + _sizeHeight + 10;
@@ -666,7 +769,59 @@ namespace PhotographyAutomation.App.Forms.Orders
             return locnewX;
         }
 
-        private void LoadImagestoPanel(string imageName, string imageFullName, int newLocX, int newLocY)
+        //private void LoadImagestoPanel(string imageName, string imageFullName, int newLocX, int newLocY)
+        //{
+        //    PictureBox pictureBoxControl = new PictureBox
+        //    {
+        //        BackColor = SystemColors.Control,
+        //        Location = new Point(newLocX, newLocY + 10),
+        //        Size = new Size(_sizeWidth, _sizeHeight),
+        //        SizeMode = PictureBoxSizeMode.Zoom,
+        //        BorderStyle = BorderStyle.FixedSingle,
+        //        Tag = imageName,
+        //        AccessibleDescription = imageFullName,
+        //        Image = imageFullName.FileToByteArray().GetPhotoAndRotateIt()
+        //    };
+
+        //    Label pictureBoxLabel = new Label
+        //    {
+        //        BackColor = SystemColors.Control,
+        //        ForeColor = SystemColors.ControlText,
+        //        Font = SystemFonts.DefaultFont,
+        //        Location = new Point(newLocX + 5, newLocY + 140),
+        //        Text = imageName,
+        //        AutoSize = true,
+        //        MaximumSize = new Size(_sizeWidth, 30),
+        //        ClientSize = new Size(_sizeWidth, 30)
+        //    };
+
+        //    CheckBoxX pictureBoxCheckBox = new CheckBoxX
+        //    {
+        //        BackColor = Color.Transparent,
+        //        Font = SystemFonts.DefaultFont,
+        //        Location = new Point(newLocX + 2, newLocY + 13),
+        //        CheckState = CheckState.Checked,
+        //        Checked = true,
+        //        Tag = imageName,
+        //        Text = "",
+        //        AutoSize = false,
+        //        Size = new Size(17, 17),
+        //        MaximumSize = new Size(17, 17),
+        //        Parent = pictureBoxControl,
+        //        AccessibleDescription = imageFullName,
+        //        AccessibleName = imageName,
+
+        //    };
+
+
+        //    pictureBoxControl.MouseClick += control_MouseClick;
+        //    pictureBoxControl.DoubleClick += pictureBox_DoubleClick;
+
+        //    panelPreviewPictures.Controls.Add(pictureBoxLabel);
+        //    panelPreviewPictures.Controls.Add(pictureBoxCheckBox);
+        //    panelPreviewPictures.Controls.Add(pictureBoxControl);
+        //}
+        private void LoadImagestoPanel(string imageName, byte[] imageBytes, int newLocX, int newLocY, int i)
         {
             PictureBox pictureBoxControl = new PictureBox
             {
@@ -676,53 +831,45 @@ namespace PhotographyAutomation.App.Forms.Orders
                 SizeMode = PictureBoxSizeMode.Zoom,
                 BorderStyle = BorderStyle.FixedSingle,
                 Tag = imageName,
-                AccessibleDescription = imageFullName,
-                Image = imageFullName.FileToByteArray().GetPhotoAndRotateIt()
-            };
-
-            Label pictureBoxLabel = new Label
-            {
-                BackColor = SystemColors.Control,
-                ForeColor = SystemColors.ControlText,
-                Font = SystemFonts.DefaultFont,
-                Location = new Point(newLocX + 5, newLocY + 140),
-                Text = imageName,
-                AutoSize = true,
-                MaximumSize = new Size(_sizeWidth, 30),
-                ClientSize = new Size(_sizeWidth, 30)
+                AccessibleDescription = imageName,
+                Image = imageBytes.GetPhotoAndRotateIt(),
+                Name = "pb_" + imageName
             };
 
             CheckBoxX pictureBoxCheckBox = new CheckBoxX
             {
                 BackColor = Color.Transparent,
                 Font = SystemFonts.DefaultFont,
-                Location = new Point(newLocX + 2, newLocY + 13),
-                CheckState = CheckState.Checked,
-                Checked = true,
+                Location = new Point(newLocX , newLocY + 138),
+                CheckState = CheckState.Unchecked,
+                Checked = false,
                 Tag = imageName,
-                Text = "",
+                Text = imageName,
                 AutoSize = false,
-                Size = new Size(17, 17),
-                MaximumSize = new Size(17, 17),
+                //Size = new Size(17, 17),
+                //MaximumSize = new Size(13, 13),
+                CheckBoxPosition = eCheckBoxPosition.Right,
+                MaximumSize = new Size(128, 32),
+                ClientSize = new Size(128, 32),
+                
                 Parent = pictureBoxControl,
-                AccessibleDescription = imageFullName,
+                AccessibleDescription = ListOfPhotos[i].FullUncPath,
                 AccessibleName = imageName,
-
+                Name = "chk_" + imageName,
+                Style = eDotNetBarStyle.StyleManagerControlled
             };
 
 
             pictureBoxControl.MouseClick += control_MouseClick;
             pictureBoxControl.DoubleClick += pictureBox_DoubleClick;
+            //pictureBoxCheckBox.CheckedChanged += pictureBoxCheckBox_CheckedChanged;
 
-            panelPreviewPictures.Controls.Add(pictureBoxLabel);
+            //panelPreviewPictures.Controls.Add(pictureBoxLabel);
             panelPreviewPictures.Controls.Add(pictureBoxCheckBox);
             panelPreviewPictures.Controls.Add(pictureBoxControl);
+
         }
 
         #endregion
-
-
-
-
     }
 }

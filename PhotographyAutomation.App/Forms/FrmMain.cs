@@ -70,7 +70,7 @@ namespace PhotographyAutomation.App.Forms
 
         private void btnShowPreOrders_Click(object sender, EventArgs e)
         {
-            using (var frmShowUploadedPhotos = new FrmShowUploadedPhotos())
+            using (var frmShowUploadedPhotos = new FrmManagePreOrders())
             {
                 frmShowUploadedPhotos.ShowDialog();
             }
