@@ -1,6 +1,6 @@
 ﻿namespace PhotographyAutomation.App.Forms.Orders
 {
-    partial class FrmShowUploadedPhotos
+    partial class FrmManagePreOrders
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmShowUploadedPhotos));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmManagePreOrders));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -822,7 +822,7 @@
             this.انتخاب_عکس_ToolStripMenuItem});
             this.contextMenuDgvUploads.Name = "contextMenuStrip1";
             this.contextMenuDgvUploads.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.contextMenuDgvUploads.Size = new System.Drawing.Size(219, 248);
+            this.contextMenuDgvUploads.Size = new System.Drawing.Size(219, 226);
             this.contextMenuDgvUploads.Paint += new System.Windows.Forms.PaintEventHandler(this.contextMenuDgvUploads_Paint);
             // 
             // مشاهده_عکس_ها_ToolStripMenuItem
@@ -830,7 +830,6 @@
             this.مشاهده_عکس_ها_ToolStripMenuItem.Name = "مشاهده_عکس_ها_ToolStripMenuItem";
             this.مشاهده_عکس_ها_ToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
             this.مشاهده_عکس_ها_ToolStripMenuItem.Text = "مشاهده عکس ها";
-            //this.مشاهده_عکس_ها_ToolStripMenuItem.Click += new System.EventHandler(this.مشاهده_عکس_ها_ToolStripMenuItem_Click);
             // 
             // دریافت_عکس_ها_ToolStripMenuItem
             // 
@@ -915,7 +914,7 @@
             this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
             this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
             // 
-            // FrmShowUploadedPhotos
+            // FrmManagePreOrders
             // 
             this.AcceptButton = this.btnShowOrders;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -928,13 +927,13 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FrmShowUploadedPhotos";
+            this.Name = "FrmManagePreOrders";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "مشاهده رزرو ها (رزرو های عکس برداری شده)";
-            this.Load += new System.EventHandler(this.FrmShowUploadedPhotos_Load);
+            this.Load += new System.EventHandler(this.FrmManagePreOrders_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panelEx3.ResumeLayout(false);

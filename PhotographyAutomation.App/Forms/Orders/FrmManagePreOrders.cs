@@ -22,9 +22,10 @@ using System.Windows.Forms;
 
 namespace PhotographyAutomation.App.Forms.Orders
 {
-    public partial class FrmShowUploadedPhotos : Form
+    public partial class FrmManagePreOrders : Form
     {
         #region Variables
+
         private int _statusCode;
         private int _customerId;
 
@@ -37,12 +38,13 @@ namespace PhotographyAutomation.App.Forms.Orders
 
 
         #region Form Events
-        public FrmShowUploadedPhotos()
+
+        public FrmManagePreOrders()
         {
             InitializeComponent();
         }
 
-        private void FrmShowUploadedPhotos_Load(object sender, EventArgs e)
+        private void FrmManagePreOrders_Load(object sender, EventArgs e)
         {
             PopulateComboBox();
 
@@ -97,7 +99,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             {
                 if (chkEnableOrderStatusDatePicker.Checked == false)
                 {
-                    _statusCode = (int)cmbOrderStatus.SelectedValue;
+                    _statusCode = (int) cmbOrderStatus.SelectedValue;
 
                     ShowOrders(_statusCode);
                 }
@@ -107,6 +109,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                     ShowOrders(_statusCode, statusDate);
                 }
             }
+
             GC.Collect();
 
             if (dgvUploads.Rows.Count > 0)
@@ -121,6 +124,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
 
         #region Radio Buttons
+
         private void rbOrderCode_CheckedChanged(object sender, EventArgs e)
         {
             if (rbOrderCode.Checked)
@@ -181,6 +185,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             //if (txtOrderCodeDate.TextLength == 7)
             //    txtOrderCodeCustomerId.Focus();
         }
+
         private void txtOrderCodeDate_KeyDown(object sender, KeyEventArgs e)
         {
             //Allow navigation keyboard arrows
@@ -198,7 +203,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             }
 
             //Block non-number characters
-            char currentKey = (char)e.KeyCode;
+            char currentKey = (char) e.KeyCode;
             bool modifier = e.Control || e.Alt || e.Shift;
             bool nonNumber = char.IsLetter(currentKey) ||
                              char.IsSymbol(currentKey) ||
@@ -226,7 +231,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                     e.SuppressKeyPress = true;
 
                     //OPTIONAL: Manually insert text stripped of non-numbers
-                    TextBoxX me = (TextBoxX)sender;
+                    TextBoxX me = (TextBoxX) sender;
                     int start = me.SelectionStart;
                     string newTxt = me.Text;
                     newTxt = newTxt.Remove(me.SelectionStart, me.SelectionLength); //remove highlighted text
@@ -254,6 +259,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
 
         #region ComboBox Events
+
         private void cmbOrderStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbOrderStatus.Enabled)
@@ -276,6 +282,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
 
         #region TextBox Events
+
         private void txtOrderCodeDate_TextChanged(object sender, EventArgs e)
         {
             if (txtOrderCodeDate.TextLength == 7)
@@ -331,14 +338,15 @@ namespace PhotographyAutomation.App.Forms.Orders
 
 
         #region DataGridView Events
+
         private void dgvUploads_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            var senderGrid = (DataGridViewX)sender;
+            var senderGrid = (DataGridViewX) sender;
 
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonXColumn &&
                 e.RowIndex >= 0)
             {
-            RetryGetListOfPhotos:
+                RetryGetListOfPhotos:
 
                 var pathLocator = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
 
@@ -360,13 +368,14 @@ namespace PhotographyAutomation.App.Forms.Orders
                                 frmViewUploadedPhotos.PhotographyDate =
                                     dgvUploads.SelectedRows[0].Cells["clmDate"].Value.ToString();
                                 frmViewUploadedPhotos.TotalPhotos =
-                                    (int)dgvUploads.SelectedRows[0].Cells["clmTotalFiles"].Value;
+                                    (int) dgvUploads.SelectedRows[0].Cells["clmTotalFiles"].Value;
                                 frmViewUploadedPhotos.OrderStatus =
                                     dgvUploads.SelectedRows[0].Cells["clmStatusName"].Value.ToString();
 
                                 frmViewUploadedPhotos.ShowDialog();
 
                             }
+
                             GC.Collect();
                         }
                         else
@@ -410,6 +419,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                         MessageBoxIcon.Information);
                 }
             }
+
             //}
             //catch (Exception exception)
             //{
@@ -445,6 +455,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
 
         #region Methods
+
         private void ShowAllOrders()
         {
             try
@@ -496,6 +507,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                         dgvUploads.Rows.Clear();
                     }
                 }
+
                 dgvUploads.ClearSelection();
             }
             catch (Exception exception)
@@ -528,6 +540,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                         dgvUploads.Rows.Clear();
                     }
                 }
+
                 dgvUploads.ClearSelection();
             }
             catch (Exception exception)
@@ -558,6 +571,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                         dgvUploads.Rows.Clear();
                     }
                 }
+
                 dgvUploads.ClearSelection();
             }
             catch (Exception exception)
@@ -730,6 +744,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                     return false;
                 }
             }
+
             return true;
         }
 
@@ -764,7 +779,9 @@ namespace PhotographyAutomation.App.Forms.Orders
                     Directory.CreateDirectory(directoryPathOrderCode);
                 return directoryPathOrderCode;
             }
+
             #region catch
+
             catch (IOException ioException)
             {
                 MessageBox.Show(@"ioException: " + Environment.NewLine +
@@ -795,6 +812,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                                 exception.Message);
                 return null;
             }
+
             #endregion
         }
 
@@ -808,7 +826,9 @@ namespace PhotographyAutomation.App.Forms.Orders
                     Directory.CreateDirectory(directoryPathOrders);
                 return directoryPathOrders;
             }
+
             #region catch
+
             catch (IOException ioException)
             {
                 MessageBox.Show(@"ioException: " + Environment.NewLine +
@@ -839,6 +859,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                                 exception.Message);
                 return null;
             }
+
             #endregion
         }
 
@@ -1043,6 +1064,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+
                 MessageBox.Show(exception.Message);
             }
         }
@@ -1085,6 +1107,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+
                 MessageBox.Show(exception.Message);
             }
         }
@@ -1128,6 +1151,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+
                 MessageBox.Show(exception.Message);
             }
         }
@@ -1658,6 +1682,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                             return false;
                         }
                     }
+
                     return null;
                 }
             }
@@ -1672,7 +1697,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         private void مشاهده_همه_عکس_ها_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        RetryGetListOfPhotos:
+            RetryGetListOfPhotos:
 
             ////    آیا اصلا رکوردی از دیتاگرید ویو انتخاب شده است؟
             if (dgvUploads.SelectedRows[0] == null || dgvUploads.CurrentRow == null)
@@ -1705,7 +1730,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                                 dgvUploads.SelectedRows[0].Cells["clmDate"].Value.ToString();
 
                             frmViewUploaded.TotalPhotos =
-                                (int)dgvUploads.SelectedRows[0].Cells["clmTotalFiles"].Value;
+                                (int) dgvUploads.SelectedRows[0].Cells["clmTotalFiles"].Value;
 
                             frmViewUploaded.OrderStatus =
                                 dgvUploads.SelectedRows[0].Cells["clmStatusName"].Value.ToString();
@@ -1815,6 +1840,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+
                 MessageBox.Show(exception.Message);
             }
         }
@@ -1865,7 +1891,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                             var file = db.PhotoRepository.DownloadOrderPhotos(guid);
                             if (file != null)
                             {
-                            RetryCreateFolders:
+                                RetryCreateFolders:
                                 var directoryPathOrders = CreateOrderDirectory(selectedPath);
 
                                 var directoryPathOrderCode = CreateOrderCodeDirectory(orderCode, directoryPathOrders);
@@ -1925,7 +1951,8 @@ namespace PhotographyAutomation.App.Forms.Orders
                                 }
                                 else
                                 {
-                                    using (var fileStream = new FileStream(fileNameAndPath, FileMode.CreateNew, FileAccess.Write))
+                                    using (var fileStream = new FileStream(fileNameAndPath, FileMode.CreateNew,
+                                        FileAccess.Write))
                                     {
                                         file.fileStream.WriteTo(fileStream);
                                         if (fileStream.Length == file.fileStream.Length)
@@ -1946,7 +1973,8 @@ namespace PhotographyAutomation.App.Forms.Orders
 
                                 if (dr == DialogResult.Yes)
                                 {
-                                    using (var fileStream = new FileStream(fileNameAndPath, FileMode.Create, FileAccess.Write))
+                                    using (var fileStream = new FileStream(fileNameAndPath, FileMode.Create,
+                                        FileAccess.Write))
                                     {
                                         file.fileStream.WriteTo(fileStream);
                                         if (fileStream.Length == file.fileStream.Length)
@@ -1968,6 +1996,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                                 {
                                     break;
                                 }
+
                                 counter++;
                             }
                         }
@@ -1977,7 +2006,9 @@ namespace PhotographyAutomation.App.Forms.Orders
                     }
                 }
             }
+
             #region catch
+
             catch (NotSupportedException notSupportedException)
             {
                 MessageBox.Show(notSupportedException.Message);
@@ -1993,7 +2024,9 @@ namespace PhotographyAutomation.App.Forms.Orders
                 MessageBox.Show(exception.Message);
                 return false;
             }
+
             #endregion
+
             return result;
         }
 
@@ -2047,68 +2080,51 @@ namespace PhotographyAutomation.App.Forms.Orders
 
             var orderCode = dgvUploads.SelectedRows[0].Cells["clmOrderCode"].Value.ToString();
             var orderId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmId"].Value);
-            //var parentPathLocator = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
 
-
-            //using (var frmUploadSelectedPhotos = new FrmUploadSelectedPhotos())
-            //{
-            //    frmUploadSelectedPhotos.OrderId = orderId;
-            //    frmUploadSelectedPhotos.ParentPathLocator = parentPathLocator;
-            //    if (frmUploadSelectedPhotos.ShowDialog() == DialogResult.OK)
-            //    {
-            //        ارسال_عکس_های_انتخاب_شده_مشتری_به_سرور_ToolStripMenuItem.Checked = true;
-            //    }
-            //}
-
-
-
+            RetryGetListOfPhotos:
 
             var parentPathLocator =
                 dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
 
-            if (parentPathLocator != null)
+            if (parentPathLocator == null)
             {
-                var listOfFiles = GetListOfFilesOfOrder(parentPathLocator);
-                if (listOfFiles is List<PhotoViewModel> list)
-                {
-                    if (list.Any())
-                    {
-                        using (var frmViewUploadedPhotos = new FrmUploadSelectedPhotos())
-                        {
-                            frmViewUploadedPhotos.ListOfPhotos = list;
-                            frmViewUploadedPhotos.OrderCode =
-                                dgvUploads.SelectedRows[0]?.Cells["clmOrderCode"].Value.ToString();
-                            frmViewUploadedPhotos.CustomerName = dgvUploads.SelectedRows[0]
-                                .Cells["clmCustomerFullName"]
-                                .Value.ToString();
-                            frmViewUploadedPhotos.PhotographyDate =
-                                dgvUploads.SelectedRows[0].Cells["clmDate"].Value.ToString();
-                            frmViewUploadedPhotos.TotalPhotos =
-                                (int)dgvUploads.SelectedRows[0].Cells["clmTotalFiles"].Value;
-                            frmViewUploadedPhotos.OrderStatus =
-                                dgvUploads.SelectedRows[0].Cells["clmStatusName"].Value.ToString();
+                RtlMessageBox.Show(
+                    "برای رزرو انتخابی هنوز عکسی در سیستم قرار داده نشده است.",
+                    "عدم آپلود عکس برای رزرو انتخابی",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                return;
+            }
 
-                            frmViewUploadedPhotos.ShowDialog();
-                        }
-                        GC.Collect();
-                    }
-                    else
-                    {
-                        var dialogResult = RtlMessageBox.Show(
-                            "برای این سفارش در سیستم عکسی ثبت نشده است. " + Environment.NewLine +
-                            "لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
-                            "خطا در دریافت لیست عکس های سفارش",
-                            MessageBoxButtons.RetryCancel,
-                            MessageBoxIcon.Error);
-                        if (dialogResult == DialogResult.Retry)
-                        {
-                            goto RetryGetListOfPhotos;
-                        }
-                    }
-                }
-                else if (listOfFiles is Exception exception)
+            var listOfFiles = GetListOfFilesOfOrder(parentPathLocator);
+            if (listOfFiles is List<PhotoViewModel> list)
+            {
+                if (list.Any())
                 {
-                    ShowException(exception);
+                    using (var frmUploadSelectedPhotos = new FrmUploadSelectedPhotos())
+                    {
+                        frmUploadSelectedPhotos.ListOfPhotos = list;
+                        
+                        frmUploadSelectedPhotos.OrderCode =
+                            dgvUploads.SelectedRows[0]?.Cells["clmOrderCode"].Value.ToString();
+
+                        frmUploadSelectedPhotos.CustomerName = dgvUploads.SelectedRows[0]
+                            .Cells["clmCustomerFullName"]
+                            .Value.ToString();
+
+                        frmUploadSelectedPhotos.PhotographyDate =
+                            dgvUploads.SelectedRows[0].Cells["clmDate"].Value.ToString();
+
+                        frmUploadSelectedPhotos.TotalPhotos =
+                            (int) dgvUploads.SelectedRows[0].Cells["clmTotalFiles"].Value;
+
+                        frmUploadSelectedPhotos.OrderStatus =
+                            dgvUploads.SelectedRows[0].Cells["clmStatusName"].Value.ToString();
+
+                        frmUploadSelectedPhotos.ShowDialog();
+                    }
+
+                    GC.Collect();
                 }
                 else
                 {
@@ -2124,20 +2140,23 @@ namespace PhotographyAutomation.App.Forms.Orders
                     }
                 }
             }
+            else if (listOfFiles is Exception exception)
+            {
+                ShowException(exception);
+            }
             else
             {
-                RtlMessageBox.Show(
-                    "برای رزرو انتخابی هنوز عکسی در سیستم قرار داده نشده است.",
-                    "عدم آپلود عکس برای رزرو انتخابی",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                var dialogResult = RtlMessageBox.Show(
+                    "برای این سفارش در سیستم عکسی ثبت نشده است. " + Environment.NewLine +
+                    "لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
+                    "خطا در دریافت لیست عکس های سفارش",
+                    MessageBoxButtons.RetryCancel,
+                    MessageBoxIcon.Error);
+                if (dialogResult == DialogResult.Retry)
+                {
+                    goto RetryGetListOfPhotos;
+                }
             }
         }
     }
-
-    private void مشاهده_عکس_ها_ToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-
-    }
-}
 }
