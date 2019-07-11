@@ -1,9 +1,9 @@
-﻿using DevComponents.DotNetBar.Controls;
+﻿using DevComponents.DotNetBar;
+using DevComponents.DotNetBar.Controls;
 using PhotographyAutomation.App.Forms.Photos;
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.DateLayer.Models;
 using PhotographyAutomation.Utilities;
-using PhotographyAutomation.Utilities.Convertor;
 using PhotographyAutomation.Utilities.ExtentionMethods;
 using PhotographyAutomation.ViewModels.Photo;
 using System;
@@ -14,12 +14,12 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using DevComponents.DotNetBar;
 
 namespace PhotographyAutomation.App.Forms.Orders
 {
     public partial class FrmUploadSelectedPhotos : Form
     {
+
         #region Variables
 
 
@@ -49,6 +49,9 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         #endregion Variables
 
+
+        #region Form Events
+
         public FrmUploadSelectedPhotos()
         {
             InitializeComponent();
@@ -73,7 +76,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             if (panelPreviewPictures.Controls.Count > 0)
             {
                 var control = panelPreviewPictures.Controls
-                                        .Find("chk_" + ListOfPhotos[0].Name, true);
+                    .Find("chk_" + ListOfPhotos[0].Name, true);
                 if (control[0].GetType() == typeof(CheckBoxX))
                 {
                     CheckBoxX x = (CheckBoxX)control[0];
@@ -88,7 +91,12 @@ namespace PhotographyAutomation.App.Forms.Orders
             }
         }
 
+        private void FrmUploadSelectedPhotos_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            GC.Collect();
+        }
 
+        #endregion
 
 
         #region Top Menu
@@ -125,11 +133,6 @@ namespace PhotographyAutomation.App.Forms.Orders
 
             if (openFileDialogBrowsePictures.ShowDialog() != DialogResult.OK) return;
 
-            //panelPreviewPictures.Controls.Clear();
-            //var locnewX = _locX;
-            //var locnewY = _locY;
-
-
             for (var i = 0; i < openFileDialogBrowsePictures.SafeFileNames.Length; i++)
             {
                 try
@@ -142,6 +145,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                     RtlMessageBox.Show(exception.Message);
                 }
             }
+            CheckFolderOfPictures(_fileNamesList);
         }
 
         private void btnSyncFolders_Click(object sender, EventArgs e)
@@ -157,13 +161,11 @@ namespace PhotographyAutomation.App.Forms.Orders
             EnableOrDisableCheckBoxes(_fileNamesList);
         }
 
-
-
         private void btnUploadPhotos_Click(object sender, EventArgs e)
         {
             //string uploadPath = string.Empty;
-            var filesToUpload = new List<string>();
             var fileNamesUpload = new List<string>();
+            var filesWithPathToUpload = new List<string>();
 
             if (!CheckInputs()) return;
 
@@ -171,8 +173,8 @@ namespace PhotographyAutomation.App.Forms.Orders
             {
                 if (checkbox.Checked && checkbox.CheckState == CheckState.Checked)
                 {
-                    filesToUpload.Add(checkbox.AccessibleDescription);
                     fileNamesUpload.Add(checkbox.AccessibleName);
+                    filesWithPathToUpload.Add(checkbox.AccessibleDescription);
                 }
             }
 
@@ -226,13 +228,13 @@ namespace PhotographyAutomation.App.Forms.Orders
                         var errorInUpload = new List<string>();
                         ////var orderFilesList = new List<TblOrderFiles>();
 
-                        for (var i = 0; i < filesToUpload.Count; i++)
+                        for (var i = 0; i < filesWithPathToUpload.Count; i++)
                         {
                             string fileName = OrderCode + "--" + _fileNamesList[i];
 
                             var fileUploadResult2 =
                                 db.PhotoRepository
-                                  .CreateFileTableFileReturnCreateFileViewModel(fileName, parentPathName, 4, filesToUpload[i]);
+                                  .CreateFileTableFileReturnCreateFileViewModel(fileName, parentPathName, 4, filesWithPathToUpload[i]);
 
                             if (fileUploadResult2 != null)
                             {
@@ -276,7 +278,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
                         var order = db.OrderGenericRepository.Get().FirstOrDefault(x => x.Id == OrderId);
 
-                        if (totalFilesUploaded == filesToUpload.Count && order != null)
+                        if (totalFilesUploaded == filesWithPathToUpload.Count && order != null)
                         {
                             orderFolderFullData = db.PhotoRepository
                                                     .CheckCustomerOrderFolderIsCreatedReturnsFullData(OrderCode);
@@ -361,13 +363,13 @@ namespace PhotographyAutomation.App.Forms.Orders
                             var errorInUpload = new List<string>();
                             ////var orderFilesList = new List<TblOrderFiles>();
 
-                            for (var i = 0; i < filesToUpload.Count; i++)
+                            for (var i = 0; i < filesWithPathToUpload.Count; i++)
                             {
                                 string fileName = OrderCode + "--" + _fileNamesList[i];
 
                                 var fileUploadResult2 =
                                     db.PhotoRepository.CreateFileTableFileReturnCreateFileViewModel(
-                                    fileName, parentPathName, 4, filesToUpload[i]);
+                                    fileName, parentPathName, 4, filesWithPathToUpload[i]);
 
                                 if (fileUploadResult2 != null)
                                 {
@@ -410,7 +412,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
                             var order = db.OrderGenericRepository.Get().FirstOrDefault(x => x.Id == OrderId);
 
-                            if (totalFilesUploaded == filesToUpload.Count && order != null)
+                            if (totalFilesUploaded == filesWithPathToUpload.Count && order != null)
                             {
                                 order.OrderStatusId = orderStatusList.First(x => x.Code == 20).Id;
                                 order.OrderFolderPathLocator = orderFolderFullData[0].PathLocator;
@@ -612,59 +614,6 @@ namespace PhotographyAutomation.App.Forms.Orders
         #endregion
 
 
-
-        private void control_MouseClick(object sender, MouseEventArgs e)
-        {
-            Control control = (Control)sender;
-            PictureBox pic = (PictureBox)control;
-            pictureBoxPreview.Image = pic.Image;
-
-
-            // File Location
-            pictureBoxPreview.Tag = pic.AccessibleDescription;
-
-            //File Name
-            labelPicturePreviewName.Text = pic.Tag.ToString();
-        }
-
-        private void pictureBox_DoubleClick(object sender, EventArgs e)
-        {
-            Control control = (Control)sender;
-
-            foreach (var checkBox in panelPreviewPictures.Controls.OfType<CheckBoxX>())
-            {
-                if (control.Tag == checkBox.Tag)
-                {
-                    checkBox.CheckState = CheckState.Unchecked;
-                }
-            }
-
-            checkBoxSelectAll.Checked = false;
-            checkBoxSelectAll.CheckState = CheckState.Unchecked;
-        }
-
-        private void pictureBoxPreview_DoubleClick(object sender, EventArgs e)
-        {
-            FrmPhotoViewer pv = new FrmPhotoViewer
-            {
-                MyImageList = _fileNamesAndPathsList,
-                SelectedImageFilePath = pictureBoxPreview.Tag.ToString()
-            };
-
-            pv.ShowDialog();
-        }
-
-        private void checkBoxSelectAll_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxSelectAll.Checked && checkBoxSelectAll.CheckState == CheckState.Checked)
-            {
-                foreach (var checkBox in pictureBoxPreview.Controls.OfType<CheckBoxX>())
-                {
-                    checkBox.CheckState = CheckState.Checked;
-                }
-            }
-        }
-
         #region Methods
 
         private bool CheckInputs()
@@ -685,8 +634,9 @@ namespace PhotographyAutomation.App.Forms.Orders
             return true;
         }
 
-        private void EnableOrDisableCheckBoxes(IReadOnlyCollection<string> fileNamesList)
+        private void CheckFolderOfPictures(IReadOnlyCollection<string> fileNamesList)
         {
+            bool hasPictures = false;
             if (fileNamesList.Any())
             {
                 foreach (var fileName in fileNamesList)
@@ -695,14 +645,72 @@ namespace PhotographyAutomation.App.Forms.Orders
                     {
                         if (control is CheckBoxX checkBox)
                         {
-                            if ((string) checkBox.Tag == fileName)
+                            if ((string)checkBox.Tag == fileName)
                             {
-                                checkBox.Checked = true;
-                                checkBox.CheckState = CheckState.Checked;
+                                //checkBox.Checked = true;
+                                //checkBox.CheckState = CheckState.Checked;
+                                hasPictures = true;
                             }
                         }
                     }
                 }
+
+                if (hasPictures == false)
+                {
+                    RtlMessageBox.Show(
+                        "فولدر انتخابی عکس های مشتری با عکس های اصلی مشتری مطابقت ندارد." + Environment.NewLine +
+                        "این مورد ممکن است به خاطر تغییر نام فایل های اصلی رتوش نشده و یا انتخاب فولدر اشتباه اتفاق افتاده باشد." + Environment.NewLine +
+                        "در صورت تغییر نام فایل ها، می بایست نام آنها به نام اصلی اولیه تغییر یابد.",
+                        "خطا در همگام سازی",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                RtlMessageBox.Show(
+                    "هیچ فایلی برای همگام سازی عکس های مشتری مشخص نشده است.",
+                    "خطا در انتخاب فولدر عکس های انتخابی مشتری",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void EnableOrDisableCheckBoxes(IReadOnlyCollection<string> fileNamesList)
+        {
+            bool hasPictures = false;
+            if (fileNamesList.Any())
+            {
+                foreach (var fileName in fileNamesList)
+                {
+                    foreach (Control control in panelPreviewPictures.Controls)
+                    {
+                        if (control is CheckBoxX checkBox)
+                        {
+                            if ((string)checkBox.Tag == fileName)
+                            {
+                                checkBox.Checked = true;
+                                checkBox.CheckState = CheckState.Checked;
+                                hasPictures = true;
+                            }
+                        }
+                    }
+                }
+
+                if (hasPictures == false)
+                {
+                    RtlMessageBox.Show(
+                        "فولدر انتخابی عکس های مشتری با عکس های اصلی مشتری مطابقت ندارد." + Environment.NewLine +
+                            "این مورد ممکن است به خاطر تغییر نام فایل ها و یا انتخاب فولدر اشتباه اتفاق افتاده باشد." + Environment.NewLine +
+                            "در صورت تغییر نام فایل ها، می بایست نام آنها به نام اصلی اولیه تغییر یابد.",
+                        "خطا در همگام سازی",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                RtlMessageBox.Show(
+                    "فولدری برای همگام سازی عکس های مشتری مشخص نشده است.",
+                    "خطا در انتخاب فولدر عکس های انتخابی مشتری",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -823,7 +831,7 @@ namespace PhotographyAutomation.App.Forms.Orders
         //}
         private void LoadImagestoPanel(string imageName, byte[] imageBytes, int newLocX, int newLocY, int i)
         {
-            PictureBox pictureBoxControl = new PictureBox
+            var pictureBoxControl = new PictureBox
             {
                 BackColor = SystemColors.Control,
                 Location = new Point(newLocX, newLocY + 10),
@@ -833,30 +841,29 @@ namespace PhotographyAutomation.App.Forms.Orders
                 Tag = imageName,
                 AccessibleDescription = imageName,
                 Image = imageBytes.GetPhotoAndRotateIt(),
-                Name = "pb_" + imageName
+                Name = "pb_" + imageName,
+                Anchor = AnchorStyles.Left
             };
 
-            CheckBoxX pictureBoxCheckBox = new CheckBoxX
+            var pictureBoxCheckBox = new CheckBoxX
             {
                 BackColor = Color.Transparent,
                 Font = SystemFonts.DefaultFont,
-                Location = new Point(newLocX , newLocY + 138),
+                Location = new Point(newLocX, newLocY + 138),
                 CheckState = CheckState.Unchecked,
                 Checked = false,
                 Tag = imageName,
                 Text = imageName,
                 AutoSize = false,
-                //Size = new Size(17, 17),
-                //MaximumSize = new Size(13, 13),
                 CheckBoxPosition = eCheckBoxPosition.Right,
                 MaximumSize = new Size(128, 32),
                 ClientSize = new Size(128, 32),
-                
                 Parent = pictureBoxControl,
                 AccessibleDescription = ListOfPhotos[i].FullUncPath,
                 AccessibleName = imageName,
                 Name = "chk_" + imageName,
-                Style = eDotNetBarStyle.StyleManagerControlled
+                Style = eDotNetBarStyle.StyleManagerControlled,
+                Anchor = AnchorStyles.Left
             };
 
 
@@ -870,6 +877,74 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         }
 
+
+        private void control_MouseClick(object sender, MouseEventArgs e)
+        {
+            Control control = (Control)sender;
+            PictureBox pic = (PictureBox)control;
+            pictureBoxPreview.Image = pic.Image;
+
+
+            // File Location
+            pictureBoxPreview.Tag = pic.AccessibleDescription;
+
+            //File Name
+            labelPicturePreviewName.Text = pic.Tag.ToString();
+        }
+
+        private void pictureBox_DoubleClick(object sender, EventArgs e)
+        {
+            Control control = (Control)sender;
+
+            foreach (var checkBox in panelPreviewPictures.Controls.OfType<CheckBoxX>())
+            {
+                if (control.Tag == checkBox.Tag)
+                {
+                    checkBox.CheckState = CheckState.Unchecked;
+                }
+            }
+
+            checkBoxSelectAll.Checked = false;
+            checkBoxSelectAll.CheckState = CheckState.Unchecked;
+        }
+
+        private void pictureBoxPreview_DoubleClick(object sender, EventArgs e)
+        {
+            FrmPhotoViewer pv = new FrmPhotoViewer
+            {
+                MyImageList = _fileNamesAndPathsList,
+                SelectedImageFilePath = pictureBoxPreview.Tag.ToString()
+            };
+
+            pv.ShowDialog();
+        }
+
+        private void checkBoxSelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxSelectAll.Checked && checkBoxSelectAll.CheckState == CheckState.Checked)
+            {
+                foreach (Control control in panelPreviewPictures.Controls)
+                {
+                    if (control is CheckBoxX checkBox)
+                    {
+                        checkBox.Checked = true;
+                        checkBox.CheckState = CheckState.Checked;
+                    }
+                }
+            }
+        }
+
+        private void checkBoxSelectNone_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (Control control in panelPreviewPictures.Controls)
+            {
+                if (control is CheckBoxX checkBox)
+                {
+                    checkBox.Checked = false;
+                    checkBox.CheckState = CheckState.Unchecked;
+                }
+            }
+        }
         #endregion
     }
 }
