@@ -25,7 +25,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         private readonly List<string> _fileNamesList = new List<string>();
         private readonly List<string> _fileNamesAndPathsList = new List<string>();
-        private readonly List<string> _filesStreamId=new List<string>();
+        private readonly List<string> _filesStreamId = new List<string>();
 
         private int _locX = 20;
         private int _locY = 10;
@@ -65,20 +65,31 @@ namespace PhotographyAutomation.App.Forms.Orders
             _sizeWidth = 128;
             _sizeHeight = 128;
 
+            SetToolStripMenuItem();
+
+            ShowImages();
+
+            FocusOnFirstImage();
+        }
+
+        private void SetToolStripMenuItem()
+        {
             toolStripMenuItemOrderCode.Text = OrderCode;
             toolStripMenuItemOrderCode.Text = OrderCode;
             toolStripMenuItemCustomerName.Text = CustomerName;
             toolStripMenuItemOrderstatus.Text = OrderStatus;
             toolStripMenuItemPhotographyDate.Text = PhotographyDate;
+        }
 
-            ShowImages();
+        private void FocusOnFirstImage()
+        {
             panelPreviewPictures.Focus();
 
             if (panelPreviewPictures.Controls.Count <= 0) return;
 
             var control = panelPreviewPictures
-                            .Controls
-                            .Find("chk_" + ListOfPhotos[0].Name, true);
+                .Controls
+                .Find("chk_" + ListOfPhotos[0].Name, true);
 
             if (control[0].GetType() != typeof(CheckBoxX)) return;
 
@@ -188,13 +199,10 @@ namespace PhotographyAutomation.App.Forms.Orders
         //}
         private static bool CheckInputs(IEnumerable<string> fileslList)
         {
-            if (fileslList.Any() == false)
-            {
-                RtlMessageBox.Show("عکسی برای ارسال انتخاب نشده است.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
+            if (fileslList.Any()) return true;
+            RtlMessageBox.Show("عکسی برای ارسال انتخاب نشده است.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
 
-            return true;
         }
 
         private void CheckFolderOfPictures(IReadOnlyCollection<string> fileNamesList)
@@ -525,6 +533,12 @@ namespace PhotographyAutomation.App.Forms.Orders
 
 
             if (!CheckInputs(filesWithPathToUpload)) return;
+
+
+            //Generate New OrderPrint Code
+            // Date-OrderId-CustomerId
+            string orderPrintCode = OrderUtilities.
+                                            GenerateOrderPrintCode(DateTime.Now, OrderId, CustomerId);
 
 
 

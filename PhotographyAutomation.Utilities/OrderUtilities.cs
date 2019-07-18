@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Text;
 
 namespace PhotographyAutomation.Utilities
 {
@@ -7,15 +8,26 @@ namespace PhotographyAutomation.Utilities
     {
         public static string GenerateOrderCode(DateTime dt, int customerId, int bookingId)
         {
-            PersianCalendar pc = new PersianCalendar();
+            var pc = new PersianCalendar();
             var persianYear = pc.GetYear(dt).ToString("D4");
             var persianMonth = pc.GetMonth(dt).ToString("D2");
             var persianDay = pc.GetDayOfMonth(dt).ToString("D2");
+            persianYear = persianYear.Substring(1);
+
+            var sb=new StringBuilder();
+            sb.Append(persianYear);
+            sb.Append(persianMonth);
+            sb.Append(persianDay);
+            sb.Append("-");
+            sb.Append(customerId);
+            sb.Append(bookingId);
+
 
             //رقم هزار به دلیل بدون استفاده بودن و برای کاهش یک رقم از شناسه سفارش حذف می شود.
-            persianYear = persianYear.Substring(1);
-            var returnValue = persianYear + persianMonth + persianDay + "-" + customerId + bookingId;
-            return returnValue;
+            
+            //var returnValue = persianYear + persianMonth + persianDay + "-" + customerId + bookingId;
+            //return returnValue;
+            return sb.ToString();
 
             #region Examples
 
@@ -34,6 +46,29 @@ namespace PhotographyAutomation.Utilities
             //9802-1001-1
 
             #endregion
+        }
+
+        public static string GenerateOrderPrintCode(DateTime dt, int orderId, int customerId)
+        {
+            var pc = new PersianCalendar();
+            var persianYear = pc.GetYear(dt).ToString("D4");
+            var persianMonth = pc.GetMonth(dt).ToString("D2");
+            var persianDay = pc.GetDayOfMonth(dt).ToString("D2");
+
+            //رقم هزار به دلیل بدون استفاده بودن و برای کاهش یک رقم از شناسه سفارش حذف می شود.
+            persianYear = persianYear.Substring(1);
+
+            var sb=new StringBuilder();
+            sb.Append(persianYear);
+            sb.Append(persianMonth);
+            sb.Append(persianDay);
+            sb.Append("-");
+            sb.Append(orderId);
+            sb.Append("-");
+            sb.Append(customerId);
+
+
+            return sb.ToString();
         }
     }
 }
