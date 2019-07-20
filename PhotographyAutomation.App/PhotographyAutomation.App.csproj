@@ -142,6 +142,12 @@
     <Compile Include="Forms\Factors\FrmAddEditPreFactor.Designer.cs">
       <DependentUpon>FrmAddEditPreFactor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Orders\FrmUploadSelectedPhotos-Refactored.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Orders\FrmUploadSelectedPhotos-Refactored.Designer.cs">
+      <DependentUpon>FrmUploadSelectedPhotos-Refactored.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Orders\FrmUploadSelectedPhotos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -215,6 +221,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Factors\FrmAddEditPreFactor.resx">
       <DependentUpon>FrmAddEditPreFactor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Orders\FrmUploadSelectedPhotos-Refactored.resx">
+      <DependentUpon>FrmUploadSelectedPhotos-Refactored.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Orders\FrmUploadSelectedPhotos.resx">
       <DependentUpon>FrmUploadSelectedPhotos.cs</DependentUpon>
