@@ -12,7 +12,6 @@ namespace PhotographyAutomation.DateLayer.Context
 
 
         private IPrintSizePriceServiceRepository _printSizePriceRepository;
-
         public IPrintSizePriceServiceRepository PrintSizePriceServiceRepository
         {
             get
@@ -25,8 +24,9 @@ namespace PhotographyAutomation.DateLayer.Context
             }
         }
 
-        private ICustomerRepository _customerRepository;
 
+
+        private ICustomerRepository _customerRepository;
         public ICustomerRepository CustomerRepository
         {
             get
@@ -41,11 +41,7 @@ namespace PhotographyAutomation.DateLayer.Context
 
 
 
-
-
-
         private IBookingRepository _bookingRepository;
-
         public IBookingRepository BookingRepository
         {
             get
@@ -62,7 +58,6 @@ namespace PhotographyAutomation.DateLayer.Context
 
 
         private IPhotoRepository _photoRepository;
-
         public IPhotoRepository PhotoRepository
         {
             get
@@ -77,9 +72,23 @@ namespace PhotographyAutomation.DateLayer.Context
         }
 
 
+        private ISelectedPhotoRepository _selectedPhotoRepository;
+        public ISelectedPhotoRepository SelectedPhotoRepository
+        {
+            get
+            {
+                if (_selectedPhotoRepository == null)
+                {
+                    _selectedPhotoRepository = new SelectedPhotoRepository(_db);
+                }
+
+                return _selectedPhotoRepository;
+            }
+        }
+
+
 
         private IOrderRepository _orderRepository;
-
         public IOrderRepository OrderRepository
         {
             get
@@ -94,8 +103,8 @@ namespace PhotographyAutomation.DateLayer.Context
         }
 
 
-        private GenericRepository<TblOrderFiles> _orderFilesGenericRepository;
 
+        private GenericRepository<TblOrderFiles> _orderFilesGenericRepository;
         public GenericRepository<TblOrderFiles> OrderFilesGenericRepository
         {
             get
@@ -108,8 +117,9 @@ namespace PhotographyAutomation.DateLayer.Context
             }
         }
 
-        private GenericRepository<TblOrderPrint> _orderPrintGenericRepository;
 
+
+        private GenericRepository<TblOrderPrint> _orderPrintGenericRepository;
         public GenericRepository<TblOrderPrint> OrderPrintGenericRepository
         {
             get
@@ -125,9 +135,7 @@ namespace PhotographyAutomation.DateLayer.Context
 
 
 
-
         private GenericRepository<TblCustomer> _customerGenericRepository;
-
         public GenericRepository<TblCustomer> CustomerGenericRepository
         {
             get
@@ -142,10 +150,7 @@ namespace PhotographyAutomation.DateLayer.Context
 
 
 
-
-
         private GenericRepository<TblBooking> _bookingGenericRepository;
-
         public GenericRepository<TblBooking> BookingGenericRepository
         {
             get
@@ -178,7 +183,6 @@ namespace PhotographyAutomation.DateLayer.Context
 
 
         private GenericRepository<TblAtelierType> _atelierTypesGenericRepository;
-
         public GenericRepository<TblAtelierType> AtelierTypesGenericRepository
         {
             get
@@ -194,10 +198,7 @@ namespace PhotographyAutomation.DateLayer.Context
 
 
 
-
-
         private GenericRepository<TblBookingStatus> _bookingStatusGenericRepository;
-
         public GenericRepository<TblBookingStatus> BookingStatusGenericRepository
         {
             get
@@ -213,7 +214,6 @@ namespace PhotographyAutomation.DateLayer.Context
 
 
         private GenericRepository<TblPhotographyType> _photographyTypesGenericRepository;
-
         public GenericRepository<TblPhotographyType> PhotographyTypesGenericRepository
         {
             get
@@ -229,9 +229,7 @@ namespace PhotographyAutomation.DateLayer.Context
 
 
 
-
         private GenericRepository<TblOrder> _orderGenericRepository;
-
         public GenericRepository<TblOrder> OrderGenericRepository
         {
             get
@@ -247,9 +245,7 @@ namespace PhotographyAutomation.DateLayer.Context
 
 
 
-
         private GenericRepository<TblOrderStatus> _orderStatusGenericRepository;
-
         public GenericRepository<TblOrderStatus> OrderStatusGenericRepository
         {
             get
@@ -263,8 +259,9 @@ namespace PhotographyAutomation.DateLayer.Context
             }
         }
 
-        private GenericRepository<TblFilesError> _filesErrorGenericRepository;
 
+
+        private GenericRepository<TblFilesError> _filesErrorGenericRepository;
         public GenericRepository<TblFilesError> FilesErrorGenericRepository
         {
             get
@@ -281,7 +278,6 @@ namespace PhotographyAutomation.DateLayer.Context
 
 
         private GenericRepository<TblPrintServices> _printServicesGenericRepository;
-
         public GenericRepository<TblPrintServices> PrintServicesGenericRepository
         {
             get
@@ -294,6 +290,8 @@ namespace PhotographyAutomation.DateLayer.Context
                 return _printServicesGenericRepository;
             }
         }
+
+
 
         private GenericRepository<TblPrintSizePrices> _printSizePricesGenericRepository;
         public GenericRepository<TblPrintSizePrices> PrintSizePricesGenericRepository
@@ -310,9 +308,8 @@ namespace PhotographyAutomation.DateLayer.Context
         }
 
 
-        private GenericRepository<TblPrintServices_TblPrintSizePrice> _printServices_printSizePriceGenericRepository;
 
-        // ReSharper disable once InconsistentNaming
+        private GenericRepository<TblPrintServices_TblPrintSizePrice> _printServices_printSizePriceGenericRepository;
         public GenericRepository<TblPrintServices_TblPrintSizePrice> PrintServices_PrintSizePriceGenericRepository
         {
             get

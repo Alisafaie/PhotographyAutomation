@@ -50,6 +50,7 @@ namespace PhotographyAutomation.DateLayer.Models
         public virtual DbSet<View_PrintSizesPrices> View_PrintSizesPrices { get; set; }
         public virtual DbSet<TblOrder> TblOrder { get; set; }
         public virtual DbSet<View_GetDocumentsFolders> View_GetDocumentsFolders { get; set; }
+        public virtual DbSet<View_GetSelectedPhotosFoldersInfo> View_GetSelectedPhotosFoldersInfo { get; set; }
     
         public virtual ObjectResult<string> usp_CreateCustomerFinancialDirectory(string customerFinancialNumber, string monthNumber, Nullable<byte> parent_level, ObjectParameter returnValue)
         {
@@ -181,6 +182,83 @@ namespace PhotographyAutomation.DateLayer.Models
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+        }
+    
+        public virtual ObjectResult<string> usp_CreateOrderPrintDirectory(string customerFinancialNumber, string monthNumber, Nullable<byte> parent_level, ObjectParameter returnValue)
+        {
+            var customerFinancialNumberParameter = customerFinancialNumber != null ?
+                new ObjectParameter("customerFinancialNumber", customerFinancialNumber) :
+                new ObjectParameter("customerFinancialNumber", typeof(string));
+    
+            var monthNumberParameter = monthNumber != null ?
+                new ObjectParameter("monthNumber", monthNumber) :
+                new ObjectParameter("monthNumber", typeof(string));
+    
+            var parent_levelParameter = parent_level.HasValue ?
+                new ObjectParameter("parent_level", parent_level) :
+                new ObjectParameter("parent_level", typeof(byte));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("usp_CreateOrderPrintDirectory", customerFinancialNumberParameter, monthNumberParameter, parent_levelParameter, returnValue);
+        }
+    
+        public virtual ObjectResult<usp_CreateSelectedPhotosFileTableFile_Result> usp_CreateSelectedPhotosFileTableFile(string name, string parent_name, Nullable<byte> parent_level)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            var parent_nameParameter = parent_name != null ?
+                new ObjectParameter("parent_name", parent_name) :
+                new ObjectParameter("parent_name", typeof(string));
+    
+            var parent_levelParameter = parent_level.HasValue ?
+                new ObjectParameter("parent_level", parent_level) :
+                new ObjectParameter("parent_level", typeof(byte));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_CreateSelectedPhotosFileTableFile_Result>("usp_CreateSelectedPhotosFileTableFile", nameParameter, parent_nameParameter, parent_levelParameter);
+        }
+    
+        public virtual ObjectResult<string> usp_CreateSelectedPhotosMonthFolder(string monthName, string year, Nullable<byte> parent_level, ObjectParameter returnValue)
+        {
+            var monthNameParameter = monthName != null ?
+                new ObjectParameter("monthName", monthName) :
+                new ObjectParameter("monthName", typeof(string));
+    
+            var yearParameter = year != null ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(string));
+    
+            var parent_levelParameter = parent_level.HasValue ?
+                new ObjectParameter("parent_level", parent_level) :
+                new ObjectParameter("parent_level", typeof(byte));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("usp_CreateSelectedPhotosMonthFolder", monthNameParameter, yearParameter, parent_levelParameter, returnValue);
+        }
+    
+        public virtual ObjectResult<string> usp_CreateSelectedPhotosYearFolder(string name, string parent_name, Nullable<byte> parent_level, ObjectParameter returnValue)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            var parent_nameParameter = parent_name != null ?
+                new ObjectParameter("parent_name", parent_name) :
+                new ObjectParameter("parent_name", typeof(string));
+    
+            var parent_levelParameter = parent_level.HasValue ?
+                new ObjectParameter("parent_level", parent_level) :
+                new ObjectParameter("parent_level", typeof(byte));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("usp_CreateSelectedPhotosYearFolder", nameParameter, parent_nameParameter, parent_levelParameter, returnValue);
+        }
+    
+        public virtual int usp_DeleteSelectedPhotosFolderFiles(string pathLocator)
+        {
+            var pathLocatorParameter = pathLocator != null ?
+                new ObjectParameter("pathLocator", pathLocator) :
+                new ObjectParameter("pathLocator", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_DeleteSelectedPhotosFolderFiles", pathLocatorParameter);
         }
     }
 }

@@ -518,7 +518,5 @@ namespace PhotographyAutomation.DateLayer.Services
                 return null;
             }
         }
-
-
     }
 }

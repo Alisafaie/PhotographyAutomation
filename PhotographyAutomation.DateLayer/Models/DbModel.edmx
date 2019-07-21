@@ -330,6 +330,44 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           <Property Name="IsDirectory" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetSelectedPhotosFoldersInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_GetSelectedPhotosFoldersInfo">
+          <Key>
+            <PropertyRef Name="StreamId" />
+            <PropertyRef Name="FolderName" />
+            <PropertyRef Name="CreationTime" />
+            <PropertyRef Name="LastWriteTime" />
+            <PropertyRef Name="IsOffline" />
+            <PropertyRef Name="IsHidden" />
+            <PropertyRef Name="IsReadonly" />
+            <PropertyRef Name="IsArchive" />
+            <PropertyRef Name="IsSystem" />
+            <PropertyRef Name="IsTemporary" />
+            <PropertyRef Name="IsDirectory" />
+          </Key>
+          <Property Name="StreamId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FileStream" Type="varbinary(max)" />
+          <Property Name="FolderName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="PathLocator" Type="varchar" MaxLength="4000" />
+          <Property Name="ParentPathLocator" Type="varchar" MaxLength="4000" />
+          <Property Name="UncPath" Type="nvarchar" MaxLength="4000" />
+          <Property Name="RelativePath" Type="nvarchar(max)" />
+          <Property Name="FullUncPath" Type="nvarchar(max)" />
+          <Property Name="Level" Type="smallint" />
+          <Property Name="FileType" Type="nvarchar" MaxLength="255" />
+          <Property Name="FileSize" Type="bigint" />
+          <Property Name="CreationTime" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="LastWriteTime" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="LastAccessTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="IsOffline" Type="bit" Nullable="false" />
+          <Property Name="IsHidden" Type="bit" Nullable="false" />
+          <Property Name="IsReadonly" Type="bit" Nullable="false" />
+          <Property Name="IsArchive" Type="bit" Nullable="false" />
+          <Property Name="IsSystem" Type="bit" Nullable="false" />
+          <Property Name="IsTemporary" Type="bit" Nullable="false" />
+          <Property Name="IsDirectory" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_PrintSizesPrices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="View_PrintSizesPrices">
           <Key>
@@ -718,6 +756,29 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_PrintSizesPrices'
           <Parameter Name="parent_level" Type="tinyint" Mode="In" />
           <Parameter Name="returnValue" Type="nvarchar(max)" Mode="InOut" />
         </Function>
+        <Function Name="usp_CreateOrderPrintDirectory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="customerFinancialNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="monthNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="parent_level" Type="tinyint" Mode="In" />
+          <Parameter Name="returnValue" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="usp_CreateSelectedPhotosFileTableFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="parent_name" Type="nvarchar" Mode="In" />
+          <Parameter Name="parent_level" Type="tinyint" Mode="In" />
+        </Function>
+        <Function Name="usp_CreateSelectedPhotosMonthFolder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="monthName" Type="nvarchar" Mode="In" />
+          <Parameter Name="year" Type="nvarchar" Mode="In" />
+          <Parameter Name="parent_level" Type="tinyint" Mode="In" />
+          <Parameter Name="returnValue" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="usp_CreateSelectedPhotosYearFolder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="parent_name" Type="nvarchar" Mode="In" />
+          <Parameter Name="parent_level" Type="tinyint" Mode="In" />
+          <Parameter Name="returnValue" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
         <Function Name="usp_CreateYearFolder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="name" Type="nvarchar" Mode="In" />
           <Parameter Name="parent_name" Type="nvarchar" Mode="In" />
@@ -725,6 +786,9 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_PrintSizesPrices'
           <Parameter Name="returnValue" Type="nvarchar(max)" Mode="InOut" />
         </Function>
         <Function Name="usp_DeleteOrderFolderFiles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pathLocator" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="usp_DeleteSelectedPhotosFolderFiles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="pathLocator" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="usp_GetImageInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -814,6 +878,31 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_PrintSizesPrices'
     [View_GetDocumentsFolders].[IsTemporary] AS [IsTemporary], 
     [View_GetDocumentsFolders].[IsDirectory] AS [IsDirectory]
     FROM [dbo].[View_GetDocumentsFolders] AS [View_GetDocumentsFolders]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_GetSelectedPhotosFoldersInfo" EntityType="Self.View_GetSelectedPhotosFoldersInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_GetSelectedPhotosFoldersInfo].[StreamId] AS [StreamId], 
+    [View_GetSelectedPhotosFoldersInfo].[FileStream] AS [FileStream], 
+    [View_GetSelectedPhotosFoldersInfo].[FolderName] AS [FolderName], 
+    [View_GetSelectedPhotosFoldersInfo].[PathLocator] AS [PathLocator], 
+    [View_GetSelectedPhotosFoldersInfo].[ParentPathLocator] AS [ParentPathLocator], 
+    [View_GetSelectedPhotosFoldersInfo].[UncPath] AS [UncPath], 
+    [View_GetSelectedPhotosFoldersInfo].[RelativePath] AS [RelativePath], 
+    [View_GetSelectedPhotosFoldersInfo].[FullUncPath] AS [FullUncPath], 
+    [View_GetSelectedPhotosFoldersInfo].[Level] AS [Level], 
+    [View_GetSelectedPhotosFoldersInfo].[FileType] AS [FileType], 
+    [View_GetSelectedPhotosFoldersInfo].[FileSize] AS [FileSize], 
+    [View_GetSelectedPhotosFoldersInfo].[CreationTime] AS [CreationTime], 
+    [View_GetSelectedPhotosFoldersInfo].[LastWriteTime] AS [LastWriteTime], 
+    [View_GetSelectedPhotosFoldersInfo].[LastAccessTime] AS [LastAccessTime], 
+    [View_GetSelectedPhotosFoldersInfo].[IsOffline] AS [IsOffline], 
+    [View_GetSelectedPhotosFoldersInfo].[IsHidden] AS [IsHidden], 
+    [View_GetSelectedPhotosFoldersInfo].[IsReadonly] AS [IsReadonly], 
+    [View_GetSelectedPhotosFoldersInfo].[IsArchive] AS [IsArchive], 
+    [View_GetSelectedPhotosFoldersInfo].[IsSystem] AS [IsSystem], 
+    [View_GetSelectedPhotosFoldersInfo].[IsTemporary] AS [IsTemporary], 
+    [View_GetSelectedPhotosFoldersInfo].[IsDirectory] AS [IsDirectory]
+    FROM [dbo].[View_GetSelectedPhotosFoldersInfo] AS [View_GetSelectedPhotosFoldersInfo]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="View_PrintSizesPrices" EntityType="Self.View_PrintSizesPrices" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1137,6 +1226,33 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_PrintSizesPrices'
             <End Role="TblOrderFiles" EntitySet="TblOrderFiles" />
           </AssociationSet>
           <EntitySet Name="View_GetDocumentsFolders" EntityType="PhotographyAutomationDBModel.View_GetDocumentsFolders" />
+          <EntitySet Name="View_GetSelectedPhotosFoldersInfo" EntityType="PhotographyAutomationDBModel.View_GetSelectedPhotosFoldersInfo" />
+          <FunctionImport Name="usp_CreateOrderPrintDirectory" ReturnType="Collection(String)">
+            <Parameter Name="customerFinancialNumber" Mode="In" Type="String" />
+            <Parameter Name="monthNumber" Mode="In" Type="String" />
+            <Parameter Name="parent_level" Mode="In" Type="Byte" />
+            <Parameter Name="returnValue" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_CreateSelectedPhotosFileTableFile" ReturnType="Collection(PhotographyAutomationDBModel.usp_CreateSelectedPhotosFileTableFile_Result)">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="parent_name" Mode="In" Type="String" />
+            <Parameter Name="parent_level" Mode="In" Type="Byte" />
+          </FunctionImport>
+          <FunctionImport Name="usp_CreateSelectedPhotosMonthFolder" ReturnType="Collection(String)">
+            <Parameter Name="monthName" Mode="In" Type="String" />
+            <Parameter Name="year" Mode="In" Type="String" />
+            <Parameter Name="parent_level" Mode="In" Type="Byte" />
+            <Parameter Name="returnValue" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_CreateSelectedPhotosYearFolder" ReturnType="Collection(String)">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="parent_name" Mode="In" Type="String" />
+            <Parameter Name="parent_level" Mode="In" Type="Byte" />
+            <Parameter Name="returnValue" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeleteSelectedPhotosFolderFiles">
+            <Parameter Name="pathLocator" Mode="In" Type="String" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="usp_CreateFileTableFile_Result">
           <Property Type="String" Name="streamId" Nullable="true" MaxLength="4000" />
@@ -1927,6 +2043,50 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_PrintSizesPrices'
           <Property Name="IsTemporary" Type="Boolean" Nullable="false" />
           <Property Name="IsDirectory" Type="Boolean" Nullable="false" />
         </EntityType>
+        <EntityType Name="View_GetSelectedPhotosFoldersInfo">
+          <Key>
+            <PropertyRef Name="StreamId" />
+            <PropertyRef Name="FolderName" />
+            <PropertyRef Name="CreationTime" />
+            <PropertyRef Name="LastWriteTime" />
+            <PropertyRef Name="IsOffline" />
+            <PropertyRef Name="IsHidden" />
+            <PropertyRef Name="IsReadonly" />
+            <PropertyRef Name="IsArchive" />
+            <PropertyRef Name="IsSystem" />
+            <PropertyRef Name="IsTemporary" />
+            <PropertyRef Name="IsDirectory" />
+          </Key>
+          <Property Name="StreamId" Type="Guid" Nullable="false" />
+          <Property Name="FileStream" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="FolderName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PathLocator" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="ParentPathLocator" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="UncPath" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="RelativePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FullUncPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Level" Type="Int16" />
+          <Property Name="FileType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FileSize" Type="Int64" />
+          <Property Name="CreationTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="LastWriteTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="LastAccessTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="IsOffline" Type="Boolean" Nullable="false" />
+          <Property Name="IsHidden" Type="Boolean" Nullable="false" />
+          <Property Name="IsReadonly" Type="Boolean" Nullable="false" />
+          <Property Name="IsArchive" Type="Boolean" Nullable="false" />
+          <Property Name="IsSystem" Type="Boolean" Nullable="false" />
+          <Property Name="IsTemporary" Type="Boolean" Nullable="false" />
+          <Property Name="IsDirectory" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <ComplexType Name="usp_CreateSelectedPhotosFileTableFile_Result">
+          <Property Type="String" Name="streamId" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="parent_locator" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="path_name" Nullable="true" />
+          <Property Type="Binary" Name="filestreamTxn" Nullable="true" />
+          <Property Type="String" Name="path_locator_str" Nullable="true" MaxLength="4000" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2340,6 +2500,49 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_PrintSizesPrices'
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="View_GetSelectedPhotosFoldersInfo">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.View_GetSelectedPhotosFoldersInfo">
+              <MappingFragment StoreEntitySet="View_GetSelectedPhotosFoldersInfo">
+                <ScalarProperty Name="IsDirectory" ColumnName="IsDirectory" />
+                <ScalarProperty Name="IsTemporary" ColumnName="IsTemporary" />
+                <ScalarProperty Name="IsSystem" ColumnName="IsSystem" />
+                <ScalarProperty Name="IsArchive" ColumnName="IsArchive" />
+                <ScalarProperty Name="IsReadonly" ColumnName="IsReadonly" />
+                <ScalarProperty Name="IsHidden" ColumnName="IsHidden" />
+                <ScalarProperty Name="IsOffline" ColumnName="IsOffline" />
+                <ScalarProperty Name="LastAccessTime" ColumnName="LastAccessTime" />
+                <ScalarProperty Name="LastWriteTime" ColumnName="LastWriteTime" />
+                <ScalarProperty Name="CreationTime" ColumnName="CreationTime" />
+                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="FullUncPath" ColumnName="FullUncPath" />
+                <ScalarProperty Name="RelativePath" ColumnName="RelativePath" />
+                <ScalarProperty Name="UncPath" ColumnName="UncPath" />
+                <ScalarProperty Name="ParentPathLocator" ColumnName="ParentPathLocator" />
+                <ScalarProperty Name="PathLocator" ColumnName="PathLocator" />
+                <ScalarProperty Name="FolderName" ColumnName="FolderName" />
+                <ScalarProperty Name="FileStream" ColumnName="FileStream" />
+                <ScalarProperty Name="StreamId" ColumnName="StreamId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_CreateOrderPrintDirectory" FunctionName="PhotographyAutomationDBModel.Store.usp_CreateOrderPrintDirectory" />
+          <FunctionImportMapping FunctionImportName="usp_CreateSelectedPhotosFileTableFile" FunctionName="PhotographyAutomationDBModel.Store.usp_CreateSelectedPhotosFileTableFile">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PhotographyAutomationDBModel.usp_CreateSelectedPhotosFileTableFile_Result">
+                <ScalarProperty Name="streamId" ColumnName="streamId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="parent_locator" ColumnName="parent_locator" />
+                <ScalarProperty Name="path_name" ColumnName="path_name" />
+                <ScalarProperty Name="filestreamTxn" ColumnName="filestreamTxn" />
+                <ScalarProperty Name="path_locator_str" ColumnName="path_locator_str" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_CreateSelectedPhotosMonthFolder" FunctionName="PhotographyAutomationDBModel.Store.usp_CreateSelectedPhotosMonthFolder" />
+          <FunctionImportMapping FunctionImportName="usp_CreateSelectedPhotosYearFolder" FunctionName="PhotographyAutomationDBModel.Store.usp_CreateSelectedPhotosYearFolder" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteSelectedPhotosFolderFiles" FunctionName="PhotographyAutomationDBModel.Store.usp_DeleteSelectedPhotosFolderFiles" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
