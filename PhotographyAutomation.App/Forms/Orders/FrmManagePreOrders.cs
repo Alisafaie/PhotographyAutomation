@@ -99,7 +99,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             {
                 if (chkEnableOrderStatusDatePicker.Checked == false)
                 {
-                    _statusCode = (int) cmbOrderStatus.SelectedValue;
+                    _statusCode = (int)cmbOrderStatus.SelectedValue;
 
                     ShowOrders(_statusCode);
                 }
@@ -203,7 +203,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             }
 
             //Block non-number characters
-            char currentKey = (char) e.KeyCode;
+            char currentKey = (char)e.KeyCode;
             bool modifier = e.Control || e.Alt || e.Shift;
             bool nonNumber = char.IsLetter(currentKey) ||
                              char.IsSymbol(currentKey) ||
@@ -231,7 +231,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                     e.SuppressKeyPress = true;
 
                     //OPTIONAL: Manually insert text stripped of non-numbers
-                    TextBoxX me = (TextBoxX) sender;
+                    TextBoxX me = (TextBoxX)sender;
                     int start = me.SelectionStart;
                     string newTxt = me.Text;
                     newTxt = newTxt.Remove(me.SelectionStart, me.SelectionLength); //remove highlighted text
@@ -341,12 +341,12 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         private void dgvUploads_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            var senderGrid = (DataGridViewX) sender;
+            var senderGrid = (DataGridViewX)sender;
 
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonXColumn &&
                 e.RowIndex >= 0)
             {
-                RetryGetListOfPhotos:
+            RetryGetListOfPhotos:
 
                 var pathLocator = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
 
@@ -368,7 +368,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                                 frmViewUploadedPhotos.PhotographyDate =
                                     dgvUploads.SelectedRows[0].Cells["clmDate"].Value.ToString();
                                 frmViewUploadedPhotos.TotalPhotos =
-                                    (int) dgvUploads.SelectedRows[0].Cells["clmTotalFiles"].Value;
+                                    (int)dgvUploads.SelectedRows[0].Cells["clmTotalFiles"].Value;
                                 frmViewUploadedPhotos.OrderStatus =
                                     dgvUploads.SelectedRows[0].Cells["clmStatusName"].Value.ToString();
 
@@ -1697,7 +1697,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         private void مشاهده_همه_عکس_ها_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RetryGetListOfPhotos:
+        RetryGetListOfPhotos:
 
             ////    آیا اصلا رکوردی از دیتاگرید ویو انتخاب شده است؟
             if (dgvUploads.SelectedRows[0] == null || dgvUploads.CurrentRow == null)
@@ -1730,7 +1730,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                                 dgvUploads.SelectedRows[0].Cells["clmDate"].Value.ToString();
 
                             frmViewUploaded.TotalPhotos =
-                                (int) dgvUploads.SelectedRows[0].Cells["clmTotalFiles"].Value;
+                                (int)dgvUploads.SelectedRows[0].Cells["clmTotalFiles"].Value;
 
                             frmViewUploaded.OrderStatus =
                                 dgvUploads.SelectedRows[0].Cells["clmStatusName"].Value.ToString();
@@ -1891,7 +1891,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                             var file = db.PhotoRepository.DownloadOrderPhotos(guid);
                             if (file != null)
                             {
-                                RetryCreateFolders:
+                            RetryCreateFolders:
                                 var directoryPathOrders = CreateOrderDirectory(selectedPath);
 
                                 var directoryPathOrderCode = CreateOrderCodeDirectory(orderCode, directoryPathOrders);
@@ -2077,11 +2077,12 @@ namespace PhotographyAutomation.App.Forms.Orders
                 return;
             }
 
+            var selectedRow = dgvUploads.SelectedRows[0];
 
             var orderCode = dgvUploads.SelectedRows[0].Cells["clmOrderCode"].Value.ToString();
             var orderId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmId"].Value);
 
-            RetryGetListOfPhotos:
+        RetryGetListOfPhotos:
 
             var parentPathLocator =
                 dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
@@ -2101,27 +2102,23 @@ namespace PhotographyAutomation.App.Forms.Orders
             {
                 if (list.Any())
                 {
-                    using (var frmUploadSelectedPhotos = new FrmUploadSelectedPhotos())
+                    using (var frm = new FrmUploadSelectedPhotos())
                     {
-                        frmUploadSelectedPhotos.ListOfPhotos = list;
-                        
-                        frmUploadSelectedPhotos.OrderCode =
-                            dgvUploads.SelectedRows[0]?.Cells["clmOrderCode"].Value.ToString();
+                        frm.ListOfPhotos = list;
 
-                        frmUploadSelectedPhotos.CustomerName = dgvUploads.SelectedRows[0]
-                            .Cells["clmCustomerFullName"]
-                            .Value.ToString();
+                        if (int.TryParse(selectedRow?.Cells["clmId"].Value.ToString(), out var __orderId)) 
+                            frm.OrderId = __orderId;
+                        if (int.TryParse(selectedRow.Cells["clmCustomerId"].Value.ToString(),out var __customerId)) 
+                            frm.CustomerId = __customerId;
+                        if (int.TryParse(selectedRow.Cells["clmTotalFiles"].Value.ToString(), out var __totalPhotos)) 
+                            frm.TotalPhotos = __totalPhotos;
 
-                        frmUploadSelectedPhotos.PhotographyDate =
-                            dgvUploads.SelectedRows[0].Cells["clmDate"].Value.ToString();
+                        frm.OrderCode = selectedRow?.Cells["clmOrderCode"].Value.ToString();
+                        frm.CustomerName = selectedRow.Cells["clmCustomerFullName"].Value.ToString();
+                        frm.PhotographyDate = selectedRow.Cells["clmDate"].Value.ToString();
+                        frm.OrderStatus = selectedRow.Cells["clmStatusName"].Value.ToString();
 
-                        frmUploadSelectedPhotos.TotalPhotos =
-                            (int) dgvUploads.SelectedRows[0].Cells["clmTotalFiles"].Value;
-
-                        frmUploadSelectedPhotos.OrderStatus =
-                            dgvUploads.SelectedRows[0].Cells["clmStatusName"].Value.ToString();
-
-                        frmUploadSelectedPhotos.ShowDialog();
+                        frm.ShowDialog();
                     }
 
                     GC.Collect();

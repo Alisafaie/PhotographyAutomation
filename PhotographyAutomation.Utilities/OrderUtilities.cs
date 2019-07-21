@@ -14,7 +14,7 @@ namespace PhotographyAutomation.Utilities
             var persianDay = pc.GetDayOfMonth(dt).ToString("D2");
             persianYear = persianYear.Substring(1);
 
-            var sb=new StringBuilder();
+            var sb = new StringBuilder();
             sb.Append(persianYear);
             sb.Append(persianMonth);
             sb.Append(persianDay);
@@ -24,7 +24,7 @@ namespace PhotographyAutomation.Utilities
 
 
             //رقم هزار به دلیل بدون استفاده بودن و برای کاهش یک رقم از شناسه سفارش حذف می شود.
-            
+
             //var returnValue = persianYear + persianMonth + persianDay + "-" + customerId + bookingId;
             //return returnValue;
             return sb.ToString();
@@ -48,7 +48,7 @@ namespace PhotographyAutomation.Utilities
             #endregion
         }
 
-        public static string GenerateOrderPrintCode(DateTime dt, int orderId, int customerId)
+        public static string GenerateOrderPrintCode(DateTime dt, int customerId, int orderId)
         {
             var pc = new PersianCalendar();
             var persianYear = pc.GetYear(dt).ToString("D4");
@@ -58,15 +58,14 @@ namespace PhotographyAutomation.Utilities
             //رقم هزار به دلیل بدون استفاده بودن و برای کاهش یک رقم از شناسه سفارش حذف می شود.
             persianYear = persianYear.Substring(1);
 
-            var sb=new StringBuilder();
+            var sb = new StringBuilder();
             sb.Append(persianYear);
             sb.Append(persianMonth);
             sb.Append(persianDay);
             sb.Append("-");
-            sb.Append(orderId);
-            sb.Append("-");
             sb.Append(customerId);
-
+            sb.Append("-");
+            sb.Append(orderId);
 
             return sb.ToString();
         }

@@ -41,6 +41,7 @@
             this.panelEx5 = new DevComponents.DotNetBar.PanelEx();
             this.panelPreviewPictures = new DevComponents.DotNetBar.PanelEx();
             this.panelEx4 = new DevComponents.DotNetBar.PanelEx();
+            this.checkBoxSelectNone = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.checkBoxSelectAll = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.labelPicturePreviewName = new DevComponents.DotNetBar.LabelX();
             this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
@@ -60,7 +61,6 @@
             this.toolStripMenuItemTotalPhotos = new System.Windows.Forms.ToolStripMenuItem();
             this.وضعیتسفارشToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemOrderstatus = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkBoxSelectNone = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.panelEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.collapsibleSplitContainer1)).BeginInit();
@@ -87,7 +87,7 @@
             this.panelEx1.Controls.Add(this.btnUploadPhotos);
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelEx1.Location = new System.Drawing.Point(0, 532);
+            this.panelEx1.Location = new System.Drawing.Point(0, 487);
             this.panelEx1.Name = "panelEx1";
             this.panelEx1.Size = new System.Drawing.Size(1074, 68);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -149,7 +149,7 @@
             this.pictureBoxPreview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxPreview.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxPreview.Name = "pictureBoxPreview";
-            this.pictureBoxPreview.Size = new System.Drawing.Size(437, 507);
+            this.pictureBoxPreview.Size = new System.Drawing.Size(437, 462);
             this.pictureBoxPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxPreview.TabIndex = 21;
             this.pictureBoxPreview.TabStop = false;
@@ -172,7 +172,7 @@
             this.collapsibleSplitContainer1.Panel2.Controls.Add(this.panelEx5);
             this.collapsibleSplitContainer1.Panel2.Controls.Add(this.panelEx4);
             this.collapsibleSplitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.collapsibleSplitContainer1.Size = new System.Drawing.Size(1074, 507);
+            this.collapsibleSplitContainer1.Size = new System.Drawing.Size(1074, 462);
             this.collapsibleSplitContainer1.SplitterDistance = 437;
             this.collapsibleSplitContainer1.SplitterWidth = 20;
             this.collapsibleSplitContainer1.TabIndex = 4;
@@ -186,7 +186,7 @@
             this.panelEx5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx5.Location = new System.Drawing.Point(0, 0);
             this.panelEx5.Name = "panelEx5";
-            this.panelEx5.Size = new System.Drawing.Size(617, 474);
+            this.panelEx5.Size = new System.Drawing.Size(617, 429);
             this.panelEx5.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx5.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx5.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -206,7 +206,7 @@
             this.panelPreviewPictures.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelPreviewPictures.Location = new System.Drawing.Point(0, 0);
             this.panelPreviewPictures.Name = "panelPreviewPictures";
-            this.panelPreviewPictures.Size = new System.Drawing.Size(617, 474);
+            this.panelPreviewPictures.Size = new System.Drawing.Size(617, 429);
             this.panelPreviewPictures.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelPreviewPictures.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelPreviewPictures.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -225,7 +225,7 @@
             this.panelEx4.Controls.Add(this.labelPicturePreviewName);
             this.panelEx4.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelEx4.Location = new System.Drawing.Point(0, 474);
+            this.panelEx4.Location = new System.Drawing.Point(0, 429);
             this.panelEx4.Name = "panelEx4";
             this.panelEx4.Size = new System.Drawing.Size(617, 33);
             this.panelEx4.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -236,6 +236,23 @@
             this.panelEx4.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx4.Style.GradientAngle = 90;
             this.panelEx4.TabIndex = 0;
+            // 
+            // checkBoxSelectNone
+            // 
+            this.checkBoxSelectNone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxSelectNone.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxSelectNone.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxSelectNone.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
+            this.checkBoxSelectNone.Location = new System.Drawing.Point(368, 9);
+            this.checkBoxSelectNone.Name = "checkBoxSelectNone";
+            this.checkBoxSelectNone.Size = new System.Drawing.Size(98, 16);
+            this.checkBoxSelectNone.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxSelectNone.TabIndex = 4;
+            this.checkBoxSelectNone.Text = "انتخاب هیچ کدام";
+            this.checkBoxSelectNone.CheckedChanged += new System.EventHandler(this.checkBoxSelectNone_CheckedChanged);
             // 
             // checkBoxSelectAll
             // 
@@ -280,7 +297,7 @@
             this.panelEx3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx3.Location = new System.Drawing.Point(0, 25);
             this.panelEx3.Name = "panelEx3";
-            this.panelEx3.Size = new System.Drawing.Size(1074, 507);
+            this.panelEx3.Size = new System.Drawing.Size(1074, 462);
             this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx3.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx3.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -422,28 +439,11 @@
             this.toolStripMenuItemOrderstatus.Text = "--";
             this.toolStripMenuItemOrderstatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // checkBoxSelectNone
-            // 
-            this.checkBoxSelectNone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxSelectNone.AutoSize = true;
-            // 
-            // 
-            // 
-            this.checkBoxSelectNone.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxSelectNone.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
-            this.checkBoxSelectNone.Location = new System.Drawing.Point(368, 9);
-            this.checkBoxSelectNone.Name = "checkBoxSelectNone";
-            this.checkBoxSelectNone.Size = new System.Drawing.Size(98, 16);
-            this.checkBoxSelectNone.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxSelectNone.TabIndex = 4;
-            this.checkBoxSelectNone.Text = "انتخاب هیچ کدام";
-            this.checkBoxSelectNone.CheckedChanged += new System.EventHandler(this.checkBoxSelectNone_CheckedChanged);
-            // 
             // FrmUploadSelectedPhotos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1074, 600);
+            this.ClientSize = new System.Drawing.Size(1074, 555);
             this.Controls.Add(this.panelEx3);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panelEx1);
