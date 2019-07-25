@@ -1,4 +1,8 @@
 ﻿using PhotographyAutomation.DateLayer.Context;
+using PhotographyAutomation.DateLayer.Models;
+using PhotographyAutomation.Utilities;
+using PhotographyAutomation.Utilities.Convertor;
+using PhotographyAutomation.ViewModels.OrderPrint;
 using PhotographyAutomation.ViewModels.Print;
 using System;
 using System.Collections.Generic;
@@ -15,6 +19,13 @@ namespace PhotographyAutomation.App.Forms.Factors
         private int _selectedOriginalSizeId;
         private int _selectedPrintServiceId;
 
+        public int OrderId = 0;
+        public int CustomerId = 0;
+        public int OrderPrintId = 0;
+        public List<Guid> FileStreamsGuids = null;
+
+        public bool IsNewPreFactor = true;
+
         #endregion
 
 
@@ -26,8 +37,82 @@ namespace PhotographyAutomation.App.Forms.Factors
         private void FrmAddEditPreFactor_Load(object sender, EventArgs e)
         {
             LoadOriginalPrintSizes();
+
+            if (IsNewPreFactor)
+            {
+                GetOrderPrintInfo();
+            }
         }
 
+        private void GetOrderPrintInfo()
+        {
+            bgWorkerGetOrderPrintInfo.RunWorkerAsync();
+            circularProgress.IsRunning = bgWorkerLoadOriginalPringSizes.IsBusy;
+        }
+
+        private void bgWorkerGetOrderPrintInfo_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                using (var db = new UnitOfWork())
+                {
+                    var orderInfo = db.OrderGenericRepository.GetById(OrderId);
+                    var orderPrintInfo = db.OrderPrintGenericRepository.GetById(OrderPrintId);
+                    var customerInfo = db.CustomerGenericRepository.GetById(CustomerId);
+                    var orderPrintStatusInfo = db.OrderPrintStatusGenericRepository.GetById(orderPrintInfo.OrderPrintStatusId);
+
+                    if (orderInfo == null || orderPrintInfo == null || customerInfo == null || orderPrintStatusInfo == null)
+                    {
+                        RtlMessageBox.Show(
+                            "اطلاعات سفارش فابل دریافت نمی باشد." +
+                            " لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.", "",
+                            MessageBoxButtons.OK);
+                        DialogResult = DialogResult.Abort;
+                    }
+                    else
+                    {
+                        var orderPrintViewModel = new OrderPrintViewModel
+                        {
+                            CustomerId = CustomerId,
+                            OrderId = OrderId,
+                            OrderPrintCode = orderPrintInfo.OrderPrintCode,
+                            OrderPrintId = orderPrintInfo.Id,
+                            CreatedDateTime = orderPrintInfo.CreatedDateTime,
+                            ModifiedDateTime = orderPrintInfo.ModifiedDateTime,
+                            CustomerFirstName = customerInfo.FirstName,
+                            CustomerLastName = customerInfo.LastName,
+                            TotalPhotos = orderPrintInfo.TotalPhotos,
+                            OrderPrintStatusId = orderPrintInfo.OrderPrintStatusId,
+                            Deposit = orderPrintInfo.Deposit,
+                            Payment = orderPrintInfo.Payment,
+                            Remaining = orderPrintInfo.Remaining,
+                            TotalPrice = orderPrintInfo.TotalPrice,
+                            IsActiveOrderPrint = orderPrintInfo.IsActive,
+                            OrderPrintStatusName = orderPrintStatusInfo.Name,
+                            PhotographyDate = orderInfo.Date,
+                            PhotographyDateShamsi = orderInfo.Date.Value.ToShamsiDate(),
+                            RetouchDescriptions = orderPrintInfo.RetochDescriptions
+                        };
+                        e.Result = orderPrintViewModel;
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(@"exception: " + exception.Message);
+            }
+        }
+
+        private void bgWorkerGetOrderPrintInfo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Result != null)
+            {
+                var orderPrintInfo = (TblOrderPrint)e.Result;
+                txtOrderCodeDate.Text = orderPrintInfo.OrderPrintCode.Substring(0, 7);
+                txtOrderCodeCustomerIdBookingId.Text = orderPrintInfo.OrderPrintCode.Substring(7);
+                //...
+            }
+        }
 
 
         #region Buttons
@@ -197,7 +282,7 @@ namespace PhotographyAutomation.App.Forms.Factors
         }
 
         #endregion
-        
+
 
 
         #region LoadPrintSizeService
@@ -300,7 +385,7 @@ namespace PhotographyAutomation.App.Forms.Factors
         }
 
         #endregion
-        
+
 
 
         #region GetPrintServicePrice
@@ -547,7 +632,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                 }
             }
         }
-        
+
 
         #endregion
 
@@ -897,7 +982,7 @@ namespace PhotographyAutomation.App.Forms.Factors
 
 
         #region SecondPrintSize3
-        
+
         private void checkBoxLoadSecondPrintSize3_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxLoadSecondPrintSize3.Checked)
@@ -967,7 +1052,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                 }
             }
         }
-        
+
         #endregion
 
 
@@ -1058,5 +1143,7 @@ namespace PhotographyAutomation.App.Forms.Factors
             var language = new System.Globalization.CultureInfo("en-US");
             InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
         }
+
+
     }
 }

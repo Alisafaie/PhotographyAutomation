@@ -30,9 +30,9 @@ namespace PhotographyAutomation.DateLayer.Models
         public string Description { get; set; }
     
         public virtual TblCustomer TblCustomer { get; set; }
-        public virtual TblOrderPrint TblOrderPrint { get; set; }
         public virtual TblPrintServices TblPrintServices { get; set; }
         public virtual TblPrintServices_TblPrintSizePrice TblPrintServices_TblPrintSizePrice { get; set; }
         public virtual TblPrintSizePrices TblPrintSizePrices { get; set; }
+        public virtual TblOrderPrint TblOrderPrint { get; set; }
     }
 }

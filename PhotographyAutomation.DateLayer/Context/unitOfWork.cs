@@ -245,6 +245,22 @@ namespace PhotographyAutomation.DateLayer.Context
 
 
 
+        private GenericRepository<TblOrderPrintDetails> _orderPrintDetailsGenericRepository;
+        public GenericRepository<TblOrderPrintDetails> OrderPrintDetailsGenericRepository
+        {
+            get
+            {
+                if (_orderPrintDetailsGenericRepository == null)
+                {
+                    _orderPrintDetailsGenericRepository = new GenericRepository<TblOrderPrintDetails>(_db);
+                }
+
+                return _orderPrintDetailsGenericRepository;
+            }
+        }
+
+
+
         private GenericRepository<TblOrderStatus> _orderStatusGenericRepository;
         public GenericRepository<TblOrderStatus> OrderStatusGenericRepository
         {
@@ -256,6 +272,20 @@ namespace PhotographyAutomation.DateLayer.Context
                 }
 
                 return _orderStatusGenericRepository;
+            }
+        }
+
+        private GenericRepository<TblOrderPrintStatus> _orderPrintStatusGenericRepository;
+        public GenericRepository<TblOrderPrintStatus> OrderPrintStatusGenericRepository
+        {
+            get
+            {
+                if (_orderPrintStatusGenericRepository == null)
+                {
+                    _orderPrintStatusGenericRepository = new GenericRepository<TblOrderPrintStatus>(_db);
+                }
+
+                return _orderPrintStatusGenericRepository;
             }
         }
 

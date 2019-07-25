@@ -136,7 +136,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelX17 = new DevComponents.DotNetBar.LabelX();
-            this.txtCustomerInfo = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtCustomerName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.panel5 = new System.Windows.Forms.Panel();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.textBoxX3 = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -162,6 +162,9 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.textBoxX4 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX12 = new DevComponents.DotNetBar.LabelX();
+            this.bgWorkerGetOrderPrintInfo = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1.SuspendLayout();
             this.panelEx1.SuspendLayout();
             this.groupBoxPreviewPictures.SuspendLayout();
@@ -1774,7 +1777,6 @@
             // pictureBoxPreview
             // 
             this.pictureBoxPreview.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBoxPreview.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxPreview.Image")));
             this.pictureBoxPreview.Location = new System.Drawing.Point(889, 3);
             this.pictureBoxPreview.Name = "pictureBoxPreview";
             this.pictureBoxPreview.Size = new System.Drawing.Size(269, 309);
@@ -1821,7 +1823,7 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.labelX17);
-            this.panel2.Controls.Add(this.txtCustomerInfo);
+            this.panel2.Controls.Add(this.txtCustomerName);
             this.panel2.Location = new System.Drawing.Point(666, 20);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(247, 33);
@@ -1840,27 +1842,29 @@
             this.labelX17.TabIndex = 10;
             this.labelX17.Text = "نام مشتری";
             // 
-            // txtCustomerInfo
+            // txtCustomerName
             // 
-            this.txtCustomerInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCustomerName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
-            this.txtCustomerInfo.Border.Class = "TextBoxBorder";
-            this.txtCustomerInfo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtCustomerInfo.Enabled = false;
-            this.txtCustomerInfo.FocusHighlightColor = System.Drawing.SystemColors.Info;
-            this.txtCustomerInfo.FocusHighlightEnabled = true;
-            this.txtCustomerInfo.Location = new System.Drawing.Point(7, 6);
-            this.txtCustomerInfo.Name = "txtCustomerInfo";
-            this.txtCustomerInfo.PreventEnterBeep = true;
-            this.txtCustomerInfo.ReadOnly = true;
-            this.txtCustomerInfo.Size = new System.Drawing.Size(172, 21);
-            this.txtCustomerInfo.TabIndex = 6;
-            this.txtCustomerInfo.TabStop = false;
+            this.txtCustomerName.Border.Class = "TextBoxBorder";
+            this.txtCustomerName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtCustomerName.Enabled = false;
+            this.txtCustomerName.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.txtCustomerName.FocusHighlightEnabled = true;
+            this.txtCustomerName.Location = new System.Drawing.Point(7, 6);
+            this.txtCustomerName.Name = "txtCustomerName";
+            this.txtCustomerName.PreventEnterBeep = true;
+            this.txtCustomerName.ReadOnly = true;
+            this.txtCustomerName.Size = new System.Drawing.Size(172, 21);
+            this.txtCustomerName.TabIndex = 6;
+            this.txtCustomerName.TabStop = false;
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.labelX12);
+            this.panel5.Controls.Add(this.textBoxX4);
             this.panel5.Controls.Add(this.labelX1);
             this.panel5.Controls.Add(this.textBoxX3);
             this.panel5.Controls.Add(this.textBoxX2);
@@ -1915,13 +1919,13 @@
             this.textBoxX2.Enabled = false;
             this.textBoxX2.FocusHighlightColor = System.Drawing.SystemColors.Info;
             this.textBoxX2.FocusHighlightEnabled = true;
-            this.textBoxX2.Location = new System.Drawing.Point(60, 6);
+            this.textBoxX2.Location = new System.Drawing.Point(56, 6);
             this.textBoxX2.MaxLength = 6;
             this.textBoxX2.Name = "textBoxX2";
             this.textBoxX2.PreventEnterBeep = true;
             this.textBoxX2.ReadOnly = true;
             this.textBoxX2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBoxX2.Size = new System.Drawing.Size(83, 21);
+            this.textBoxX2.Size = new System.Drawing.Size(51, 21);
             this.textBoxX2.TabIndex = 90;
             this.textBoxX2.TabStop = false;
             // 
@@ -1933,7 +1937,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(50, 9);
+            this.labelX2.Location = new System.Drawing.Point(48, 9);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(6, 16);
             this.labelX2.TabIndex = 91;
@@ -2150,6 +2154,46 @@
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(109, 17);
             this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
             // 
+            // textBoxX4
+            // 
+            this.textBoxX4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.textBoxX4.Border.Class = "TextBoxBorder";
+            this.textBoxX4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX4.Enabled = false;
+            this.textBoxX4.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.textBoxX4.FocusHighlightEnabled = true;
+            this.textBoxX4.Location = new System.Drawing.Point(114, 6);
+            this.textBoxX4.MaxLength = 7;
+            this.textBoxX4.Name = "textBoxX4";
+            this.textBoxX4.PreventEnterBeep = true;
+            this.textBoxX4.ReadOnly = true;
+            this.textBoxX4.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.textBoxX4.Size = new System.Drawing.Size(32, 21);
+            this.textBoxX4.TabIndex = 93;
+            this.textBoxX4.TabStop = false;
+            // 
+            // labelX12
+            // 
+            this.labelX12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelX12.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX12.Location = new System.Drawing.Point(107, 8);
+            this.labelX12.Name = "labelX12";
+            this.labelX12.Size = new System.Drawing.Size(6, 16);
+            this.labelX12.TabIndex = 94;
+            this.labelX12.Text = "-";
+            // 
+            // bgWorkerGetOrderPrintInfo
+            // 
+            this.bgWorkerGetOrderPrintInfo.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerGetOrderPrintInfo_DoWork);
+            this.bgWorkerGetOrderPrintInfo.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerGetOrderPrintInfo_RunWorkerCompleted);
+            // 
             // FrmAddEditPreFactor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2169,7 +2213,7 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "مشاهده / ویرایش پیش فاکتور";
+            this.Text = "===";
             this.Load += new System.EventHandler(this.FrmAddEditPreFactor_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -2320,7 +2364,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;
         private DevComponents.DotNetBar.LabelX labelX17;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtCustomerInfo;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtCustomerName;
         private System.Windows.Forms.Panel panel5;
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX3;
@@ -2336,5 +2380,8 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private DevComponents.DotNetBar.LabelX labelX12;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX4;
+        private System.ComponentModel.BackgroundWorker bgWorkerGetOrderPrintInfo;
     }
 }

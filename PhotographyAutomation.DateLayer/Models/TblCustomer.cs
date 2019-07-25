@@ -19,10 +19,10 @@ namespace PhotographyAutomation.DateLayer.Models
         {
             this.TblBooking = new HashSet<TblBooking>();
             this.TblFilesError = new HashSet<TblFilesError>();
-            this.TblOrderPrint = new HashSet<TblOrderPrint>();
-            this.TblOrderPrintDetails = new HashSet<TblOrderPrintDetails>();
             this.TblOrder = new HashSet<TblOrder>();
             this.TblOrder1 = new HashSet<TblOrder>();
+            this.TblOrderPrintDetails = new HashSet<TblOrderPrintDetails>();
+            this.TblOrderPrint = new HashSet<TblOrderPrint>();
         }
     
         public int Id { get; set; }
@@ -49,12 +49,12 @@ namespace PhotographyAutomation.DateLayer.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblFilesError> TblFilesError { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblOrderPrint> TblOrderPrint { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblOrderPrintDetails> TblOrderPrintDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblOrder> TblOrder { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblOrder> TblOrder1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblOrderPrintDetails> TblOrderPrintDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblOrderPrint> TblOrderPrint { get; set; }
     }
 }
