@@ -40,10 +40,27 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         private void FrmAddEditPreFactor_Load(object sender, EventArgs e)
         {
-            LoadOriginalPrintSizes();
-            GetOrderPrintInfo();
             if (FileStreamsGuids.Any())
-                LoadPicture(FileStreamsGuids[_photoCursor-1]);
+            {
+                LoadOriginalPrintSizes();
+                GetOrderPrintInfo();
+                LoadPicture(FileStreamsGuids[_photoCursor - 1]);
+                if (FileStreamsGuids.Count == 1)
+                {
+                    btnNextPhoto.Enabled = false;
+                    btnPreviousPhoto.Enabled = false;
+                }
+            }
+            else
+            {
+                RtlMessageBox.Show(
+                    "متاسفانه اطلاعات سفارش قابل دریافت نمی باشد. " +
+                    "لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.",
+                    "خطا در دریافت اطلاعات از سرور",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                this.DialogResult = DialogResult.Cancel;
+            }
         }
 
 
@@ -161,8 +178,6 @@ namespace PhotographyAutomation.App.Forms.Factors
         {
             bgWorkerLoadPicture.RunWorkerAsync(fileStreamsGuid);
             circularProgressPictures.IsRunning = bgWorkerLoadPicture.IsBusy;
-            //btnNextPhoto.Enabled = !bgWorkerLoadPicture.IsBusy;
-            //btnPreviousPhoto.Enabled = !bgWorkerLoadPicture.IsBusy;
         }
         private void bgWorkerLoadPicture_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -198,12 +213,6 @@ namespace PhotographyAutomation.App.Forms.Factors
                     var file = (FileViewModel)e.Result;
                     pictureBoxPreview.Image = Image.FromStream(file.fileStream);
                     circularProgressPictures.IsRunning = bgWorkerLoadPicture.IsBusy;
-                    btnNextPhoto.Enabled = true;
-                    //if (_photoCursor == 0)
-                    //    btnPreviousPhoto.Enabled = false;
-                    //else
-                    //    btnPreviousPhoto.Enabled = true;
-
                 }
                 else
                 {
@@ -1254,18 +1263,18 @@ namespace PhotographyAutomation.App.Forms.Factors
         {
             _photoCursor++;
             int totalItems = FileStreamsGuids.Count;
-            
+
             int lblCounter = _photoCursor;
             lblCurrentPhoto.Text = (lblCounter).ToString();
 
             if (_photoCursor < totalItems)
             {
-                LoadPicture(FileStreamsGuids[_photoCursor-1]);
+                LoadPicture(FileStreamsGuids[_photoCursor - 1]);
             }
 
             if (_photoCursor > 0)
                 btnPreviousPhoto.Enabled = true;
-            if (_photoCursor == totalItems )
+            if (_photoCursor == totalItems)
                 btnNextPhoto.Enabled = false;
         }
 
@@ -1273,15 +1282,15 @@ namespace PhotographyAutomation.App.Forms.Factors
         {
             _photoCursor--;
             int totalItems = FileStreamsGuids.Count;
-            
+
             int lblCounter = _photoCursor;
             lblCurrentPhoto.Text = (lblCounter).ToString();
 
             if (_photoCursor > 0)
             {
-                LoadPicture(FileStreamsGuids[_photoCursor-1]);
+                LoadPicture(FileStreamsGuids[_photoCursor - 1]);
             }
-            if (_photoCursor < totalItems )
+            if (_photoCursor < totalItems)
                 btnNextPhoto.Enabled = true;
             if (_photoCursor == 1)
                 btnPreviousPhoto.Enabled = false;
