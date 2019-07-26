@@ -8,7 +8,7 @@ namespace PhotographyAutomation.DateLayer.Repositories
 {
     public interface IPhotoRepository
     {
-        DocumentInfoViewModel GetPhotoByGuid(Guid documentGuid);
+        FileViewModel GetPhotoByGuid(Guid documentGuid);
         List<DocumentInfoViewModel> GetDocuments();
         string CheckPhotoYearFolderIsCreatedReturnsPath(int year);
         string CheckPhotoMonthFolderIsCreatedReturnsPath(int month);
@@ -19,12 +19,12 @@ namespace PhotographyAutomation.DateLayer.Repositories
         string CreateMonthFolderOfPhotos(int month, int year);
         string CreateCustomerFinancialFolder(string orderCode, int month);
         bool CreateFileTableFile(string name, string parent, byte level, string localFilePath);
-        CreateFileViewModel CreateFileTableFileReturnCreateFileViewModel(string name, string parent, byte level, string localFilePath);
+        FileViewModel CreateFileTableFileReturnCreateFileViewModel(string name, string parent, byte level, string localFilePath);
         Guid GetOrderFolderStreamId(string orderCode);
         void DeleteFilesOfOrder(string pathLocator);
         int GetTotalFilesOfFolder(string pathLocator);
         List<PhotoViewModel> GetListOfFilesInFolder(string pathLocator);
-        CreateFileViewModel DownloadOrderPhotos(Guid fileStreamId);
+        FileViewModel DownloadOrderPhotos(Guid fileStreamId);
         List<Guid> GetListOfOrderFilesReturnStreamIds(string pathLocator);
     }
 }

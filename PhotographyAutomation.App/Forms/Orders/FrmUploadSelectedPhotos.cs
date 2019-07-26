@@ -594,7 +594,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                                         frmPreFactor.OrderPrintId = orderPrintId;
                                         frmPreFactor.IsNewPreFactor = true;
                                         frmPreFactor.FileStreamsGuids = streamIdsToUploadList;
-                                        Hide();
+                                        //Hide();
                                         if (frmPreFactor.ShowDialog() == DialogResult.OK)
                                             DialogResult = DialogResult.OK;
                                     }

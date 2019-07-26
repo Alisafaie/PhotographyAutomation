@@ -14,7 +14,7 @@ namespace PhotographyAutomation.DateLayer.Repositories
         string CreateSelectedPhotosYearFolder(int year);
         string CheckSelectedPhotosMonthFolderIsCreatedReturnsPath(int month);
         string CreateSelectedPhotosMonthFolder(int month, int year);
-        List<View_GetSelectedPhotosFoldersInfo> CheckOrderPrintFolderIsExitsReturnFullData(string orderPrintCode);
+        //List<View_GetSelectedPhotosFoldersInfo> CheckOrderPrintFolderIsExitsReturnFullData(string orderPrintCode);
         string CreateOrderPrintDirectory(string orderCode, int month);
         CreateFileViewModel CreateFileTableFileReturnCreateFileViewModel(string name, string parent, byte level, string localFilePath);
         void DeleteSelectedPhotosFolderFiles(string pathLocator);

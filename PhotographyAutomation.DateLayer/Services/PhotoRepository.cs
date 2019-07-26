@@ -23,8 +23,62 @@ namespace PhotographyAutomation.DateLayer.Services
         }
 
         //[EdmFunction("DbModel.Store","DocumentViewByGUID")]
-        public DocumentInfoViewModel GetPhotoByGuid(Guid documentGuid)
+        public FileViewModel GetPhotoByGuid(Guid fileStreamId)
         {
+            using (DbContextTransaction dbTransaction = _db.Database.BeginTransaction())
+            {
+                FileViewModel info = null;
+                try
+                {
+                    var result = _db.usp_GetImageInfo(fileStreamId).ToList();
+                    if (result.Any())
+                    {
+                        info = new FileViewModel
+                        {
+                            parent_locator = result[0].PathLocator,
+                            filestreamTxn = result[0].TransactionContext,
+                            fileSize = result[0].FileSize,
+                            name = result[0].StreamFileName,
+                            fileStream = new MemoryStream()
+                        };
+                        using (var ms = new MemoryStream())
+                        {
+                            using (SqlFileStream fs = new SqlFileStream(
+                                info.parent_locator,
+                                info.filestreamTxn,
+                                FileAccess.Read,
+                                FileOptions.WriteThrough,
+                                (long)info.fileSize))
+                            {
+                                fs.CopyTo(ms);
+                                ms.WriteTo(info.fileStream);
+                            }
+                        }
+                    }
+                    return info;
+                }
+
+                #region catch
+
+                catch (Exception exception)
+                {
+                    dbTransaction.Rollback();
+                    Debug.WriteLine(exception.Message);
+                    Debug.WriteLine(exception.Data);
+                    Debug.WriteLine(exception.InnerException);
+                    Debug.WriteLine(exception.Source);
+                    Debug.WriteLine(exception.StackTrace);
+                    return null;
+                }
+
+            }
+
+
+            #endregion
+
+
+
+
             //try
             //{
             //    var returnResult = _db.(documentGuid).SingleOrDefault();
@@ -235,18 +289,18 @@ namespace PhotographyAutomation.DateLayer.Services
             }
         }
 
-        public CreateFileViewModel DownloadOrderPhotos(Guid fileStreamId)
+        public FileViewModel DownloadOrderPhotos(Guid fileStreamId)
         {
             using (DbContextTransaction dbTransaction = _db.Database.BeginTransaction())
             {
-                CreateFileViewModel info = null;
+                FileViewModel info = null;
                 try
                 {
                     var result = _db.usp_GetImageInfo(fileStreamId).ToList();
                     if (result != null)
                     {
                         {
-                            info = new CreateFileViewModel
+                            info = new FileViewModel
                             {
                                 parent_locator = result[0].PathLocator,
                                 filestreamTxn = result[0].TransactionContext,
@@ -302,7 +356,7 @@ namespace PhotographyAutomation.DateLayer.Services
                 try
                 {
                     var result = _db.usp_CreateFileTableFile(name, parent, level).ToList();
-                    var info = new CreateFileViewModel
+                    var info = new FileViewModel
                     {
                         name = result[0].name,
                         streamId = result[0].streamId,
@@ -365,7 +419,7 @@ namespace PhotographyAutomation.DateLayer.Services
             }
         }
 
-        public CreateFileViewModel CreateFileTableFileReturnCreateFileViewModel(string name, string parent, byte level, string localFilePath)
+        public FileViewModel CreateFileTableFileReturnCreateFileViewModel(string name, string parent, byte level, string localFilePath)
         {
             using (DbContextTransaction dbTransaction = _db.Database.BeginTransaction())
             {
@@ -373,7 +427,7 @@ namespace PhotographyAutomation.DateLayer.Services
                 {
                     var result = _db.usp_CreateFileTableFile(name, parent, level).ToList();
 
-                    var info = new CreateFileViewModel
+                    var info = new FileViewModel
                     {
                         name = result[0].name,
                         streamId = result[0].streamId,

@@ -7,7 +7,10 @@ namespace PhotographyAutomation.ViewModels.OrderPrint
         public int OrderPrintId { get; set; }
         public string OrderPrintCode { get; set; }
         public int OrderId { get; set; }
+        public string OrderCode { get; set; }
         public DateTime? PhotographyDate { get; set; }
+        public int PhotographyTypeId { get; set; }
+        public string PhotographyTypeName { get; set; }
         public string PhotographyDateShamsi { get; set; }
         public int OrderPrintStatusId { get; set; }
         public string OrderPrintStatusName { get; set; }

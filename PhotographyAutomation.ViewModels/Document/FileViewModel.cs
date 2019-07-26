@@ -3,7 +3,7 @@ using System.IO;
 
 namespace PhotographyAutomation.ViewModels.Document
 {
-    public class CreateFileViewModel
+    public class FileViewModel
     {
         //[byte] result[0].filestreamTxn;
         //result[0].name

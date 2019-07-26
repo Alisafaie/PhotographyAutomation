@@ -30,19 +30,19 @@ namespace PhotographyAutomation.DateLayer.Services
             Debug.WriteLine(exception.StackTrace);
         }
 
-        public string CheckSelectedPhotosYearFolderIsCreatedReturnsPath(int year)
-        {
-            try
-            {
-                var result = _db.View_GetSelectedPhotosFoldersInfo.FirstOrDefault(x => x.FolderName == year.ToString());
-                return result?.FullUncPath;
-            }
-            catch (Exception exception)
-            {
-                WriteDebugInfoToDebugWindows(exception);
-                throw;
-            }
-        }
+        //public string CheckSelectedPhotosYearFolderIsCreatedReturnsPath(int year)
+        //{
+        //    try
+        //    {
+        //        var result = _db.View_GetSelectedPhotosFoldersInfo.FirstOrDefault(x => x.FolderName == year.ToString());
+        //        return result?.FullUncPath;
+        //    }
+        //    catch (Exception exception)
+        //    {
+        //        WriteDebugInfoToDebugWindows(exception);
+        //        throw;
+        //    }
+        //}
 
         public string CreateSelectedPhotosYearFolder(int year)
         {
@@ -59,19 +59,19 @@ namespace PhotographyAutomation.DateLayer.Services
             }
         }
 
-        public string CheckSelectedPhotosMonthFolderIsCreatedReturnsPath(int month)
-        {
-            try
-            {
-                var result = _db.View_GetSelectedPhotosFoldersInfo.Where(x => x.FolderName == month.ToString()).ToList();
-                return result.Any() ? result[0].FullUncPath : null;
-            }
-            catch (Exception exception)
-            {
-                WriteDebugInfoToDebugWindows(exception);
-                throw;
-            }
-        }
+        //public string CheckSelectedPhotosMonthFolderIsCreatedReturnsPath(int month)
+        //{
+        //    try
+        //    {
+        //        var result = _db.View_GetSelectedPhotosFoldersInfo.Where(x => x.FolderName == month.ToString()).ToList();
+        //        return result.Any() ? result[0].FullUncPath : null;
+        //    }
+        //    catch (Exception exception)
+        //    {
+        //        WriteDebugInfoToDebugWindows(exception);
+        //        throw;
+        //    }
+        //}
 
         public string CreateSelectedPhotosMonthFolder(int month, int year)
         {
@@ -91,20 +91,20 @@ namespace PhotographyAutomation.DateLayer.Services
             }
         }
 
-        public List<View_GetSelectedPhotosFoldersInfo> CheckOrderPrintFolderIsExitsReturnFullData(string orderPrintCode)
-        {
-            try
-            {
-                var result = _db.View_GetSelectedPhotosFoldersInfo.Where(
-                    x => x.FolderName == orderPrintCode).ToList();
-                return result.Any() ? result : null;
-            }
-            catch (Exception exception)
-            {
-                WriteDebugInfoToDebugWindows(exception);
-                throw;
-            }
-        }
+        //public List<View_GetSelectedPhotosFoldersInfo> CheckOrderPrintFolderIsExitsReturnFullData(string orderPrintCode)
+        //{
+        //    try
+        //    {
+        //        var result = _db.View_GetSelectedPhotosFoldersInfo.Where(
+        //            x => x.FolderName == orderPrintCode).ToList();
+        //        return result.Any() ? result : null;
+        //    }
+        //    catch (Exception exception)
+        //    {
+        //        WriteDebugInfoToDebugWindows(exception);
+        //        throw;
+        //    }
+        //}
 
         public string CreateOrderPrintDirectory(string orderPrintCode, int month)
         {

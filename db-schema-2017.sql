@@ -1,11 +1,11 @@
 ﻿/************************************************************
  * Code formatted by SoftTree SQL Assistant © v9.2.349
- * Time: 7/21/2019 1:09:48 AM
+ * Time: 7/26/2019 3:44:14 AM
  ************************************************************/
 
 USE [master]
 GO
-/****** Object:  Database [PhotographyAutomationDB]    Script Date: 7/20/2019 6:39:57 PM ******/
+/****** Object:  Database [PhotographyAutomationDB]    Script Date: 7/25/2019 9:24:49 PM ******/
 CREATE DATABASE [PhotographyAutomationDB]
  CONTAINMENT = NONE
  ON  PRIMARY(
@@ -20,18 +20,7 @@ CREATE DATABASE [PhotographyAutomationDB]
                                                               FILENAME = 
                                                               N'c:\PhotographyAutomation_FileStores\PhotoArchive_1',
                                                               MAXSIZE = UNLIMITED
-                                                          ), 
- FILEGROUP [RetouchedPhotos_FG1] CONTAINS FILESTREAM(
-                                                        NAME = N'RetouchedPhotoArchive_1',
-                                                        FILENAME = 
-                                                        N'C:\PhotographyAutomation_FileStores\RetouchedPhotoArchive_1',
-                                                        MAXSIZE = UNLIMITED
-                                                    ), 
- FILEGROUP [SelectedPhotos_FG1] CONTAINS FILESTREAM(
-                                                       NAME = N'SelectedPhotos',
-                                                       FILENAME = N'C:\PhotographyAutomation_FileStores\SelectedPhotos',
-                                                       MAXSIZE = UNLIMITED
-                                                   )
+                                                          )
  LOG ON 
 (
     NAME = N'PhotographyAutomationDB_log',
@@ -43,10 +32,7 @@ CREATE DATABASE [PhotographyAutomationDB]
 GO
 ALTER DATABASE [PhotographyAutomationDB] ADD FILEGROUP [PhotosFileGroup]
 GO
-ALTER DATABASE [PhotographyAutomationDB] ADD FILEGROUP [RetouchedPhotosFileGroup]
-GO
-ALTER DATABASE [PhotographyAutomationDB] ADD FILEGROUP [SelectedPhotos]
-GO
+
 ALTER DATABASE [PhotographyAutomationDB] 
 SET COMPATIBILITY_LEVEL = 120
 GO
@@ -150,7 +136,7 @@ EXEC sys.sp_db_vardecimal_storage_format N'PhotographyAutomationDB',
 GO
 USE [PhotographyAutomationDB]
 GO
-/****** Object:  Table [dbo].[Photos]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  Table [dbo].[Photos]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -169,26 +155,7 @@ WITH
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[SelectedPhotos]    Script Date: 7/20/2019 6:39:58 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ARITHABORT ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[SelectedPhotos] AS FILETABLE ON [PRIMARY] FILESTREAM_ON [SelectedPhotos_FG1]
-WITH
-(
-	FILETABLE_DIRECTORY            = N'SelectedPhotos',
-	FILETABLE_COLLATE_FILENAME     = Persian_100_CI_AI
-)
-
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[TblAllOrderStatus]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  Table [dbo].[TblAllOrderStatus]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -212,7 +179,7 @@ CREATE TABLE [dbo].[TblAllOrderStatus]
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[TblAtelierType]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  Table [dbo].[TblAtelierType]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -232,7 +199,7 @@ CREATE TABLE [dbo].[TblAtelierType]
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[TblBooking]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  Table [dbo].[TblBooking]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -262,7 +229,7 @@ CREATE TABLE [dbo].[TblBooking]
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[TblBookingStatus]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  Table [dbo].[TblBookingStatus]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -282,7 +249,7 @@ CREATE TABLE [dbo].[TblBookingStatus]
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[TblCustomer]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  Table [dbo].[TblCustomer]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -321,7 +288,7 @@ CREATE TABLE [dbo].[TblCustomer]
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[TblEmployeeType]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  Table [dbo].[TblEmployeeType]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -341,7 +308,7 @@ CREATE TABLE [dbo].[TblEmployeeType]
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[TblEmpRole]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  Table [dbo].[TblEmpRole]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -361,7 +328,7 @@ CREATE TABLE [dbo].[TblEmpRole]
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[TblFilesError]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  Table [dbo].[TblFilesError]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -388,7 +355,7 @@ CREATE TABLE [dbo].[TblFilesError]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[TblOrder]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  Table [dbo].[TblOrder]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -430,7 +397,7 @@ CREATE TABLE [dbo].[TblOrder]
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[TblOrderFiles]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  Table [dbo].[TblOrderFiles]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -453,17 +420,19 @@ CREATE TABLE [dbo].[TblOrderFiles]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[TblOrderPrint]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  Table [dbo].[TblOrderPrint]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+SET ANSI_PADDING ON
+GO
 CREATE TABLE [dbo].[TblOrderPrint]
 (
 	[Id]                     [int] IDENTITY(1, 1) NOT NULL,
+	[OrderPrintCode]         [varchar](50) NOT NULL,
 	[OrderId]                [int] NOT NULL,
-	[OrderType]              [bit] NOT NULL,
-	[OrderStatusId]          [int] NOT NULL,
+	[OrderType]              [bit] NULL,
 	[OrderPrintStatusId]     [int] NOT NULL,
 	[CustomerId]             [int] NOT NULL,
 	[RetochDescriptions]     [nvarchar](MAX) NULL,
@@ -485,7 +454,9 @@ CREATE TABLE [dbo].[TblOrderPrint]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[TblOrderPrintDetails]    Script Date: 7/20/2019 6:39:58 PM ******/
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[TblOrderPrintDetails]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -503,8 +474,8 @@ CREATE TABLE [dbo].[TblOrderPrintDetails]
 	[PrintServiceId]         [int] NULL,
 	[PrintSizePriceId]       [int] NULL,
 	[PrintSizeServiceId]     [int] NULL,
-	[CreatedDateTime]        [date] NOT NULL,
-	[ModifiedDateTime]       [date] NULL,
+	[CreatedDateTime]        [datetime] NOT NULL,
+	[ModifiedDateTime]       [datetime] NULL,
 	[Description]            [nvarchar](4000) NULL,
 	CONSTRAINT [PK_TblOrderPrintDetails] PRIMARY KEY CLUSTERED([Id] ASC)WITH (
 	    PAD_INDEX = OFF,
@@ -516,7 +487,7 @@ CREATE TABLE [dbo].[TblOrderPrintDetails]
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[TblOrderPrintFiles]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  Table [dbo].[TblOrderPrintFiles]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -538,7 +509,7 @@ CREATE TABLE [dbo].[TblOrderPrintFiles]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[TblOrderPrintStatus]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  Table [dbo].[TblOrderPrintStatus]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -558,7 +529,7 @@ CREATE TABLE [dbo].[TblOrderPrintStatus]
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[TblOrderStatus]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  Table [dbo].[TblOrderStatus]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -578,7 +549,7 @@ CREATE TABLE [dbo].[TblOrderStatus]
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[TblPhotographyType]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  Table [dbo].[TblPhotographyType]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -598,7 +569,7 @@ CREATE TABLE [dbo].[TblPhotographyType]
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[TblPrintServices]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  Table [dbo].[TblPrintServices]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -619,7 +590,7 @@ CREATE TABLE [dbo].[TblPrintServices]
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[TblPrintServices_TblPrintSizePrice]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  Table [dbo].[TblPrintServices_TblPrintSizePrice]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -642,7 +613,7 @@ CREATE TABLE [dbo].[TblPrintServices_TblPrintSizePrice]
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[TblPrintSizePrices]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  Table [dbo].[TblPrintSizePrices]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -666,7 +637,7 @@ CREATE TABLE [dbo].[TblPrintSizePrices]
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[TblRoleType]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  Table [dbo].[TblRoleType]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -686,7 +657,7 @@ CREATE TABLE [dbo].[TblRoleType]
 ) ON [PRIMARY]
 
 GO
-/****** Object:  View [dbo].[View_GetAllPhotos]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  View [dbo].[View_GetAllPhotos]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -718,40 +689,46 @@ FROM   PhotographyAutomationDB.dbo.Photos AS p
 WHERE  p.is_directory = 0;
 
 GO
-/****** Object:  View [dbo].[View_GetDocumentsFolders]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  View [dbo].[View_GetDocumentsFolders]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+/************************************************************
+ * Code formatted by SoftTree SQL Assistant © v9.1.261
+ * Time: 7/21/2019 12:07:57 PM
+ ************************************************************/
 CREATE VIEW [dbo].[View_GetDocumentsFolders]
 AS
 
-SELECT stream_id                AS 'StreamId',
-       file_stream              AS 'FileStream',
-       [NAME]                   AS 'FolderName',
-       CAST(path_locator AS VARCHAR(4000)) AS 'PathLocator',
-       CAST(parent_path_locator AS VARCHAR(4000)) AS 'ParentPathLocator',
-       file_stream.PathName()   AS 'UncPath',
-       file_stream.GetFileNamespacePath(0) AS 'RelativePath',
-       file_stream.GetFileNamespacePath(1, 2) AS 'FullUncPath',
-       path_locator.GetLevel()  AS 'Level',
-       file_type                AS 'FileType',
-       cached_file_size         AS 'FileSize',
-       creation_time            AS 'CreationTime',
-       last_write_time          AS 'LastWriteTime',
-       last_access_time         AS 'LastAccessTime',
-       is_offline               AS 'IsOffline',
-       is_hidden                AS 'IsHidden',
-       is_readonly              AS 'IsReadonly',
-       is_archive               AS 'IsArchive',
-       is_system                AS 'IsSystem',
-       is_temporary             AS 'IsTemporary',
-       p.is_directory           AS 'IsDirectory'
-FROM   PhotographyAutomationDB.dbo.Photos AS p
-WHERE  p.is_directory = 1;
+SELECT stream_id                AS StreamId,
+       file_stream              AS FileStream,
+       NAME                     AS FolderName,
+       CAST(path_locator AS VARCHAR(4000)) AS PathLocator,
+       CAST(parent_path_locator AS VARCHAR(4000)) AS ParentPathLocator,
+       file_stream.PathName()   AS UncPath,
+       file_stream.GetFileNamespacePath(0) AS RelativePath,
+       file_stream.GetFileNamespacePath(1, 2) AS FullUncPath,
+       path_locator.GetLevel()  AS [Level],
+       file_type                AS FileType,
+       cached_file_size         AS FileSize,
+       creation_time            AS CreationTime,
+       last_write_time          AS LastWriteTime,
+       last_access_time         AS LastAccessTime,
+       is_offline               AS IsOffline,
+       is_hidden                AS IsHidden,
+       is_readonly              AS IsReadonly,
+       is_archive               AS IsArchive,
+       is_system                AS IsSystem,
+       is_temporary             AS IsTemporary,
+       is_directory             AS IsDirectory
+FROM   dbo.Photos               AS p
+WHERE  (is_directory = 1)
 
 GO
-/****** Object:  View [dbo].[View_PrintSizesPrices]    Script Date: 7/20/2019 6:39:58 PM ******/
+
+
+/****** Object:  View [dbo].[View_PrintSizesPrices]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -901,12 +878,6 @@ WITH CHECK ADD CONSTRAINT [FK_TblOrderPrint_TblOrderPrintStatus] FOREIGN KEY([Or
 GO
 ALTER TABLE [dbo].[TblOrderPrint] CHECK CONSTRAINT [FK_TblOrderPrint_TblOrderPrintStatus]
 GO
-ALTER TABLE [dbo].[TblOrderPrint]  
-WITH CHECK ADD CONSTRAINT [FK_TblOrderPrint_TblOrderStatus] FOREIGN KEY([OrderStatusId])
-     REFERENCES [dbo].[TblOrderStatus] ([Id])
-GO
-ALTER TABLE [dbo].[TblOrderPrint] CHECK CONSTRAINT [FK_TblOrderPrint_TblOrderStatus]
-GO
 ALTER TABLE [dbo].[TblOrderPrintDetails]  
 WITH CHECK ADD CONSTRAINT [FK_TblOrderPrintDetails_TblCustomer] FOREIGN KEY([CustomerId])
      REFERENCES [dbo].[TblCustomer] ([Id])
@@ -955,7 +926,7 @@ WITH CHECK ADD CONSTRAINT [FK_TblPrintServicePrice_TblPrintSizePrices] FOREIGN K
 GO
 ALTER TABLE [dbo].[TblPrintServices_TblPrintSizePrice] CHECK CONSTRAINT [FK_TblPrintServicePrice_TblPrintSizePrices]
 GO
-/****** Object:  StoredProcedure [dbo].[usp_CreateCustomerFinancialDirectory]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  StoredProcedure [dbo].[usp_CreateCustomerFinancialDirectory]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1031,7 +1002,7 @@ SELECT @returnValue AS 'StreamPath';
         --    WHERE NAME='New folder'
 
 GO
-/****** Object:  StoredProcedure [dbo].[usp_CreateFileTableFile]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  StoredProcedure [dbo].[usp_CreateFileTableFile]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1123,7 +1094,7 @@ BEGIN
 	END;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[usp_CreateMonthFolder]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  StoredProcedure [dbo].[usp_CreateMonthFolder]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1198,7 +1169,8 @@ SELECT @returnValue AS 'StreamPath';
         --    WHERE NAME='New folder'
 
 GO
-/****** Object:  StoredProcedure [dbo].[usp_CreateYearFolder]    Script Date: 7/20/2019 6:39:58 PM ******/
+
+/****** Object:  StoredProcedure [dbo].[usp_CreateYearFolder]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1278,7 +1250,7 @@ SELECT @returnValue AS 'StreamPath'
     END;
 
 GO
-/****** Object:  StoredProcedure [dbo].[usp_DeleteOrderFolderFiles]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  StoredProcedure [dbo].[usp_DeleteOrderFolderFiles]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1297,7 +1269,8 @@ BEGIN
 	WHERE  parent_path_locator = @pathLocator
 END
 GO
-/****** Object:  StoredProcedure [dbo].[usp_GetImageInfo]    Script Date: 7/20/2019 6:39:58 PM ******/
+
+/****** Object:  StoredProcedure [dbo].[usp_GetImageInfo]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1330,7 +1303,7 @@ BEGIN
 	COMMIT TRANSACTION
 END
 GO
-/****** Object:  StoredProcedure [dbo].[usp_GetListOfFilesInFolder]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  StoredProcedure [dbo].[usp_GetListOfFilesInFolder]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1368,7 +1341,7 @@ BEGIN
 	COMMIT TRANSACTION
 END
 GO
-/****** Object:  StoredProcedure [dbo].[usp_GetListOfFilesOfOrder]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  StoredProcedure [dbo].[usp_GetListOfFilesOfOrder]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1388,7 +1361,7 @@ BEGIN
 	COMMIT TRANSACTION
 END
 GO
-/****** Object:  StoredProcedure [dbo].[usp_GetOrderFolderStreamId]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  StoredProcedure [dbo].[usp_GetOrderFolderStreamId]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1411,7 +1384,7 @@ BEGIN
 	SELECT @returnValue AS 'FolderStreamId';
 END
 GO
-/****** Object:  StoredProcedure [dbo].[usp_GetPrintSizePriceServices]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  StoredProcedure [dbo].[usp_GetPrintSizePriceServices]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1432,7 +1405,7 @@ BEGIN
 	            ON  dbo.TblPrintServices_TblPrintSizePrice.PrintSizePriceId = dbo.TblPrintSizePrices.Id
 END
 GO
-/****** Object:  StoredProcedure [dbo].[usp_GetTotalFilesOfFolder]    Script Date: 7/20/2019 6:39:58 PM ******/
+/****** Object:  StoredProcedure [dbo].[usp_GetTotalFilesOfFolder]    Script Date: 7/25/2019 9:24:50 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1496,7 +1469,7 @@ Begin DesignProperties =
    Begin PaneConfigurations = 
       Begin PaneConfiguration = 0
          NumPanes = 4
-         Configuration = "(H (1[33] 4[28] 2[11] 3) )"
+         Configuration = "(H (1[40] 4[20] 2[20] 3) )"
       End
       Begin PaneConfiguration = 1
          NumPanes = 3
@@ -1515,6 +1488,144 @@ Begin DesignProperties =
          Configuration = "(H (1 [56] 3))"
       End
       Begin PaneConfiguration = 5
+         NumPanes = 2
+         Configuration = "(H (2 [66] 3))"
+      End
+      Begin PaneConfiguration = 6
+         NumPanes = 2
+         Configuration = "(H (4 [50] 3))"
+      End
+      Begin PaneConfiguration = 7
+         NumPanes = 1
+         Configuration = "(V (3))"
+      End
+      Begin PaneConfiguration = 8
+         NumPanes = 3
+         Configuration = "(H (1[56] 4[18] 2) )"
+      End
+      Begin PaneConfiguration = 9
+         NumPanes = 2
+         Configuration = "(H (1 [75] 4))"
+      End
+      Begin PaneConfiguration = 10
+         NumPanes = 2
+         Configuration = "(H (1[66] 2) )"
+      End
+      Begin PaneConfiguration = 11
+         NumPanes = 2
+         Configuration = "(H (4 [60] 2))"
+      End
+      Begin PaneConfiguration = 12
+         NumPanes = 1
+         Configuration = "(H (1) )"
+      End
+      Begin PaneConfiguration = 13
+         NumPanes = 1
+         Configuration = "(V (4))"
+      End
+      Begin PaneConfiguration = 14
+         NumPanes = 1
+         Configuration = "(V (2))"
+      End
+      ActivePaneConfig = 0
+   End
+   Begin DiagramPane = 
+      Begin Origin = 
+         Top = 0
+         Left = 0
+      End
+      Begin Tables = 
+         Begin Table = "p"
+            Begin Extent = 
+               Top = 6
+               Left = 38
+               Bottom = 135
+               Right = 232
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+      End
+   End
+   Begin SQLPane = 
+   End
+   Begin DataPane = 
+      Begin ParameterDefaults = ""
+      End
+      Begin ColumnWidths = 10
+         Width = 284
+         Width = 1500
+         Width = 1500
+         Width = 1500
+         Width = 1500
+         Width = 1500
+         Width = 1500
+         Width = 1500
+         Width = 1500
+         Width = 1500
+      End
+   End
+   Begin CriteriaPane = 
+      Begin ColumnWidths = 11
+         Column = 1440
+         Alias = 900
+         Table = 1170
+         Output = 720
+         Append = 1400
+         NewValue = 1170
+         SortType = 1350
+         SortOrder = 1410
+         GroupBy = 1350
+         Filter = 1350
+         Or = 1350
+         Or = 1350
+         Or = 1350
+      End
+   End
+End
+',
+     @level0type = N'SCHEMA',
+     @level0name = N'dbo',
+     @level1type = N'VIEW',
+     @level1name = N'View_GetDocumentsFolders'
+GO
+EXEC sys.sp_addextendedproperty @name = N'MS_DiagramPaneCount',
+     @value = 1,
+     @level0type = N'SCHEMA',
+     @level0name = N'dbo',
+     @level1type = N'VIEW',
+     @level1name = N'View_GetDocumentsFolders'
+GO
+
+
+EXEC sys.sp_addextendedproperty @name = N'MS_DiagramPane1',
+     @value = 
+     N'[0E232FF0-B466-11cf-A24F-00AA00A3EFFF, 1.00]
+Begin DesignProperties = 
+   Begin PaneConfigurations = 
+      Begin PaneConfiguration = 0
+         NumPanes = 4
+         Configuration = "(H (1[33] 4[28] 2[11] 3) )"
+      End
+      Begin PaneConfiguration = 1
+         NumPanes = 3
+         Configuration = "(H (1 [50] 4 [25] 3))"
+      End
+      Begin PaneConfiguration = 2
+         NumPanes = 3
+         Configuration = "(H (1 [50] 2 [25] 3))"
+      End
+      Begin PaneConfiguration = 3
+         NumPanes = 3
+         Configuration = "(H (4 [30] 2 [40] 3))"
+      End
+      Begin PaneConfiguration = 4
+      
+         NumPanes = 2
+         Configuration = "(H (1 [56] 3))"
+      End
+      Begin PaneConfiguration = 5
+      
          NumPanes = 2
          Configuration = "(H (2 [66] 3))"
       End

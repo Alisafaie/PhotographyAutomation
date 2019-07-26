@@ -2,11 +2,13 @@
 using PhotographyAutomation.DateLayer.Models;
 using PhotographyAutomation.Utilities;
 using PhotographyAutomation.Utilities.Convertor;
+using PhotographyAutomation.ViewModels.Document;
 using PhotographyAutomation.ViewModels.OrderPrint;
 using PhotographyAutomation.ViewModels.Print;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -18,6 +20,8 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         private int _selectedOriginalSizeId;
         private int _selectedPrintServiceId;
+        private int _photoCursor = 1;
+
 
         public int OrderId = 0;
         public int CustomerId = 0;
@@ -37,12 +41,12 @@ namespace PhotographyAutomation.App.Forms.Factors
         private void FrmAddEditPreFactor_Load(object sender, EventArgs e)
         {
             LoadOriginalPrintSizes();
-
-            if (IsNewPreFactor)
-            {
-                GetOrderPrintInfo();
-            }
+            GetOrderPrintInfo();
+            if (FileStreamsGuids.Any())
+                LoadPicture(FileStreamsGuids[_photoCursor-1]);
         }
+
+
 
         private void GetOrderPrintInfo()
         {
@@ -52,16 +56,42 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         private void bgWorkerGetOrderPrintInfo_DoWork(object sender, DoWorkEventArgs e)
         {
+            var orderPrintStatusInfo = new TblOrderPrintStatus();
+            var customerInfo = new TblCustomer();
+            var orderPrintInfo = new TblOrderPrint();
+            var orderInfo = new TblOrder();
+            var photographyType = new TblPhotographyType();
+
             try
             {
                 using (var db = new UnitOfWork())
                 {
-                    var orderInfo = db.OrderGenericRepository.GetById(OrderId);
-                    var orderPrintInfo = db.OrderPrintGenericRepository.GetById(OrderPrintId);
-                    var customerInfo = db.CustomerGenericRepository.GetById(CustomerId);
-                    var orderPrintStatusInfo = db.OrderPrintStatusGenericRepository.GetById(orderPrintInfo.OrderPrintStatusId);
+                    orderInfo = db.OrderGenericRepository.GetById(OrderId);
+                    orderPrintInfo = db.OrderPrintGenericRepository.GetById(OrderPrintId);
+                    customerInfo = db.CustomerGenericRepository.GetById(CustomerId);
+                    if (orderPrintInfo != null)
+                        orderPrintStatusInfo = db.OrderPrintStatusGenericRepository.GetById(orderPrintInfo.OrderPrintStatusId);
+                    else
+                    {
+                        RtlMessageBox.Show(
+                            "اطلاعات سفارش فابل دریافت نمی باشد." +
+                            " لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.", "",
+                            MessageBoxButtons.OK);
+                        DialogResult = DialogResult.Abort;
+                    }
 
-                    if (orderInfo == null || orderPrintInfo == null || customerInfo == null || orderPrintStatusInfo == null)
+                    if (orderInfo != null)
+                        photographyType = db.PhotographyTypesGenericRepository.GetById(orderInfo.PhotographyTypeId);
+                    else
+                    {
+                        RtlMessageBox.Show(
+                            "اطلاعات سفارش فابل دریافت نمی باشد." +
+                            " لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.", "",
+                            MessageBoxButtons.OK);
+                        DialogResult = DialogResult.Abort;
+                    }
+
+                    if (customerInfo == null || orderPrintStatusInfo == null)
                     {
                         RtlMessageBox.Show(
                             "اطلاعات سفارش فابل دریافت نمی باشد." +
@@ -75,7 +105,8 @@ namespace PhotographyAutomation.App.Forms.Factors
                         {
                             CustomerId = CustomerId,
                             OrderId = OrderId,
-                            OrderPrintCode = orderPrintInfo.OrderPrintCode,
+                            OrderCode = orderInfo?.OrderCode,
+                            OrderPrintCode = orderPrintInfo?.OrderPrintCode,
                             OrderPrintId = orderPrintInfo.Id,
                             CreatedDateTime = orderPrintInfo.CreatedDateTime,
                             ModifiedDateTime = orderPrintInfo.ModifiedDateTime,
@@ -89,9 +120,11 @@ namespace PhotographyAutomation.App.Forms.Factors
                             TotalPrice = orderPrintInfo.TotalPrice,
                             IsActiveOrderPrint = orderPrintInfo.IsActive,
                             OrderPrintStatusName = orderPrintStatusInfo.Name,
-                            PhotographyDate = orderInfo.Date,
-                            PhotographyDateShamsi = orderInfo.Date.Value.ToShamsiDate(),
-                            RetouchDescriptions = orderPrintInfo.RetochDescriptions
+                            PhotographyDate = orderInfo?.Date,
+                            PhotographyDateShamsi = orderInfo.Date?.ToShamsiDate(),
+                            RetouchDescriptions = orderPrintInfo.RetochDescriptions,
+                            PhotographyTypeId = orderInfo.PhotographyTypeId,
+                            PhotographyTypeName = photographyType.TypeName
                         };
                         e.Result = orderPrintViewModel;
                     }
@@ -107,10 +140,80 @@ namespace PhotographyAutomation.App.Forms.Factors
         {
             if (e.Result != null)
             {
-                var orderPrintInfo = (TblOrderPrint)e.Result;
-                txtOrderCodeDate.Text = orderPrintInfo.OrderPrintCode.Substring(0, 7);
-                txtOrderCodeCustomerIdBookingId.Text = orderPrintInfo.OrderPrintCode.Substring(7);
-                //...
+                var orderPrintInfo = (OrderPrintViewModel)e.Result;
+                txtOrderCodeDate.Text = orderPrintInfo.OrderCode.Substring(0, 7);
+                txtOrderCodeCustomerIdBookingId.Text = orderPrintInfo.OrderCode.Substring(8);
+                txtCustomerName.Text = orderPrintInfo.CustomerFirstName + " " + orderPrintInfo.CustomerLastName;
+                datePickerOrderDate.Value = orderPrintInfo.PhotographyDate.Value;
+                txtPhotographyType.Text = orderPrintInfo.PhotographyTypeName;
+
+                var ss = orderPrintInfo.OrderPrintCode.Split('-');
+                txtOrderPrintCodeDate.Text = ss[0];
+                txtOrderPrintCodeOrderId.Text = ss[1];
+                txtOrderPrintCodeCustomerId.Text = ss[2];
+
+                lblTotalPhotos.Text = orderPrintInfo.TotalPhotos.ToString();
+            }
+            circularProgress.IsRunning = bgWorkerLoadOriginalPringSizes.IsBusy;
+        }
+
+        private void LoadPicture(Guid fileStreamsGuid)
+        {
+            bgWorkerLoadPicture.RunWorkerAsync(fileStreamsGuid);
+            circularProgressPictures.IsRunning = bgWorkerLoadPicture.IsBusy;
+            //btnNextPhoto.Enabled = !bgWorkerLoadPicture.IsBusy;
+            //btnPreviousPhoto.Enabled = !bgWorkerLoadPicture.IsBusy;
+        }
+        private void bgWorkerLoadPicture_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var streamId = new Guid(e.Argument.ToString());
+            try
+            {
+                using (var db = new UnitOfWork())
+                {
+                    FileViewModel file = db.PhotoRepository.GetPhotoByGuid(streamId);
+                    if (file != null)
+                    {
+                        e.Result = file;
+                    }
+                    else
+                    {
+                        throw new Exception("فایل مورد نظر از سرور قابل دریافت نمی باشد.");
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error,
+                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
+            }
+        }
+
+        private void bgWorkerLoadPicture_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                if (e.Result != null)
+                {
+                    var file = (FileViewModel)e.Result;
+                    pictureBoxPreview.Image = Image.FromStream(file.fileStream);
+                    circularProgressPictures.IsRunning = bgWorkerLoadPicture.IsBusy;
+                    btnNextPhoto.Enabled = true;
+                    //if (_photoCursor == 0)
+                    //    btnPreviousPhoto.Enabled = false;
+                    //else
+                    //    btnPreviousPhoto.Enabled = true;
+
+                }
+                else
+                {
+                    throw new Exception("فایل مورد نظر از سرور قابل دریافت نمی باشد.");
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error,
+                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
             }
         }
 
@@ -1132,6 +1235,7 @@ namespace PhotographyAutomation.App.Forms.Factors
         #endregion
 
 
+        #region TXT Enter Persian Leave English
         private void txt_TypeFarsi_Enter(object sender, EventArgs e)
         {
             var language = new System.Globalization.CultureInfo("fa-IR");
@@ -1144,6 +1248,43 @@ namespace PhotographyAutomation.App.Forms.Factors
             InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
         }
 
+        #endregion TXT Enter Persian Leave English
 
+        private void btnNextPhoto_Click(object sender, EventArgs e)
+        {
+            _photoCursor++;
+            int totalItems = FileStreamsGuids.Count;
+            
+            int lblCounter = _photoCursor;
+            lblCurrentPhoto.Text = (lblCounter).ToString();
+
+            if (_photoCursor < totalItems)
+            {
+                LoadPicture(FileStreamsGuids[_photoCursor-1]);
+            }
+
+            if (_photoCursor > 0)
+                btnPreviousPhoto.Enabled = true;
+            if (_photoCursor == totalItems )
+                btnNextPhoto.Enabled = false;
+        }
+
+        private void btnPreviousPhoto_Click(object sender, EventArgs e)
+        {
+            _photoCursor--;
+            int totalItems = FileStreamsGuids.Count;
+            
+            int lblCounter = _photoCursor;
+            lblCurrentPhoto.Text = (lblCounter).ToString();
+
+            if (_photoCursor > 0)
+            {
+                LoadPicture(FileStreamsGuids[_photoCursor-1]);
+            }
+            if (_photoCursor < totalItems )
+                btnNextPhoto.Enabled = true;
+            if (_photoCursor == 1)
+                btnPreviousPhoto.Enabled = false;
+        }
     }
 }

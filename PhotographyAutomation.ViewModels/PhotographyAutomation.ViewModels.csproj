@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Booking\BookingStatusViewModel.cs" />
-    <Compile Include="Document\CreateFileViewModel.cs" />
+    <Compile Include="Document\FileViewModel.cs" />
     <Compile Include="Document\DocumentInfoViewModel.cs" />
     <Compile Include="OrderPrint\OrderPrintViewModel.cs" />
     <Compile Include="Order\CustomerOrderViewModel.cs" />

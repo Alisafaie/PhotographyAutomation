@@ -72,19 +72,19 @@ namespace PhotographyAutomation.DateLayer.Context
         }
 
 
-        private ISelectedPhotoRepository _selectedPhotoRepository;
-        public ISelectedPhotoRepository SelectedPhotoRepository
-        {
-            get
-            {
-                if (_selectedPhotoRepository == null)
-                {
-                    _selectedPhotoRepository = new SelectedPhotoRepository(_db);
-                }
+        //private ISelectedPhotoRepository _selectedPhotoRepository;
+        //public ISelectedPhotoRepository SelectedPhotoRepository
+        //{
+        //    get
+        //    {
+        //        if (_selectedPhotoRepository == null)
+        //        {
+        //            _selectedPhotoRepository = new SelectedPhotoRepository(_db);
+        //        }
 
-                return _selectedPhotoRepository;
-            }
-        }
+        //        return _selectedPhotoRepository;
+        //    }
+        //}
 
 
 
