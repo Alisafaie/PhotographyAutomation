@@ -1572,5 +1572,17 @@
   <ItemGroup>
     <None Include="Resources\iconfinder_adept_update_76851.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_cancel_round_41190.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_accept_blue_41177.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_ok-blue_53941.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_ko-red_53948.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
