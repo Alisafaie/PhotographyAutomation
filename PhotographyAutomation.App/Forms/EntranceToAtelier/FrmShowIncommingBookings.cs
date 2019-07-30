@@ -582,5 +582,17 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                 MessageBox.Show("Message : " + exception.Message);
             }
         }
+
+        private void txtCustomerInfo_Enter(object sender, EventArgs e)
+        {
+            var language = new System.Globalization.CultureInfo("fa-IR");
+            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
+        }
+
+        private void txtCustomerInfo_Leave(object sender, EventArgs e)
+        {
+            var language = new System.Globalization.CultureInfo("en-US");
+            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
+        }
     }
 }

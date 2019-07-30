@@ -2071,16 +2071,33 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         private void ارسال_عکس_های_انتخاب_شده_مشتری_به_سرور_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (dgvUploads.SelectedRows[0] == null || dgvUploads.CurrentRow == null)
+            var selectedRow=new DataGridViewRow();
+            //string orderCode;
+            //int orderId = -1;
+            try
             {
-                RtlMessageBox.Show("رزروی برای مشاهده عکس انتخاب نشده است.");
+                if (dgvUploads.SelectedRows[0] == null || dgvUploads.CurrentRow == null)
+                {
+                    throw new ArgumentOutOfRangeException("رزروی برای مشاهده عکس انتخاب نشده است.");
+                }
+
+                selectedRow = dgvUploads.SelectedRows[0];
+
+                //orderCode = dgvUploads.SelectedRows[0].Cells["clmOrderCode"].Value.ToString();
+                //orderId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmId"].Value);
+            }
+            catch (ArgumentOutOfRangeException argumentOutOfRangeException)
+            {
+                if (argumentOutOfRangeException.HResult == -2146233086)
+                    RtlMessageBox.Show("رزروی برای مشاهده عکس انتخاب نشده است.", "", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 return;
             }
-
-            var selectedRow = dgvUploads.SelectedRows[0];
-
-            var orderCode = dgvUploads.SelectedRows[0].Cells["clmOrderCode"].Value.ToString();
-            var orderId = Convert.ToInt32(dgvUploads.SelectedRows[0].Cells["clmId"].Value);
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
         RetryGetListOfPhotos:
 
@@ -2106,11 +2123,11 @@ namespace PhotographyAutomation.App.Forms.Orders
                     {
                         frm.ListOfPhotos = list;
 
-                        if (int.TryParse(selectedRow?.Cells["clmId"].Value.ToString(), out var __orderId)) 
+                        if (int.TryParse(selectedRow?.Cells["clmId"].Value.ToString(), out var __orderId))
                             frm.OrderId = __orderId;
-                        if (int.TryParse(selectedRow.Cells["clmCustomerId"].Value.ToString(),out var __customerId)) 
+                        if (int.TryParse(selectedRow.Cells["clmCustomerId"].Value.ToString(), out var __customerId))
                             frm.CustomerId = __customerId;
-                        if (int.TryParse(selectedRow.Cells["clmTotalFiles"].Value.ToString(), out var __totalPhotos)) 
+                        if (int.TryParse(selectedRow.Cells["clmTotalFiles"].Value.ToString(), out var __totalPhotos))
                             frm.TotalPhotos = __totalPhotos;
 
                         frm.OrderCode = selectedRow?.Cells["clmOrderCode"].Value.ToString();
