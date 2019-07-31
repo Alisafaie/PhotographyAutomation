@@ -3003,9 +3003,29 @@ namespace PhotographyAutomation.App.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_magnifier_1814075 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_magnifier_1814075", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconfinder_New_1493292 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_New_1493292", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_next_7752 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_next_7752", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -3056,6 +3076,16 @@ namespace PhotographyAutomation.App.Properties {
         internal static System.Drawing.Bitmap iconfinder_Picture_131797 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_Picture_131797", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_previous_7769 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_previous_7769", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
