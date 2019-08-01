@@ -1360,6 +1360,7 @@
             this.button2.TabIndex = 22;
             this.button2.TabStop = false;
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Visible = false;
             // 
             // button1
             // 
@@ -1374,6 +1375,7 @@
             this.button1.TabIndex = 22;
             this.button1.TabStop = false;
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Visible = false;
             // 
             // btnNextPhoto
             // 
