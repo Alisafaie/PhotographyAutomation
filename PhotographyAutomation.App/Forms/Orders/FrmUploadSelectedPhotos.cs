@@ -2,6 +2,7 @@
 using DevComponents.DotNetBar.Controls;
 using PhotographyAutomation.App.Forms.Factors;
 using PhotographyAutomation.App.Forms.Photos;
+using PhotographyAutomation.Business.OrderDetails;
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.DateLayer.Models;
 using PhotographyAutomation.Utilities;
@@ -576,6 +577,13 @@ namespace PhotographyAutomation.App.Forms.Orders
                             }
                             var resultSaveNewOrderPrintDetails = db.Save();
 
+                            var orderDetailsList = new List<PhotoOrderDetails>();
+                            foreach (var itemGuid in streamIdsToUploadList)
+                            {
+                                var od = new PhotoOrderDetails { StreamId = itemGuid };
+                                orderDetailsList.Add(od);
+                            }
+
                             if (resultSaveNewOrderPrintDetails > 0)
                             {
                                 var drShowPreFactor = RtlMessageBox.Show(
@@ -585,6 +593,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                                     MessageBoxButtons.YesNo,
                                     MessageBoxIcon.Question,
                                     MessageBoxDefaultButton.Button1);
+
                                 if (drShowPreFactor == DialogResult.Yes)
                                 {
                                     using (var frmPreFactor = new FrmAddEditPreFactor())
@@ -594,6 +603,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                                         frmPreFactor.OrderPrintId = orderPrintId;
                                         frmPreFactor.IsNewPreFactor = true;
                                         frmPreFactor.FileStreamsGuids = streamIdsToUploadList;
+                                        frmPreFactor._photoOrderDetailsList = orderDetailsList;
                                         //Hide();
                                         if (frmPreFactor.ShowDialog() == DialogResult.OK)
                                             DialogResult = DialogResult.OK;

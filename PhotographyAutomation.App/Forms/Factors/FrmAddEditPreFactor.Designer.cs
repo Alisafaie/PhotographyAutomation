@@ -71,10 +71,10 @@
             this.integerInputSecondPrintCount3 = new DevComponents.Editors.IntegerInput();
             this.integerInputSecondPrintCount2 = new DevComponents.Editors.IntegerInput();
             this.integerInputSecondPrintCount1 = new DevComponents.Editors.IntegerInput();
-            this.checkBoxLoadSecondPrintSize4 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxLoadSecondPrintSize3 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxLoadSecondPrintSize2 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxLoadSecondPrintSize1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxLoadSecondPrintServices4 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxLoadSecondPrintServices3 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxLoadSecondPrintServices2 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxLoadSecondPrintServices1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.txtSecondPrintServicePrice4 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtSecondPrintServicePrice3 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtSecondPrintServicePrice2 = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -102,8 +102,8 @@
             this.btnNextPhoto = new System.Windows.Forms.Button();
             this.btnPreviousPhoto = new System.Windows.Forms.Button();
             this.btnMagnifyPhoto = new System.Windows.Forms.Button();
-            this.btnCancelPhoto = new DevComponents.DotNetBar.ButtonX();
-            this.btnOkPhoto = new DevComponents.DotNetBar.ButtonX();
+            this.btnCancelPhotoOrderPrint = new DevComponents.DotNetBar.ButtonX();
+            this.btnOkPhotoOrderPrint = new DevComponents.DotNetBar.ButtonX();
             this.pictureBoxPreview = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
@@ -457,8 +457,8 @@
             this.panelEx3.Controls.Add(this.btnNextPhoto);
             this.panelEx3.Controls.Add(this.btnPreviousPhoto);
             this.panelEx3.Controls.Add(this.btnMagnifyPhoto);
-            this.panelEx3.Controls.Add(this.btnCancelPhoto);
-            this.panelEx3.Controls.Add(this.btnOkPhoto);
+            this.panelEx3.Controls.Add(this.btnCancelPhotoOrderPrint);
+            this.panelEx3.Controls.Add(this.btnOkPhotoOrderPrint);
             this.panelEx3.Controls.Add(this.pictureBoxPreview);
             this.panelEx3.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -681,10 +681,10 @@
             this.groupBox1.Controls.Add(this.integerInputSecondPrintCount3);
             this.groupBox1.Controls.Add(this.integerInputSecondPrintCount2);
             this.groupBox1.Controls.Add(this.integerInputSecondPrintCount1);
-            this.groupBox1.Controls.Add(this.checkBoxLoadSecondPrintSize4);
-            this.groupBox1.Controls.Add(this.checkBoxLoadSecondPrintSize3);
-            this.groupBox1.Controls.Add(this.checkBoxLoadSecondPrintSize2);
-            this.groupBox1.Controls.Add(this.checkBoxLoadSecondPrintSize1);
+            this.groupBox1.Controls.Add(this.checkBoxLoadSecondPrintServices4);
+            this.groupBox1.Controls.Add(this.checkBoxLoadSecondPrintServices3);
+            this.groupBox1.Controls.Add(this.checkBoxLoadSecondPrintServices2);
+            this.groupBox1.Controls.Add(this.checkBoxLoadSecondPrintServices1);
             this.groupBox1.Controls.Add(this.txtSecondPrintServicePrice4);
             this.groupBox1.Controls.Add(this.txtSecondPrintServicePrice3);
             this.groupBox1.Controls.Add(this.txtSecondPrintServicePrice2);
@@ -896,74 +896,74 @@
             this.integerInputSecondPrintCount1.WatermarkText = "تعداد";
             this.integerInputSecondPrintCount1.ValueChanged += new System.EventHandler(this.integerInputSecontPrintCount1_ValueChanged);
             // 
-            // checkBoxLoadSecondPrintSize4
+            // checkBoxLoadSecondPrintServices4
             // 
-            this.checkBoxLoadSecondPrintSize4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxLoadSecondPrintSize4.AutoSize = true;
-            // 
-            // 
-            // 
-            this.checkBoxLoadSecondPrintSize4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxLoadSecondPrintSize4.Enabled = false;
-            this.checkBoxLoadSecondPrintSize4.Location = new System.Drawing.Point(291, 104);
-            this.checkBoxLoadSecondPrintSize4.Name = "checkBoxLoadSecondPrintSize4";
-            this.checkBoxLoadSecondPrintSize4.Size = new System.Drawing.Size(76, 16);
-            this.checkBoxLoadSecondPrintSize4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxLoadSecondPrintSize4.TabIndex = 18;
-            this.checkBoxLoadSecondPrintSize4.Text = "خدمات چاپ";
-            this.checkBoxLoadSecondPrintSize4.CheckedChanged += new System.EventHandler(this.checkBoxLoadSecondPrintSize4_CheckedChanged);
-            // 
-            // checkBoxLoadSecondPrintSize3
-            // 
-            this.checkBoxLoadSecondPrintSize3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxLoadSecondPrintSize3.AutoSize = true;
+            this.checkBoxLoadSecondPrintServices4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxLoadSecondPrintServices4.AutoSize = true;
             // 
             // 
             // 
-            this.checkBoxLoadSecondPrintSize3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxLoadSecondPrintSize3.Enabled = false;
-            this.checkBoxLoadSecondPrintSize3.Location = new System.Drawing.Point(291, 79);
-            this.checkBoxLoadSecondPrintSize3.Name = "checkBoxLoadSecondPrintSize3";
-            this.checkBoxLoadSecondPrintSize3.Size = new System.Drawing.Size(76, 16);
-            this.checkBoxLoadSecondPrintSize3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxLoadSecondPrintSize3.TabIndex = 13;
-            this.checkBoxLoadSecondPrintSize3.Text = "خدمات چاپ";
-            this.checkBoxLoadSecondPrintSize3.CheckedChanged += new System.EventHandler(this.checkBoxLoadSecondPrintSize3_CheckedChanged);
+            this.checkBoxLoadSecondPrintServices4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxLoadSecondPrintServices4.Enabled = false;
+            this.checkBoxLoadSecondPrintServices4.Location = new System.Drawing.Point(291, 104);
+            this.checkBoxLoadSecondPrintServices4.Name = "checkBoxLoadSecondPrintServices4";
+            this.checkBoxLoadSecondPrintServices4.Size = new System.Drawing.Size(76, 16);
+            this.checkBoxLoadSecondPrintServices4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxLoadSecondPrintServices4.TabIndex = 18;
+            this.checkBoxLoadSecondPrintServices4.Text = "خدمات چاپ";
+            this.checkBoxLoadSecondPrintServices4.CheckedChanged += new System.EventHandler(this.checkBoxLoadSecondPrintServices_CheckedChanged);
             // 
-            // checkBoxLoadSecondPrintSize2
+            // checkBoxLoadSecondPrintServices3
             // 
-            this.checkBoxLoadSecondPrintSize2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxLoadSecondPrintSize2.AutoSize = true;
-            // 
-            // 
-            // 
-            this.checkBoxLoadSecondPrintSize2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxLoadSecondPrintSize2.Enabled = false;
-            this.checkBoxLoadSecondPrintSize2.Location = new System.Drawing.Point(291, 54);
-            this.checkBoxLoadSecondPrintSize2.Name = "checkBoxLoadSecondPrintSize2";
-            this.checkBoxLoadSecondPrintSize2.Size = new System.Drawing.Size(76, 16);
-            this.checkBoxLoadSecondPrintSize2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxLoadSecondPrintSize2.TabIndex = 8;
-            this.checkBoxLoadSecondPrintSize2.Text = "خدمات چاپ";
-            this.checkBoxLoadSecondPrintSize2.CheckedChanged += new System.EventHandler(this.checkBoxLoadSecondPrintSize2_CheckedChanged);
-            // 
-            // checkBoxLoadSecondPrintSize1
-            // 
-            this.checkBoxLoadSecondPrintSize1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxLoadSecondPrintSize1.AutoSize = true;
+            this.checkBoxLoadSecondPrintServices3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxLoadSecondPrintServices3.AutoSize = true;
             // 
             // 
             // 
-            this.checkBoxLoadSecondPrintSize1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxLoadSecondPrintSize1.Enabled = false;
-            this.highlighter1.SetHighlightOnFocus(this.checkBoxLoadSecondPrintSize1, true);
-            this.checkBoxLoadSecondPrintSize1.Location = new System.Drawing.Point(291, 29);
-            this.checkBoxLoadSecondPrintSize1.Name = "checkBoxLoadSecondPrintSize1";
-            this.checkBoxLoadSecondPrintSize1.Size = new System.Drawing.Size(76, 16);
-            this.checkBoxLoadSecondPrintSize1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxLoadSecondPrintSize1.TabIndex = 3;
-            this.checkBoxLoadSecondPrintSize1.Text = "خدمات چاپ";
-            this.checkBoxLoadSecondPrintSize1.CheckedChanged += new System.EventHandler(this.checkBoxLoadSecondPrintSize1_CheckedChanged);
+            this.checkBoxLoadSecondPrintServices3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxLoadSecondPrintServices3.Enabled = false;
+            this.checkBoxLoadSecondPrintServices3.Location = new System.Drawing.Point(291, 79);
+            this.checkBoxLoadSecondPrintServices3.Name = "checkBoxLoadSecondPrintServices3";
+            this.checkBoxLoadSecondPrintServices3.Size = new System.Drawing.Size(76, 16);
+            this.checkBoxLoadSecondPrintServices3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxLoadSecondPrintServices3.TabIndex = 13;
+            this.checkBoxLoadSecondPrintServices3.Text = "خدمات چاپ";
+            this.checkBoxLoadSecondPrintServices3.CheckedChanged += new System.EventHandler(this.checkBoxLoadSecondPrintServices3_CheckedChanged);
+            // 
+            // checkBoxLoadSecondPrintServices2
+            // 
+            this.checkBoxLoadSecondPrintServices2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxLoadSecondPrintServices2.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxLoadSecondPrintServices2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxLoadSecondPrintServices2.Enabled = false;
+            this.checkBoxLoadSecondPrintServices2.Location = new System.Drawing.Point(291, 54);
+            this.checkBoxLoadSecondPrintServices2.Name = "checkBoxLoadSecondPrintServices2";
+            this.checkBoxLoadSecondPrintServices2.Size = new System.Drawing.Size(76, 16);
+            this.checkBoxLoadSecondPrintServices2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxLoadSecondPrintServices2.TabIndex = 8;
+            this.checkBoxLoadSecondPrintServices2.Text = "خدمات چاپ";
+            this.checkBoxLoadSecondPrintServices2.CheckedChanged += new System.EventHandler(this.checkBoxLoadSecondPrintServices2_CheckedChanged);
+            // 
+            // checkBoxLoadSecondPrintServices1
+            // 
+            this.checkBoxLoadSecondPrintServices1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxLoadSecondPrintServices1.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxLoadSecondPrintServices1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxLoadSecondPrintServices1.Enabled = false;
+            this.highlighter1.SetHighlightOnFocus(this.checkBoxLoadSecondPrintServices1, true);
+            this.checkBoxLoadSecondPrintServices1.Location = new System.Drawing.Point(291, 29);
+            this.checkBoxLoadSecondPrintServices1.Name = "checkBoxLoadSecondPrintServices1";
+            this.checkBoxLoadSecondPrintServices1.Size = new System.Drawing.Size(76, 16);
+            this.checkBoxLoadSecondPrintServices1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxLoadSecondPrintServices1.TabIndex = 3;
+            this.checkBoxLoadSecondPrintServices1.Text = "خدمات چاپ";
+            this.checkBoxLoadSecondPrintServices1.CheckedChanged += new System.EventHandler(this.checkBoxLoadSecondPrintServices1_CheckedChanged);
             // 
             // txtSecondPrintServicePrice4
             // 
@@ -1419,37 +1419,38 @@
             this.btnMagnifyPhoto.TabStop = false;
             this.btnMagnifyPhoto.UseVisualStyleBackColor = false;
             // 
-            // btnCancelPhoto
+            // btnCancelPhotoOrderPrint
             // 
-            this.btnCancelPhoto.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnCancelPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelPhoto.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.highlighter1.SetHighlightOnFocus(this.btnCancelPhoto, true);
-            this.btnCancelPhoto.Location = new System.Drawing.Point(532, 278);
-            this.btnCancelPhoto.Name = "btnCancelPhoto";
-            this.btnCancelPhoto.Size = new System.Drawing.Size(71, 23);
-            this.btnCancelPhoto.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnCancelPhoto.Symbol = "";
-            this.btnCancelPhoto.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnCancelPhoto.SymbolSize = 10F;
-            this.btnCancelPhoto.TabIndex = 4;
-            this.btnCancelPhoto.Text = "حذف";
+            this.btnCancelPhotoOrderPrint.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnCancelPhotoOrderPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelPhotoOrderPrint.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.highlighter1.SetHighlightOnFocus(this.btnCancelPhotoOrderPrint, true);
+            this.btnCancelPhotoOrderPrint.Location = new System.Drawing.Point(532, 278);
+            this.btnCancelPhotoOrderPrint.Name = "btnCancelPhotoOrderPrint";
+            this.btnCancelPhotoOrderPrint.Size = new System.Drawing.Size(71, 23);
+            this.btnCancelPhotoOrderPrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnCancelPhotoOrderPrint.Symbol = "";
+            this.btnCancelPhotoOrderPrint.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnCancelPhotoOrderPrint.SymbolSize = 10F;
+            this.btnCancelPhotoOrderPrint.TabIndex = 4;
+            this.btnCancelPhotoOrderPrint.Text = "حذف";
             // 
-            // btnOkPhoto
+            // btnOkPhotoOrderPrint
             // 
-            this.btnOkPhoto.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnOkPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOkPhoto.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.highlighter1.SetHighlightOnFocus(this.btnOkPhoto, true);
-            this.btnOkPhoto.Location = new System.Drawing.Point(609, 278);
-            this.btnOkPhoto.Name = "btnOkPhoto";
-            this.btnOkPhoto.Size = new System.Drawing.Size(108, 23);
-            this.btnOkPhoto.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnOkPhoto.Symbol = "";
-            this.btnOkPhoto.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnOkPhoto.SymbolSize = 10F;
-            this.btnOkPhoto.TabIndex = 3;
-            this.btnOkPhoto.Text = "تائید";
+            this.btnOkPhotoOrderPrint.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnOkPhotoOrderPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOkPhotoOrderPrint.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.highlighter1.SetHighlightOnFocus(this.btnOkPhotoOrderPrint, true);
+            this.btnOkPhotoOrderPrint.Location = new System.Drawing.Point(609, 278);
+            this.btnOkPhotoOrderPrint.Name = "btnOkPhotoOrderPrint";
+            this.btnOkPhotoOrderPrint.Size = new System.Drawing.Size(108, 23);
+            this.btnOkPhotoOrderPrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnOkPhotoOrderPrint.Symbol = "";
+            this.btnOkPhotoOrderPrint.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnOkPhotoOrderPrint.SymbolSize = 10F;
+            this.btnOkPhotoOrderPrint.TabIndex = 3;
+            this.btnOkPhotoOrderPrint.Text = "تائید";
+            this.btnOkPhotoOrderPrint.Click += new System.EventHandler(this.btnOkPhotoOrderPrint_Click);
             // 
             // pictureBoxPreview
             // 
@@ -1890,8 +1891,8 @@
         private DevComponents.DotNetBar.PanelEx panelEx3;
         private DevComponents.DotNetBar.Controls.Line line3;
         private System.Windows.Forms.Button btnMagnifyPhoto;
-        private DevComponents.DotNetBar.ButtonX btnCancelPhoto;
-        private DevComponents.DotNetBar.ButtonX btnOkPhoto;
+        private DevComponents.DotNetBar.ButtonX btnCancelPhotoOrderPrint;
+        private DevComponents.DotNetBar.ButtonX btnOkPhotoOrderPrint;
         private DevComponents.DotNetBar.Controls.TextBoxX textPhotoRetouchDescription;
         private System.Windows.Forms.PictureBox pictureBoxPreview;
         private DevComponents.DotNetBar.Controls.TextBoxX txtOrderDescriptions;
@@ -1935,10 +1936,10 @@
         private DevComponents.DotNetBar.Controls.TextBoxX txtOriginalPrintSizePrice;
         private DevComponents.DotNetBar.LabelX labelX34;
         private System.Windows.Forms.GroupBox groupBox1;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxLoadSecondPrintSize4;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxLoadSecondPrintSize3;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxLoadSecondPrintSize2;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxLoadSecondPrintSize1;
+        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxLoadSecondPrintServices4;
+        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxLoadSecondPrintServices3;
+        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxLoadSecondPrintServices2;
+        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxLoadSecondPrintServices1;
         private DevComponents.DotNetBar.Controls.TextBoxX txtSecondPrintServicePrice4;
         private DevComponents.DotNetBar.Controls.TextBoxX txtSecondPrintServicePrice3;
         private DevComponents.DotNetBar.Controls.TextBoxX txtSecondPrintServicePrice2;

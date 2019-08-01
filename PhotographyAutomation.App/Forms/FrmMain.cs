@@ -76,14 +76,6 @@ namespace PhotographyAutomation.App.Forms
             }
         }
 
-        private void btnShowFrmPreFactor_Click(object sender, EventArgs e)
-        {
-            using (FrmAddEditPreFactor frmPreFactors = new FrmAddEditPreFactor())
-            {
-                frmPreFactors.ShowDialog();
-            }
-        }
-
         private void btnShowFrmAddEditPrintServices_Click(object sender, EventArgs e)
         {
             //using (FrmAddEditPrintServices frmPrintServices=new FrmAddEditPrintServices())

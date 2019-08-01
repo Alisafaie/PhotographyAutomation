@@ -1,4 +1,5 @@
 ﻿using DevComponents.DotNetBar.Controls;
+using PhotographyAutomation.Business.OrderDetails;
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.DateLayer.Models;
 using PhotographyAutomation.Utilities;
@@ -21,9 +22,9 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         private int _selectedOriginalSizeId;
         private int _selectedPrintServiceId;
-        private int _photoCursor = 1;
+        private int _photoCursor = 0;
 
-        private List<PhotoOrderDetails> photoOrderDetailsList;
+        public List<PhotoOrderDetails> _photoOrderDetailsList;
 
 
 
@@ -50,18 +51,18 @@ namespace PhotographyAutomation.App.Forms.Factors
 
                 //cmbOriginalPrintSize_SelectedIndexChanged(null, null);
                 GetOrderPrintInfo();
-                LoadPicture(FileStreamsGuids[_photoCursor - 1]);
+                LoadPicture(FileStreamsGuids[_photoCursor]);
                 if (FileStreamsGuids.Count == 1)
                 {
                     btnNextPhoto.Enabled = false;
                     btnPreviousPhoto.Enabled = false;
                 }
 
-                foreach (var streamId in FileStreamsGuids)
-                {
-                    PhotoOrderDetails photoOrder = new PhotoOrderDetails {StreamId = streamId};
-                    photoOrderDetailsList.Add(photoOrder);
-                }
+                //foreach (var streamId in FileStreamsGuids)
+                //{
+                //    PhotoOrderDetails photoOrder = new PhotoOrderDetails { StreamId = streamId };
+                //    _photoOrderDetailsList.Add(photoOrder);
+                //}
             }
             else
             {
@@ -129,32 +130,38 @@ namespace PhotographyAutomation.App.Forms.Factors
                     }
                     else
                     {
-                        var orderPrintViewModel = new OrderPrintViewModel
+                        if (orderPrintInfo != null)
                         {
-                            CustomerId = CustomerId,
-                            OrderId = OrderId,
-                            OrderCode = orderInfo?.OrderCode,
-                            OrderPrintCode = orderPrintInfo?.OrderPrintCode,
-                            OrderPrintId = orderPrintInfo.Id,
-                            CreatedDateTime = orderPrintInfo.CreatedDateTime,
-                            ModifiedDateTime = orderPrintInfo.ModifiedDateTime,
-                            CustomerFirstName = customerInfo.FirstName,
-                            CustomerLastName = customerInfo.LastName,
-                            TotalPhotos = orderPrintInfo.TotalPhotos,
-                            OrderPrintStatusId = orderPrintInfo.OrderPrintStatusId,
-                            Deposit = orderPrintInfo.Deposit,
-                            Payment = orderPrintInfo.Payment,
-                            Remaining = orderPrintInfo.Remaining,
-                            TotalPrice = orderPrintInfo.TotalPrice,
-                            IsActiveOrderPrint = orderPrintInfo.IsActive,
-                            OrderPrintStatusName = orderPrintStatusInfo.Name,
-                            PhotographyDate = orderInfo?.Date,
-                            PhotographyDateShamsi = orderInfo.Date?.ToShamsiDate(),
-                            RetouchDescriptions = orderPrintInfo.RetochDescriptions,
-                            PhotographyTypeId = orderInfo.PhotographyTypeId,
-                            PhotographyTypeName = photographyType.TypeName
-                        };
-                        e.Result = orderPrintViewModel;
+                            if (orderInfo != null)
+                            {
+                                var orderPrintViewModel = new OrderPrintViewModel
+                                {
+                                    CustomerId = CustomerId,
+                                    OrderId = OrderId,
+                                    OrderCode = orderInfo?.OrderCode,
+                                    OrderPrintCode = orderPrintInfo?.OrderPrintCode,
+                                    OrderPrintId = orderPrintInfo.Id,
+                                    CreatedDateTime = orderPrintInfo.CreatedDateTime,
+                                    ModifiedDateTime = orderPrintInfo.ModifiedDateTime,
+                                    CustomerFirstName = customerInfo.FirstName,
+                                    CustomerLastName = customerInfo.LastName,
+                                    TotalPhotos = orderPrintInfo.TotalPhotos,
+                                    OrderPrintStatusId = orderPrintInfo.OrderPrintStatusId,
+                                    Deposit = orderPrintInfo.Deposit,
+                                    Payment = orderPrintInfo.Payment,
+                                    Remaining = orderPrintInfo.Remaining,
+                                    TotalPrice = orderPrintInfo.TotalPrice,
+                                    IsActiveOrderPrint = orderPrintInfo.IsActive,
+                                    OrderPrintStatusName = orderPrintStatusInfo.Name,
+                                    PhotographyDate = orderInfo?.Date,
+                                    PhotographyDateShamsi = orderInfo.Date?.ToShamsiDate(),
+                                    RetouchDescriptions = orderPrintInfo.RetochDescriptions,
+                                    PhotographyTypeId = orderInfo.PhotographyTypeId,
+                                    PhotographyTypeName = photographyType.TypeName
+                                };
+                                e.Result = orderPrintViewModel;
+                            }
+                        }
                     }
                 }
             }
@@ -236,80 +243,7 @@ namespace PhotographyAutomation.App.Forms.Factors
         #endregion
 
 
-        #region Buttons
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-        }
-
-        private void btnNextPhoto_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                _photoCursor++;
-                int totalItems = FileStreamsGuids.Count;
-
-                int lblCounter = _photoCursor;
-                lblCurrentPhoto.Text = (lblCounter).ToString();
-
-                if (_photoCursor <= totalItems)
-                {
-                    //Save Photo Order Details to Internal Class
-                    //... To Do
-                    //...
-
-
-                    // Load Picture
-                    LoadPicture(FileStreamsGuids[_photoCursor - 1]);
-                }
-
-                if (_photoCursor > 0)
-                    btnPreviousPhoto.Enabled = true;
-                if (_photoCursor == totalItems)
-                    btnNextPhoto.Enabled = false;
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error,
-                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
-            }
-        }
-
-        private void btnPreviousPhoto_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                _photoCursor--;
-                int totalItems = FileStreamsGuids.Count;
-
-                int lblCounter = _photoCursor;
-                lblCurrentPhoto.Text = (lblCounter).ToString();
-
-                if (_photoCursor > 0)
-                {
-                    //Save Photo Order Details to Internal Class
-                    //... To Do
-                    //...
-
-
-                    // Load Picture
-                    LoadPicture(FileStreamsGuids[_photoCursor - 1]);
-                }
-
-                if (_photoCursor < totalItems)
-                    btnNextPhoto.Enabled = true;
-                if (_photoCursor == 1)
-                    btnPreviousPhoto.Enabled = false;
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error,
-                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
-            }
-        }
-
-        #endregion
 
 
         #region LoadOriginalPrintSizes
@@ -613,7 +547,7 @@ namespace PhotographyAutomation.App.Forms.Factors
         private void cmbOriginalPrintService_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbOriginalPrintService.Enabled && cmbOriginalPrintService.Items.Count > 0 &&
-                cmbOriginalPrintService.SelectedValue != null)
+                cmbOriginalPrintService.SelectedValue != null && cmbOriginalPrintService.SelectedIndex != -1)
             {
                 if (int.TryParse(cmbOriginalPrintService.SelectedValue.ToString(), out _))
                 {
@@ -711,7 +645,7 @@ namespace PhotographyAutomation.App.Forms.Factors
             if (checkBoxSecondPrint1.Checked)
             {
                 cmbSecondPrintSize1.Enabled = true;
-                checkBoxLoadSecondPrintSize1.Enabled = true;
+                checkBoxLoadSecondPrintServices1.Enabled = true;
                 integerInputSecondPrintCount1.Enabled = true;
                 integerInputSecondPrintCount1.Value = 1;
             }
@@ -723,7 +657,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                 cmbSecondPrintService1.Enabled = false;
                 txtSecondPrintServicePrice1.ResetText();
                 integerInputSecondPrintCount1.Enabled = false;
-                checkBoxLoadSecondPrintSize1.Checked = false;
+                checkBoxLoadSecondPrintServices1.Checked = false;
             }
         }
         private void cmbSecondPrintSize1_EnabledChanged(object sender, EventArgs e)
@@ -773,7 +707,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                     };
                     GetSecondPrintSizePrice(ss);
                     //txtSecondPrintSizePrice1.Text = GetSecondPrintSizePrice(selectedValue);
-                    if (checkBoxLoadSecondPrintSize1.Checked)
+                    if (checkBoxLoadSecondPrintServices1.Checked)
                     {
                         cmbSecondPrintService1_EnabledChanged(null, null);
                     }
@@ -792,7 +726,7 @@ namespace PhotographyAutomation.App.Forms.Factors
             if (checkBoxSecondPrint2.Checked)
             {
                 cmbSecondPrintSize2.Enabled = true;
-                checkBoxLoadSecondPrintSize2.Enabled = true;
+                checkBoxLoadSecondPrintServices2.Enabled = true;
                 integerInputSecondPrintCount2.Enabled = true;
                 integerInputSecondPrintCount2.Value = 1;
             }
@@ -850,7 +784,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                         TextBoxName = txtSecondPrintSizePrice2.Name
                     };
                     GetSecondPrintSizePrice(ss);
-                    if (checkBoxLoadSecondPrintSize1.Checked)
+                    if (checkBoxLoadSecondPrintServices1.Checked)
                     {
                         cmbSecondPrintService1_EnabledChanged(null, null);
                     }
@@ -868,7 +802,7 @@ namespace PhotographyAutomation.App.Forms.Factors
             if (checkBoxSecondPrint3.Checked)
             {
                 cmbSecondPrintSize3.Enabled = true;
-                checkBoxLoadSecondPrintSize3.Enabled = true;
+                checkBoxLoadSecondPrintServices3.Enabled = true;
                 integerInputSecondPrintCount3.Enabled = true;
                 integerInputSecondPrintCount3.Value = 1;
             }
@@ -927,7 +861,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                         TextBoxName = txtSecondPrintSizePrice3.Name
                     };
                     GetSecondPrintSizePrice(ss);
-                    if (checkBoxLoadSecondPrintSize3.Checked)
+                    if (checkBoxLoadSecondPrintServices3.Checked)
                     {
                         cmbSecondPrintService3_EnabledChanged(null, null);
                     }
@@ -944,7 +878,7 @@ namespace PhotographyAutomation.App.Forms.Factors
             if (checkBoxSecondPrint4.Checked)
             {
                 cmbSecondPrintSize4.Enabled = true;
-                checkBoxLoadSecondPrintSize4.Enabled = true;
+                checkBoxLoadSecondPrintServices4.Enabled = true;
                 integerInputSecondPrintCount4.Enabled = true;
                 integerInputSecondPrintCount4.Value = 1;
             }
@@ -1002,7 +936,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                         TextBoxName = txtSecondPrintSizePrice4.Name
                     };
                     GetSecondPrintSizePrice(ss);
-                    if (checkBoxLoadSecondPrintSize4.Checked)
+                    if (checkBoxLoadSecondPrintServices4.Checked)
                     {
                         cmbSecondPrintService4_EnabledChanged(null, null);
                     }
@@ -1012,7 +946,7 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         #endregion
 
-        private void BgWorkerGetSecondPrintSizeOnDoWork(object sender, DoWorkEventArgs e)
+        private static void BgWorkerGetSecondPrintSizeOnDoWork(object sender, DoWorkEventArgs e)
         {
             if (e.Argument is SecondPrintServiceListDataStructure data)
             {
@@ -1059,7 +993,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                         cmbSecondPrintSize1.ValueMember = data.ValueMember;
 
                         txtSecondPrintSizePrice1.Enabled = true;
-                        checkBoxLoadSecondPrintSize1.Enabled = true;
+                        checkBoxLoadSecondPrintServices1.Enabled = true;
                         integerInputSecondPrintCount1.Enabled = true;
 
                         cmbSecondPrintSize1_SelectedIndexChanged(null, null);
@@ -1070,7 +1004,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                         cmbSecondPrintSize2.ValueMember = data.ValueMember;
 
                         txtSecondPrintSizePrice2.Enabled = true;
-                        checkBoxLoadSecondPrintSize2.Enabled = true;
+                        checkBoxLoadSecondPrintServices2.Enabled = true;
                         integerInputSecondPrintCount2.Enabled = true;
 
                         cmbSecondPrintSize2_SelectedIndexChanged(null, null);
@@ -1081,7 +1015,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                         cmbSecondPrintSize3.ValueMember = data.ValueMember;
 
                         txtSecondPrintSizePrice3.Enabled = true;
-                        checkBoxLoadSecondPrintSize3.Enabled = true;
+                        checkBoxLoadSecondPrintServices3.Enabled = true;
                         integerInputSecondPrintCount3.Enabled = true;
 
                         cmbSecondPrintSize3_SelectedIndexChanged(null, null);
@@ -1092,7 +1026,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                         cmbSecondPrintSize4.ValueMember = data.ValueMember;
 
                         txtSecondPrintSizePrice4.Enabled = true;
-                        checkBoxLoadSecondPrintSize4.Enabled = true;
+                        checkBoxLoadSecondPrintServices4.Enabled = true;
                         integerInputSecondPrintCount4.Enabled = true;
 
                         cmbSecondPrintSize4_SelectedIndexChanged(null, null);
@@ -1104,10 +1038,9 @@ namespace PhotographyAutomation.App.Forms.Factors
 
 
         #region SecondPrintService1
-
-        private void checkBoxLoadSecondPrintSize1_CheckedChanged(object sender, EventArgs e)
+        private void checkBoxLoadSecondPrintServices1_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxLoadSecondPrintSize1.Checked)
+            if (checkBoxLoadSecondPrintServices1.Checked)
             {
                 cmbSecondPrintService1.Enabled = true;
                 txtSecondPrintServicePrice1.Enabled = true;
@@ -1176,10 +1109,9 @@ namespace PhotographyAutomation.App.Forms.Factors
         #endregion
 
         #region SecondPrintService2
-
-        private void checkBoxLoadSecondPrintSize2_CheckedChanged(object sender, EventArgs e)
+        private void checkBoxLoadSecondPrintServices2_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxLoadSecondPrintSize2.Checked)
+            if (checkBoxLoadSecondPrintServices2.Checked)
             {
                 cmbSecondPrintService2.Enabled = true;
                 txtSecondPrintServicePrice2.Enabled = true;
@@ -1248,10 +1180,9 @@ namespace PhotographyAutomation.App.Forms.Factors
         #endregion
 
         #region SecondPrintService3
-
-        private void checkBoxLoadSecondPrintSize3_CheckedChanged(object sender, EventArgs e)
+        private void checkBoxLoadSecondPrintServices3_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxLoadSecondPrintSize3.Checked)
+            if (checkBoxLoadSecondPrintServices3.Checked)
             {
                 cmbSecondPrintService3.Enabled = true;
                 txtSecondPrintServicePrice3.Enabled = true;
@@ -1320,10 +1251,9 @@ namespace PhotographyAutomation.App.Forms.Factors
         #endregion
 
         #region SecondPrintService4
-
-        private void checkBoxLoadSecondPrintSize4_CheckedChanged(object sender, EventArgs e)
+        private void checkBoxLoadSecondPrintServices_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxLoadSecondPrintSize4.Checked)
+            if (checkBoxLoadSecondPrintServices4.Checked)
             {
                 cmbSecondPrintService4.Enabled = true;
                 txtSecondPrintServicePrice4.Enabled = true;
@@ -1394,7 +1324,7 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         #endregion
 
-        private void BgWorkerGetSecondSizeServiceListOnDoWork(object sender, DoWorkEventArgs e)
+        private static void BgWorkerGetSecondSizeServiceListOnDoWork(object sender, DoWorkEventArgs e)
         {
             if (e.Argument is SecondPrintSizeServiceListDataStructure data)
             {
@@ -1428,7 +1358,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                 switch (data.ComboBoxName)
                 {
                     case nameof(cmbSecondPrintService1):
-                        if (data.SizeServiceList!=null && data.SizeServiceList.Any())
+                        if (data.SizeServiceList != null && data.SizeServiceList.Any())
                         {
                             cmbSecondPrintService1.DataSource = data.SizeServiceList;
                             cmbSecondPrintService1.DisplayMember = data.DisplayMember;
@@ -1444,7 +1374,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                         }
                         break;
                     case nameof(cmbSecondPrintService2):
-                        if (data.SizeServiceList!=null && data.SizeServiceList.Any())
+                        if (data.SizeServiceList != null && data.SizeServiceList.Any())
                         {
                             cmbSecondPrintService2.DataSource = data.SizeServiceList;
                             cmbSecondPrintService2.DisplayMember = data.DisplayMember;
@@ -1460,7 +1390,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                         }
                         break;
                     case nameof(cmbSecondPrintService3):
-                        if (data.SizeServiceList!=null && data.SizeServiceList.Any())
+                        if (data.SizeServiceList != null && data.SizeServiceList.Any())
                         {
                             cmbSecondPrintService3.DataSource = data.SizeServiceList;
                             cmbSecondPrintService3.DisplayMember = data.DisplayMember;
@@ -1476,7 +1406,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                         }
                         break;
                     case nameof(cmbSecondPrintService4):
-                        if (data.SizeServiceList!=null && data.SizeServiceList.Any())
+                        if (data.SizeServiceList != null && data.SizeServiceList.Any())
                         {
                             cmbSecondPrintService4.DataSource = data.SizeServiceList;
                             cmbSecondPrintService4.DisplayMember = data.DisplayMember;
@@ -1576,6 +1506,17 @@ namespace PhotographyAutomation.App.Forms.Factors
         {
             if (integerInputSecondPrintServiceCount1.Enabled && integerInputSecondPrintServiceCount1.Value > 0)
             {
+                if (integerInputSecondPrintServiceCount1.Value > integerInputSecondPrintCount1.Value)
+                {
+                    RtlMessageBox.Show(
+                        "تعداد خدمات چاپ نمی تواند از تعداد اضافه چاپ سایز مشخص شده بیشتر باشد.",
+                        "خطا در تعداد خدمات چاپ",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning,
+                        MessageBoxDefaultButton.Button1);
+                    return;
+                }
+
                 var secondPrintServiceDataStructure = new SecondPrintServiceDataStructure
                 {
                     TextBoxName = txtSecondPrintServicePrice1.Name,
@@ -1590,6 +1531,16 @@ namespace PhotographyAutomation.App.Forms.Factors
         {
             if (integerInputSecondPrintServiceCount2.Enabled && integerInputSecondPrintServiceCount2.Value > 0)
             {
+                if (integerInputSecondPrintServiceCount2.Value > integerInputSecondPrintCount2.Value)
+                {
+                    RtlMessageBox.Show(
+                        "تعداد خدمات چاپ نمی تواند از تعداد اضافه چاپ سایز مشخص شده بیشتر باشد.",
+                        "خطا در تعداد خدمات چاپ",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning,
+                        MessageBoxDefaultButton.Button1);
+                    return;
+                }
                 var secondPrintServiceDataStructure = new SecondPrintServiceDataStructure
                 {
                     TextBoxName = txtSecondPrintServicePrice2.Name,
@@ -1604,7 +1555,16 @@ namespace PhotographyAutomation.App.Forms.Factors
         {
             if (!integerInputSecondPrintServiceCount3.Enabled ||
                 integerInputSecondPrintServiceCount3.Value <= 0) return;
-
+            if (integerInputSecondPrintServiceCount3.Value > integerInputSecondPrintCount3.Value)
+            {
+                RtlMessageBox.Show(
+                    "تعداد خدمات چاپ نمی تواند از تعداد اضافه چاپ سایز مشخص شده بیشتر باشد.",
+                    "خطا در تعداد خدمات چاپ",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button1);
+                return;
+            }
             var secondPrintServiceDataStructure = new SecondPrintServiceDataStructure
             {
                 TextBoxName = txtSecondPrintServicePrice3.Name,
@@ -1618,7 +1578,16 @@ namespace PhotographyAutomation.App.Forms.Factors
         {
             if (!integerInputSecondPrintServiceCount4.Enabled ||
                 integerInputSecondPrintServiceCount4.Value <= 0) return;
-
+            if (integerInputSecondPrintServiceCount4.Value > integerInputSecondPrintCount4.Value)
+            {
+                RtlMessageBox.Show(
+                    "تعداد خدمات چاپ نمی تواند از تعداد اضافه چاپ سایز مشخص شده بیشتر باشد.",
+                    "خطا در تعداد خدمات چاپ",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button1);
+                return;
+            }
             var secondPrintServiceDataStructure = new SecondPrintServiceDataStructure
             {
                 TextBoxName = txtSecondPrintServicePrice4.Name,
@@ -1705,11 +1674,11 @@ namespace PhotographyAutomation.App.Forms.Factors
                 WorkerSupportsCancellation = false
             };
 
-            bgWorkerGetSecondPrintServicePrice.DoWork += bgWorkerGetSecondPrintServicePrice_DoWork;
-            bgWorkerGetSecondPrintServicePrice.RunWorkerCompleted += bgWorkerGetSecondPrintServicePriceOnRunWorkerCompleted;
+            bgWorkerGetSecondPrintServicePrice.DoWork += BgWorkerGetSecondPrintServicePrice_DoWork;
+            bgWorkerGetSecondPrintServicePrice.RunWorkerCompleted += BgWorkerGetSecondPrintServicePriceOnRunWorkerCompleted;
             bgWorkerGetSecondPrintServicePrice.RunWorkerAsync(secondPrintServiceData);
         }
-        private void bgWorkerGetSecondPrintServicePrice_DoWork(object sender, DoWorkEventArgs e)
+        private static void BgWorkerGetSecondPrintServicePrice_DoWork(object sender, DoWorkEventArgs e)
         {
             if (e.Argument is SecondPrintServiceDataStructure myData)
             {
@@ -1746,7 +1715,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                 }
             }
         }
-        private void bgWorkerGetSecondPrintServicePriceOnRunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void BgWorkerGetSecondPrintServicePriceOnRunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (e.Result != null && e.Result is SecondPrintServiceDataStructure myData)
             {
@@ -1767,6 +1736,395 @@ namespace PhotographyAutomation.App.Forms.Factors
                 }
             }
         }
+        #endregion
+
+
+        #region Buttons
+        private void btnOkPhotoOrderPrint_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+        }
+
+        private void btnNextPhoto_Click(object sender, EventArgs e)
+        {
+            if (_photoCursor >= 0)
+                btnPreviousPhoto.Enabled = true;
+            //try
+            //{
+            int totalItems = _photoOrderDetailsList.Count;
+            if (_photoCursor >= 0 && _photoCursor < totalItems)
+            {
+                //Save Photo Order Details to Class
+                //...
+                var currentGuid = _photoOrderDetailsList[_photoCursor].StreamId;
+                var currentOrderDetails = _photoOrderDetailsList.FirstOrDefault(x => x.StreamId == currentGuid);
+                if (currentOrderDetails != null)
+                {
+                    ///////
+                    // Original Print
+                    //
+                    currentOrderDetails.PhotoCursor = _photoCursor;
+
+                    if (cmbOriginalPrintSize.SelectedValue != null &&
+                        int.TryParse(cmbOriginalPrintSize.SelectedValue.ToString(), out var ttt))
+                        currentOrderDetails.OriginalSizeId = ttt;
+
+                    if (int.TryParse(txtOriginalPrintSizePrice.Text.Replace(",", ""), out var tt))
+                        currentOrderDetails.OriginalPrintSizePrice = tt;
+
+                    if (checkBoxLoadPrintSizeServices.Checked)
+                    {
+                        if (cmbOriginalPrintService.Items.Count > 0)
+                        {
+                            currentOrderDetails.OriginalServiceId = (int)cmbOriginalPrintService.SelectedValue;
+                            currentOrderDetails.HasOriginalPrintService = true;
+                            if (int.TryParse(txtOriginalPrintServicePrice.Text.Replace(",", ""), out var result))
+                                currentOrderDetails.OriginalPrintServicePrice = result;
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(textPhotoRetouchDescription.Text.Trim()))
+                        currentOrderDetails.RetouchDescriptions = textPhotoRetouchDescription.Text;
+
+                    ///////
+                    // Second Print 1
+                    //
+                    if (checkBoxSecondPrint1.Checked)
+                    {
+                        if (cmbSecondPrintSize1.Items.Count > 0)
+                        {
+                            currentOrderDetails.SecondPrint1SizeId = (int)cmbSecondPrintSize1.SelectedValue;
+                            currentOrderDetails.HasSecondPrint1 = true;
+                            currentOrderDetails.SecondPrint1Count = integerInputSecondPrintCount1.Value;
+                            if (int.TryParse(txtSecondPrintSizePrice1.Text.Replace(",", ""), out var result))
+                                currentOrderDetails.SecondPrint1SizePrice = result;
+                        }
+
+                        if (checkBoxLoadSecondPrintServices1.Checked)
+                        {
+                            if (cmbSecondPrintService1.Items.Count > 0)
+                            {
+                                currentOrderDetails.HasSecondPrint1Service = true;
+                                currentOrderDetails.SecondPrint1ServiceId = (int)cmbSecondPrintService1.SelectedValue;
+                                currentOrderDetails.SecondPrint1ServiceCount = integerInputSecondPrintServiceCount1.Value;
+                                if (int.TryParse(txtSecondPrintServicePrice1.Text.Replace(",", ""), out var result))
+                                    currentOrderDetails.SecondPrint1ServicePrice = result;
+                            }
+                        }
+                    }
+
+                    ///////
+                    // Second Print 2
+                    //
+                    if (checkBoxSecondPrint2.Checked)
+                    {
+                        if (cmbSecondPrintSize2.Items.Count > 0)
+                        {
+                            currentOrderDetails.SecondPrint2SizeId = (int)cmbSecondPrintSize2.SelectedValue;
+                            currentOrderDetails.HasSecondPrint2 = true;
+                            currentOrderDetails.SecondPrint2Count = integerInputSecondPrintCount2.Value;
+                            if (int.TryParse(txtSecondPrintSizePrice2.Text.Replace(",", ""), out var result))
+                                currentOrderDetails.SecondPrint2SizePrice = result;
+                        }
+
+                        if (checkBoxLoadSecondPrintServices2.Checked)
+                        {
+                            if (cmbSecondPrintService2.Items.Count > 0)
+                            {
+                                currentOrderDetails.HasSecondPrint2Service = true;
+                                currentOrderDetails.SecondPrint2ServiceId = (int)cmbSecondPrintService2.SelectedValue;
+                                currentOrderDetails.SecondPrint2ServiceCount = integerInputSecondPrintServiceCount2.Value;
+                                if (int.TryParse(txtSecondPrintServicePrice2.Text.Replace(",", ""), out var result))
+                                    currentOrderDetails.SecondPrint2ServicePrice = result;
+                            }
+                        }
+                    }
+
+                    ///////
+                    // Second Print 3
+                    //
+                    if (checkBoxSecondPrint3.Checked)
+                    {
+                        if (cmbSecondPrintSize3.Items.Count > 0)
+                        {
+                            currentOrderDetails.SecondPrint3SizeId = (int)cmbSecondPrintSize3.SelectedValue;
+                            currentOrderDetails.HasSecondPrint3 = true;
+                            currentOrderDetails.SecondPrint3Count = integerInputSecondPrintCount3.Value;
+                            if (int.TryParse(txtSecondPrintSizePrice3.Text.Replace(",", ""), out var result))
+                                currentOrderDetails.SecondPrint3SizePrice = result;
+                        }
+
+                        if (checkBoxLoadSecondPrintServices3.Checked)
+                        {
+                            if (cmbSecondPrintService3.Items.Count > 0)
+                            {
+                                currentOrderDetails.HasSecondPrint3Service = true;
+                                currentOrderDetails.SecondPrint3ServiceId = (int)cmbSecondPrintService3.SelectedValue;
+                                currentOrderDetails.SecondPrint3ServiceCount = integerInputSecondPrintServiceCount3.Value;
+                                if (int.TryParse(txtSecondPrintServicePrice3.Text.Replace(",", ""), out var result))
+                                    currentOrderDetails.SecondPrint3ServicePrice = result;
+                            }
+                        }
+                    }
+
+                    ///////
+                    // Second Print 4
+                    //
+                    if (checkBoxSecondPrint4.Checked)
+                    {
+                        if (cmbSecondPrintSize4.Items.Count > 0)
+                        {
+                            currentOrderDetails.SecondPrint4SizeId = (int)cmbSecondPrintSize4.SelectedValue;
+                            currentOrderDetails.HasSecondPrint4 = true;
+                            currentOrderDetails.SecondPrint4Count = integerInputSecondPrintCount4.Value;
+                            if (int.TryParse(txtSecondPrintSizePrice4.Text.Replace(",", ""), out var result))
+                                currentOrderDetails.SecondPrint4SizePrice = result;
+                        }
+
+                        if (checkBoxLoadSecondPrintServices4.Checked)
+                        {
+                            if (cmbSecondPrintService4.Items.Count > 0)
+                            {
+                                currentOrderDetails.HasSecondPrint4Service = true;
+                                currentOrderDetails.SecondPrint4ServiceId = (int)cmbSecondPrintService4.SelectedValue;
+                                currentOrderDetails.SecondPrint4ServiceCount = integerInputSecondPrintServiceCount4.Value;
+                                if (int.TryParse(txtSecondPrintServicePrice4.Text.Replace(",", ""), out var result))
+                                    currentOrderDetails.SecondPrint4ServicePrice = result;
+                            }
+                        }
+                    }
+                }
+
+                txtOriginalPrintSizePrice.Clear();
+                txtOriginalPrintServicePrice.Clear();
+
+                // Load Next Picture
+                _photoCursor++;
+                //int lblCounter = _photoCursor + 1;
+                int lblCounter = _photoCursor + 1;
+                lblCurrentPhoto.Text = (lblCounter).ToString();
+                if (_photoCursor == totalItems - 1)
+                {
+                    btnNextPhoto.Enabled = false;
+                    //return;
+                }
+
+                var nextGuid = _photoOrderDetailsList[_photoCursor].StreamId;
+                var nextOrderDetails = _photoOrderDetailsList.FirstOrDefault(x => x.StreamId == nextGuid);
+                if (nextOrderDetails != null)
+                {
+                    LoadPicture(nextGuid);
+
+                    ////Original Photo
+                    //
+                    if (nextOrderDetails.OriginalSizeId == 0)
+                        cmbOriginalPrintSize.SelectedIndex = -1;
+                    else
+                        cmbOriginalPrintSize.SelectedIndex = nextOrderDetails.OriginalSizeId;
+
+                    if (nextOrderDetails.HasOriginalPrintService)
+                    {
+                        checkBoxLoadPrintSizeServices.Checked = true;
+                        if (nextOrderDetails.OriginalServiceId != 0)
+                            cmbOriginalPrintService.SelectedValue = nextOrderDetails.OriginalServiceId;
+                        else
+                            cmbOriginalPrintService.SelectedIndex = -1;
+                    }
+
+                    if (nextOrderDetails.RetouchDescriptions != null)
+                        textPhotoRetouchDescription.Text = nextOrderDetails.RetouchDescriptions;
+
+                    ////Second Photo
+                    //
+                    ////SecondPrint1
+                    //
+                    if (nextOrderDetails.HasSecondPrint1)
+                    {
+                        if (nextOrderDetails.SecondPrint1SizeId != 0)
+                        {
+                            cmbSecondPrintSize1.SelectedValue = nextOrderDetails.SecondPrint1SizeId;
+                            if (nextOrderDetails.HasSecondPrint1Service)
+                            {
+                                if (nextOrderDetails.SecondPrint1SizeId != 0)
+                                {
+                                    checkBoxSecondPrint1.Checked = true;
+                                    cmbSecondPrintSize1.SelectedValue = nextOrderDetails.SecondPrint1SizeId;
+                                    if (nextOrderDetails.HasSecondPrint1Service)
+                                    {
+                                        if (nextOrderDetails.SecondPrint1ServiceId != 0)
+                                        {
+                                            checkBoxLoadSecondPrintServices1.Checked = true;
+                                            cmbSecondPrintService1.SelectedValue =
+                                                nextOrderDetails.SecondPrint1ServiceId;
+                                            integerInputSecondPrintServiceCount1.Value =
+                                                nextOrderDetails.SecondPrint1ServiceCount;
+                                        }
+                                    }
+                                }
+                                else
+                                    cmbSecondPrintSize1.SelectedIndex = -1;
+                            }
+                        }
+                        else
+                            cmbSecondPrintSize1.SelectedIndex = -1;
+                    }
+
+
+                    ////Second Photo
+                    //
+                    ////SecondPrint2
+                    //
+                    if (nextOrderDetails.HasSecondPrint2)
+                    {
+                        if (nextOrderDetails.SecondPrint2SizeId != 0)
+                        {
+                            cmbSecondPrintSize2.SelectedValue = nextOrderDetails.SecondPrint2SizeId;
+                            if (nextOrderDetails.HasSecondPrint2Service)
+                            {
+                                if (nextOrderDetails.SecondPrint2SizeId != 0)
+                                {
+                                    checkBoxSecondPrint2.Checked = true;
+                                    cmbSecondPrintSize2.SelectedValue = nextOrderDetails.SecondPrint2SizeId;
+                                    if (nextOrderDetails.HasSecondPrint2Service)
+                                    {
+                                        if (nextOrderDetails.SecondPrint2ServiceId != 0)
+                                        {
+                                            checkBoxLoadSecondPrintServices2.Checked = true;
+                                            cmbSecondPrintService2.SelectedValue =
+                                                nextOrderDetails.SecondPrint2ServiceId;
+                                            integerInputSecondPrintServiceCount2.Value =
+                                                nextOrderDetails.SecondPrint2ServiceCount;
+                                        }
+                                    }
+                                }
+                                else
+                                    cmbSecondPrintSize2.SelectedIndex = -1;
+                            }
+                        }
+                        else
+                            cmbSecondPrintSize2.SelectedIndex = -1;
+                    }
+
+                    ////Second Photo
+                    //
+                    ////SecondPrint3
+                    //
+                    if (nextOrderDetails.HasSecondPrint3)
+                    {
+                        if (nextOrderDetails.SecondPrint3SizeId != 0)
+                        {
+                            cmbSecondPrintSize3.SelectedValue = nextOrderDetails.SecondPrint3SizeId;
+                            if (nextOrderDetails.HasSecondPrint3Service)
+                            {
+                                if (nextOrderDetails.SecondPrint3SizeId != 0)
+                                {
+                                    checkBoxSecondPrint3.Checked = true;
+                                    cmbSecondPrintSize3.SelectedValue = nextOrderDetails.SecondPrint3SizeId;
+                                    if (nextOrderDetails.HasSecondPrint3Service)
+                                    {
+                                        if (nextOrderDetails.SecondPrint3ServiceId != 0)
+                                        {
+                                            checkBoxLoadSecondPrintServices3.Checked = true;
+                                            cmbSecondPrintService3.SelectedValue =
+                                                nextOrderDetails.SecondPrint3ServiceId;
+                                            integerInputSecondPrintServiceCount3.Value =
+                                                nextOrderDetails.SecondPrint3ServiceCount;
+                                        }
+                                    }
+                                }
+                                else
+                                    cmbSecondPrintSize3.SelectedIndex = -1;
+                            }
+                        }
+                        else
+                            cmbSecondPrintSize3.SelectedIndex = -1;
+                    }
+
+
+                    ////Second Photo
+                    //
+                    ////SecondPrint4
+                    //
+                    if (nextOrderDetails.HasSecondPrint4)
+                    {
+                        if (nextOrderDetails.SecondPrint4SizeId != 0)
+                        {
+                            cmbSecondPrintSize4.SelectedValue = nextOrderDetails.SecondPrint4SizeId;
+                            if (nextOrderDetails.HasSecondPrint4Service)
+                            {
+                                if (nextOrderDetails.SecondPrint4SizeId != 0)
+                                {
+                                    checkBoxSecondPrint4.Checked = true;
+                                    cmbSecondPrintSize4.SelectedValue = nextOrderDetails.SecondPrint4SizeId;
+                                    if (nextOrderDetails.HasSecondPrint4Service)
+                                    {
+                                        if (nextOrderDetails.SecondPrint4ServiceId != 0)
+                                        {
+                                            checkBoxLoadSecondPrintServices4.Checked = true;
+                                            cmbSecondPrintService4.SelectedValue =
+                                                nextOrderDetails.SecondPrint4ServiceId;
+                                            integerInputSecondPrintServiceCount4.Value =
+                                                nextOrderDetails.SecondPrint4ServiceCount;
+                                        }
+                                    }
+                                }
+                                else
+                                    cmbSecondPrintSize4.SelectedIndex = -1;
+                            }
+                        }
+                        else
+                            cmbSecondPrintSize4.SelectedIndex = -1;
+                    }
+                }
+            }
+
+
+
+            //}
+            //catch (Exception exception)
+            //{
+            //    MessageBox.Show(exception.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error,
+            //        MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
+            //}
+        }
+
+        private void btnPreviousPhoto_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _photoCursor--;
+                int totalItems = FileStreamsGuids.Count;
+
+                int lblCounter = _photoCursor;
+                lblCurrentPhoto.Text = (lblCounter).ToString();
+
+                if (_photoCursor > 0)
+                {
+                    //Save Photo Order Details to Internal Class
+                    //... To Do
+                    //...
+
+
+                    // Load Picture
+                    LoadPicture(FileStreamsGuids[_photoCursor - 1]);
+                }
+
+                if (_photoCursor < totalItems)
+                    btnNextPhoto.Enabled = true;
+                if (_photoCursor == 1)
+                    btnPreviousPhoto.Enabled = false;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error,
+                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
+            }
+        }
+
         #endregion
     }
 
@@ -1817,62 +2175,5 @@ namespace PhotographyAutomation.App.Forms.Factors
             MyTextBoxX = new TextBoxX();
             Count = 1;
         }
-    }
-
-    internal class PhotoOrderBrief
-    {
-        public int OrderId { get; set; }
-        public int OrderPrintId { get; set; }
-        public int TotalSelectedPhotos { get; set; }
-        public int TotalServicePrints { get; set; }
-        public string OrderPrintDescriptions { get; set; }
-        public string OrderPrintServiceBrief { get; set; }
-    }
-
-    internal class PhotoOrderDetails
-    {
-        public Guid StreamId { get; set; }
-        public int PhotoCursor { get; set; }
-        public int OriginalSizeId { get; set; }
-        public int OriginalPrintSizePrice { get; set; }
-        public bool HasOriginalPrintService { get; set; }
-        public int OriginalServiceId { get; set; }
-        public int OriginalPrintServicePrice { get; set; }
-        public string RetouchDescriptions { get; set; }
-        public bool IsAccepted { get; set; }
-
-
-        public bool HasSecondPrint1 { get; set; }
-        public int SecondPrint1SizeId { get; set; }
-        public int SecondPrint1Count { get; set; }
-        public int SecondPrint1SizePrice { get; set; }
-        public bool HasSecondPrint1Service { get; set; }
-        public int SecondPrint1ServiceId { get; set; }
-        public int SecondPrint1ServicePrice { get; set; }
-
-        public bool HasSecondPrint2 { get; set; }
-        public int SecondPrint2SizeId { get; set; }
-        public int SecondPrint2Count { get; set; }
-        public int SecondPrint2SizePrice { get; set; }
-        public bool HasSecondPrint2Service { get; set; }
-        public int SecondPrint2ServiceId { get; set; }
-        public int SecondPrint2ServicePrice { get; set; }
-
-        public bool HasSecondPrint3 { get; set; }
-        public int SecondPrint3SizeId { get; set; }
-        public int SecondPrint3Count { get; set; }
-        public int SecondPrint3SizePrice { get; set; }
-        public bool HasSecondPrint3Service { get; set; }
-        public int SecondPrint3ServiceId { get; set; }
-        public int SecondPrint3ServicePrice { get; set; }
-
-        public bool HasSecondPrint4 { get; set; }
-        public int SecondPrint4SizeId { get; set; }
-        public int SecondPrint4Count { get; set; }
-        public int SecondPrint4SizePrice { get; set; }
-        public bool HasSecondPrint4Service { get; set; }
-        public int SecondPrint4ServiceId { get; set; }
-        public int SecondPrint4ServicePrice { get; set; }
-
     }
 }
