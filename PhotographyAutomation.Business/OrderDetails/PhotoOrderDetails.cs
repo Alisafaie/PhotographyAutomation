@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 
 namespace PhotographyAutomation.Business.OrderDetails
 {
@@ -12,7 +13,8 @@ namespace PhotographyAutomation.Business.OrderDetails
         public int OriginalServiceId { get; set; }
         public int OriginalPrintServicePrice { get; set; }
         public string RetouchDescriptions { get; set; }
-        public bool IsAccepted { get; set; }
+        public int IsAccepted { get; set; }
+        public Bitmap AcceptRejectImage { get; set; }
 
 
         public bool HasSecondPrint1 { get; set; }
@@ -50,5 +52,10 @@ namespace PhotographyAutomation.Business.OrderDetails
         public int SecondPrint4ServiceCount { get; set; }
         public int SecondPrint4ServiceId { get; set; }
         public int SecondPrint4ServicePrice { get; set; }
+
+        public PhotoOrderDetails()
+        {
+            IsAccepted = 0;
+        }
     }
 }

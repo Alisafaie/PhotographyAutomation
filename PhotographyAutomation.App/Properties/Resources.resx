@@ -1420,4 +1420,7 @@
   <data name="iconfinder_previous_7769" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconfinder_previous_7769.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="iconfinder_flickr_317744" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconfinder_flickr_317744.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

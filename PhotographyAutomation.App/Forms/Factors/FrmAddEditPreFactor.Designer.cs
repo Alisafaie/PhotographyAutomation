@@ -52,10 +52,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelEx4 = new DevComponents.DotNetBar.PanelEx();
             this.circularProgressPictures = new DevComponents.DotNetBar.Controls.CircularProgress();
+            this.pictureBoxIsAccepted = new System.Windows.Forms.PictureBox();
             this.btnMagnifyPhoto = new System.Windows.Forms.Button();
             this.lblPhotoName = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.lblTotalPhotos = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -145,6 +144,7 @@
             this.panelEx3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelEx4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIsAccepted)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -483,12 +483,11 @@
             // 
             this.panelEx4.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx4.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx4.Controls.Add(this.label5);
             this.panelEx4.Controls.Add(this.circularProgressPictures);
+            this.panelEx4.Controls.Add(this.pictureBoxIsAccepted);
             this.panelEx4.Controls.Add(this.btnMagnifyPhoto);
             this.panelEx4.Controls.Add(this.lblPhotoName);
-            this.panelEx4.Controls.Add(this.button2);
-            this.panelEx4.Controls.Add(this.button1);
-            this.panelEx4.Controls.Add(this.label5);
             this.panelEx4.Controls.Add(this.lblTotalPhotos);
             this.panelEx4.Controls.Add(this.label2);
             this.panelEx4.Controls.Add(this.lblCurrentPhoto);
@@ -524,6 +523,15 @@
             this.circularProgressPictures.TabIndex = 135;
             this.circularProgressPictures.TabStop = false;
             // 
+            // pictureBoxIsAccepted
+            // 
+            this.pictureBoxIsAccepted.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_flickr_317744;
+            this.pictureBoxIsAccepted.Location = new System.Drawing.Point(3, 44);
+            this.pictureBoxIsAccepted.Name = "pictureBoxIsAccepted";
+            this.pictureBoxIsAccepted.Size = new System.Drawing.Size(16, 16);
+            this.pictureBoxIsAccepted.TabIndex = 98;
+            this.pictureBoxIsAccepted.TabStop = false;
+            // 
             // btnMagnifyPhoto
             // 
             this.btnMagnifyPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -547,47 +555,15 @@
             this.lblPhotoName.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblPhotoName.Size = new System.Drawing.Size(190, 16);
             this.lblPhotoName.TabIndex = 143;
-            this.lblPhotoName.Text = "label1";
+            this.lblPhotoName.Text = "---";
             this.lblPhotoName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(3, 21);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(20, 20);
-            this.button2.TabIndex = 130;
-            this.button2.TabStop = false;
-            this.toolTip1.SetToolTip(this.button2, "عکس تایید نشده");
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Visible = false;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(4, 39);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(20, 20);
-            this.button1.TabIndex = 131;
-            this.button1.TabStop = false;
-            this.toolTip1.SetToolTip(this.button1, "عکس تایید شده");
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Visible = false;
             // 
             // label5
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label5.Location = new System.Drawing.Point(121, 18);
+            this.label5.Location = new System.Drawing.Point(110, 18);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(14, 13);
             this.label5.TabIndex = 147;
@@ -596,22 +572,22 @@
             // lblTotalPhotos
             // 
             this.lblTotalPhotos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTotalPhotos.AutoSize = true;
             this.lblTotalPhotos.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalPhotos.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Underline);
             this.lblTotalPhotos.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblTotalPhotos.Location = new System.Drawing.Point(93, 18);
+            this.lblTotalPhotos.Location = new System.Drawing.Point(81, 18);
             this.lblTotalPhotos.Name = "lblTotalPhotos";
-            this.lblTotalPhotos.Size = new System.Drawing.Size(25, 13);
+            this.lblTotalPhotos.Size = new System.Drawing.Size(31, 13);
             this.lblTotalPhotos.TabIndex = 146;
-            this.lblTotalPhotos.Text = "999";
+            this.lblTotalPhotos.Text = "---";
+            this.lblTotalPhotos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label2.Location = new System.Drawing.Point(158, 18);
+            this.label2.Location = new System.Drawing.Point(147, 18);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 13);
             this.label2.TabIndex = 144;
@@ -620,14 +596,14 @@
             // lblCurrentPhoto
             // 
             this.lblCurrentPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCurrentPhoto.AutoSize = true;
             this.lblCurrentPhoto.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Underline);
             this.lblCurrentPhoto.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblCurrentPhoto.Location = new System.Drawing.Point(138, 18);
+            this.lblCurrentPhoto.Location = new System.Drawing.Point(120, 18);
             this.lblCurrentPhoto.Name = "lblCurrentPhoto";
-            this.lblCurrentPhoto.Size = new System.Drawing.Size(13, 13);
+            this.lblCurrentPhoto.Size = new System.Drawing.Size(31, 13);
             this.lblCurrentPhoto.TabIndex = 145;
-            this.lblCurrentPhoto.Text = "1";
+            this.lblCurrentPhoto.Text = "---";
+            this.lblCurrentPhoto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnNextPhoto
             // 
@@ -636,7 +612,7 @@
             this.btnNextPhoto.FlatAppearance.BorderSize = 0;
             this.btnNextPhoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNextPhoto.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_previous_7769;
-            this.btnNextPhoto.Location = new System.Drawing.Point(38, 9);
+            this.btnNextPhoto.Location = new System.Drawing.Point(37, 9);
             this.btnNextPhoto.Name = "btnNextPhoto";
             this.btnNextPhoto.Size = new System.Drawing.Size(30, 30);
             this.btnNextPhoto.TabIndex = 141;
@@ -652,7 +628,7 @@
             this.btnPreviousPhoto.FlatAppearance.BorderSize = 0;
             this.btnPreviousPhoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPreviousPhoto.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_next_7752;
-            this.btnPreviousPhoto.Location = new System.Drawing.Point(198, 9);
+            this.btnPreviousPhoto.Location = new System.Drawing.Point(197, 9);
             this.btnPreviousPhoto.Name = "btnPreviousPhoto";
             this.btnPreviousPhoto.Size = new System.Drawing.Size(30, 30);
             this.btnPreviousPhoto.TabIndex = 142;
@@ -1494,7 +1470,7 @@
             this.btnCancelPhotoOrderPrint.SymbolSize = 10F;
             this.btnCancelPhotoOrderPrint.TabIndex = 4;
             this.btnCancelPhotoOrderPrint.Text = "حذف";
-            this.btnCancelPhotoOrderPrint.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancelPhotoOrderPrint.Click += new System.EventHandler(this.btnCancelPhotoOrderPrint_Click);
             // 
             // btnOkPhotoOrderPrint
             // 
@@ -1900,6 +1876,7 @@
             this.panel1.ResumeLayout(false);
             this.panelEx4.ResumeLayout(false);
             this.panelEx4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIsAccepted)).EndInit();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).EndInit();
             this.groupBox3.ResumeLayout(false);
@@ -2029,8 +2006,6 @@
         private DevComponents.DotNetBar.Controls.CircularProgress circularProgressPictures;
         private System.Windows.Forms.Button btnMagnifyPhoto;
         private System.Windows.Forms.Label lblPhotoName;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblTotalPhotos;
         private System.Windows.Forms.Label label2;
@@ -2039,5 +2014,6 @@
         private System.Windows.Forms.Button btnPreviousPhoto;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBoxPreview;
+        private System.Windows.Forms.PictureBox pictureBoxIsAccepted;
     }
 }
