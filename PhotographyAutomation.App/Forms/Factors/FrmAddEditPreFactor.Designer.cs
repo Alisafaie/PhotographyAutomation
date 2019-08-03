@@ -49,11 +49,21 @@
             this.btnSavePreFactor = new DevComponents.DotNetBar.ButtonX();
             this.btnCancel = new DevComponents.DotNetBar.ButtonX();
             this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelEx4 = new DevComponents.DotNetBar.PanelEx();
+            this.circularProgressPictures = new DevComponents.DotNetBar.Controls.CircularProgress();
+            this.btnMagnifyPhoto = new System.Windows.Forms.Button();
             this.lblPhotoName = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.lblTotalPhotos = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblCurrentPhoto = new System.Windows.Forms.Label();
+            this.btnNextPhoto = new System.Windows.Forms.Button();
+            this.btnPreviousPhoto = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureBoxPreview = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.checkBoxLoadPrintSizeServices = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.txtOriginalPrintServicePrice = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -95,16 +105,9 @@
             this.cmbSecondPrintService1 = new System.Windows.Forms.ComboBox();
             this.cmbSecondPrintSize2 = new System.Windows.Forms.ComboBox();
             this.cmbSecondPrintSize1 = new System.Windows.Forms.ComboBox();
-            this.circularProgressPictures = new DevComponents.DotNetBar.Controls.CircularProgress();
             this.line3 = new DevComponents.DotNetBar.Controls.Line();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnNextPhoto = new System.Windows.Forms.Button();
-            this.btnPreviousPhoto = new System.Windows.Forms.Button();
-            this.btnMagnifyPhoto = new System.Windows.Forms.Button();
             this.btnCancelPhotoOrderPrint = new DevComponents.DotNetBar.ButtonX();
             this.btnOkPhotoOrderPrint = new DevComponents.DotNetBar.ButtonX();
-            this.pictureBoxPreview = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.datePickerOrderDate = new FreeControls.PersianDateTimePicker();
@@ -134,11 +137,16 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.bgWorkerGetOrderPrintInfo = new System.ComponentModel.BackgroundWorker();
             this.bgWorkerLoadPicture = new System.ComponentModel.BackgroundWorker();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip1.SuspendLayout();
             this.panelEx1.SuspendLayout();
             this.groupBoxPreviewPictures.SuspendLayout();
             this.panelEx2.SuspendLayout();
             this.panelEx3.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panelEx4.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.integerInputSecondPrintServiceCount4)).BeginInit();
@@ -149,7 +157,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.integerInputSecondPrintCount3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.integerInputSecondPrintCount2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.integerInputSecondPrintCount1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -194,7 +201,7 @@
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx1.Location = new System.Drawing.Point(0, 24);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(1024, 618);
+            this.panelEx1.Size = new System.Drawing.Size(1024, 594);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -213,7 +220,7 @@
             this.groupBoxPreviewPictures.Controls.Add(this.panelEx3);
             this.groupBoxPreviewPictures.Location = new System.Drawing.Point(12, 93);
             this.groupBoxPreviewPictures.Name = "groupBoxPreviewPictures";
-            this.groupBoxPreviewPictures.Size = new System.Drawing.Size(1000, 500);
+            this.groupBoxPreviewPictures.Size = new System.Drawing.Size(1000, 476);
             this.groupBoxPreviewPictures.TabIndex = 0;
             this.groupBoxPreviewPictures.TabStop = false;
             this.groupBoxPreviewPictures.Text = "اطلاعات عکس";
@@ -236,9 +243,9 @@
             this.panelEx2.Controls.Add(this.btnCancel);
             this.panelEx2.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx2.Location = new System.Drawing.Point(3, 341);
+            this.panelEx2.Location = new System.Drawing.Point(3, 331);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(994, 156);
+            this.panelEx2.Size = new System.Drawing.Size(994, 142);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -256,7 +263,7 @@
             this.textBoxX1.Border.Class = "TextBoxBorder";
             this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX1.Enabled = false;
-            this.textBoxX1.Location = new System.Drawing.Point(17, 27);
+            this.textBoxX1.Location = new System.Drawing.Point(17, 13);
             this.textBoxX1.Name = "textBoxX1";
             this.textBoxX1.PreventEnterBeep = true;
             this.textBoxX1.ReadOnly = true;
@@ -273,7 +280,7 @@
             this.txtOrderDescriptions.Border.Class = "TextBoxBorder";
             this.txtOrderDescriptions.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.txtOrderDescriptions, true);
-            this.txtOrderDescriptions.Location = new System.Drawing.Point(531, 61);
+            this.txtOrderDescriptions.Location = new System.Drawing.Point(531, 47);
             this.txtOrderDescriptions.Multiline = true;
             this.txtOrderDescriptions.Name = "txtOrderDescriptions";
             this.txtOrderDescriptions.PreventEnterBeep = true;
@@ -290,7 +297,7 @@
             // 
             // 
             this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.Location = new System.Drawing.Point(905, 63);
+            this.labelX6.Location = new System.Drawing.Point(905, 49);
             this.labelX6.Name = "labelX6";
             this.labelX6.Size = new System.Drawing.Size(83, 16);
             this.labelX6.TabIndex = 97;
@@ -304,7 +311,7 @@
             // 
             // 
             this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX11.Location = new System.Drawing.Point(415, 29);
+            this.labelX11.Location = new System.Drawing.Point(415, 15);
             this.labelX11.Name = "labelX11";
             this.labelX11.Size = new System.Drawing.Size(75, 16);
             this.labelX11.TabIndex = 86;
@@ -318,7 +325,7 @@
             // 
             // 
             this.labelX43.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX43.Location = new System.Drawing.Point(401, 63);
+            this.labelX43.Location = new System.Drawing.Point(401, 49);
             this.labelX43.Name = "labelX43";
             this.labelX43.Size = new System.Drawing.Size(89, 16);
             this.labelX43.TabIndex = 92;
@@ -333,7 +340,7 @@
             this.txtPrintServiceBrief.Border.Class = "TextBoxBorder";
             this.txtPrintServiceBrief.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.txtPrintServiceBrief, true);
-            this.txtPrintServiceBrief.Location = new System.Drawing.Point(17, 61);
+            this.txtPrintServiceBrief.Location = new System.Drawing.Point(17, 47);
             this.txtPrintServiceBrief.Multiline = true;
             this.txtPrintServiceBrief.Name = "txtPrintServiceBrief";
             this.txtPrintServiceBrief.PreventEnterBeep = true;
@@ -351,7 +358,7 @@
             // 
             // 
             this.labelX42.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX42.Location = new System.Drawing.Point(653, 29);
+            this.labelX42.Location = new System.Drawing.Point(653, 15);
             this.labelX42.Name = "labelX42";
             this.labelX42.Size = new System.Drawing.Size(82, 16);
             this.labelX42.TabIndex = 89;
@@ -366,7 +373,7 @@
             this.txtTotalPhotoServices.Border.Class = "TextBoxBorder";
             this.txtTotalPhotoServices.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.txtTotalPhotoServices, true);
-            this.txtTotalPhotoServices.Location = new System.Drawing.Point(531, 27);
+            this.txtTotalPhotoServices.Location = new System.Drawing.Point(531, 13);
             this.txtTotalPhotoServices.Name = "txtTotalPhotoServices";
             this.txtTotalPhotoServices.PreventEnterBeep = true;
             this.txtTotalPhotoServices.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -382,7 +389,7 @@
             // 
             // 
             this.labelX41.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX41.Location = new System.Drawing.Point(892, 29);
+            this.labelX41.Location = new System.Drawing.Point(892, 15);
             this.labelX41.Name = "labelX41";
             this.labelX41.Size = new System.Drawing.Size(93, 16);
             this.labelX41.TabIndex = 87;
@@ -397,7 +404,7 @@
             this.txtTotalSelectedPhotos.Border.Class = "TextBoxBorder";
             this.txtTotalSelectedPhotos.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.txtTotalSelectedPhotos, true);
-            this.txtTotalSelectedPhotos.Location = new System.Drawing.Point(771, 27);
+            this.txtTotalSelectedPhotos.Location = new System.Drawing.Point(771, 13);
             this.txtTotalSelectedPhotos.Name = "txtTotalSelectedPhotos";
             this.txtTotalSelectedPhotos.PreventEnterBeep = true;
             this.txtTotalSelectedPhotos.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -411,7 +418,7 @@
             this.btnSavePreFactor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSavePreFactor.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.highlighter1.SetHighlightOnFocus(this.btnSavePreFactor, true);
-            this.btnSavePreFactor.Location = new System.Drawing.Point(880, 130);
+            this.btnSavePreFactor.Location = new System.Drawing.Point(880, 116);
             this.btnSavePreFactor.Name = "btnSavePreFactor";
             this.btnSavePreFactor.Size = new System.Drawing.Size(108, 23);
             this.btnSavePreFactor.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -428,7 +435,7 @@
             this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.highlighter1.SetHighlightOnFocus(this.btnCancel, true);
-            this.btnCancel.Location = new System.Drawing.Point(800, 130);
+            this.btnCancel.Location = new System.Drawing.Point(800, 116);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -443,29 +450,18 @@
             // 
             this.panelEx3.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx3.Controls.Add(this.lblPhotoName);
-            this.panelEx3.Controls.Add(this.label5);
-            this.panelEx3.Controls.Add(this.lblTotalPhotos);
-            this.panelEx3.Controls.Add(this.label2);
-            this.panelEx3.Controls.Add(this.lblCurrentPhoto);
+            this.panelEx3.Controls.Add(this.panel1);
             this.panelEx3.Controls.Add(this.groupBox3);
             this.panelEx3.Controls.Add(this.groupBox1);
-            this.panelEx3.Controls.Add(this.circularProgressPictures);
             this.panelEx3.Controls.Add(this.line3);
-            this.panelEx3.Controls.Add(this.button2);
-            this.panelEx3.Controls.Add(this.button1);
-            this.panelEx3.Controls.Add(this.btnNextPhoto);
-            this.panelEx3.Controls.Add(this.btnPreviousPhoto);
-            this.panelEx3.Controls.Add(this.btnMagnifyPhoto);
             this.panelEx3.Controls.Add(this.btnCancelPhotoOrderPrint);
             this.panelEx3.Controls.Add(this.btnOkPhotoOrderPrint);
-            this.panelEx3.Controls.Add(this.pictureBoxPreview);
             this.panelEx3.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelEx3.Location = new System.Drawing.Point(3, 17);
             this.panelEx3.Name = "panelEx3";
             this.panelEx3.ScrollBarAppearance = DevComponents.DotNetBar.eScrollBarAppearance.ApplicationScroll;
-            this.panelEx3.Size = new System.Drawing.Size(994, 324);
+            this.panelEx3.Size = new System.Drawing.Size(994, 314);
             this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx3.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx3.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -474,27 +470,127 @@
             this.panelEx3.Style.GradientAngle = 90;
             this.panelEx3.TabIndex = 0;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.panelEx4);
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Location = new System.Drawing.Point(723, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(265, 298);
+            this.panel1.TabIndex = 65;
+            // 
+            // panelEx4
+            // 
+            this.panelEx4.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelEx4.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx4.Controls.Add(this.circularProgressPictures);
+            this.panelEx4.Controls.Add(this.btnMagnifyPhoto);
+            this.panelEx4.Controls.Add(this.lblPhotoName);
+            this.panelEx4.Controls.Add(this.button2);
+            this.panelEx4.Controls.Add(this.button1);
+            this.panelEx4.Controls.Add(this.label5);
+            this.panelEx4.Controls.Add(this.lblTotalPhotos);
+            this.panelEx4.Controls.Add(this.label2);
+            this.panelEx4.Controls.Add(this.lblCurrentPhoto);
+            this.panelEx4.Controls.Add(this.btnNextPhoto);
+            this.panelEx4.Controls.Add(this.btnPreviousPhoto);
+            this.panelEx4.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelEx4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelEx4.Location = new System.Drawing.Point(0, 236);
+            this.panelEx4.Name = "panelEx4";
+            this.panelEx4.Size = new System.Drawing.Size(265, 62);
+            this.panelEx4.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelEx4.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelEx4.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.panelEx4.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelEx4.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelEx4.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelEx4.Style.GradientAngle = 90;
+            this.panelEx4.TabIndex = 2;
+            // 
+            // circularProgressPictures
+            // 
+            this.circularProgressPictures.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.circularProgressPictures.AntiAlias = false;
+            // 
+            // 
+            // 
+            this.circularProgressPictures.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.circularProgressPictures.Location = new System.Drawing.Point(4, 2);
+            this.circularProgressPictures.Name = "circularProgressPictures";
+            this.circularProgressPictures.ProgressColor = System.Drawing.Color.RoyalBlue;
+            this.circularProgressPictures.Size = new System.Drawing.Size(20, 20);
+            this.circularProgressPictures.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
+            this.circularProgressPictures.TabIndex = 135;
+            this.circularProgressPictures.TabStop = false;
+            // 
+            // btnMagnifyPhoto
+            // 
+            this.btnMagnifyPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMagnifyPhoto.BackColor = System.Drawing.Color.Transparent;
+            this.btnMagnifyPhoto.FlatAppearance.BorderSize = 0;
+            this.btnMagnifyPhoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMagnifyPhoto.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_magnifier_1814075;
+            this.btnMagnifyPhoto.Location = new System.Drawing.Point(240, 39);
+            this.btnMagnifyPhoto.Name = "btnMagnifyPhoto";
+            this.btnMagnifyPhoto.Size = new System.Drawing.Size(20, 20);
+            this.btnMagnifyPhoto.TabIndex = 134;
+            this.btnMagnifyPhoto.TabStop = false;
+            this.btnMagnifyPhoto.UseVisualStyleBackColor = false;
+            // 
             // lblPhotoName
             // 
             this.lblPhotoName.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic);
             this.lblPhotoName.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblPhotoName.Location = new System.Drawing.Point(754, 305);
+            this.lblPhotoName.Location = new System.Drawing.Point(38, 44);
             this.lblPhotoName.Name = "lblPhotoName";
             this.lblPhotoName.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblPhotoName.Size = new System.Drawing.Size(204, 16);
-            this.lblPhotoName.TabIndex = 125;
+            this.lblPhotoName.Size = new System.Drawing.Size(190, 16);
+            this.lblPhotoName.TabIndex = 143;
             this.lblPhotoName.Text = "label1";
             this.lblPhotoName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.Location = new System.Drawing.Point(3, 21);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(20, 20);
+            this.button2.TabIndex = 130;
+            this.button2.TabStop = false;
+            this.toolTip1.SetToolTip(this.button2, "عکس تایید نشده");
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Visible = false;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(4, 39);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(20, 20);
+            this.button1.TabIndex = 131;
+            this.button1.TabStop = false;
+            this.toolTip1.SetToolTip(this.button1, "عکس تایید شده");
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Visible = false;
             // 
             // label5
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label5.Location = new System.Drawing.Point(843, 283);
+            this.label5.Location = new System.Drawing.Point(121, 18);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(14, 13);
-            this.label5.TabIndex = 128;
+            this.label5.TabIndex = 147;
             this.label5.Text = "از";
             // 
             // lblTotalPhotos
@@ -504,10 +600,10 @@
             this.lblTotalPhotos.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalPhotos.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Underline);
             this.lblTotalPhotos.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblTotalPhotos.Location = new System.Drawing.Point(817, 283);
+            this.lblTotalPhotos.Location = new System.Drawing.Point(93, 18);
             this.lblTotalPhotos.Name = "lblTotalPhotos";
             this.lblTotalPhotos.Size = new System.Drawing.Size(25, 13);
-            this.lblTotalPhotos.TabIndex = 127;
+            this.lblTotalPhotos.TabIndex = 146;
             this.lblTotalPhotos.Text = "999";
             // 
             // label2
@@ -515,10 +611,10 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label2.Location = new System.Drawing.Point(882, 283);
+            this.label2.Location = new System.Drawing.Point(158, 18);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 13);
-            this.label2.TabIndex = 125;
+            this.label2.TabIndex = 144;
             this.label2.Text = "عکس";
             // 
             // lblCurrentPhoto
@@ -527,11 +623,63 @@
             this.lblCurrentPhoto.AutoSize = true;
             this.lblCurrentPhoto.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Underline);
             this.lblCurrentPhoto.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblCurrentPhoto.Location = new System.Drawing.Point(862, 283);
+            this.lblCurrentPhoto.Location = new System.Drawing.Point(138, 18);
             this.lblCurrentPhoto.Name = "lblCurrentPhoto";
             this.lblCurrentPhoto.Size = new System.Drawing.Size(13, 13);
-            this.lblCurrentPhoto.TabIndex = 126;
+            this.lblCurrentPhoto.TabIndex = 145;
             this.lblCurrentPhoto.Text = "1";
+            // 
+            // btnNextPhoto
+            // 
+            this.btnNextPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNextPhoto.BackColor = System.Drawing.Color.Transparent;
+            this.btnNextPhoto.FlatAppearance.BorderSize = 0;
+            this.btnNextPhoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNextPhoto.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_previous_7769;
+            this.btnNextPhoto.Location = new System.Drawing.Point(38, 9);
+            this.btnNextPhoto.Name = "btnNextPhoto";
+            this.btnNextPhoto.Size = new System.Drawing.Size(30, 30);
+            this.btnNextPhoto.TabIndex = 141;
+            this.btnNextPhoto.TabStop = false;
+            this.toolTip1.SetToolTip(this.btnNextPhoto, "عکس بعدی");
+            this.btnNextPhoto.UseVisualStyleBackColor = false;
+            this.btnNextPhoto.Click += new System.EventHandler(this.btnNextPhoto_Click);
+            // 
+            // btnPreviousPhoto
+            // 
+            this.btnPreviousPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPreviousPhoto.BackColor = System.Drawing.Color.Transparent;
+            this.btnPreviousPhoto.FlatAppearance.BorderSize = 0;
+            this.btnPreviousPhoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPreviousPhoto.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_next_7752;
+            this.btnPreviousPhoto.Location = new System.Drawing.Point(198, 9);
+            this.btnPreviousPhoto.Name = "btnPreviousPhoto";
+            this.btnPreviousPhoto.Size = new System.Drawing.Size(30, 30);
+            this.btnPreviousPhoto.TabIndex = 142;
+            this.btnPreviousPhoto.TabStop = false;
+            this.toolTip1.SetToolTip(this.btnPreviousPhoto, "عکس قبلی");
+            this.btnPreviousPhoto.UseVisualStyleBackColor = false;
+            this.btnPreviousPhoto.Click += new System.EventHandler(this.btnPreviousPhoto_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.pictureBoxPreview);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(265, 236);
+            this.panel3.TabIndex = 1;
+            // 
+            // pictureBoxPreview
+            // 
+            this.pictureBoxPreview.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBoxPreview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxPreview.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxPreview.Name = "pictureBoxPreview";
+            this.pictureBoxPreview.Size = new System.Drawing.Size(265, 236);
+            this.pictureBoxPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxPreview.TabIndex = 129;
+            this.pictureBoxPreview.TabStop = false;
             // 
             // groupBox3
             // 
@@ -1321,22 +1469,6 @@
             this.cmbSecondPrintSize1.SelectedIndexChanged += new System.EventHandler(this.cmbSecondPrintSize1_SelectedIndexChanged);
             this.cmbSecondPrintSize1.EnabledChanged += new System.EventHandler(this.cmbSecondPrintSize1_EnabledChanged);
             // 
-            // circularProgressPictures
-            // 
-            this.circularProgressPictures.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.circularProgressPictures.AntiAlias = false;
-            // 
-            // 
-            // 
-            this.circularProgressPictures.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.circularProgressPictures.Location = new System.Drawing.Point(728, 13);
-            this.circularProgressPictures.Name = "circularProgressPictures";
-            this.circularProgressPictures.ProgressColor = System.Drawing.Color.RoyalBlue;
-            this.circularProgressPictures.Size = new System.Drawing.Size(20, 20);
-            this.circularProgressPictures.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
-            this.circularProgressPictures.TabIndex = 103;
-            this.circularProgressPictures.TabStop = false;
-            // 
             // line3
             // 
             this.line3.DashOffset = 1F;
@@ -1346,80 +1478,6 @@
             this.line3.Size = new System.Drawing.Size(1134, 23);
             this.line3.TabIndex = 64;
             this.line3.Text = "line3";
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(728, 248);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(20, 20);
-            this.button2.TabIndex = 22;
-            this.button2.TabStop = false;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Visible = false;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(964, 248);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(20, 20);
-            this.button1.TabIndex = 22;
-            this.button1.TabStop = false;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Visible = false;
-            // 
-            // btnNextPhoto
-            // 
-            this.btnNextPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNextPhoto.BackColor = System.Drawing.Color.Transparent;
-            this.btnNextPhoto.FlatAppearance.BorderSize = 0;
-            this.btnNextPhoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNextPhoto.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_previous_7769;
-            this.btnNextPhoto.Location = new System.Drawing.Point(762, 274);
-            this.btnNextPhoto.Name = "btnNextPhoto";
-            this.btnNextPhoto.Size = new System.Drawing.Size(30, 30);
-            this.btnNextPhoto.TabIndex = 22;
-            this.btnNextPhoto.TabStop = false;
-            this.btnNextPhoto.UseVisualStyleBackColor = false;
-            this.btnNextPhoto.Click += new System.EventHandler(this.btnNextPhoto_Click);
-            // 
-            // btnPreviousPhoto
-            // 
-            this.btnPreviousPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPreviousPhoto.BackColor = System.Drawing.Color.Transparent;
-            this.btnPreviousPhoto.FlatAppearance.BorderSize = 0;
-            this.btnPreviousPhoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPreviousPhoto.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_next_7752;
-            this.btnPreviousPhoto.Location = new System.Drawing.Point(922, 274);
-            this.btnPreviousPhoto.Name = "btnPreviousPhoto";
-            this.btnPreviousPhoto.Size = new System.Drawing.Size(30, 30);
-            this.btnPreviousPhoto.TabIndex = 22;
-            this.btnPreviousPhoto.TabStop = false;
-            this.btnPreviousPhoto.UseVisualStyleBackColor = false;
-            this.btnPreviousPhoto.Click += new System.EventHandler(this.btnPreviousPhoto_Click);
-            // 
-            // btnMagnifyPhoto
-            // 
-            this.btnMagnifyPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMagnifyPhoto.BackColor = System.Drawing.Color.Transparent;
-            this.btnMagnifyPhoto.FlatAppearance.BorderSize = 0;
-            this.btnMagnifyPhoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMagnifyPhoto.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_magnifier_1814075;
-            this.btnMagnifyPhoto.Location = new System.Drawing.Point(968, 13);
-            this.btnMagnifyPhoto.Name = "btnMagnifyPhoto";
-            this.btnMagnifyPhoto.Size = new System.Drawing.Size(20, 20);
-            this.btnMagnifyPhoto.TabIndex = 22;
-            this.btnMagnifyPhoto.TabStop = false;
-            this.btnMagnifyPhoto.UseVisualStyleBackColor = false;
             // 
             // btnCancelPhotoOrderPrint
             // 
@@ -1436,6 +1494,7 @@
             this.btnCancelPhotoOrderPrint.SymbolSize = 10F;
             this.btnCancelPhotoOrderPrint.TabIndex = 4;
             this.btnCancelPhotoOrderPrint.Text = "حذف";
+            this.btnCancelPhotoOrderPrint.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnOkPhotoOrderPrint
             // 
@@ -1453,17 +1512,6 @@
             this.btnOkPhotoOrderPrint.TabIndex = 3;
             this.btnOkPhotoOrderPrint.Text = "تائید";
             this.btnOkPhotoOrderPrint.Click += new System.EventHandler(this.btnOkPhotoOrderPrint_Click);
-            // 
-            // pictureBoxPreview
-            // 
-            this.pictureBoxPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxPreview.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBoxPreview.Location = new System.Drawing.Point(723, 10);
-            this.pictureBoxPreview.Name = "pictureBoxPreview";
-            this.pictureBoxPreview.Size = new System.Drawing.Size(269, 262);
-            this.pictureBoxPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxPreview.TabIndex = 5;
-            this.pictureBoxPreview.TabStop = false;
             // 
             // groupBox2
             // 
@@ -1794,7 +1842,7 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 620);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 596);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1024, 22);
             this.statusStrip1.TabIndex = 4;
@@ -1827,7 +1875,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(1024, 642);
+            this.ClientSize = new System.Drawing.Size(1024, 618);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panelEx1);
             this.Controls.Add(this.menuStrip1);
@@ -1849,7 +1897,11 @@
             this.panelEx2.ResumeLayout(false);
             this.panelEx2.PerformLayout();
             this.panelEx3.ResumeLayout(false);
-            this.panelEx3.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panelEx4.ResumeLayout(false);
+            this.panelEx4.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -1862,7 +1914,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.integerInputSecondPrintCount3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.integerInputSecondPrintCount2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.integerInputSecondPrintCount1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
@@ -1892,11 +1943,9 @@
         private DevComponents.DotNetBar.PanelEx panelEx2;
         private DevComponents.DotNetBar.PanelEx panelEx3;
         private DevComponents.DotNetBar.Controls.Line line3;
-        private System.Windows.Forms.Button btnMagnifyPhoto;
         private DevComponents.DotNetBar.ButtonX btnCancelPhotoOrderPrint;
         private DevComponents.DotNetBar.ButtonX btnOkPhotoOrderPrint;
         private DevComponents.DotNetBar.Controls.TextBoxX textPhotoRetouchDescription;
-        private System.Windows.Forms.PictureBox pictureBoxPreview;
         private DevComponents.DotNetBar.Controls.TextBoxX txtOrderDescriptions;
         private DevComponents.DotNetBar.LabelX labelX6;
         private DevComponents.DotNetBar.LabelX labelX43;
@@ -1915,7 +1964,6 @@
         private System.ComponentModel.BackgroundWorker bgWorkerLoadPrintSizeServices;
         private System.ComponentModel.BackgroundWorker bgWorkerGetOriginalPrintPrice;
         private System.ComponentModel.BackgroundWorker bgWorkerGetPrintServicePrice;
-        private DevComponents.DotNetBar.Controls.CircularProgress circularProgressPictures;
         private DevComponents.DotNetBar.Controls.TextBoxX txtCustomerName;
         private DevComponents.DotNetBar.Controls.TextBoxX txtOrderPrintCodeDate;
         private DevComponents.DotNetBar.Controls.TextBoxX txtOrderPrintCodeOrderId;
@@ -1975,14 +2023,21 @@
         private DevComponents.Editors.IntegerInput integerInputSecondPrintServiceCount3;
         private DevComponents.Editors.IntegerInput integerInputSecondPrintServiceCount2;
         private DevComponents.Editors.IntegerInput integerInputSecondPrintServiceCount1;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Panel panel1;
+        private DevComponents.DotNetBar.PanelEx panelEx4;
+        private DevComponents.DotNetBar.Controls.CircularProgress circularProgressPictures;
+        private System.Windows.Forms.Button btnMagnifyPhoto;
         private System.Windows.Forms.Label lblPhotoName;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblTotalPhotos;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblCurrentPhoto;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnNextPhoto;
         private System.Windows.Forms.Button btnPreviousPhoto;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.PictureBox pictureBoxPreview;
     }
 }

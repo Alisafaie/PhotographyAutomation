@@ -48,7 +48,7 @@ namespace PhotographyAutomation.App.Forms.Factors
             if (FileStreamsGuids.Any())
             {
                 LoadOriginalPrintSizes();
-                
+
                 //cmbOriginalPrintSize_SelectedIndexChanged(null, null);
                 GetOrderPrintInfo();
                 LoadPicture(FileStreamsGuids[_photoCursor]);
@@ -1830,7 +1830,8 @@ namespace PhotographyAutomation.App.Forms.Factors
                                             }
 
                                             if (integerInputSecondPrintServiceCount1.Value > 0)
-                                                currentOrderDetails.SecondPrint1ServiceCount = integerInputSecondPrintServiceCount1.Value;
+                                                currentOrderDetails.SecondPrint1ServiceCount = 
+                                                    integerInputSecondPrintServiceCount1.Value;
                                             if (int.TryParse(txtSecondPrintServicePrice1.Text.Replace(",", ""), out var result))
                                                 currentOrderDetails.SecondPrint1ServicePrice = result;
                                         }
@@ -1872,7 +1873,8 @@ namespace PhotographyAutomation.App.Forms.Factors
                                             }
 
                                             if (integerInputSecondPrintServiceCount2.Value > 0)
-                                                currentOrderDetails.SecondPrint2ServiceCount = integerInputSecondPrintServiceCount2.Value;
+                                                currentOrderDetails.SecondPrint2ServiceCount = 
+                                                    integerInputSecondPrintServiceCount2.Value;
                                             if (int.TryParse(txtSecondPrintServicePrice2.Text.Replace(",", ""), out var result))
                                                 currentOrderDetails.SecondPrint2ServicePrice = result;
                                         }
@@ -1914,7 +1916,8 @@ namespace PhotographyAutomation.App.Forms.Factors
                                             }
 
                                             if (integerInputSecondPrintServiceCount3.Value > 0)
-                                                currentOrderDetails.SecondPrint3ServiceCount = integerInputSecondPrintServiceCount3.Value;
+                                                currentOrderDetails.SecondPrint3ServiceCount = 
+                                                    integerInputSecondPrintServiceCount3.Value;
                                             if (int.TryParse(txtSecondPrintServicePrice3.Text.Replace(",", ""), out var result))
                                                 currentOrderDetails.SecondPrint3ServicePrice = result;
                                         }
@@ -1956,7 +1959,8 @@ namespace PhotographyAutomation.App.Forms.Factors
                                             }
 
                                             if (integerInputSecondPrintServiceCount4.Value > 0)
-                                                currentOrderDetails.SecondPrint4ServiceCount = integerInputSecondPrintServiceCount4.Value;
+                                                currentOrderDetails.SecondPrint4ServiceCount = 
+                                                    integerInputSecondPrintServiceCount4.Value;
                                             if (int.TryParse(txtSecondPrintServicePrice4.Text.Replace(",", ""), out var result))
                                                 currentOrderDetails.SecondPrint4ServicePrice = result;
                                         }
@@ -2270,7 +2274,6 @@ namespace PhotographyAutomation.App.Forms.Factors
             checkBoxLoadPrintSizeServices.Enabled = false;
             txtOriginalPrintSizePrice.ResetText();
             cmbOriginalPrintSize.SelectedIndex = -1;
-            //cmbOriginalPrintSize.SelectedValue = null;
         }
 
         private void btnPreviousPhoto_Click(object sender, EventArgs e)
