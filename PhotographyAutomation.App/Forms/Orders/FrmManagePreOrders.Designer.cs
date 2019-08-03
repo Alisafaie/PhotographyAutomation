@@ -384,6 +384,7 @@
             this.txtCustomerInfo.PreventEnterBeep = true;
             this.txtCustomerInfo.Size = new System.Drawing.Size(230, 21);
             this.txtCustomerInfo.TabIndex = 4;
+            this.txtCustomerInfo.Text = "***";
             this.txtCustomerInfo.WatermarkText = "(نام ، نام خانوادگی ، تلفن ثابت، تلفن همراه)";
             this.txtCustomerInfo.Enter += new System.EventHandler(this.txtCustomerInfo_Enter);
             this.txtCustomerInfo.Leave += new System.EventHandler(this.txtCustomerInfo_Leave);

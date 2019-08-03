@@ -602,7 +602,7 @@
             this.lblCurrentPhoto.Name = "lblCurrentPhoto";
             this.lblCurrentPhoto.Size = new System.Drawing.Size(31, 13);
             this.lblCurrentPhoto.TabIndex = 145;
-            this.lblCurrentPhoto.Text = "---";
+            this.lblCurrentPhoto.Text = "1";
             this.lblCurrentPhoto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnNextPhoto
@@ -1443,6 +1443,7 @@
             this.cmbSecondPrintSize1.Size = new System.Drawing.Size(99, 21);
             this.cmbSecondPrintSize1.TabIndex = 1;
             this.cmbSecondPrintSize1.SelectedIndexChanged += new System.EventHandler(this.cmbSecondPrintSize1_SelectedIndexChanged);
+            this.cmbSecondPrintSize1.SelectedValueChanged += new System.EventHandler(this.cmbSecondPrintSize1_SelectedValueChanged);
             this.cmbSecondPrintSize1.EnabledChanged += new System.EventHandler(this.cmbSecondPrintSize1_EnabledChanged);
             // 
             // line3
