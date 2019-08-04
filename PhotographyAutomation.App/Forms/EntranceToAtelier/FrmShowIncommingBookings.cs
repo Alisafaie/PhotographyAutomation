@@ -201,7 +201,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                     {
                         if (string.IsNullOrEmpty(txtCustomerInfo.Text.Trim()))
                         {
-                            RtlMessageBox.Show(
+                            MessageBox.Show(
                                 "اطلاعاتی از مشتری برای جستجو وارد نشده است.",
                                 "خطا در ورود اطلاعات",
                                 MessageBoxButtons.OK,
@@ -232,7 +232,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                 }
                 else
                 {
-                    RtlMessageBox.Show(
+                    MessageBox.Show(
                         "برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.",
                         "",
                         MessageBoxButtons.OK,
@@ -259,7 +259,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                 }
                 else
                 {
-                    RtlMessageBox.Show(
+                    MessageBox.Show(
                         "برای تاریخ مورد نظر رزرو ورود به آتلیه ثبت نگردیده است.",
                         "", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
@@ -285,7 +285,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                 }
                 else
                 {
-                    RtlMessageBox.Show(
+                    MessageBox.Show(
                         "برای تاریخ مورد نظر رزرو ورود به آتلیه ثبت نگردیده است.",
                         "", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
@@ -541,7 +541,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
             }
             else
             {
-                RtlMessageBox.Show(
+                MessageBox.Show(
                     "اطلاعات وضعیت رزروها از سیستم قابل دریافت نمی باشد." +
                     " لطفا فرم را بسته و مجددا باز کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید. ",
                     "خطا در دریافت اطلاعات از سیستم",

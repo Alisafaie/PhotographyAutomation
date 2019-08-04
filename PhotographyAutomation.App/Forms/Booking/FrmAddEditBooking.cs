@@ -236,7 +236,7 @@ namespace PhotographyAutomation.App.Forms.Booking
             }
             else
             {
-                RtlMessageBox.Show("اطلاعات مشتری قابل دریافت نمی باشد.", "خطا در دریافت اطلاعات مشتری",
+                MessageBox.Show("اطلاعات مشتری قابل دریافت نمی باشد.", "خطا در دریافت اطلاعات مشتری",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 DialogResult = DialogResult.Cancel;
             }
@@ -257,7 +257,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                 }
                 else
                 {
-                    RtlMessageBox.Show("اطلاعات انواع عکس ها از سیستم قابل دریافت نمی باشد.",
+                    MessageBox.Show("اطلاعات انواع عکس ها از سیستم قابل دریافت نمی باشد.",
                         "خطا در دریافت اطلاعات از سیستم", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     DialogResult = DialogResult.Cancel;
                 }
@@ -271,7 +271,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                 }
                 else
                 {
-                    RtlMessageBox.Show("اطلاعات انواع آتلیه ها از سیستم قابل دریافت نمی باشد.",
+                    MessageBox.Show("اطلاعات انواع آتلیه ها از سیستم قابل دریافت نمی باشد.",
                         "خطا در دریافت اطلاعات از سیستم", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     DialogResult = DialogResult.Cancel;
                 }
@@ -330,19 +330,19 @@ namespace PhotographyAutomation.App.Forms.Booking
                     {
                         if (BookingId == 0)
                         {
-                            RtlMessageBox.Show("نوبت مشتری با موفقیت در سیستم ثبت گردید.", "ثبت اطلاعات در سیستم",
+                            MessageBox.Show("نوبت مشتری با موفقیت در سیستم ثبت گردید.", "ثبت اطلاعات در سیستم",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
-                            RtlMessageBox.Show("نوبت مشتری با موفقیت در سیستم ویرایش گردید.", "ويرایش اطلاعات در سیستم",
+                            MessageBox.Show("نوبت مشتری با موفقیت در سیستم ویرایش گردید.", "ويرایش اطلاعات در سیستم",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         DialogResult = DialogResult.OK;
                     }
                     else
                     {
-                        RtlMessageBox.Show("متاسفانه اطلاعات رزرو در سیستم ثبت نگردید. " +
+                        MessageBox.Show("متاسفانه اطلاعات رزرو در سیستم ثبت نگردید. " +
                                            "لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
                             "خطا در ثبت اطلاعات در سیستم",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -542,7 +542,7 @@ namespace PhotographyAutomation.App.Forms.Booking
 
                 if (bookingStatus.Code == 40)
                 {
-                    RtlMessageBox.Show(
+                    MessageBox.Show(
                         "رزروی که وضعیت آن 'ورود به آتلیه' است ، قابل ویرایش نمی باشد.",
                         "عدم امکان تغییر وضعیت رزرو",
                         MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);

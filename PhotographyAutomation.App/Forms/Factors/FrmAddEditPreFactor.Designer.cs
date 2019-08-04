@@ -51,11 +51,11 @@
             this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelEx4 = new DevComponents.DotNetBar.PanelEx();
+            this.label5 = new System.Windows.Forms.Label();
             this.circularProgressPictures = new DevComponents.DotNetBar.Controls.CircularProgress();
             this.pictureBoxIsAccepted = new System.Windows.Forms.PictureBox();
             this.btnMagnifyPhoto = new System.Windows.Forms.Button();
             this.lblPhotoName = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.lblTotalPhotos = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblCurrentPhoto = new System.Windows.Forms.Label();
@@ -507,6 +507,17 @@
             this.panelEx4.Style.GradientAngle = 90;
             this.panelEx4.TabIndex = 2;
             // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label5.Location = new System.Drawing.Point(110, 18);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(14, 13);
+            this.label5.TabIndex = 147;
+            this.label5.Text = "از";
+            // 
             // circularProgressPictures
             // 
             this.circularProgressPictures.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -557,17 +568,6 @@
             this.lblPhotoName.TabIndex = 143;
             this.lblPhotoName.Text = "---";
             this.lblPhotoName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label5.Location = new System.Drawing.Point(110, 18);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(14, 13);
-            this.label5.TabIndex = 147;
-            this.label5.Text = "از";
             // 
             // lblTotalPhotos
             // 
@@ -1384,6 +1384,7 @@
             this.cmbSecondPrintSize4.Size = new System.Drawing.Size(99, 21);
             this.cmbSecondPrintSize4.TabIndex = 16;
             this.cmbSecondPrintSize4.SelectedIndexChanged += new System.EventHandler(this.cmbSecondPrintSize4_SelectedIndexChanged);
+            this.cmbSecondPrintSize4.SelectedValueChanged += new System.EventHandler(this.cmbSecondPrintSize4_SelectedValueChanged);
             this.cmbSecondPrintSize4.EnabledChanged += new System.EventHandler(this.cmbSecondPrintSize4_EnabledChanged);
             // 
             // cmbSecondPrintSize3
@@ -1399,6 +1400,7 @@
             this.cmbSecondPrintSize3.Size = new System.Drawing.Size(99, 21);
             this.cmbSecondPrintSize3.TabIndex = 11;
             this.cmbSecondPrintSize3.SelectedIndexChanged += new System.EventHandler(this.cmbSecondPrintSize3_SelectedIndexChanged);
+            this.cmbSecondPrintSize3.SelectedValueChanged += new System.EventHandler(this.cmbSecondPrintSize3_SelectedValueChanged);
             this.cmbSecondPrintSize3.EnabledChanged += new System.EventHandler(this.cmbSecondPrintSize3_EnabledChanged);
             // 
             // cmbSecondPrintService1
@@ -1428,6 +1430,7 @@
             this.cmbSecondPrintSize2.Size = new System.Drawing.Size(99, 21);
             this.cmbSecondPrintSize2.TabIndex = 6;
             this.cmbSecondPrintSize2.SelectedIndexChanged += new System.EventHandler(this.cmbSecondPrintSize2_SelectedIndexChanged);
+            this.cmbSecondPrintSize2.SelectedValueChanged += new System.EventHandler(this.cmbSecondPrintSize2_SelectedValueChanged);
             this.cmbSecondPrintSize2.EnabledChanged += new System.EventHandler(this.cmbSecondPrintSize2_EnabledChanged);
             // 
             // cmbSecondPrintSize1
@@ -1511,7 +1514,7 @@
             // 
             this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox8.Controls.Add(this.datePickerOrderDate);
-            this.groupBox8.Location = new System.Drawing.Point(300, 17);
+            this.groupBox8.Location = new System.Drawing.Point(56, 17);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(146, 53);
             this.groupBox8.TabIndex = 96;
@@ -1553,7 +1556,7 @@
             // 
             this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox7.Controls.Add(this.txtPhotographyType);
-            this.groupBox7.Location = new System.Drawing.Point(452, 17);
+            this.groupBox7.Location = new System.Drawing.Point(219, 17);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(146, 53);
             this.groupBox7.TabIndex = 96;
@@ -1581,7 +1584,7 @@
             // 
             this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox6.Controls.Add(this.txtCustomerName);
-            this.groupBox6.Location = new System.Drawing.Point(604, 17);
+            this.groupBox6.Location = new System.Drawing.Point(382, 17);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(179, 53);
             this.groupBox6.TabIndex = 96;
@@ -1613,7 +1616,7 @@
             this.groupBox9.Controls.Add(this.labelX4);
             this.groupBox9.Controls.Add(this.txtOrderCodeCustomerIdBookingId);
             this.groupBox9.Controls.Add(this.txtOrderCodeDate);
-            this.groupBox9.Location = new System.Drawing.Point(104, 17);
+            this.groupBox9.Location = new System.Drawing.Point(578, 17);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(190, 53);
             this.groupBox9.TabIndex = 95;
@@ -1684,7 +1687,7 @@
             this.groupBox5.Controls.Add(this.txtOrderPrintCodeCustomerId);
             this.groupBox5.Controls.Add(this.labelX2);
             this.groupBox5.Controls.Add(this.txtOrderPrintCodeOrderId);
-            this.groupBox5.Location = new System.Drawing.Point(789, 17);
+            this.groupBox5.Location = new System.Drawing.Point(785, 17);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(205, 53);
             this.groupBox5.TabIndex = 95;

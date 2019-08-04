@@ -189,7 +189,7 @@ namespace PhotographyAutomation.App.Forms.Admin
 
             if (_newSizeFlag)
             {
-                var dr = RtlMessageBox.Show(
+                var dr = MessageBox.Show(
                     "آیا توضیح خاصی برای این اندازه چاپ در نظر دارید؟",
                     "",
                     MessageBoxButtons.YesNo,
@@ -226,7 +226,7 @@ namespace PhotographyAutomation.App.Forms.Admin
             }
             else if (_deleteSizeFlag)
             {
-                var dr = RtlMessageBox.Show(
+                var dr = MessageBox.Show(
                     "آیا از حذف اندازه چاپ اطمینان دارید؟" + Environment.NewLine +
                     "در صورتی که برای این اندازه چاپ قبلا خدمات چاپ تعریف شده باشد،" + Environment.NewLine +
                     "قادر به حذف آن نبوده و ابتدا می بایست خدمات چاپ زیر مجموعه آن را حذف نمایید.",
@@ -461,7 +461,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                              x.SizeHeight == (decimal)doubleInputWidth.Value)).ToList();
                         if (result.Any())
                         {
-                            RtlMessageBox.Show(
+                            MessageBox.Show(
                                 "این اندازه چاپ در سیستم وجود دارد.",
                                 "",
                                 MessageBoxButtons.OK,
@@ -622,7 +622,7 @@ namespace PhotographyAutomation.App.Forms.Admin
         {
             if (e.Result != null)
             {
-                RtlMessageBox.Show("اندازه چاپ مورد نظر با موفقیت ویرایش گردید.");
+                MessageBox.Show("اندازه چاپ مورد نظر با موفقیت ویرایش گردید.");
                 if (bgWorkerLoadPrintSizes.IsBusy == false)
                     bgWorkerLoadPrintSizes.RunWorkerAsync();
             }
@@ -691,7 +691,7 @@ namespace PhotographyAutomation.App.Forms.Admin
             }
             else
             {
-                RtlMessageBox.Show(
+                MessageBox.Show(
                     "این اندازه چاپ حاوی تعدادی خدمات چاپ می باشد. " + Environment.NewLine +
                     "لطفا ابتدا آنها را حذف نموده و پس از آن اقدام به حذف این امدازه چاپ نمایید.",
                     "",
@@ -840,7 +840,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                 btnSavePrintServicePrice.Enabled = !_bgWorkerSaveNewPrintSizeService.IsBusy;
                 cpBtnSavePrintService.IsRunning = _bgWorkerSaveNewPrintSizeService.IsBusy;
                 if (cmbPrintSizes.SelectedItem is TblPrintSizePrices printSize && cmbPrintServices.SelectedItem is TblPrintServices printService)
-                    RtlMessageBox.Show($"خدمات {printService.PrintServiceName} برای اندازه چاپ {printSize.SizeHeight:F1} × {printSize.SizeWidth:F1} با موفقیت ثبت گردید.");
+                    MessageBox.Show($"خدمات {printService.PrintServiceName} برای اندازه چاپ {printSize.SizeHeight:F1} × {printSize.SizeWidth:F1} با موفقیت ثبت گردید.");
             }
         }
 
@@ -871,7 +871,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                 btnSavePrintServicePrice.Enabled = !_bgWorkerUpdatePrintSizeService.IsBusy;
                 cpBtnSavePrintService.IsRunning = _bgWorkerUpdatePrintSizeService.IsBusy;
                 if (cmbPrintSizes.SelectedItem is TblPrintSizePrices printSize && cmbPrintServices.SelectedItem is TblPrintServices printService)
-                    RtlMessageBox.Show($"خدمات {printService.PrintServiceName} برای اندازه چاپ {printSize.SizeHeight:F1} × {printSize.SizeWidth:F1} با موفقیت ویرایش گردید.");
+                    MessageBox.Show($"خدمات {printService.PrintServiceName} برای اندازه چاپ {printSize.SizeHeight:F1} × {printSize.SizeWidth:F1} با موفقیت ویرایش گردید.");
             }
         }
 

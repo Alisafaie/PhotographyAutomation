@@ -93,7 +93,7 @@ namespace PhotographyAutomation.App.Forms.Customers
 
             if (CheckInputs(cuInfo) == false)
             {
-                RtlMessageBox.Show("مقداری برای جستجو وارد نشده است.", "خطا - عدم ورود اطلاعات برای جستجو",
+                MessageBox.Show("مقداری برای جستجو وارد نشده است.", "خطا - عدم ورود اطلاعات برای جستجو",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -192,7 +192,7 @@ namespace PhotographyAutomation.App.Forms.Customers
                 }
                 catch (InvalidOperationException invalidOperationException)
                 {
-                    RtlMessageBox.Show("متاسفانه جستجوی شما در سیستم نتیجه ای در بر نداشت.", "", MessageBoxButtons.OK,
+                    MessageBox.Show("متاسفانه جستجوی شما در سیستم نتیجه ای در بر نداشت.", "", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     MessageBox.Show($@"invalidOperationException: {invalidOperationException.Message}");
                     dgvCustomers.Rows.Clear();
@@ -204,7 +204,7 @@ namespace PhotographyAutomation.App.Forms.Customers
             }
             else
             {
-                RtlMessageBox.Show("متاسفانه جستجوی شما در سیستم نتیجه ای در بر نداشت.", "", MessageBoxButtons.OK,
+                MessageBox.Show("متاسفانه جستجوی شما در سیستم نتیجه ای در بر نداشت.", "", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 dgvCustomers.Rows.Clear();
             }
@@ -310,7 +310,7 @@ namespace PhotographyAutomation.App.Forms.Customers
             }
             else
             {
-                RtlMessageBox.Show("هیچ آیتمی برای ثبت رزرواسیون انتخاب نشده است.", "خطا - عدم انتخاب مشتری",
+                MessageBox.Show("هیچ آیتمی برای ثبت رزرواسیون انتخاب نشده است.", "خطا - عدم انتخاب مشتری",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -353,7 +353,7 @@ namespace PhotographyAutomation.App.Forms.Customers
             }
             else
             {
-                RtlMessageBox.Show("هیچ آیتمی برای ویرایش انتخاب نشده است.", "خطا - عدم انتخاب مشتری",
+                MessageBox.Show("هیچ آیتمی برای ویرایش انتخاب نشده است.", "خطا - عدم انتخاب مشتری",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -367,7 +367,7 @@ namespace PhotographyAutomation.App.Forms.Customers
             }
             else
             {
-                RtlMessageBox.Show("هیچ اطلاعاتی برای جستجو وارد نشده است.", "خطا - عدم ورود اطلاعات مشتری",
+                MessageBox.Show("هیچ اطلاعاتی برای جستجو وارد نشده است.", "خطا - عدم ورود اطلاعات مشتری",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

@@ -152,7 +152,7 @@ namespace PhotographyAutomation.App.Forms.Customers
                     }
                     else
                     {
-                        RtlMessageBox.Show(
+                        MessageBox.Show(
                             "متاسفانه کاربری با شماره همراه داده شده یافت نگردید.",
                             "عدم وجود کاربر",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -220,7 +220,7 @@ namespace PhotographyAutomation.App.Forms.Customers
                 {
                     if (checkCustomerMobileNumber != null)
                     {
-                        RtlMessageBox.Show("این شماره موبایل قبلا برای کاربر دیگری ثبت شده است.", "خطا در ورود اطلاعات",
+                        MessageBox.Show("این شماره موبایل قبلا برای کاربر دیگری ثبت شده است.", "خطا در ورود اطلاعات",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                         txtMobile.Focus();
                     }
@@ -240,7 +240,7 @@ namespace PhotographyAutomation.App.Forms.Customers
                         }
                         else
                         {
-                            RtlMessageBox.Show(
+                            MessageBox.Show(
                                 "این شماره موبایل قبلا برای کاربر دیگری ثبت شده است.",
                                 "خطا در ورود اطلاعات",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -272,7 +272,7 @@ namespace PhotographyAutomation.App.Forms.Customers
                     DialogResult = DialogResult.OK;
                 }
                 else
-                    RtlMessageBox.Show(
+                    MessageBox.Show(
                         "خطا در ثبت اطلاعات کاربر",
                         "خطا در ثبت اطلاعات",
                         MessageBoxButtons.OK,
@@ -428,7 +428,7 @@ namespace PhotographyAutomation.App.Forms.Customers
             {
                 errorProvider1.Clear();
                 errorProvider1.SetError(txtNationalId, exception.Message);
-                //RtlMessageBox.Show(exception.Message, "خطا در ورود اطلاعات");
+                //MessageBox.Show(exception.Message, "خطا در ورود اطلاعات");
                 return false;
             }
             return true;

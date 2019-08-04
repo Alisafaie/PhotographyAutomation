@@ -86,7 +86,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                 }
                 catch (Exception exception)
                 {
-                    RtlMessageBox.Show(exception.Message);
+                    MessageBox.Show(exception.Message);
                 }
             }
             txtOrderCode.Focus();
@@ -128,7 +128,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                         var yearFolderPath = db.PhotoRepository.CreateYearFolderOfPhotos(year);
                         if (yearFolderPath != null)
                         {
-                            RtlMessageBox.Show("فولدر سال جاری ایجاد شد.");
+                            MessageBox.Show("فولدر سال جاری ایجاد شد.");
                         }
                     }
                     //yearFolderPath = checkYearFolder;
@@ -139,7 +139,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                         var monthFolderPath = db.PhotoRepository.CreateMonthFolderOfPhotos(month, year);
                         if (monthFolderPath != null)
                         {
-                            RtlMessageBox.Show("فولدر ماه عکس برداری ایجاد شد.");
+                            MessageBox.Show("فولدر ماه عکس برداری ایجاد شد.");
                         }
                     }
                     //monthFolderPath = checkMonthFolder;
@@ -152,7 +152,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                         var orderFolderPath = db.PhotoRepository.CreateCustomerFinancialFolder(OrderCode, month);
                         if (orderFolderPath != null)
                         {
-                            RtlMessageBox.Show("فولدر عکس های مشتری ایجاد شد.");
+                            MessageBox.Show("فولدر عکس های مشتری ایجاد شد.");
                         } // فولدر سفارش قبلا وجود نداشته است.
 
                         var parentPathName = OrderCode;
@@ -186,7 +186,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                             }
                             else
                             {
-                                RtlMessageBox.Show(
+                                MessageBox.Show(
                                     "ارسال فایل " + fileNamesUpload[i] + " با خطا مواجه شد.",
                                     "خطا در ارسال فایل", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -228,7 +228,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 
                             //else
                             //{
-                            //    var dialogResult = RtlMessageBox.Show(
+                            //    var dialogResult = MessageBox.Show(
                             //        "اطلاعات سفارش فابل دریافت نمی باشد.",
                             //        "عدم امکان دریافت اطلاعات سفارش",
                             //        MessageBoxButtons.RetryCancel, MessageBoxIcon.Error,
@@ -239,7 +239,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                             //    }
                             //}
 
-                            RtlMessageBox.Show("تمامی فایل ها با موفقیت ارسال گردید.", "", MessageBoxButtons.OK,
+                            MessageBox.Show("تمامی فایل ها با موفقیت ارسال گردید.", "", MessageBoxButtons.OK,
                                 MessageBoxIcon.Information);
                         }
                         else
@@ -262,12 +262,12 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                             }
 
                             db.Save();
-                            RtlMessageBox.Show(sb.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(sb.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
                     {
-                        DialogResult dialogResultReplaceFiles = RtlMessageBox.Show(
+                        DialogResult dialogResultReplaceFiles = MessageBox.Show(
                             "فولدر فاکتور مشتری در سیستم وجود دارد." +
                             Environment.NewLine +
                             "در صورت  تایید فایل های قبلی پاک شده و فایل های جدید جایگزین می گردند." +
@@ -318,7 +318,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                                 }
                                 else
                                 {
-                                    RtlMessageBox.Show(
+                                    MessageBox.Show(
                                         "ارسال فایل " + fileNamesUpload[i] + " با خطا مواجه شد.",
                                         "خطا در ارسال فایل", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -355,7 +355,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 
                                 //else
                                 //{
-                                //    var dialogResult = RtlMessageBox.Show(
+                                //    var dialogResult = MessageBox.Show(
                                 //        "اطلاعات سفارش فابل دریافت نمی باشد.",
                                 //        "عدم امکان دریافت اطلاعات سفارش",
                                 //        MessageBoxButtons.RetryCancel, MessageBoxIcon.Error,
@@ -366,7 +366,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                                 //    }
                                 //}
 
-                                RtlMessageBox.Show("تمامی فایل ها با موفقیت ارسال گردید.", "", MessageBoxButtons.OK,
+                                MessageBox.Show("تمامی فایل ها با موفقیت ارسال گردید.", "", MessageBoxButtons.OK,
                                     MessageBoxIcon.Information);
                             }
                             else
@@ -389,12 +389,12 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                                 }
 
                                 db.Save();
-                                RtlMessageBox.Show(sb.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show(sb.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                             //}
                             //else  becuase of void
                             //{
-                            //    DialogResult dr = RtlMessageBox.Show(
+                            //    DialogResult dr = MessageBox.Show(
                             //        "سیستم قادر به پاک کردن داده های قبلی نمی باشد. " + Environment.NewLine +
                             //        "دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.",
                             //        "خطا در حذف داده های قبلی");
@@ -461,7 +461,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                             //////    }
                             //////    else
                             //////    {
-                            //////        RtlMessageBox.Show(
+                            //////        MessageBox.Show(
                             //////            "ارسال فایل " + fileNamesUpload[i] + " با خطا مواجه شد.",
                             //////            "خطا در ارسال فایل", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -498,7 +498,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 
                             //////    //else
                             //////    //{
-                            //////    //    var dialogResult = RtlMessageBox.Show(
+                            //////    //    var dialogResult = MessageBox.Show(
                             //////    //        "اطلاعات سفارش فابل دریافت نمی باشد.",
                             //////    //        "عدم امکان دریافت اطلاعات سفارش",
                             //////    //        MessageBoxButtons.RetryCancel, MessageBoxIcon.Error,
@@ -509,7 +509,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                             //////    //    }
                             //////    //}
 
-                            //////    RtlMessageBox.Show("تمامی فایل ها با موفقیت ارسال گردید.", "", MessageBoxButtons.OK,
+                            //////    MessageBox.Show("تمامی فایل ها با موفقیت ارسال گردید.", "", MessageBoxButtons.OK,
                             //////        MessageBoxIcon.Information);
                             //////}
                             //////else
@@ -532,7 +532,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                             //////    }
 
                             //////    db.Save();
-                            //////    RtlMessageBox.Show(sb.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            //////    MessageBox.Show(sb.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             //////}
                             ////
 
@@ -542,7 +542,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 
 
 
-                    //var dr = RtlMessageBox.Show("آیا بازهم عکسی برای ارسال دارید؟", "",
+                    //var dr = MessageBox.Show("آیا بازهم عکسی برای ارسال دارید؟", "",
                     //    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                     //if (dr == DialogResult.Yes)
@@ -571,7 +571,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
         {
             if (string.IsNullOrEmpty(txtOrderCode.Text.Trim()))
             {
-                RtlMessageBox.Show("مقداری برای شماره فاکتور مشتری وارد نشده است.", "", MessageBoxButtons.OK,
+                MessageBox.Show("مقداری برای شماره فاکتور مشتری وارد نشده است.", "", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 txtOrderCode.Focus();
                 return false;
@@ -579,7 +579,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 
             if (_fileNamesAndPathsList.Count == 0)
             {
-                RtlMessageBox.Show("عکسی برای ارسال انتخاب نشده است.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("عکسی برای ارسال انتخاب نشده است.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;

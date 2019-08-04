@@ -74,7 +74,7 @@ namespace PhotographyAutomation.App.Forms.Admin
             using (var db = new UnitOfWork())
             {
                 string sizeDesc = null;
-                var dr = RtlMessageBox.Show(
+                var dr = MessageBox.Show(
                     "آیا برای این سایز چاپ توضیح خاصی مد نظر دارید؟",
                     "اضافه کردن توضیح برای سایز چاپ جدید",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question,
@@ -323,7 +323,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                         "این مقدار اندازه چاپ قبلا وارد شده است.",
                         doubleInputWidth, 5000);
 
-                    DialogResult dr = RtlMessageBox.Show(
+                    DialogResult dr = MessageBox.Show(
                         "این مقدار اندازه چاپ قبلا وارد شده است. " +
                         "آیا می خواهید آن را ویرایش کنید؟",
                         "",

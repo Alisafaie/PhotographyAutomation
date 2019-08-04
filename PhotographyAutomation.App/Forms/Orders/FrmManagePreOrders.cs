@@ -380,7 +380,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                         }
                         else
                         {
-                            var dialogResult = RtlMessageBox.Show(
+                            var dialogResult = MessageBox.Show(
                                 "برای این سفارش در سیستم عکسی ثبت نشده است. " + Environment.NewLine +
                                 "لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
                                 "خطا در دریافت لیست عکس های سفارش",
@@ -398,7 +398,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                     }
                     else
                     {
-                        var dialogResult = RtlMessageBox.Show(
+                        var dialogResult = MessageBox.Show(
                             "برای این سفارش در سیستم عکسی ثبت نشده است. " + Environment.NewLine +
                             "لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
                             "خطا در دریافت لیست عکس های سفارش",
@@ -412,7 +412,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                 }
                 else
                 {
-                    RtlMessageBox.Show(
+                    MessageBox.Show(
                         "برای رزرو انتخابی هنوز عکسی در سیستم قرار داده نشده است.",
                         "عدم آپلود عکس برای رزرو انتخابی",
                         MessageBoxButtons.OK,
@@ -469,7 +469,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                     }
                     else
                     {
-                        RtlMessageBox.Show(
+                        MessageBox.Show(
                             "هیچ سفارشی در سیستم ثبت نشده است.",
                             "",
                             MessageBoxButtons.OK,
@@ -499,7 +499,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                     }
                     else
                     {
-                        RtlMessageBox.Show(
+                        MessageBox.Show(
                             "برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.",
                             "",
                             MessageBoxButtons.OK,
@@ -532,7 +532,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                     }
                     else
                     {
-                        RtlMessageBox.Show(
+                        MessageBox.Show(
                             "برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.",
                             "",
                             MessageBoxButtons.OK,
@@ -563,7 +563,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                     }
                     else
                     {
-                        RtlMessageBox.Show(
+                        MessageBox.Show(
                             "برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.",
                             "",
                             MessageBoxButtons.OK,
@@ -594,7 +594,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                     }
                     else
                     {
-                        RtlMessageBox.Show(
+                        MessageBox.Show(
                             "برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.",
                             "",
                             MessageBoxButtons.OK,
@@ -625,7 +625,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                     }
                     else
                     {
-                        RtlMessageBox.Show(
+                        MessageBox.Show(
                             "برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.",
                             "",
                             MessageBoxButtons.OK,
@@ -722,7 +722,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                 if (string.IsNullOrEmpty(txtOrderCodeDate.Text.Trim()) ||
                     string.IsNullOrEmpty(txtOrderCodeCustomerIdBookingId.Text.Trim()))
                 {
-                    RtlMessageBox.Show(
+                    MessageBox.Show(
                         "شناسه سفارش به درستی وارد نشده است.",
                         "خطا در ورود اطلاعات",
                         MessageBoxButtons.OK,
@@ -735,7 +735,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             {
                 if (string.IsNullOrEmpty(txtCustomerInfo.Text.Trim()))
                 {
-                    RtlMessageBox.Show(
+                    MessageBox.Show(
                         "اطلاعات مشتری وارد نشده است.",
                         "خطا در ورود اطلاعات",
                         MessageBoxButtons.OK,
@@ -905,7 +905,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             }
             else
             {
-                RtlMessageBox.Show(
+                MessageBox.Show(
                     "اطلاعات وضعیت رزروها از سیستم قابل دریافت نمی باشد." +
                     " لطفا فرم را بسته و مجددا باز کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید. ",
                     "خطا در دریافت اطلاعات از سیستم",
@@ -966,7 +966,7 @@ namespace PhotographyAutomation.App.Forms.Orders
         //    {
         //        if (dgvUploads.SelectedRows[0] == null || dgvUploads.CurrentRow == null)
         //        {
-        //            RtlMessageBox.Show("رزروی برای مشاهده عکس انتخاب نشده است.");
+        //            MessageBox.Show("رزروی برای مشاهده عکس انتخاب نشده است.");
         //            return;
         //        }
 
@@ -991,7 +991,7 @@ namespace PhotographyAutomation.App.Forms.Orders
         //            }
         //            else
         //            {
-        //                var dialogResult = RtlMessageBox.Show(
+        //                var dialogResult = MessageBox.Show(
         //                    "برای این سفارش در سیستم عکسی ثبت نشده است. " + Environment.NewLine +
         //                    "لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
         //                    "خطا در دریافت لیست عکس های سفارش",
@@ -1008,7 +1008,7 @@ namespace PhotographyAutomation.App.Forms.Orders
         //    {
         //        if (exception.HResult == -2146233086)
         //        {
-        //            RtlMessageBox.Show("رزروی برای مشاهده عکس انتخاب نشده است.", "",
+        //            MessageBox.Show("رزروی برای مشاهده عکس انتخاب نشده است.", "",
         //                MessageBoxButtons.OK, MessageBoxIcon.Warning);
         //            return;
         //        }
@@ -1022,7 +1022,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             {
                 if (dgvUploads.SelectedRows[0] == null)
                 {
-                    RtlMessageBox.Show("رزروی برای دریافت عکس انتخاب نشده است.");
+                    MessageBox.Show("رزروی برای دریافت عکس انتخاب نشده است.");
                     return;
                 }
 
@@ -1030,7 +1030,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                 var orderCode = dgvUploads.SelectedRows[0]?.Cells["clmOrderCode"].Value.ToString();
                 if (photoPath == null)
                 {
-                    RtlMessageBox.Show(
+                    MessageBox.Show(
                         "عکسی برای این سفارش در سیستم ثبت نشده است.",
                         "خطا در دریافت عکس های سفارش",
                         MessageBoxButtons.OK,
@@ -1042,7 +1042,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                 bool resultDownload = DowloadOrderPhotos(photoPath, orderCode);
                 if (resultDownload)
                 {
-                    if (RtlMessageBox.Show(
+                    if (MessageBox.Show(
                             "فایل ها با موفقیت در سیستم دریافت شد. آیا فولدر نگهداری آنها باز شود؟",
                             "",
                             MessageBoxButtons.YesNo,
@@ -1060,7 +1060,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             {
                 if (exception.HResult == -2146233086)
                 {
-                    RtlMessageBox.Show("رزروی برای دریافت عکس انتخاب نشده است.", "",
+                    MessageBox.Show("رزروی برای دریافت عکس انتخاب نشده است.", "",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
@@ -1079,14 +1079,14 @@ namespace PhotographyAutomation.App.Forms.Orders
             {
                 if (dgvUploads.SelectedRows[0] == null || dgvUploads.CurrentRow == null)
                 {
-                    RtlMessageBox.Show("مشتری برای مشاهده اطلاعات انتخاب نشده است.");
+                    MessageBox.Show("مشتری برای مشاهده اطلاعات انتخاب نشده است.");
                     return;
                 }
 
                 if (!int.TryParse(dgvUploads.SelectedRows[0].Cells["clmCustomerId"].Value.ToString(),
                     out int customerId))
                 {
-                    RtlMessageBox.Show(
+                    MessageBox.Show(
                         "مشتری برای مشاهده اطلاعات انتخاب نشده است و یا اطلاعات مشتری قابل دریافت نمی باشد.");
                     return;
                 }
@@ -1103,7 +1103,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             {
                 if (exception.HResult == -2146233086)
                 {
-                    RtlMessageBox.Show("مشتری برای مشاهده اطلاعات انتخاب نشده است.", "",
+                    MessageBox.Show("مشتری برای مشاهده اطلاعات انتخاب نشده است.", "",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
@@ -1118,7 +1118,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             {
                 if (dgvUploads.SelectedRows[0] == null || dgvUploads.CurrentRow == null)
                 {
-                    RtlMessageBox.Show("رزروی برای مشاهده اطلاعات انتخاب نشده است.");
+                    MessageBox.Show("رزروی برای مشاهده اطلاعات انتخاب نشده است.");
                     return;
                 }
 
@@ -1128,7 +1128,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                     !int.TryParse(dgvUploads.SelectedRows[0].Cells["clmCustomerId"].Value.ToString(),
                         out int customerId))
                 {
-                    RtlMessageBox.Show(
+                    MessageBox.Show(
                         "رزروی برای مشاهده اطلاعات انتخاب نشده است و یا اطلاعات رزرو انتخابی قابل دریافت نمی باشد.");
                     return;
                 }
@@ -1147,7 +1147,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             {
                 if (exception.HResult == -2146233086)
                 {
-                    RtlMessageBox.Show("رزروی برای مشاهده اطلاعات انتخاب نشده است.", "",
+                    MessageBox.Show("رزروی برای مشاهده اطلاعات انتخاب نشده است.", "",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
@@ -1182,7 +1182,7 @@ namespace PhotographyAutomation.App.Forms.Orders
         //    {
         //        ////    مشاهده فرم آپلود عکس ها
         //        //ShowPhotoUploadingForm(orderId);  
-        //        RtlMessageBox.Show(
+        //        MessageBox.Show(
         //            "لطفا در ابتدا عکس های اصلی را در سیستم آپلود نمایید.",
         //            "ارسال عکس های اصلی به سرور",
         //            MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1197,7 +1197,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         //        if (_customerId == 0) // user clicked no
         //        {
-        //            RtlMessageBox.Show(
+        //            MessageBox.Show(
         //                "هیچ کاربری برای ثبت پیش فاکتور انتخاب نگردید. " +
         //                $"پیش فاکتور به نام {customerName} صادر می گردد.",
         //                "ثبت پیش فاکتور",
@@ -1231,7 +1231,7 @@ namespace PhotographyAutomation.App.Forms.Orders
         //        ////
         //        ////     2-مشاهده عکس های اصلی مشتری
 
-        //        var drDownloadAllCustomerPhotos = RtlMessageBox.Show(
+        //        var drDownloadAllCustomerPhotos = MessageBox.Show(
         //            "آیا می خواهید تمامی عکس ها روی سیستم دانلود شود؟",
         //            "",
         //            MessageBoxButtons.YesNo,
@@ -1243,7 +1243,7 @@ namespace PhotographyAutomation.App.Forms.Orders
         //            {
 
         //                ////     2-مشاهده عکس های اصلی مشتری
-        //                if (RtlMessageBox.Show(
+        //                if (MessageBox.Show(
         //                        "فایل ها با موفقیت در سیستم دریافت شد. " +
         //                        "آیا فولدر مربوطه باز شود؟",
         //                        "",
@@ -1263,7 +1263,7 @@ namespace PhotographyAutomation.App.Forms.Orders
         //        }
 
         //        ////     3-انتخاب فولدر حاوی عکس های انتخابی مشتری
-        //        var drCustomerSelectedPhotosReady = RtlMessageBox.Show(
+        //        var drCustomerSelectedPhotosReady = MessageBox.Show(
         //            "آیا عکس های انتخابی مشتری آماده آپلود است؟",
         //            "",
         //            MessageBoxButtons.YesNo,
@@ -1295,7 +1295,7 @@ namespace PhotographyAutomation.App.Forms.Orders
         //    }
         //    else if (tt is Exception exception)
         //    {
-        //        RtlMessageBox.Show(
+        //        MessageBox.Show(
         //            "دریافت اطلاعات پیش فاکتورهای قبلی مشتری از سیستم با مشکل مواجه شد. " +
         //            "لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید." + Environment.NewLine +
         //            "Message: " + exception.Message + Environment.NewLine +
@@ -1374,7 +1374,7 @@ namespace PhotographyAutomation.App.Forms.Orders
         //    if (CustomerSelectedFilesIsUploadedBefore() == false)
         //    {
         //        //چک کن ببین قبلا فایل  ها دانلود شده است؟
-        //        var drDownloadAllCustomerPhotos = RtlMessageBox.Show(
+        //        var drDownloadAllCustomerPhotos = MessageBox.Show(
         //            "آیا می خواهید تمامی عکس ها روی سیستم دانلود شود؟",
         //            "",
         //            MessageBoxButtons.YesNo,
@@ -1384,7 +1384,7 @@ namespace PhotographyAutomation.App.Forms.Orders
         //            var photoPath = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
         //            if (DowloadOrderPhotos(photoPath, orderCode)) //=>_downloadedAllPhotosPath
         //            {
-        //                if (RtlMessageBox.Show(
+        //                if (MessageBox.Show(
         //                        "فایل ها با موفقیت در سیستم دریافت شد. " +
         //                        "آیا فولدر مربوطه باز شود؟",
         //                        "",
@@ -1405,7 +1405,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
 
         //        ////اگر عکس های انتخابی مشتری آماده شده است ولی هنوز آپلود نشده است. 
-        //        var drCustomerSelectedPhotosReady = RtlMessageBox.Show(
+        //        var drCustomerSelectedPhotosReady = MessageBox.Show(
         //            "آیا عکس های انتخابی مشتری آماده آپلود است؟",
         //            "",
         //            MessageBoxButtons.YesNo,
@@ -1436,7 +1436,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         //        if (_customerId == 0) // user clicked no
         //        {
-        //            RtlMessageBox.Show(
+        //            MessageBox.Show(
         //                "هیچ کاربری برای ثبت پیش فاکتور انتخاب نگردید. " +
         //                $"پیش فاکتور به نام {customerName} صادر می گردد.",
         //                "ثبت پیش فاکتور",
@@ -1505,7 +1505,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         private static bool CheckPreFactorIssuedForThisCustomer(string customerName)
         {
-            DialogResult dr = RtlMessageBox.Show(
+            DialogResult dr = MessageBox.Show(
                 $"آیا پیش فاکتور به نام {customerName} صادر گردد؟",
                 "صدور فاکتور",
                 MessageBoxButtons.YesNo,
@@ -1572,7 +1572,7 @@ namespace PhotographyAutomation.App.Forms.Orders
         /*********************************************************************************************************/
         private static void ShowException(Exception exception)
         {
-            RtlMessageBox.Show("خطا در سیستم.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("خطا در سیستم.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             var sb = new StringBuilder();
             sb.Append("Exception: " + Environment.NewLine);
@@ -1592,7 +1592,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             ////    آیا اصلا رکوردی از دیتاگرید ویو انتخاب شده است؟
             if (dgvUploads.SelectedRows[0] == null || dgvUploads.CurrentRow == null)
             {
-                RtlMessageBox.Show("رزروی برای مشاهده عکس انتخاب نشده است.");
+                MessageBox.Show("رزروی برای مشاهده عکس انتخاب نشده است.");
                 return;
             }
 
@@ -1605,7 +1605,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             {
                 if (orderFilesIsUploaded.Any())
                 {
-                    RtlMessageBox.Show(
+                    MessageBox.Show(
                         "عکس های این سفارش قبلا آپلود شده است.",
                         "",
                         MessageBoxButtons.OK,
@@ -1627,7 +1627,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                     }
                     else if (tt == null)
                     {
-                        RtlMessageBox.Show("خطا در دریافت اطلاعات سفارش." +
+                        MessageBox.Show("خطا در دریافت اطلاعات سفارش." +
                                            "لطفا دوباره تلاش کنید و در صورت تکرار با مدیر  سیستم تماس بگیرید.");
                     }
                     else if (tt is Exception exception)
@@ -1702,7 +1702,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             ////    آیا اصلا رکوردی از دیتاگرید ویو انتخاب شده است؟
             if (dgvUploads.SelectedRows[0] == null || dgvUploads.CurrentRow == null)
             {
-                RtlMessageBox.Show("رزروی برای مشاهده عکس انتخاب نشده است.");
+                MessageBox.Show("رزروی برای مشاهده عکس انتخاب نشده است.");
                 return;
             }
 
@@ -1741,7 +1741,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                     }
                     else
                     {
-                        var dialogResult = RtlMessageBox.Show(
+                        var dialogResult = MessageBox.Show(
                             "برای این سفارش در سیستم عکسی ثبت نشده است. " + Environment.NewLine +
                             "لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
                             "خطا در دریافت لیست عکس های سفارش",
@@ -1758,7 +1758,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                 {
                     if (exception.HResult == -2146233086)
                     {
-                        RtlMessageBox.Show("رزروی برای مشاهده عکس انتخاب نشده است.", "",
+                        MessageBox.Show("رزروی برای مشاهده عکس انتخاب نشده است.", "",
                             MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
@@ -1767,7 +1767,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                 }
                 else
                 {
-                    RtlMessageBox.Show("سیستم قادر به نمایش عکس های مشتری نمی باشد. " +
+                    MessageBox.Show("سیستم قادر به نمایش عکس های مشتری نمی باشد. " +
                                        "لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.");
                 }
             }
@@ -1798,7 +1798,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             {
                 if (dgvUploads.SelectedRows[0] == null)
                 {
-                    RtlMessageBox.Show("رزروی برای دریافت عکس انتخاب نشده است.");
+                    MessageBox.Show("رزروی برای دریافت عکس انتخاب نشده است.");
                     return;
                 }
 
@@ -1806,7 +1806,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                 var orderCode = dgvUploads.SelectedRows[0]?.Cells["clmOrderCode"].Value.ToString();
                 if (photoPath == null)
                 {
-                    RtlMessageBox.Show(
+                    MessageBox.Show(
                         "عکسی برای این سفارش در سیستم ثبت نشده است.",
                         "خطا در دریافت عکس های سفارش",
                         MessageBoxButtons.OK,
@@ -1818,7 +1818,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                 bool resultDownload = DowloadOrderPhotos(photoPath, orderCode);
                 if (resultDownload)
                 {
-                    if (RtlMessageBox.Show(
+                    if (MessageBox.Show(
                             "فایل ها با موفقیت در سیستم دریافت شد. آیا فولدر نگهداری آنها باز شود؟",
                             "",
                             MessageBoxButtons.YesNo,
@@ -1836,7 +1836,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             {
                 if (exception.HResult == -2146233086)
                 {
-                    RtlMessageBox.Show("رزروی برای دریافت عکس انتخاب نشده است.", "",
+                    MessageBox.Show("رزروی برای دریافت عکس انتخاب نشده است.", "",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
@@ -1865,7 +1865,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                     }
                     else
                     {
-                        RtlMessageBox.Show("قبلا این عکس ها در مسیر انتخابی دریافت شده است.", "", MessageBoxButtons.OK,
+                        MessageBox.Show("قبلا این عکس ها در مسیر انتخابی دریافت شده است.", "", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                     }
                 }
@@ -1897,7 +1897,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                                 var directoryPathOrderCode = CreateOrderCodeDirectory(orderCode, directoryPathOrders);
                                 if (directoryPathOrders == null || directoryPathOrderCode == null)
                                 {
-                                    DialogResult drCreateOrderFolders = RtlMessageBox.Show(
+                                    DialogResult drCreateOrderFolders = MessageBox.Show(
                                         "خطا در ساخت فولدر های مربوط به سفارش." +
                                         Environment.NewLine +
                                         " لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.",
@@ -1923,7 +1923,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                                     Debug.Assert(file.fileSize != null, "file.fileSize != null");
                                     if (length == file.fileSize.Value)
                                     {
-                                        dr = RtlMessageBox.Show(
+                                        dr = MessageBox.Show(
                                             $"فایل  {file.name}  قبلا در سیستم ثبت شده است. آیا می خواهید بازنویسی شود؟  " +
                                             Environment.NewLine +
                                             "در صورت تایید محتوای فایل قبلی از بین می رود." +
@@ -1936,7 +1936,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                                     }
                                     else
                                     {
-                                        dr = RtlMessageBox.Show(
+                                        dr = MessageBox.Show(
                                             "فایلی با همین نام ولی با حجم متفاوت در مسیر دریافت عکس ها وجود دارد. " +
                                             Environment.NewLine +
                                             "آیا می خواهید فایل روی سیستم شما بازنویسی شود؟" +
@@ -1962,7 +1962,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                                         }
                                         else
                                         {
-                                            RtlMessageBox.Show(
+                                            MessageBox.Show(
                                                 $"ذخیره فایل با نام {file.name} " +
                                                 " با مشکل مواجه شد. حجم فایل سرور با فایل ذخیره شده تطابق ندارد.",
                                                 "خطا در ذخیره فایل در سیستم کاربر",
@@ -1984,7 +1984,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                                         }
                                         else
                                         {
-                                            RtlMessageBox.Show(
+                                            MessageBox.Show(
                                                 $"ذخیره فایل با نام {file.name} " +
                                                 " با مشکل مواجه شد. حجم فایل سرور با فایل ذخیره شده تطابق ندارد.",
                                                 "خطا در ذخیره فایل در سیستم کاربر",
@@ -2089,7 +2089,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             catch (ArgumentOutOfRangeException argumentOutOfRangeException)
             {
                 if (argumentOutOfRangeException.HResult == -2146233086)
-                    RtlMessageBox.Show("رزروی برای مشاهده عکس انتخاب نشده است.", "", MessageBoxButtons.OK,
+                    MessageBox.Show("رزروی برای مشاهده عکس انتخاب نشده است.", "", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 return;
             }
@@ -2106,7 +2106,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
             if (parentPathLocator == null)
             {
-                RtlMessageBox.Show(
+                MessageBox.Show(
                     "برای رزرو انتخابی هنوز عکسی در سیستم قرار داده نشده است.",
                     "عدم آپلود عکس برای رزرو انتخابی",
                     MessageBoxButtons.OK,
@@ -2142,7 +2142,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                 }
                 else
                 {
-                    var dialogResult = RtlMessageBox.Show(
+                    var dialogResult = MessageBox.Show(
                         "برای این سفارش در سیستم عکسی ثبت نشده است. " + Environment.NewLine +
                         "لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
                         "خطا در دریافت لیست عکس های سفارش",
@@ -2160,7 +2160,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             }
             else
             {
-                var dialogResult = RtlMessageBox.Show(
+                var dialogResult = MessageBox.Show(
                     "برای این سفارش در سیستم عکسی ثبت نشده است. " + Environment.NewLine +
                     "لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
                     "خطا در دریافت لیست عکس های سفارش",
