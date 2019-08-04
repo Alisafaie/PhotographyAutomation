@@ -542,6 +542,7 @@
             this.pictureBoxIsAccepted.Size = new System.Drawing.Size(16, 16);
             this.pictureBoxIsAccepted.TabIndex = 98;
             this.pictureBoxIsAccepted.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBoxIsAccepted, "وضعیت عکس هنوز تایید یا حذف نشده است.");
             // 
             // btnMagnifyPhoto
             // 
