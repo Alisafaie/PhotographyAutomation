@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Convertor\DateConvertor.cs" />
     <Compile Include="Convertor\FileConvertor.cs" />
+    <Compile Include="Convertor\ImageConvertor.cs" />
     <Compile Include="ExtentionMethods\DateHelper.cs" />
     <Compile Include="ExtentionMethods\ImageHelper.cs" />
     <Compile Include="ExtentionMethods\NationalIdHelper.cs" />

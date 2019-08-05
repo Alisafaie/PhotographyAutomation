@@ -250,7 +250,7 @@
             this.panelEx2.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.panelEx2.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx2.Style.GradientAngle = 90;
-            this.panelEx2.TabIndex = 1;
+            this.panelEx2.TabIndex = 0;
             // 
             // textBoxX1
             // 
@@ -503,7 +503,7 @@
             this.panelEx4.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.panelEx4.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx4.Style.GradientAngle = 90;
-            this.panelEx4.TabIndex = 2;
+            this.panelEx4.TabIndex = 0;
             // 
             // label5
             // 
@@ -555,6 +555,7 @@
             this.btnMagnifyPhoto.TabIndex = 134;
             this.btnMagnifyPhoto.TabStop = false;
             this.btnMagnifyPhoto.UseVisualStyleBackColor = false;
+            this.btnMagnifyPhoto.Click += new System.EventHandler(this.btnMagnifyPhoto_Click);
             // 
             // lblPhotoName
             // 
@@ -614,7 +615,7 @@
             this.btnNextPhoto.Location = new System.Drawing.Point(37, 9);
             this.btnNextPhoto.Name = "btnNextPhoto";
             this.btnNextPhoto.Size = new System.Drawing.Size(30, 30);
-            this.btnNextPhoto.TabIndex = 141;
+            this.btnNextPhoto.TabIndex = 0;
             this.btnNextPhoto.TabStop = false;
             this.toolTip1.SetToolTip(this.btnNextPhoto, "عکس بعدی");
             this.btnNextPhoto.UseVisualStyleBackColor = false;
@@ -630,7 +631,7 @@
             this.btnPreviousPhoto.Location = new System.Drawing.Point(197, 9);
             this.btnPreviousPhoto.Name = "btnPreviousPhoto";
             this.btnPreviousPhoto.Size = new System.Drawing.Size(30, 30);
-            this.btnPreviousPhoto.TabIndex = 142;
+            this.btnPreviousPhoto.TabIndex = 1;
             this.btnPreviousPhoto.TabStop = false;
             this.toolTip1.SetToolTip(this.btnPreviousPhoto, "عکس قبلی");
             this.btnPreviousPhoto.UseVisualStyleBackColor = false;
@@ -670,7 +671,7 @@
             this.groupBox3.Location = new System.Drawing.Point(6, 3);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(711, 127);
-            this.groupBox3.TabIndex = 1;
+            this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "اصل چاپ";
             // 
@@ -831,7 +832,7 @@
             this.groupBox1.Location = new System.Drawing.Point(6, 141);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(711, 131);
-            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "اضافه چاپ";
             // 
@@ -852,7 +853,7 @@
             this.integerInputSecondPrintServiceCount4.Name = "integerInputSecondPrintServiceCount4";
             this.integerInputSecondPrintServiceCount4.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.integerInputSecondPrintServiceCount4.Size = new System.Drawing.Size(48, 21);
-            this.integerInputSecondPrintServiceCount4.TabIndex = 137;
+            this.integerInputSecondPrintServiceCount4.TabIndex = 23;
             this.integerInputSecondPrintServiceCount4.Value = 1;
             this.integerInputSecondPrintServiceCount4.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             this.integerInputSecondPrintServiceCount4.WatermarkText = "تعداد";
@@ -875,7 +876,7 @@
             this.integerInputSecondPrintServiceCount3.Name = "integerInputSecondPrintServiceCount3";
             this.integerInputSecondPrintServiceCount3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.integerInputSecondPrintServiceCount3.Size = new System.Drawing.Size(48, 21);
-            this.integerInputSecondPrintServiceCount3.TabIndex = 136;
+            this.integerInputSecondPrintServiceCount3.TabIndex = 17;
             this.integerInputSecondPrintServiceCount3.Value = 1;
             this.integerInputSecondPrintServiceCount3.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             this.integerInputSecondPrintServiceCount3.WatermarkText = "تعداد";
@@ -898,7 +899,7 @@
             this.integerInputSecondPrintServiceCount2.Name = "integerInputSecondPrintServiceCount2";
             this.integerInputSecondPrintServiceCount2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.integerInputSecondPrintServiceCount2.Size = new System.Drawing.Size(48, 21);
-            this.integerInputSecondPrintServiceCount2.TabIndex = 135;
+            this.integerInputSecondPrintServiceCount2.TabIndex = 11;
             this.integerInputSecondPrintServiceCount2.Value = 1;
             this.integerInputSecondPrintServiceCount2.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             this.integerInputSecondPrintServiceCount2.WatermarkText = "تعداد";
@@ -921,7 +922,7 @@
             this.integerInputSecondPrintServiceCount1.Name = "integerInputSecondPrintServiceCount1";
             this.integerInputSecondPrintServiceCount1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.integerInputSecondPrintServiceCount1.Size = new System.Drawing.Size(48, 21);
-            this.integerInputSecondPrintServiceCount1.TabIndex = 134;
+            this.integerInputSecondPrintServiceCount1.TabIndex = 5;
             this.integerInputSecondPrintServiceCount1.Value = 1;
             this.integerInputSecondPrintServiceCount1.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             this.integerInputSecondPrintServiceCount1.WatermarkText = "تعداد";
@@ -944,7 +945,7 @@
             this.integerInputSecondPrintCount4.Name = "integerInputSecondPrintCount4";
             this.integerInputSecondPrintCount4.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.integerInputSecondPrintCount4.Size = new System.Drawing.Size(48, 21);
-            this.integerInputSecondPrintCount4.TabIndex = 17;
+            this.integerInputSecondPrintCount4.TabIndex = 20;
             this.integerInputSecondPrintCount4.Value = 1;
             this.integerInputSecondPrintCount4.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             this.integerInputSecondPrintCount4.WatermarkText = "تعداد";
@@ -967,7 +968,7 @@
             this.integerInputSecondPrintCount3.Name = "integerInputSecondPrintCount3";
             this.integerInputSecondPrintCount3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.integerInputSecondPrintCount3.Size = new System.Drawing.Size(48, 21);
-            this.integerInputSecondPrintCount3.TabIndex = 12;
+            this.integerInputSecondPrintCount3.TabIndex = 14;
             this.integerInputSecondPrintCount3.Value = 1;
             this.integerInputSecondPrintCount3.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             this.integerInputSecondPrintCount3.WatermarkText = "تعداد";
@@ -990,7 +991,7 @@
             this.integerInputSecondPrintCount2.Name = "integerInputSecondPrintCount2";
             this.integerInputSecondPrintCount2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.integerInputSecondPrintCount2.Size = new System.Drawing.Size(48, 21);
-            this.integerInputSecondPrintCount2.TabIndex = 7;
+            this.integerInputSecondPrintCount2.TabIndex = 8;
             this.integerInputSecondPrintCount2.Value = 1;
             this.integerInputSecondPrintCount2.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             this.integerInputSecondPrintCount2.WatermarkText = "تعداد";
@@ -1032,7 +1033,7 @@
             this.checkBoxLoadSecondPrintServices4.Name = "checkBoxLoadSecondPrintServices4";
             this.checkBoxLoadSecondPrintServices4.Size = new System.Drawing.Size(76, 16);
             this.checkBoxLoadSecondPrintServices4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxLoadSecondPrintServices4.TabIndex = 18;
+            this.checkBoxLoadSecondPrintServices4.TabIndex = 21;
             this.checkBoxLoadSecondPrintServices4.Text = "خدمات چاپ";
             this.checkBoxLoadSecondPrintServices4.CheckedChanged += new System.EventHandler(this.checkBoxLoadSecondPrintServices_CheckedChanged);
             // 
@@ -1049,7 +1050,7 @@
             this.checkBoxLoadSecondPrintServices3.Name = "checkBoxLoadSecondPrintServices3";
             this.checkBoxLoadSecondPrintServices3.Size = new System.Drawing.Size(76, 16);
             this.checkBoxLoadSecondPrintServices3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxLoadSecondPrintServices3.TabIndex = 13;
+            this.checkBoxLoadSecondPrintServices3.TabIndex = 15;
             this.checkBoxLoadSecondPrintServices3.Text = "خدمات چاپ";
             this.checkBoxLoadSecondPrintServices3.CheckedChanged += new System.EventHandler(this.checkBoxLoadSecondPrintServices3_CheckedChanged);
             // 
@@ -1066,7 +1067,7 @@
             this.checkBoxLoadSecondPrintServices2.Name = "checkBoxLoadSecondPrintServices2";
             this.checkBoxLoadSecondPrintServices2.Size = new System.Drawing.Size(76, 16);
             this.checkBoxLoadSecondPrintServices2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxLoadSecondPrintServices2.TabIndex = 8;
+            this.checkBoxLoadSecondPrintServices2.TabIndex = 9;
             this.checkBoxLoadSecondPrintServices2.Text = "خدمات چاپ";
             this.checkBoxLoadSecondPrintServices2.CheckedChanged += new System.EventHandler(this.checkBoxLoadSecondPrintServices2_CheckedChanged);
             // 
@@ -1249,7 +1250,7 @@
             this.checkBoxSecondPrint4.Name = "checkBoxSecondPrint4";
             this.checkBoxSecondPrint4.Size = new System.Drawing.Size(69, 16);
             this.checkBoxSecondPrint4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxSecondPrint4.TabIndex = 15;
+            this.checkBoxSecondPrint4.TabIndex = 18;
             this.checkBoxSecondPrint4.Text = "اندازه چاپ";
             this.checkBoxSecondPrint4.CheckedChanged += new System.EventHandler(this.checkBoxSecondPrint4_CheckedChanged);
             // 
@@ -1267,7 +1268,7 @@
             this.checkBoxSecondPrint3.Name = "checkBoxSecondPrint3";
             this.checkBoxSecondPrint3.Size = new System.Drawing.Size(69, 16);
             this.checkBoxSecondPrint3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxSecondPrint3.TabIndex = 10;
+            this.checkBoxSecondPrint3.TabIndex = 12;
             this.checkBoxSecondPrint3.Text = "اندازه چاپ";
             this.checkBoxSecondPrint3.CheckedChanged += new System.EventHandler(this.checkBoxSecondPrint3_CheckedChanged);
             // 
@@ -1285,7 +1286,7 @@
             this.checkBoxSecondPrint2.Name = "checkBoxSecondPrint2";
             this.checkBoxSecondPrint2.Size = new System.Drawing.Size(69, 16);
             this.checkBoxSecondPrint2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxSecondPrint2.TabIndex = 5;
+            this.checkBoxSecondPrint2.TabIndex = 6;
             this.checkBoxSecondPrint2.Text = "اندازه چاپ";
             this.checkBoxSecondPrint2.CheckedChanged += new System.EventHandler(this.checkBoxSecondPrint2_CheckedChanged);
             // 
@@ -1338,7 +1339,7 @@
             this.cmbSecondPrintService4.Location = new System.Drawing.Point(166, 102);
             this.cmbSecondPrintService4.Name = "cmbSecondPrintService4";
             this.cmbSecondPrintService4.Size = new System.Drawing.Size(121, 21);
-            this.cmbSecondPrintService4.TabIndex = 19;
+            this.cmbSecondPrintService4.TabIndex = 22;
             this.cmbSecondPrintService4.SelectedIndexChanged += new System.EventHandler(this.cmbSecondPrintService4_SelectedIndexChanged);
             this.cmbSecondPrintService4.EnabledChanged += new System.EventHandler(this.cmbSecondPrintService4_EnabledChanged);
             // 
@@ -1352,7 +1353,7 @@
             this.cmbSecondPrintService3.Location = new System.Drawing.Point(166, 77);
             this.cmbSecondPrintService3.Name = "cmbSecondPrintService3";
             this.cmbSecondPrintService3.Size = new System.Drawing.Size(121, 21);
-            this.cmbSecondPrintService3.TabIndex = 14;
+            this.cmbSecondPrintService3.TabIndex = 16;
             this.cmbSecondPrintService3.SelectedIndexChanged += new System.EventHandler(this.cmbSecondPrintService3_SelectedIndexChanged);
             this.cmbSecondPrintService3.EnabledChanged += new System.EventHandler(this.cmbSecondPrintService3_EnabledChanged);
             // 
@@ -1366,7 +1367,7 @@
             this.cmbSecondPrintService2.Location = new System.Drawing.Point(166, 52);
             this.cmbSecondPrintService2.Name = "cmbSecondPrintService2";
             this.cmbSecondPrintService2.Size = new System.Drawing.Size(121, 21);
-            this.cmbSecondPrintService2.TabIndex = 9;
+            this.cmbSecondPrintService2.TabIndex = 10;
             this.cmbSecondPrintService2.SelectedIndexChanged += new System.EventHandler(this.cmbSecondPrintService2_SelectedIndexChanged);
             this.cmbSecondPrintService2.EnabledChanged += new System.EventHandler(this.cmbSecondPrintService2_EnabledChanged);
             // 
@@ -1381,7 +1382,7 @@
             this.cmbSecondPrintSize4.Name = "cmbSecondPrintSize4";
             this.cmbSecondPrintSize4.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cmbSecondPrintSize4.Size = new System.Drawing.Size(99, 21);
-            this.cmbSecondPrintSize4.TabIndex = 16;
+            this.cmbSecondPrintSize4.TabIndex = 19;
             this.cmbSecondPrintSize4.SelectedIndexChanged += new System.EventHandler(this.cmbSecondPrintSize4_SelectedIndexChanged);
             this.cmbSecondPrintSize4.SelectedValueChanged += new System.EventHandler(this.cmbSecondPrintSize4_SelectedValueChanged);
             this.cmbSecondPrintSize4.EnabledChanged += new System.EventHandler(this.cmbSecondPrintSize4_EnabledChanged);
@@ -1397,7 +1398,7 @@
             this.cmbSecondPrintSize3.Name = "cmbSecondPrintSize3";
             this.cmbSecondPrintSize3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cmbSecondPrintSize3.Size = new System.Drawing.Size(99, 21);
-            this.cmbSecondPrintSize3.TabIndex = 11;
+            this.cmbSecondPrintSize3.TabIndex = 13;
             this.cmbSecondPrintSize3.SelectedIndexChanged += new System.EventHandler(this.cmbSecondPrintSize3_SelectedIndexChanged);
             this.cmbSecondPrintSize3.SelectedValueChanged += new System.EventHandler(this.cmbSecondPrintSize3_SelectedValueChanged);
             this.cmbSecondPrintSize3.EnabledChanged += new System.EventHandler(this.cmbSecondPrintSize3_EnabledChanged);
@@ -1427,7 +1428,7 @@
             this.cmbSecondPrintSize2.Name = "cmbSecondPrintSize2";
             this.cmbSecondPrintSize2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cmbSecondPrintSize2.Size = new System.Drawing.Size(99, 21);
-            this.cmbSecondPrintSize2.TabIndex = 6;
+            this.cmbSecondPrintSize2.TabIndex = 7;
             this.cmbSecondPrintSize2.SelectedIndexChanged += new System.EventHandler(this.cmbSecondPrintSize2_SelectedIndexChanged);
             this.cmbSecondPrintSize2.SelectedValueChanged += new System.EventHandler(this.cmbSecondPrintSize2_SelectedValueChanged);
             this.cmbSecondPrintSize2.EnabledChanged += new System.EventHandler(this.cmbSecondPrintSize2_EnabledChanged);
@@ -1471,7 +1472,7 @@
             this.btnCancelPhotoOrderPrint.Symbol = "";
             this.btnCancelPhotoOrderPrint.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnCancelPhotoOrderPrint.SymbolSize = 10F;
-            this.btnCancelPhotoOrderPrint.TabIndex = 4;
+            this.btnCancelPhotoOrderPrint.TabIndex = 3;
             this.btnCancelPhotoOrderPrint.Text = "حذف";
             this.btnCancelPhotoOrderPrint.Click += new System.EventHandler(this.btnCancelPhotoOrderPrint_Click);
             // 
@@ -1488,7 +1489,7 @@
             this.btnOkPhotoOrderPrint.Symbol = "";
             this.btnOkPhotoOrderPrint.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnOkPhotoOrderPrint.SymbolSize = 10F;
-            this.btnOkPhotoOrderPrint.TabIndex = 3;
+            this.btnOkPhotoOrderPrint.TabIndex = 2;
             this.btnOkPhotoOrderPrint.Text = "تائید";
             this.btnOkPhotoOrderPrint.Click += new System.EventHandler(this.btnOkPhotoOrderPrint_Click);
             // 

@@ -14,6 +14,7 @@ namespace PhotographyAutomation.App.Forms.Photos
         public List<string> MyImageList = new List<string>();
         public List<string> OriginalPhotoList = new List<string>();
         public string SelectedImageFilePath;
+        public byte[] myImage = null;
 
 
         private int currentPhotoIndex = 0;
@@ -26,16 +27,24 @@ namespace PhotographyAutomation.App.Forms.Photos
 
         private void PhotoViewer_Load(object sender, EventArgs e)
         {
-
-            if (MyImageList.Count > 0 && !string.IsNullOrEmpty(SelectedImageFilePath.Trim()))
+            if (myImage == null)
             {
-                OriginalPhotoList = MyImageList;
-                currentPhotoIndex = MyImageList.FindIndex(x => x.Contains(SelectedImageFilePath));
-                lastPhotoIndex = (MyImageList.Count) - 1;
+                if (MyImageList.Count > 0 && !string.IsNullOrEmpty(SelectedImageFilePath.Trim()))
+                {
+                    OriginalPhotoList = MyImageList;
+                    currentPhotoIndex = MyImageList.FindIndex(x => x.Contains(SelectedImageFilePath));
+                    lastPhotoIndex = (MyImageList.Count) - 1;
 
-                byte[] originalPhotoBytes = SelectedImageFilePath.FileToByteArray();
+                    byte[] originalPhotoBytes = SelectedImageFilePath.FileToByteArray();
 
-                pictureBoxPreview.Image = originalPhotoBytes.GetPhotoAndRotateIt();
+                    pictureBoxPreview.Image = originalPhotoBytes.GetPhotoAndRotateIt();
+                }
+            }
+            else
+            {
+                pictureBoxPreview.Image = myImage.GetPhotoAndRotateIt();
+                navigationBar1.Visible = false;
+                panelEx1.Visible = false;
             }
         }
 
