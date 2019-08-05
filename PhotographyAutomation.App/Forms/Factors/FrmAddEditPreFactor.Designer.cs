@@ -282,7 +282,7 @@
             this.txtOrderDescriptions.Multiline = true;
             this.txtOrderDescriptions.Name = "txtOrderDescriptions";
             this.txtOrderDescriptions.PreventEnterBeep = true;
-            this.txtOrderDescriptions.Size = new System.Drawing.Size(355, 52);
+            this.txtOrderDescriptions.Size = new System.Drawing.Size(348, 52);
             this.txtOrderDescriptions.TabIndex = 0;
             this.txtOrderDescriptions.Enter += new System.EventHandler(this.txt_TypeFarsi_Enter);
             this.txtOrderDescriptions.Leave += new System.EventHandler(this.txt_TypeFarsi_Leave);
@@ -356,7 +356,7 @@
             // 
             // 
             this.labelX42.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX42.Location = new System.Drawing.Point(653, 15);
+            this.labelX42.Location = new System.Drawing.Point(657, 15);
             this.labelX42.Name = "labelX42";
             this.labelX42.Size = new System.Drawing.Size(82, 16);
             this.labelX42.TabIndex = 89;
@@ -375,7 +375,7 @@
             this.txtTotalPhotoServices.Name = "txtTotalPhotoServices";
             this.txtTotalPhotoServices.PreventEnterBeep = true;
             this.txtTotalPhotoServices.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtTotalPhotoServices.Size = new System.Drawing.Size(116, 21);
+            this.txtTotalPhotoServices.Size = new System.Drawing.Size(120, 21);
             this.txtTotalPhotoServices.TabIndex = 1;
             this.txtTotalPhotoServices.TabStop = false;
             // 
@@ -387,11 +387,11 @@
             // 
             // 
             this.labelX41.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX41.Location = new System.Drawing.Point(892, 15);
+            this.labelX41.Location = new System.Drawing.Point(885, 15);
             this.labelX41.Name = "labelX41";
-            this.labelX41.Size = new System.Drawing.Size(93, 16);
+            this.labelX41.Size = new System.Drawing.Size(103, 16);
             this.labelX41.TabIndex = 87;
-            this.labelX41.Text = "تعداد عکس انتخابی";
+            this.labelX41.Text = "تعداد عکس تائید شده";
             // 
             // txtTotalSelectedPhotos
             // 
@@ -402,11 +402,11 @@
             this.txtTotalSelectedPhotos.Border.Class = "TextBoxBorder";
             this.txtTotalSelectedPhotos.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.txtTotalSelectedPhotos, true);
-            this.txtTotalSelectedPhotos.Location = new System.Drawing.Point(771, 13);
+            this.txtTotalSelectedPhotos.Location = new System.Drawing.Point(759, 13);
             this.txtTotalSelectedPhotos.Name = "txtTotalSelectedPhotos";
             this.txtTotalSelectedPhotos.PreventEnterBeep = true;
             this.txtTotalSelectedPhotos.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtTotalSelectedPhotos.Size = new System.Drawing.Size(115, 21);
+            this.txtTotalSelectedPhotos.Size = new System.Drawing.Size(120, 21);
             this.txtTotalSelectedPhotos.TabIndex = 0;
             this.txtTotalSelectedPhotos.TabStop = false;
             // 
