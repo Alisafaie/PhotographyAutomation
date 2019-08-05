@@ -128,9 +128,7 @@
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
             this.bgWorkerLoadOriginalPringSizes = new System.ComponentModel.BackgroundWorker();
-            this.bgWorkerLoadPrintSizeServices = new System.ComponentModel.BackgroundWorker();
             this.bgWorkerGetOriginalPrintPrice = new System.ComponentModel.BackgroundWorker();
-            this.bgWorkerGetPrintServicePrice = new System.ComponentModel.BackgroundWorker();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -1802,20 +1800,10 @@
             this.bgWorkerLoadOriginalPringSizes.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerLoadOriginalPringSizes_DoWork);
             this.bgWorkerLoadOriginalPringSizes.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerLoadOriginalPringSizes_RunWorkerCompleted);
             // 
-            // bgWorkerLoadPrintSizeServices
-            // 
-            this.bgWorkerLoadPrintSizeServices.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerLoadPrintSizeServices_DoWork);
-            this.bgWorkerLoadPrintSizeServices.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerLoadPrintSizeServices_RunWorkerCompleted);
-            // 
             // bgWorkerGetOriginalPrintPrice
             // 
             this.bgWorkerGetOriginalPrintPrice.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerGetOriginalPrintPrice_DoWork);
             this.bgWorkerGetOriginalPrintPrice.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerGetOriginalPrintPrice_RunWorkerCompleted);
-            // 
-            // bgWorkerGetPrintServicePrice
-            // 
-            this.bgWorkerGetPrintServicePrice.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerGetPrintServicePrice_DoWork);
-            this.bgWorkerGetPrintServicePrice.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerGetPrintServicePrice_RunWorkerCompleted);
             // 
             // statusStrip1
             // 
@@ -1943,9 +1931,7 @@
         private DevComponents.DotNetBar.LabelX labelX11;
         private System.ComponentModel.BackgroundWorker bgWorkerLoadOriginalPringSizes;
         private DevComponents.DotNetBar.Controls.CircularProgress circularProgress;
-        private System.ComponentModel.BackgroundWorker bgWorkerLoadPrintSizeServices;
         private System.ComponentModel.BackgroundWorker bgWorkerGetOriginalPrintPrice;
-        private System.ComponentModel.BackgroundWorker bgWorkerGetPrintServicePrice;
         private DevComponents.DotNetBar.Controls.TextBoxX txtCustomerName;
         private DevComponents.DotNetBar.Controls.TextBoxX txtOrderPrintCodeDate;
         private DevComponents.DotNetBar.Controls.TextBoxX txtOrderPrintCodeOrderId;
