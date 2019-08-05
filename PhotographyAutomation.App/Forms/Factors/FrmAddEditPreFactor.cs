@@ -20,7 +20,7 @@ namespace PhotographyAutomation.App.Forms.Factors
         #region Variables
 
         private int _selectedOriginalSizeId;
-        private int _selectedPrintServiceId;
+        //private int _selectedPrintServiceId;
         private int _photoCursor;
 
         public List<PhotoOrderDetails> PhotoOrderDetailsList;
@@ -524,7 +524,7 @@ namespace PhotographyAutomation.App.Forms.Factors
         }
 
         #region GetOriginalPrintServicePrice
-        
+
         private void GetPrintServicePrice(OriginalPrintServiceDataStructure data)
         {
             var bgWorkerGetOriginalPrintServicePrice = new BackgroundWorker
@@ -1035,13 +1035,13 @@ namespace PhotographyAutomation.App.Forms.Factors
                 WorkerReportsProgress = false,
                 WorkerSupportsCancellation = false
             };
-            bgWorkerGetSecondPrintSizePrice.DoWork += bgWorkerGetSecondPrintSizePriceOnDoWork;
+            bgWorkerGetSecondPrintSizePrice.DoWork += BgWorkerGetSecondPrintSizePriceOnDoWork;
             bgWorkerGetSecondPrintSizePrice.RunWorkerCompleted += BgWorkerGetSecondPrintSizePriceOnRunWorkerCompleted;
 
             if (bgWorkerGetSecondPrintSizePrice.IsBusy == false)
                 bgWorkerGetSecondPrintSizePrice.RunWorkerAsync(secondPrintSizeDataStructure);
         }
-        private static void bgWorkerGetSecondPrintSizePriceOnDoWork(object sender, DoWorkEventArgs e)
+        private static void BgWorkerGetSecondPrintSizePriceOnDoWork(object sender, DoWorkEventArgs e)
         {
             if (e.Argument is SecondPrintSizeDataStructure myData)
             {
@@ -2992,7 +2992,7 @@ namespace PhotographyAutomation.App.Forms.Factors
             //cmbOriginalPrintSize.SelectedIndex = -1;
         }
     }
-    
+
     internal class OriginalPrintServiceDataStructure
     {
         public string Price { get; set; }
@@ -3025,7 +3025,6 @@ namespace PhotographyAutomation.App.Forms.Factors
         public int PrintSizeId { get; set; }
 
         public int PreviousSizeId { get; set; }
-        public int NextSizeId { get; set; }
 
         public SecondPrintSizeDataStructure()
         {
@@ -3042,7 +3041,7 @@ namespace PhotographyAutomation.App.Forms.Factors
         public List<PrintServiceType_PrintSizePriceViewModel> SizeServiceList { get; set; }
 
     }
-    
+
 
     internal class SecondPrintServiceDataStructure
     {
