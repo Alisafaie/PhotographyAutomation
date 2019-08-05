@@ -409,9 +409,11 @@ namespace PhotographyAutomation.App.Forms.Factors
         {
             if (checkBoxLoadPrintSizeServices.Checked)
             {
-                if (cmbOriginalPrintSize.SelectedValue != null &&
-                   int.TryParse(cmbOriginalPrintSize.SelectedValue.ToString(), out _))
-                    LoadPrintSizeService(_selectedOriginalSizeId);
+                //if (cmbOriginalPrintSize.SelectedValue != null &&
+                //   int.TryParse(cmbOriginalPrintSize.SelectedValue.ToString(), out _))
+                //    LoadPrintSizeService(_selectedOriginalSizeId);
+                cmbOriginalPrintService.Enabled = true;
+                txtOriginalPrintServicePrice.Enabled = true;
             }
             else
             {
@@ -502,10 +504,16 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         private void cmbOriginalPrintService_EnabledChanged(object sender, EventArgs e)
         {
-            if (cmbOriginalPrintService.Enabled && cmbOriginalPrintService.Items.Count > 0)
+            if (!cmbOriginalPrintService.Enabled /*|| cmbOriginalPrintService.Items.Count <= 0*/)
+                return;
+            if (cmbOriginalPrintService.DataSource != null)
+                return;
+
+            LoadPrintSizeService((int)cmbOriginalPrintSize.SelectedValue);
+            if (cmbOriginalPrintService.SelectedValue!=null && 
+                int.TryParse(cmbOriginalPrintService.SelectedValue.ToString(), out var selectedPrintServiceId))
             {
-                LoadPrintSizeService((int)cmbOriginalPrintSize.SelectedValue);
-                _selectedPrintServiceId = (int)cmbOriginalPrintService.SelectedValue;
+                _selectedPrintServiceId = selectedPrintServiceId;
                 if (cmbOriginalPrintService.Items.Count > 0)
                 {
                     cmbOriginalPrintService.SelectedIndex = 0;
@@ -516,15 +524,13 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         private void cmbOriginalPrintService_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbOriginalPrintService.Enabled && cmbOriginalPrintService.Items.Count > 0 &&
-                cmbOriginalPrintService.SelectedValue != null && cmbOriginalPrintService.SelectedIndex != -1)
-            {
-                if (int.TryParse(cmbOriginalPrintService.SelectedValue.ToString(), out _))
-                {
-                    _selectedPrintServiceId = (int)cmbOriginalPrintService.SelectedValue;
-                    GetPrintServicePrice(_selectedPrintServiceId);
-                }
-            }
+            if (!cmbOriginalPrintService.Enabled || cmbOriginalPrintService.Items.Count <= 0 ||
+                cmbOriginalPrintService.SelectedValue == null || cmbOriginalPrintService.SelectedIndex == -1) return;
+
+            if (!int.TryParse(cmbOriginalPrintService.SelectedValue.ToString(), out _)) return;
+
+            _selectedPrintServiceId = (int)cmbOriginalPrintService.SelectedValue;
+            GetPrintServicePrice(_selectedPrintServiceId);
         }
 
         #endregion
@@ -615,35 +621,32 @@ namespace PhotographyAutomation.App.Forms.Factors
         }
         private void cmbSecondPrintSize1_EnabledChanged(object sender, EventArgs e)
         {
-            if (cmbSecondPrintSize1.DataSource == null)
+            if (!cmbSecondPrintSize1.Enabled) return;
+            if (cmbSecondPrintSize1.DataSource != null) return;
+            try
             {
-                if (cmbSecondPrintSize1.Enabled)
+                var bgWorkerGetSecondPrintSize = new BackgroundWorker
                 {
-                    try
-                    {
-                        var bgWorkerGetSecondPrintSize = new BackgroundWorker
-                        {
-                            WorkerSupportsCancellation = false,
-                            WorkerReportsProgress = false
-                        };
+                    WorkerSupportsCancellation = false,
+                    WorkerReportsProgress = false
+                };
 
-                        bgWorkerGetSecondPrintSize.DoWork += BgWorkerGetSecondPrintSizeOnDoWork;
-                        bgWorkerGetSecondPrintSize.RunWorkerCompleted += BgWorkerGetSecondPrintSizeOnRunWorkerCompleted;
+                bgWorkerGetSecondPrintSize.DoWork += BgWorkerGetSecondPrintSizeOnDoWork;
+                bgWorkerGetSecondPrintSize.RunWorkerCompleted += BgWorkerGetSecondPrintSizeOnRunWorkerCompleted;
 
-                        var data = new SecondPrintServiceListDataStructure
-                        {
-                            ComboBoxName = cmbSecondPrintSize1.Name
-                        };
-                        if (bgWorkerGetSecondPrintSize.IsBusy == false)
-                            bgWorkerGetSecondPrintSize.RunWorkerAsync(data);
-                    }
-                    catch (Exception exception)
-                    {
-                        MessageBox.Show(exception.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error,
-                            MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
-                    }
-                }
+                var data = new SecondPrintServiceListDataStructure
+                {
+                    ComboBoxName = cmbSecondPrintSize1.Name
+                };
+                if (bgWorkerGetSecondPrintSize.IsBusy == false)
+                    bgWorkerGetSecondPrintSize.RunWorkerAsync(data);
             }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error,
+                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
+            }
+
         }
         private void cmbSecondPrintSize1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -742,33 +745,30 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         private void cmbSecondPrintSize2_EnabledChanged(object sender, EventArgs e)
         {
-            if (cmbSecondPrintSize2.DataSource == null)
+            if (!cmbSecondPrintSize2.Enabled) return;
+            if (cmbSecondPrintSize2.DataSource != null) return;
+            try
             {
-                if (!cmbSecondPrintSize2.Enabled) return;
-
-                try
+                var bgWorkerGetSecondPrintSize = new BackgroundWorker
                 {
-                    var bgWorkerGetSecondPrintSize = new BackgroundWorker
-                    {
-                        WorkerSupportsCancellation = false,
-                        WorkerReportsProgress = false
-                    };
+                    WorkerSupportsCancellation = false,
+                    WorkerReportsProgress = false
+                };
 
-                    bgWorkerGetSecondPrintSize.DoWork += BgWorkerGetSecondPrintSizeOnDoWork;
-                    bgWorkerGetSecondPrintSize.RunWorkerCompleted += BgWorkerGetSecondPrintSizeOnRunWorkerCompleted;
+                bgWorkerGetSecondPrintSize.DoWork += BgWorkerGetSecondPrintSizeOnDoWork;
+                bgWorkerGetSecondPrintSize.RunWorkerCompleted += BgWorkerGetSecondPrintSizeOnRunWorkerCompleted;
 
-                    var data = new SecondPrintServiceListDataStructure
-                    {
-                        ComboBoxName = cmbSecondPrintSize2.Name
-                    };
-                    if (bgWorkerGetSecondPrintSize.IsBusy == false)
-                        bgWorkerGetSecondPrintSize.RunWorkerAsync(data);
-                }
-                catch (Exception exception)
+                var data = new SecondPrintServiceListDataStructure
                 {
-                    MessageBox.Show(exception.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error,
-                        MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
-                }
+                    ComboBoxName = cmbSecondPrintSize2.Name
+                };
+                if (bgWorkerGetSecondPrintSize.IsBusy == false)
+                    bgWorkerGetSecondPrintSize.RunWorkerAsync(data);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error,
+                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
             }
         }
 
@@ -799,13 +799,12 @@ namespace PhotographyAutomation.App.Forms.Factors
             {
                 if (cmbSecondPrintSize2.Enabled && cmbSecondPrintSize2.Items.Count > 0)
                 {
-                    var ss = new SecondPrintSizeDataStructure();
-
-                    ss.Count = integerInputSecondPrintCount2.Value;
-
-                    ss.PrintSizeId = selectedVal;
-                    ss.TextBoxName = txtSecondPrintSizePrice2.Name;
-
+                    var ss = new SecondPrintSizeDataStructure
+                    {
+                        Count = integerInputSecondPrintCount2.Value,
+                        PrintSizeId = selectedVal,
+                        TextBoxName = txtSecondPrintSizePrice2.Name
+                    };
                     GetSecondPrintSizePrice(ss);
                 }
             }
@@ -849,35 +848,31 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         private void cmbSecondPrintSize3_EnabledChanged(object sender, EventArgs e)
         {
-            if (cmbSecondPrintSize3.DataSource == null)
+            if (!cmbSecondPrintSize3.Enabled) return;
+            if (cmbSecondPrintSize3.DataSource != null) return;
+            try
             {
-                if (cmbSecondPrintSize3.Enabled)
+                var bgWorkerGetSecondPrintSize = new BackgroundWorker
                 {
-                    try
-                    {
-                        var bgWorkerGetSecondPrintSize = new BackgroundWorker
-                        {
-                            WorkerSupportsCancellation = false,
-                            WorkerReportsProgress = false
-                        };
+                    WorkerSupportsCancellation = false,
+                    WorkerReportsProgress = false
+                };
 
-                        bgWorkerGetSecondPrintSize.DoWork += BgWorkerGetSecondPrintSizeOnDoWork;
-                        bgWorkerGetSecondPrintSize.RunWorkerCompleted += BgWorkerGetSecondPrintSizeOnRunWorkerCompleted;
+                bgWorkerGetSecondPrintSize.DoWork += BgWorkerGetSecondPrintSizeOnDoWork;
+                bgWorkerGetSecondPrintSize.RunWorkerCompleted += BgWorkerGetSecondPrintSizeOnRunWorkerCompleted;
 
-                        var data = new SecondPrintServiceListDataStructure
-                        {
-                            ComboBoxName = cmbSecondPrintSize3.Name
-                        };
+                var data = new SecondPrintServiceListDataStructure
+                {
+                    ComboBoxName = cmbSecondPrintSize3.Name
+                };
 
-                        if (bgWorkerGetSecondPrintSize.IsBusy == false)
-                            bgWorkerGetSecondPrintSize.RunWorkerAsync(data);
-                    }
-                    catch (Exception exception)
-                    {
-                        MessageBox.Show(exception.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error,
-                            MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
-                    }
-                }
+                if (bgWorkerGetSecondPrintSize.IsBusy == false)
+                    bgWorkerGetSecondPrintSize.RunWorkerAsync(data);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error,
+                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
             }
         }
 
@@ -904,7 +899,7 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         private void cmbSecondPrintSize3_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (int.TryParse(cmbSecondPrintSize3.SelectedValue.ToString(), out var selectedVal))
+            if (int.TryParse(cmbSecondPrintSize3.SelectedValue.ToString(), out _))
             {
                 if (cmbSecondPrintSize3.Enabled && cmbSecondPrintSize3.Items.Count > 0)
                 {
@@ -956,35 +951,31 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         private void cmbSecondPrintSize4_EnabledChanged(object sender, EventArgs e)
         {
-            if (cmbSecondPrintSize4.DataSource == null)
+            if (!cmbSecondPrintSize4.Enabled) return;
+            if (cmbSecondPrintSize4.DataSource != null) return;
+            try
             {
-                if (cmbSecondPrintSize4.Enabled)
+                var bgWorkerGetSecondPrintSize = new BackgroundWorker
                 {
-                    try
-                    {
-                        var bgWorkerGetSecondPrintSize = new BackgroundWorker
-                        {
-                            WorkerSupportsCancellation = false,
-                            WorkerReportsProgress = false
-                        };
+                    WorkerSupportsCancellation = false,
+                    WorkerReportsProgress = false
+                };
 
-                        bgWorkerGetSecondPrintSize.DoWork += BgWorkerGetSecondPrintSizeOnDoWork;
-                        bgWorkerGetSecondPrintSize.RunWorkerCompleted += BgWorkerGetSecondPrintSizeOnRunWorkerCompleted;
+                bgWorkerGetSecondPrintSize.DoWork += BgWorkerGetSecondPrintSizeOnDoWork;
+                bgWorkerGetSecondPrintSize.RunWorkerCompleted += BgWorkerGetSecondPrintSizeOnRunWorkerCompleted;
 
-                        var data = new SecondPrintServiceListDataStructure
-                        {
-                            ComboBoxName = cmbSecondPrintSize4.Name
-                        };
+                var data = new SecondPrintServiceListDataStructure
+                {
+                    ComboBoxName = cmbSecondPrintSize4.Name
+                };
 
-                        if (bgWorkerGetSecondPrintSize.IsBusy == false)
-                            bgWorkerGetSecondPrintSize.RunWorkerAsync(data);
-                    }
-                    catch (Exception exception)
-                    {
-                        MessageBox.Show(exception.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error,
-                            MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
-                    }
-                }
+                if (bgWorkerGetSecondPrintSize.IsBusy == false)
+                    bgWorkerGetSecondPrintSize.RunWorkerAsync(data);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error,
+                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
             }
         }
 
@@ -1011,7 +1002,7 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         private void cmbSecondPrintSize4_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (int.TryParse(cmbSecondPrintSize4.SelectedValue.ToString(), out var selectedVal))
+            if (int.TryParse(cmbSecondPrintSize4.SelectedValue.ToString(), out _))
             {
                 if (cmbSecondPrintSize4.Enabled && cmbSecondPrintSize4.Items.Count > 0)
                 {
@@ -1218,32 +1209,31 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         private void cmbSecondPrintService1_EnabledChanged(object sender, EventArgs e)
         {
-            if (cmbSecondPrintService1.Enabled)
+            if (!cmbSecondPrintService1.Enabled) return;
+            if (cmbSecondPrintService1.DataSource != null) return;
+            try
             {
-                try
+                var bgWorkerGetSecondSizeServiceList = new BackgroundWorker
                 {
-                    var bgWorkerGetSecondSizeServiceList = new BackgroundWorker
-                    {
-                        WorkerSupportsCancellation = false,
-                        WorkerReportsProgress = false
-                    };
+                    WorkerSupportsCancellation = false,
+                    WorkerReportsProgress = false
+                };
 
-                    var data = new SecondPrintSizeServiceListDataStructure
-                    {
-                        SizeId = (int)cmbSecondPrintSize1.SelectedValue,
-                        ComboBoxName = cmbSecondPrintService1.Name
-                    };
-
-                    bgWorkerGetSecondSizeServiceList.DoWork += BgWorkerGetSecondSizeServiceListOnDoWork;
-                    bgWorkerGetSecondSizeServiceList.RunWorkerCompleted += BgWorkerGetSecondSizeServiceListOnRunWorkerCompleted;
-
-                    if (bgWorkerGetSecondSizeServiceList.IsBusy == false)
-                        bgWorkerGetSecondSizeServiceList.RunWorkerAsync(data);
-                }
-                catch (Exception exception)
+                var data = new SecondPrintSizeServiceListDataStructure
                 {
-                    MessageBox.Show(@"exception: " + exception.Message);
-                }
+                    SizeId = (int)cmbSecondPrintSize1.SelectedValue,
+                    ComboBoxName = cmbSecondPrintService1.Name
+                };
+
+                bgWorkerGetSecondSizeServiceList.DoWork += BgWorkerGetSecondSizeServiceListOnDoWork;
+                bgWorkerGetSecondSizeServiceList.RunWorkerCompleted += BgWorkerGetSecondSizeServiceListOnRunWorkerCompleted;
+
+                if (bgWorkerGetSecondSizeServiceList.IsBusy == false)
+                    bgWorkerGetSecondSizeServiceList.RunWorkerAsync(data);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(@"exception: " + exception.Message);
             }
         }
 
@@ -1290,32 +1280,31 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         private void cmbSecondPrintService2_EnabledChanged(object sender, EventArgs e)
         {
-            if (cmbSecondPrintService2.Enabled)
+            if (!cmbSecondPrintService2.Enabled) return;
+            if (cmbSecondPrintService2.DataSource != null) return;
+            try
             {
-                try
+                var bgWorkerGetSecondSizeServiceList = new BackgroundWorker
                 {
-                    var bgWorkerGetSecondSizeServiceList = new BackgroundWorker
-                    {
-                        WorkerSupportsCancellation = false,
-                        WorkerReportsProgress = false
-                    };
+                    WorkerSupportsCancellation = false,
+                    WorkerReportsProgress = false
+                };
 
-                    var data = new SecondPrintSizeServiceListDataStructure
-                    {
-                        SizeId = (int)cmbSecondPrintSize2.SelectedValue,
-                        ComboBoxName = cmbSecondPrintService2.Name
-                    };
-
-                    bgWorkerGetSecondSizeServiceList.DoWork += BgWorkerGetSecondSizeServiceListOnDoWork;
-                    bgWorkerGetSecondSizeServiceList.RunWorkerCompleted += BgWorkerGetSecondSizeServiceListOnRunWorkerCompleted;
-
-                    if (bgWorkerGetSecondSizeServiceList.IsBusy == false)
-                        bgWorkerGetSecondSizeServiceList.RunWorkerAsync(data);
-                }
-                catch (Exception exception)
+                var data = new SecondPrintSizeServiceListDataStructure
                 {
-                    MessageBox.Show(@"exception: " + exception.Message);
-                }
+                    SizeId = (int)cmbSecondPrintSize2.SelectedValue,
+                    ComboBoxName = cmbSecondPrintService2.Name
+                };
+
+                bgWorkerGetSecondSizeServiceList.DoWork += BgWorkerGetSecondSizeServiceListOnDoWork;
+                bgWorkerGetSecondSizeServiceList.RunWorkerCompleted += BgWorkerGetSecondSizeServiceListOnRunWorkerCompleted;
+
+                if (bgWorkerGetSecondSizeServiceList.IsBusy == false)
+                    bgWorkerGetSecondSizeServiceList.RunWorkerAsync(data);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(@"exception: " + exception.Message);
             }
         }
 
@@ -1362,32 +1351,33 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         private void cmbSecondPrintService3_EnabledChanged(object sender, EventArgs e)
         {
-            if (cmbSecondPrintService3.Enabled)
+            if (!cmbSecondPrintService3.Enabled) return;
+            if (cmbSecondPrintService3.DataSource != null) return;
+            try
             {
-                try
+                var bgWorkerGetSecondSizeServiceList = new BackgroundWorker
                 {
-                    var bgWorkerGetSecondSizeServiceList = new BackgroundWorker
-                    {
-                        WorkerSupportsCancellation = false,
-                        WorkerReportsProgress = false
-                    };
+                    WorkerSupportsCancellation = false,
+                    WorkerReportsProgress = false
+                };
 
-                    var data = new SecondPrintSizeServiceListDataStructure
-                    {
-                        SizeId = (int)cmbSecondPrintSize3.SelectedValue,
-                        ComboBoxName = cmbSecondPrintService3.Name
-                    };
-
-                    bgWorkerGetSecondSizeServiceList.DoWork += BgWorkerGetSecondSizeServiceListOnDoWork;
-                    bgWorkerGetSecondSizeServiceList.RunWorkerCompleted += BgWorkerGetSecondSizeServiceListOnRunWorkerCompleted;
-
-                    if (bgWorkerGetSecondSizeServiceList.IsBusy == false)
-                        bgWorkerGetSecondSizeServiceList.RunWorkerAsync(data);
-                }
-                catch (Exception exception)
+                var data = new SecondPrintSizeServiceListDataStructure
                 {
-                    MessageBox.Show(@"exception: " + exception.Message);
-                }
+                    SizeId = (int)cmbSecondPrintSize3.SelectedValue,
+                    ComboBoxName = cmbSecondPrintService3.Name
+                };
+
+                bgWorkerGetSecondSizeServiceList.DoWork +=
+                    BgWorkerGetSecondSizeServiceListOnDoWork;
+                bgWorkerGetSecondSizeServiceList.RunWorkerCompleted +=
+                    BgWorkerGetSecondSizeServiceListOnRunWorkerCompleted;
+
+                if (bgWorkerGetSecondSizeServiceList.IsBusy == false)
+                    bgWorkerGetSecondSizeServiceList.RunWorkerAsync(data);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(@"exception: " + exception.Message);
             }
         }
 
@@ -1434,32 +1424,33 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         private void cmbSecondPrintService4_EnabledChanged(object sender, EventArgs e)
         {
-            if (cmbSecondPrintService4.Enabled)
+            if (!cmbSecondPrintService4.Enabled) return;
+            if (cmbSecondPrintService4.DataSource != null) return;
+            try
             {
-                try
+                var bgWorkerGetSecondSizeServiceList = new BackgroundWorker
                 {
-                    var bgWorkerGetSecondSizeServiceList = new BackgroundWorker
-                    {
-                        WorkerSupportsCancellation = false,
-                        WorkerReportsProgress = false
-                    };
+                    WorkerSupportsCancellation = false,
+                    WorkerReportsProgress = false
+                };
 
-                    var data = new SecondPrintSizeServiceListDataStructure
-                    {
-                        SizeId = (int)cmbSecondPrintSize4.SelectedValue,
-                        ComboBoxName = cmbSecondPrintService4.Name
-                    };
-
-                    bgWorkerGetSecondSizeServiceList.DoWork += BgWorkerGetSecondSizeServiceListOnDoWork;
-                    bgWorkerGetSecondSizeServiceList.RunWorkerCompleted += BgWorkerGetSecondSizeServiceListOnRunWorkerCompleted;
-
-                    if (bgWorkerGetSecondSizeServiceList.IsBusy == false)
-                        bgWorkerGetSecondSizeServiceList.RunWorkerAsync(data);
-                }
-                catch (Exception exception)
+                var data = new SecondPrintSizeServiceListDataStructure
                 {
-                    MessageBox.Show(@"exception: " + exception.Message);
-                }
+                    SizeId = (int)cmbSecondPrintSize4.SelectedValue,
+                    ComboBoxName = cmbSecondPrintService4.Name
+                };
+
+                bgWorkerGetSecondSizeServiceList.DoWork +=
+                    BgWorkerGetSecondSizeServiceListOnDoWork;
+                bgWorkerGetSecondSizeServiceList.RunWorkerCompleted +=
+                    BgWorkerGetSecondSizeServiceListOnRunWorkerCompleted;
+
+                if (bgWorkerGetSecondSizeServiceList.IsBusy == false)
+                    bgWorkerGetSecondSizeServiceList.RunWorkerAsync(data);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(@"exception: " + exception.Message);
             }
         }
 
