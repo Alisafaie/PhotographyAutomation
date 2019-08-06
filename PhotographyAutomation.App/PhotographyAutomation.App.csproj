@@ -1596,5 +1596,32 @@
   <ItemGroup>
     <None Include="Resources\iconfinder_flickr_317744.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_photo-picture-photobook-gallery-photograph_3209437.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-add-image-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-add-image-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_ic_picture_in_picture_48px_352070.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_ic_picture_in_picture_alt_48px_3669298.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Streamline-46_185066.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-add-image-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Lit Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_postcard_1076706.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

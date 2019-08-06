@@ -135,6 +135,8 @@
             this.bgWorkerGetOrderPrintInfo = new System.ComponentModel.BackgroundWorker();
             this.bgWorkerLoadPicture = new System.ComponentModel.BackgroundWorker();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.button3 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panelEx1.SuspendLayout();
             this.groupBoxPreviewPictures.SuspendLayout();
@@ -199,7 +201,7 @@
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx1.Location = new System.Drawing.Point(0, 24);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(1024, 594);
+            this.panelEx1.Size = new System.Drawing.Size(1024, 611);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -218,7 +220,7 @@
             this.groupBoxPreviewPictures.Controls.Add(this.panelEx3);
             this.groupBoxPreviewPictures.Location = new System.Drawing.Point(12, 93);
             this.groupBoxPreviewPictures.Name = "groupBoxPreviewPictures";
-            this.groupBoxPreviewPictures.Size = new System.Drawing.Size(1000, 476);
+            this.groupBoxPreviewPictures.Size = new System.Drawing.Size(1000, 493);
             this.groupBoxPreviewPictures.TabIndex = 0;
             this.groupBoxPreviewPictures.TabStop = false;
             this.groupBoxPreviewPictures.Text = "اطلاعات عکس";
@@ -241,9 +243,9 @@
             this.panelEx2.Controls.Add(this.btnCancel);
             this.panelEx2.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx2.Location = new System.Drawing.Point(3, 331);
+            this.panelEx2.Location = new System.Drawing.Point(3, 345);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(994, 142);
+            this.panelEx2.Size = new System.Drawing.Size(994, 145);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -261,11 +263,11 @@
             this.textBoxX1.Border.Class = "TextBoxBorder";
             this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX1.Enabled = false;
-            this.textBoxX1.Location = new System.Drawing.Point(17, 13);
+            this.textBoxX1.Location = new System.Drawing.Point(16, 16);
             this.textBoxX1.Name = "textBoxX1";
             this.textBoxX1.PreventEnterBeep = true;
             this.textBoxX1.ReadOnly = true;
-            this.textBoxX1.Size = new System.Drawing.Size(378, 21);
+            this.textBoxX1.Size = new System.Drawing.Size(379, 21);
             this.textBoxX1.TabIndex = 87;
             this.textBoxX1.TabStop = false;
             // 
@@ -278,7 +280,7 @@
             this.txtOrderDescriptions.Border.Class = "TextBoxBorder";
             this.txtOrderDescriptions.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.txtOrderDescriptions, true);
-            this.txtOrderDescriptions.Location = new System.Drawing.Point(531, 47);
+            this.txtOrderDescriptions.Location = new System.Drawing.Point(531, 50);
             this.txtOrderDescriptions.Multiline = true;
             this.txtOrderDescriptions.Name = "txtOrderDescriptions";
             this.txtOrderDescriptions.PreventEnterBeep = true;
@@ -295,7 +297,7 @@
             // 
             // 
             this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.Location = new System.Drawing.Point(905, 49);
+            this.labelX6.Location = new System.Drawing.Point(905, 52);
             this.labelX6.Name = "labelX6";
             this.labelX6.Size = new System.Drawing.Size(83, 16);
             this.labelX6.TabIndex = 97;
@@ -309,7 +311,7 @@
             // 
             // 
             this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX11.Location = new System.Drawing.Point(415, 15);
+            this.labelX11.Location = new System.Drawing.Point(415, 18);
             this.labelX11.Name = "labelX11";
             this.labelX11.Size = new System.Drawing.Size(75, 16);
             this.labelX11.TabIndex = 86;
@@ -323,7 +325,7 @@
             // 
             // 
             this.labelX43.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX43.Location = new System.Drawing.Point(401, 49);
+            this.labelX43.Location = new System.Drawing.Point(401, 52);
             this.labelX43.Name = "labelX43";
             this.labelX43.Size = new System.Drawing.Size(89, 16);
             this.labelX43.TabIndex = 92;
@@ -338,13 +340,13 @@
             this.txtPrintServiceBrief.Border.Class = "TextBoxBorder";
             this.txtPrintServiceBrief.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.txtPrintServiceBrief, true);
-            this.txtPrintServiceBrief.Location = new System.Drawing.Point(17, 47);
+            this.txtPrintServiceBrief.Location = new System.Drawing.Point(16, 50);
             this.txtPrintServiceBrief.Multiline = true;
             this.txtPrintServiceBrief.Name = "txtPrintServiceBrief";
             this.txtPrintServiceBrief.PreventEnterBeep = true;
             this.txtPrintServiceBrief.ReadOnly = true;
             this.txtPrintServiceBrief.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtPrintServiceBrief.Size = new System.Drawing.Size(378, 52);
+            this.txtPrintServiceBrief.Size = new System.Drawing.Size(379, 52);
             this.txtPrintServiceBrief.TabIndex = 2;
             this.txtPrintServiceBrief.TabStop = false;
             // 
@@ -356,7 +358,7 @@
             // 
             // 
             this.labelX42.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX42.Location = new System.Drawing.Point(657, 15);
+            this.labelX42.Location = new System.Drawing.Point(657, 18);
             this.labelX42.Name = "labelX42";
             this.labelX42.Size = new System.Drawing.Size(82, 16);
             this.labelX42.TabIndex = 89;
@@ -371,7 +373,7 @@
             this.txtTotalPhotoServices.Border.Class = "TextBoxBorder";
             this.txtTotalPhotoServices.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.txtTotalPhotoServices, true);
-            this.txtTotalPhotoServices.Location = new System.Drawing.Point(531, 13);
+            this.txtTotalPhotoServices.Location = new System.Drawing.Point(531, 16);
             this.txtTotalPhotoServices.Name = "txtTotalPhotoServices";
             this.txtTotalPhotoServices.PreventEnterBeep = true;
             this.txtTotalPhotoServices.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -387,7 +389,7 @@
             // 
             // 
             this.labelX41.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX41.Location = new System.Drawing.Point(885, 15);
+            this.labelX41.Location = new System.Drawing.Point(885, 18);
             this.labelX41.Name = "labelX41";
             this.labelX41.Size = new System.Drawing.Size(103, 16);
             this.labelX41.TabIndex = 87;
@@ -402,7 +404,7 @@
             this.txtTotalSelectedPhotos.Border.Class = "TextBoxBorder";
             this.txtTotalSelectedPhotos.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.txtTotalSelectedPhotos, true);
-            this.txtTotalSelectedPhotos.Location = new System.Drawing.Point(759, 13);
+            this.txtTotalSelectedPhotos.Location = new System.Drawing.Point(759, 16);
             this.txtTotalSelectedPhotos.Name = "txtTotalSelectedPhotos";
             this.txtTotalSelectedPhotos.PreventEnterBeep = true;
             this.txtTotalSelectedPhotos.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -416,7 +418,7 @@
             this.btnSavePreFactor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSavePreFactor.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.highlighter1.SetHighlightOnFocus(this.btnSavePreFactor, true);
-            this.btnSavePreFactor.Location = new System.Drawing.Point(880, 116);
+            this.btnSavePreFactor.Location = new System.Drawing.Point(97, 119);
             this.btnSavePreFactor.Name = "btnSavePreFactor";
             this.btnSavePreFactor.Size = new System.Drawing.Size(108, 23);
             this.btnSavePreFactor.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -433,7 +435,7 @@
             this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.highlighter1.SetHighlightOnFocus(this.btnCancel, true);
-            this.btnCancel.Location = new System.Drawing.Point(800, 116);
+            this.btnCancel.Location = new System.Drawing.Point(16, 119);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -448,6 +450,8 @@
             // 
             this.panelEx3.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx3.Controls.Add(this.button1);
+            this.panelEx3.Controls.Add(this.button3);
             this.panelEx3.Controls.Add(this.panel1);
             this.panelEx3.Controls.Add(this.groupBox3);
             this.panelEx3.Controls.Add(this.groupBox1);
@@ -459,7 +463,7 @@
             this.panelEx3.Location = new System.Drawing.Point(3, 17);
             this.panelEx3.Name = "panelEx3";
             this.panelEx3.ScrollBarAppearance = DevComponents.DotNetBar.eScrollBarAppearance.ApplicationScroll;
-            this.panelEx3.Size = new System.Drawing.Size(994, 314);
+            this.panelEx3.Size = new System.Drawing.Size(994, 328);
             this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx3.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx3.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -474,7 +478,7 @@
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Location = new System.Drawing.Point(723, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(265, 298);
+            this.panel1.Size = new System.Drawing.Size(265, 305);
             this.panel1.TabIndex = 65;
             // 
             // panelEx4
@@ -495,7 +499,7 @@
             this.panelEx4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx4.Location = new System.Drawing.Point(0, 236);
             this.panelEx4.Name = "panelEx4";
-            this.panelEx4.Size = new System.Drawing.Size(265, 62);
+            this.panelEx4.Size = new System.Drawing.Size(265, 69);
             this.panelEx4.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx4.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx4.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -1465,9 +1469,9 @@
             this.btnCancelPhotoOrderPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancelPhotoOrderPrint.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.highlighter1.SetHighlightOnFocus(this.btnCancelPhotoOrderPrint, true);
-            this.btnCancelPhotoOrderPrint.Location = new System.Drawing.Point(532, 278);
+            this.btnCancelPhotoOrderPrint.Location = new System.Drawing.Point(16, 285);
             this.btnCancelPhotoOrderPrint.Name = "btnCancelPhotoOrderPrint";
-            this.btnCancelPhotoOrderPrint.Size = new System.Drawing.Size(71, 23);
+            this.btnCancelPhotoOrderPrint.Size = new System.Drawing.Size(75, 23);
             this.btnCancelPhotoOrderPrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnCancelPhotoOrderPrint.Symbol = "";
             this.btnCancelPhotoOrderPrint.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -1482,7 +1486,7 @@
             this.btnOkPhotoOrderPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOkPhotoOrderPrint.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.highlighter1.SetHighlightOnFocus(this.btnOkPhotoOrderPrint, true);
-            this.btnOkPhotoOrderPrint.Location = new System.Drawing.Point(609, 278);
+            this.btnOkPhotoOrderPrint.Location = new System.Drawing.Point(97, 285);
             this.btnOkPhotoOrderPrint.Name = "btnOkPhotoOrderPrint";
             this.btnOkPhotoOrderPrint.Size = new System.Drawing.Size(108, 23);
             this.btnOkPhotoOrderPrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1812,7 +1816,7 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 596);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 613);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1024, 22);
             this.statusStrip1.TabIndex = 4;
@@ -1840,12 +1844,32 @@
             this.bgWorkerLoadPicture.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerLoadPicture_DoWork);
             this.bgWorkerLoadPicture.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerLoadPicture_RunWorkerCompleted);
             // 
+            // button3
+            // 
+            this.button3.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_multi_picture_1;
+            this.button3.Location = new System.Drawing.Point(681, 275);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(36, 33);
+            this.button3.TabIndex = 135;
+            this.toolTip1.SetToolTip(this.button3, "سفارش دورچین");
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_postcard_1076706;
+            this.button1.Location = new System.Drawing.Point(637, 275);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(41, 33);
+            this.button1.TabIndex = 135;
+            this.toolTip1.SetToolTip(this.button1, "سفارش لیت");
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // FrmAddEditPreFactor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(1024, 618);
+            this.ClientSize = new System.Drawing.Size(1024, 635);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panelEx1);
             this.Controls.Add(this.menuStrip1);
@@ -2007,5 +2031,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBoxPreview;
         private System.Windows.Forms.PictureBox pictureBoxIsAccepted;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button3;
     }
 }
