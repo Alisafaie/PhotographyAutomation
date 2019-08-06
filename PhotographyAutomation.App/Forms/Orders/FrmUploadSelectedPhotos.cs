@@ -12,10 +12,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
+
 
 namespace PhotographyAutomation.App.Forms.Orders
 {
@@ -587,8 +586,8 @@ namespace PhotographyAutomation.App.Forms.Orders
                             if (resultSaveNewOrderPrintDetails > 0)
                             {
                                 var drShowPreFactor = MessageBox.Show(
-                                    "اطلاعات سفارش چاپ و جزئیات آن با موفقیت در سیستم ثبت گردید." +
-                                    "آیا می خواهید فرم ثبت پیش فاکتور نمایش داده شود؟",
+                                    @"اطلاعات سفارش چاپ و جزئیات آن با موفقیت در سیستم ثبت گردید." +
+                                    @"آیا می خواهید فرم ثبت پیش فاکتور نمایش داده شود؟",
                                     "",
                                     MessageBoxButtons.YesNo,
                                     MessageBoxIcon.Question,

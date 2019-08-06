@@ -187,6 +187,12 @@
     <Compile Include="Forms\EntranceToAtelier\FrmUploadPhotos.Designer.cs">
       <DependentUpon>FrmUploadPhotos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Test\FrmAddEditPreFactorTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Test\FrmAddEditPreFactorTest.Designer.cs">
+      <DependentUpon>FrmAddEditPreFactorTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\Admin\FrmAddEditInput.resx">
@@ -236,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EntranceToAtelier\FrmUploadPhotos.resx">
       <DependentUpon>FrmUploadPhotos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Test\FrmAddEditPreFactorTest.resx">
+      <DependentUpon>FrmAddEditPreFactorTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -1622,6 +1631,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\iconfinder_postcard_1076706.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_photo_album_picture_camera_image_4593124.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_photo_album_picture_camera_image_4593124 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_stock_form-frame_94246.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
