@@ -133,6 +133,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.buttonX10 = new DevComponents.DotNetBar.ButtonX();
             this.comboBox7 = new System.Windows.Forms.ComboBox();
             this.textBoxX12 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX15 = new DevComponents.DotNetBar.LabelX();
@@ -140,6 +141,7 @@
             this.comboBox11 = new System.Windows.Forms.ComboBox();
             this.textBoxX14 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.buttonX9 = new DevComponents.DotNetBar.ButtonX();
             this.comboBox8 = new System.Windows.Forms.ComboBox();
             this.textBoxX10 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX16 = new DevComponents.DotNetBar.LabelX();
@@ -153,28 +155,20 @@
             this.labelX14 = new DevComponents.DotNetBar.LabelX();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.line2 = new DevComponents.DotNetBar.Controls.Line();
-            this.labelX25 = new DevComponents.DotNetBar.LabelX();
-            this.comboBox15 = new System.Windows.Forms.ComboBox();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.labelX24 = new DevComponents.DotNetBar.LabelX();
             this.integerInput9 = new DevComponents.Editors.IntegerInput();
             this.comboBox9 = new System.Windows.Forms.ComboBox();
             this.textBoxX11 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.buttonX8 = new DevComponents.DotNetBar.ButtonX();
             this.labelX18 = new DevComponents.DotNetBar.LabelX();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.integerInput6 = new DevComponents.Editors.IntegerInput();
-            this.comboBox12 = new System.Windows.Forms.ComboBox();
-            this.textBoxX15 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.panel11 = new System.Windows.Forms.Panel();
-            this.labelX23 = new DevComponents.DotNetBar.LabelX();
             this.integerInput8 = new DevComponents.Editors.IntegerInput();
             this.comboBox13 = new System.Windows.Forms.ComboBox();
             this.textBoxX16 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX19 = new DevComponents.DotNetBar.LabelX();
             this.buttonX11 = new DevComponents.DotNetBar.ButtonX();
             this.panel12 = new System.Windows.Forms.Panel();
-            this.labelX22 = new DevComponents.DotNetBar.LabelX();
             this.integerInput7 = new DevComponents.Editors.IntegerInput();
             this.comboBox14 = new System.Windows.Forms.ComboBox();
             this.labelX20 = new DevComponents.DotNetBar.LabelX();
@@ -182,7 +176,6 @@
             this.checkBoxX11 = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.checkBoxX12 = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.checkBoxX13 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.labelX21 = new DevComponents.DotNetBar.LabelX();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelEx4 = new DevComponents.DotNetBar.PanelEx();
             this.label5 = new System.Windows.Forms.Label();
@@ -228,8 +221,13 @@
             this.bgWorkerGetOrderPrintInfo = new System.ComponentModel.BackgroundWorker();
             this.bgWorkerLoadPicture = new System.ComponentModel.BackgroundWorker();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.buttonX9 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX10 = new DevComponents.DotNetBar.ButtonX();
+            this.line4 = new DevComponents.DotNetBar.Controls.Line();
+            this.textBoxX15 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.integerInput6 = new DevComponents.Editors.IntegerInput();
+            this.comboBox12 = new System.Windows.Forms.ComboBox();
+            this.labelX25 = new DevComponents.DotNetBar.LabelX();
+            this.comboBox15 = new System.Windows.Forms.ComboBox();
+            this.labelX21 = new DevComponents.DotNetBar.LabelX();
             this.menuStrip1.SuspendLayout();
             this.panelEx1.SuspendLayout();
             this.groupBoxPreviewPictures.SuspendLayout();
@@ -264,7 +262,6 @@
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput9)).BeginInit();
             this.panel10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.integerInput6)).BeginInit();
             this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput8)).BeginInit();
             this.panel12.SuspendLayout();
@@ -281,6 +278,7 @@
             this.groupBox9.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.integerInput6)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -697,7 +695,7 @@
             // 
             this.checkBoxLoadPrintSizeServices.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.checkBoxLoadPrintSizeServices, true);
-            this.checkBoxLoadPrintSizeServices.Location = new System.Drawing.Point(349, 110);
+            this.checkBoxLoadPrintSizeServices.Location = new System.Drawing.Point(339, 110);
             this.checkBoxLoadPrintSizeServices.Name = "checkBoxLoadPrintSizeServices";
             this.checkBoxLoadPrintSizeServices.Size = new System.Drawing.Size(76, 16);
             this.checkBoxLoadPrintSizeServices.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -808,7 +806,7 @@
             // 
             // 
             this.labelX34.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX34.Location = new System.Drawing.Point(780, 110);
+            this.labelX34.Location = new System.Drawing.Point(773, 110);
             this.labelX34.Name = "labelX34";
             this.labelX34.Size = new System.Drawing.Size(49, 16);
             this.labelX34.TabIndex = 133;
@@ -858,7 +856,6 @@
             // 
             // integerInputSecondPrintServiceCount4
             // 
-            this.integerInputSecondPrintServiceCount4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
@@ -881,7 +878,6 @@
             // 
             // txtSecondPrintServicePrice4
             // 
-            this.txtSecondPrintServicePrice4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
@@ -902,12 +898,11 @@
             // 
             // cmbSecondPrintService4
             // 
-            this.cmbSecondPrintService4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbSecondPrintService4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSecondPrintService4.Enabled = false;
             this.cmbSecondPrintService4.FormattingEnabled = true;
             this.highlighter1.SetHighlightOnFocus(this.cmbSecondPrintService4, true);
-            this.cmbSecondPrintService4.Location = new System.Drawing.Point(311, 192);
+            this.cmbSecondPrintService4.Location = new System.Drawing.Point(310, 192);
             this.cmbSecondPrintService4.Name = "cmbSecondPrintService4";
             this.cmbSecondPrintService4.Size = new System.Drawing.Size(121, 21);
             this.cmbSecondPrintService4.TabIndex = 189;
@@ -916,7 +911,6 @@
             // 
             // integerInputSecondPrintCount4
             // 
-            this.integerInputSecondPrintCount4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
@@ -939,7 +933,6 @@
             // 
             // txtSecondPrintSizePrice4
             // 
-            this.txtSecondPrintSizePrice4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
@@ -960,7 +953,6 @@
             // 
             // cmbSecondPrintSize4
             // 
-            this.cmbSecondPrintSize4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbSecondPrintSize4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSecondPrintSize4.Enabled = false;
             this.cmbSecondPrintSize4.FormattingEnabled = true;
@@ -976,7 +968,6 @@
             // 
             // integerInputSecondPrintServiceCount3
             // 
-            this.integerInputSecondPrintServiceCount3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
@@ -999,7 +990,6 @@
             // 
             // integerInputSecondPrintCount3
             // 
-            this.integerInputSecondPrintCount3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
@@ -1022,7 +1012,6 @@
             // 
             // txtSecondPrintServicePrice3
             // 
-            this.txtSecondPrintServicePrice3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
@@ -1043,7 +1032,6 @@
             // 
             // txtSecondPrintSizePrice3
             // 
-            this.txtSecondPrintSizePrice3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
@@ -1064,12 +1052,11 @@
             // 
             // cmbSecondPrintService3
             // 
-            this.cmbSecondPrintService3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbSecondPrintService3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSecondPrintService3.Enabled = false;
             this.cmbSecondPrintService3.FormattingEnabled = true;
             this.highlighter1.SetHighlightOnFocus(this.cmbSecondPrintService3, true);
-            this.cmbSecondPrintService3.Location = new System.Drawing.Point(311, 138);
+            this.cmbSecondPrintService3.Location = new System.Drawing.Point(310, 138);
             this.cmbSecondPrintService3.Name = "cmbSecondPrintService3";
             this.cmbSecondPrintService3.Size = new System.Drawing.Size(121, 21);
             this.cmbSecondPrintService3.TabIndex = 182;
@@ -1078,7 +1065,6 @@
             // 
             // cmbSecondPrintSize3
             // 
-            this.cmbSecondPrintSize3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbSecondPrintSize3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSecondPrintSize3.Enabled = false;
             this.cmbSecondPrintSize3.FormattingEnabled = true;
@@ -1094,7 +1080,6 @@
             // 
             // checkBoxSecondPrint4
             // 
-            this.checkBoxSecondPrint4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxSecondPrint4.AutoSize = true;
             // 
             // 
@@ -1112,7 +1097,6 @@
             // 
             // checkBoxSecondPrint3
             // 
-            this.checkBoxSecondPrint3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxSecondPrint3.AutoSize = true;
             // 
             // 
@@ -1130,14 +1114,13 @@
             // 
             // checkBoxLoadSecondPrintServices4
             // 
-            this.checkBoxLoadSecondPrintServices4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxLoadSecondPrintServices4.AutoSize = true;
             // 
             // 
             // 
             this.checkBoxLoadSecondPrintServices4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.checkBoxLoadSecondPrintServices4.Enabled = false;
-            this.checkBoxLoadSecondPrintServices4.Location = new System.Drawing.Point(356, 170);
+            this.checkBoxLoadSecondPrintServices4.Location = new System.Drawing.Point(355, 170);
             this.checkBoxLoadSecondPrintServices4.Name = "checkBoxLoadSecondPrintServices4";
             this.checkBoxLoadSecondPrintServices4.Size = new System.Drawing.Size(76, 16);
             this.checkBoxLoadSecondPrintServices4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1147,14 +1130,13 @@
             // 
             // checkBoxLoadSecondPrintServices3
             // 
-            this.checkBoxLoadSecondPrintServices3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxLoadSecondPrintServices3.AutoSize = true;
             // 
             // 
             // 
             this.checkBoxLoadSecondPrintServices3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.checkBoxLoadSecondPrintServices3.Enabled = false;
-            this.checkBoxLoadSecondPrintServices3.Location = new System.Drawing.Point(356, 116);
+            this.checkBoxLoadSecondPrintServices3.Location = new System.Drawing.Point(355, 116);
             this.checkBoxLoadSecondPrintServices3.Name = "checkBoxLoadSecondPrintServices3";
             this.checkBoxLoadSecondPrintServices3.Size = new System.Drawing.Size(76, 16);
             this.checkBoxLoadSecondPrintServices3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1164,7 +1146,6 @@
             // 
             // integerInputSecondPrintServiceCount2
             // 
-            this.integerInputSecondPrintServiceCount2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
@@ -1187,7 +1168,6 @@
             // 
             // integerInputSecondPrintServiceCount1
             // 
-            this.integerInputSecondPrintServiceCount1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
@@ -1210,7 +1190,6 @@
             // 
             // integerInputSecondPrintCount2
             // 
-            this.integerInputSecondPrintCount2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
@@ -1233,7 +1212,6 @@
             // 
             // integerInputSecondPrintCount1
             // 
-            this.integerInputSecondPrintCount1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
@@ -1256,14 +1234,13 @@
             // 
             // checkBoxLoadSecondPrintServices2
             // 
-            this.checkBoxLoadSecondPrintServices2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxLoadSecondPrintServices2.AutoSize = true;
             // 
             // 
             // 
             this.checkBoxLoadSecondPrintServices2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.checkBoxLoadSecondPrintServices2.Enabled = false;
-            this.checkBoxLoadSecondPrintServices2.Location = new System.Drawing.Point(356, 62);
+            this.checkBoxLoadSecondPrintServices2.Location = new System.Drawing.Point(355, 62);
             this.checkBoxLoadSecondPrintServices2.Name = "checkBoxLoadSecondPrintServices2";
             this.checkBoxLoadSecondPrintServices2.Size = new System.Drawing.Size(76, 16);
             this.checkBoxLoadSecondPrintServices2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1273,7 +1250,6 @@
             // 
             // checkBoxLoadSecondPrintServices1
             // 
-            this.checkBoxLoadSecondPrintServices1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxLoadSecondPrintServices1.AutoSize = true;
             // 
             // 
@@ -1281,7 +1257,7 @@
             this.checkBoxLoadSecondPrintServices1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.checkBoxLoadSecondPrintServices1.Enabled = false;
             this.highlighter1.SetHighlightOnFocus(this.checkBoxLoadSecondPrintServices1, true);
-            this.checkBoxLoadSecondPrintServices1.Location = new System.Drawing.Point(356, 8);
+            this.checkBoxLoadSecondPrintServices1.Location = new System.Drawing.Point(355, 8);
             this.checkBoxLoadSecondPrintServices1.Name = "checkBoxLoadSecondPrintServices1";
             this.checkBoxLoadSecondPrintServices1.Size = new System.Drawing.Size(76, 16);
             this.checkBoxLoadSecondPrintServices1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1291,7 +1267,6 @@
             // 
             // txtSecondPrintServicePrice2
             // 
-            this.txtSecondPrintServicePrice2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
@@ -1312,7 +1287,6 @@
             // 
             // txtSecondPrintSizePrice2
             // 
-            this.txtSecondPrintSizePrice2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
@@ -1333,7 +1307,6 @@
             // 
             // txtSecondPrintSizePrice1
             // 
-            this.txtSecondPrintSizePrice1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
@@ -1354,7 +1327,6 @@
             // 
             // checkBoxSecondPrint2
             // 
-            this.checkBoxSecondPrint2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxSecondPrint2.AutoSize = true;
             // 
             // 
@@ -1372,7 +1344,6 @@
             // 
             // checkBoxSecondPrint1
             // 
-            this.checkBoxSecondPrint1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxSecondPrint1.AutoSize = true;
             // 
             // 
@@ -1390,7 +1361,6 @@
             // 
             // txtSecondPrintServicePrice1
             // 
-            this.txtSecondPrintServicePrice1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
@@ -1411,12 +1381,11 @@
             // 
             // cmbSecondPrintService2
             // 
-            this.cmbSecondPrintService2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbSecondPrintService2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSecondPrintService2.Enabled = false;
             this.cmbSecondPrintService2.FormattingEnabled = true;
             this.highlighter1.SetHighlightOnFocus(this.cmbSecondPrintService2, true);
-            this.cmbSecondPrintService2.Location = new System.Drawing.Point(311, 84);
+            this.cmbSecondPrintService2.Location = new System.Drawing.Point(310, 84);
             this.cmbSecondPrintService2.Name = "cmbSecondPrintService2";
             this.cmbSecondPrintService2.Size = new System.Drawing.Size(121, 21);
             this.cmbSecondPrintService2.TabIndex = 144;
@@ -1425,12 +1394,11 @@
             // 
             // cmbSecondPrintService1
             // 
-            this.cmbSecondPrintService1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbSecondPrintService1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSecondPrintService1.Enabled = false;
             this.cmbSecondPrintService1.FormattingEnabled = true;
             this.highlighter1.SetHighlightOnFocus(this.cmbSecondPrintService1, true);
-            this.cmbSecondPrintService1.Location = new System.Drawing.Point(311, 30);
+            this.cmbSecondPrintService1.Location = new System.Drawing.Point(310, 30);
             this.cmbSecondPrintService1.Name = "cmbSecondPrintService1";
             this.cmbSecondPrintService1.Size = new System.Drawing.Size(121, 21);
             this.cmbSecondPrintService1.TabIndex = 138;
@@ -1439,7 +1407,6 @@
             // 
             // cmbSecondPrintSize2
             // 
-            this.cmbSecondPrintSize2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbSecondPrintSize2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSecondPrintSize2.Enabled = false;
             this.cmbSecondPrintSize2.FormattingEnabled = true;
@@ -1455,7 +1422,6 @@
             // 
             // cmbSecondPrintSize1
             // 
-            this.cmbSecondPrintSize1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbSecondPrintSize1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSecondPrintSize1.Enabled = false;
             this.cmbSecondPrintSize1.FormattingEnabled = true;
@@ -1535,7 +1501,7 @@
             // 
             // 
             this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.Location = new System.Drawing.Point(794, 62);
+            this.labelX7.Location = new System.Drawing.Point(790, 62);
             this.labelX7.Name = "labelX7";
             this.labelX7.Size = new System.Drawing.Size(42, 16);
             this.labelX7.TabIndex = 170;
@@ -1618,7 +1584,7 @@
             // 
             this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.checkBoxX1, true);
-            this.checkBoxX1.Location = new System.Drawing.Point(356, 8);
+            this.checkBoxX1.Location = new System.Drawing.Point(346, 8);
             this.checkBoxX1.Name = "checkBoxX1";
             this.checkBoxX1.Size = new System.Drawing.Size(76, 16);
             this.checkBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1686,7 +1652,7 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(787, 8);
+            this.labelX1.Location = new System.Drawing.Point(780, 8);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(49, 16);
             this.labelX1.TabIndex = 139;
@@ -1906,7 +1872,7 @@
             // 
             // 
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(794, 62);
+            this.labelX5.Location = new System.Drawing.Point(790, 62);
             this.labelX5.Name = "labelX5";
             this.labelX5.Size = new System.Drawing.Size(42, 16);
             this.labelX5.TabIndex = 142;
@@ -1920,7 +1886,7 @@
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(789, 8);
+            this.labelX3.Location = new System.Drawing.Point(781, 8);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(47, 16);
             this.labelX3.TabIndex = 142;
@@ -2015,6 +1981,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.GhostWhite;
+            this.tabPage2.Controls.Add(this.line4);
             this.tabPage2.Controls.Add(this.panel8);
             this.tabPage2.Controls.Add(this.panel6);
             this.tabPage2.Controls.Add(this.panel7);
@@ -2028,7 +1995,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(846, 234);
             this.tabPage2.TabIndex = 7;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "اصل چاپ";
             // 
             // panel8
             // 
@@ -2036,10 +2003,23 @@
             this.panel8.Controls.Add(this.comboBox7);
             this.panel8.Controls.Add(this.textBoxX12);
             this.panel8.Controls.Add(this.labelX15);
-            this.panel8.Location = new System.Drawing.Point(11, 101);
+            this.panel8.Location = new System.Drawing.Point(162, 127);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(225, 64);
             this.panel8.TabIndex = 191;
+            // 
+            // buttonX10
+            // 
+            this.buttonX10.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonX10.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX10.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX10.HoverImage")));
+            this.buttonX10.Image = ((System.Drawing.Image)(resources.GetObject("buttonX10.Image")));
+            this.buttonX10.Location = new System.Drawing.Point(3, 4);
+            this.buttonX10.Name = "buttonX10";
+            this.buttonX10.Size = new System.Drawing.Size(30, 25);
+            this.buttonX10.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX10.TabIndex = 192;
             // 
             // comboBox7
             // 
@@ -2089,9 +2069,9 @@
             // 
             this.panel6.Controls.Add(this.comboBox11);
             this.panel6.Controls.Add(this.textBoxX14);
-            this.panel6.Location = new System.Drawing.Point(701, 101);
+            this.panel6.Location = new System.Drawing.Point(509, 32);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(135, 64);
+            this.panel6.Size = new System.Drawing.Size(270, 36);
             this.panel6.TabIndex = 191;
             // 
             // comboBox11
@@ -2101,21 +2081,20 @@
             this.comboBox11.Enabled = false;
             this.comboBox11.FormattingEnabled = true;
             this.highlighter1.SetHighlightOnFocus(this.comboBox11, true);
-            this.comboBox11.Location = new System.Drawing.Point(11, 6);
+            this.comboBox11.Location = new System.Drawing.Point(140, 7);
             this.comboBox11.Name = "comboBox11";
             this.comboBox11.Size = new System.Drawing.Size(121, 21);
             this.comboBox11.TabIndex = 185;
             // 
             // textBoxX14
             // 
-            this.textBoxX14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
             this.textBoxX14.Border.Class = "TextBoxBorder";
             this.textBoxX14.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.textBoxX14, true);
-            this.textBoxX14.Location = new System.Drawing.Point(10, 33);
+            this.textBoxX14.Location = new System.Drawing.Point(12, 7);
             this.textBoxX14.Name = "textBoxX14";
             this.textBoxX14.PreventEnterBeep = true;
             this.textBoxX14.ReadOnly = true;
@@ -2132,10 +2111,24 @@
             this.panel7.Controls.Add(this.comboBox8);
             this.panel7.Controls.Add(this.textBoxX10);
             this.panel7.Controls.Add(this.labelX16);
-            this.panel7.Location = new System.Drawing.Point(247, 101);
+            this.panel7.Location = new System.Drawing.Point(410, 127);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(209, 64);
             this.panel7.TabIndex = 190;
+            // 
+            // buttonX9
+            // 
+            this.buttonX9.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonX9.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.highlighter1.SetHighlightOnFocus(this.buttonX9, true);
+            this.buttonX9.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX9.HoverImage")));
+            this.buttonX9.Image = ((System.Drawing.Image)(resources.GetObject("buttonX9.Image")));
+            this.buttonX9.Location = new System.Drawing.Point(5, 4);
+            this.buttonX9.Name = "buttonX9";
+            this.buttonX9.Size = new System.Drawing.Size(30, 25);
+            this.buttonX9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX9.TabIndex = 192;
             // 
             // comboBox8
             // 
@@ -2186,7 +2179,7 @@
             this.panel5.Controls.Add(this.comboBox10);
             this.panel5.Controls.Add(this.labelX17);
             this.panel5.Controls.Add(this.textBoxX13);
-            this.panel5.Location = new System.Drawing.Point(467, 101);
+            this.panel5.Location = new System.Drawing.Point(642, 127);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(197, 64);
             this.panel5.TabIndex = 190;
@@ -2211,7 +2204,7 @@
             // 
             // 
             this.labelX17.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX17.Location = new System.Drawing.Point(135, 8);
+            this.labelX17.Location = new System.Drawing.Point(134, 8);
             this.labelX17.Name = "labelX17";
             this.labelX17.Size = new System.Drawing.Size(56, 16);
             this.labelX17.TabIndex = 186;
@@ -2248,7 +2241,7 @@
             this.checkBoxX10.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
             this.checkBoxX10.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.highlighter1.SetHighlightOnFocus(this.checkBoxX10, true);
-            this.checkBoxX10.Location = new System.Drawing.Point(594, 78);
+            this.checkBoxX10.Location = new System.Drawing.Point(769, 104);
             this.checkBoxX10.Name = "checkBoxX10";
             this.checkBoxX10.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBoxX10.Size = new System.Drawing.Size(70, 16);
@@ -2267,7 +2260,7 @@
             this.checkBoxX9.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
             this.checkBoxX9.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.highlighter1.SetHighlightOnFocus(this.checkBoxX9, true);
-            this.checkBoxX9.Location = new System.Drawing.Point(393, 78);
+            this.checkBoxX9.Location = new System.Drawing.Point(556, 104);
             this.checkBoxX9.Name = "checkBoxX9";
             this.checkBoxX9.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBoxX9.Size = new System.Drawing.Size(63, 16);
@@ -2286,7 +2279,7 @@
             this.checkBoxX8.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
             this.checkBoxX8.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.highlighter1.SetHighlightOnFocus(this.checkBoxX8, true);
-            this.checkBoxX8.Location = new System.Drawing.Point(180, 78);
+            this.checkBoxX8.Location = new System.Drawing.Point(331, 104);
             this.checkBoxX8.Name = "checkBoxX8";
             this.checkBoxX8.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBoxX8.Size = new System.Drawing.Size(56, 16);
@@ -2302,7 +2295,7 @@
             // 
             // 
             this.labelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX14.Location = new System.Drawing.Point(787, 78);
+            this.labelX14.Location = new System.Drawing.Point(790, 40);
             this.labelX14.Name = "labelX14";
             this.labelX14.Size = new System.Drawing.Size(49, 16);
             this.labelX14.TabIndex = 136;
@@ -2312,8 +2305,6 @@
             // 
             this.tabPage3.BackColor = System.Drawing.Color.GhostWhite;
             this.tabPage3.Controls.Add(this.line2);
-            this.tabPage3.Controls.Add(this.labelX25);
-            this.tabPage3.Controls.Add(this.comboBox15);
             this.tabPage3.Controls.Add(this.panel9);
             this.tabPage3.Controls.Add(this.panel10);
             this.tabPage3.Controls.Add(this.panel11);
@@ -2321,13 +2312,12 @@
             this.tabPage3.Controls.Add(this.checkBoxX11);
             this.tabPage3.Controls.Add(this.checkBoxX12);
             this.tabPage3.Controls.Add(this.checkBoxX13);
-            this.tabPage3.Controls.Add(this.labelX21);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(846, 234);
             this.tabPage3.TabIndex = 8;
-            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.Text = "اضافه چاپ";
             // 
             // line2
             // 
@@ -2338,57 +2328,17 @@
             this.line2.TabIndex = 203;
             this.line2.Text = "line2";
             // 
-            // labelX25
-            // 
-            this.labelX25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelX25.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX25.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX25.Location = new System.Drawing.Point(755, 33);
-            this.labelX25.Name = "labelX25";
-            this.labelX25.Size = new System.Drawing.Size(79, 16);
-            this.labelX25.TabIndex = 202;
-            this.labelX25.Text = "ترتیب اضافه چاپ";
-            // 
-            // comboBox15
-            // 
-            this.comboBox15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox15.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox15.FormattingEnabled = true;
-            this.highlighter1.SetHighlightOnFocus(this.comboBox15, true);
-            this.comboBox15.Location = new System.Drawing.Point(628, 32);
-            this.comboBox15.Name = "comboBox15";
-            this.comboBox15.Size = new System.Drawing.Size(121, 21);
-            this.comboBox15.TabIndex = 201;
-            // 
             // panel9
             // 
-            this.panel9.Controls.Add(this.labelX24);
             this.panel9.Controls.Add(this.integerInput9);
             this.panel9.Controls.Add(this.comboBox9);
             this.panel9.Controls.Add(this.textBoxX11);
             this.panel9.Controls.Add(this.buttonX8);
             this.panel9.Controls.Add(this.labelX18);
-            this.panel9.Location = new System.Drawing.Point(238, 123);
+            this.panel9.Location = new System.Drawing.Point(370, 123);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(232, 89);
             this.panel9.TabIndex = 198;
-            // 
-            // labelX24
-            // 
-            this.labelX24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelX24.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX24.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX24.Location = new System.Drawing.Point(200, 37);
-            this.labelX24.Name = "labelX24";
-            this.labelX24.Size = new System.Drawing.Size(25, 16);
-            this.labelX24.TabIndex = 204;
-            this.labelX24.Text = "تعداد";
             // 
             // integerInput9
             // 
@@ -2471,93 +2421,28 @@
             // 
             // panel10
             // 
+            this.panel10.Controls.Add(this.textBoxX15);
             this.panel10.Controls.Add(this.integerInput6);
             this.panel10.Controls.Add(this.comboBox12);
-            this.panel10.Controls.Add(this.textBoxX15);
-            this.panel10.Location = new System.Drawing.Point(701, 123);
+            this.panel10.Controls.Add(this.labelX25);
+            this.panel10.Controls.Add(this.comboBox15);
+            this.panel10.Controls.Add(this.labelX21);
+            this.panel10.Location = new System.Drawing.Point(118, 16);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(138, 89);
+            this.panel10.Size = new System.Drawing.Size(721, 42);
             this.panel10.TabIndex = 199;
-            // 
-            // integerInput6
-            // 
-            this.integerInput6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.integerInput6.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.integerInput6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.integerInput6.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.integerInput6.Enabled = false;
-            this.highlighter1.SetHighlightOnFocus(this.integerInput6, true);
-            this.integerInput6.Location = new System.Drawing.Point(10, 34);
-            this.integerInput6.MaxValue = 1000;
-            this.integerInput6.MinValue = 0;
-            this.integerInput6.Name = "integerInput6";
-            this.integerInput6.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.integerInput6.Size = new System.Drawing.Size(121, 21);
-            this.integerInput6.TabIndex = 200;
-            this.integerInput6.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
-            this.integerInput6.WatermarkText = "تعداد";
-            // 
-            // comboBox12
-            // 
-            this.comboBox12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox12.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox12.Enabled = false;
-            this.comboBox12.FormattingEnabled = true;
-            this.highlighter1.SetHighlightOnFocus(this.comboBox12, true);
-            this.comboBox12.Location = new System.Drawing.Point(11, 7);
-            this.comboBox12.Name = "comboBox12";
-            this.comboBox12.Size = new System.Drawing.Size(121, 21);
-            this.comboBox12.TabIndex = 185;
-            // 
-            // textBoxX15
-            // 
-            this.textBoxX15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.textBoxX15.Border.Class = "TextBoxBorder";
-            this.textBoxX15.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.highlighter1.SetHighlightOnFocus(this.textBoxX15, true);
-            this.textBoxX15.Location = new System.Drawing.Point(10, 61);
-            this.textBoxX15.Name = "textBoxX15";
-            this.textBoxX15.PreventEnterBeep = true;
-            this.textBoxX15.ReadOnly = true;
-            this.textBoxX15.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBoxX15.Size = new System.Drawing.Size(121, 21);
-            this.textBoxX15.TabIndex = 187;
-            this.textBoxX15.TabStop = false;
-            this.textBoxX15.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxX15.WatermarkText = "هزینه چاپ (ريال)";
             // 
             // panel11
             // 
-            this.panel11.Controls.Add(this.labelX23);
             this.panel11.Controls.Add(this.integerInput8);
             this.panel11.Controls.Add(this.comboBox13);
             this.panel11.Controls.Add(this.textBoxX16);
             this.panel11.Controls.Add(this.labelX19);
             this.panel11.Controls.Add(this.buttonX11);
-            this.panel11.Location = new System.Drawing.Point(15, 123);
+            this.panel11.Location = new System.Drawing.Point(118, 123);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(214, 89);
             this.panel11.TabIndex = 196;
-            // 
-            // labelX23
-            // 
-            this.labelX23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelX23.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX23.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX23.Location = new System.Drawing.Point(182, 37);
-            this.labelX23.Name = "labelX23";
-            this.labelX23.Size = new System.Drawing.Size(25, 16);
-            this.labelX23.TabIndex = 203;
-            this.labelX23.Text = "تعداد";
             // 
             // integerInput8
             // 
@@ -2640,29 +2525,14 @@
             // 
             // panel12
             // 
-            this.panel12.Controls.Add(this.labelX22);
             this.panel12.Controls.Add(this.integerInput7);
             this.panel12.Controls.Add(this.comboBox14);
             this.panel12.Controls.Add(this.labelX20);
             this.panel12.Controls.Add(this.textBoxX17);
-            this.panel12.Location = new System.Drawing.Point(479, 123);
+            this.panel12.Location = new System.Drawing.Point(624, 123);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(197, 89);
+            this.panel12.Size = new System.Drawing.Size(212, 89);
             this.panel12.TabIndex = 197;
-            // 
-            // labelX22
-            // 
-            this.labelX22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelX22.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX22.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX22.Location = new System.Drawing.Point(162, 36);
-            this.labelX22.Name = "labelX22";
-            this.labelX22.Size = new System.Drawing.Size(25, 16);
-            this.labelX22.TabIndex = 202;
-            this.labelX22.Text = "تعداد";
             // 
             // integerInput7
             // 
@@ -2675,7 +2545,7 @@
             this.integerInput7.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.integerInput7.Enabled = false;
             this.highlighter1.SetHighlightOnFocus(this.integerInput7, true);
-            this.integerInput7.Location = new System.Drawing.Point(3, 34);
+            this.integerInput7.Location = new System.Drawing.Point(6, 34);
             this.integerInput7.MaxValue = 1000;
             this.integerInput7.MinValue = 0;
             this.integerInput7.Name = "integerInput7";
@@ -2692,7 +2562,7 @@
             this.comboBox14.Enabled = false;
             this.comboBox14.FormattingEnabled = true;
             this.highlighter1.SetHighlightOnFocus(this.comboBox14, true);
-            this.comboBox14.Location = new System.Drawing.Point(3, 7);
+            this.comboBox14.Location = new System.Drawing.Point(6, 7);
             this.comboBox14.Name = "comboBox14";
             this.comboBox14.Size = new System.Drawing.Size(121, 21);
             this.comboBox14.TabIndex = 185;
@@ -2705,7 +2575,7 @@
             // 
             // 
             this.labelX20.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX20.Location = new System.Drawing.Point(131, 8);
+            this.labelX20.Location = new System.Drawing.Point(145, 8);
             this.labelX20.Name = "labelX20";
             this.labelX20.Size = new System.Drawing.Size(56, 16);
             this.labelX20.TabIndex = 186;
@@ -2720,7 +2590,7 @@
             this.textBoxX17.Border.Class = "TextBoxBorder";
             this.textBoxX17.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.textBoxX17, true);
-            this.textBoxX17.Location = new System.Drawing.Point(3, 61);
+            this.textBoxX17.Location = new System.Drawing.Point(6, 61);
             this.textBoxX17.Name = "textBoxX17";
             this.textBoxX17.PreventEnterBeep = true;
             this.textBoxX17.ReadOnly = true;
@@ -2742,7 +2612,7 @@
             this.checkBoxX11.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
             this.checkBoxX11.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.highlighter1.SetHighlightOnFocus(this.checkBoxX11, true);
-            this.checkBoxX11.Location = new System.Drawing.Point(606, 99);
+            this.checkBoxX11.Location = new System.Drawing.Point(766, 99);
             this.checkBoxX11.Name = "checkBoxX11";
             this.checkBoxX11.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBoxX11.Size = new System.Drawing.Size(70, 16);
@@ -2761,7 +2631,7 @@
             this.checkBoxX12.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
             this.checkBoxX12.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.highlighter1.SetHighlightOnFocus(this.checkBoxX12, true);
-            this.checkBoxX12.Location = new System.Drawing.Point(166, 99);
+            this.checkBoxX12.Location = new System.Drawing.Point(269, 99);
             this.checkBoxX12.Name = "checkBoxX12";
             this.checkBoxX12.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBoxX12.Size = new System.Drawing.Size(63, 16);
@@ -2780,27 +2650,13 @@
             this.checkBoxX13.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
             this.checkBoxX13.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.highlighter1.SetHighlightOnFocus(this.checkBoxX13, true);
-            this.checkBoxX13.Location = new System.Drawing.Point(414, 99);
+            this.checkBoxX13.Location = new System.Drawing.Point(546, 99);
             this.checkBoxX13.Name = "checkBoxX13";
             this.checkBoxX13.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBoxX13.Size = new System.Drawing.Size(56, 16);
             this.checkBoxX13.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.checkBoxX13.TabIndex = 193;
             this.checkBoxX13.Text = "دورچین";
-            // 
-            // labelX21
-            // 
-            this.labelX21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelX21.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX21.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX21.Location = new System.Drawing.Point(785, 99);
-            this.labelX21.Name = "labelX21";
-            this.labelX21.Size = new System.Drawing.Size(49, 16);
-            this.labelX21.TabIndex = 192;
-            this.labelX21.Text = "اندازه چاپ";
             // 
             // panel1
             // 
@@ -3383,32 +3239,106 @@
             this.bgWorkerLoadPicture.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerLoadPicture_DoWork);
             this.bgWorkerLoadPicture.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerLoadPicture_RunWorkerCompleted);
             // 
-            // buttonX9
+            // line4
             // 
-            this.buttonX9.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonX9.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.highlighter1.SetHighlightOnFocus(this.buttonX9, true);
-            this.buttonX9.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX9.HoverImage")));
-            this.buttonX9.Image = ((System.Drawing.Image)(resources.GetObject("buttonX9.Image")));
-            this.buttonX9.Location = new System.Drawing.Point(5, 4);
-            this.buttonX9.Name = "buttonX9";
-            this.buttonX9.Size = new System.Drawing.Size(30, 25);
-            this.buttonX9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX9.TabIndex = 192;
+            this.line4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.line4.Location = new System.Drawing.Point(15, 69);
+            this.line4.Name = "line4";
+            this.line4.Size = new System.Drawing.Size(817, 23);
+            this.line4.TabIndex = 192;
+            this.line4.Text = "line4";
             // 
-            // buttonX10
+            // textBoxX15
             // 
-            this.buttonX10.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonX10.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX10.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX10.HoverImage")));
-            this.buttonX10.Image = ((System.Drawing.Image)(resources.GetObject("buttonX10.Image")));
-            this.buttonX10.Location = new System.Drawing.Point(3, 4);
-            this.buttonX10.Name = "buttonX10";
-            this.buttonX10.Size = new System.Drawing.Size(30, 25);
-            this.buttonX10.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX10.TabIndex = 192;
+            this.textBoxX15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.textBoxX15.Border.Class = "TextBoxBorder";
+            this.textBoxX15.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.highlighter1.SetHighlightOnFocus(this.textBoxX15, true);
+            this.textBoxX15.Location = new System.Drawing.Point(93, 12);
+            this.textBoxX15.Name = "textBoxX15";
+            this.textBoxX15.PreventEnterBeep = true;
+            this.textBoxX15.ReadOnly = true;
+            this.textBoxX15.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.textBoxX15.Size = new System.Drawing.Size(121, 21);
+            this.textBoxX15.TabIndex = 204;
+            this.textBoxX15.TabStop = false;
+            this.textBoxX15.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxX15.WatermarkText = "هزینه چاپ (ريال)";
+            // 
+            // integerInput6
+            // 
+            this.integerInput6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.integerInput6.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.integerInput6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.integerInput6.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.integerInput6.Enabled = false;
+            this.highlighter1.SetHighlightOnFocus(this.integerInput6, true);
+            this.integerInput6.Location = new System.Drawing.Point(226, 12);
+            this.integerInput6.MaxValue = 1000;
+            this.integerInput6.MinValue = 0;
+            this.integerInput6.Name = "integerInput6";
+            this.integerInput6.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.integerInput6.Size = new System.Drawing.Size(56, 21);
+            this.integerInput6.TabIndex = 206;
+            this.integerInput6.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
+            this.integerInput6.WatermarkText = "تعداد";
+            // 
+            // comboBox12
+            // 
+            this.comboBox12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox12.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox12.Enabled = false;
+            this.comboBox12.FormattingEnabled = true;
+            this.highlighter1.SetHighlightOnFocus(this.comboBox12, true);
+            this.comboBox12.Location = new System.Drawing.Point(294, 12);
+            this.comboBox12.Name = "comboBox12";
+            this.comboBox12.Size = new System.Drawing.Size(121, 21);
+            this.comboBox12.TabIndex = 203;
+            // 
+            // labelX25
+            // 
+            this.labelX25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelX25.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX25.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX25.Location = new System.Drawing.Point(639, 13);
+            this.labelX25.Name = "labelX25";
+            this.labelX25.Size = new System.Drawing.Size(79, 16);
+            this.labelX25.TabIndex = 208;
+            this.labelX25.Text = "ترتیب اضافه چاپ";
+            // 
+            // comboBox15
+            // 
+            this.comboBox15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox15.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox15.FormattingEnabled = true;
+            this.highlighter1.SetHighlightOnFocus(this.comboBox15, true);
+            this.comboBox15.Location = new System.Drawing.Point(512, 12);
+            this.comboBox15.Name = "comboBox15";
+            this.comboBox15.Size = new System.Drawing.Size(121, 21);
+            this.comboBox15.TabIndex = 207;
+            // 
+            // labelX21
+            // 
+            this.labelX21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelX21.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX21.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX21.Location = new System.Drawing.Point(428, 13);
+            this.labelX21.Name = "labelX21";
+            this.labelX21.Size = new System.Drawing.Size(49, 16);
+            this.labelX21.TabIndex = 205;
+            this.labelX21.Text = "اندازه چاپ";
             // 
             // FrmAddEditPreFactor
             // 
@@ -3477,7 +3407,7 @@
             this.panel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput9)).EndInit();
             this.panel10.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.integerInput6)).EndInit();
+            this.panel10.PerformLayout();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput8)).EndInit();
@@ -3500,6 +3430,7 @@
             this.groupBox5.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.integerInput6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3675,25 +3606,19 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Panel panel9;
-        private DevComponents.DotNetBar.LabelX labelX24;
         private DevComponents.Editors.IntegerInput integerInput9;
         private System.Windows.Forms.ComboBox comboBox9;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX11;
         private DevComponents.DotNetBar.ButtonX buttonX8;
         private DevComponents.DotNetBar.LabelX labelX18;
         private System.Windows.Forms.Panel panel10;
-        private DevComponents.Editors.IntegerInput integerInput6;
-        private System.Windows.Forms.ComboBox comboBox12;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX15;
         private System.Windows.Forms.Panel panel11;
-        private DevComponents.DotNetBar.LabelX labelX23;
         private DevComponents.Editors.IntegerInput integerInput8;
         private System.Windows.Forms.ComboBox comboBox13;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX16;
         private DevComponents.DotNetBar.LabelX labelX19;
         private DevComponents.DotNetBar.ButtonX buttonX11;
         private System.Windows.Forms.Panel panel12;
-        private DevComponents.DotNetBar.LabelX labelX22;
         private DevComponents.Editors.IntegerInput integerInput7;
         private System.Windows.Forms.ComboBox comboBox14;
         private DevComponents.DotNetBar.LabelX labelX20;
@@ -3701,11 +3626,15 @@
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX11;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX12;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX13;
-        private DevComponents.DotNetBar.LabelX labelX21;
         private DevComponents.DotNetBar.Controls.Line line2;
-        private DevComponents.DotNetBar.LabelX labelX25;
-        private System.Windows.Forms.ComboBox comboBox15;
         private DevComponents.DotNetBar.ButtonX buttonX10;
         private DevComponents.DotNetBar.ButtonX buttonX9;
+        private DevComponents.DotNetBar.Controls.Line line4;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX15;
+        private DevComponents.Editors.IntegerInput integerInput6;
+        private System.Windows.Forms.ComboBox comboBox12;
+        private DevComponents.DotNetBar.LabelX labelX25;
+        private System.Windows.Forms.ComboBox comboBox15;
+        private DevComponents.DotNetBar.LabelX labelX21;
     }
 }

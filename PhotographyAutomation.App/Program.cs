@@ -1,4 +1,4 @@
-﻿using PhotographyAutomation.App.Forms;
+﻿using PhotographyAutomation.App.Forms.Factors;
 using System;
 using System.Windows.Forms;
 
@@ -14,7 +14,8 @@ namespace PhotographyAutomation.App
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMain());
+            //Application.Run(new FrmMain());
+            Application.Run(new FrmAddEditMultiPicture());
         }
     }
 }
