@@ -1641,5 +1641,11 @@
   <ItemGroup>
     <None Include="Resources\iconfinder_stock_form-frame_94246.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_folder_closed_59915-16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_folder_open_59927-16x16.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
