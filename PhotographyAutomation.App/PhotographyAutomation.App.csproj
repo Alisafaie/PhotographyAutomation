@@ -133,6 +133,12 @@
     <Compile Include="Forms\Booking\FrmShowBookings.Designer.cs">
       <DependentUpon>FrmShowBookings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Factors\FrmAddEditChangingElements.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Factors\FrmAddEditChangingElements.Designer.cs">
+      <DependentUpon>FrmAddEditChangingElements.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Factors\FrmAddEditLit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +156,18 @@
     </Compile>
     <Compile Include="Forms\Factors\FrmAddEditPreFactor.Designer.cs">
       <DependentUpon>FrmAddEditPreFactor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Factors\FrmLitPreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Factors\FrmLitPreview.Designer.cs">
+      <DependentUpon>FrmLitPreview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Factors\FrmPhotoPriview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Factors\FrmPhotoPriview.Designer.cs">
+      <DependentUpon>FrmPhotoPriview.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Orders\FrmUploadSelectedPhotos.cs">
       <SubType>Form</SubType>
@@ -228,6 +246,9 @@
     <EmbeddedResource Include="Forms\Booking\FrmShowBookings.resx">
       <DependentUpon>FrmShowBookings.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Factors\FrmAddEditChangingElements.resx">
+      <DependentUpon>FrmAddEditChangingElements.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Factors\FrmAddEditLit.resx">
       <DependentUpon>FrmAddEditLit.cs</DependentUpon>
     </EmbeddedResource>
@@ -236,6 +257,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Factors\FrmAddEditPreFactor.resx">
       <DependentUpon>FrmAddEditPreFactor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Factors\FrmLitPreview.resx">
+      <DependentUpon>FrmLitPreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Factors\FrmPhotoPriview.resx">
+      <DependentUpon>FrmPhotoPriview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Orders\FrmUploadSelectedPhotos.resx">
       <DependentUpon>FrmUploadSelectedPhotos.cs</DependentUpon>
@@ -1664,6 +1691,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\iconfinder_folder_open_59927-16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_resize_4418004.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_resize_4418004 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_edit_383148.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

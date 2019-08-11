@@ -96,63 +96,31 @@
             this.cmbSecondPrintService1 = new System.Windows.Forms.ComboBox();
             this.cmbSecondPrintSize2 = new System.Windows.Forms.ComboBox();
             this.cmbSecondPrintSize1 = new System.Windows.Forms.ComboBox();
-            this.tabPageMutiplePictures = new System.Windows.Forms.TabPage();
-            this.checkBoxX2 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.textBoxX7 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX7 = new DevComponents.DotNetBar.LabelX();
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
-            this.textBoxX5 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.integerInput3 = new DevComponents.Editors.IntegerInput();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.integerInput2 = new DevComponents.Editors.IntegerInput();
-            this.textBoxX3 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.tabPageLit = new System.Windows.Forms.TabPage();
-            this.checkBoxX5 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.textBoxX6 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.buttonX4 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX3 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
-            this.labelX10 = new DevComponents.DotNetBar.LabelX();
-            this.labelX9 = new DevComponents.DotNetBar.LabelX();
-            this.labelX8 = new DevComponents.DotNetBar.LabelX();
-            this.integerInput1 = new DevComponents.Editors.IntegerInput();
-            this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.labelX5 = new DevComponents.DotNetBar.LabelX();
-            this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.tabPageChangingElements = new System.Windows.Forms.TabPage();
-            this.buttonX6 = new DevComponents.DotNetBar.ButtonX();
-            this.textBoxX4 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.buttonX10 = new DevComponents.DotNetBar.ButtonX();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
-            this.textBoxX12 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX15 = new DevComponents.DotNetBar.LabelX();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.comboBox11 = new System.Windows.Forms.ComboBox();
-            this.textBoxX14 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.buttonX9 = new DevComponents.DotNetBar.ButtonX();
-            this.comboBox8 = new System.Windows.Forms.ComboBox();
-            this.textBoxX10 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX16 = new DevComponents.DotNetBar.LabelX();
+            this.line4 = new DevComponents.DotNetBar.Controls.Line();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.comboBox10 = new System.Windows.Forms.ComboBox();
-            this.labelX17 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX13 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.labelX16 = new DevComponents.DotNetBar.LabelX();
+            this.textBoxX12 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.textBoxX9 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.buttonX9 = new DevComponents.DotNetBar.ButtonX();
+            this.labelX14 = new DevComponents.DotNetBar.LabelX();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.textBoxX10 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX15 = new DevComponents.DotNetBar.LabelX();
+            this.buttonX10 = new DevComponents.DotNetBar.ButtonX();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.labelX13 = new DevComponents.DotNetBar.LabelX();
+            this.buttonX12 = new DevComponents.DotNetBar.ButtonX();
+            this.textBoxX8 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.labelX23 = new DevComponents.DotNetBar.LabelX();
             this.checkBoxX10 = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.checkBoxX9 = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.checkBoxX8 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.labelX14 = new DevComponents.DotNetBar.LabelX();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.line2 = new DevComponents.DotNetBar.Controls.Line();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -162,6 +130,14 @@
             this.buttonX8 = new DevComponents.DotNetBar.ButtonX();
             this.labelX18 = new DevComponents.DotNetBar.LabelX();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.buttonX6 = new DevComponents.DotNetBar.ButtonX();
+            this.labelX22 = new DevComponents.DotNetBar.LabelX();
+            this.textBoxX15 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.integerInput6 = new DevComponents.Editors.IntegerInput();
+            this.comboBox12 = new System.Windows.Forms.ComboBox();
+            this.labelX25 = new DevComponents.DotNetBar.LabelX();
+            this.comboBox15 = new System.Windows.Forms.ComboBox();
+            this.labelX21 = new DevComponents.DotNetBar.LabelX();
             this.panel11 = new System.Windows.Forms.Panel();
             this.integerInput8 = new DevComponents.Editors.IntegerInput();
             this.comboBox13 = new System.Windows.Forms.ComboBox();
@@ -221,13 +197,6 @@
             this.bgWorkerGetOrderPrintInfo = new System.ComponentModel.BackgroundWorker();
             this.bgWorkerLoadPicture = new System.ComponentModel.BackgroundWorker();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.line4 = new DevComponents.DotNetBar.Controls.Line();
-            this.textBoxX15 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.integerInput6 = new DevComponents.Editors.IntegerInput();
-            this.comboBox12 = new System.Windows.Forms.ComboBox();
-            this.labelX25 = new DevComponents.DotNetBar.LabelX();
-            this.comboBox15 = new System.Windows.Forms.ComboBox();
-            this.labelX21 = new DevComponents.DotNetBar.LabelX();
             this.menuStrip1.SuspendLayout();
             this.panelEx1.SuspendLayout();
             this.groupBoxPreviewPictures.SuspendLayout();
@@ -244,24 +213,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.integerInputSecondPrintServiceCount1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.integerInputSecondPrintCount2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.integerInputSecondPrintCount1)).BeginInit();
-            this.tabPageMutiplePictures.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.integerInput3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.integerInput2)).BeginInit();
-            this.tabPageLit.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.integerInput1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.tabPageChangingElements.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput9)).BeginInit();
             this.panel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.integerInput6)).BeginInit();
             this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput8)).BeginInit();
             this.panel12.SuspendLayout();
@@ -278,7 +239,6 @@
             this.groupBox9.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.integerInput6)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -606,9 +566,6 @@
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPageOriginalPrint);
             this.tabControl1.Controls.Add(this.tabPageSecondPrint);
-            this.tabControl1.Controls.Add(this.tabPageMutiplePictures);
-            this.tabControl1.Controls.Add(this.tabPageLit);
-            this.tabControl1.Controls.Add(this.tabPageChangingElements);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(3, 11);
@@ -1435,561 +1392,17 @@
             this.cmbSecondPrintSize1.SelectedValueChanged += new System.EventHandler(this.cmbSecondPrintSize1_SelectedValueChanged);
             this.cmbSecondPrintSize1.EnabledChanged += new System.EventHandler(this.cmbSecondPrintSize1_EnabledChanged);
             // 
-            // tabPageMutiplePictures
-            // 
-            this.tabPageMutiplePictures.BackColor = System.Drawing.Color.GhostWhite;
-            this.tabPageMutiplePictures.Controls.Add(this.checkBoxX2);
-            this.tabPageMutiplePictures.Controls.Add(this.textBoxX7);
-            this.tabPageMutiplePictures.Controls.Add(this.labelX7);
-            this.tabPageMutiplePictures.Controls.Add(this.buttonX1);
-            this.tabPageMutiplePictures.Controls.Add(this.textBoxX5);
-            this.tabPageMutiplePictures.Controls.Add(this.integerInput3);
-            this.tabPageMutiplePictures.Controls.Add(this.comboBox3);
-            this.tabPageMutiplePictures.Controls.Add(this.checkBoxX1);
-            this.tabPageMutiplePictures.Controls.Add(this.integerInput2);
-            this.tabPageMutiplePictures.Controls.Add(this.textBoxX3);
-            this.tabPageMutiplePictures.Controls.Add(this.comboBox1);
-            this.tabPageMutiplePictures.Controls.Add(this.labelX1);
-            this.tabPageMutiplePictures.Controls.Add(this.panel2);
-            this.tabPageMutiplePictures.Location = new System.Drawing.Point(4, 22);
-            this.tabPageMutiplePictures.Name = "tabPageMutiplePictures";
-            this.tabPageMutiplePictures.Size = new System.Drawing.Size(846, 234);
-            this.tabPageMutiplePictures.TabIndex = 2;
-            this.tabPageMutiplePictures.Text = "دورچین";
-            // 
-            // checkBoxX2
-            // 
-            this.checkBoxX2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxX2.AutoSize = true;
-            // 
-            // 
-            // 
-            this.checkBoxX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.highlighter1.SetHighlightOnFocus(this.checkBoxX2, true);
-            this.checkBoxX2.Location = new System.Drawing.Point(538, 8);
-            this.checkBoxX2.Name = "checkBoxX2";
-            this.checkBoxX2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBoxX2.Size = new System.Drawing.Size(171, 16);
-            this.checkBoxX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX2.TabIndex = 171;
-            this.checkBoxX2.Text = "دورچین ، اصل چاپ می باشد";
-            // 
-            // textBoxX7
-            // 
-            this.textBoxX7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.textBoxX7.Border.Class = "TextBoxBorder";
-            this.textBoxX7.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.highlighter1.SetHighlightOnFocus(this.textBoxX7, true);
-            this.textBoxX7.Location = new System.Drawing.Point(462, 84);
-            this.textBoxX7.MaxLength = 4000;
-            this.textBoxX7.Multiline = true;
-            this.textBoxX7.Name = "textBoxX7";
-            this.textBoxX7.PreventEnterBeep = true;
-            this.textBoxX7.Size = new System.Drawing.Size(374, 142);
-            this.textBoxX7.TabIndex = 169;
-            this.textBoxX7.WatermarkText = "توضیحات چاپ دورچین";
-            // 
-            // labelX7
-            // 
-            this.labelX7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelX7.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.Location = new System.Drawing.Point(790, 62);
-            this.labelX7.Name = "labelX7";
-            this.labelX7.Size = new System.Drawing.Size(42, 16);
-            this.labelX7.TabIndex = 170;
-            this.labelX7.Text = "توضیحات";
-            // 
-            // buttonX1
-            // 
-            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.highlighter1.SetHighlightOnFocus(this.buttonX1, true);
-            this.buttonX1.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX1.HoverImage")));
-            this.buttonX1.Image = ((System.Drawing.Image)(resources.GetObject("buttonX1.Image")));
-            this.buttonX1.Location = new System.Drawing.Point(15, 26);
-            this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(30, 25);
-            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX1.TabIndex = 168;
-            // 
-            // textBoxX5
-            // 
-            this.textBoxX5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.textBoxX5.Border.Class = "TextBoxBorder";
-            this.textBoxX5.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX5.Enabled = false;
-            this.highlighter1.SetHighlightOnFocus(this.textBoxX5, true);
-            this.textBoxX5.Location = new System.Drawing.Point(129, 30);
-            this.textBoxX5.Name = "textBoxX5";
-            this.textBoxX5.PreventEnterBeep = true;
-            this.textBoxX5.ReadOnly = true;
-            this.textBoxX5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBoxX5.Size = new System.Drawing.Size(122, 21);
-            this.textBoxX5.TabIndex = 167;
-            this.textBoxX5.TabStop = false;
-            this.textBoxX5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxX5.WatermarkText = "هزینه خدمات (ريال)";
-            // 
-            // integerInput3
-            // 
-            this.integerInput3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.integerInput3.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.integerInput3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.integerInput3.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.integerInput3.Enabled = false;
-            this.highlighter1.SetHighlightOnFocus(this.integerInput3, true);
-            this.integerInput3.Location = new System.Drawing.Point(257, 30);
-            this.integerInput3.MaxValue = 1000;
-            this.integerInput3.MinValue = 1;
-            this.integerInput3.Name = "integerInput3";
-            this.integerInput3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.integerInput3.Size = new System.Drawing.Size(48, 21);
-            this.integerInput3.TabIndex = 166;
-            this.integerInput3.Value = 1;
-            this.integerInput3.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
-            this.integerInput3.WatermarkText = "تعداد";
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.Enabled = false;
-            this.comboBox3.FormattingEnabled = true;
-            this.highlighter1.SetHighlightOnFocus(this.comboBox3, true);
-            this.comboBox3.Location = new System.Drawing.Point(311, 30);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 165;
-            // 
-            // checkBoxX1
-            // 
-            this.checkBoxX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxX1.AutoSize = true;
-            // 
-            // 
-            // 
-            this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.highlighter1.SetHighlightOnFocus(this.checkBoxX1, true);
-            this.checkBoxX1.Location = new System.Drawing.Point(346, 8);
-            this.checkBoxX1.Name = "checkBoxX1";
-            this.checkBoxX1.Size = new System.Drawing.Size(76, 16);
-            this.checkBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX1.TabIndex = 164;
-            this.checkBoxX1.Text = "خدمات چاپ";
-            // 
-            // integerInput2
-            // 
-            this.integerInput2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.integerInput2.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.integerInput2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.integerInput2.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.highlighter1.SetHighlightOnFocus(this.integerInput2, true);
-            this.integerInput2.Location = new System.Drawing.Point(661, 30);
-            this.integerInput2.MaxValue = 1000;
-            this.integerInput2.MinValue = 1;
-            this.integerInput2.Name = "integerInput2";
-            this.integerInput2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.integerInput2.Size = new System.Drawing.Size(48, 21);
-            this.integerInput2.TabIndex = 161;
-            this.integerInput2.Value = 1;
-            this.integerInput2.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
-            this.integerInput2.WatermarkText = "تعداد";
-            // 
-            // textBoxX3
-            // 
-            this.textBoxX3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.textBoxX3.Border.Class = "TextBoxBorder";
-            this.textBoxX3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.highlighter1.SetHighlightOnFocus(this.textBoxX3, true);
-            this.textBoxX3.Location = new System.Drawing.Point(533, 30);
-            this.textBoxX3.Name = "textBoxX3";
-            this.textBoxX3.PreventEnterBeep = true;
-            this.textBoxX3.ReadOnly = true;
-            this.textBoxX3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBoxX3.Size = new System.Drawing.Size(122, 21);
-            this.textBoxX3.TabIndex = 162;
-            this.textBoxX3.TabStop = false;
-            this.textBoxX3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxX3.WatermarkText = "هزینه چاپ (ريال)";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.highlighter1.SetHighlightOnFocus(this.comboBox1, true);
-            this.comboBox1.Location = new System.Drawing.Point(715, 30);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 140;
-            // 
-            // labelX1
-            // 
-            this.labelX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelX1.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(780, 8);
-            this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(49, 16);
-            this.labelX1.TabIndex = 139;
-            this.labelX1.Text = "اندازه چاپ";
-            // 
-            // panel2
-            // 
-            this.panel2.AutoScroll = true;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Location = new System.Drawing.Point(15, 57);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(417, 169);
-            this.panel2.TabIndex = 137;
-            this.toolTip1.SetToolTip(this.panel2, "برای انتخاب و ویرایش عکس های  دورچین دوبار کلیک کنید");
-            // 
-            // tabPageLit
-            // 
-            this.tabPageLit.BackColor = System.Drawing.Color.GhostWhite;
-            this.tabPageLit.Controls.Add(this.checkBoxX5);
-            this.tabPageLit.Controls.Add(this.textBoxX6);
-            this.tabPageLit.Controls.Add(this.buttonX4);
-            this.tabPageLit.Controls.Add(this.buttonX3);
-            this.tabPageLit.Controls.Add(this.buttonX2);
-            this.tabPageLit.Controls.Add(this.labelX10);
-            this.tabPageLit.Controls.Add(this.labelX9);
-            this.tabPageLit.Controls.Add(this.labelX8);
-            this.tabPageLit.Controls.Add(this.integerInput1);
-            this.tabPageLit.Controls.Add(this.textBoxX2);
-            this.tabPageLit.Controls.Add(this.comboBox2);
-            this.tabPageLit.Controls.Add(this.labelX5);
-            this.tabPageLit.Controls.Add(this.labelX3);
-            this.tabPageLit.Controls.Add(this.pictureBox4);
-            this.tabPageLit.Controls.Add(this.pictureBox3);
-            this.tabPageLit.Controls.Add(this.pictureBox2);
-            this.tabPageLit.Location = new System.Drawing.Point(4, 22);
-            this.tabPageLit.Name = "tabPageLit";
-            this.tabPageLit.Size = new System.Drawing.Size(846, 234);
-            this.tabPageLit.TabIndex = 3;
-            this.tabPageLit.Text = "لیت";
-            // 
-            // checkBoxX5
-            // 
-            this.checkBoxX5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxX5.AutoSize = true;
-            // 
-            // 
-            // 
-            this.checkBoxX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.highlighter1.SetHighlightOnFocus(this.checkBoxX5, true);
-            this.checkBoxX5.Location = new System.Drawing.Point(558, 8);
-            this.checkBoxX5.Name = "checkBoxX5";
-            this.checkBoxX5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBoxX5.Size = new System.Drawing.Size(151, 16);
-            this.checkBoxX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX5.TabIndex = 172;
-            this.checkBoxX5.Text = "لیت ، اصل چاپ می باشد";
-            // 
-            // textBoxX6
-            // 
-            this.textBoxX6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.textBoxX6.Border.Class = "TextBoxBorder";
-            this.textBoxX6.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.highlighter1.SetHighlightOnFocus(this.textBoxX6, true);
-            this.textBoxX6.Location = new System.Drawing.Point(462, 84);
-            this.textBoxX6.MaxLength = 4000;
-            this.textBoxX6.Multiline = true;
-            this.textBoxX6.Name = "textBoxX6";
-            this.textBoxX6.PreventEnterBeep = true;
-            this.textBoxX6.Size = new System.Drawing.Size(374, 142);
-            this.textBoxX6.TabIndex = 138;
-            this.textBoxX6.WatermarkText = "توضیحات چاپ لیت";
-            // 
-            // buttonX4
-            // 
-            this.buttonX4.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX4.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX4.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX4.HoverImage")));
-            this.buttonX4.Image = ((System.Drawing.Image)(resources.GetObject("buttonX4.Image")));
-            this.buttonX4.Location = new System.Drawing.Point(13, 206);
-            this.buttonX4.Name = "buttonX4";
-            this.buttonX4.Size = new System.Drawing.Size(30, 25);
-            this.buttonX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX4.TabIndex = 165;
-            // 
-            // buttonX3
-            // 
-            this.buttonX3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX3.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX3.HoverImage")));
-            this.buttonX3.Image = ((System.Drawing.Image)(resources.GetObject("buttonX3.Image")));
-            this.buttonX3.Location = new System.Drawing.Point(156, 206);
-            this.buttonX3.Name = "buttonX3";
-            this.buttonX3.Size = new System.Drawing.Size(30, 25);
-            this.buttonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX3.TabIndex = 165;
-            // 
-            // buttonX2
-            // 
-            this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.highlighter1.SetHighlightOnFocus(this.buttonX2, true);
-            this.buttonX2.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX2.HoverImage")));
-            this.buttonX2.Image = ((System.Drawing.Image)(resources.GetObject("buttonX2.Image")));
-            this.buttonX2.Location = new System.Drawing.Point(299, 206);
-            this.buttonX2.Name = "buttonX2";
-            this.buttonX2.Size = new System.Drawing.Size(30, 25);
-            this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX2.TabIndex = 165;
-            // 
-            // labelX10
-            // 
-            this.labelX10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelX10.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX10.Font = new System.Drawing.Font("Tahoma", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.labelX10.Location = new System.Drawing.Point(87, 210);
-            this.labelX10.Name = "labelX10";
-            this.labelX10.Size = new System.Drawing.Size(63, 16);
-            this.labelX10.TabIndex = 163;
-            this.labelX10.Text = "وجه راست";
-            // 
-            // labelX9
-            // 
-            this.labelX9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelX9.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX9.Font = new System.Drawing.Font("Tahoma", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.labelX9.Location = new System.Drawing.Point(235, 210);
-            this.labelX9.Name = "labelX9";
-            this.labelX9.Size = new System.Drawing.Size(58, 16);
-            this.labelX9.TabIndex = 162;
-            this.labelX9.Text = "وجه وسط";
-            // 
-            // labelX8
-            // 
-            this.labelX8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelX8.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX8.Font = new System.Drawing.Font("Tahoma", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.labelX8.Location = new System.Drawing.Point(385, 210);
-            this.labelX8.Name = "labelX8";
-            this.labelX8.Size = new System.Drawing.Size(51, 16);
-            this.labelX8.TabIndex = 161;
-            this.labelX8.Text = "وجه چپ";
-            // 
-            // integerInput1
-            // 
-            this.integerInput1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.integerInput1.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.integerInput1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.integerInput1.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.highlighter1.SetHighlightOnFocus(this.integerInput1, true);
-            this.integerInput1.Location = new System.Drawing.Point(661, 30);
-            this.integerInput1.MaxValue = 1000;
-            this.integerInput1.MinValue = 1;
-            this.integerInput1.Name = "integerInput1";
-            this.integerInput1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.integerInput1.Size = new System.Drawing.Size(48, 21);
-            this.integerInput1.TabIndex = 159;
-            this.integerInput1.Value = 1;
-            this.integerInput1.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
-            this.integerInput1.WatermarkText = "تعداد";
-            // 
-            // textBoxX2
-            // 
-            this.textBoxX2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.textBoxX2.Border.Class = "TextBoxBorder";
-            this.textBoxX2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.highlighter1.SetHighlightOnFocus(this.textBoxX2, true);
-            this.textBoxX2.Location = new System.Drawing.Point(533, 30);
-            this.textBoxX2.Name = "textBoxX2";
-            this.textBoxX2.PreventEnterBeep = true;
-            this.textBoxX2.ReadOnly = true;
-            this.textBoxX2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBoxX2.Size = new System.Drawing.Size(122, 21);
-            this.textBoxX2.TabIndex = 160;
-            this.textBoxX2.TabStop = false;
-            this.textBoxX2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxX2.WatermarkText = "هزینه چاپ (ريال)";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.highlighter1.SetHighlightOnFocus(this.comboBox2, true);
-            this.comboBox2.Location = new System.Drawing.Point(715, 30);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 143;
-            // 
-            // labelX5
-            // 
-            this.labelX5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelX5.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(790, 62);
-            this.labelX5.Name = "labelX5";
-            this.labelX5.Size = new System.Drawing.Size(42, 16);
-            this.labelX5.TabIndex = 142;
-            this.labelX5.Text = "توضیحات";
-            // 
-            // labelX3
-            // 
-            this.labelX3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelX3.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(781, 8);
-            this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(47, 16);
-            this.labelX3.TabIndex = 142;
-            this.labelX3.Text = "اندازه لیت";
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox4.Location = new System.Drawing.Point(13, 23);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(137, 177);
-            this.pictureBox4.TabIndex = 141;
-            this.pictureBox4.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox4, "برای انتخاب یا ویرایش عکس لیت، دوبار کلیک کنید.");
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox3.Location = new System.Drawing.Point(156, 23);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(137, 177);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 141;
-            this.pictureBox3.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox3, "برای انتخاب یا ویرایش عکس لیت، دوبار کلیک کنید.");
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox2.Location = new System.Drawing.Point(299, 23);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(137, 177);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 141;
-            this.pictureBox2.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox2, "برای انتخاب یا ویرایش عکس لیت، دوبار کلیک کنید.");
-            // 
-            // tabPageChangingElements
-            // 
-            this.tabPageChangingElements.BackColor = System.Drawing.Color.GhostWhite;
-            this.tabPageChangingElements.Controls.Add(this.buttonX6);
-            this.tabPageChangingElements.Controls.Add(this.textBoxX4);
-            this.tabPageChangingElements.Controls.Add(this.panel4);
-            this.tabPageChangingElements.Location = new System.Drawing.Point(4, 22);
-            this.tabPageChangingElements.Name = "tabPageChangingElements";
-            this.tabPageChangingElements.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageChangingElements.Size = new System.Drawing.Size(846, 234);
-            this.tabPageChangingElements.TabIndex = 5;
-            this.tabPageChangingElements.Text = "تغییر المان";
-            // 
-            // buttonX6
-            // 
-            this.buttonX6.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX6.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.highlighter1.SetHighlightOnFocus(this.buttonX6, true);
-            this.buttonX6.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX6.HoverImage")));
-            this.buttonX6.Image = ((System.Drawing.Image)(resources.GetObject("buttonX6.Image")));
-            this.buttonX6.Location = new System.Drawing.Point(15, 26);
-            this.buttonX6.Name = "buttonX6";
-            this.buttonX6.Size = new System.Drawing.Size(30, 25);
-            this.buttonX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX6.TabIndex = 166;
-            // 
-            // textBoxX4
-            // 
-            this.textBoxX4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.textBoxX4.Border.Class = "TextBoxBorder";
-            this.textBoxX4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.highlighter1.SetHighlightOnFocus(this.textBoxX4, true);
-            this.textBoxX4.Location = new System.Drawing.Point(81, 11);
-            this.textBoxX4.MaxLength = 4000;
-            this.textBoxX4.Multiline = true;
-            this.textBoxX4.Name = "textBoxX4";
-            this.textBoxX4.PreventEnterBeep = true;
-            this.textBoxX4.Size = new System.Drawing.Size(755, 40);
-            this.textBoxX4.TabIndex = 138;
-            this.textBoxX4.WatermarkText = "توضیحات تغییر المان";
-            // 
-            // panel4
-            // 
-            this.panel4.AutoScroll = true;
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel4.Location = new System.Drawing.Point(15, 57);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(821, 174);
-            this.panel4.TabIndex = 144;
-            this.toolTip1.SetToolTip(this.panel4, "برای انتخاب و ویرایش عکس های  دورچین دوبار کلیک کنید");
-            // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.GhostWhite;
             this.tabPage2.Controls.Add(this.line4);
+            this.tabPage2.Controls.Add(this.panel5);
+            this.tabPage2.Controls.Add(this.panel7);
             this.tabPage2.Controls.Add(this.panel8);
             this.tabPage2.Controls.Add(this.panel6);
-            this.tabPage2.Controls.Add(this.panel7);
-            this.tabPage2.Controls.Add(this.panel5);
             this.tabPage2.Controls.Add(this.checkBoxX10);
             this.tabPage2.Controls.Add(this.checkBoxX9);
             this.tabPage2.Controls.Add(this.checkBoxX8);
-            this.tabPage2.Controls.Add(this.labelX14);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -1997,29 +1410,24 @@
             this.tabPage2.TabIndex = 7;
             this.tabPage2.Text = "اصل چاپ";
             // 
-            // panel8
+            // line4
             // 
-            this.panel8.Controls.Add(this.buttonX10);
-            this.panel8.Controls.Add(this.comboBox7);
-            this.panel8.Controls.Add(this.textBoxX12);
-            this.panel8.Controls.Add(this.labelX15);
-            this.panel8.Location = new System.Drawing.Point(162, 127);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(225, 64);
-            this.panel8.TabIndex = 191;
+            this.line4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.line4.Location = new System.Drawing.Point(9, 64);
+            this.line4.Name = "line4";
+            this.line4.Size = new System.Drawing.Size(830, 23);
+            this.line4.TabIndex = 205;
+            this.line4.Text = "line4";
             // 
-            // buttonX10
+            // panel5
             // 
-            this.buttonX10.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonX10.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX10.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX10.HoverImage")));
-            this.buttonX10.Image = ((System.Drawing.Image)(resources.GetObject("buttonX10.Image")));
-            this.buttonX10.Location = new System.Drawing.Point(3, 4);
-            this.buttonX10.Name = "buttonX10";
-            this.buttonX10.Size = new System.Drawing.Size(30, 25);
-            this.buttonX10.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX10.TabIndex = 192;
+            this.panel5.Controls.Add(this.comboBox7);
+            this.panel5.Controls.Add(this.labelX16);
+            this.panel5.Controls.Add(this.textBoxX12);
+            this.panel5.Location = new System.Drawing.Point(624, 123);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(212, 65);
+            this.panel5.TabIndex = 204;
             // 
             // comboBox7
             // 
@@ -2027,138 +1435,11 @@
             this.comboBox7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox7.Enabled = false;
             this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(39, 6);
+            this.highlighter1.SetHighlightOnFocus(this.comboBox7, true);
+            this.comboBox7.Location = new System.Drawing.Point(6, 7);
             this.comboBox7.Name = "comboBox7";
             this.comboBox7.Size = new System.Drawing.Size(121, 21);
             this.comboBox7.TabIndex = 185;
-            // 
-            // textBoxX12
-            // 
-            this.textBoxX12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.textBoxX12.Border.Class = "TextBoxBorder";
-            this.textBoxX12.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX12.Location = new System.Drawing.Point(39, 33);
-            this.textBoxX12.Name = "textBoxX12";
-            this.textBoxX12.PreventEnterBeep = true;
-            this.textBoxX12.ReadOnly = true;
-            this.textBoxX12.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBoxX12.Size = new System.Drawing.Size(122, 21);
-            this.textBoxX12.TabIndex = 187;
-            this.textBoxX12.TabStop = false;
-            this.textBoxX12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxX12.WatermarkText = "هزینه چاپ (ريال)";
-            // 
-            // labelX15
-            // 
-            this.labelX15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelX15.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX15.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX15.Location = new System.Drawing.Point(166, 8);
-            this.labelX15.Name = "labelX15";
-            this.labelX15.Size = new System.Drawing.Size(56, 16);
-            this.labelX15.TabIndex = 182;
-            this.labelX15.Text = "خدمات چاپ";
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.comboBox11);
-            this.panel6.Controls.Add(this.textBoxX14);
-            this.panel6.Location = new System.Drawing.Point(509, 32);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(270, 36);
-            this.panel6.TabIndex = 191;
-            // 
-            // comboBox11
-            // 
-            this.comboBox11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox11.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox11.Enabled = false;
-            this.comboBox11.FormattingEnabled = true;
-            this.highlighter1.SetHighlightOnFocus(this.comboBox11, true);
-            this.comboBox11.Location = new System.Drawing.Point(140, 7);
-            this.comboBox11.Name = "comboBox11";
-            this.comboBox11.Size = new System.Drawing.Size(121, 21);
-            this.comboBox11.TabIndex = 185;
-            // 
-            // textBoxX14
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX14.Border.Class = "TextBoxBorder";
-            this.textBoxX14.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.highlighter1.SetHighlightOnFocus(this.textBoxX14, true);
-            this.textBoxX14.Location = new System.Drawing.Point(12, 7);
-            this.textBoxX14.Name = "textBoxX14";
-            this.textBoxX14.PreventEnterBeep = true;
-            this.textBoxX14.ReadOnly = true;
-            this.textBoxX14.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBoxX14.Size = new System.Drawing.Size(122, 21);
-            this.textBoxX14.TabIndex = 187;
-            this.textBoxX14.TabStop = false;
-            this.textBoxX14.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxX14.WatermarkText = "هزینه چاپ (ريال)";
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.buttonX9);
-            this.panel7.Controls.Add(this.comboBox8);
-            this.panel7.Controls.Add(this.textBoxX10);
-            this.panel7.Controls.Add(this.labelX16);
-            this.panel7.Location = new System.Drawing.Point(410, 127);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(209, 64);
-            this.panel7.TabIndex = 190;
-            // 
-            // buttonX9
-            // 
-            this.buttonX9.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonX9.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.highlighter1.SetHighlightOnFocus(this.buttonX9, true);
-            this.buttonX9.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX9.HoverImage")));
-            this.buttonX9.Image = ((System.Drawing.Image)(resources.GetObject("buttonX9.Image")));
-            this.buttonX9.Location = new System.Drawing.Point(5, 4);
-            this.buttonX9.Name = "buttonX9";
-            this.buttonX9.Size = new System.Drawing.Size(30, 25);
-            this.buttonX9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX9.TabIndex = 192;
-            // 
-            // comboBox8
-            // 
-            this.comboBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox8.Enabled = false;
-            this.comboBox8.FormattingEnabled = true;
-            this.comboBox8.Location = new System.Drawing.Point(41, 6);
-            this.comboBox8.Name = "comboBox8";
-            this.comboBox8.Size = new System.Drawing.Size(121, 21);
-            this.comboBox8.TabIndex = 185;
-            // 
-            // textBoxX10
-            // 
-            this.textBoxX10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.textBoxX10.Border.Class = "TextBoxBorder";
-            this.textBoxX10.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX10.Location = new System.Drawing.Point(41, 33);
-            this.textBoxX10.Name = "textBoxX10";
-            this.textBoxX10.PreventEnterBeep = true;
-            this.textBoxX10.ReadOnly = true;
-            this.textBoxX10.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBoxX10.Size = new System.Drawing.Size(122, 21);
-            this.textBoxX10.TabIndex = 187;
-            this.textBoxX10.TabStop = false;
-            this.textBoxX10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxX10.WatermarkText = "هزینه چاپ (ريال)";
             // 
             // labelX16
             // 
@@ -2168,67 +1449,255 @@
             // 
             // 
             this.labelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX16.Location = new System.Drawing.Point(168, 8);
+            this.labelX16.Location = new System.Drawing.Point(145, 8);
             this.labelX16.Name = "labelX16";
-            this.labelX16.Size = new System.Drawing.Size(38, 16);
-            this.labelX16.TabIndex = 183;
-            this.labelX16.Text = "نوع لیت";
+            this.labelX16.Size = new System.Drawing.Size(56, 16);
+            this.labelX16.TabIndex = 186;
+            this.labelX16.Text = "خدمات چاپ";
             // 
-            // panel5
+            // textBoxX12
             // 
-            this.panel5.Controls.Add(this.comboBox10);
-            this.panel5.Controls.Add(this.labelX17);
-            this.panel5.Controls.Add(this.textBoxX13);
-            this.panel5.Location = new System.Drawing.Point(642, 127);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(197, 64);
-            this.panel5.TabIndex = 190;
-            // 
-            // comboBox10
-            // 
-            this.comboBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox10.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox10.Enabled = false;
-            this.comboBox10.FormattingEnabled = true;
-            this.highlighter1.SetHighlightOnFocus(this.comboBox10, true);
-            this.comboBox10.Location = new System.Drawing.Point(7, 6);
-            this.comboBox10.Name = "comboBox10";
-            this.comboBox10.Size = new System.Drawing.Size(121, 21);
-            this.comboBox10.TabIndex = 185;
-            // 
-            // labelX17
-            // 
-            this.labelX17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelX17.AutoSize = true;
+            this.textBoxX12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
-            this.labelX17.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX17.Location = new System.Drawing.Point(134, 8);
-            this.labelX17.Name = "labelX17";
-            this.labelX17.Size = new System.Drawing.Size(56, 16);
-            this.labelX17.TabIndex = 186;
-            this.labelX17.Text = "خدمات چاپ";
+            this.textBoxX12.Border.Class = "TextBoxBorder";
+            this.textBoxX12.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.highlighter1.SetHighlightOnFocus(this.textBoxX12, true);
+            this.textBoxX12.Location = new System.Drawing.Point(6, 34);
+            this.textBoxX12.Name = "textBoxX12";
+            this.textBoxX12.PreventEnterBeep = true;
+            this.textBoxX12.ReadOnly = true;
+            this.textBoxX12.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.textBoxX12.Size = new System.Drawing.Size(121, 21);
+            this.textBoxX12.TabIndex = 187;
+            this.textBoxX12.TabStop = false;
+            this.textBoxX12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxX12.WatermarkText = "هزینه چاپ (ريال)";
             // 
-            // textBoxX13
+            // panel7
             // 
-            this.textBoxX13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel7.Controls.Add(this.comboBox5);
+            this.panel7.Controls.Add(this.textBoxX9);
+            this.panel7.Controls.Add(this.buttonX9);
+            this.panel7.Controls.Add(this.labelX14);
+            this.panel7.Location = new System.Drawing.Point(370, 123);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(232, 65);
+            this.panel7.TabIndex = 202;
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox5.Enabled = false;
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Location = new System.Drawing.Point(42, 8);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(121, 21);
+            this.comboBox5.TabIndex = 185;
+            // 
+            // textBoxX9
+            // 
+            this.textBoxX9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
-            this.textBoxX13.Border.Class = "TextBoxBorder";
-            this.textBoxX13.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.highlighter1.SetHighlightOnFocus(this.textBoxX13, true);
-            this.textBoxX13.Location = new System.Drawing.Point(6, 33);
-            this.textBoxX13.Name = "textBoxX13";
-            this.textBoxX13.PreventEnterBeep = true;
-            this.textBoxX13.ReadOnly = true;
-            this.textBoxX13.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBoxX13.Size = new System.Drawing.Size(122, 21);
-            this.textBoxX13.TabIndex = 187;
-            this.textBoxX13.TabStop = false;
-            this.textBoxX13.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxX13.WatermarkText = "هزینه چاپ (ريال)";
+            this.textBoxX9.Border.Class = "TextBoxBorder";
+            this.textBoxX9.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX9.Location = new System.Drawing.Point(42, 34);
+            this.textBoxX9.Name = "textBoxX9";
+            this.textBoxX9.PreventEnterBeep = true;
+            this.textBoxX9.ReadOnly = true;
+            this.textBoxX9.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.textBoxX9.Size = new System.Drawing.Size(121, 21);
+            this.textBoxX9.TabIndex = 187;
+            this.textBoxX9.TabStop = false;
+            this.textBoxX9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxX9.WatermarkText = "هزینه چاپ (ريال)";
+            // 
+            // buttonX9
+            // 
+            this.buttonX9.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonX9.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.highlighter1.SetHighlightOnFocus(this.buttonX9, true);
+            this.buttonX9.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX9.HoverImage")));
+            this.buttonX9.Image = ((System.Drawing.Image)(resources.GetObject("buttonX9.Image")));
+            this.buttonX9.Location = new System.Drawing.Point(6, 6);
+            this.buttonX9.Name = "buttonX9";
+            this.buttonX9.Size = new System.Drawing.Size(30, 25);
+            this.buttonX9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX9.TabIndex = 189;
+            // 
+            // labelX14
+            // 
+            this.labelX14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelX14.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX14.Location = new System.Drawing.Point(169, 9);
+            this.labelX14.Name = "labelX14";
+            this.labelX14.Size = new System.Drawing.Size(56, 16);
+            this.labelX14.TabIndex = 182;
+            this.labelX14.Text = "خدمات چاپ";
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.comboBox6);
+            this.panel8.Controls.Add(this.textBoxX10);
+            this.panel8.Controls.Add(this.labelX15);
+            this.panel8.Controls.Add(this.buttonX10);
+            this.panel8.Location = new System.Drawing.Point(118, 123);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(214, 65);
+            this.panel8.TabIndex = 201;
+            // 
+            // comboBox6
+            // 
+            this.comboBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox6.Enabled = false;
+            this.comboBox6.FormattingEnabled = true;
+            this.comboBox6.Location = new System.Drawing.Point(42, 8);
+            this.comboBox6.Name = "comboBox6";
+            this.comboBox6.Size = new System.Drawing.Size(121, 21);
+            this.comboBox6.TabIndex = 185;
+            // 
+            // textBoxX10
+            // 
+            this.textBoxX10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.textBoxX10.Border.Class = "TextBoxBorder";
+            this.textBoxX10.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX10.Location = new System.Drawing.Point(42, 34);
+            this.textBoxX10.Name = "textBoxX10";
+            this.textBoxX10.PreventEnterBeep = true;
+            this.textBoxX10.ReadOnly = true;
+            this.textBoxX10.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.textBoxX10.Size = new System.Drawing.Size(121, 21);
+            this.textBoxX10.TabIndex = 187;
+            this.textBoxX10.TabStop = false;
+            this.textBoxX10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxX10.WatermarkText = "هزینه چاپ (ريال)";
+            // 
+            // labelX15
+            // 
+            this.labelX15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelX15.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX15.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX15.Location = new System.Drawing.Point(169, 9);
+            this.labelX15.Name = "labelX15";
+            this.labelX15.Size = new System.Drawing.Size(38, 16);
+            this.labelX15.TabIndex = 183;
+            this.labelX15.Text = "نوع لیت";
+            // 
+            // buttonX10
+            // 
+            this.buttonX10.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonX10.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.highlighter1.SetHighlightOnFocus(this.buttonX10, true);
+            this.buttonX10.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX10.HoverImage")));
+            this.buttonX10.Image = ((System.Drawing.Image)(resources.GetObject("buttonX10.Image")));
+            this.buttonX10.Location = new System.Drawing.Point(6, 6);
+            this.buttonX10.Name = "buttonX10";
+            this.buttonX10.Size = new System.Drawing.Size(30, 25);
+            this.buttonX10.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX10.TabIndex = 189;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.labelX13);
+            this.panel6.Controls.Add(this.buttonX12);
+            this.panel6.Controls.Add(this.textBoxX8);
+            this.panel6.Controls.Add(this.comboBox4);
+            this.panel6.Controls.Add(this.labelX23);
+            this.panel6.Location = new System.Drawing.Point(10, 6);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(830, 42);
+            this.panel6.TabIndex = 200;
+            // 
+            // labelX13
+            // 
+            this.labelX13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelX13.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX13.Location = new System.Drawing.Point(151, 13);
+            this.labelX13.Name = "labelX13";
+            this.labelX13.Size = new System.Drawing.Size(50, 16);
+            this.labelX13.TabIndex = 209;
+            this.labelX13.Text = "تغییر المان";
+            // 
+            // buttonX12
+            // 
+            this.buttonX12.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX12.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.highlighter1.SetHighlightOnFocus(this.buttonX12, true);
+            this.buttonX12.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_edit_383148;
+            this.buttonX12.Location = new System.Drawing.Point(114, 9);
+            this.buttonX12.Name = "buttonX12";
+            this.buttonX12.Size = new System.Drawing.Size(30, 25);
+            this.buttonX12.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX12.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.buttonX12.SymbolSize = 10F;
+            this.buttonX12.TabIndex = 210;
+            // 
+            // textBoxX8
+            // 
+            this.textBoxX8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.textBoxX8.Border.Class = "TextBoxBorder";
+            this.textBoxX8.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.highlighter1.SetHighlightOnFocus(this.textBoxX8, true);
+            this.textBoxX8.Location = new System.Drawing.Point(493, 12);
+            this.textBoxX8.Name = "textBoxX8";
+            this.textBoxX8.PreventEnterBeep = true;
+            this.textBoxX8.ReadOnly = true;
+            this.textBoxX8.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.textBoxX8.Size = new System.Drawing.Size(121, 21);
+            this.textBoxX8.TabIndex = 204;
+            this.textBoxX8.TabStop = false;
+            this.textBoxX8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxX8.WatermarkText = "هزینه چاپ (ريال)";
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox4.Enabled = false;
+            this.comboBox4.FormattingEnabled = true;
+            this.highlighter1.SetHighlightOnFocus(this.comboBox4, true);
+            this.comboBox4.Location = new System.Drawing.Point(620, 12);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(121, 21);
+            this.comboBox4.TabIndex = 203;
+            // 
+            // labelX23
+            // 
+            this.labelX23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelX23.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX23.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX23.Location = new System.Drawing.Point(773, 13);
+            this.labelX23.Name = "labelX23";
+            this.labelX23.Size = new System.Drawing.Size(49, 16);
+            this.labelX23.TabIndex = 205;
+            this.labelX23.Text = "اندازه چاپ";
             // 
             // checkBoxX10
             // 
@@ -2241,7 +1710,7 @@
             this.checkBoxX10.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
             this.checkBoxX10.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.highlighter1.SetHighlightOnFocus(this.checkBoxX10, true);
-            this.checkBoxX10.Location = new System.Drawing.Point(769, 104);
+            this.checkBoxX10.Location = new System.Drawing.Point(766, 99);
             this.checkBoxX10.Name = "checkBoxX10";
             this.checkBoxX10.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBoxX10.Size = new System.Drawing.Size(70, 16);
@@ -2260,7 +1729,7 @@
             this.checkBoxX9.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
             this.checkBoxX9.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.highlighter1.SetHighlightOnFocus(this.checkBoxX9, true);
-            this.checkBoxX9.Location = new System.Drawing.Point(556, 104);
+            this.checkBoxX9.Location = new System.Drawing.Point(269, 99);
             this.checkBoxX9.Name = "checkBoxX9";
             this.checkBoxX9.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBoxX9.Size = new System.Drawing.Size(63, 16);
@@ -2279,27 +1748,13 @@
             this.checkBoxX8.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
             this.checkBoxX8.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.highlighter1.SetHighlightOnFocus(this.checkBoxX8, true);
-            this.checkBoxX8.Location = new System.Drawing.Point(331, 104);
+            this.checkBoxX8.Location = new System.Drawing.Point(546, 99);
             this.checkBoxX8.Name = "checkBoxX8";
             this.checkBoxX8.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBoxX8.Size = new System.Drawing.Size(56, 16);
             this.checkBoxX8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.checkBoxX8.TabIndex = 175;
             this.checkBoxX8.Text = "دورچین";
-            // 
-            // labelX14
-            // 
-            this.labelX14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelX14.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX14.Location = new System.Drawing.Point(790, 40);
-            this.labelX14.Name = "labelX14";
-            this.labelX14.Size = new System.Drawing.Size(49, 16);
-            this.labelX14.TabIndex = 136;
-            this.labelX14.Text = "اندازه چاپ";
             // 
             // tabPage3
             // 
@@ -2421,16 +1876,138 @@
             // 
             // panel10
             // 
+            this.panel10.Controls.Add(this.buttonX6);
+            this.panel10.Controls.Add(this.labelX22);
             this.panel10.Controls.Add(this.textBoxX15);
             this.panel10.Controls.Add(this.integerInput6);
             this.panel10.Controls.Add(this.comboBox12);
             this.panel10.Controls.Add(this.labelX25);
             this.panel10.Controls.Add(this.comboBox15);
             this.panel10.Controls.Add(this.labelX21);
-            this.panel10.Location = new System.Drawing.Point(118, 16);
+            this.panel10.Location = new System.Drawing.Point(10, 6);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(721, 42);
+            this.panel10.Size = new System.Drawing.Size(830, 42);
             this.panel10.TabIndex = 199;
+            // 
+            // buttonX6
+            // 
+            this.buttonX6.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX6.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.highlighter1.SetHighlightOnFocus(this.buttonX6, true);
+            this.buttonX6.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_edit_383148;
+            this.buttonX6.Location = new System.Drawing.Point(114, 9);
+            this.buttonX6.Name = "buttonX6";
+            this.buttonX6.Size = new System.Drawing.Size(30, 25);
+            this.buttonX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX6.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.buttonX6.SymbolSize = 10F;
+            this.buttonX6.TabIndex = 211;
+            // 
+            // labelX22
+            // 
+            this.labelX22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelX22.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX22.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX22.Location = new System.Drawing.Point(151, 13);
+            this.labelX22.Name = "labelX22";
+            this.labelX22.Size = new System.Drawing.Size(50, 16);
+            this.labelX22.TabIndex = 209;
+            this.labelX22.Text = "تغییر المان";
+            // 
+            // textBoxX15
+            // 
+            this.textBoxX15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.textBoxX15.Border.Class = "TextBoxBorder";
+            this.textBoxX15.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.highlighter1.SetHighlightOnFocus(this.textBoxX15, true);
+            this.textBoxX15.Location = new System.Drawing.Point(214, 12);
+            this.textBoxX15.Name = "textBoxX15";
+            this.textBoxX15.PreventEnterBeep = true;
+            this.textBoxX15.ReadOnly = true;
+            this.textBoxX15.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.textBoxX15.Size = new System.Drawing.Size(121, 21);
+            this.textBoxX15.TabIndex = 204;
+            this.textBoxX15.TabStop = false;
+            this.textBoxX15.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxX15.WatermarkText = "هزینه چاپ (ريال)";
+            // 
+            // integerInput6
+            // 
+            this.integerInput6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.integerInput6.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.integerInput6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.integerInput6.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.integerInput6.Enabled = false;
+            this.highlighter1.SetHighlightOnFocus(this.integerInput6, true);
+            this.integerInput6.Location = new System.Drawing.Point(341, 12);
+            this.integerInput6.MaxValue = 1000;
+            this.integerInput6.MinValue = 0;
+            this.integerInput6.Name = "integerInput6";
+            this.integerInput6.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.integerInput6.Size = new System.Drawing.Size(56, 21);
+            this.integerInput6.TabIndex = 206;
+            this.integerInput6.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
+            this.integerInput6.WatermarkText = "تعداد";
+            // 
+            // comboBox12
+            // 
+            this.comboBox12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox12.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox12.Enabled = false;
+            this.comboBox12.FormattingEnabled = true;
+            this.highlighter1.SetHighlightOnFocus(this.comboBox12, true);
+            this.comboBox12.Location = new System.Drawing.Point(403, 12);
+            this.comboBox12.Name = "comboBox12";
+            this.comboBox12.Size = new System.Drawing.Size(121, 21);
+            this.comboBox12.TabIndex = 203;
+            // 
+            // labelX25
+            // 
+            this.labelX25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelX25.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX25.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX25.Location = new System.Drawing.Point(744, 13);
+            this.labelX25.Name = "labelX25";
+            this.labelX25.Size = new System.Drawing.Size(79, 16);
+            this.labelX25.TabIndex = 208;
+            this.labelX25.Text = "ترتیب اضافه چاپ";
+            // 
+            // comboBox15
+            // 
+            this.comboBox15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox15.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox15.FormattingEnabled = true;
+            this.highlighter1.SetHighlightOnFocus(this.comboBox15, true);
+            this.comboBox15.Location = new System.Drawing.Point(620, 12);
+            this.comboBox15.Name = "comboBox15";
+            this.comboBox15.Size = new System.Drawing.Size(121, 21);
+            this.comboBox15.TabIndex = 207;
+            // 
+            // labelX21
+            // 
+            this.labelX21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelX21.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX21.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX21.Location = new System.Drawing.Point(537, 13);
+            this.labelX21.Name = "labelX21";
+            this.labelX21.Size = new System.Drawing.Size(49, 16);
+            this.labelX21.TabIndex = 205;
+            this.labelX21.Text = "اندازه چاپ";
             // 
             // panel11
             // 
@@ -3239,107 +2816,6 @@
             this.bgWorkerLoadPicture.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerLoadPicture_DoWork);
             this.bgWorkerLoadPicture.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerLoadPicture_RunWorkerCompleted);
             // 
-            // line4
-            // 
-            this.line4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.line4.Location = new System.Drawing.Point(15, 69);
-            this.line4.Name = "line4";
-            this.line4.Size = new System.Drawing.Size(817, 23);
-            this.line4.TabIndex = 192;
-            this.line4.Text = "line4";
-            // 
-            // textBoxX15
-            // 
-            this.textBoxX15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.textBoxX15.Border.Class = "TextBoxBorder";
-            this.textBoxX15.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.highlighter1.SetHighlightOnFocus(this.textBoxX15, true);
-            this.textBoxX15.Location = new System.Drawing.Point(93, 12);
-            this.textBoxX15.Name = "textBoxX15";
-            this.textBoxX15.PreventEnterBeep = true;
-            this.textBoxX15.ReadOnly = true;
-            this.textBoxX15.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBoxX15.Size = new System.Drawing.Size(121, 21);
-            this.textBoxX15.TabIndex = 204;
-            this.textBoxX15.TabStop = false;
-            this.textBoxX15.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxX15.WatermarkText = "هزینه چاپ (ريال)";
-            // 
-            // integerInput6
-            // 
-            this.integerInput6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.integerInput6.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.integerInput6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.integerInput6.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.integerInput6.Enabled = false;
-            this.highlighter1.SetHighlightOnFocus(this.integerInput6, true);
-            this.integerInput6.Location = new System.Drawing.Point(226, 12);
-            this.integerInput6.MaxValue = 1000;
-            this.integerInput6.MinValue = 0;
-            this.integerInput6.Name = "integerInput6";
-            this.integerInput6.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.integerInput6.Size = new System.Drawing.Size(56, 21);
-            this.integerInput6.TabIndex = 206;
-            this.integerInput6.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
-            this.integerInput6.WatermarkText = "تعداد";
-            // 
-            // comboBox12
-            // 
-            this.comboBox12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox12.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox12.Enabled = false;
-            this.comboBox12.FormattingEnabled = true;
-            this.highlighter1.SetHighlightOnFocus(this.comboBox12, true);
-            this.comboBox12.Location = new System.Drawing.Point(294, 12);
-            this.comboBox12.Name = "comboBox12";
-            this.comboBox12.Size = new System.Drawing.Size(121, 21);
-            this.comboBox12.TabIndex = 203;
-            // 
-            // labelX25
-            // 
-            this.labelX25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelX25.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX25.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX25.Location = new System.Drawing.Point(639, 13);
-            this.labelX25.Name = "labelX25";
-            this.labelX25.Size = new System.Drawing.Size(79, 16);
-            this.labelX25.TabIndex = 208;
-            this.labelX25.Text = "ترتیب اضافه چاپ";
-            // 
-            // comboBox15
-            // 
-            this.comboBox15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox15.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox15.FormattingEnabled = true;
-            this.highlighter1.SetHighlightOnFocus(this.comboBox15, true);
-            this.comboBox15.Location = new System.Drawing.Point(512, 12);
-            this.comboBox15.Name = "comboBox15";
-            this.comboBox15.Size = new System.Drawing.Size(121, 21);
-            this.comboBox15.TabIndex = 207;
-            // 
-            // labelX21
-            // 
-            this.labelX21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelX21.AutoSize = true;
-            // 
-            // 
-            // 
-            this.labelX21.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX21.Location = new System.Drawing.Point(428, 13);
-            this.labelX21.Name = "labelX21";
-            this.labelX21.Size = new System.Drawing.Size(49, 16);
-            this.labelX21.TabIndex = 205;
-            this.labelX21.Text = "اندازه چاپ";
-            // 
             // FrmAddEditPreFactor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3381,26 +2857,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.integerInputSecondPrintServiceCount1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.integerInputSecondPrintCount2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.integerInputSecondPrintCount1)).EndInit();
-            this.tabPageMutiplePictures.ResumeLayout(false);
-            this.tabPageMutiplePictures.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.integerInput3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.integerInput2)).EndInit();
-            this.tabPageLit.ResumeLayout(false);
-            this.tabPageLit.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.integerInput1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.tabPageChangingElements.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.panel6.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
+            this.panel6.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.panel9.ResumeLayout(false);
@@ -3408,6 +2874,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.integerInput9)).EndInit();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.integerInput6)).EndInit();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput8)).EndInit();
@@ -3430,7 +2897,6 @@
             this.groupBox5.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.integerInput6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3505,19 +2971,7 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPageOriginalPrint;
         private System.Windows.Forms.TabPage tabPageSecondPrint;
-        private System.Windows.Forms.TabPage tabPageMutiplePictures;
-        private System.Windows.Forms.TabPage tabPageLit;
         private DevComponents.DotNetBar.Controls.TextBoxX textPhotoRetouchDescription;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private DevComponents.DotNetBar.LabelX labelX1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private DevComponents.DotNetBar.LabelX labelX3;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private DevComponents.Editors.IntegerInput integerInput1;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX2;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxLoadPrintSizeServices;
         private DevComponents.DotNetBar.Controls.TextBoxX txtOriginalPrintServicePrice;
         private System.Windows.Forms.ComboBox cmbOriginalPrintService;
@@ -3556,54 +3010,15 @@
         private System.Windows.Forms.ComboBox cmbSecondPrintService1;
         private System.Windows.Forms.ComboBox cmbSecondPrintSize2;
         private System.Windows.Forms.ComboBox cmbSecondPrintSize1;
-        private DevComponents.Editors.IntegerInput integerInput2;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX3;
-        private System.Windows.Forms.TabPage tabPageChangingElements;
-        private DevComponents.DotNetBar.LabelX labelX10;
-        private DevComponents.DotNetBar.LabelX labelX9;
-        private DevComponents.DotNetBar.LabelX labelX8;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX4;
-        private System.Windows.Forms.Panel panel4;
-        private DevComponents.DotNetBar.ButtonX buttonX4;
-        private DevComponents.DotNetBar.ButtonX buttonX3;
-        private DevComponents.DotNetBar.ButtonX buttonX2;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX5;
-        private DevComponents.Editors.IntegerInput integerInput3;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX1;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX6;
-        private DevComponents.DotNetBar.LabelX labelX5;
-        private DevComponents.DotNetBar.ButtonX buttonX1;
-        private DevComponents.DotNetBar.ButtonX buttonX6;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX7;
-        private DevComponents.DotNetBar.LabelX labelX7;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX2;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX5;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX7;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX6;
         private DevComponents.DotNetBar.Controls.Line line1;
         private DevComponents.DotNetBar.ButtonX buttonX7;
         private DevComponents.DotNetBar.ButtonX buttonX5;
         private System.Windows.Forms.TabPage tabPage2;
-        private DevComponents.DotNetBar.LabelX labelX14;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX10;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX13;
-        private DevComponents.DotNetBar.LabelX labelX17;
-        private System.Windows.Forms.ComboBox comboBox10;
-        private DevComponents.DotNetBar.LabelX labelX16;
-        private DevComponents.DotNetBar.LabelX labelX15;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX9;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX8;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.ComboBox comboBox7;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX12;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.ComboBox comboBox11;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX14;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.ComboBox comboBox8;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX10;
-        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Panel panel9;
         private DevComponents.Editors.IntegerInput integerInput9;
@@ -3627,14 +3042,34 @@
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX12;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX13;
         private DevComponents.DotNetBar.Controls.Line line2;
-        private DevComponents.DotNetBar.ButtonX buttonX10;
-        private DevComponents.DotNetBar.ButtonX buttonX9;
-        private DevComponents.DotNetBar.Controls.Line line4;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX15;
         private DevComponents.Editors.IntegerInput integerInput6;
         private System.Windows.Forms.ComboBox comboBox12;
         private DevComponents.DotNetBar.LabelX labelX25;
         private System.Windows.Forms.ComboBox comboBox15;
         private DevComponents.DotNetBar.LabelX labelX21;
+        private DevComponents.DotNetBar.LabelX labelX22;
+        private System.Windows.Forms.Panel panel6;
+        private DevComponents.DotNetBar.LabelX labelX13;
+        private DevComponents.DotNetBar.ButtonX buttonX12;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX8;
+        private System.Windows.Forms.ComboBox comboBox4;
+        private DevComponents.DotNetBar.LabelX labelX23;
+        private DevComponents.DotNetBar.Controls.Line line4;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.ComboBox comboBox7;
+        private DevComponents.DotNetBar.LabelX labelX16;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX12;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.ComboBox comboBox5;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX9;
+        private DevComponents.DotNetBar.ButtonX buttonX9;
+        private DevComponents.DotNetBar.LabelX labelX14;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.ComboBox comboBox6;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX10;
+        private DevComponents.DotNetBar.LabelX labelX15;
+        private DevComponents.DotNetBar.ButtonX buttonX10;
+        private DevComponents.DotNetBar.ButtonX buttonX6;
     }
 }
