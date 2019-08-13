@@ -1,6 +1,6 @@
 ﻿namespace PhotographyAutomation.App.Forms.Factors
 {
-    partial class FrmAddEditLit
+    partial class FrmAddEditLitPrint
     {
         /// <summary>
         /// Required designer variable.
@@ -33,6 +33,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
             this.btnCancel = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.btnOkPhotoOrderPrint = new DevComponents.DotNetBar.ButtonX();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
@@ -53,7 +54,6 @@
             this.textBoxX3 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.collapsibleSplitContainer1 = new DevComponents.DotNetBar.Controls.CollapsibleSplitContainer();
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.panelEx3.SuspendLayout();
             this.panelEx1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -71,7 +71,7 @@
             // 
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(992, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(830, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -79,7 +79,7 @@
             // 
             this.statusStrip1.Location = new System.Drawing.Point(0, 536);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(992, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(830, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -94,7 +94,7 @@
             this.panelEx3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelEx3.Location = new System.Drawing.Point(0, 498);
             this.panelEx3.Name = "panelEx3";
-            this.panelEx3.Size = new System.Drawing.Size(992, 38);
+            this.panelEx3.Size = new System.Drawing.Size(830, 38);
             this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx3.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx3.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -107,7 +107,6 @@
             // btnCancel
             // 
             this.btnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Location = new System.Drawing.Point(126, 8);
@@ -120,10 +119,24 @@
             this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "انصراف";
             // 
+            // buttonX1
+            // 
+            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX1.Location = new System.Drawing.Point(710, 8);
+            this.buttonX1.Name = "buttonX1";
+            this.buttonX1.Size = new System.Drawing.Size(108, 23);
+            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX1.Symbol = "";
+            this.buttonX1.SymbolColor = System.Drawing.Color.RoyalBlue;
+            this.buttonX1.SymbolSize = 12F;
+            this.buttonX1.TabIndex = 4;
+            this.buttonX1.Text = "پیش نمایش";
+            // 
             // btnOkPhotoOrderPrint
             // 
             this.btnOkPhotoOrderPrint.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnOkPhotoOrderPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOkPhotoOrderPrint.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnOkPhotoOrderPrint.Location = new System.Drawing.Point(12, 8);
             this.btnOkPhotoOrderPrint.Name = "btnOkPhotoOrderPrint";
@@ -153,7 +166,7 @@
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelEx1.Location = new System.Drawing.Point(0, 24);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(992, 126);
+            this.panelEx1.Size = new System.Drawing.Size(830, 126);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -166,9 +179,10 @@
             // 
             // panel3
             // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Controls.Add(this.comboBox2);
             this.panel3.Controls.Add(this.labelX1);
-            this.panel3.Location = new System.Drawing.Point(372, 17);
+            this.panel3.Location = new System.Drawing.Point(210, 17);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(191, 31);
             this.panel3.TabIndex = 191;
@@ -203,7 +217,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.checkBoxX2);
             this.panel1.Controls.Add(this.checkBoxX1);
-            this.panel1.Location = new System.Drawing.Point(818, 17);
+            this.panel1.Location = new System.Drawing.Point(656, 17);
             this.panel1.Name = "panel1";
             this.panel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.panel1.Size = new System.Drawing.Size(159, 31);
@@ -243,10 +257,12 @@
             // 
             // panel6
             // 
+            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel6.Controls.Add(this.textBoxX7);
             this.panel6.Location = new System.Drawing.Point(15, 54);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(962, 61);
+            this.panel6.Size = new System.Drawing.Size(800, 61);
             this.panel6.TabIndex = 191;
             // 
             // textBoxX7
@@ -263,16 +279,17 @@
             this.textBoxX7.Multiline = true;
             this.textBoxX7.Name = "textBoxX7";
             this.textBoxX7.PreventEnterBeep = true;
-            this.textBoxX7.Size = new System.Drawing.Size(955, 55);
+            this.textBoxX7.Size = new System.Drawing.Size(793, 55);
             this.textBoxX7.TabIndex = 0;
             this.textBoxX7.WatermarkText = "توضیحات لیت پرینت";
             // 
             // panel5
             // 
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.Controls.Add(this.comboBox1);
             this.panel5.Controls.Add(this.labelX5);
             this.panel5.Controls.Add(this.integerInput2);
-            this.panel5.Location = new System.Drawing.Point(569, 17);
+            this.panel5.Location = new System.Drawing.Point(407, 17);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(243, 31);
             this.panel5.TabIndex = 190;
@@ -372,7 +389,7 @@
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx2.Location = new System.Drawing.Point(0, 150);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(992, 348);
+            this.panelEx2.Size = new System.Drawing.Size(830, 348);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -396,31 +413,16 @@
             // collapsibleSplitContainer1.Panel2
             // 
             this.collapsibleSplitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.collapsibleSplitContainer1.Size = new System.Drawing.Size(992, 348);
-            this.collapsibleSplitContainer1.SplitterDistance = 330;
+            this.collapsibleSplitContainer1.Size = new System.Drawing.Size(830, 348);
+            this.collapsibleSplitContainer1.SplitterDistance = 272;
             this.collapsibleSplitContainer1.SplitterWidth = 20;
             this.collapsibleSplitContainer1.TabIndex = 0;
-            // 
-            // buttonX1
-            // 
-            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Location = new System.Drawing.Point(872, 8);
-            this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(108, 23);
-            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX1.Symbol = "";
-            this.buttonX1.SymbolColor = System.Drawing.Color.RoyalBlue;
-            this.buttonX1.SymbolSize = 12F;
-            this.buttonX1.TabIndex = 4;
-            this.buttonX1.Text = "پیش نمایش";
             // 
             // FrmAddEditLit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(992, 558);
+            this.ClientSize = new System.Drawing.Size(830, 558);
             this.Controls.Add(this.panelEx2);
             this.Controls.Add(this.panelEx1);
             this.Controls.Add(this.panelEx3);

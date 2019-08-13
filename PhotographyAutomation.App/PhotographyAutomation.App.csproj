@@ -139,11 +139,11 @@
     <Compile Include="Forms\Factors\FrmAddEditChangingElements.Designer.cs">
       <DependentUpon>FrmAddEditChangingElements.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Factors\FrmAddEditLit.cs">
+    <Compile Include="Forms\Factors\FrmAddEditLitPrint.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Factors\FrmAddEditLit.Designer.cs">
-      <DependentUpon>FrmAddEditLit.cs</DependentUpon>
+    <Compile Include="Forms\Factors\FrmAddEditLitPrint.Designer.cs">
+      <DependentUpon>FrmAddEditLitPrint.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Factors\FrmAddEditMultiPicture.cs">
       <SubType>Form</SubType>
@@ -157,17 +157,17 @@
     <Compile Include="Forms\Factors\FrmAddEditPreFactor.Designer.cs">
       <DependentUpon>FrmAddEditPreFactor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Factors\FrmLitPreview.cs">
+    <Compile Include="Forms\Factors\Preview\FrmLitPreview.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Factors\FrmLitPreview.Designer.cs">
+    <Compile Include="Forms\Factors\Preview\FrmLitPreview.Designer.cs">
       <DependentUpon>FrmLitPreview.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Factors\FrmPhotoPriview.cs">
+    <Compile Include="Forms\Factors\Preview\FrmPhotoPreview.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Factors\FrmPhotoPriview.Designer.cs">
-      <DependentUpon>FrmPhotoPriview.cs</DependentUpon>
+    <Compile Include="Forms\Factors\Preview\FrmPhotoPreview.Designer.cs">
+      <DependentUpon>FrmPhotoPreview.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Orders\FrmUploadSelectedPhotos.cs">
       <SubType>Form</SubType>
@@ -249,8 +249,8 @@
     <EmbeddedResource Include="Forms\Factors\FrmAddEditChangingElements.resx">
       <DependentUpon>FrmAddEditChangingElements.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Factors\FrmAddEditLit.resx">
-      <DependentUpon>FrmAddEditLit.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Factors\FrmAddEditLitPrint.resx">
+      <DependentUpon>FrmAddEditLitPrint.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Factors\FrmAddEditMultiPicture.resx">
       <DependentUpon>FrmAddEditMultiPicture.cs</DependentUpon>
@@ -258,11 +258,11 @@
     <EmbeddedResource Include="Forms\Factors\FrmAddEditPreFactor.resx">
       <DependentUpon>FrmAddEditPreFactor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Factors\FrmLitPreview.resx">
+    <EmbeddedResource Include="Forms\Factors\Preview\FrmLitPreview.resx">
       <DependentUpon>FrmLitPreview.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Factors\FrmPhotoPriview.resx">
-      <DependentUpon>FrmPhotoPriview.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Factors\Preview\FrmPhotoPreview.resx">
+      <DependentUpon>FrmPhotoPreview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Orders\FrmUploadSelectedPhotos.resx">
       <DependentUpon>FrmUploadSelectedPhotos.cs</DependentUpon>

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PhotographyAutomation.App.Forms.Factors
 {
-    public partial class FrmLitPreview : Form
+    public partial class FrmAddEditLitPrint : Form
     {
-        public FrmLitPreview()
+        public FrmAddEditLitPrint()
         {
             InitializeComponent();
         }

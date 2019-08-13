@@ -37,7 +37,9 @@
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
-            this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBoxX2 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.textBoxX3 = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -53,20 +55,18 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.checkBoxX2 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
             this.collapsibleSplitContainer1 = new DevComponents.DotNetBar.Controls.CollapsibleSplitContainer();
             this.panelEx2.SuspendLayout();
             this.panelEx1.SuspendLayout();
-            this.panelEx3.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput2)).BeginInit();
             this.panel4.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.panelEx3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.collapsibleSplitContainer1)).BeginInit();
             this.collapsibleSplitContainer1.SuspendLayout();
             this.SuspendLayout();
@@ -174,24 +174,48 @@
             this.panelEx1.Style.GradientAngle = 90;
             this.panelEx1.TabIndex = 7;
             // 
-            // panelEx3
+            // panel1
             // 
-            this.panelEx3.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx3.Controls.Add(this.collapsibleSplitContainer1);
-            this.panelEx3.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx3.Location = new System.Drawing.Point(0, 150);
-            this.panelEx3.Name = "panelEx3";
-            this.panelEx3.Size = new System.Drawing.Size(992, 348);
-            this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx3.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx3.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.panelEx3.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx3.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelEx3.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx3.Style.GradientAngle = 90;
-            this.panelEx3.TabIndex = 11;
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.checkBoxX2);
+            this.panel1.Controls.Add(this.checkBoxX1);
+            this.panel1.Location = new System.Drawing.Point(818, 17);
+            this.panel1.Name = "panel1";
+            this.panel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.panel1.Size = new System.Drawing.Size(159, 31);
+            this.panel1.TabIndex = 201;
+            // 
+            // checkBoxX2
+            // 
+            this.checkBoxX2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxX2.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX2.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
+            this.checkBoxX2.Location = new System.Drawing.Point(15, 7);
+            this.checkBoxX2.Name = "checkBoxX2";
+            this.checkBoxX2.Size = new System.Drawing.Size(70, 16);
+            this.checkBoxX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX2.TabIndex = 1;
+            this.checkBoxX2.Text = "اضافه چاپ";
+            // 
+            // checkBoxX1
+            // 
+            this.checkBoxX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxX1.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX1.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
+            this.checkBoxX1.Location = new System.Drawing.Point(91, 7);
+            this.checkBoxX1.Name = "checkBoxX1";
+            this.checkBoxX1.Size = new System.Drawing.Size(64, 16);
+            this.checkBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX1.TabIndex = 0;
+            this.checkBoxX1.Text = "اصل چاپ";
             // 
             // panel2
             // 
@@ -397,48 +421,24 @@
             this.labelX2.TabIndex = 177;
             this.labelX2.Text = "تعداد دورچین";
             // 
-            // panel1
+            // panelEx3
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.checkBoxX2);
-            this.panel1.Controls.Add(this.checkBoxX1);
-            this.panel1.Location = new System.Drawing.Point(818, 17);
-            this.panel1.Name = "panel1";
-            this.panel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.panel1.Size = new System.Drawing.Size(159, 31);
-            this.panel1.TabIndex = 201;
-            // 
-            // checkBoxX2
-            // 
-            this.checkBoxX2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxX2.AutoSize = true;
-            // 
-            // 
-            // 
-            this.checkBoxX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX2.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
-            this.checkBoxX2.Location = new System.Drawing.Point(15, 7);
-            this.checkBoxX2.Name = "checkBoxX2";
-            this.checkBoxX2.Size = new System.Drawing.Size(70, 16);
-            this.checkBoxX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX2.TabIndex = 1;
-            this.checkBoxX2.Text = "اضافه چاپ";
-            // 
-            // checkBoxX1
-            // 
-            this.checkBoxX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxX1.AutoSize = true;
-            // 
-            // 
-            // 
-            this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX1.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
-            this.checkBoxX1.Location = new System.Drawing.Point(91, 7);
-            this.checkBoxX1.Name = "checkBoxX1";
-            this.checkBoxX1.Size = new System.Drawing.Size(64, 16);
-            this.checkBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX1.TabIndex = 0;
-            this.checkBoxX1.Text = "اصل چاپ";
+            this.panelEx3.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelEx3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx3.Controls.Add(this.collapsibleSplitContainer1);
+            this.panelEx3.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelEx3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelEx3.Location = new System.Drawing.Point(0, 150);
+            this.panelEx3.Name = "panelEx3";
+            this.panelEx3.Size = new System.Drawing.Size(992, 348);
+            this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelEx3.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelEx3.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.panelEx3.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelEx3.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelEx3.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelEx3.Style.GradientAngle = 90;
+            this.panelEx3.TabIndex = 11;
             // 
             // collapsibleSplitContainer1
             // 
@@ -457,6 +457,7 @@
             this.collapsibleSplitContainer1.SplitterDistance = 330;
             this.collapsibleSplitContainer1.SplitterWidth = 20;
             this.collapsibleSplitContainer1.TabIndex = 1;
+            //this.collapsibleSplitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.collapsibleSplitContainer1_SplitterMoved);
             // 
             // FrmAddEditMultiPicture
             // 
@@ -478,7 +479,8 @@
             this.Text = "ثبت / ویرایش دورچین";
             this.panelEx2.ResumeLayout(false);
             this.panelEx1.ResumeLayout(false);
-            this.panelEx3.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -489,8 +491,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.integerInput2)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelEx3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.collapsibleSplitContainer1)).EndInit();
             this.collapsibleSplitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);

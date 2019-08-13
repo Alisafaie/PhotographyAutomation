@@ -1,6 +1,6 @@
-﻿namespace PhotographyAutomation.App.Forms.Factors
+﻿namespace PhotographyAutomation.App.Forms.Factors.Preview
 {
-    partial class FrmPhotoPriview
+    partial class FrmPhotoPreview
     {
         /// <summary>
         /// Required designer variable.
@@ -70,7 +70,6 @@
             this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx1.Style.GradientAngle = 90;
             this.panelEx1.TabIndex = 2;
-            this.panelEx1.Text = "panelEx1";
             // 
             // panelEx2
             // 
@@ -102,7 +101,7 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // FrmPhotoPriview
+            // FrmPhotoPreview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -114,7 +113,7 @@
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "FrmPhotoPriview";
+            this.Name = "FrmPhotoPreview";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "پیش نمایش عکس";

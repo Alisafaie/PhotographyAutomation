@@ -327,8 +327,8 @@ namespace PhotographyAutomation.App.Forms.Factors
             {
                 _selectedOriginalSizeId = result;
                 cmbOriginalPrintService.SelectedIndex = -1;
-                checkBoxLoadPrintSizeServices.Enabled = true;
-                checkBoxLoadPrintSizeServices.Checked = false;
+                rbOriginalPrintNormalPrint.Enabled = true;
+                rbOriginalPrintNormalPrint.Checked = false;
                 txtOriginalPrintServicePrice.ResetText();
                 GetOriginalPrintSizePrice(_selectedOriginalSizeId);
             }
@@ -394,7 +394,7 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         private void checkBoxLoadPrintSizeServices_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxLoadPrintSizeServices.Checked)
+            if (rbOriginalPrintNormalPrint.Checked)
             {
                 //if (cmbOriginalPrintSize.SelectedValue != null &&
                 //   int.TryParse(cmbOriginalPrintSize.SelectedValue.ToString(), out _))
@@ -1971,7 +1971,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                     if (int.TryParse(txtOriginalPrintSizePrice.Text.Replace(",", ""), out var tt))
                         currentOrderDetails.OriginalPrintSizePrice = tt;
 
-                    if (checkBoxLoadPrintSizeServices.Checked)
+                    if (rbOriginalPrintNormalPrint.Checked)
                     {
                         if (cmbOriginalPrintService.Items.Count > 0)
                         {
@@ -2207,7 +2207,7 @@ namespace PhotographyAutomation.App.Forms.Factors
 
                     if (nextOrderDetails.HasOriginalPrintService)
                     {
-                        checkBoxLoadPrintSizeServices.Checked = true;
+                        rbOriginalPrintNormalPrint.Checked = true;
                         if (nextOrderDetails.OriginalServiceId != 0)
                         {
                             cmbOriginalPrintService.SelectedValue = nextOrderDetails.OriginalServiceId;
@@ -2476,7 +2476,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                     if (int.TryParse(txtOriginalPrintSizePrice.Text.Replace(",", ""), out var tt))
                         currentOrderDetails.OriginalPrintSizePrice = tt;
 
-                    if (checkBoxLoadPrintSizeServices.Checked)
+                    if (rbOriginalPrintNormalPrint.Checked)
                     {
                         if (cmbOriginalPrintService.Items.Count > 0)
                         {
@@ -2711,7 +2711,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                     }
                     if (previousOrderDetails.HasOriginalPrintService)
                     {
-                        checkBoxLoadPrintSizeServices.Checked = true;
+                        rbOriginalPrintNormalPrint.Checked = true;
                         if (previousOrderDetails.OriginalServiceId == 0)
                             cmbOriginalPrintService.SelectedIndex = -1;
                         else
@@ -3072,8 +3072,8 @@ namespace PhotographyAutomation.App.Forms.Factors
             txtOriginalPrintServicePrice.ResetText();
             //cmbOriginalPrintService.SelectedIndex = -1;
             cmbOriginalPrintService.Enabled = false;
-            checkBoxLoadPrintSizeServices.Checked = false;
-            checkBoxLoadPrintSizeServices.Enabled = false;
+            rbOriginalPrintNormalPrint.Checked = false;
+            rbOriginalPrintNormalPrint.Enabled = false;
             txtOriginalPrintSizePrice.ResetText();
             //cmbOriginalPrintSize.SelectedIndex = -1;
 
@@ -3081,6 +3081,81 @@ namespace PhotographyAutomation.App.Forms.Factors
         }
 
         
+        private void rbOriginalPrintNormalPrint_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbOriginalPrintNormalPrint.Checked)
+            {
+                groupPanel4.Enabled = true;
+                //if (cmbOriginalPrintSize.SelectedValue != null &&
+                //   int.TryParse(cmbOriginalPrintSize.SelectedValue.ToString(), out _))
+                //    LoadPrintSizeService(_selectedOriginalSizeId);
+                cmbOriginalPrintService.Enabled = true;
+                txtOriginalPrintServicePrice.Enabled = true;
+            }
+            else
+            {
+                groupPanel4.Enabled = false;
+                cmbOriginalPrintService.Enabled = false;
+                //txtOriginalPrintServicePrice.ResetText();
+            }
+        }
+
+        private void rbSecondPrintNormalPrint_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbSecondPrintNormalPrint.Checked)
+            {
+                groupPanel1.Enabled = true;
+                iiSecondPrintCounts_.Enabled = true;
+                //iiSecondPrintCounts_.Value = 1;
+                cmbSecondPrintServices.Enabled = true;
+            }
+            else
+            {
+                groupPanel1.Enabled = false;
+                cmbSecondPrintServices.Enabled = false;
+                txtSecondPrintServicePrice.ResetText();
+                iiSecondPrintCounts_.Enabled = false;
+            }
+        }
+
+        
+        private void rbSecondPrintMultiplePicture_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbSecondPrintMultiplePicture.Checked)
+            {
+                groupPanel2.Enabled = true;
+                //iiSecondPrintCounts_.Value = 1;
+                cmbSecondPrintMultiplePictureServices.Enabled = true;
+                iiSecondPrintMultiplePicturePrintServiceCounts.Enabled = true;
+                txtSecondPrintMultiplePicturePrintServicePrice.Enabled = true;
+            }
+            else
+            {
+                groupPanel2.Enabled = false;
+                cmbSecondPrintMultiplePictureServices.Enabled = false;
+                //txtSecondPrintMultiplePrintServicePrice.ResetText();
+                iiSecondPrintMultiplePicturePrintServiceCounts.Enabled = false;
+            }
+        }
+
+        private void rbSecondPrintLitPrint_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbSecondPrintMultiplePicture.Checked)
+            {
+                groupPanel3.Enabled = true;
+                //iiSecondPrintCounts_.Value = 1;
+                cmbSecondPrintLitPrintServices.Enabled = true;
+                iiSecondPrintLitPrintCounts.Enabled = true;
+                txtSecondPrintLitPrintPrice.Enabled = true;
+            }
+            else
+            {
+                groupPanel3.Enabled = false;
+                cmbSecondPrintLitPrintServices.Enabled = false;
+                //txtSecondPrintLitPrintPrice.ResetText();
+                iiSecondPrintLitPrintCounts.Enabled = false;
+            }
+        }
     }
 
     #region Internal Classes
