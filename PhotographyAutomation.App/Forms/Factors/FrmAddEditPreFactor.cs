@@ -191,7 +191,7 @@ namespace PhotographyAutomation.App.Forms.Factors
             }
             circularProgress.IsRunning = bgWorkerLoadOriginalPringSizes.IsBusy;
         }
-        
+
         #endregion
 
 
@@ -246,7 +246,7 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         #endregion
 
-        
+
         #region LoadOriginalPrintSizes
 
         private void LoadOriginalPrintSizes()
@@ -317,7 +317,7 @@ namespace PhotographyAutomation.App.Forms.Factors
         }
 
         #endregion LoadOriginalPrintSizes
-        
+
         #region cmbOriginalPrintSize
 
         private void cmbOriginalPrintSize_SelectedIndexChanged(object sender, EventArgs e)
@@ -389,7 +389,7 @@ namespace PhotographyAutomation.App.Forms.Factors
         #endregion GetOriginalPrintSizePrice
 
         #endregion
-        
+
         #region checkBoxLoadPrintSizeServices
 
         private void checkBoxLoadPrintSizeServices_CheckedChanged(object sender, EventArgs e)
@@ -410,7 +410,7 @@ namespace PhotographyAutomation.App.Forms.Factors
         }
 
         #endregion
-        
+
         #region cmbOriginalPrintService
 
         private void cmbOriginalPrintService_EnabledChanged(object sender, EventArgs e)
@@ -571,7 +571,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                 txtOriginalPrintServicePrice.Text = data.Price;
             }
         }
-        
+
         #endregion cmbOriginalPrintService
 
 
@@ -628,19 +628,7 @@ namespace PhotographyAutomation.App.Forms.Factors
         }
         private void cmbSecondPrintSize1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbSecondPrintSize1.Enabled && cmbSecondPrintSize1.Items.Count > 0)
-            {
-                if (int.TryParse(cmbSecondPrintSize1.SelectedValue.ToString(), out _))
-                {
-                    var ss = new SecondPrintSizeDataStructure
-                    {
-                        Count = integerInputSecondPrintCount1.Value,
-                        PrintSizeId = (int)cmbSecondPrintSize1.SelectedValue,
-                        TextBoxName = txtSecondPrintSizePrice1.Name
-                    };
-                    GetSecondPrintSizePrice(ss);
-                }
-            }
+
         }
         private void cmbSecondPrintSize1_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -672,11 +660,11 @@ namespace PhotographyAutomation.App.Forms.Factors
                 }
             }
         }
-        
+
         #endregion
 
         #region SecondPrintSize2
-        
+
         private void checkBoxSecondPrint2_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxSecondPrint2.Checked)
@@ -770,7 +758,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                 }
             }
         }
-        
+
         #endregion
 
         #region SecondPrintSize3
@@ -1031,6 +1019,9 @@ namespace PhotographyAutomation.App.Forms.Factors
                     case "txtSecondPrintSizePrice4":
                         txtSecondPrintSizePrice4.Text = myData.Price;
                         break;
+                    case "txtSecondPrintSizePrice_":
+                        txtSecondPrintSizePrice_.Text = myData.Price;
+                        break;
                 }
             }
         }
@@ -1119,6 +1110,17 @@ namespace PhotographyAutomation.App.Forms.Factors
                         txtSecondPrintSizePrice4.Enabled = true;
                         checkBoxLoadSecondPrintServices4.Enabled = true;
                         integerInputSecondPrintCount4.Enabled = true;
+
+                        //cmbSecondPrintSize4_SelectedIndexChanged(null, null);
+                        break;
+                    case nameof(cmbSecondPrintSize_):
+                        cmbSecondPrintSize_.DataSource = data.SizeList;
+                        cmbSecondPrintSize_.DisplayMember = data.DisplayMember;
+                        cmbSecondPrintSize_.ValueMember = data.ValueMember;
+
+                        txtSecondPrintSizePrice_.Enabled = true;
+                        //checkBoxLoadSecondPrintServices4.Enabled = true;
+                        iiSecondPrintCounts_.Enabled = true;
 
                         //cmbSecondPrintSize4_SelectedIndexChanged(null, null);
                         break;
@@ -1411,7 +1413,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                 }
             }
         }
-        
+
         #endregion
 
         #region GetSecondPrintServicePrice
@@ -1530,7 +1532,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                 }
             }
         }
-        
+
         #region integerInputSecontPrintCount
 
         private void integerInputSecontPrintCount1_ValueChanged(object sender, EventArgs e)
@@ -1776,7 +1778,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                 }
             }
         }
-        
+
         #endregion
 
         #region TXT Enter Persian Leave English
@@ -3080,7 +3082,7 @@ namespace PhotographyAutomation.App.Forms.Factors
             #endregion
         }
 
-        
+
         private void rbOriginalPrintNormalPrint_CheckedChanged(object sender, EventArgs e)
         {
             if (rbOriginalPrintNormalPrint.Checked)
@@ -3118,7 +3120,7 @@ namespace PhotographyAutomation.App.Forms.Factors
             }
         }
 
-        
+
         private void rbSecondPrintMultiplePicture_CheckedChanged(object sender, EventArgs e)
         {
             if (rbSecondPrintMultiplePicture.Checked)
@@ -3155,6 +3157,66 @@ namespace PhotographyAutomation.App.Forms.Factors
                 //txtSecondPrintLitPrintPrice.ResetText();
                 iiSecondPrintLitPrintCounts.Enabled = false;
             }
+        }
+
+        private void cmbSecondPrintSequence_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbSecondPrintSequence.SelectedIndex < 0) return;
+            try
+            {
+                if (cmbSecondPrintSize1.DataSource != null) return;
+                var bgWorkerGetSecondPrintSize = new BackgroundWorker
+                {
+                    WorkerSupportsCancellation = false,
+                    WorkerReportsProgress = false
+                };
+
+                bgWorkerGetSecondPrintSize.DoWork += BgWorkerGetSecondPrintSizeOnDoWork;
+                bgWorkerGetSecondPrintSize.RunWorkerCompleted += BgWorkerGetSecondPrintSizeOnRunWorkerCompleted;
+
+                var data = new SecondPrintServiceListDataStructure
+                {
+                    ComboBoxName = cmbSecondPrintSize_.Name
+                };
+                if (bgWorkerGetSecondPrintSize.IsBusy == false)
+                    bgWorkerGetSecondPrintSize.RunWorkerAsync(data);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error,
+                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
+            }
+        }
+
+        private void cmbSecondPrintSize__SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbSecondPrintSize_.Items.Count <= 0) return;
+            if (!int.TryParse(cmbSecondPrintSize_.SelectedValue.ToString(), out var printSizeId)) return;
+
+            var ss = new SecondPrintSizeDataStructure
+            {
+                Count = iiSecondPrintCounts_.Value,
+                PrintSizeId = printSizeId,
+                TextBoxName = txtSecondPrintSizePrice_.Text
+            };
+
+            GetSecondPrintSizePrice(ss);
+        }
+
+        private void iiSecondPrintCounts__ValueChanged(object sender, EventArgs e)
+        {
+            if (iiSecondPrintCounts_.Value == 0)
+            {
+                txtSecondPrintSizePrice_.Text = @"0";
+            }
+            if (!iiSecondPrintCounts_.Enabled || iiSecondPrintCounts_.Value < 0) return;
+            var ss = new SecondPrintSizeDataStructure
+            {
+                TextBoxName = nameof(txtSecondPrintSizePrice_),
+                Count = iiSecondPrintCounts_.Value,
+                PrintSizeId = (int)cmbSecondPrintSize_.SelectedValue
+            };
+            GetSecondPrintSizePrice(ss);
         }
     }
 
