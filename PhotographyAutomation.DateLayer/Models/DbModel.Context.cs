@@ -50,6 +50,14 @@ namespace PhotographyAutomation.DateLayer.Models
         public virtual DbSet<View_GetAllPhotos> View_GetAllPhotos { get; set; }
         public virtual DbSet<View_GetDocumentsFolders> View_GetDocumentsFolders { get; set; }
         public virtual DbSet<View_PrintSizesPrices> View_PrintSizesPrices { get; set; }
+        public virtual DbSet<TblAlbums> TblAlbums { get; set; }
+        public virtual DbSet<TblCustomerFilePrint> TblCustomerFilePrint { get; set; }
+        public virtual DbSet<TblItalianAlbum> TblItalianAlbum { get; set; }
+        public virtual DbSet<TblPrintSizes> TblPrintSizes { get; set; }
+        public virtual DbSet<TblSpecialServices> TblSpecialServices { get; set; }
+        public virtual DbSet<TblPrintServicePrice> TblPrintServicePrice { get; set; }
+        public virtual DbSet<TblSizePrice> TblSizePrice { get; set; }
+        public virtual DbSet<TblSizePrices> TblSizePrices { get; set; }
     
         public virtual ObjectResult<string> usp_CreateCustomerFinancialDirectory(string customerFinancialNumber, string monthNumber, Nullable<byte> parent_level, ObjectParameter returnValue)
         {

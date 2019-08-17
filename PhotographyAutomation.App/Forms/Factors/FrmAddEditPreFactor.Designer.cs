@@ -90,6 +90,7 @@
             this.rbOriginalPrintMultiplePrint = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.rbOriginalPrintNormalPrint = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.groupPanel6 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.checkBoxX4 = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.cmbOriginalPrintLitPrintService = new System.Windows.Forms.ComboBox();
             this.txtOriginalPrintLitPrintServicePrice = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.btnOriginalLitPrintPreview = new DevComponents.DotNetBar.ButtonX();
@@ -99,6 +100,7 @@
             this.txtOriginalPrintMultiplePrintServicePrice = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.btnOriginalMutiplePrintPreview = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel4 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.cmbOriginalPrintService = new System.Windows.Forms.ComboBox();
             this.txtOriginalPrintServicePrice = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -119,6 +121,7 @@
             this.labelX21 = new DevComponents.DotNetBar.LabelX();
             this.rbSecondPrintLitPrint = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.groupPanel3 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.checkBoxX3 = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.iiSecondPrintLitPrintCounts = new DevComponents.Editors.IntegerInput();
             this.cmbSecondPrintLitPrintServices = new System.Windows.Forms.ComboBox();
             this.txtSecondPrintLitPrintPrice = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -132,10 +135,10 @@
             this.btnShowFrmAddEditMultiPicture = new DevComponents.DotNetBar.ButtonX();
             this.rbSecondPrintNormalPrint = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.checkBoxX2 = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.iiSecondPrintServiceCounts = new DevComponents.Editors.IntegerInput();
             this.cmbSecondPrintServices = new System.Windows.Forms.ComboBox();
             this.txtSecondPrintServicePrice = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.line2 = new DevComponents.DotNetBar.Controls.Line();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelEx4 = new DevComponents.DotNetBar.PanelEx();
             this.label5 = new System.Windows.Forms.Label();
@@ -181,10 +184,15 @@
             this.bgWorkerGetOrderPrintInfo = new System.ComponentModel.BackgroundWorker();
             this.bgWorkerLoadPicture = new System.ComponentModel.BackgroundWorker();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX2 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX3 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX4 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
+            this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
+            this.line2 = new DevComponents.DotNetBar.Controls.Line();
+            this.buttonX3 = new DevComponents.DotNetBar.ButtonX();
+            this.checkBoxX5 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxX6 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.buttonX4 = new DevComponents.DotNetBar.ButtonX();
             this.menuStrip1.SuspendLayout();
             this.panelEx1.SuspendLayout();
             this.groupBoxPreviewPictures.SuspendLayout();
@@ -1340,12 +1348,29 @@
             this.groupPanel6.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel6.TabIndex = 221;
             // 
+            // checkBoxX4
+            // 
+            this.checkBoxX4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxX4.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX4.Enabled = false;
+            this.highlighter1.SetHighlightOnFocus(this.checkBoxX4, true);
+            this.checkBoxX4.Location = new System.Drawing.Point(168, 18);
+            this.checkBoxX4.Name = "checkBoxX4";
+            this.checkBoxX4.Size = new System.Drawing.Size(74, 16);
+            this.checkBoxX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX4.TabIndex = 211;
+            this.checkBoxX4.Text = "خدمات لیت";
+            // 
             // cmbOriginalPrintLitPrintService
             // 
             this.cmbOriginalPrintLitPrintService.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbOriginalPrintLitPrintService.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbOriginalPrintLitPrintService.FormattingEnabled = true;
-            this.cmbOriginalPrintLitPrintService.Location = new System.Drawing.Point(41, 17);
+            this.cmbOriginalPrintLitPrintService.Location = new System.Drawing.Point(44, 17);
             this.cmbOriginalPrintLitPrintService.Name = "cmbOriginalPrintLitPrintService";
             this.cmbOriginalPrintLitPrintService.Size = new System.Drawing.Size(121, 21);
             this.cmbOriginalPrintLitPrintService.TabIndex = 191;
@@ -1358,7 +1383,7 @@
             // 
             this.txtOriginalPrintLitPrintServicePrice.Border.Class = "TextBoxBorder";
             this.txtOriginalPrintLitPrintServicePrice.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtOriginalPrintLitPrintServicePrice.Location = new System.Drawing.Point(41, 75);
+            this.txtOriginalPrintLitPrintServicePrice.Location = new System.Drawing.Point(44, 75);
             this.txtOriginalPrintLitPrintServicePrice.Name = "txtOriginalPrintLitPrintServicePrice";
             this.txtOriginalPrintLitPrintServicePrice.PreventEnterBeep = true;
             this.txtOriginalPrintLitPrintServicePrice.ReadOnly = true;
@@ -1376,7 +1401,7 @@
             this.btnOriginalLitPrintPreview.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnOriginalLitPrintPreview.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnOriginalLitPrintPreview.HoverImage")));
             this.btnOriginalLitPrintPreview.Image = ((System.Drawing.Image)(resources.GetObject("btnOriginalLitPrintPreview.Image")));
-            this.btnOriginalLitPrintPreview.Location = new System.Drawing.Point(41, 44);
+            this.btnOriginalLitPrintPreview.Location = new System.Drawing.Point(44, 44);
             this.btnOriginalLitPrintPreview.Name = "btnOriginalLitPrintPreview";
             this.btnOriginalLitPrintPreview.Size = new System.Drawing.Size(121, 25);
             this.btnOriginalLitPrintPreview.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1449,7 +1474,7 @@
             this.cmbOriginalPrintMultiplePrintService_.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbOriginalPrintMultiplePrintService_.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbOriginalPrintMultiplePrintService_.FormattingEnabled = true;
-            this.cmbOriginalPrintMultiplePrintService_.Location = new System.Drawing.Point(42, 17);
+            this.cmbOriginalPrintMultiplePrintService_.Location = new System.Drawing.Point(44, 17);
             this.cmbOriginalPrintMultiplePrintService_.Name = "cmbOriginalPrintMultiplePrintService_";
             this.cmbOriginalPrintMultiplePrintService_.Size = new System.Drawing.Size(121, 21);
             this.cmbOriginalPrintMultiplePrintService_.TabIndex = 191;
@@ -1462,7 +1487,7 @@
             // 
             this.txtOriginalPrintMultiplePrintServicePrice.Border.Class = "TextBoxBorder";
             this.txtOriginalPrintMultiplePrintServicePrice.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtOriginalPrintMultiplePrintServicePrice.Location = new System.Drawing.Point(42, 75);
+            this.txtOriginalPrintMultiplePrintServicePrice.Location = new System.Drawing.Point(44, 75);
             this.txtOriginalPrintMultiplePrintServicePrice.Name = "txtOriginalPrintMultiplePrintServicePrice";
             this.txtOriginalPrintMultiplePrintServicePrice.PreventEnterBeep = true;
             this.txtOriginalPrintMultiplePrintServicePrice.ReadOnly = true;
@@ -1480,7 +1505,7 @@
             this.btnOriginalMutiplePrintPreview.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnOriginalMutiplePrintPreview.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnOriginalMutiplePrintPreview.HoverImage")));
             this.btnOriginalMutiplePrintPreview.Image = ((System.Drawing.Image)(resources.GetObject("btnOriginalMutiplePrintPreview.Image")));
-            this.btnOriginalMutiplePrintPreview.Location = new System.Drawing.Point(42, 44);
+            this.btnOriginalMutiplePrintPreview.Location = new System.Drawing.Point(44, 44);
             this.btnOriginalMutiplePrintPreview.Name = "btnOriginalMutiplePrintPreview";
             this.btnOriginalMutiplePrintPreview.Size = new System.Drawing.Size(121, 25);
             this.btnOriginalMutiplePrintPreview.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1492,6 +1517,8 @@
             this.groupPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupPanel4.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel4.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel4.Controls.Add(this.checkBoxX6);
+            this.groupPanel4.Controls.Add(this.buttonX4);
             this.groupPanel4.Controls.Add(this.checkBoxX1);
             this.groupPanel4.Controls.Add(this.cmbOriginalPrintService);
             this.groupPanel4.Controls.Add(this.txtOriginalPrintServicePrice);
@@ -1530,6 +1557,23 @@
             this.groupPanel4.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel4.TabIndex = 218;
             // 
+            // checkBoxX1
+            // 
+            this.checkBoxX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxX1.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX1.Enabled = false;
+            this.highlighter1.SetHighlightOnFocus(this.checkBoxX1, true);
+            this.checkBoxX1.Location = new System.Drawing.Point(167, 17);
+            this.checkBoxX1.Name = "checkBoxX1";
+            this.checkBoxX1.Size = new System.Drawing.Size(76, 16);
+            this.checkBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX1.TabIndex = 211;
+            this.checkBoxX1.Text = "خدمات چاپ";
+            // 
             // cmbOriginalPrintService
             // 
             this.cmbOriginalPrintService.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1564,6 +1608,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.labelX3);
+            this.groupBox3.Controls.Add(this.buttonX2);
             this.groupBox3.Controls.Add(this.labelX23);
             this.groupBox3.Controls.Add(this.labelX13);
             this.groupBox3.Controls.Add(this.cmbOriginalPrintSize);
@@ -1654,6 +1700,7 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.GhostWhite;
+            this.tabPage3.Controls.Add(this.line2);
             this.tabPage3.Controls.Add(this.groupBox1);
             this.tabPage3.Controls.Add(this.rbSecondPrintLitPrint);
             this.tabPage3.Controls.Add(this.groupPanel3);
@@ -1661,7 +1708,6 @@
             this.tabPage3.Controls.Add(this.groupPanel2);
             this.tabPage3.Controls.Add(this.rbSecondPrintNormalPrint);
             this.tabPage3.Controls.Add(this.groupPanel1);
-            this.tabPage3.Controls.Add(this.line2);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -1671,6 +1717,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.labelX1);
+            this.groupBox1.Controls.Add(this.buttonX1);
             this.groupBox1.Controls.Add(this.txtSecondPrintSizePrice_);
             this.groupBox1.Controls.Add(this.iiSecondPrintCounts_);
             this.groupBox1.Controls.Add(this.cmbSecondPrintSize_);
@@ -1694,7 +1742,7 @@
             this.txtSecondPrintSizePrice_.Border.Class = "TextBoxBorder";
             this.txtSecondPrintSizePrice_.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.txtSecondPrintSizePrice_, true);
-            this.txtSecondPrintSizePrice_.Location = new System.Drawing.Point(193, 26);
+            this.txtSecondPrintSizePrice_.Location = new System.Drawing.Point(238, 26);
             this.txtSecondPrintSizePrice_.Name = "txtSecondPrintSizePrice_";
             this.txtSecondPrintSizePrice_.PreventEnterBeep = true;
             this.txtSecondPrintSizePrice_.ReadOnly = true;
@@ -1716,7 +1764,7 @@
             this.iiSecondPrintCounts_.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.iiSecondPrintCounts_.Enabled = false;
             this.highlighter1.SetHighlightOnFocus(this.iiSecondPrintCounts_, true);
-            this.iiSecondPrintCounts_.Location = new System.Drawing.Point(320, 26);
+            this.iiSecondPrintCounts_.Location = new System.Drawing.Point(365, 26);
             this.iiSecondPrintCounts_.MaxValue = 1000;
             this.iiSecondPrintCounts_.MinValue = 0;
             this.iiSecondPrintCounts_.Name = "iiSecondPrintCounts_";
@@ -1733,7 +1781,7 @@
             this.cmbSecondPrintSize_.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSecondPrintSize_.FormattingEnabled = true;
             this.highlighter1.SetHighlightOnFocus(this.cmbSecondPrintSize_, true);
-            this.cmbSecondPrintSize_.Location = new System.Drawing.Point(356, 26);
+            this.cmbSecondPrintSize_.Location = new System.Drawing.Point(401, 26);
             this.cmbSecondPrintSize_.Name = "cmbSecondPrintSize_";
             this.cmbSecondPrintSize_.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cmbSecondPrintSize_.Size = new System.Drawing.Size(121, 21);
@@ -1795,7 +1843,7 @@
             "اضافه چاپ سوم",
             "اضافه چاپ چهارم",
             "اضافه چاپ پنجم"});
-            this.cmbSecondPrintSequence.Location = new System.Drawing.Point(598, 26);
+            this.cmbSecondPrintSequence.Location = new System.Drawing.Point(618, 26);
             this.cmbSecondPrintSequence.Name = "cmbSecondPrintSequence";
             this.cmbSecondPrintSequence.Size = new System.Drawing.Size(121, 21);
             this.cmbSecondPrintSequence.TabIndex = 224;
@@ -1809,7 +1857,7 @@
             // 
             // 
             this.labelX21.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX21.Location = new System.Drawing.Point(483, 28);
+            this.labelX21.Location = new System.Drawing.Point(528, 28);
             this.labelX21.Name = "labelX21";
             this.labelX21.Size = new System.Drawing.Size(49, 16);
             this.labelX21.TabIndex = 222;
@@ -1880,6 +1928,23 @@
             this.groupPanel3.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel3.TabIndex = 210;
             // 
+            // checkBoxX3
+            // 
+            this.checkBoxX3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxX3.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX3.Enabled = false;
+            this.highlighter1.SetHighlightOnFocus(this.checkBoxX3, true);
+            this.checkBoxX3.Location = new System.Drawing.Point(168, 18);
+            this.checkBoxX3.Name = "checkBoxX3";
+            this.checkBoxX3.Size = new System.Drawing.Size(74, 16);
+            this.checkBoxX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX3.TabIndex = 210;
+            this.checkBoxX3.Text = "خدمات لیت";
+            // 
             // iiSecondPrintLitPrintCounts
             // 
             this.iiSecondPrintLitPrintCounts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1890,7 +1955,7 @@
             this.iiSecondPrintLitPrintCounts.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.iiSecondPrintLitPrintCounts.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.highlighter1.SetHighlightOnFocus(this.iiSecondPrintLitPrintCounts, true);
-            this.iiSecondPrintLitPrintCounts.Location = new System.Drawing.Point(5, 17);
+            this.iiSecondPrintLitPrintCounts.Location = new System.Drawing.Point(8, 17);
             this.iiSecondPrintLitPrintCounts.MaxValue = 1000;
             this.iiSecondPrintLitPrintCounts.MinValue = 0;
             this.iiSecondPrintLitPrintCounts.Name = "iiSecondPrintLitPrintCounts";
@@ -1905,7 +1970,7 @@
             this.cmbSecondPrintLitPrintServices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbSecondPrintLitPrintServices.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSecondPrintLitPrintServices.FormattingEnabled = true;
-            this.cmbSecondPrintLitPrintServices.Location = new System.Drawing.Point(41, 17);
+            this.cmbSecondPrintLitPrintServices.Location = new System.Drawing.Point(44, 17);
             this.cmbSecondPrintLitPrintServices.Name = "cmbSecondPrintLitPrintServices";
             this.cmbSecondPrintLitPrintServices.Size = new System.Drawing.Size(121, 21);
             this.cmbSecondPrintLitPrintServices.TabIndex = 204;
@@ -1918,7 +1983,7 @@
             // 
             this.txtSecondPrintLitPrintPrice.Border.Class = "TextBoxBorder";
             this.txtSecondPrintLitPrintPrice.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtSecondPrintLitPrintPrice.Location = new System.Drawing.Point(41, 75);
+            this.txtSecondPrintLitPrintPrice.Location = new System.Drawing.Point(44, 75);
             this.txtSecondPrintLitPrintPrice.Name = "txtSecondPrintLitPrintPrice";
             this.txtSecondPrintLitPrintPrice.PreventEnterBeep = true;
             this.txtSecondPrintLitPrintPrice.ReadOnly = true;
@@ -1937,7 +2002,7 @@
             this.highlighter1.SetHighlightOnFocus(this.btnShowFrmAddEditLitPrint, true);
             this.btnShowFrmAddEditLitPrint.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnShowFrmAddEditLitPrint.HoverImage")));
             this.btnShowFrmAddEditLitPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnShowFrmAddEditLitPrint.Image")));
-            this.btnShowFrmAddEditLitPrint.Location = new System.Drawing.Point(41, 44);
+            this.btnShowFrmAddEditLitPrint.Location = new System.Drawing.Point(44, 44);
             this.btnShowFrmAddEditLitPrint.Name = "btnShowFrmAddEditLitPrint";
             this.btnShowFrmAddEditLitPrint.Size = new System.Drawing.Size(121, 25);
             this.btnShowFrmAddEditLitPrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -2036,7 +2101,7 @@
             this.iiSecondPrintMultiplePicturePrintServiceCounts.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.iiSecondPrintMultiplePicturePrintServiceCounts.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.highlighter1.SetHighlightOnFocus(this.iiSecondPrintMultiplePicturePrintServiceCounts, true);
-            this.iiSecondPrintMultiplePicturePrintServiceCounts.Location = new System.Drawing.Point(6, 17);
+            this.iiSecondPrintMultiplePicturePrintServiceCounts.Location = new System.Drawing.Point(8, 17);
             this.iiSecondPrintMultiplePicturePrintServiceCounts.MaxValue = 1000;
             this.iiSecondPrintMultiplePicturePrintServiceCounts.MinValue = 0;
             this.iiSecondPrintMultiplePicturePrintServiceCounts.Name = "iiSecondPrintMultiplePicturePrintServiceCounts";
@@ -2051,7 +2116,7 @@
             this.cmbSecondPrintMultiplePictureServices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbSecondPrintMultiplePictureServices.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSecondPrintMultiplePictureServices.FormattingEnabled = true;
-            this.cmbSecondPrintMultiplePictureServices.Location = new System.Drawing.Point(42, 17);
+            this.cmbSecondPrintMultiplePictureServices.Location = new System.Drawing.Point(44, 17);
             this.cmbSecondPrintMultiplePictureServices.Name = "cmbSecondPrintMultiplePictureServices";
             this.cmbSecondPrintMultiplePictureServices.Size = new System.Drawing.Size(121, 21);
             this.cmbSecondPrintMultiplePictureServices.TabIndex = 205;
@@ -2064,7 +2129,7 @@
             // 
             this.txtSecondPrintMultiplePicturePrintServicePrice.Border.Class = "TextBoxBorder";
             this.txtSecondPrintMultiplePicturePrintServicePrice.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtSecondPrintMultiplePicturePrintServicePrice.Location = new System.Drawing.Point(42, 75);
+            this.txtSecondPrintMultiplePicturePrintServicePrice.Location = new System.Drawing.Point(44, 75);
             this.txtSecondPrintMultiplePicturePrintServicePrice.Name = "txtSecondPrintMultiplePicturePrintServicePrice";
             this.txtSecondPrintMultiplePicturePrintServicePrice.PreventEnterBeep = true;
             this.txtSecondPrintMultiplePicturePrintServicePrice.ReadOnly = true;
@@ -2083,7 +2148,7 @@
             this.highlighter1.SetHighlightOnFocus(this.btnShowFrmAddEditMultiPicture, true);
             this.btnShowFrmAddEditMultiPicture.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnShowFrmAddEditMultiPicture.HoverImage")));
             this.btnShowFrmAddEditMultiPicture.Image = ((System.Drawing.Image)(resources.GetObject("btnShowFrmAddEditMultiPicture.Image")));
-            this.btnShowFrmAddEditMultiPicture.Location = new System.Drawing.Point(42, 44);
+            this.btnShowFrmAddEditMultiPicture.Location = new System.Drawing.Point(44, 44);
             this.btnShowFrmAddEditMultiPicture.Name = "btnShowFrmAddEditMultiPicture";
             this.btnShowFrmAddEditMultiPicture.Size = new System.Drawing.Size(121, 25);
             this.btnShowFrmAddEditMultiPicture.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -2115,6 +2180,8 @@
             this.groupPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel1.Controls.Add(this.checkBoxX5);
+            this.groupPanel1.Controls.Add(this.buttonX3);
             this.groupPanel1.Controls.Add(this.checkBoxX2);
             this.groupPanel1.Controls.Add(this.iiSecondPrintServiceCounts);
             this.groupPanel1.Controls.Add(this.cmbSecondPrintServices);
@@ -2154,6 +2221,23 @@
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel1.TabIndex = 208;
             // 
+            // checkBoxX2
+            // 
+            this.checkBoxX2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxX2.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX2.Enabled = false;
+            this.highlighter1.SetHighlightOnFocus(this.checkBoxX2, true);
+            this.checkBoxX2.Location = new System.Drawing.Point(167, 17);
+            this.checkBoxX2.Name = "checkBoxX2";
+            this.checkBoxX2.Size = new System.Drawing.Size(76, 16);
+            this.checkBoxX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX2.TabIndex = 214;
+            this.checkBoxX2.Text = "خدمات چاپ";
+            // 
             // iiSecondPrintServiceCounts
             // 
             this.iiSecondPrintServiceCounts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -2164,7 +2248,7 @@
             this.iiSecondPrintServiceCounts.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.iiSecondPrintServiceCounts.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.highlighter1.SetHighlightOnFocus(this.iiSecondPrintServiceCounts, true);
-            this.iiSecondPrintServiceCounts.Location = new System.Drawing.Point(4, 17);
+            this.iiSecondPrintServiceCounts.Location = new System.Drawing.Point(3, 17);
             this.iiSecondPrintServiceCounts.MaxValue = 1000;
             this.iiSecondPrintServiceCounts.MinValue = 0;
             this.iiSecondPrintServiceCounts.Name = "iiSecondPrintServiceCounts";
@@ -2204,17 +2288,6 @@
             this.txtSecondPrintServicePrice.TabStop = false;
             this.txtSecondPrintServicePrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSecondPrintServicePrice.WatermarkText = "هزینه چاپ (ريال)";
-            // 
-            // line2
-            // 
-            this.line2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.line2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.line2.Location = new System.Drawing.Point(6, 82);
-            this.line2.Name = "line2";
-            this.line2.Size = new System.Drawing.Size(778, 20);
-            this.line2.TabIndex = 203;
-            this.line2.Text = "line2";
             // 
             // panel1
             // 
@@ -2796,73 +2869,136 @@
             this.bgWorkerLoadPicture.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerLoadPicture_DoWork);
             this.bgWorkerLoadPicture.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerLoadPicture_RunWorkerCompleted);
             // 
-            // checkBoxX1
+            // buttonX1
             // 
-            this.checkBoxX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxX1.AutoSize = true;
+            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX1.Image = ((System.Drawing.Image)(resources.GetObject("buttonX1.Image")));
+            this.buttonX1.Location = new System.Drawing.Point(119, 24);
+            this.buttonX1.Name = "buttonX1";
+            this.buttonX1.Size = new System.Drawing.Size(30, 25);
+            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.buttonX1.SymbolSize = 10F;
+            this.buttonX1.TabIndex = 231;
             // 
+            // labelX1
             // 
-            // 
-            this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX1.Enabled = false;
-            this.highlighter1.SetHighlightOnFocus(this.checkBoxX1, true);
-            this.checkBoxX1.Location = new System.Drawing.Point(167, 17);
-            this.checkBoxX1.Name = "checkBoxX1";
-            this.checkBoxX1.Size = new System.Drawing.Size(76, 16);
-            this.checkBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX1.TabIndex = 211;
-            this.checkBoxX1.Text = "خدمات چاپ";
-            // 
-            // checkBoxX2
-            // 
-            this.checkBoxX2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxX2.AutoSize = true;
+            this.labelX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelX1.AutoSize = true;
             // 
             // 
             // 
-            this.checkBoxX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX2.Enabled = false;
-            this.highlighter1.SetHighlightOnFocus(this.checkBoxX2, true);
-            this.checkBoxX2.Location = new System.Drawing.Point(167, 17);
-            this.checkBoxX2.Name = "checkBoxX2";
-            this.checkBoxX2.Size = new System.Drawing.Size(76, 16);
-            this.checkBoxX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX2.TabIndex = 214;
-            this.checkBoxX2.Text = "خدمات چاپ";
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Location = new System.Drawing.Point(155, 28);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(53, 16);
+            this.labelX1.TabIndex = 232;
+            this.labelX1.Text = "اندازه خاص";
             // 
-            // checkBoxX3
+            // labelX3
             // 
-            this.checkBoxX3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxX3.AutoSize = true;
+            this.labelX3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelX3.AutoSize = true;
             // 
             // 
             // 
-            this.checkBoxX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX3.Enabled = false;
-            this.highlighter1.SetHighlightOnFocus(this.checkBoxX3, true);
-            this.checkBoxX3.Location = new System.Drawing.Point(168, 18);
-            this.checkBoxX3.Name = "checkBoxX3";
-            this.checkBoxX3.Size = new System.Drawing.Size(74, 16);
-            this.checkBoxX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX3.TabIndex = 210;
-            this.checkBoxX3.Text = "خدمات لیت";
+            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX3.Location = new System.Drawing.Point(155, 28);
+            this.labelX3.Name = "labelX3";
+            this.labelX3.Size = new System.Drawing.Size(53, 16);
+            this.labelX3.TabIndex = 234;
+            this.labelX3.Text = "اندازه خاص";
             // 
-            // checkBoxX4
+            // buttonX2
             // 
-            this.checkBoxX4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxX4.AutoSize = true;
+            this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX2.Image = ((System.Drawing.Image)(resources.GetObject("buttonX2.Image")));
+            this.buttonX2.Location = new System.Drawing.Point(119, 24);
+            this.buttonX2.Name = "buttonX2";
+            this.buttonX2.Size = new System.Drawing.Size(30, 25);
+            this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX2.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.buttonX2.SymbolSize = 10F;
+            this.buttonX2.TabIndex = 233;
+            // 
+            // line2
+            // 
+            this.line2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.line2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.line2.Location = new System.Drawing.Point(6, 82);
+            this.line2.Name = "line2";
+            this.line2.Size = new System.Drawing.Size(778, 20);
+            this.line2.TabIndex = 226;
+            this.line2.Text = "line2";
+            // 
+            // buttonX3
+            // 
+            this.buttonX3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX3.Image = ((System.Drawing.Image)(resources.GetObject("buttonX3.Image")));
+            this.buttonX3.Location = new System.Drawing.Point(40, 70);
+            this.buttonX3.Name = "buttonX3";
+            this.buttonX3.Size = new System.Drawing.Size(30, 25);
+            this.buttonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX3.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.buttonX3.SymbolSize = 10F;
+            this.buttonX3.TabIndex = 233;
+            // 
+            // checkBoxX5
+            // 
+            this.checkBoxX5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxX5.AutoSize = true;
+            this.checkBoxX5.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
-            this.checkBoxX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX4.Enabled = false;
-            this.highlighter1.SetHighlightOnFocus(this.checkBoxX4, true);
-            this.checkBoxX4.Location = new System.Drawing.Point(168, 18);
-            this.checkBoxX4.Name = "checkBoxX4";
-            this.checkBoxX4.Size = new System.Drawing.Size(74, 16);
-            this.checkBoxX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX4.TabIndex = 211;
-            this.checkBoxX4.Text = "خدمات لیت";
+            this.checkBoxX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX5.Enabled = false;
+            this.highlighter1.SetHighlightOnFocus(this.checkBoxX5, true);
+            this.checkBoxX5.Location = new System.Drawing.Point(170, 74);
+            this.checkBoxX5.Name = "checkBoxX5";
+            this.checkBoxX5.Size = new System.Drawing.Size(73, 16);
+            this.checkBoxX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX5.TabIndex = 234;
+            this.checkBoxX5.Text = "اندازه خاص";
+            // 
+            // checkBoxX6
+            // 
+            this.checkBoxX6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxX6.AutoSize = true;
+            this.checkBoxX6.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.checkBoxX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX6.Enabled = false;
+            this.highlighter1.SetHighlightOnFocus(this.checkBoxX6, true);
+            this.checkBoxX6.Location = new System.Drawing.Point(170, 74);
+            this.checkBoxX6.Name = "checkBoxX6";
+            this.checkBoxX6.Size = new System.Drawing.Size(73, 16);
+            this.checkBoxX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX6.TabIndex = 236;
+            this.checkBoxX6.Text = "اندازه خاص";
+            // 
+            // buttonX4
+            // 
+            this.buttonX4.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonX4.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX4.Image = ((System.Drawing.Image)(resources.GetObject("buttonX4.Image")));
+            this.buttonX4.Location = new System.Drawing.Point(40, 70);
+            this.buttonX4.Name = "buttonX4";
+            this.buttonX4.Size = new System.Drawing.Size(30, 25);
+            this.buttonX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX4.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.buttonX4.SymbolSize = 10F;
+            this.buttonX4.TabIndex = 235;
             // 
             // FrmAddEditPreFactor
             // 
@@ -3067,7 +3203,6 @@
         private DevComponents.Editors.IntegerInput iiSecondPrintServiceCounts;
         private System.Windows.Forms.ComboBox cmbSecondPrintServices;
         private DevComponents.DotNetBar.Controls.TextBoxX txtSecondPrintServicePrice;
-        private DevComponents.DotNetBar.Controls.Line line2;
         private System.Windows.Forms.GroupBox groupBox1;
         private DevComponents.DotNetBar.ButtonX btnSecondPrintChangingElementsPreview;
         private DevComponents.DotNetBar.LabelX labelX22;
@@ -3105,5 +3240,14 @@
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX3;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX2;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX4;
+        private DevComponents.DotNetBar.ButtonX buttonX1;
+        private DevComponents.DotNetBar.LabelX labelX3;
+        private DevComponents.DotNetBar.ButtonX buttonX2;
+        private DevComponents.DotNetBar.LabelX labelX1;
+        private DevComponents.DotNetBar.Controls.Line line2;
+        private DevComponents.DotNetBar.ButtonX buttonX3;
+        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX5;
+        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX6;
+        private DevComponents.DotNetBar.ButtonX buttonX4;
     }
 }
