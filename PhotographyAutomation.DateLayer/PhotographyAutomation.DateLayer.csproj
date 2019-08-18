@@ -91,12 +91,6 @@
     <Compile Include="Models\TblCustomer.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TblEmployeeType.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TblEmpRole.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\TblFilesError.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>

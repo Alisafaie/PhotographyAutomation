@@ -1,7 +1,6 @@
 ﻿using FreeControls;
 using PhotographyAutomation.App.Forms.Customers;
 using PhotographyAutomation.DateLayer.Context;
-using PhotographyAutomation.Utilities;
 using PhotographyAutomation.Utilities.Convertor;
 using PhotographyAutomation.Utilities.ExtentionMethods;
 using PhotographyAutomation.ViewModels.Order;
@@ -9,7 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using Kavenegar.Models;
 
 namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 {
@@ -18,8 +16,8 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
         #region Variables
 
         private int _statusCode = 10;
-        public static int CustomerId = 0;
-        public int OrderId = 0;
+        //public static int CustomerId = 0;
+        //public int OrderId = 0;
 
         #endregion
 
@@ -202,8 +200,8 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                         if (string.IsNullOrEmpty(txtCustomerInfo.Text.Trim()))
                         {
                             MessageBox.Show(
-                                "اطلاعاتی از مشتری برای جستجو وارد نشده است.",
-                                "خطا در ورود اطلاعات",
+                                @"اطلاعاتی از مشتری برای جستجو وارد نشده است.",
+                                @"خطا در ورود اطلاعات",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
                             return;
@@ -233,8 +231,8 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                 else
                 {
                     MessageBox.Show(
-                        "برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.",
-                        "",
+                        @"برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.",
+                        @"",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     dgvOrders.Rows.Clear();
@@ -260,8 +258,8 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                 else
                 {
                     MessageBox.Show(
-                        "برای تاریخ مورد نظر رزرو ورود به آتلیه ثبت نگردیده است.",
-                        "", MessageBoxButtons.OK,
+                        @"برای تاریخ مورد نظر رزرو ورود به آتلیه ثبت نگردیده است.",
+                        @"", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     dgvOrders.Rows.Clear();
                 }
@@ -286,8 +284,8 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                 else
                 {
                     MessageBox.Show(
-                        "برای تاریخ مورد نظر رزرو ورود به آتلیه ثبت نگردیده است.",
-                        "", MessageBoxButtons.OK,
+                        @"برای تاریخ مورد نظر رزرو ورود به آتلیه ثبت نگردیده است.",
+                        @"", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     dgvOrders.Rows.Clear();
                 }
@@ -542,9 +540,9 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
             else
             {
                 MessageBox.Show(
-                    "اطلاعات وضعیت رزروها از سیستم قابل دریافت نمی باشد." +
-                    " لطفا فرم را بسته و مجددا باز کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید. ",
-                    "خطا در دریافت اطلاعات از سیستم",
+                    @"اطلاعات وضعیت رزروها از سیستم قابل دریافت نمی باشد." +
+                    @" لطفا فرم را بسته و مجددا باز کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید. ",
+                    @"خطا در دریافت اطلاعات از سیستم",
                     MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
 
@@ -556,7 +554,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
         {
             try
             {
-                Kavenegar.KavenegarApi api = 
+                Kavenegar.KavenegarApi api =
                     new Kavenegar.KavenegarApi("3235536372716D7A42464C4C344A54374E6A324271644F65317766784E46372B");
                 var res = api.Send("10004346", "00989133138675", "استودیو عکاسی سایان.");
                 //Console.Write(res.Messageid.ToString());
@@ -570,16 +568,16 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
             catch (Kavenegar.Exceptions.ApiException ex)
             {
                 // در صورتی که خروجی وب سرویس 200 نباشد این خطارخ می دهد.
-                MessageBox.Show("Message : " + ex.Message);
+                MessageBox.Show(@"Message : " + ex.Message);
             }
             catch (Kavenegar.Exceptions.HttpException ex)
             {
                 // در زمانی که مشکلی در برقرای ارتباط با وب سرویس وجود داشته باشد این خطا رخ می دهد
-                MessageBox.Show("Message : " + ex.Message);
+                MessageBox.Show(@"Message : " + ex.Message);
             }
             catch (Exception exception)
             {
-                MessageBox.Show("Message : " + exception.Message);
+                MessageBox.Show(@"Message : " + exception.Message);
             }
         }
 

@@ -27,12 +27,12 @@ namespace PhotographyAutomation.App.Forms.Orders
         #region Variables
 
         private int _statusCode;
-        private int _customerId;
+        //private int _customerId;
 
         private string _downloadSelectedPath;
         private string _downloadedAllPhotosPath;
 
-        private bool _customerIsSelectedOrderFiles;
+        //private bool _customerIsSelectedOrderFiles;
 
         #endregion
 
@@ -346,7 +346,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonXColumn &&
                 e.RowIndex >= 0)
             {
-            RetryGetListOfPhotos:
+                RetryGetListOfPhotos:
 
                 var pathLocator = dgvUploads.SelectedRows[0]?.Cells["clmPhotosFolderLink"].Value?.ToString();
 
@@ -381,9 +381,9 @@ namespace PhotographyAutomation.App.Forms.Orders
                         else
                         {
                             var dialogResult = MessageBox.Show(
-                                "برای این سفارش در سیستم عکسی ثبت نشده است. " + Environment.NewLine +
-                                "لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
-                                "خطا در دریافت لیست عکس های سفارش",
+                                @"برای این سفارش در سیستم عکسی ثبت نشده است. " + Environment.NewLine +
+                                @"لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
+                                @"خطا در دریافت لیست عکس های سفارش",
                                 MessageBoxButtons.RetryCancel,
                                 MessageBoxIcon.Error);
                             if (dialogResult == DialogResult.Retry)
@@ -401,7 +401,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                         var dialogResult = MessageBox.Show(
                             "برای این سفارش در سیستم عکسی ثبت نشده است. " + Environment.NewLine +
                             "لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
-                            "خطا در دریافت لیست عکس های سفارش",
+                            @"خطا در دریافت لیست عکس های سفارش",
                             MessageBoxButtons.RetryCancel,
                             MessageBoxIcon.Error);
                         if (dialogResult == DialogResult.Retry)
@@ -413,8 +413,8 @@ namespace PhotographyAutomation.App.Forms.Orders
                 else
                 {
                     MessageBox.Show(
-                        "برای رزرو انتخابی هنوز عکسی در سیستم قرار داده نشده است.",
-                        "عدم آپلود عکس برای رزرو انتخابی",
+                        @"برای رزرو انتخابی هنوز عکسی در سیستم قرار داده نشده است.",
+                        @"عدم آپلود عکس برای رزرو انتخابی",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
                 }
@@ -470,8 +470,8 @@ namespace PhotographyAutomation.App.Forms.Orders
                     else
                     {
                         MessageBox.Show(
-                            "هیچ سفارشی در سیستم ثبت نشده است.",
-                            "",
+                            @"هیچ سفارشی در سیستم ثبت نشده است.",
+                            @"",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                         dgvUploads.Rows.Clear();
@@ -500,8 +500,8 @@ namespace PhotographyAutomation.App.Forms.Orders
                     else
                     {
                         MessageBox.Show(
-                            "برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.",
-                            "",
+                            @"برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.",
+                            @"",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                         dgvUploads.Rows.Clear();
@@ -533,8 +533,8 @@ namespace PhotographyAutomation.App.Forms.Orders
                     else
                     {
                         MessageBox.Show(
-                            "برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.",
-                            "",
+                            @"برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.",
+                            @"",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                         dgvUploads.Rows.Clear();
@@ -564,8 +564,8 @@ namespace PhotographyAutomation.App.Forms.Orders
                     else
                     {
                         MessageBox.Show(
-                            "برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.",
-                            "",
+                            @"برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.",
+                            @"",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                         dgvUploads.Rows.Clear();
@@ -595,8 +595,8 @@ namespace PhotographyAutomation.App.Forms.Orders
                     else
                     {
                         MessageBox.Show(
-                            "برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.",
-                            "",
+                            @"برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.",
+                            @"",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                         dgvUploads.Rows.Clear();
@@ -626,8 +626,8 @@ namespace PhotographyAutomation.App.Forms.Orders
                     else
                     {
                         MessageBox.Show(
-                            "برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.",
-                            "",
+                            @"برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.",
+                            @"",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                         dgvUploads.Rows.Clear();
@@ -723,8 +723,8 @@ namespace PhotographyAutomation.App.Forms.Orders
                     string.IsNullOrEmpty(txtOrderCodeCustomerIdBookingId.Text.Trim()))
                 {
                     MessageBox.Show(
-                        "شناسه سفارش به درستی وارد نشده است.",
-                        "خطا در ورود اطلاعات",
+                        @"شناسه سفارش به درستی وارد نشده است.",
+                        @"خطا در ورود اطلاعات",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     return false;
@@ -736,8 +736,8 @@ namespace PhotographyAutomation.App.Forms.Orders
                 if (string.IsNullOrEmpty(txtCustomerInfo.Text.Trim()))
                 {
                     MessageBox.Show(
-                        "اطلاعات مشتری وارد نشده است.",
-                        "خطا در ورود اطلاعات",
+                        @"اطلاعات مشتری وارد نشده است.",
+                        @"خطا در ورود اطلاعات",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     txtCustomerInfo.Focus();
@@ -908,7 +908,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                 MessageBox.Show(
                     "اطلاعات وضعیت رزروها از سیستم قابل دریافت نمی باشد." +
                     " لطفا فرم را بسته و مجددا باز کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید. ",
-                    "خطا در دریافت اطلاعات از سیستم",
+                    @"خطا در دریافت اطلاعات از سیستم",
                     MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
 
@@ -1031,8 +1031,8 @@ namespace PhotographyAutomation.App.Forms.Orders
                 if (photoPath == null)
                 {
                     MessageBox.Show(
-                        "عکسی برای این سفارش در سیستم ثبت نشده است.",
-                        "خطا در دریافت عکس های سفارش",
+                        @"عکسی برای این سفارش در سیستم ثبت نشده است.",
+                        @"خطا در دریافت عکس های سفارش",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Warning);
                     return;
@@ -1044,7 +1044,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                 {
                     if (MessageBox.Show(
                             "فایل ها با موفقیت در سیستم دریافت شد. آیا فولدر نگهداری آنها باز شود؟",
-                            "",
+                            @"",
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Information,
                             MessageBoxDefaultButton.Button1) == DialogResult.Yes)
@@ -1060,7 +1060,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             {
                 if (exception.HResult == -2146233086)
                 {
-                    MessageBox.Show("رزروی برای دریافت عکس انتخاب نشده است.", "",
+                    MessageBox.Show(@"رزروی برای دریافت عکس انتخاب نشده است.", @"",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
@@ -1103,7 +1103,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             {
                 if (exception.HResult == -2146233086)
                 {
-                    MessageBox.Show("مشتری برای مشاهده اطلاعات انتخاب نشده است.", "",
+                    MessageBox.Show(@"مشتری برای مشاهده اطلاعات انتخاب نشده است.", @"",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
@@ -1147,7 +1147,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             {
                 if (exception.HResult == -2146233086)
                 {
-                    MessageBox.Show("رزروی برای مشاهده اطلاعات انتخاب نشده است.", "",
+                    MessageBox.Show(@"رزروی برای مشاهده اطلاعات انتخاب نشده است.", @"",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
@@ -1507,7 +1507,7 @@ namespace PhotographyAutomation.App.Forms.Orders
         {
             DialogResult dr = MessageBox.Show(
                 $"آیا پیش فاکتور به نام {customerName} صادر گردد؟",
-                "صدور فاکتور",
+                @"صدور فاکتور",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2);
@@ -1572,7 +1572,7 @@ namespace PhotographyAutomation.App.Forms.Orders
         /*********************************************************************************************************/
         private static void ShowException(Exception exception)
         {
-            MessageBox.Show("خطا در سیستم.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(@"خطا در سیستم.", @"", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             var sb = new StringBuilder();
             sb.Append("Exception: " + Environment.NewLine);
@@ -1580,7 +1580,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             sb.Append($@"HResult: {exception.HResult}" + Environment.NewLine);
             sb.Append($@"Inner Exception: {exception.InnerException}");
 
-            MessageBox.Show(sb.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(sb.ToString(), @"", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
 
@@ -1606,8 +1606,8 @@ namespace PhotographyAutomation.App.Forms.Orders
                 if (orderFilesIsUploaded.Any())
                 {
                     MessageBox.Show(
-                        "عکس های این سفارش قبلا آپلود شده است.",
-                        "",
+                        @"عکس های این سفارش قبلا آپلود شده است.",
+                        @"",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
                 }
@@ -1744,7 +1744,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                         var dialogResult = MessageBox.Show(
                             "برای این سفارش در سیستم عکسی ثبت نشده است. " + Environment.NewLine +
                             "لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
-                            "خطا در دریافت لیست عکس های سفارش",
+                            @"خطا در دریافت لیست عکس های سفارش",
                             MessageBoxButtons.RetryCancel,
                             MessageBoxIcon.Error);
                         if (dialogResult == DialogResult.Retry)
@@ -1758,7 +1758,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                 {
                     if (exception.HResult == -2146233086)
                     {
-                        MessageBox.Show("رزروی برای مشاهده عکس انتخاب نشده است.", "",
+                        MessageBox.Show(@"رزروی برای مشاهده عکس انتخاب نشده است.", @"",
                             MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
@@ -1807,8 +1807,8 @@ namespace PhotographyAutomation.App.Forms.Orders
                 if (photoPath == null)
                 {
                     MessageBox.Show(
-                        "عکسی برای این سفارش در سیستم ثبت نشده است.",
-                        "خطا در دریافت عکس های سفارش",
+                        @"عکسی برای این سفارش در سیستم ثبت نشده است.",
+                        @"خطا در دریافت عکس های سفارش",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Warning);
                     return;
@@ -1820,7 +1820,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                 {
                     if (MessageBox.Show(
                             "فایل ها با موفقیت در سیستم دریافت شد. آیا فولدر نگهداری آنها باز شود؟",
-                            "",
+                            @"",
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Information,
                             MessageBoxDefaultButton.Button1) == DialogResult.Yes)
@@ -1836,7 +1836,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             {
                 if (exception.HResult == -2146233086)
                 {
-                    MessageBox.Show("رزروی برای دریافت عکس انتخاب نشده است.", "",
+                    MessageBox.Show(@"رزروی برای دریافت عکس انتخاب نشده است.", @"",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
@@ -1865,7 +1865,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                     }
                     else
                     {
-                        MessageBox.Show("قبلا این عکس ها در مسیر انتخابی دریافت شده است.", "", MessageBoxButtons.OK,
+                        MessageBox.Show(@"قبلا این عکس ها در مسیر انتخابی دریافت شده است.", @"", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                     }
                 }
@@ -1901,7 +1901,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                                         "خطا در ساخت فولدر های مربوط به سفارش." +
                                         Environment.NewLine +
                                         " لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.",
-                                        "",
+                                        @"",
                                         MessageBoxButtons.RetryCancel,
                                         MessageBoxIcon.Error,
                                         MessageBoxDefaultButton.Button1);
@@ -1929,7 +1929,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                                             "در صورت تایید محتوای فایل قبلی از بین می رود." +
                                             Environment.NewLine +
                                             "در صورت انصراف، کل فرایند دریافت فایل ها متوقف خواهد شد.",
-                                            "تائید بازنویسی فایل",
+                                            @"تائید بازنویسی فایل",
                                             MessageBoxButtons.YesNoCancel,
                                             MessageBoxIcon.Warning,
                                             MessageBoxDefaultButton.Button1);
@@ -1943,7 +1943,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                                             " در صورت بازنویسی محتوای قبلی فایل از بین خواهد رفت." +
                                             Environment.NewLine +
                                             "در صورت انصراف، کل فرایند دریافت فایل ها متوقف خواهد شد.",
-                                            "وجود عکس هم نام با سایز متفاوت در مسیر دریافت عکس ها",
+                                            @"وجود عکس هم نام با سایز متفاوت در مسیر دریافت عکس ها",
                                             MessageBoxButtons.YesNoCancel,
                                             MessageBoxIcon.Warning,
                                             MessageBoxDefaultButton.Button1);
@@ -1963,9 +1963,9 @@ namespace PhotographyAutomation.App.Forms.Orders
                                         else
                                         {
                                             MessageBox.Show(
-                                                $"ذخیره فایل با نام {file.name} " +
-                                                " با مشکل مواجه شد. حجم فایل سرور با فایل ذخیره شده تطابق ندارد.",
-                                                "خطا در ذخیره فایل در سیستم کاربر",
+                                                $@"ذخیره فایل با نام {file.name} " +
+                                                @" با مشکل مواجه شد. حجم فایل سرور با فایل ذخیره شده تطابق ندارد.",
+                                                @"خطا در ذخیره فایل در سیستم کاربر",
                                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                                         }
                                     }
@@ -1985,9 +1985,9 @@ namespace PhotographyAutomation.App.Forms.Orders
                                         else
                                         {
                                             MessageBox.Show(
-                                                $"ذخیره فایل با نام {file.name} " +
-                                                " با مشکل مواجه شد. حجم فایل سرور با فایل ذخیره شده تطابق ندارد.",
-                                                "خطا در ذخیره فایل در سیستم کاربر",
+                                                $@"ذخیره فایل با نام {file.name} " +
+                                                @" با مشکل مواجه شد. حجم فایل سرور با فایل ذخیره شده تطابق ندارد.",
+                                                @"خطا در ذخیره فایل در سیستم کاربر",
                                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                                         }
                                     }
@@ -2071,7 +2071,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
         private void ارسال_عکس_های_انتخاب_شده_مشتری_به_سرور_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var selectedRow=new DataGridViewRow();
+            var selectedRow = new DataGridViewRow();
             //string orderCode;
             //int orderId = -1;
             try
@@ -2089,13 +2089,13 @@ namespace PhotographyAutomation.App.Forms.Orders
             catch (ArgumentOutOfRangeException argumentOutOfRangeException)
             {
                 if (argumentOutOfRangeException.HResult == -2146233086)
-                    MessageBox.Show("رزروی برای مشاهده عکس انتخاب نشده است.", "", MessageBoxButtons.OK,
+                    MessageBox.Show(@"رزروی برای مشاهده عکس انتخاب نشده است.", @"", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 return;
             }
             catch (Exception exception)
             {
-                MessageBox.Show(exception.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(exception.Message, @"", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -2107,8 +2107,8 @@ namespace PhotographyAutomation.App.Forms.Orders
             if (parentPathLocator == null)
             {
                 MessageBox.Show(
-                    "برای رزرو انتخابی هنوز عکسی در سیستم قرار داده نشده است.",
-                    "عدم آپلود عکس برای رزرو انتخابی",
+                    @"برای رزرو انتخابی هنوز عکسی در سیستم قرار داده نشده است.",
+                    @"عدم آپلود عکس برای رزرو انتخابی",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 return;
@@ -2143,9 +2143,9 @@ namespace PhotographyAutomation.App.Forms.Orders
                 else
                 {
                     var dialogResult = MessageBox.Show(
-                        "برای این سفارش در سیستم عکسی ثبت نشده است. " + Environment.NewLine +
-                        "لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
-                        "خطا در دریافت لیست عکس های سفارش",
+                        @"برای این سفارش در سیستم عکسی ثبت نشده است. " + Environment.NewLine +
+                        @"لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
+                        @"خطا در دریافت لیست عکس های سفارش",
                         MessageBoxButtons.RetryCancel,
                         MessageBoxIcon.Error);
                     if (dialogResult == DialogResult.Retry)
@@ -2161,9 +2161,9 @@ namespace PhotographyAutomation.App.Forms.Orders
             else
             {
                 var dialogResult = MessageBox.Show(
-                    "برای این سفارش در سیستم عکسی ثبت نشده است. " + Environment.NewLine +
-                    "لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
-                    "خطا در دریافت لیست عکس های سفارش",
+                    @"برای این سفارش در سیستم عکسی ثبت نشده است. " + Environment.NewLine +
+                    @"لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
+                    @"خطا در دریافت لیست عکس های سفارش",
                     MessageBoxButtons.RetryCancel,
                     MessageBoxIcon.Error);
                 if (dialogResult == DialogResult.Retry)

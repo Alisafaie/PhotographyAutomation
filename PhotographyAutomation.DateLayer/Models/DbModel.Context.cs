@@ -33,8 +33,6 @@ namespace PhotographyAutomation.DateLayer.Models
         public virtual DbSet<TblBooking> TblBooking { get; set; }
         public virtual DbSet<TblBookingStatus> TblBookingStatus { get; set; }
         public virtual DbSet<TblCustomer> TblCustomer { get; set; }
-        public virtual DbSet<TblEmployeeType> TblEmployeeType { get; set; }
-        public virtual DbSet<TblEmpRole> TblEmpRole { get; set; }
         public virtual DbSet<TblFilesError> TblFilesError { get; set; }
         public virtual DbSet<TblOrder> TblOrder { get; set; }
         public virtual DbSet<TblOrderFiles> TblOrderFiles { get; set; }
@@ -46,11 +44,11 @@ namespace PhotographyAutomation.DateLayer.Models
         public virtual DbSet<TblPhotographyType> TblPhotographyType { get; set; }
         public virtual DbSet<TblPrintCustomerFiles> TblPrintCustomerFiles { get; set; }
         public virtual DbSet<TblPrintItalianAlbums> TblPrintItalianAlbums { get; set; }
+        public virtual DbSet<TblPrintServicePrices> TblPrintServicePrices { get; set; }
         public virtual DbSet<TblPrintServices> TblPrintServices { get; set; }
+        public virtual DbSet<TblPrintSizePrices> TblPrintSizePrices { get; set; }
         public virtual DbSet<TblPrintSizes> TblPrintSizes { get; set; }
         public virtual DbSet<TblPrintSpecialServices> TblPrintSpecialServices { get; set; }
-        public virtual DbSet<TblPrintServicePrices> TblPrintServicePrices { get; set; }
-        public virtual DbSet<TblPrintSizePrices> TblPrintSizePrices { get; set; }
         public virtual DbSet<View_GetAllPhotos> View_GetAllPhotos { get; set; }
         public virtual DbSet<View_GetDocumentsFolders> View_GetDocumentsFolders { get; set; }
         public virtual DbSet<View_PrintSizesPrices> View_PrintSizesPrices { get; set; }

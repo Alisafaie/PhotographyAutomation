@@ -96,13 +96,13 @@ namespace PhotographyAutomation.App.Forms.Booking
                 }
                 else
                 {
-                    if (txtCustomerInfo.Text == "***")
+                    if (txtCustomerInfo.Text == @"***")
                         ShowBookings(string.Empty);
                     else
                     {
                         if (string.IsNullOrEmpty(txtCustomerInfo.Text.Trim()))
                         {
-                            MessageBox.Show("اطلاعاتی از مشتری برای جستجو وارد نشده است.", "خطا در ورود اطلاعات",
+                            MessageBox.Show(@"اطلاعاتی از مشتری برای جستجو وارد نشده است.", @"خطا در ورود اطلاعات",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
                             return;
@@ -335,10 +335,10 @@ namespace PhotographyAutomation.App.Forms.Booking
                 int.TryParse(dgvBookings.SelectedRows[0].Cells["clmId"].Value.ToString(), out var bookingId))
             {
                 var dialogResult = MessageBox.Show(
-                    "آیا وضعیت رزرو مشتری به 'ورود به آتلیه' تغییر یابد؟" + "\n" +
-                    "پس از تغییر وضعیت رزرو شناسه سفارش ایجاد می گردد" + "\n" +
-                    " و وضعیت آن قابل تغییر نمی باشد.",
-                    "تغییر وضعیت رزرو", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    @"آیا وضعیت رزرو مشتری به 'ورود به آتلیه' تغییر یابد؟" + Environment.NewLine +
+                    @"پس از تغییر وضعیت رزرو شناسه سفارش ایجاد می گردد" + Environment.NewLine +
+                    @" و وضعیت آن قابل تغییر نمی باشد.",
+                    @"تغییر وضعیت رزرو", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (dialogResult != DialogResult.Yes) return;
                 using (var db = new UnitOfWork())
@@ -412,8 +412,8 @@ namespace PhotographyAutomation.App.Forms.Booking
                         {
                             OrderId = order.Id;
                             MessageBox.Show(
-                                "وضعیت رزرو مشتری با موفقیت به 'ورود به آتلیه' تغییر پیدا کرد.",
-                                "تغییر وضعیت رزرو", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                @"وضعیت رزرو مشتری با موفقیت به 'ورود به آتلیه' تغییر پیدا کرد.",
+                                @"تغییر وضعیت رزرو", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             if (dgvBookings.CurrentRow != null)
                             {
                                 int rowIndex = dgvBookings.CurrentRow.Index;
@@ -425,9 +425,9 @@ namespace PhotographyAutomation.App.Forms.Booking
                         else
                         {
                             MessageBox.Show(
-                                "مشکلی در به روز رسانی وضعیت رزرو پیش آمده است. " +
-                                "لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.",
-                                "خطا در ثبت اطلاعات در سیستم",
+                                @"مشکلی در به روز رسانی وضعیت رزرو پیش آمده است. " +
+                                @"لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.",
+                                @"خطا در ثبت اطلاعات در سیستم",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
                         }
@@ -435,9 +435,9 @@ namespace PhotographyAutomation.App.Forms.Booking
                     else
                     {
                         MessageBox.Show(
-                            "اطلاعات رزرو مورد از نظر از بانک اطلاعاتی قابل دریافت نیست. " +
-                            "لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.",
-                            "خطا در دریافت اطلاعات رزرو از سیستم",
+                            @"اطلاعات رزرو مورد از نظر از بانک اطلاعاتی قابل دریافت نیست. " +
+                            @"لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.",
+                            @"خطا در دریافت اطلاعات رزرو از سیستم",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
@@ -445,8 +445,8 @@ namespace PhotographyAutomation.App.Forms.Booking
             else
             {
                 MessageBox.Show(
-                    "هیچ رزروی برای تبدیل به سفارش انتخاب نشده است.",
-                    "خطا - عدم  انتخاب رزرو برای تبدیل به سفارش",
+                    @"هیچ رزروی برای تبدیل به سفارش انتخاب نشده است.",
+                    @"خطا - عدم  انتخاب رزرو برای تبدیل به سفارش",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 dgvBookings.Focus();
             }
@@ -460,8 +460,8 @@ namespace PhotographyAutomation.App.Forms.Booking
 
             var customerName = dgvBookings.SelectedRows[0].Cells["clmCustomerFullName"].Value.ToString();
             bookingId = int.Parse(dgvBookings.SelectedRows[0].Cells["clmId"].Value.ToString());
-            var dr = MessageBox.Show("آیا از لغو رزرو مشتری " + customerName + " اطمینان دارید؟",
-                "لغو رزرو مشتری",
+            var dr = MessageBox.Show(@"آیا از لغو رزرو مشتری " + customerName + @" اطمینان دارید؟",
+                @"لغو رزرو مشتری",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dr != DialogResult.Yes) return;
 
@@ -489,8 +489,8 @@ namespace PhotographyAutomation.App.Forms.Booking
                     if (db.Save() > 0)
                     {
                         MessageBox.Show(
-                            "رزرو مشتری " + customerName + " با موفقیت لغو گردید.",
-                            "لغو رزرو مشتری",
+                            @"رزرو مشتری " + customerName + @" با موفقیت لغو گردید.",
+                            @"لغو رزرو مشتری",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         if (dgvBookings.SelectedRows[0] != null)
@@ -504,9 +504,9 @@ namespace PhotographyAutomation.App.Forms.Booking
                     else
                     {
                         MessageBox.Show(
-                            "مشکلی در به روز رسانی وضعیت رزرو پیش آمده است. " +
-                            "لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.",
-                            "خطا در ثبت اطلاعات در سیستم",
+                            @"مشکلی در به روز رسانی وضعیت رزرو پیش آمده است. " +
+                            @"لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.",
+                            @"خطا در ثبت اطلاعات در سیستم",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                     }
@@ -514,9 +514,9 @@ namespace PhotographyAutomation.App.Forms.Booking
                 else
                 {
                     MessageBox.Show(
-                        "اطلاعات رزرو مورد از نظر از بانک اطلاعاتی قابل دریافت نیست. " +
-                        "لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.",
-                        "خطا در دریافت اطلاعات رزرو از سیستم",
+                        @"اطلاعات رزرو مورد از نظر از بانک اطلاعاتی قابل دریافت نیست. " +
+                        @"لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.",
+                        @"خطا در دریافت اطلاعات رزرو از سیستم",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -545,7 +545,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                 }
                 else
                 {
-                    MessageBox.Show("برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.", "",
+                    MessageBox.Show(@"برای مشتری با اطلاعات داده شده رزروی ثبت نگردیده است.", @"",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     dgvBookings.Rows.Clear();
@@ -572,7 +572,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                 }
                 else
                 {
-                    MessageBox.Show("برای تاریخ مورد نظر نوبتی ثبت نگردیده است.", "", MessageBoxButtons.OK,
+                    MessageBox.Show(@"برای تاریخ مورد نظر نوبتی ثبت نگردیده است.", @"", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     dgvBookings.Rows.Clear();
                 }
@@ -598,7 +598,7 @@ namespace PhotographyAutomation.App.Forms.Booking
                 }
                 else
                 {
-                    MessageBox.Show("برای تاریخ مورد نظر نوبتی ثبت نگردیده است.", "", MessageBoxButtons.OK,
+                    MessageBox.Show(@"برای تاریخ مورد نظر نوبتی ثبت نگردیده است.", @"", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     dgvBookings.Rows.Clear();
                 }
@@ -691,7 +691,7 @@ namespace PhotographyAutomation.App.Forms.Booking
              *
              */
             int bookingStatusCode = int.Parse(dgvBookings.SelectedRows[0].Cells["clmStatusCode"].Value.ToString());
-            
+
             if (bookingStatusCode == 40 || bookingStatusCode == 30 || bookingStatusCode == 20)
             {
                 ورودبهآتلیهToolStripMenuItem.Enabled = false;
@@ -743,9 +743,9 @@ namespace PhotographyAutomation.App.Forms.Booking
             else
             {
                 MessageBox.Show(
-                    "اطلاعات وضعیت رزروها از سیستم قابل دریافت نمی باشد." +
-                    " لطفا فرم را بسته و مجددا باز کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید. ",
-                    "خطا در دریافت اطلاعات از سیستم",
+                    @"اطلاعات وضعیت رزروها از سیستم قابل دریافت نمی باشد." +
+                    @" لطفا فرم را بسته و مجددا باز کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید. ",
+                    @"خطا در دریافت اطلاعات از سیستم",
                     MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
         }

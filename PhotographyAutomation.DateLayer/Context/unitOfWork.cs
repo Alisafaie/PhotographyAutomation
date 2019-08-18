@@ -316,6 +316,15 @@ namespace PhotographyAutomation.DateLayer.Context
                 new GenericRepository<TblPrintSizes>(_db));
 
 
+        
+        
+        
+        private GenericRepository<TblPrintSizePrices> _printSizePricesGenericRepository;
+        public GenericRepository<TblPrintSizePrices> PrintSizePriceGenericRepository =>
+            _printSizePricesGenericRepository ??
+            (_printSizePricesGenericRepository = new GenericRepository<TblPrintSizePrices>(_db));
+
+
 
 
         private GenericRepository<TblPrintServicePrices> _printServicePricesGenericRepository;

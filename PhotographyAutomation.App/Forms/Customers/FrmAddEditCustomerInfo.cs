@@ -4,7 +4,6 @@ using DevComponents.DotNetBar.Controls;
 using PhotographyAutomation.App.Forms.Booking;
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.DateLayer.Models;
-using PhotographyAutomation.Utilities;
 using PhotographyAutomation.Utilities.Convertor;
 using PhotographyAutomation.Utilities.ExtentionMethods;
 using PhotographyAutomation.Utilities.Regex;
@@ -153,8 +152,8 @@ namespace PhotographyAutomation.App.Forms.Customers
                     else
                     {
                         MessageBox.Show(
-                            "متاسفانه کاربری با شماره همراه داده شده یافت نگردید.",
-                            "عدم وجود کاربر",
+                            @"متاسفانه کاربری با شماره همراه داده شده یافت نگردید.",
+                            @"عدم وجود کاربر",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         txtMobile.Text = chustomerNumberString;
@@ -220,7 +219,7 @@ namespace PhotographyAutomation.App.Forms.Customers
                 {
                     if (checkCustomerMobileNumber != null)
                     {
-                        MessageBox.Show("این شماره موبایل قبلا برای کاربر دیگری ثبت شده است.", "خطا در ورود اطلاعات",
+                        MessageBox.Show(@"این شماره موبایل قبلا برای کاربر دیگری ثبت شده است.", @"خطا در ورود اطلاعات",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                         txtMobile.Focus();
                     }
@@ -241,8 +240,8 @@ namespace PhotographyAutomation.App.Forms.Customers
                         else
                         {
                             MessageBox.Show(
-                                "این شماره موبایل قبلا برای کاربر دیگری ثبت شده است.",
-                                "خطا در ورود اطلاعات",
+                                @"این شماره موبایل قبلا برای کاربر دیگری ثبت شده است.",
+                                @"خطا در ورود اطلاعات",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                             txtMobile.Focus();
                         }
@@ -273,8 +272,8 @@ namespace PhotographyAutomation.App.Forms.Customers
                 }
                 else
                     MessageBox.Show(
-                        "خطا در ثبت اطلاعات کاربر",
-                        "خطا در ثبت اطلاعات",
+                        @"خطا در ثبت اطلاعات کاربر",
+                        @"خطا در ثبت اطلاعات",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
             }

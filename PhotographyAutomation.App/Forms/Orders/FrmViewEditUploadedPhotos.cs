@@ -252,7 +252,7 @@ namespace PhotographyAutomation.App.Forms.Orders
         {
             if (string.IsNullOrEmpty(toolStripMenuItemOrderCode.Text.Trim()))
             {
-                MessageBox.Show("مقداری برای شماره فاکتور مشتری وارد نشده است.", "", MessageBoxButtons.OK,
+                MessageBox.Show(@"مقداری برای شماره فاکتور مشتری وارد نشده است.", @"", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 toolStripMenuItemOrderCode.Focus();
                 return false;
@@ -260,7 +260,7 @@ namespace PhotographyAutomation.App.Forms.Orders
 
             if (ListOfPhotos.Count == 0)
             {
-                MessageBox.Show("عکسی برای ارسال انتخاب نشده است.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"عکسی برای ارسال انتخاب نشده است.", @"", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -361,7 +361,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                             {
                                 MessageBox.Show(
                                     "ارسال فایل " + fileNamesUpload[i] + " با خطا مواجه شد.",
-                                    "خطا در ارسال فایل", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    @"خطا در ارسال فایل", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                                 errorInUpload.Add(fileNamesUpload[i]);
 
@@ -413,7 +413,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                             //    }
                             //}
 
-                            MessageBox.Show("تمامی فایل ها با موفقیت ارسال گردید.", "", MessageBoxButtons.OK,
+                            MessageBox.Show(@"تمامی فایل ها با موفقیت ارسال گردید.", @"", MessageBoxButtons.OK,
                                 MessageBoxIcon.Information);
                         }
                         else
@@ -436,7 +436,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                             }
 
                             db.Save();
-                            MessageBox.Show(sb.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(sb.ToString(), @"", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
@@ -447,7 +447,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                             "در صورت  تایید فایل های قبلی پاک شده و فایل های جدید جایگزین می گردند." +
                             Environment.NewLine +
                             "در غیر این صورت هیچ فایلی آپلود نمی شود.",
-                            "بررسی فایل های موجود در سرور",
+                            @"بررسی فایل های موجود در سرور",
                             MessageBoxButtons.OKCancel,
                             MessageBoxIcon.Warning,
                             MessageBoxDefaultButton.Button2);
@@ -494,7 +494,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                                 {
                                     MessageBox.Show(
                                         "ارسال فایل " + fileNamesUpload[i] + " با خطا مواجه شد.",
-                                        "خطا در ارسال فایل", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        @"خطا در ارسال فایل", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                                     errorInUpload.Add(fileNamesUpload[i]);
 
@@ -540,7 +540,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                                 //    }
                                 //}
 
-                                MessageBox.Show("تمامی فایل ها با موفقیت ارسال گردید.", "", MessageBoxButtons.OK,
+                                MessageBox.Show(@"تمامی فایل ها با موفقیت ارسال گردید.", @"", MessageBoxButtons.OK,
                                     MessageBoxIcon.Information);
                             }
                             else
@@ -563,7 +563,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                                 }
 
                                 db.Save();
-                                MessageBox.Show(sb.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show(sb.ToString(), @"", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                             //}
                             //else  becuase of void

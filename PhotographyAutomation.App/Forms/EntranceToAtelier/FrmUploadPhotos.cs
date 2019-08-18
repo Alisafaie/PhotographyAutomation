@@ -1,7 +1,6 @@
 ﻿using PhotographyAutomation.App.Forms.Photos;
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.DateLayer.Models;
-using PhotographyAutomation.Utilities;
 using PhotographyAutomation.Utilities.Convertor;
 using PhotographyAutomation.Utilities.ExtentionMethods;
 using System;
@@ -58,12 +57,12 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
             {
                 CheckFileExists = true,
                 DefaultExt = "*.jpg",
-                Filter = "Image Files(*.JPG; *.JPEG)|*.JPG; *.JPEG",
+                Filter = @"Image Files(*.JPG; *.JPEG)|*.JPG; *.JPEG",
                 //Image Files(*.BMP; *.JPG; *.GIF)| *.BMP; *.JPG; *.GIF | All files(*.*) | *.*
                 Multiselect = true,
                 RestoreDirectory = true,
                 SupportMultiDottedExtensions = true,
-                Title = "دریافت عکس ها",
+                Title = @"دریافت عکس ها",
                 //ReadOnlyChecked = true,
                 //ShowReadOnly = true
             };
@@ -128,7 +127,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                         var yearFolderPath = db.PhotoRepository.CreateYearFolderOfPhotos(year);
                         if (yearFolderPath != null)
                         {
-                            MessageBox.Show("فولدر سال جاری ایجاد شد.");
+                            MessageBox.Show(@"فولدر سال جاری ایجاد شد.");
                         }
                     }
                     //yearFolderPath = checkYearFolder;
@@ -139,7 +138,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                         var monthFolderPath = db.PhotoRepository.CreateMonthFolderOfPhotos(month, year);
                         if (monthFolderPath != null)
                         {
-                            MessageBox.Show("فولدر ماه عکس برداری ایجاد شد.");
+                            MessageBox.Show(@"فولدر ماه عکس برداری ایجاد شد.");
                         }
                     }
                     //monthFolderPath = checkMonthFolder;
@@ -152,7 +151,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                         var orderFolderPath = db.PhotoRepository.CreateCustomerFinancialFolder(OrderCode, month);
                         if (orderFolderPath != null)
                         {
-                            MessageBox.Show("فولدر عکس های مشتری ایجاد شد.");
+                            MessageBox.Show(@"فولدر عکس های مشتری ایجاد شد.");
                         } // فولدر سفارش قبلا وجود نداشته است.
 
                         var parentPathName = OrderCode;
@@ -187,8 +186,8 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                             else
                             {
                                 MessageBox.Show(
-                                    "ارسال فایل " + fileNamesUpload[i] + " با خطا مواجه شد.",
-                                    "خطا در ارسال فایل", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    @"ارسال فایل " + fileNamesUpload[i] + @" با خطا مواجه شد.",
+                                    @"خطا در ارسال فایل", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                                 errorInUpload.Add(fileNamesUpload[i]);
 
@@ -239,7 +238,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                             //    }
                             //}
 
-                            MessageBox.Show("تمامی فایل ها با موفقیت ارسال گردید.", "", MessageBoxButtons.OK,
+                            MessageBox.Show(@"تمامی فایل ها با موفقیت ارسال گردید.", @"", MessageBoxButtons.OK,
                                 MessageBoxIcon.Information);
                         }
                         else
@@ -262,18 +261,18 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                             }
 
                             db.Save();
-                            MessageBox.Show(sb.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(sb.ToString(), @"", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
                     {
                         DialogResult dialogResultReplaceFiles = MessageBox.Show(
-                            "فولدر فاکتور مشتری در سیستم وجود دارد." +
+                            @"فولدر فاکتور مشتری در سیستم وجود دارد." +
                             Environment.NewLine +
-                            "در صورت  تایید فایل های قبلی پاک شده و فایل های جدید جایگزین می گردند." +
+                            @"در صورت  تایید فایل های قبلی پاک شده و فایل های جدید جایگزین می گردند." +
                             Environment.NewLine +
-                            "در غیر این صورت هیچ فایلی آپلود نمی شود.",
-                            "بررسی فایل های موجود در سرور",
+                            @"در غیر این صورت هیچ فایلی آپلود نمی شود.",
+                            @"بررسی فایل های موجود در سرور",
                             MessageBoxButtons.OKCancel,
                             MessageBoxIcon.Warning,
                             MessageBoxDefaultButton.Button2);
@@ -319,8 +318,8 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                                 else
                                 {
                                     MessageBox.Show(
-                                        "ارسال فایل " + fileNamesUpload[i] + " با خطا مواجه شد.",
-                                        "خطا در ارسال فایل", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        @"ارسال فایل " + fileNamesUpload[i] + @" با خطا مواجه شد.",
+                                        @"خطا در ارسال فایل", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                                     errorInUpload.Add(fileNamesUpload[i]);
 
@@ -366,7 +365,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                                 //    }
                                 //}
 
-                                MessageBox.Show("تمامی فایل ها با موفقیت ارسال گردید.", "", MessageBoxButtons.OK,
+                                MessageBox.Show(@"تمامی فایل ها با موفقیت ارسال گردید.", @"", MessageBoxButtons.OK,
                                     MessageBoxIcon.Information);
                             }
                             else
@@ -389,7 +388,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
                                 }
 
                                 db.Save();
-                                MessageBox.Show(sb.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show(sb.ToString(), @"", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                             //}
                             //else  becuase of void
@@ -571,7 +570,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
         {
             if (string.IsNullOrEmpty(txtOrderCode.Text.Trim()))
             {
-                MessageBox.Show("مقداری برای شماره فاکتور مشتری وارد نشده است.", "", MessageBoxButtons.OK,
+                MessageBox.Show(@"مقداری برای شماره فاکتور مشتری وارد نشده است.", @"", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 txtOrderCode.Focus();
                 return false;
@@ -579,7 +578,7 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 
             if (_fileNamesAndPathsList.Count == 0)
             {
-                MessageBox.Show("عکسی برای ارسال انتخاب نشده است.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"عکسی برای ارسال انتخاب نشده است.", @"", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;

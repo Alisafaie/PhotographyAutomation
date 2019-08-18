@@ -34,7 +34,7 @@ namespace PhotographyAutomation.App.Forms.Orders
         private int _sizeHeight = 128;
 
         public string OrderCode = string.Empty;
-        public int BookingId = 0;
+        //public int BookingId = 0;
         public int CustomerId = 0;
         public int OrderId = 0;
 
@@ -165,8 +165,8 @@ namespace PhotographyAutomation.App.Forms.Orders
         {
             if (!_fileNamesList.Any())
             {
-                MessageBox.Show("عکس های انتخابی مشتری مشخص نشده است.",
-                    "خطا در مشخص کردن عکس های کاربر",
+                MessageBox.Show(@"عکس های انتخابی مشتری مشخص نشده است.",
+                    @"خطا در مشخص کردن عکس های کاربر",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -201,7 +201,7 @@ namespace PhotographyAutomation.App.Forms.Orders
         private static bool CheckInputs(IEnumerable<Guid> fileslList)
         {
             if (fileslList.Any()) return true;
-            MessageBox.Show("عکسی برای ارسال انتخاب نشده است.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(@"عکسی برای ارسال انتخاب نشده است.", @"", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
 
         }
@@ -230,18 +230,18 @@ namespace PhotographyAutomation.App.Forms.Orders
                 if (hasPictures == false)
                 {
                     MessageBox.Show(
-                        "فولدر انتخابی عکس های مشتری با عکس های اصلی مشتری مطابقت ندارد." + Environment.NewLine +
-                        "این مورد ممکن است به خاطر تغییر نام فایل های اصلی رتوش نشده و یا انتخاب فولدر اشتباه اتفاق افتاده باشد." + Environment.NewLine +
-                        "در صورت تغییر نام فایل ها، می بایست نام آنها به نام اصلی اولیه تغییر یابد.",
-                        "خطا در همگام سازی",
+                        @"فولدر انتخابی عکس های مشتری با عکس های اصلی مشتری مطابقت ندارد." + Environment.NewLine +
+                        @"این مورد ممکن است به خاطر تغییر نام فایل های اصلی رتوش نشده و یا انتخاب فولدر اشتباه اتفاق افتاده باشد." + Environment.NewLine +
+                        @"در صورت تغییر نام فایل ها، می بایست نام آنها به نام اصلی اولیه تغییر یابد.",
+                        @"خطا در همگام سازی",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
                 MessageBox.Show(
-                    "هیچ فایلی برای همگام سازی عکس های مشتری مشخص نشده است.",
-                    "خطا در انتخاب فولدر عکس های انتخابی مشتری",
+                    @"هیچ فایلی برای همگام سازی عکس های مشتری مشخص نشده است.",
+                    @"خطا در انتخاب فولدر عکس های انتخابی مشتری",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -270,18 +270,18 @@ namespace PhotographyAutomation.App.Forms.Orders
                 if (hasPictures == false)
                 {
                     MessageBox.Show(
-                        "فولدر انتخابی عکس های مشتری با عکس های اصلی مشتری مطابقت ندارد." + Environment.NewLine +
-                            "این مورد ممکن است به خاطر تغییر نام فایل ها و یا انتخاب فولدر اشتباه اتفاق افتاده باشد." + Environment.NewLine +
-                            "در صورت تغییر نام فایل ها، می بایست نام آنها به نام اصلی اولیه تغییر یابد.",
-                        "خطا در همگام سازی",
+                        @"فولدر انتخابی عکس های مشتری با عکس های اصلی مشتری مطابقت ندارد." + Environment.NewLine +
+                            @"این مورد ممکن است به خاطر تغییر نام فایل ها و یا انتخاب فولدر اشتباه اتفاق افتاده باشد." + Environment.NewLine +
+                            @"در صورت تغییر نام فایل ها، می بایست نام آنها به نام اصلی اولیه تغییر یابد.",
+                        @"خطا در همگام سازی",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
                 MessageBox.Show(
-                    "فولدری برای همگام سازی عکس های مشتری مشخص نشده است.",
-                    "خطا در انتخاب فولدر عکس های انتخابی مشتری",
+                    @"فولدری برای همگام سازی عکس های مشتری مشخص نشده است.",
+                    @"خطا در انتخاب فولدر عکس های انتخابی مشتری",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -400,6 +400,7 @@ namespace PhotographyAutomation.App.Forms.Orders
         //    panelPreviewPictures.Controls.Add(pictureBoxCheckBox);
         //    panelPreviewPictures.Controls.Add(pictureBoxControl);
         //}
+        // ReSharper disable once UnusedParameter.Local
         private void LoadImagestoPanel(int newLocX, int newLocY, int i, PhotoViewModel photoInfo)
         {
             var pictureBoxControl = new PictureBox
@@ -588,7 +589,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                                 var drShowPreFactor = MessageBox.Show(
                                     @"اطلاعات سفارش چاپ و جزئیات آن با موفقیت در سیستم ثبت گردید." +
                                     @"آیا می خواهید فرم ثبت پیش فاکتور نمایش داده شود؟",
-                                    "",
+                                    @"",
                                     MessageBoxButtons.YesNo,
                                     MessageBoxIcon.Question,
                                     MessageBoxDefaultButton.Button1);
@@ -617,8 +618,8 @@ namespace PhotographyAutomation.App.Forms.Orders
                         else
                         {
                             MessageBox.Show(
-                                "خطا در ثبت اطلاعات سفارش چاپ جدید. " + Environment.NewLine +
-                                "لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.", "", MessageBoxButtons.OK,
+                                @"خطا در ثبت اطلاعات سفارش چاپ جدید. " + Environment.NewLine +
+                                @"لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.", @"", MessageBoxButtons.OK,
                                 MessageBoxIcon.Asterisk);
                         }
                     }
@@ -626,7 +627,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                     {
                         var dr = MessageBox.Show(
                             @"قبلا سفارش چاپی برای این مشتری و سفارش در سیستم ثبت شده است. " + Environment.NewLine +
-                            @"آیا می خواهید عکس های انتخابی آن را ویرایش کنید؟", "",
+                            @"آیا می خواهید عکس های انتخابی آن را ویرایش کنید؟", @"",
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Question,
                             MessageBoxDefaultButton.Button1);
