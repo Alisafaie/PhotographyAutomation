@@ -168,13 +168,11 @@
     <Compile Include="Repositories\IOrderRepository.cs" />
     <Compile Include="Repositories\IPhotoRepository.cs" />
     <Compile Include="Repositories\ICustomerRepository.cs" />
-    <Compile Include="Repositories\IPrintSizePriceServiceRepository.cs" />
     <Compile Include="Services\BookingRepository.cs" />
     <Compile Include="Services\OrderRepository.cs" />
     <Compile Include="Services\PhotoRepository.cs" />
     <Compile Include="Services\GenericRepository.cs" />
     <Compile Include="Services\CustomerRepository.cs" />
-    <Compile Include="Services\PrintSizePriceServiceRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PhotographyAutomation.ViewModels\PhotographyAutomation.ViewModels.csproj">
