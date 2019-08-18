@@ -14,24 +14,17 @@ namespace PhotographyAutomation.DateLayer.Models
     
     public partial class TblPrintSizePrices
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TblPrintSizePrices()
-        {
-            this.TblOrderPrintDetails = new HashSet<TblOrderPrintDetails>();
-            this.TblPrintServices_TblPrintSizePrice = new HashSet<TblPrintServices_TblPrintSizePrice>();
-        }
-    
         public int Id { get; set; }
-        public string SizeName { get; set; }
-        public decimal SizeWidth { get; set; }
-        public decimal SizeHeight { get; set; }
-        public int OriginalPrintPrice { get; set; }
-        public int SecondPrintPrice { get; set; }
-        public string SizeDescription { get; set; }
+        public int PrintSizeId { get; set; }
+        public Nullable<int> FirstPrintPrice { get; set; }
+        public Nullable<int> RePrintPrice { get; set; }
+        public Nullable<int> MedicalPrice { get; set; }
+        public Nullable<int> MedicalRePrintPrice { get; set; }
+        public Nullable<int> LitPrintPrice { get; set; }
+        public Nullable<int> LitPrintRePrintPrice { get; set; }
+        public Nullable<int> ScanAndPrintPrice { get; set; }
+        public Nullable<int> ScanAndProcessingPrice { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblOrderPrintDetails> TblOrderPrintDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblPrintServices_TblPrintSizePrice> TblPrintServices_TblPrintSizePrice { get; set; }
+        public virtual TblPrintSizes TblPrintSizes { get; set; }
     }
 }

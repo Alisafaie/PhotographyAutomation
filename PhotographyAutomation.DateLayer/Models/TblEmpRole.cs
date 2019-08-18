@@ -19,6 +19,5 @@ namespace PhotographyAutomation.DateLayer.Models
         public Nullable<int> RoleTypeId { get; set; }
     
         public virtual TblEmployeeType TblEmployeeType { get; set; }
-        public virtual TblRoleType TblRoleType { get; set; }
     }
 }

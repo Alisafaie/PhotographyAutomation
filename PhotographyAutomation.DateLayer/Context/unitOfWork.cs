@@ -72,20 +72,6 @@ namespace PhotographyAutomation.DateLayer.Context
         }
 
 
-        //private ISelectedPhotoRepository _selectedPhotoRepository;
-        //public ISelectedPhotoRepository SelectedPhotoRepository
-        //{
-        //    get
-        //    {
-        //        if (_selectedPhotoRepository == null)
-        //        {
-        //            _selectedPhotoRepository = new SelectedPhotoRepository(_db);
-        //        }
-
-        //        return _selectedPhotoRepository;
-        //    }
-        //}
-
 
 
         private IOrderRepository _orderRepository;
@@ -126,7 +112,7 @@ namespace PhotographyAutomation.DateLayer.Context
             {
                 if (_orderPrintGenericRepository == null)
                 {
-                    _orderPrintGenericRepository=new GenericRepository<TblOrderPrint>(_db);
+                    _orderPrintGenericRepository = new GenericRepository<TblOrderPrint>(_db);
                 }
 
                 return _orderPrintGenericRepository;
@@ -163,22 +149,6 @@ namespace PhotographyAutomation.DateLayer.Context
                 return _bookingGenericRepository;
             }
         }
-
-
-        //private GenericRepository<DocumentsView> _documentsGenericRepository;
-
-        //public GenericRepository<DocumentsView> DocumentsGenericRepository
-        //{
-        //    get
-        //    {
-        //        if (_documentsGenericRepository == null)
-        //        {
-        //            _documentsGenericRepository = new GenericRepository<DocumentsView>(_db);
-        //        }
-
-        //        return _documentsGenericRepository;
-        //    }
-        //}
 
 
 
@@ -309,161 +279,71 @@ namespace PhotographyAutomation.DateLayer.Context
 
 
 
-        
 
 
 
-        private GenericRepository<TblPrintSizePrices> _printSizePricesGenericRepository;
-        public GenericRepository<TblPrintSizePrices> PrintSizePricesGenericRepository
-        {
-            get
-            {
-                if (_printServicesGenericRepository == null)
-                {
-                    _printSizePricesGenericRepository = new GenericRepository<TblPrintSizePrices>(_db);
-                }
-
-                return _printSizePricesGenericRepository;
-            }
-        }
 
 
 
-        private GenericRepository<TblPrintServices_TblPrintSizePrice> _printServices_printSizePriceGenericRepository;
-        public GenericRepository<TblPrintServices_TblPrintSizePrice> PrintServices_PrintSizePriceGenericRepository
-        {
-            get
-            {
-                if (_printServices_printSizePriceGenericRepository == null)
-                {
-                    _printServices_printSizePriceGenericRepository=new GenericRepository<TblPrintServices_TblPrintSizePrice>(_db);
-                }
 
-                return _printServices_printSizePriceGenericRepository;
-            }
-        }
+
+        private GenericRepository<TblPrintCustomerFiles> _printCustomerFilesGenericRepository;
+        public GenericRepository<TblPrintCustomerFiles> PrintCustomerFilesGenericRepository =>
+            _printCustomerFilesGenericRepository ?? (_printCustomerFilesGenericRepository =
+                new GenericRepository<TblPrintCustomerFiles>(_db));
 
 
 
-        private GenericRepository<TblCustomerFilePrint> _customerFilePrintGenericRepository;
-        public GenericRepository<TblCustomerFilePrint> CustomerFilePrintGenericRepository
-        {
-            get
-            {
-                if (_customerFilePrintGenericRepository == null)
-                {
-                    _customerFilePrintGenericRepository=new GenericRepository<TblCustomerFilePrint>(_db);
-                }
 
-                return _customerFilePrintGenericRepository;
-            }
-        }
+        private GenericRepository<TblAlbums> _albumGenericRepository;
+        public GenericRepository<TblAlbums> AlbumGenericRepository =>
+            _albumGenericRepository ?? (_albumGenericRepository = new GenericRepository<TblAlbums>(_db));
 
 
 
-        private GenericRepository<TblAlbums> _albumsGenericRepository;
-        public GenericRepository<TblAlbums> AlbumGenericRepository
-        {
-            get
-            {
-                if (_albumsGenericRepository == null)
-                {
-                    _albumsGenericRepository=new GenericRepository<TblAlbums>(_db);
-                }
+        private GenericRepository<TblPrintItalianAlbums> _printItalianAlbumsGenericRepository;
+        public GenericRepository<TblPrintItalianAlbums> PrintItalianAlbumsGenericRepository =>
+            _printItalianAlbumsGenericRepository ?? (_printItalianAlbumsGenericRepository =
+                new GenericRepository<TblPrintItalianAlbums>(_db));
 
-                return _albumsGenericRepository;
-            }
-        }
-
-
-
-        private GenericRepository<TblItalianAlbum> _italianAlbumGenericRepository;
-        public GenericRepository<TblItalianAlbum> ItalianAlbumGenericRepository
-        {
-            get
-            {
-                if (_italianAlbumGenericRepository == null)
-                {
-                    _italianAlbumGenericRepository=new GenericRepository<TblItalianAlbum>(_db);
-                }
-
-                return _italianAlbumGenericRepository;
-            }
-        }
-
-
-
-        private GenericRepository<TblSizePrice> _sizePriceGenericRepository;
-        public GenericRepository<TblSizePrice> SizePriceGenericRepository
-        {
-            get
-            {
-                if (_sizePriceGenericRepository == null)
-                {
-                    _sizePriceGenericRepository=new GenericRepository<TblSizePrice>(_db);
-                }
-
-                return _sizePriceGenericRepository;
-            }
-        }
 
 
 
         private GenericRepository<TblPrintSizes> _printSizesGenericRepository;
-
-        public GenericRepository<TblPrintSizes> PrintSizesGenericRepository
-        {
-            get
-            {
-                if (_printSizesGenericRepository == null)
-                {
-                    _printSizesGenericRepository=new GenericRepository<TblPrintSizes>(_db);
-                }
-
-                return _printSizesGenericRepository;
-            }
-        }
+        public GenericRepository<TblPrintSizes> PrintSizesGenericRepository =>
+            _printSizesGenericRepository ??
+            (_printSizesGenericRepository =
+                new GenericRepository<TblPrintSizes>(_db));
 
 
 
 
-        private GenericRepository<TblPrintServicePrice> _printServicePriceGenericRepository;
-        public GenericRepository<TblPrintServicePrice> PrintServicePriceGenericRepository
-        {
-            get
-            {
-                if (_printServicePriceGenericRepository == null)
-                {
-                    _printServicePriceGenericRepository=new GenericRepository<TblPrintServicePrice>(_db);
-                }
+        private GenericRepository<TblPrintServicePrices> _printServicePricesGenericRepository;
+        public GenericRepository<TblPrintServicePrices> PrintServicePricesGenericRepository =>
+            _printServicePricesGenericRepository ?? (_printServicePricesGenericRepository =
+                new GenericRepository<TblPrintServicePrices>(_db));
 
-                return _printServicePriceGenericRepository;
-            }
-        }
+
+
 
 
 
         private GenericRepository<TblPrintServices> _printServicesGenericRepository;
-        public GenericRepository<TblPrintServices> PrintServicesGenericRepository
-        {
-            get
-            {
-                if (_printServicesGenericRepository == null)
-                {
-                    _printServicesGenericRepository = new GenericRepository<TblPrintServices>(_db);
-                }
+        public GenericRepository<TblPrintServices> PrintServicesGenericRepository =>
+            _printServicesGenericRepository ?? (_printServicesGenericRepository =
+                new GenericRepository<TblPrintServices>(_db));
 
-                return _printServicesGenericRepository;
-            }
-        }
+
+        private GenericRepository<TblPrintSpecialServices> _printSpecialServicesGenericRepository;
+        public GenericRepository<TblPrintSpecialServices> PrintSpecialServicesGenericRepository =>
+            _printSpecialServicesGenericRepository ?? (_printSpecialServicesGenericRepository =
+                new GenericRepository<TblPrintSpecialServices>(_db));
 
 
 
-        
 
 
 
-        
         public int Save()
         {
             try

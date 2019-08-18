@@ -12,15 +12,12 @@ namespace PhotographyAutomation.DateLayer.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TblPrintServicePrice
+    public partial class TblPrintCustomerFiles
     {
         public int Id { get; set; }
-        public string Code { get; set; }
         public int PrintSizeId { get; set; }
-        public int PrintServiceId { get; set; }
         public int Price { get; set; }
     
-        public virtual TblPrintServices TblPrintServices { get; set; }
         public virtual TblPrintSizes TblPrintSizes { get; set; }
     }
 }

@@ -12,18 +12,14 @@ namespace PhotographyAutomation.DateLayer.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TblSizePrice
+    public partial class TblPrintItalianAlbums
     {
         public int Id { get; set; }
         public int PrintSizeId { get; set; }
-        public Nullable<int> FirstPrintPrice { get; set; }
-        public Nullable<int> RePrintPrice { get; set; }
-        public Nullable<int> MedicalPrice { get; set; }
-        public Nullable<int> MedicalRePrintPrice { get; set; }
-        public Nullable<int> LitPrintPrice { get; set; }
-        public Nullable<int> LitPrintRePrintPrice { get; set; }
-        public Nullable<int> ScanAndPrintPrice { get; set; }
-        public Nullable<int> ScanAndProcessingPrice { get; set; }
+        public int SizeName { get; set; }
+        public int PagePrintPrice { get; set; }
+        public int AlbumBindingPrice { get; set; }
+        public string Description { get; set; }
     
         public virtual TblPrintSizes TblPrintSizes { get; set; }
     }

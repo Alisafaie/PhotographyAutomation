@@ -18,11 +18,10 @@ namespace PhotographyAutomation.DateLayer.Models
         public TblPrintSizes()
         {
             this.TblAlbums = new HashSet<TblAlbums>();
-            this.TblCustomerFilePrint = new HashSet<TblCustomerFilePrint>();
-            this.TblItalianAlbum = new HashSet<TblItalianAlbum>();
-            this.TblPrintServicePrice = new HashSet<TblPrintServicePrice>();
-            this.TblSizePrices = new HashSet<TblSizePrices>();
-            this.TblSizePrice = new HashSet<TblSizePrice>();
+            this.TblPrintCustomerFiles = new HashSet<TblPrintCustomerFiles>();
+            this.TblPrintItalianAlbums = new HashSet<TblPrintItalianAlbums>();
+            this.TblPrintServicePrices = new HashSet<TblPrintServicePrices>();
+            this.TblPrintSizePrices = new HashSet<TblPrintSizePrices>();
         }
     
         public int Id { get; set; }
@@ -44,14 +43,12 @@ namespace PhotographyAutomation.DateLayer.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblAlbums> TblAlbums { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblCustomerFilePrint> TblCustomerFilePrint { get; set; }
+        public virtual ICollection<TblPrintCustomerFiles> TblPrintCustomerFiles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblItalianAlbum> TblItalianAlbum { get; set; }
+        public virtual ICollection<TblPrintItalianAlbums> TblPrintItalianAlbums { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblPrintServicePrice> TblPrintServicePrice { get; set; }
+        public virtual ICollection<TblPrintServicePrices> TblPrintServicePrices { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblSizePrices> TblSizePrices { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblSizePrice> TblSizePrice { get; set; }
+        public virtual ICollection<TblPrintSizePrices> TblPrintSizePrices { get; set; }
     }
 }

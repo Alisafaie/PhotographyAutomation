@@ -27,6 +27,7 @@ namespace PhotographyAutomation.DateLayer.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<TblAlbums> TblAlbums { get; set; }
         public virtual DbSet<TblAllOrderStatus> TblAllOrderStatus { get; set; }
         public virtual DbSet<TblAtelierType> TblAtelierType { get; set; }
         public virtual DbSet<TblBooking> TblBooking { get; set; }
@@ -43,21 +44,16 @@ namespace PhotographyAutomation.DateLayer.Models
         public virtual DbSet<TblOrderPrintStatus> TblOrderPrintStatus { get; set; }
         public virtual DbSet<TblOrderStatus> TblOrderStatus { get; set; }
         public virtual DbSet<TblPhotographyType> TblPhotographyType { get; set; }
+        public virtual DbSet<TblPrintCustomerFiles> TblPrintCustomerFiles { get; set; }
+        public virtual DbSet<TblPrintItalianAlbums> TblPrintItalianAlbums { get; set; }
         public virtual DbSet<TblPrintServices> TblPrintServices { get; set; }
-        public virtual DbSet<TblPrintServices_TblPrintSizePrice> TblPrintServices_TblPrintSizePrice { get; set; }
+        public virtual DbSet<TblPrintSizes> TblPrintSizes { get; set; }
+        public virtual DbSet<TblPrintSpecialServices> TblPrintSpecialServices { get; set; }
+        public virtual DbSet<TblPrintServicePrices> TblPrintServicePrices { get; set; }
         public virtual DbSet<TblPrintSizePrices> TblPrintSizePrices { get; set; }
-        public virtual DbSet<TblRoleType> TblRoleType { get; set; }
         public virtual DbSet<View_GetAllPhotos> View_GetAllPhotos { get; set; }
         public virtual DbSet<View_GetDocumentsFolders> View_GetDocumentsFolders { get; set; }
         public virtual DbSet<View_PrintSizesPrices> View_PrintSizesPrices { get; set; }
-        public virtual DbSet<TblAlbums> TblAlbums { get; set; }
-        public virtual DbSet<TblCustomerFilePrint> TblCustomerFilePrint { get; set; }
-        public virtual DbSet<TblItalianAlbum> TblItalianAlbum { get; set; }
-        public virtual DbSet<TblPrintSizes> TblPrintSizes { get; set; }
-        public virtual DbSet<TblSpecialServices> TblSpecialServices { get; set; }
-        public virtual DbSet<TblPrintServicePrice> TblPrintServicePrice { get; set; }
-        public virtual DbSet<TblSizePrice> TblSizePrice { get; set; }
-        public virtual DbSet<TblSizePrices> TblSizePrices { get; set; }
     
         public virtual ObjectResult<string> usp_CreateCustomerFinancialDirectory(string customerFinancialNumber, string monthNumber, Nullable<byte> parent_level, ObjectParameter returnValue)
         {

@@ -12,19 +12,11 @@ namespace PhotographyAutomation.DateLayer.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TblRoleType
+    public partial class TblPrintSpecialServices
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TblRoleType()
-        {
-            this.TblEmpRole = new HashSet<TblEmpRole>();
-        }
-    
         public int Id { get; set; }
-        public int Code { get; set; }
-        public string RoleName { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblEmpRole> TblEmpRole { get; set; }
+        public string Name { get; set; }
+        public int Price { get; set; }
+        public string Description { get; set; }
     }
 }
