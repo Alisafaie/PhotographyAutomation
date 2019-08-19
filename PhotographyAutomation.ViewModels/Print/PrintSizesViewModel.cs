@@ -6,13 +6,12 @@ namespace PhotographyAutomation.ViewModels.Print
     {
         public int Id { get; set; }
         public string Width { get; set; }
-        public string Heiight { get; set; }
+        public string Height { get; set; }
         public string Name { get; set; }
         public bool HasFirstPrint { get; set; }
         public bool HasRePrint { get; set; }
         public bool HasMedicalPhoto { get; set; }
         public bool HasLitPrint { get; set; }
-        public bool HasScanAndPrint { get; set; }
         public bool HasScanAndProcessing { get; set; }
         public bool HasAlbum { get; set; }
         public bool HasItalianAlbum { get; set; }
