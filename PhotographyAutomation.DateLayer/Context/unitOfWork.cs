@@ -89,6 +89,18 @@ namespace PhotographyAutomation.DateLayer.Context
         }
 
 
+        private IPrintSizeRepository _printSizeRepository;
+        public IPrintSizeRepository PrintSizeRepository => _printSizeRepository ?? 
+                                                           (_printSizeRepository = new PrintSizeRepository(_db));
+
+
+        private IPrintSizePriceRepository _printSizePriceRepository;
+
+        public IPrintSizePriceRepository PrintSizePriceRepository => _printSizePriceRepository ??
+                                                                     (_printSizePriceRepository =
+                                                                         new PrintSizePriceRepository(_db));
+
+
 
         private GenericRepository<TblOrderFiles> _orderFilesGenericRepository;
         public GenericRepository<TblOrderFiles> OrderFilesGenericRepository

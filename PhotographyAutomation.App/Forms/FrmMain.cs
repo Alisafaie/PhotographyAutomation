@@ -82,7 +82,7 @@ namespace PhotographyAutomation.App.Forms
             //{
             //    frmPrintServices.ShowDialog();
             //}
-            using (var frmAddPrintService=new FrmAddEditPrintSizeAndServices())
+            using (var frmAddPrintService=new FrmAddEditPrintSizeAndServices_Refactored())
             {
                 frmAddPrintService.ShowDialog();
             }

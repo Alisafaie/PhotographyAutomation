@@ -1,6 +1,4 @@
 ﻿using PhotographyAutomation.DateLayer.Context;
-using PhotographyAutomation.DateLayer.Models;
-using PhotographyAutomation.Utilities;
 using PhotographyAutomation.ViewModels.Print;
 using System;
 using System.Collections.Generic;
@@ -22,11 +20,24 @@ namespace PhotographyAutomation.App.Forms.Admin
         private int _selectedPrintServiceId;
         private int _selectedPrintSizeServiceId;
 
-        private readonly BackgroundWorker _bgWorkerUpdatePrintSizeService = new BackgroundWorker();
-        private readonly BackgroundWorker _bgWorkerSaveNewPrintSizeService = new BackgroundWorker();
+        //private readonly BackgroundWorker _bgWorkerUpdatePrintSizeService = new BackgroundWorker();
+        //private readonly BackgroundWorker _bgWorkerSaveNewPrintSizeService = new BackgroundWorker();
 
 
-        private List<PrintSizesViewModel> _printSizesViewModels = new List<PrintSizesViewModel>();
+        private readonly BackgroundWorker _bgWorkerGetAllPhotoSizes = new BackgroundWorker
+        {
+            WorkerReportsProgress = false,
+            WorkerSupportsCancellation = false
+        };
+        private readonly BackgroundWorker _bgWorkerGetAllPhotoSizePrices = new BackgroundWorker
+        {
+            WorkerReportsProgress = false,
+            WorkerSupportsCancellation = false
+        };
+
+
+        private List<PrintSizesViewModel> _printSizesViewModels;
+        private List<PrintSizePricesViewModel> _printSizePricesViewModels;
 
         #endregion Variables
 
@@ -40,57 +51,91 @@ namespace PhotographyAutomation.App.Forms.Admin
         private void FrmAddEditPrintSizeAndServices_Refactored_Load(object sender, EventArgs e)
         {
             GetAllPhotoSizes();
+            GetAllPhotoSizePrices();
         }
+
+        private void GetAllPhotoSizePrices()
+        {
+            _bgWorkerGetAllPhotoSizePrices.DoWork += _bgWorkerGetAllPhotoSizePrices_DoWork;
+            _bgWorkerGetAllPhotoSizePrices.RunWorkerCompleted += _bgWorkerGetAllPhotoSizePrices_RunWorkerCompleted;
+
+            _bgWorkerGetAllPhotoSizePrices.RunWorkerAsync();
+            EnableOrDisableControlsToGetAllPrintSizePrices();
+        }
+        private void _bgWorkerGetAllPhotoSizePrices_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                using (var db = new UnitOfWork())
+                {
+                    var result = db.PrintSizePriceRepository.GetAllPrintSizePrices();
+
+                    if (result == null || result.Count == 0) return;
+                    e.Result = result;
+                    _printSizePricesViewModels = result;
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                throw;
+            }
+        }
+        private void _bgWorkerGetAllPhotoSizePrices_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                if (e.Result != null && e.Result is List<PrintSizePricesViewModel> viewModel)
+                {
+
+                }
+                else
+                {
+                    MessageBox.Show(
+                        @"اطلاعات قیمت اندازه قابل دریافت نمی باشد.",
+                        @"خطا در دریافت اطلاعات از سرور",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error,
+                        MessageBoxDefaultButton.Button1,
+                        MessageBoxOptions.RightAlign);
+                    Close();
+                }
+
+
+                EnableOrDisableControlsToGetAllPrintSizePrices();
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                throw;
+            }
+        }
+
+
+
 
         private void GetAllPhotoSizes()
         {
-            BackgroundWorker bgWorkerGetAllPhotoSizes = new BackgroundWorker
-            {
-                WorkerReportsProgress = false,
-                WorkerSupportsCancellation = false
-            };
-            bgWorkerGetAllPhotoSizes.DoWork += BgWorkerGetAllPhotoSizes_DoWork;
-            bgWorkerGetAllPhotoSizes.RunWorkerCompleted += BgWorkerGetAllPhotoSizes_RunWorkerCompleted;
 
-            bgWorkerGetAllPhotoSizes.RunWorkerAsync();
+            _bgWorkerGetAllPhotoSizes.DoWork += BgWorkerGetAllPhotoSizes_DoWork;
+            _bgWorkerGetAllPhotoSizes.RunWorkerCompleted += BgWorkerGetAllPhotoSizes_RunWorkerCompleted;
+            
+            _bgWorkerGetAllPhotoSizes.RunWorkerAsync();
+
+
+            EnableOrDisableControlsToGetAllPrintSizes();
         }
-
-
-
         private void BgWorkerGetAllPhotoSizes_DoWork(object sender, DoWorkEventArgs e)
         {
             try
             {
                 using (var db = new UnitOfWork())
                 {
-                    var result = db.PrintSizesGenericRepository
-                        .Get()
-                        .Select(x => new PrintSizesViewModel
-                        {
-                            Id = x.Id,
-                            Name = x.Name,
-                            Width = x.Width,
-                            Height = x.Height,
-                            Descriptions = x.Descriptions,
-                            HasAlbum = x.HasAlbum,
-                            HasFirstPrint = x.HasFirstPrint,
-                            HasItalianAlbum = x.HasItalianAlbum,
-                            HasLitPrint = x.HasLitPrint,
-                            HasMedicalPhoto = x.HasMedicalPhoto,
-                            HasRePrint = x.HasRePrint,
-                            HasScanAndProcessing = x.HasScanAndProcessing,
-                            IsActive = x.IsActive,
-                            IsDeleted = x.IsDeleted,
-                            
-                        })
-                        .OrderBy(x => x.Width)
-                        .ThenBy(x => x.Height)
-                        .ToList();
-                    if (result != null && result.Count > 0)
-                    {
-                        e.Result = result;
-                        _printSizesViewModels = result;
-                    }
+                    var result = db.PrintSizeRepository.GetAllPrintSizes();
+
+                    if (result == null || result.Count == 0) return;
+                    e.Result = result;
+                    _printSizesViewModels = result;
                 }
             }
             catch (Exception exception)
@@ -103,12 +148,31 @@ namespace PhotographyAutomation.App.Forms.Admin
         {
             try
             {
-                if (e.Result is PrintSizesViewModel viewModel)
+                if (e.Result != null && e.Result is List<PrintSizesViewModel> viewModel)
                 {
                     cmbPrintSizes.DataSource = viewModel;
                     cmbPrintSizes.DisplayMember = "Name";
                     cmbPrintSizes.ValueMember = "Id";
+
+                    cmbPrintSizes.SelectedIndex = 0;
+
+                    cmbPrintSizes_SelectedIndexChanged(null, null);
+                    //cmbPrintSizes.SelectedIndex = -1;
                 }
+                else
+                {
+                    MessageBox.Show(
+                        @"اطلاعات فرم قابل دریافت نمی باشد.",
+                        @"خطا در دریافت اطلاعات از سرور",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error,
+                        MessageBoxDefaultButton.Button1,
+                        MessageBoxOptions.RightAlign);
+                    Close();
+                }
+
+
+                EnableOrDisableControlsToGetAllPrintSizes();
             }
             catch (Exception exception)
             {
@@ -116,6 +180,31 @@ namespace PhotographyAutomation.App.Forms.Admin
                 throw;
             }
         }
+
+
+
+        private void EnableOrDisableControlsToGetAllPrintSizes()
+        {
+            cmbPrintSizes.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
+            gbMainPrices.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
+            //btnSavePrintSizeProperties.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
+            btnAddEditPrintSize.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
+            panelMinimumOrder.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
+            panelMedicalPhoto.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
+            panelLitPrint.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
+            panelScanAndProcessing.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
+            panelHasAlbum.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
+            panelHasItalianAlbum.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
+            panelIsActive.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
+            panelIsDeleted.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
+        }
+        private void EnableOrDisableControlsToGetAllPrintSizePrices()
+        {
+            panelPhotoSizePrices.Enabled = !_bgWorkerGetAllPhotoSizePrices.IsBusy;
+        }
+
+
+
 
         #endregion
 
@@ -188,8 +277,125 @@ namespace PhotographyAutomation.App.Forms.Admin
 
         private void cmbPrintSizes_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //int printSizeId = (int) cmbPrintSizes.SelectedValue;
+            if (!int.TryParse(cmbPrintSizes.SelectedValue.ToString(), out int printSizeId)) return;
+
+            var sizeModel = _printSizesViewModels.FirstOrDefault(x => x.Id == printSizeId);
+
+            if (sizeModel == null) return;
+            iiMinimumOrder.Value = sizeModel.MinimumOrder;
+
+            var sizePriceModel = _printSizePricesViewModels.Find(x => x.Id == sizeModel.Id);
+            if (sizePriceModel == null) return;
+
+            if (sizePriceModel.FirstPrintPrice != null) iiFirstPrintPrice.Value = sizePriceModel.FirstPrintPrice.Value;
+            if (sizePriceModel.RePrintPrice != null) iiRePrintPrice.Value = sizePriceModel.RePrintPrice.Value;
+
+
+            if (sizeModel.HasMedicalPhoto)
+            {
+                panelMedicalPhoto.Enabled = true;
+                chkHasMedialPhoto.Enabled = true;
+                chkHasMedialPhoto.Checked = true;
+
+                if (sizePriceModel.MedicalPrice != null)
+                    iiMedicalFirstPrint.Value = sizePriceModel.MedicalPrice.Value;
+                if (sizePriceModel.MedicalRePrintPrice != null)
+                    iiMedicalRePrint.Value = sizePriceModel.MedicalRePrintPrice.Value;
+            }
+            else
+            {
+                panelMedicalPhoto.Enabled = false;
+
+                chkHasMedialPhoto.Checked = false;
+                chkHasMedialPhoto.Enabled = false;
+            }
+
+            if (sizeModel.HasLitPrint)
+            {
+                panelLitPrint.Enabled = true;
+                chkHasLitPrint.Enabled = true;
+                chkHasLitPrint.Checked = true;
+
+                if (sizePriceModel.LitPrintPrice != null)
+                    iiLitPrintFirstPrint.Value = sizePriceModel.LitPrintPrice.Value;
+                if (sizePriceModel.LitPrintReprintPrice != null)
+                    iiLitPrintRePrint.Value = sizePriceModel.LitPrintReprintPrice.Value;
+            }
+            else
+            {
+                panelLitPrint.Enabled = false;
+                chkHasLitPrint.Checked = false;
+                chkHasLitPrint.Enabled = false;
+            }
+
+            if (sizeModel.HasScanAndProcessing)
+            {
+                panelScanAndProcessing.Enabled = true;
+                chkHasScanAndProcess.Enabled = true;
+                chkHasScanAndProcess.Checked = true;
+
+                if (sizePriceModel.ScanAndPrintPrice != null)
+                    iiScanAndPrint.Value = sizePriceModel.ScanAndPrintPrice.Value;
+                if (sizePriceModel.ScanAndProcessingPrice != null)
+                    iiScanAndProcess.Value = sizePriceModel.ScanAndProcessingPrice.Value;
+            }
+            else
+            {
+                panelScanAndProcessing.Enabled = false;
+                chkHasScanAndProcess.Checked = false;
+                chkHasScanAndProcess.Enabled = false;
+            }
+
+            if (sizeModel.HasAlbum)
+            {
+                panelHasAlbum.Enabled = true;
+                chkHasAlbum.Enabled = true;
+                chkHasAlbum.Checked = true;
+            }
+            else
+            {
+                panelHasAlbum.Enabled = false;
+                chkHasAlbum.Checked = false;
+                chkHasAlbum.Enabled = false;
+            }
+
+            if (sizeModel.HasItalianAlbum)
+            {
+                panelHasItalianAlbum.Enabled = true;
+                chkHasItalianAlbum.Enabled = true;
+                chkHasItalianAlbum.Checked = true;
+
+
+            }
+            else
+            {
+                panelHasItalianAlbum.Enabled = false;
+                chkHasItalianAlbum.Checked = false;
+                chkHasItalianAlbum.Enabled = false;
+            }
+
+            if (sizeModel.IsActive)
+            {
+                chkIsActive.Checked = true;
+            }
+            else
+            {
+                chkIsActive.Checked = false;
+            }
+
+            if (sizeModel.IsDeleted)
+            {
+                chkIsDeleted.Checked = true;
+            }
+            else
+            {
+                chkIsDeleted.Checked = false;
+            }
 
         }
+
+
 
         private void cmbPrintServices_SelectedIndexChanged(object sender, EventArgs e)
         {

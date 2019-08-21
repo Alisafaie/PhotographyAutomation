@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.groupBoxPrintSize = new System.Windows.Forms.GroupBox();
             this.panelPrintSize1 = new System.Windows.Forms.Panel();
@@ -42,24 +42,24 @@
             this.cmbPrintSizes = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSavePrintSizeProperties = new DevComponents.DotNetBar.ButtonX();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.checkBoxX8 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.checkBoxX7 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.panel7 = new System.Windows.Forms.Panel();
+            this.panelIsDeleted = new System.Windows.Forms.Panel();
+            this.chkIsDeleted = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.panelIsActive = new System.Windows.Forms.Panel();
+            this.chkIsActive = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.panelHasItalianAlbum = new System.Windows.Forms.Panel();
             this.chkHasItalianAlbum = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.panelHasAlbum = new System.Windows.Forms.Panel();
             this.chkHasAlbum = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.panelScanAndProcessing = new System.Windows.Forms.Panel();
             this.chkHasScanAndProcess = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.panelLitPrint = new System.Windows.Forms.Panel();
             this.chkHasLitPrint = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.panel12 = new System.Windows.Forms.Panel();
+            this.panelMinimumOrder = new System.Windows.Forms.Panel();
             this.iiMinimumOrder = new DevComponents.Editors.IntegerInput();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelMedicalPhoto = new System.Windows.Forms.Panel();
             this.chkHasMedialPhoto = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
+            this.panelPhotoSizePrices = new DevComponents.DotNetBar.PanelEx();
             this.gbItalianAlbum = new System.Windows.Forms.GroupBox();
             this.label23 = new System.Windows.Forms.Label();
             this.iiItalianAlbumBoundingPrice = new DevComponents.Editors.IntegerInput();
@@ -144,16 +144,16 @@
             this.panelEx1.SuspendLayout();
             this.groupBoxPrintSize.SuspendLayout();
             this.panelPrintSize1.SuspendLayout();
-            this.panel11.SuspendLayout();
-            this.panel10.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel12.SuspendLayout();
+            this.panelIsDeleted.SuspendLayout();
+            this.panelIsActive.SuspendLayout();
+            this.panelHasItalianAlbum.SuspendLayout();
+            this.panelHasAlbum.SuspendLayout();
+            this.panelScanAndProcessing.SuspendLayout();
+            this.panelLitPrint.SuspendLayout();
+            this.panelMinimumOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iiMinimumOrder)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.panelEx2.SuspendLayout();
+            this.panelMedicalPhoto.SuspendLayout();
+            this.panelPhotoSizePrices.SuspendLayout();
             this.gbItalianAlbum.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iiItalianAlbumBoundingPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iiItalianAlbumPagePrice)).BeginInit();
@@ -207,14 +207,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxPrintSize.Controls.Add(this.panelPrintSize1);
             this.groupBoxPrintSize.Controls.Add(this.btnSavePrintSizeProperties);
-            this.groupBoxPrintSize.Controls.Add(this.panel11);
-            this.groupBoxPrintSize.Controls.Add(this.panel10);
-            this.groupBoxPrintSize.Controls.Add(this.panel7);
-            this.groupBoxPrintSize.Controls.Add(this.panel5);
-            this.groupBoxPrintSize.Controls.Add(this.panel3);
-            this.groupBoxPrintSize.Controls.Add(this.panel2);
-            this.groupBoxPrintSize.Controls.Add(this.panel12);
-            this.groupBoxPrintSize.Controls.Add(this.panel1);
+            this.groupBoxPrintSize.Controls.Add(this.panelIsDeleted);
+            this.groupBoxPrintSize.Controls.Add(this.panelIsActive);
+            this.groupBoxPrintSize.Controls.Add(this.panelHasItalianAlbum);
+            this.groupBoxPrintSize.Controls.Add(this.panelHasAlbum);
+            this.groupBoxPrintSize.Controls.Add(this.panelScanAndProcessing);
+            this.groupBoxPrintSize.Controls.Add(this.panelLitPrint);
+            this.groupBoxPrintSize.Controls.Add(this.panelMinimumOrder);
+            this.groupBoxPrintSize.Controls.Add(this.panelMedicalPhoto);
             this.groupBoxPrintSize.Location = new System.Drawing.Point(12, 10);
             this.groupBoxPrintSize.Name = "groupBoxPrintSize";
             this.groupBoxPrintSize.Size = new System.Drawing.Size(1165, 67);
@@ -291,6 +291,7 @@
             // 
             this.btnSavePrintSizeProperties.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnSavePrintSizeProperties.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSavePrintSizeProperties.Enabled = false;
             this.highlighter1.SetHighlightOnFocus(this.btnSavePrintSizeProperties, true);
             this.btnSavePrintSizeProperties.Location = new System.Drawing.Point(6, 30);
             this.btnSavePrintSizeProperties.Name = "btnSavePrintSizeProperties";
@@ -303,64 +304,65 @@
             this.btnSavePrintSizeProperties.Text = "ثبت";
             this.btnSavePrintSizeProperties.Click += new System.EventHandler(this.btnSavePrintSizeProperties_Click);
             // 
-            // panel11
+            // panelIsDeleted
             // 
-            this.panel11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel11.Controls.Add(this.checkBoxX8);
-            this.panel11.Location = new System.Drawing.Point(126, 23);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(54, 37);
-            this.panel11.TabIndex = 1;
+            this.panelIsDeleted.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelIsDeleted.Controls.Add(this.chkIsDeleted);
+            this.panelIsDeleted.Location = new System.Drawing.Point(174, 23);
+            this.panelIsDeleted.Name = "panelIsDeleted";
+            this.panelIsDeleted.Size = new System.Drawing.Size(54, 37);
+            this.panelIsDeleted.TabIndex = 1;
             // 
-            // checkBoxX8
+            // chkIsDeleted
             // 
-            this.checkBoxX8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxX8.AutoSize = true;
-            // 
-            // 
-            // 
-            this.checkBoxX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.highlighter1.SetHighlightOnFocus(this.checkBoxX8, true);
-            this.checkBoxX8.Location = new System.Drawing.Point(6, 11);
-            this.checkBoxX8.Name = "checkBoxX8";
-            this.checkBoxX8.Size = new System.Drawing.Size(45, 16);
-            this.checkBoxX8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX8.TabIndex = 42;
-            this.checkBoxX8.Text = "حذف";
-            // 
-            // panel10
-            // 
-            this.panel10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel10.Controls.Add(this.checkBoxX7);
-            this.panel10.Location = new System.Drawing.Point(186, 23);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(54, 37);
-            this.panel10.TabIndex = 1;
-            // 
-            // checkBoxX7
-            // 
-            this.checkBoxX7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxX7.AutoSize = true;
+            this.chkIsDeleted.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkIsDeleted.AutoSize = true;
             // 
             // 
             // 
-            this.checkBoxX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.highlighter1.SetHighlightOnFocus(this.checkBoxX7, true);
-            this.checkBoxX7.Location = new System.Drawing.Point(8, 11);
-            this.checkBoxX7.Name = "checkBoxX7";
-            this.checkBoxX7.Size = new System.Drawing.Size(43, 16);
-            this.checkBoxX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX7.TabIndex = 42;
-            this.checkBoxX7.Text = "فعال";
+            this.chkIsDeleted.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.highlighter1.SetHighlightOnFocus(this.chkIsDeleted, true);
+            this.chkIsDeleted.Location = new System.Drawing.Point(6, 11);
+            this.chkIsDeleted.Name = "chkIsDeleted";
+            this.chkIsDeleted.Size = new System.Drawing.Size(45, 16);
+            this.chkIsDeleted.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.chkIsDeleted.TabIndex = 42;
+            this.chkIsDeleted.Text = "حذف";
             // 
-            // panel7
+            // panelIsActive
             // 
-            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel7.Controls.Add(this.chkHasItalianAlbum);
-            this.panel7.Location = new System.Drawing.Point(246, 23);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(90, 37);
-            this.panel7.TabIndex = 1;
+            this.panelIsActive.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelIsActive.Controls.Add(this.chkIsActive);
+            this.panelIsActive.Location = new System.Drawing.Point(234, 23);
+            this.panelIsActive.Name = "panelIsActive";
+            this.panelIsActive.Size = new System.Drawing.Size(54, 37);
+            this.panelIsActive.TabIndex = 1;
+            // 
+            // chkIsActive
+            // 
+            this.chkIsActive.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkIsActive.AutoSize = true;
+            // 
+            // 
+            // 
+            this.chkIsActive.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.highlighter1.SetHighlightOnFocus(this.chkIsActive, true);
+            this.chkIsActive.Location = new System.Drawing.Point(8, 11);
+            this.chkIsActive.Name = "chkIsActive";
+            this.chkIsActive.Size = new System.Drawing.Size(43, 16);
+            this.chkIsActive.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.chkIsActive.TabIndex = 42;
+            this.chkIsActive.Text = "فعال";
+            // 
+            // panelHasItalianAlbum
+            // 
+            this.panelHasItalianAlbum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelHasItalianAlbum.Controls.Add(this.chkHasItalianAlbum);
+            this.panelHasItalianAlbum.Enabled = false;
+            this.panelHasItalianAlbum.Location = new System.Drawing.Point(294, 23);
+            this.panelHasItalianAlbum.Name = "panelHasItalianAlbum";
+            this.panelHasItalianAlbum.Size = new System.Drawing.Size(90, 37);
+            this.panelHasItalianAlbum.TabIndex = 1;
             // 
             // chkHasItalianAlbum
             // 
@@ -379,14 +381,15 @@
             this.chkHasItalianAlbum.Text = "آلبوم ایتالیایی";
             this.chkHasItalianAlbum.CheckedChanged += new System.EventHandler(this.chkHasItalianAlbum_CheckedChanged);
             // 
-            // panel5
+            // panelHasAlbum
             // 
-            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel5.Controls.Add(this.chkHasAlbum);
-            this.panel5.Location = new System.Drawing.Point(342, 23);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(67, 37);
-            this.panel5.TabIndex = 1;
+            this.panelHasAlbum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelHasAlbum.Controls.Add(this.chkHasAlbum);
+            this.panelHasAlbum.Enabled = false;
+            this.panelHasAlbum.Location = new System.Drawing.Point(390, 23);
+            this.panelHasAlbum.Name = "panelHasAlbum";
+            this.panelHasAlbum.Size = new System.Drawing.Size(67, 37);
+            this.panelHasAlbum.TabIndex = 1;
             // 
             // chkHasAlbum
             // 
@@ -404,14 +407,15 @@
             this.chkHasAlbum.TabIndex = 42;
             this.chkHasAlbum.Text = "آلبوم دارد";
             // 
-            // panel3
+            // panelScanAndProcessing
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Controls.Add(this.chkHasScanAndProcess);
-            this.panel3.Location = new System.Drawing.Point(415, 23);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(132, 37);
-            this.panel3.TabIndex = 1;
+            this.panelScanAndProcessing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelScanAndProcessing.Controls.Add(this.chkHasScanAndProcess);
+            this.panelScanAndProcessing.Enabled = false;
+            this.panelScanAndProcessing.Location = new System.Drawing.Point(463, 23);
+            this.panelScanAndProcessing.Name = "panelScanAndProcessing";
+            this.panelScanAndProcessing.Size = new System.Drawing.Size(132, 37);
+            this.panelScanAndProcessing.TabIndex = 1;
             // 
             // chkHasScanAndProcess
             // 
@@ -430,14 +434,15 @@
             this.chkHasScanAndProcess.Text = "اسکن و پردازش و چاپ";
             this.chkHasScanAndProcess.CheckedChanged += new System.EventHandler(this.chkHasScanAndProcess_CheckedChanged);
             // 
-            // panel2
+            // panelLitPrint
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.chkHasLitPrint);
-            this.panel2.Location = new System.Drawing.Point(553, 23);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(73, 37);
-            this.panel2.TabIndex = 1;
+            this.panelLitPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelLitPrint.Controls.Add(this.chkHasLitPrint);
+            this.panelLitPrint.Enabled = false;
+            this.panelLitPrint.Location = new System.Drawing.Point(601, 23);
+            this.panelLitPrint.Name = "panelLitPrint";
+            this.panelLitPrint.Size = new System.Drawing.Size(73, 37);
+            this.panelLitPrint.TabIndex = 1;
             // 
             // chkHasLitPrint
             // 
@@ -456,48 +461,53 @@
             this.chkHasLitPrint.Text = "لیت پرینت";
             this.chkHasLitPrint.CheckedChanged += new System.EventHandler(this.chkHasLitPrint_CheckedChanged);
             // 
-            // panel12
+            // panelMinimumOrder
             // 
-            this.panel12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel12.Controls.Add(this.iiMinimumOrder);
-            this.panel12.Controls.Add(this.label2);
-            this.panel12.Location = new System.Drawing.Point(736, 23);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(152, 37);
-            this.panel12.TabIndex = 1;
+            this.panelMinimumOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelMinimumOrder.Controls.Add(this.iiMinimumOrder);
+            this.panelMinimumOrder.Controls.Add(this.label2);
+            this.panelMinimumOrder.Location = new System.Drawing.Point(784, 23);
+            this.panelMinimumOrder.Name = "panelMinimumOrder";
+            this.panelMinimumOrder.Size = new System.Drawing.Size(104, 37);
+            this.panelMinimumOrder.TabIndex = 1;
             // 
             // iiMinimumOrder
             // 
+            this.iiMinimumOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
             this.iiMinimumOrder.BackgroundStyle.Class = "DateTimeInputBackground";
             this.iiMinimumOrder.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.iiMinimumOrder.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.iiMinimumOrder.DisabledBackColor = System.Drawing.Color.White;
+            this.iiMinimumOrder.Enabled = false;
             this.highlighter1.SetHighlightOnFocus(this.iiMinimumOrder, true);
-            this.iiMinimumOrder.Location = new System.Drawing.Point(3, 8);
+            this.iiMinimumOrder.Location = new System.Drawing.Point(7, 8);
             this.iiMinimumOrder.Name = "iiMinimumOrder";
-            this.iiMinimumOrder.Size = new System.Drawing.Size(80, 21);
+            this.iiMinimumOrder.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.iiMinimumOrder.Size = new System.Drawing.Size(28, 21);
             this.iiMinimumOrder.TabIndex = 50;
             // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(87, 12);
+            this.label2.Location = new System.Drawing.Point(39, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 13);
             this.label2.TabIndex = 49;
             this.label2.Text = "حداقل تعداد";
             // 
-            // panel1
+            // panelMedicalPhoto
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.chkHasMedialPhoto);
-            this.panel1.Location = new System.Drawing.Point(632, 23);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(98, 37);
-            this.panel1.TabIndex = 1;
+            this.panelMedicalPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelMedicalPhoto.Controls.Add(this.chkHasMedialPhoto);
+            this.panelMedicalPhoto.Enabled = false;
+            this.panelMedicalPhoto.Location = new System.Drawing.Point(680, 23);
+            this.panelMedicalPhoto.Name = "panelMedicalPhoto";
+            this.panelMedicalPhoto.Size = new System.Drawing.Size(98, 37);
+            this.panelMedicalPhoto.TabIndex = 1;
             // 
             // chkHasMedialPhoto
             // 
@@ -516,29 +526,29 @@
             this.chkHasMedialPhoto.Text = "عکس پزشکی";
             this.chkHasMedialPhoto.CheckedChanged += new System.EventHandler(this.chkHasMedialPhoto_CheckedChanged);
             // 
-            // panelEx2
+            // panelPhotoSizePrices
             // 
-            this.panelEx2.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx2.Controls.Add(this.gbItalianAlbum);
-            this.panelEx2.Controls.Add(this.gbScanAndPrint);
-            this.panelEx2.Controls.Add(this.btnSavePhotoSizePrices);
-            this.panelEx2.Controls.Add(this.gbLitPrintPrices);
-            this.panelEx2.Controls.Add(this.gbMedicalPhotoPrices);
-            this.panelEx2.Controls.Add(this.gbMainPrices);
-            this.panelEx2.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelEx2.Location = new System.Drawing.Point(0, 110);
-            this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(1189, 111);
-            this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.panelEx2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx2.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelEx2.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx2.Style.GradientAngle = 90;
-            this.panelEx2.TabIndex = 1;
+            this.panelPhotoSizePrices.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelPhotoSizePrices.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelPhotoSizePrices.Controls.Add(this.gbItalianAlbum);
+            this.panelPhotoSizePrices.Controls.Add(this.gbScanAndPrint);
+            this.panelPhotoSizePrices.Controls.Add(this.btnSavePhotoSizePrices);
+            this.panelPhotoSizePrices.Controls.Add(this.gbLitPrintPrices);
+            this.panelPhotoSizePrices.Controls.Add(this.gbMedicalPhotoPrices);
+            this.panelPhotoSizePrices.Controls.Add(this.gbMainPrices);
+            this.panelPhotoSizePrices.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelPhotoSizePrices.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelPhotoSizePrices.Location = new System.Drawing.Point(0, 110);
+            this.panelPhotoSizePrices.Name = "panelPhotoSizePrices";
+            this.panelPhotoSizePrices.Size = new System.Drawing.Size(1189, 111);
+            this.panelPhotoSizePrices.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelPhotoSizePrices.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelPhotoSizePrices.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.panelPhotoSizePrices.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelPhotoSizePrices.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelPhotoSizePrices.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelPhotoSizePrices.Style.GradientAngle = 90;
+            this.panelPhotoSizePrices.TabIndex = 1;
             // 
             // gbItalianAlbum
             // 
@@ -750,6 +760,7 @@
             // 
             this.btnSavePhotoSizePrices.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnSavePhotoSizePrices.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSavePhotoSizePrices.Enabled = false;
             this.btnSavePhotoSizePrices.Location = new System.Drawing.Point(18, 70);
             this.btnSavePhotoSizePrices.Name = "btnSavePhotoSizePrices";
             this.btnSavePhotoSizePrices.Size = new System.Drawing.Size(75, 23);
@@ -1378,7 +1389,7 @@
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 774);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 546);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1189, 22);
             this.statusStrip1.TabIndex = 23;
@@ -1393,7 +1404,7 @@
             this.panelEx3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx3.Location = new System.Drawing.Point(0, 302);
             this.panelEx3.Name = "panelEx3";
-            this.panelEx3.Size = new System.Drawing.Size(1189, 472);
+            this.panelEx3.Size = new System.Drawing.Size(1189, 244);
             this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx3.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx3.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -1412,7 +1423,7 @@
             this.gbDataGridView.Controls.Add(this.dgvPrintServices);
             this.gbDataGridView.Location = new System.Drawing.Point(12, 0);
             this.gbDataGridView.Name = "gbDataGridView";
-            this.gbDataGridView.Size = new System.Drawing.Size(1165, 460);
+            this.gbDataGridView.Size = new System.Drawing.Size(1165, 432);
             this.gbDataGridView.TabIndex = 0;
             this.gbDataGridView.TabStop = false;
             // 
@@ -1423,7 +1434,7 @@
             // 
             // 
             this.cpLoadDataGridView.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.cpLoadDataGridView.Location = new System.Drawing.Point(611, 199);
+            this.cpLoadDataGridView.Location = new System.Drawing.Point(554, 108);
             this.cpLoadDataGridView.Name = "cpLoadDataGridView";
             this.cpLoadDataGridView.ProgressColor = System.Drawing.Color.Blue;
             this.cpLoadDataGridView.Size = new System.Drawing.Size(57, 63);
@@ -1434,19 +1445,19 @@
             // 
             this.dgvPrintServices.AllowUserToAddRows = false;
             this.dgvPrintServices.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvPrintServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvPrintServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
             this.dgvPrintServices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPrintServices.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvPrintServices.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPrintServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPrintServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.dgvPrintServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPrintServices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmId,
@@ -1460,31 +1471,31 @@
             this.clmPrintServiceName,
             this.clmPrice,
             this.clmDescription});
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPrintServices.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPrintServices.DefaultCellStyle = dataGridViewCellStyle19;
             this.dgvPrintServices.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPrintServices.EnableHeadersVisualStyles = false;
             this.dgvPrintServices.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.dgvPrintServices.Location = new System.Drawing.Point(3, 17);
             this.dgvPrintServices.Name = "dgvPrintServices";
             this.dgvPrintServices.ReadOnly = true;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPrintServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPrintServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.dgvPrintServices.RowHeadersVisible = false;
             this.dgvPrintServices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPrintServices.Size = new System.Drawing.Size(1159, 440);
+            this.dgvPrintServices.Size = new System.Drawing.Size(1159, 412);
             this.dgvPrintServices.TabIndex = 3;
             this.dgvPrintServices.UseCustomBackgroundColor = true;
             // 
@@ -1583,11 +1594,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1189, 796);
+            this.ClientSize = new System.Drawing.Size(1189, 568);
             this.Controls.Add(this.panelEx3);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panelEx4);
-            this.Controls.Add(this.panelEx2);
+            this.Controls.Add(this.panelPhotoSizePrices);
             this.Controls.Add(this.panelEx1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F);
@@ -1606,24 +1617,24 @@
             this.groupBoxPrintSize.ResumeLayout(false);
             this.panelPrintSize1.ResumeLayout(false);
             this.panelPrintSize1.PerformLayout();
-            this.panel11.ResumeLayout(false);
-            this.panel11.PerformLayout();
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel12.ResumeLayout(false);
-            this.panel12.PerformLayout();
+            this.panelIsDeleted.ResumeLayout(false);
+            this.panelIsDeleted.PerformLayout();
+            this.panelIsActive.ResumeLayout(false);
+            this.panelIsActive.PerformLayout();
+            this.panelHasItalianAlbum.ResumeLayout(false);
+            this.panelHasItalianAlbum.PerformLayout();
+            this.panelHasAlbum.ResumeLayout(false);
+            this.panelHasAlbum.PerformLayout();
+            this.panelScanAndProcessing.ResumeLayout(false);
+            this.panelScanAndProcessing.PerformLayout();
+            this.panelLitPrint.ResumeLayout(false);
+            this.panelLitPrint.PerformLayout();
+            this.panelMinimumOrder.ResumeLayout(false);
+            this.panelMinimumOrder.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iiMinimumOrder)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panelEx2.ResumeLayout(false);
+            this.panelMedicalPhoto.ResumeLayout(false);
+            this.panelMedicalPhoto.PerformLayout();
+            this.panelPhotoSizePrices.ResumeLayout(false);
             this.gbItalianAlbum.ResumeLayout(false);
             this.gbItalianAlbum.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iiItalianAlbumBoundingPrice)).EndInit();
@@ -1666,7 +1677,7 @@
         #endregion
 
         private DevComponents.DotNetBar.PanelEx panelEx1;
-        private DevComponents.DotNetBar.PanelEx panelEx2;
+        private DevComponents.DotNetBar.PanelEx panelPhotoSizePrices;
         private System.Windows.Forms.GroupBox groupBoxPrintSize;
         private System.Windows.Forms.GroupBox groupBoxPrintServices;
         private System.Windows.Forms.Panel panelPrintSize1;
@@ -1697,7 +1708,7 @@
         private System.Windows.Forms.ToolStripMenuItem ویرایشخدماتچاپToolStripMenuItem;
         private DevComponents.DotNetBar.ButtonX btnCancelPrintServices;
         private DevComponents.DotNetBar.PanelEx panelEx4;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelMedicalPhoto;
         private DevComponents.DotNetBar.PanelEx panelEx3;
         private System.Windows.Forms.GroupBox gbDataGridView;
         private DevComponents.DotNetBar.Controls.CircularProgress cpLoadDataGridView;
@@ -1715,19 +1726,19 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmDescription;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private DevComponents.DotNetBar.ButtonX btnAddEditPrintSize;
-        private System.Windows.Forms.Panel panel11;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX8;
-        private System.Windows.Forms.Panel panel10;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX7;
-        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panelIsDeleted;
+        private DevComponents.DotNetBar.Controls.CheckBoxX chkIsDeleted;
+        private System.Windows.Forms.Panel panelIsActive;
+        private DevComponents.DotNetBar.Controls.CheckBoxX chkIsActive;
+        private System.Windows.Forms.Panel panelHasItalianAlbum;
         private DevComponents.DotNetBar.Controls.CheckBoxX chkHasItalianAlbum;
-        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panelHasAlbum;
         private DevComponents.DotNetBar.Controls.CheckBoxX chkHasAlbum;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panelScanAndProcessing;
         private DevComponents.DotNetBar.Controls.CheckBoxX chkHasScanAndProcess;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panelLitPrint;
         private DevComponents.DotNetBar.Controls.CheckBoxX chkHasLitPrint;
-        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Panel panelMinimumOrder;
         private DevComponents.Editors.IntegerInput iiMinimumOrder;
         private System.Windows.Forms.Label label2;
         private DevComponents.DotNetBar.Controls.CheckBoxX chkHasMedialPhoto;

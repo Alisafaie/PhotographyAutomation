@@ -5,8 +5,8 @@ namespace PhotographyAutomation.ViewModels.Print
     public class PrintSizesViewModel
     {
         public int Id { get; set; }
-        public string Width { get; set; }
-        public string Height { get; set; }
+        public double Width { get; set; }
+        public double Height { get; set; }
         public string Name { get; set; }
         public bool HasFirstPrint { get; set; }
         public bool HasRePrint { get; set; }

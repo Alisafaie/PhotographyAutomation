@@ -160,19 +160,20 @@
     <Compile Include="Models\View_GetDocumentsFolders.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\View_PrintSizesPrices.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IBookingRepository.cs" />
     <Compile Include="Repositories\IOrderRepository.cs" />
     <Compile Include="Repositories\IPhotoRepository.cs" />
     <Compile Include="Repositories\ICustomerRepository.cs" />
+    <Compile Include="Repositories\IPrintSizePriceRepository.cs" />
+    <Compile Include="Repositories\IPrintSizeRepository.cs" />
     <Compile Include="Services\BookingRepository.cs" />
     <Compile Include="Services\OrderRepository.cs" />
     <Compile Include="Services\PhotoRepository.cs" />
     <Compile Include="Services\GenericRepository.cs" />
     <Compile Include="Services\CustomerRepository.cs" />
+    <Compile Include="Services\PrintSizePriceRepository.cs" />
+    <Compile Include="Services\PrintSizeRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PhotographyAutomation.ViewModels\PhotographyAutomation.ViewModels.csproj">

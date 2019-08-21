@@ -596,18 +596,18 @@ namespace PhotographyAutomation.App.Forms.Orders
 
                                 if (drShowPreFactor == DialogResult.Yes)
                                 {
-                                    using (var frmPreFactor = new FrmAddEditPreFactor())
-                                    {
-                                        frmPreFactor.OrderId = OrderId;
-                                        frmPreFactor.CustomerId = CustomerId;
-                                        frmPreFactor.OrderPrintId = orderPrintId;
-                                        frmPreFactor.IsNewPreFactor = true;
-                                        frmPreFactor.FileStreamsGuids = streamIdsToUploadList;
-                                        frmPreFactor.PhotoOrderDetailsList = orderDetailsList;
-                                        //Hide();
-                                        if (frmPreFactor.ShowDialog() == DialogResult.OK)
-                                            DialogResult = DialogResult.OK;
-                                    }
+                                    //using (var frmPreFactor = new FrmAddEditPreFactor())
+                                    //{
+                                    //    frmPreFactor.OrderId = OrderId;
+                                    //    frmPreFactor.CustomerId = CustomerId;
+                                    //    frmPreFactor.OrderPrintId = orderPrintId;
+                                    //    frmPreFactor.IsNewPreFactor = true;
+                                    //    frmPreFactor.FileStreamsGuids = streamIdsToUploadList;
+                                    //    frmPreFactor.PhotoOrderDetailsList = orderDetailsList;
+                                    //    //Hide();
+                                    //    if (frmPreFactor.ShowDialog() == DialogResult.OK)
+                                    //        DialogResult = DialogResult.OK;
+                                    //}
                                 }
                                 else
                                 {

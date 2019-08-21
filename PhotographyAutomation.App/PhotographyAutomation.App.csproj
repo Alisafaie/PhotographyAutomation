@@ -151,12 +151,6 @@
     <Compile Include="Forms\Factors\FrmAddEditMultiPicture.Designer.cs">
       <DependentUpon>FrmAddEditMultiPicture.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Factors\FrmAddEditPreFactor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Factors\FrmAddEditPreFactor.Designer.cs">
-      <DependentUpon>FrmAddEditPreFactor.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Factors\Preview\FrmLitPreview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -217,12 +211,6 @@
     <Compile Include="Forms\EntranceToAtelier\FrmUploadPhotos.Designer.cs">
       <DependentUpon>FrmUploadPhotos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Test\FrmAddEditPreFactorTest.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Test\FrmAddEditPreFactorTest.Designer.cs">
-      <DependentUpon>FrmAddEditPreFactorTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\Admin\AddEditPrintSize.resx">
@@ -255,9 +243,6 @@
     <EmbeddedResource Include="Forms\Factors\FrmAddEditMultiPicture.resx">
       <DependentUpon>FrmAddEditMultiPicture.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Factors\FrmAddEditPreFactor.resx">
-      <DependentUpon>FrmAddEditPreFactor.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Factors\Preview\FrmLitPreview.resx">
       <DependentUpon>FrmLitPreview.cs</DependentUpon>
     </EmbeddedResource>
@@ -287,9 +272,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EntranceToAtelier\FrmUploadPhotos.resx">
       <DependentUpon>FrmUploadPhotos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Test\FrmAddEditPreFactorTest.resx">
-      <DependentUpon>FrmAddEditPreFactorTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -1700,6 +1682,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\iconfinder_edit_383148.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Forms\Test\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
