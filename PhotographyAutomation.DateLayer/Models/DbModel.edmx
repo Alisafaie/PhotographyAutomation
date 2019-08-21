@@ -369,29 +369,6 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           <Property Name="IsTemporary" Type="bit" Nullable="false" />
           <Property Name="IsDirectory" Type="bit" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_PrintSizesPrices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="View_PrintSizesPrices">
-          <Key>
-            <PropertyRef Name="SizeName" />
-            <PropertyRef Name="SizeWidth" />
-            <PropertyRef Name="SizeHeight" />
-            <PropertyRef Name="OriginalPrintPrice" />
-            <PropertyRef Name="SecondPrintPrice" />
-          </Key>
-          <Property Name="PrintServiceName" Type="nvarchar" MaxLength="50" />
-          <Property Name="SizeName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="SizeWidth" Type="smallmoney" Nullable="false" />
-          <Property Name="SizeHeight" Type="smallmoney" Nullable="false" />
-          <Property Name="OriginalPrintPrice" Type="int" Nullable="false" />
-          <Property Name="SecondPrintPrice" Type="int" Nullable="false" />
-          <Property Name="Id" Type="int" />
-          <Property Name="PrintServiceId" Type="int" />
-          <Property Name="PrintSizePriceId" Type="int" />
-          <Property Name="Code" Type="nvarchar" MaxLength="50" />
-          <Property Name="Price" Type="int" />
-          <Property Name="Description" Type="nvarchar" MaxLength="500" />
-        </EntityType>
         <Association Name="FK_TblAlbums_TblPrintSizes">
           <End Role="TblPrintSizes" Type="Self.TblPrintSizes" Multiplicity="1" />
           <End Role="TblAlbums" Type="Self.TblAlbums" Multiplicity="*" />
@@ -728,7 +705,6 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_PrintSizesPrices'
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="usp_CreateCustomerFinancialDirectory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="customerFinancialNumber" Type="nvarchar" Mode="In" />
           <Parameter Name="monthNumber" Type="nvarchar" Mode="In" />
@@ -844,22 +820,6 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_PrintSizesPrices'
     [View_GetDocumentsFolders].[IsTemporary] AS [IsTemporary], 
     [View_GetDocumentsFolders].[IsDirectory] AS [IsDirectory]
     FROM [dbo].[View_GetDocumentsFolders] AS [View_GetDocumentsFolders]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="View_PrintSizesPrices" EntityType="Self.View_PrintSizesPrices" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [View_PrintSizesPrices].[PrintServiceName] AS [PrintServiceName], 
-    [View_PrintSizesPrices].[SizeName] AS [SizeName], 
-    [View_PrintSizesPrices].[SizeWidth] AS [SizeWidth], 
-    [View_PrintSizesPrices].[SizeHeight] AS [SizeHeight], 
-    [View_PrintSizesPrices].[OriginalPrintPrice] AS [OriginalPrintPrice], 
-    [View_PrintSizesPrices].[SecondPrintPrice] AS [SecondPrintPrice], 
-    [View_PrintSizesPrices].[Id] AS [Id], 
-    [View_PrintSizesPrices].[PrintServiceId] AS [PrintServiceId], 
-    [View_PrintSizesPrices].[PrintSizePriceId] AS [PrintSizePriceId], 
-    [View_PrintSizesPrices].[Code] AS [Code], 
-    [View_PrintSizesPrices].[Price] AS [Price], 
-    [View_PrintSizesPrices].[Description] AS [Description]
-    FROM [dbo].[View_PrintSizesPrices] AS [View_PrintSizesPrices]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_TblAlbums_TblPrintSizes" Association="Self.FK_TblAlbums_TblPrintSizes">
             <End Role="TblPrintSizes" EntitySet="TblPrintSizes" />
@@ -1074,7 +1034,6 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_PrintSizesPrices'
           <EntitySet Name="TblPrintSpecialServices" EntityType="PhotographyAutomationDBModel.TblPrintSpecialServices" />
           <EntitySet Name="View_GetAllPhotos" EntityType="PhotographyAutomationDBModel.View_GetAllPhotos" />
           <EntitySet Name="View_GetDocumentsFolders" EntityType="PhotographyAutomationDBModel.View_GetDocumentsFolders" />
-          <EntitySet Name="View_PrintSizesPrices" EntityType="PhotographyAutomationDBModel.View_PrintSizesPrices" />
           <AssociationSet Name="FK_TblAlbums_TblPrintSizes" Association="PhotographyAutomationDBModel.FK_TblAlbums_TblPrintSizes">
             <End Role="TblPrintSizes" EntitySet="TblPrintSizes" />
             <End Role="TblAlbums" EntitySet="TblAlbums" />
@@ -1654,27 +1613,6 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_PrintSizesPrices'
           <Property Name="IsTemporary" Type="Boolean" Nullable="false" />
           <Property Name="IsDirectory" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityType Name="View_PrintSizesPrices">
-          <Key>
-            <PropertyRef Name="SizeName" />
-            <PropertyRef Name="SizeWidth" />
-            <PropertyRef Name="SizeHeight" />
-            <PropertyRef Name="OriginalPrintPrice" />
-            <PropertyRef Name="SecondPrintPrice" />
-          </Key>
-          <Property Name="PrintServiceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SizeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SizeWidth" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="SizeHeight" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="OriginalPrintPrice" Type="Int32" Nullable="false" />
-          <Property Name="SecondPrintPrice" Type="Int32" Nullable="false" />
-          <Property Name="Id" Type="Int32" />
-          <Property Name="PrintServiceId" Type="Int32" />
-          <Property Name="PrintSizePriceId" Type="Int32" />
-          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Price" Type="Int32" />
-          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-        </EntityType>
         <Association Name="FK_TblAlbums_TblPrintSizes">
           <End Type="PhotographyAutomationDBModel.TblPrintSizes" Role="TblPrintSizes" Multiplicity="1" />
           <End Type="PhotographyAutomationDBModel.TblAlbums" Role="TblAlbums" Multiplicity="*" />
@@ -2082,7 +2020,6 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_PrintSizesPrices'
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="PhotographyAutomationDBModel.Store.sp_upgraddiagrams" />
           <EntitySetMapping Name="TblAlbums">
             <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblAlbums">
               <MappingFragment StoreEntitySet="TblAlbums">
@@ -2445,24 +2382,6 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_PrintSizesPrices'
                 <ScalarProperty Name="FolderName" ColumnName="FolderName" />
                 <ScalarProperty Name="FileStream" ColumnName="FileStream" />
                 <ScalarProperty Name="StreamId" ColumnName="StreamId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="View_PrintSizesPrices">
-            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.View_PrintSizesPrices">
-              <MappingFragment StoreEntitySet="View_PrintSizesPrices">
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="PrintSizePriceId" ColumnName="PrintSizePriceId" />
-                <ScalarProperty Name="PrintServiceId" ColumnName="PrintServiceId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="SecondPrintPrice" ColumnName="SecondPrintPrice" />
-                <ScalarProperty Name="OriginalPrintPrice" ColumnName="OriginalPrintPrice" />
-                <ScalarProperty Name="SizeHeight" ColumnName="SizeHeight" />
-                <ScalarProperty Name="SizeWidth" ColumnName="SizeWidth" />
-                <ScalarProperty Name="SizeName" ColumnName="SizeName" />
-                <ScalarProperty Name="PrintServiceName" ColumnName="PrintServiceName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
