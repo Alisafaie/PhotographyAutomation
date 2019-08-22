@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PhotographyAutomation.App.Forms.Admin
 {
-    public partial class AddEditPrintSize : Form
+    public partial class FrmAddEditPrintSizeServices : Form
     {
-        public AddEditPrintSize()
+        public FrmAddEditPrintSizeServices()
         {
             InitializeComponent();
         }

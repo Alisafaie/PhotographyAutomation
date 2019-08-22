@@ -658,7 +658,7 @@
             // 
             this.btnCancelPrintServices.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnCancelPrintServices.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnCancelPrintServices.Location = new System.Drawing.Point(83, 24);
+            this.btnCancelPrintServices.Location = new System.Drawing.Point(87, 24);
             this.btnCancelPrintServices.Name = "btnCancelPrintServices";
             this.btnCancelPrintServices.Size = new System.Drawing.Size(75, 23);
             this.btnCancelPrintServices.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;

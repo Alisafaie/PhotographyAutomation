@@ -91,11 +91,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\Admin\AddEditPrintSize.cs">
+    <Compile Include="Forms\Admin\FrmAddEditPrintSize.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Admin\AddEditPrintSize.Designer.cs">
-      <DependentUpon>AddEditPrintSize.cs</DependentUpon>
+    <Compile Include="Forms\Admin\FrmAddEditPrintSize.Designer.cs">
+      <DependentUpon>FrmAddEditPrintSize.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Admin\FrmAddEditInput.cs">
       <SubType>Form</SubType>
@@ -108,6 +108,12 @@
     </Compile>
     <Compile Include="Forms\Admin\FrmAddEditPrintSizeAndServices_Refactored.Designer.cs">
       <DependentUpon>FrmAddEditPrintSizeAndServices_Refactored.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Admin\FrmAddEditPrintSizeServices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\FrmAddEditPrintSizeServices.Designer.cs">
+      <DependentUpon>FrmAddEditPrintSizeServices.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Booking\FrmAddEditBooking.cs">
       <SubType>Form</SubType>
@@ -213,14 +219,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\Admin\AddEditPrintSize.resx">
-      <DependentUpon>AddEditPrintSize.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Admin\FrmAddEditPrintSize.resx">
+      <DependentUpon>FrmAddEditPrintSize.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Admin\FrmAddEditInput.resx">
       <DependentUpon>FrmAddEditInput.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Admin\FrmAddEditPrintSizeAndServices_Refactored.resx">
       <DependentUpon>FrmAddEditPrintSizeAndServices_Refactored.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Admin\FrmAddEditPrintSizeServices.resx">
+      <DependentUpon>FrmAddEditPrintSizeServices.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Booking\FrmAddEditBooking.resx">
       <DependentUpon>FrmAddEditBooking.cs</DependentUpon>

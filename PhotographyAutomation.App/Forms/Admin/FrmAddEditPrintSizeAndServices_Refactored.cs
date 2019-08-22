@@ -119,7 +119,7 @@ namespace PhotographyAutomation.App.Forms.Admin
 
             _bgWorkerGetAllPhotoSizes.DoWork += BgWorkerGetAllPhotoSizes_DoWork;
             _bgWorkerGetAllPhotoSizes.RunWorkerCompleted += BgWorkerGetAllPhotoSizes_RunWorkerCompleted;
-            
+
             _bgWorkerGetAllPhotoSizes.RunWorkerAsync();
 
 
@@ -188,12 +188,11 @@ namespace PhotographyAutomation.App.Forms.Admin
             cmbPrintSizes.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
             gbMainPrices.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
             //btnSavePrintSizeProperties.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
-            btnAddEditPrintSize.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
+
             panelMinimumOrder.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
             panelMedicalPhoto.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
             panelLitPrint.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
             panelScanAndProcessing.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
-            panelHasAlbum.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
             panelHasItalianAlbum.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
             panelIsActive.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
             panelIsDeleted.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
@@ -234,25 +233,6 @@ namespace PhotographyAutomation.App.Forms.Admin
 
 
         #region Buttons
-        private void btnNewPrintSize_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnEditPrintSize_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnNewPrintService_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnEditPrintService_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnSavePrintSizeProperties_Click(object sender, EventArgs e)
         {
@@ -277,12 +257,17 @@ namespace PhotographyAutomation.App.Forms.Admin
 
         private void cmbPrintSizes_SelectedIndexChanged(object sender, EventArgs e)
         {
+            iiFirstPrintPrice.ResetText();
+            iiRePrintPrice.ResetText();
+
             //int printSizeId = (int) cmbPrintSizes.SelectedValue;
             if (!int.TryParse(cmbPrintSizes.SelectedValue.ToString(), out int printSizeId)) return;
 
             var sizeModel = _printSizesViewModels.FirstOrDefault(x => x.Id == printSizeId);
-
             if (sizeModel == null) return;
+
+
+
             iiMinimumOrder.Value = sizeModel.MinimumOrder;
 
             var sizePriceModel = _printSizePricesViewModels.Find(x => x.Id == sizeModel.Id);
@@ -347,26 +332,13 @@ namespace PhotographyAutomation.App.Forms.Admin
                 chkHasScanAndProcess.Enabled = false;
             }
 
-            if (sizeModel.HasAlbum)
-            {
-                panelHasAlbum.Enabled = true;
-                chkHasAlbum.Enabled = true;
-                chkHasAlbum.Checked = true;
-            }
-            else
-            {
-                panelHasAlbum.Enabled = false;
-                chkHasAlbum.Checked = false;
-                chkHasAlbum.Enabled = false;
-            }
+            
 
             if (sizeModel.HasItalianAlbum)
             {
                 panelHasItalianAlbum.Enabled = true;
                 chkHasItalianAlbum.Enabled = true;
                 chkHasItalianAlbum.Checked = true;
-
-
             }
             else
             {
@@ -392,7 +364,6 @@ namespace PhotographyAutomation.App.Forms.Admin
             {
                 chkIsDeleted.Checked = false;
             }
-
         }
 
 
@@ -403,5 +374,31 @@ namespace PhotographyAutomation.App.Forms.Admin
         }
 
         #endregion
+
+        private void تعریف_اندازه_چاپ_جدید_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var frmAddEditPrintSize = new FrmAddEditPrintSize())
+            {
+                frmAddEditPrintSize.IsNewPrintSize = true;
+                if (frmAddEditPrintSize.ShowDialog() == DialogResult.OK)
+                {
+                    GetAllPhotoSizes();
+                }
+            }
+        }
+
+        private void ویرایش_اندازه_چاپ_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!int.TryParse(cmbPrintSizes.SelectedValue.ToString(), out int printSizeId)) return;
+            using (var frmAddEditPrintSize = new FrmAddEditPrintSize())
+            {
+                frmAddEditPrintSize.IsNewPrintSize = false;
+                frmAddEditPrintSize.PrintSizeId = printSizeId;
+                if (frmAddEditPrintSize.ShowDialog() == DialogResult.OK)
+                {
+                    GetAllPhotoSizes();
+                }
+            }
+        }
     }
 }
