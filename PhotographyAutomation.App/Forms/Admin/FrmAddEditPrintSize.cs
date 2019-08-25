@@ -121,7 +121,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                             @"لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.",
                             @"خطا در دریافت اطلاعات قیمت اندازه چاپ",
                             MessageBoxButtons.RetryCancel, MessageBoxIcon.Error,
-                            MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign);
+                            MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
                         if (dr == DialogResult.Retry)
                         {
                             goto RetryGetPrintSizePriceInfo;
@@ -137,7 +137,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                         @"لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.",
                         @"خطا در دریافت اطلاعات اندازه چاپ",
                         MessageBoxButtons.RetryCancel, MessageBoxIcon.Error,
-                        MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign);
+                        MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
                     if (dr == DialogResult.Retry)
                     {
                         goto RetryGetPrintSizeInfo;
@@ -258,7 +258,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                                 @"اندازه چاپ جدید همراه با اطلاعات قیمت داده شده با موفقیت در سیستم ثبت گردید.",
                                 @"ثبت اطلاعات در سیستم",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information,
-                                MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign);
+                                MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
 
                             DialogResult = DialogResult.OK;
                         }
@@ -270,7 +270,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                                 @"خطا در ثبت اطلاعات قیمت اندازه چاپ ",
                                 MessageBoxButtons.RetryCancel,
                                 MessageBoxIcon.Error, MessageBoxDefaultButton.Button1,
-                                MessageBoxOptions.RightAlign);
+                                MessageBoxOptions.RtlReading);
                             if (dr == DialogResult.Retry)
                                 goto RetrySaveSizePrice;
                         }
@@ -282,7 +282,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                             @"لطفا دوباره تلاش کنید و در صورت تکرار مشکل، با مدیر سیستم تماس بگیرید.",
                             @"خطا در ثبت اطلاعات اندازه چاپ",
                             MessageBoxButtons.RetryCancel, MessageBoxIcon.Error,
-                            MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign);
+                            MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
                         if (dr == DialogResult.Retry)
                             goto RetrySaveSizePrint;
                     }
@@ -372,7 +372,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                                     @"اطلاعات اندازه چاپ و قیمت آن با موفقیت در سیستم به روز گردید.",
                                     @"ثبت اطلاعات در سیستم",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information,
-                                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign);
+                                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
                                 DialogResult = DialogResult.OK;
                             }
                             else
@@ -383,7 +383,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                                     @"خطا در به روز رسانی اطلاعات ",
                                     MessageBoxButtons.RetryCancel,
                                     MessageBoxIcon.Error, MessageBoxDefaultButton.Button1,
-                                    MessageBoxOptions.RightAlign);
+                                    MessageBoxOptions.RtlReading);
                                 if (dr == DialogResult.Retry)
                                 {
                                     goto RetryUpdatePrintSizeAndPrice;
@@ -400,7 +400,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                             MessageBoxButtons.RetryCancel,
                             MessageBoxIcon.Warning,
                             MessageBoxDefaultButton.Button1,
-                            MessageBoxOptions.RightAlign);
+                            MessageBoxOptions.RtlReading);
                         if (dr == DialogResult.Retry)
                         {
                             goto RetryGetPrintSizeInfo;

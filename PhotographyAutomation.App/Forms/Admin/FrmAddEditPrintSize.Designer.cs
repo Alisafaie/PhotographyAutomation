@@ -422,7 +422,6 @@
             this.iiMinimumOrder.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.iiMinimumOrder.DisabledBackColor = System.Drawing.Color.White;
             this.highlighter1.SetHighlightOnFocus(this.iiMinimumOrder, true);
-            this.iiMinimumOrder.IsInputReadOnly = true;
             this.iiMinimumOrder.Location = new System.Drawing.Point(43, 26);
             this.iiMinimumOrder.Name = "iiMinimumOrder";
             this.iiMinimumOrder.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -714,7 +713,6 @@
             this.highlighter1.SetHighlightOnFocus(this.iiRePrintPrice, true);
             this.iiRePrintPrice.Increment = 10000;
             this.iiRePrintPrice.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
-            this.iiRePrintPrice.IsInputReadOnly = true;
             this.iiRePrintPrice.Location = new System.Drawing.Point(34, 53);
             this.iiRePrintPrice.MinValue = 0;
             this.iiRePrintPrice.Name = "iiRePrintPrice";
@@ -759,7 +757,6 @@
             this.highlighter1.SetHighlightOnFocus(this.iiFirstPrintPrice, true);
             this.iiFirstPrintPrice.Increment = 10000;
             this.iiFirstPrintPrice.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
-            this.iiFirstPrintPrice.IsInputReadOnly = true;
             this.iiFirstPrintPrice.Location = new System.Drawing.Point(34, 26);
             this.iiFirstPrintPrice.MinValue = 0;
             this.iiFirstPrintPrice.Name = "iiFirstPrintPrice";

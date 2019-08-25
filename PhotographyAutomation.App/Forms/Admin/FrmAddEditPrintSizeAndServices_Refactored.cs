@@ -396,7 +396,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                 frmAddEditPrintSize.PrintSizeId = printSizeId;
                 if (frmAddEditPrintSize.ShowDialog() == DialogResult.OK)
                 {
-                    GetAllPhotoSizes();
+                    FrmAddEditPrintSizeAndServices_Refactored_Load(null,null);
                 }
             }
         }

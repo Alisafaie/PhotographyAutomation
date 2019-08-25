@@ -592,7 +592,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                                     @"",
                                     MessageBoxButtons.YesNo,
                                     MessageBoxIcon.Question,
-                                    MessageBoxDefaultButton.Button1);
+                                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
 
                                 if (drShowPreFactor == DialogResult.Yes)
                                 {
@@ -630,7 +630,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                             @"آیا می خواهید عکس های انتخابی آن را ویرایش کنید؟", @"",
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Question,
-                            MessageBoxDefaultButton.Button1);
+                            MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
                         if (dr == DialogResult.Yes)
                         {
                             throw new NotImplementedException("هنوز این قسمت پیاده سازی نشده است.");
