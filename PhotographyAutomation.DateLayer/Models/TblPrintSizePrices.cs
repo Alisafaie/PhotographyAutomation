@@ -24,6 +24,8 @@ namespace PhotographyAutomation.DateLayer.Models
         public Nullable<int> LitPrintRePrintPrice { get; set; }
         public Nullable<int> ScanAndPrintPrice { get; set; }
         public Nullable<int> ScanAndProcessingPrice { get; set; }
+        public Nullable<int> ItalianAlbumPagePrice { get; set; }
+        public Nullable<int> ItalianAlbumBoundingPrice { get; set; }
     
         public virtual TblPrintSizes TblPrintSizes { get; set; }
     }

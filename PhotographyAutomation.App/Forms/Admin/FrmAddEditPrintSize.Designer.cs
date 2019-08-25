@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.chkHasItalianAlbum = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.chkHasScanAndProcess = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.chkHasLitPrint = new DevComponents.DotNetBar.Controls.CheckBoxX();
@@ -46,6 +47,11 @@
             this.label8 = new System.Windows.Forms.Label();
             this.doubleInputWidth = new DevComponents.Editors.DoubleInput();
             this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.iiMinimumOrder = new DevComponents.Editors.IntegerInput();
+            this.label2 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.txtDescription = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.gbItalianAlbum = new System.Windows.Forms.GroupBox();
             this.label23 = new System.Windows.Forms.Label();
             this.iiItalianAlbumBoundingPrice = new DevComponents.Editors.IntegerInput();
@@ -67,9 +73,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.iiFirstPrintPrice = new DevComponents.Editors.IntegerInput();
             this.label7 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.iiMinimumOrder = new DevComponents.Editors.IntegerInput();
-            this.label2 = new System.Windows.Forms.Label();
             this.gbLitPrintPrices = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
             this.iiLitPrintRePrint = new DevComponents.Editors.IntegerInput();
@@ -85,12 +88,16 @@
             this.iiMedicalFirstPrint = new DevComponents.Editors.IntegerInput();
             this.label11 = new System.Windows.Forms.Label();
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
+            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.panelEx1.SuspendLayout();
             this.panelEx2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.doubleInputHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.doubleInputWidth)).BeginInit();
             this.panelEx3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iiMinimumOrder)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.gbItalianAlbum.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iiItalianAlbumBoundingPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iiItalianAlbumPagePrice)).BeginInit();
@@ -100,8 +107,6 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iiRePrintPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iiFirstPrintPrice)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iiMinimumOrder)).BeginInit();
             this.gbLitPrintPrices.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iiLitPrintRePrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iiLitPrintFirstPrint)).BeginInit();
@@ -123,6 +128,7 @@
             this.chkHasItalianAlbum.Size = new System.Drawing.Size(15, 15);
             this.chkHasItalianAlbum.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.chkHasItalianAlbum.TabIndex = 0;
+            this.chkHasItalianAlbum.CheckedChanged += new System.EventHandler(this.chkHasItalianAlbum_CheckedChanged);
             // 
             // chkHasScanAndProcess
             // 
@@ -152,6 +158,7 @@
             this.chkHasLitPrint.Size = new System.Drawing.Size(15, 15);
             this.chkHasLitPrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.chkHasLitPrint.TabIndex = 0;
+            this.chkHasLitPrint.CheckedChanged += new System.EventHandler(this.chkHasLitPrint_CheckedChanged);
             // 
             // chkHasMedialPhoto
             // 
@@ -166,20 +173,21 @@
             this.chkHasMedialPhoto.Size = new System.Drawing.Size(15, 15);
             this.chkHasMedialPhoto.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.chkHasMedialPhoto.TabIndex = 0;
+            this.chkHasMedialPhoto.CheckedChanged += new System.EventHandler(this.chkHasMedialPhoto_CheckedChanged);
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 325);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 326);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(701, 22);
-            this.statusStrip1.TabIndex = 50;
+            this.statusStrip1.Size = new System.Drawing.Size(936, 22);
+            this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // menuStrip1
             // 
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(701, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(936, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -191,9 +199,9 @@
             this.panelEx1.Controls.Add(this.btnSave);
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelEx1.Location = new System.Drawing.Point(0, 274);
+            this.panelEx1.Location = new System.Drawing.Point(0, 275);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(701, 51);
+            this.panelEx1.Size = new System.Drawing.Size(936, 51);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -207,14 +215,14 @@
             // 
             this.btnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnCancel.Location = new System.Drawing.Point(93, 14);
+            this.btnCancel.Location = new System.Drawing.Point(93, 16);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
             this.btnCancel.Symbol = "";
             this.btnCancel.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnCancel.SymbolSize = 10F;
-            this.btnCancel.TabIndex = 0;
+            this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "انصراف";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -222,14 +230,14 @@
             // 
             this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSave.Location = new System.Drawing.Point(12, 14);
+            this.btnSave.Location = new System.Drawing.Point(12, 16);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
             this.btnSave.Symbol = "";
             this.btnSave.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnSave.SymbolSize = 10F;
-            this.btnSave.TabIndex = 1;
+            this.btnSave.TabIndex = 0;
             this.btnSave.Text = "ثبت";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -242,7 +250,7 @@
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelEx2.Location = new System.Drawing.Point(0, 24);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(701, 61);
+            this.panelEx2.Size = new System.Drawing.Size(936, 61);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -254,18 +262,16 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.chkIsDeleted);
             this.groupBox3.Controls.Add(this.chkIsActive);
             this.groupBox3.Controls.Add(this.doubleInputHeight);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.doubleInputWidth);
-            this.groupBox3.Location = new System.Drawing.Point(14, 3);
+            this.groupBox3.Location = new System.Drawing.Point(9, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(678, 52);
+            this.groupBox3.Size = new System.Drawing.Size(918, 52);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             // 
@@ -277,12 +283,13 @@
             // 
             // 
             this.chkIsDeleted.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.chkIsDeleted.CheckBoxPosition = DevComponents.DotNetBar.eCheckBoxPosition.Right;
             this.highlighter1.SetHighlightOnFocus(this.chkIsDeleted, true);
-            this.chkIsDeleted.Location = new System.Drawing.Point(34, 24);
+            this.chkIsDeleted.Location = new System.Drawing.Point(6, 20);
             this.chkIsDeleted.Name = "chkIsDeleted";
             this.chkIsDeleted.Size = new System.Drawing.Size(45, 16);
             this.chkIsDeleted.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.chkIsDeleted.TabIndex = 0;
+            this.chkIsDeleted.TabIndex = 3;
             this.chkIsDeleted.Text = "حذف";
             // 
             // chkIsActive
@@ -293,15 +300,16 @@
             // 
             // 
             this.chkIsActive.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.chkIsActive.CheckBoxPosition = DevComponents.DotNetBar.eCheckBoxPosition.Right;
             this.chkIsActive.Checked = true;
             this.chkIsActive.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkIsActive.CheckValue = "Y";
             this.highlighter1.SetHighlightOnFocus(this.chkIsActive, true);
-            this.chkIsActive.Location = new System.Drawing.Point(91, 24);
+            this.chkIsActive.Location = new System.Drawing.Point(57, 20);
             this.chkIsActive.Name = "chkIsActive";
             this.chkIsActive.Size = new System.Drawing.Size(43, 16);
             this.chkIsActive.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.chkIsActive.TabIndex = 0;
+            this.chkIsActive.TabIndex = 2;
             this.chkIsActive.Text = "فعال";
             // 
             // doubleInputHeight
@@ -313,23 +321,23 @@
             this.doubleInputHeight.BackgroundStyle.Class = "DateTimeInputBackground";
             this.doubleInputHeight.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.doubleInputHeight.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.doubleInputHeight.Enabled = false;
             this.highlighter1.SetHighlightOnFocus(this.doubleInputHeight, true);
             this.doubleInputHeight.Increment = 1D;
             this.doubleInputHeight.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
-            this.doubleInputHeight.Location = new System.Drawing.Point(533, 19);
+            this.doubleInputHeight.Location = new System.Drawing.Point(727, 19);
             this.doubleInputHeight.MinValue = 0D;
             this.doubleInputHeight.Name = "doubleInputHeight";
             this.doubleInputHeight.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.doubleInputHeight.Size = new System.Drawing.Size(54, 21);
-            this.doubleInputHeight.TabIndex = 0;
+            this.doubleInputHeight.Size = new System.Drawing.Size(100, 21);
+            this.doubleInputHeight.TabIndex = 1;
+            this.doubleInputHeight.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             this.doubleInputHeight.WatermarkText = "(cm)طول";
             // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(619, 23);
+            this.label3.Location = new System.Drawing.Point(859, 23);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 13);
             this.label3.TabIndex = 49;
@@ -339,7 +347,7 @@
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(514, 22);
+            this.label8.Location = new System.Drawing.Point(708, 23);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(13, 13);
             this.label8.TabIndex = 44;
@@ -354,33 +362,34 @@
             this.doubleInputWidth.BackgroundStyle.Class = "DateTimeInputBackground";
             this.doubleInputWidth.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.doubleInputWidth.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.doubleInputWidth.Enabled = false;
             this.highlighter1.SetHighlightOnFocus(this.doubleInputWidth, true);
             this.doubleInputWidth.Increment = 1D;
             this.doubleInputWidth.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
-            this.doubleInputWidth.Location = new System.Drawing.Point(454, 19);
+            this.doubleInputWidth.Location = new System.Drawing.Point(602, 19);
             this.doubleInputWidth.MinValue = 0D;
             this.doubleInputWidth.Name = "doubleInputWidth";
             this.doubleInputWidth.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.doubleInputWidth.Size = new System.Drawing.Size(54, 21);
-            this.doubleInputWidth.TabIndex = 1;
+            this.doubleInputWidth.Size = new System.Drawing.Size(100, 21);
+            this.doubleInputWidth.TabIndex = 0;
+            this.doubleInputWidth.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right;
             this.doubleInputWidth.WatermarkText = "(cm)عرض";
             // 
             // panelEx3
             // 
             this.panelEx3.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx3.Controls.Add(this.groupBox2);
+            this.panelEx3.Controls.Add(this.groupBox4);
             this.panelEx3.Controls.Add(this.gbItalianAlbum);
             this.panelEx3.Controls.Add(this.gbScanAndPrint);
             this.panelEx3.Controls.Add(this.groupBox1);
-            this.panelEx3.Controls.Add(this.groupBox2);
             this.panelEx3.Controls.Add(this.gbLitPrintPrices);
             this.panelEx3.Controls.Add(this.gbMedicalPhotoPrices);
             this.panelEx3.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx3.Location = new System.Drawing.Point(0, 85);
             this.panelEx3.Name = "panelEx3";
-            this.panelEx3.Size = new System.Drawing.Size(701, 189);
+            this.panelEx3.Size = new System.Drawing.Size(936, 190);
             this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx3.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx3.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -389,6 +398,74 @@
             this.panelEx3.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx3.Style.GradientAngle = 90;
             this.panelEx3.TabIndex = 1;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.iiMinimumOrder);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Location = new System.Drawing.Point(471, 5);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(225, 85);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "حداقل تعداد سفارش";
+            // 
+            // iiMinimumOrder
+            // 
+            this.iiMinimumOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.iiMinimumOrder.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.iiMinimumOrder.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.iiMinimumOrder.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.iiMinimumOrder.DisabledBackColor = System.Drawing.Color.White;
+            this.highlighter1.SetHighlightOnFocus(this.iiMinimumOrder, true);
+            this.iiMinimumOrder.IsInputReadOnly = true;
+            this.iiMinimumOrder.Location = new System.Drawing.Point(43, 26);
+            this.iiMinimumOrder.Name = "iiMinimumOrder";
+            this.iiMinimumOrder.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.iiMinimumOrder.Size = new System.Drawing.Size(100, 21);
+            this.iiMinimumOrder.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(157, 30);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 13);
+            this.label2.TabIndex = 51;
+            this.label2.Text = "حداقل تعداد";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.txtDescription);
+            this.groupBox4.Location = new System.Drawing.Point(9, 5);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(456, 85);
+            this.groupBox4.TabIndex = 2;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "توضیحات";
+            // 
+            // txtDescription
+            // 
+            this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.txtDescription.Border.Class = "TextBoxBorder";
+            this.txtDescription.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtDescription.Location = new System.Drawing.Point(6, 26);
+            this.txtDescription.Multiline = true;
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.PreventEnterBeep = true;
+            this.txtDescription.Size = new System.Drawing.Size(441, 48);
+            this.txtDescription.TabIndex = 0;
             // 
             // gbItalianAlbum
             // 
@@ -400,8 +477,7 @@
             this.gbItalianAlbum.Controls.Add(this.label25);
             this.gbItalianAlbum.Controls.Add(this.iiItalianAlbumPagePrice);
             this.gbItalianAlbum.Controls.Add(this.label26);
-            this.gbItalianAlbum.Enabled = false;
-            this.gbItalianAlbum.Location = new System.Drawing.Point(236, 93);
+            this.gbItalianAlbum.Location = new System.Drawing.Point(471, 96);
             this.gbItalianAlbum.Name = "gbItalianAlbum";
             this.gbItalianAlbum.Size = new System.Drawing.Size(225, 85);
             this.gbItalianAlbum.TabIndex = 4;
@@ -504,11 +580,10 @@
             this.gbScanAndPrint.Controls.Add(this.label21);
             this.gbScanAndPrint.Controls.Add(this.iiScanAndProcess);
             this.gbScanAndPrint.Controls.Add(this.label22);
-            this.gbScanAndPrint.Enabled = false;
-            this.gbScanAndPrint.Location = new System.Drawing.Point(236, 6);
+            this.gbScanAndPrint.Location = new System.Drawing.Point(240, 96);
             this.gbScanAndPrint.Name = "gbScanAndPrint";
             this.gbScanAndPrint.Size = new System.Drawing.Size(225, 85);
-            this.gbScanAndPrint.TabIndex = 1;
+            this.gbScanAndPrint.TabIndex = 5;
             this.gbScanAndPrint.TabStop = false;
             this.gbScanAndPrint.Text = "هزینه اسکن و چاپ";
             // 
@@ -607,8 +682,7 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.iiFirstPrintPrice);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Enabled = false;
-            this.groupBox1.Location = new System.Drawing.Point(467, 5);
+            this.groupBox1.Location = new System.Drawing.Point(702, 5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(225, 85);
             this.groupBox1.TabIndex = 0;
@@ -703,47 +777,6 @@
             this.label7.TabIndex = 54;
             this.label7.Text = "اصل چاپ";
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.iiMinimumOrder);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Enabled = false;
-            this.groupBox2.Location = new System.Drawing.Point(14, 93);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(216, 85);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "حداقل تعداد سفارش";
-            // 
-            // iiMinimumOrder
-            // 
-            this.iiMinimumOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.iiMinimumOrder.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.iiMinimumOrder.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.iiMinimumOrder.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.iiMinimumOrder.DisabledBackColor = System.Drawing.Color.White;
-            this.highlighter1.SetHighlightOnFocus(this.iiMinimumOrder, true);
-            this.iiMinimumOrder.IsInputReadOnly = true;
-            this.iiMinimumOrder.Location = new System.Drawing.Point(34, 26);
-            this.iiMinimumOrder.Name = "iiMinimumOrder";
-            this.iiMinimumOrder.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.iiMinimumOrder.Size = new System.Drawing.Size(100, 21);
-            this.iiMinimumOrder.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(148, 30);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 13);
-            this.label2.TabIndex = 51;
-            this.label2.Text = "حداقل تعداد";
-            // 
             // gbLitPrintPrices
             // 
             this.gbLitPrintPrices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -754,11 +787,10 @@
             this.gbLitPrintPrices.Controls.Add(this.label14);
             this.gbLitPrintPrices.Controls.Add(this.iiLitPrintFirstPrint);
             this.gbLitPrintPrices.Controls.Add(this.label17);
-            this.gbLitPrintPrices.Enabled = false;
-            this.gbLitPrintPrices.Location = new System.Drawing.Point(14, 5);
+            this.gbLitPrintPrices.Location = new System.Drawing.Point(9, 96);
             this.gbLitPrintPrices.Name = "gbLitPrintPrices";
-            this.gbLitPrintPrices.Size = new System.Drawing.Size(216, 85);
-            this.gbLitPrintPrices.TabIndex = 2;
+            this.gbLitPrintPrices.Size = new System.Drawing.Size(225, 85);
+            this.gbLitPrintPrices.TabIndex = 6;
             this.gbLitPrintPrices.TabStop = false;
             this.gbLitPrintPrices.Text = "هزینه لیت پرینت";
             // 
@@ -766,7 +798,7 @@
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(157, 57);
+            this.label12.Location = new System.Drawing.Point(166, 57);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(53, 13);
             this.label12.TabIndex = 51;
@@ -787,7 +819,7 @@
             this.highlighter1.SetHighlightOnFocus(this.iiLitPrintRePrint, true);
             this.iiLitPrintRePrint.Increment = 10000;
             this.iiLitPrintRePrint.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
-            this.iiLitPrintRePrint.Location = new System.Drawing.Point(34, 53);
+            this.iiLitPrintRePrint.Location = new System.Drawing.Point(43, 53);
             this.iiLitPrintRePrint.MinValue = 0;
             this.iiLitPrintRePrint.Name = "iiLitPrintRePrint";
             this.iiLitPrintRePrint.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -831,7 +863,7 @@
             this.highlighter1.SetHighlightOnFocus(this.iiLitPrintFirstPrint, true);
             this.iiLitPrintFirstPrint.Increment = 10000;
             this.iiLitPrintFirstPrint.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
-            this.iiLitPrintFirstPrint.Location = new System.Drawing.Point(34, 26);
+            this.iiLitPrintFirstPrint.Location = new System.Drawing.Point(43, 26);
             this.iiLitPrintFirstPrint.MinValue = 0;
             this.iiLitPrintFirstPrint.Name = "iiLitPrintFirstPrint";
             this.iiLitPrintFirstPrint.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -842,7 +874,7 @@
             // 
             this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(161, 30);
+            this.label17.Location = new System.Drawing.Point(170, 30);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(49, 13);
             this.label17.TabIndex = 47;
@@ -858,8 +890,7 @@
             this.gbMedicalPhotoPrices.Controls.Add(this.label10);
             this.gbMedicalPhotoPrices.Controls.Add(this.iiMedicalFirstPrint);
             this.gbMedicalPhotoPrices.Controls.Add(this.label11);
-            this.gbMedicalPhotoPrices.Enabled = false;
-            this.gbMedicalPhotoPrices.Location = new System.Drawing.Point(467, 96);
+            this.gbMedicalPhotoPrices.Location = new System.Drawing.Point(702, 96);
             this.gbMedicalPhotoPrices.Name = "gbMedicalPhotoPrices";
             this.gbMedicalPhotoPrices.Size = new System.Drawing.Size(225, 85);
             this.gbMedicalPhotoPrices.TabIndex = 3;
@@ -957,12 +988,16 @@
             this.highlighter1.ContainerControl = this;
             this.highlighter1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F";
             // 
+            // styleManager1
+            // 
+            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2010Silver;
+            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255))))), System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199))))));
+            // 
             // FrmAddEditPrintSize
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(701, 347);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(936, 348);
             this.Controls.Add(this.panelEx3);
             this.Controls.Add(this.panelEx2);
             this.Controls.Add(this.panelEx1);
@@ -977,7 +1012,8 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "ثبت / ویرایش اندازه چاپ و ویژگی ها";
+            this.Text = "    ثبت / ویرایش اطلاعات اندازه چاپ";
+            this.Load += new System.EventHandler(this.FrmAddEditPrintSize_Load);
             this.panelEx1.ResumeLayout(false);
             this.panelEx2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
@@ -985,6 +1021,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.doubleInputHeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.doubleInputWidth)).EndInit();
             this.panelEx3.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iiMinimumOrder)).EndInit();
+            this.groupBox4.ResumeLayout(false);
             this.gbItalianAlbum.ResumeLayout(false);
             this.gbItalianAlbum.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iiItalianAlbumBoundingPrice)).EndInit();
@@ -997,9 +1037,6 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iiRePrintPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iiFirstPrintPrice)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iiMinimumOrder)).EndInit();
             this.gbLitPrintPrices.ResumeLayout(false);
             this.gbLitPrintPrices.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iiLitPrintRePrint)).EndInit();
@@ -1060,9 +1097,6 @@
         private System.Windows.Forms.Label label7;
         private DevComponents.DotNetBar.ButtonX btnCancel;
         private DevComponents.DotNetBar.ButtonX btnSave;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private DevComponents.Editors.IntegerInput iiMinimumOrder;
-        private System.Windows.Forms.Label label2;
         private DevComponents.DotNetBar.Validator.Highlighter highlighter1;
         private System.Windows.Forms.GroupBox groupBox3;
         private DevComponents.DotNetBar.Controls.CheckBoxX chkIsDeleted;
@@ -1071,5 +1105,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label8;
         private DevComponents.Editors.DoubleInput doubleInputWidth;
+        private DevComponents.DotNetBar.StyleManager styleManager1;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtDescription;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private DevComponents.Editors.IntegerInput iiMinimumOrder;
+        private System.Windows.Forms.Label label2;
     }
 }

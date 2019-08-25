@@ -1007,7 +1007,7 @@
             this.تعریف_اندازه_چاپ_جدید_ToolStripMenuItem,
             this.تعریف_خدمات_چاپ_جدید_ToolStripMenuItem});
             this.تعریفToolStripMenuItem.Name = "تعریفToolStripMenuItem";
-            this.تعریفToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.تعریفToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.تعریفToolStripMenuItem.Text = "تعریف";
             // 
             // تعریف_اندازه_چاپ_جدید_ToolStripMenuItem
@@ -1029,20 +1029,20 @@
             this.ویرایش_اندازه_چاپ_ToolStripMenuItem,
             this.ویرایش_خدمات_چاپ_ToolStripMenuItem});
             this.ویرایشToolStripMenuItem.Name = "ویرایشToolStripMenuItem";
-            this.ویرایشToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ویرایشToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.ویرایشToolStripMenuItem.Text = "ویرایش";
             // 
             // ویرایش_اندازه_چاپ_ToolStripMenuItem
             // 
             this.ویرایش_اندازه_چاپ_ToolStripMenuItem.Name = "ویرایش_اندازه_چاپ_ToolStripMenuItem";
-            this.ویرایش_اندازه_چاپ_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ویرایش_اندازه_چاپ_ToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.ویرایش_اندازه_چاپ_ToolStripMenuItem.Text = "ویرایش اندازه چاپ";
             this.ویرایش_اندازه_چاپ_ToolStripMenuItem.Click += new System.EventHandler(this.ویرایش_اندازه_چاپ_ToolStripMenuItem_Click);
             // 
             // ویرایش_خدمات_چاپ_ToolStripMenuItem
             // 
             this.ویرایش_خدمات_چاپ_ToolStripMenuItem.Name = "ویرایش_خدمات_چاپ_ToolStripMenuItem";
-            this.ویرایش_خدمات_چاپ_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ویرایش_خدمات_چاپ_ToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.ویرایش_خدمات_چاپ_ToolStripMenuItem.Text = "ویرایش خدمات چاپ";
             // 
             // حذف_ToolStripMenuItem
@@ -1050,7 +1050,7 @@
             this.حذف_ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.حذف_اندازه_چاپ_ToolStripMenuItem});
             this.حذف_ToolStripMenuItem.Name = "حذف_ToolStripMenuItem";
-            this.حذف_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.حذف_ToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.حذف_ToolStripMenuItem.Text = "حذف";
             // 
             // حذف_اندازه_چاپ_ToolStripMenuItem
@@ -1134,7 +1134,7 @@
             // 
             // 
             this.cpLoadDataGridView.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.cpLoadDataGridView.Location = new System.Drawing.Point(554, 108);
+            this.cpLoadDataGridView.Location = new System.Drawing.Point(501, 108);
             this.cpLoadDataGridView.Name = "cpLoadDataGridView";
             this.cpLoadDataGridView.ProgressColor = System.Drawing.Color.Blue;
             this.cpLoadDataGridView.Size = new System.Drawing.Size(57, 63);

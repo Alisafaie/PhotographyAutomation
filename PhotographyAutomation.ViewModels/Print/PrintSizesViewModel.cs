@@ -8,8 +8,7 @@ namespace PhotographyAutomation.ViewModels.Print
         public double Width { get; set; }
         public double Height { get; set; }
         public string Name { get; set; }
-        public bool HasFirstPrint { get; set; }
-        public bool HasRePrint { get; set; }
+
         public bool HasMedicalPhoto { get; set; }
         public bool HasLitPrint { get; set; }
         public bool HasScanAndProcessing { get; set; }
@@ -28,6 +27,9 @@ namespace PhotographyAutomation.ViewModels.Print
         public int LitPrintRePrintPrice { get; set; }
         public int ScanAndPrintPrice { get; set; }
         public int ScanAndProcessingPrice { get; set; }
+
+        public int ItalianAlbumPagePrice { get; set; }
+        public int ItalianAlbumBoundingPrice { get; set; }
 
         public List<PrintServicesViewModel> PrintServicesViewModels { get; set; }
     }

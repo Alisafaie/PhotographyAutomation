@@ -121,9 +121,6 @@
     <Compile Include="Models\TblPrintCustomerFiles.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TblPrintItalianAlbums.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\TblPrintServicePrices.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>

@@ -21,10 +21,8 @@
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrderStatus" Width="1.5" PointX="6" PointY="5.875" />
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPhotographyType" Width="1.5" PointX="0.75" PointY="4.25" />
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPrintCustomerFiles" Width="1.5" PointX="5" PointY="27.875" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPrintItalianAlbums" Width="1.5" PointX="5" PointY="30.375" />
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPrintServicePrices" Width="1.5" PointX="18.75" PointY="14.125" />
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPrintServices" Width="1.5" PointX="13.5" PointY="4.75" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPrintSizePrices" Width="1.5" PointX="5" PointY="20.25" />
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPrintSpecialServices" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.View_GetAllPhotos" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.View_GetDocumentsFolders" Width="1.5" PointX="12.75" PointY="14.75" />
@@ -54,8 +52,8 @@
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPrintSizes" Width="1.5" PointX="2.75" PointY="21" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblAlbums_TblPrintSizes" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblCustomerFilePrint_TblPrintSizes" />
-        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblItalianAlbum_TblPrintSizes" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblPrintServicePrice_TblPrintSizes" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPrintSizePrices" Width="1.5" PointX="5" PointY="19.625" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblSizePrice_TblPrintSizes1" />
         </Diagram>
     </edmx:Diagrams>

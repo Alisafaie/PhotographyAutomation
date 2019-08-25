@@ -313,10 +313,7 @@ namespace PhotographyAutomation.DateLayer.Context
 
 
 
-        private GenericRepository<TblPrintItalianAlbums> _printItalianAlbumsGenericRepository;
-        public GenericRepository<TblPrintItalianAlbums> PrintItalianAlbumsGenericRepository =>
-            _printItalianAlbumsGenericRepository ?? (_printItalianAlbumsGenericRepository =
-                new GenericRepository<TblPrintItalianAlbums>(_db));
+        
 
 
 
