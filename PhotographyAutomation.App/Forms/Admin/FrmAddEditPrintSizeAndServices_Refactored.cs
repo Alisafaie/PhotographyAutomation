@@ -400,5 +400,10 @@ namespace PhotographyAutomation.App.Forms.Admin
                 }
             }
         }
+
+        private void حذف_اندازه_چاپ_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

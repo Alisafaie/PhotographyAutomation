@@ -505,6 +505,7 @@
             this.iiItalianAlbumBoundingPrice.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.iiItalianAlbumBoundingPrice.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.iiItalianAlbumBoundingPrice.DisplayFormat = "N0";
+            this.iiItalianAlbumBoundingPrice.Enabled = false;
             this.highlighter1.SetHighlightOnFocus(this.iiItalianAlbumBoundingPrice, true);
             this.iiItalianAlbumBoundingPrice.Increment = 10000;
             this.iiItalianAlbumBoundingPrice.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
@@ -549,6 +550,7 @@
             this.iiItalianAlbumPagePrice.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.iiItalianAlbumPagePrice.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.iiItalianAlbumPagePrice.DisplayFormat = "N0";
+            this.iiItalianAlbumPagePrice.Enabled = false;
             this.highlighter1.SetHighlightOnFocus(this.iiItalianAlbumPagePrice, true);
             this.iiItalianAlbumPagePrice.Increment = 10000;
             this.iiItalianAlbumPagePrice.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
@@ -608,6 +610,7 @@
             this.iiScanAndPrint.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.iiScanAndPrint.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.iiScanAndPrint.DisplayFormat = "N0";
+            this.iiScanAndPrint.Enabled = false;
             this.highlighter1.SetHighlightOnFocus(this.iiScanAndPrint, true);
             this.iiScanAndPrint.Increment = 10000;
             this.iiScanAndPrint.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
@@ -652,6 +655,7 @@
             this.iiScanAndProcess.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.iiScanAndProcess.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.iiScanAndProcess.DisplayFormat = "N0";
+            this.iiScanAndProcess.Enabled = false;
             this.highlighter1.SetHighlightOnFocus(this.iiScanAndProcess, true);
             this.iiScanAndProcess.Increment = 10000;
             this.iiScanAndProcess.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
@@ -813,6 +817,7 @@
             this.iiLitPrintRePrint.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.iiLitPrintRePrint.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.iiLitPrintRePrint.DisplayFormat = "N0";
+            this.iiLitPrintRePrint.Enabled = false;
             this.highlighter1.SetHighlightOnFocus(this.iiLitPrintRePrint, true);
             this.iiLitPrintRePrint.Increment = 10000;
             this.iiLitPrintRePrint.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
@@ -857,6 +862,7 @@
             this.iiLitPrintFirstPrint.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.iiLitPrintFirstPrint.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.iiLitPrintFirstPrint.DisplayFormat = "N0";
+            this.iiLitPrintFirstPrint.Enabled = false;
             this.highlighter1.SetHighlightOnFocus(this.iiLitPrintFirstPrint, true);
             this.iiLitPrintFirstPrint.Increment = 10000;
             this.iiLitPrintFirstPrint.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
@@ -916,6 +922,7 @@
             this.iiMedicalRePrint.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.iiMedicalRePrint.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.iiMedicalRePrint.DisplayFormat = "N0";
+            this.iiMedicalRePrint.Enabled = false;
             this.highlighter1.SetHighlightOnFocus(this.iiMedicalRePrint, true);
             this.iiMedicalRePrint.Increment = 10000;
             this.iiMedicalRePrint.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
@@ -960,6 +967,7 @@
             this.iiMedicalFirstPrint.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.iiMedicalFirstPrint.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.iiMedicalFirstPrint.DisplayFormat = "N0";
+            this.iiMedicalFirstPrint.Enabled = false;
             this.highlighter1.SetHighlightOnFocus(this.iiMedicalFirstPrint, true);
             this.iiMedicalFirstPrint.Increment = 10000;
             this.iiMedicalFirstPrint.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
