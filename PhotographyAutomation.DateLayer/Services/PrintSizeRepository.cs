@@ -3,6 +3,7 @@ using PhotographyAutomation.DateLayer.Repositories;
 using PhotographyAutomation.ViewModels.Print;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
 
@@ -39,6 +40,36 @@ namespace PhotographyAutomation.DateLayer.Services
                     .OrderBy(x => x.Width)
                     .ThenBy(x => x.Height)
                     .ToList();
+                return result;
+
+
+            }
+            catch (Exception exception)
+            {
+                WriteDebugInfoToOutput(exception);
+                throw exception;
+            }
+        }
+
+        public List<PrintServicesViewModel> GetAllPrintSizeServices(int printSizeId)
+        {
+            try
+            {
+                var result = _db.TblPrintServicePrices
+                                .Include(x => x.TblPrintServices)
+                                .Where(x => x.PrintSizeId == printSizeId)
+                                .Select(x =>
+                                    new PrintServicesViewModel
+                                    {
+                                        Id = x.Id,
+                                        PrintSizeId = x.PrintSizeId,
+                                        PrintServicePrice = x.Price,
+                                        PrintServiceCode = x.TblPrintServices.Code,
+                                        PrintServiceName = x.TblPrintServices.PrintServiceName,
+                                        PrintServiceDescription = x.TblPrintServices.PrintServiceDescription,
+                                    })
+                                .ToList();
+
                 return result;
 
 

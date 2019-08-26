@@ -332,7 +332,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                 chkHasScanAndProcess.Enabled = false;
             }
 
-            
+
 
             if (sizeModel.HasItalianAlbum)
             {
@@ -368,11 +368,6 @@ namespace PhotographyAutomation.App.Forms.Admin
 
 
 
-        private void cmbPrintServices_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         #endregion
 
         private void تعریف_اندازه_چاپ_جدید_ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -396,7 +391,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                 frmAddEditPrintSize.PrintSizeId = printSizeId;
                 if (frmAddEditPrintSize.ShowDialog() == DialogResult.OK)
                 {
-                    FrmAddEditPrintSizeAndServices_Refactored_Load(null,null);
+                    FrmAddEditPrintSizeAndServices_Refactored_Load(null, null);
                 }
             }
         }
@@ -404,6 +399,23 @@ namespace PhotographyAutomation.App.Forms.Admin
         private void حذف_اندازه_چاپ_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void تعریف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (cmbPrintSizes.DataSource == null || cmbPrintSizes.SelectedIndex == -1 || cmbPrintSizes.Items.Count <= 0) 
+                return;
+            if (!int.TryParse(cmbPrintSizes.SelectedValue.ToString(), out var selectedPrintSizeId)) 
+                return;
+            
+            using (var frmPrintServices = new FrmAddEditPrintSizeServices())
+            {
+                frmPrintServices.PrintSizeId = selectedPrintSizeId;
+                if (frmPrintServices.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
         }
     }
 }

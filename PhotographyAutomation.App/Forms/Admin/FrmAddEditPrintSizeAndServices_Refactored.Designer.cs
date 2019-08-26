@@ -1056,7 +1056,7 @@
             // حذف_اندازه_چاپ_ToolStripMenuItem
             // 
             this.حذف_اندازه_چاپ_ToolStripMenuItem.Name = "حذف_اندازه_چاپ_ToolStripMenuItem";
-            this.حذف_اندازه_چاپ_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.حذف_اندازه_چاپ_ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.حذف_اندازه_چاپ_ToolStripMenuItem.Text = "حذف اندازه چاپ";
             this.حذف_اندازه_چاپ_ToolStripMenuItem.Click += new System.EventHandler(this.حذف_اندازه_چاپ_ToolStripMenuItem_Click);
             // 
@@ -1067,14 +1067,15 @@
             this.ویرایش_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem,
             this.حذف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem});
             this.اندازهچاپToolStripMenuItem.Name = "اندازهچاپToolStripMenuItem";
-            this.اندازهچاپToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-            this.اندازهچاپToolStripMenuItem.Text = "اندازه چاپ";
+            this.اندازهچاپToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
+            this.اندازهچاپToolStripMenuItem.Text = "خدمات چاپ";
             // 
             // تعریف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem
             // 
             this.تعریف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem.Name = "تعریف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem";
             this.تعریف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
             this.تعریف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem.Text = "تعریف خدمات چاپ مربوط به اندازه چاپ";
+            this.تعریف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem.Click += new System.EventHandler(this.تعریف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem_Click);
             // 
             // ویرایش_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem
             // 
