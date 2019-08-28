@@ -29,31 +29,47 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.تنظیماتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.تعریفخدماتچاپجدیدToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ویرایشخدماتچاپToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.حذفخدماتچاپToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.groupBoxPrintSize = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.cmbPrintSizes = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
-            this.groupBoxPrintServices = new System.Windows.Forms.GroupBox();
-            this.btnCancel = new DevComponents.DotNetBar.ButtonX();
-            this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.panel9 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
             this.iiPrintServicePrice = new DevComponents.Editors.IntegerInput();
             this.label19 = new System.Windows.Forms.Label();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.txtPrintServiceCode = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.label9 = new System.Windows.Forms.Label();
+            this.btnSaveEditedprintServiceValues = new DevComponents.DotNetBar.ButtonX();
+            this.btnEditService = new DevComponents.DotNetBar.ButtonX();
             this.panel6 = new System.Windows.Forms.Panel();
             this.cmbPrintServices = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.txtPrintServiceCode = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label9 = new System.Windows.Forms.Label();
+            this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
+            this.groupBoxPrintServices = new System.Windows.Forms.GroupBox();
+            this.btnCancel = new DevComponents.DotNetBar.ButtonX();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.integerInput1 = new DevComponents.Editors.IntegerInput();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnSave = new DevComponents.DotNetBar.ButtonX();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label4 = new System.Windows.Forms.Label();
             this.panelDataGridView = new DevComponents.DotNetBar.PanelEx();
             this.gbDataGridView = new System.Windows.Forms.GroupBox();
             this.cpLoadDataGridView = new DevComponents.DotNetBar.Controls.CircularProgress();
@@ -70,18 +86,20 @@
             this.clmPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.تعریفخدماتچاپجدیدToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ویرایشخدماتچاپToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.حذفخدماتچاپToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panelEx1.SuspendLayout();
             this.groupBoxPrintSize.SuspendLayout();
-            this.panelEx2.SuspendLayout();
-            this.groupBoxPrintServices.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iiPrintServicePrice)).BeginInit();
-            this.panel8.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.panelEx2.SuspendLayout();
+            this.groupBoxPrintServices.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.integerInput1)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panelDataGridView.SuspendLayout();
             this.gbDataGridView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrintServices)).BeginInit();
@@ -108,6 +126,24 @@
             this.تنظیماتToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.تنظیماتToolStripMenuItem.Text = "تنظیمات";
             // 
+            // تعریفخدماتچاپجدیدToolStripMenuItem
+            // 
+            this.تعریفخدماتچاپجدیدToolStripMenuItem.Name = "تعریفخدماتچاپجدیدToolStripMenuItem";
+            this.تعریفخدماتچاپجدیدToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.تعریفخدماتچاپجدیدToolStripMenuItem.Text = "تعریف خدمات چاپ جدید";
+            // 
+            // ویرایشخدماتچاپToolStripMenuItem
+            // 
+            this.ویرایشخدماتچاپToolStripMenuItem.Name = "ویرایشخدماتچاپToolStripMenuItem";
+            this.ویرایشخدماتچاپToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.ویرایشخدماتچاپToolStripMenuItem.Text = "ویرایش خدمات چاپ";
+            // 
+            // حذفخدماتچاپToolStripMenuItem
+            // 
+            this.حذفخدماتچاپToolStripMenuItem.Name = "حذفخدماتچاپToolStripMenuItem";
+            this.حذفخدماتچاپToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.حذفخدماتچاپToolStripMenuItem.Text = "حذف خدمات چاپ";
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Location = new System.Drawing.Point(0, 559);
@@ -125,7 +161,7 @@
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelEx1.Location = new System.Drawing.Point(0, 24);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(1083, 86);
+            this.panelEx1.Size = new System.Drawing.Size(1083, 80);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -140,14 +176,28 @@
             this.groupBoxPrintSize.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxPrintSize.Controls.Add(this.cmbPrintSizes);
-            this.groupBoxPrintSize.Controls.Add(this.label1);
+            this.groupBoxPrintSize.Controls.Add(this.panel1);
+            this.groupBoxPrintSize.Controls.Add(this.panel9);
+            this.groupBoxPrintSize.Controls.Add(this.btnSaveEditedprintServiceValues);
+            this.groupBoxPrintSize.Controls.Add(this.btnEditService);
+            this.groupBoxPrintSize.Controls.Add(this.panel6);
+            this.groupBoxPrintSize.Controls.Add(this.panel8);
             this.groupBoxPrintSize.Location = new System.Drawing.Point(12, 10);
             this.groupBoxPrintSize.Name = "groupBoxPrintSize";
-            this.groupBoxPrintSize.Size = new System.Drawing.Size(1059, 67);
+            this.groupBoxPrintSize.Size = new System.Drawing.Size(1059, 61);
             this.groupBoxPrintSize.TabIndex = 1;
             this.groupBoxPrintSize.TabStop = false;
-            this.groupBoxPrintSize.Text = "اندازه و ویژگی های اندازه عکس";
+            this.groupBoxPrintSize.Text = "اندازه و ویژگی های اندازه چاپ";
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.cmbPrintSizes);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(857, 18);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(196, 34);
+            this.panel1.TabIndex = 22;
             // 
             // cmbPrintSizes
             // 
@@ -155,7 +205,7 @@
             this.cmbPrintSizes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPrintSizes.Enabled = false;
             this.cmbPrintSizes.FormattingEnabled = true;
-            this.cmbPrintSizes.Location = new System.Drawing.Point(860, 31);
+            this.cmbPrintSizes.Location = new System.Drawing.Point(3, 7);
             this.cmbPrintSizes.Name = "cmbPrintSizes";
             this.cmbPrintSizes.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cmbPrintSizes.Size = new System.Drawing.Size(124, 21);
@@ -166,76 +216,11 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(997, 35);
+            this.label1.Location = new System.Drawing.Point(140, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "اندازه چاپ";
-            // 
-            // panelEx2
-            // 
-            this.panelEx2.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx2.Controls.Add(this.groupBoxPrintServices);
-            this.panelEx2.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx2.Location = new System.Drawing.Point(0, 110);
-            this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(1083, 83);
-            this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.panelEx2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx2.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelEx2.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx2.Style.GradientAngle = 90;
-            this.panelEx2.TabIndex = 0;
-            // 
-            // groupBoxPrintServices
-            // 
-            this.groupBoxPrintServices.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxPrintServices.Controls.Add(this.btnCancel);
-            this.groupBoxPrintServices.Controls.Add(this.btnSave);
-            this.groupBoxPrintServices.Controls.Add(this.panel9);
-            this.groupBoxPrintServices.Controls.Add(this.panel8);
-            this.groupBoxPrintServices.Controls.Add(this.panel6);
-            this.groupBoxPrintServices.Enabled = false;
-            this.groupBoxPrintServices.Location = new System.Drawing.Point(12, 6);
-            this.groupBoxPrintServices.Name = "groupBoxPrintServices";
-            this.groupBoxPrintServices.Size = new System.Drawing.Size(1059, 64);
-            this.groupBoxPrintServices.TabIndex = 1;
-            this.groupBoxPrintServices.TabStop = false;
-            this.groupBoxPrintServices.Text = "خدمات چاپ";
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnCancel.Location = new System.Drawing.Point(87, 25);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
-            this.btnCancel.Symbol = "";
-            this.btnCancel.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnCancel.SymbolSize = 10F;
-            this.btnCancel.TabIndex = 3;
-            this.btnCancel.Text = "انصراف";
-            // 
-            // btnSave
-            // 
-            this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSave.Location = new System.Drawing.Point(6, 25);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
-            this.btnSave.Symbol = "";
-            this.btnSave.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnSave.SymbolSize = 10F;
-            this.btnSave.TabIndex = 4;
-            this.btnSave.Text = "ثبت";
             // 
             // panel9
             // 
@@ -243,9 +228,9 @@
             this.panel9.Controls.Add(this.label16);
             this.panel9.Controls.Add(this.iiPrintServicePrice);
             this.panel9.Controls.Add(this.label19);
-            this.panel9.Location = new System.Drawing.Point(630, 20);
+            this.panel9.Location = new System.Drawing.Point(432, 18);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(220, 34);
+            this.panel9.Size = new System.Drawing.Size(216, 34);
             this.panel9.TabIndex = 2;
             // 
             // label16
@@ -253,7 +238,7 @@
             this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
             this.label16.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label16.Location = new System.Drawing.Point(6, 10);
+            this.label16.Location = new System.Drawing.Point(5, 11);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(22, 13);
             this.label16.TabIndex = 50;
@@ -272,7 +257,7 @@
             this.iiPrintServicePrice.Increment = 10000;
             this.iiPrintServicePrice.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
             this.iiPrintServicePrice.IsInputReadOnly = true;
-            this.iiPrintServicePrice.Location = new System.Drawing.Point(34, 6);
+            this.iiPrintServicePrice.Location = new System.Drawing.Point(33, 7);
             this.iiPrintServicePrice.MinValue = 0;
             this.iiPrintServicePrice.Name = "iiPrintServicePrice";
             this.iiPrintServicePrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -283,54 +268,47 @@
             // 
             this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(140, 9);
+            this.label19.Location = new System.Drawing.Point(139, 11);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(74, 13);
             this.label19.TabIndex = 48;
             this.label19.Text = "هزینه سرویس";
             // 
-            // panel8
+            // btnSaveEditedprintServiceValues
             // 
-            this.panel8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel8.Controls.Add(this.txtPrintServiceCode);
-            this.panel8.Controls.Add(this.label9);
-            this.panel8.Location = new System.Drawing.Point(439, 20);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(185, 34);
-            this.panel8.TabIndex = 1;
+            this.btnSaveEditedprintServiceValues.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSaveEditedprintServiceValues.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSaveEditedprintServiceValues.Location = new System.Drawing.Point(6, 24);
+            this.btnSaveEditedprintServiceValues.Name = "btnSaveEditedprintServiceValues";
+            this.btnSaveEditedprintServiceValues.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveEditedprintServiceValues.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
+            this.btnSaveEditedprintServiceValues.Symbol = "";
+            this.btnSaveEditedprintServiceValues.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnSaveEditedprintServiceValues.SymbolSize = 10F;
+            this.btnSaveEditedprintServiceValues.TabIndex = 4;
+            this.btnSaveEditedprintServiceValues.Text = "ثبت";
+            this.btnSaveEditedprintServiceValues.Click += new System.EventHandler(this.btnSaveEditedprintServiceValues_Click);
             // 
-            // txtPrintServiceCode
+            // btnEditService
             // 
-            this.txtPrintServiceCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.txtPrintServiceCode.Border.Class = "TextBoxBorder";
-            this.txtPrintServiceCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtPrintServiceCode.Location = new System.Drawing.Point(14, 7);
-            this.txtPrintServiceCode.Name = "txtPrintServiceCode";
-            this.txtPrintServiceCode.PreventEnterBeep = true;
-            this.txtPrintServiceCode.ReadOnly = true;
-            this.txtPrintServiceCode.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtPrintServiceCode.Size = new System.Drawing.Size(100, 21);
-            this.txtPrintServiceCode.TabIndex = 0;
-            // 
-            // label9
-            // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(120, 10);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(59, 13);
-            this.label9.TabIndex = 21;
-            this.label9.Text = "کد سرویس";
+            this.btnEditService.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnEditService.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnEditService.Location = new System.Drawing.Point(199, 24);
+            this.btnEditService.Name = "btnEditService";
+            this.btnEditService.Size = new System.Drawing.Size(27, 23);
+            this.btnEditService.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
+            this.btnEditService.Symbol = "";
+            this.btnEditService.SymbolColor = System.Drawing.Color.Black;
+            this.btnEditService.SymbolSize = 10F;
+            this.btnEditService.TabIndex = 4;
+            this.btnEditService.Click += new System.EventHandler(this.btnEditService_Click);
             // 
             // panel6
             // 
             this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel6.Controls.Add(this.cmbPrintServices);
             this.panel6.Controls.Add(this.label3);
-            this.panel6.Location = new System.Drawing.Point(856, 20);
+            this.panel6.Location = new System.Drawing.Point(654, 18);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(197, 34);
             this.panel6.TabIndex = 0;
@@ -340,7 +318,7 @@
             this.cmbPrintServices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbPrintServices.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPrintServices.FormattingEnabled = true;
-            this.cmbPrintServices.Location = new System.Drawing.Point(4, 6);
+            this.cmbPrintServices.Location = new System.Drawing.Point(4, 7);
             this.cmbPrintServices.Name = "cmbPrintServices";
             this.cmbPrintServices.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.cmbPrintServices.Size = new System.Drawing.Size(124, 21);
@@ -351,11 +329,232 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(134, 10);
+            this.label3.Location = new System.Drawing.Point(134, 11);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "خدمات چاپ";
+            // 
+            // panel8
+            // 
+            this.panel8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel8.Controls.Add(this.txtPrintServiceCode);
+            this.panel8.Controls.Add(this.label9);
+            this.panel8.Location = new System.Drawing.Point(230, 18);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(192, 34);
+            this.panel8.TabIndex = 1;
+            // 
+            // txtPrintServiceCode
+            // 
+            this.txtPrintServiceCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.txtPrintServiceCode.Border.Class = "TextBoxBorder";
+            this.txtPrintServiceCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtPrintServiceCode.Location = new System.Drawing.Point(2, 7);
+            this.txtPrintServiceCode.Name = "txtPrintServiceCode";
+            this.txtPrintServiceCode.PreventEnterBeep = true;
+            this.txtPrintServiceCode.ReadOnly = true;
+            this.txtPrintServiceCode.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtPrintServiceCode.Size = new System.Drawing.Size(122, 21);
+            this.txtPrintServiceCode.TabIndex = 0;
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(130, 11);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(59, 13);
+            this.label9.TabIndex = 21;
+            this.label9.Text = "کد سرویس";
+            // 
+            // panelEx2
+            // 
+            this.panelEx2.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelEx2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx2.Controls.Add(this.groupBoxPrintServices);
+            this.panelEx2.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelEx2.Location = new System.Drawing.Point(0, 104);
+            this.panelEx2.Name = "panelEx2";
+            this.panelEx2.Size = new System.Drawing.Size(1083, 80);
+            this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelEx2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.panelEx2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelEx2.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelEx2.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelEx2.Style.GradientAngle = 90;
+            this.panelEx2.TabIndex = 0;
+            // 
+            // groupBoxPrintServices
+            // 
+            this.groupBoxPrintServices.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxPrintServices.Controls.Add(this.btnCancel);
+            this.groupBoxPrintServices.Controls.Add(this.panel4);
+            this.groupBoxPrintServices.Controls.Add(this.btnSave);
+            this.groupBoxPrintServices.Controls.Add(this.panel2);
+            this.groupBoxPrintServices.Controls.Add(this.panel3);
+            this.groupBoxPrintServices.Enabled = false;
+            this.groupBoxPrintServices.Location = new System.Drawing.Point(12, 10);
+            this.groupBoxPrintServices.Name = "groupBoxPrintServices";
+            this.groupBoxPrintServices.Size = new System.Drawing.Size(1059, 61);
+            this.groupBoxPrintServices.TabIndex = 1;
+            this.groupBoxPrintServices.TabStop = false;
+            this.groupBoxPrintServices.Text = "تعریف خدمات چاپ جدید";
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnCancel.Location = new System.Drawing.Point(87, 24);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
+            this.btnCancel.Symbol = "";
+            this.btnCancel.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnCancel.SymbolSize = 10F;
+            this.btnCancel.TabIndex = 3;
+            this.btnCancel.Text = "انصراف";
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Controls.Add(this.label5);
+            this.panel4.Controls.Add(this.integerInput1);
+            this.panel4.Controls.Add(this.label6);
+            this.panel4.Location = new System.Drawing.Point(637, 18);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(214, 34);
+            this.panel4.TabIndex = 2;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label5.Location = new System.Drawing.Point(3, 11);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(22, 13);
+            this.label5.TabIndex = 50;
+            this.label5.Text = "ريال";
+            // 
+            // integerInput1
+            // 
+            this.integerInput1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.integerInput1.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.integerInput1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.integerInput1.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.integerInput1.DisplayFormat = "N0";
+            this.integerInput1.Increment = 10000;
+            this.integerInput1.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
+            this.integerInput1.IsInputReadOnly = true;
+            this.integerInput1.Location = new System.Drawing.Point(31, 7);
+            this.integerInput1.MinValue = 0;
+            this.integerInput1.Name = "integerInput1";
+            this.integerInput1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.integerInput1.Size = new System.Drawing.Size(100, 21);
+            this.integerInput1.TabIndex = 0;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(137, 11);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(74, 13);
+            this.label6.TabIndex = 48;
+            this.label6.Text = "هزینه سرویس";
+            // 
+            // btnSave
+            // 
+            this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSave.Location = new System.Drawing.Point(6, 24);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
+            this.btnSave.Symbol = "";
+            this.btnSave.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnSave.SymbolSize = 10F;
+            this.btnSave.TabIndex = 4;
+            this.btnSave.Text = "ثبت";
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.comboBox1);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Location = new System.Drawing.Point(857, 18);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(196, 34);
+            this.panel2.TabIndex = 0;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(3, 7);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.comboBox1.Size = new System.Drawing.Size(124, 21);
+            this.comboBox1.TabIndex = 0;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.cmbPrintServices_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(133, 11);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(60, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "خدمات چاپ";
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.textBoxX1);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Location = new System.Drawing.Point(438, 18);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(193, 34);
+            this.panel3.TabIndex = 1;
+            // 
+            // textBoxX1
+            // 
+            this.textBoxX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.textBoxX1.Border.Class = "TextBoxBorder";
+            this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX1.Location = new System.Drawing.Point(3, 7);
+            this.textBoxX1.Name = "textBoxX1";
+            this.textBoxX1.PreventEnterBeep = true;
+            this.textBoxX1.ReadOnly = true;
+            this.textBoxX1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.textBoxX1.Size = new System.Drawing.Size(124, 21);
+            this.textBoxX1.TabIndex = 0;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(131, 11);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 13);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "کد سرویس";
             // 
             // panelDataGridView
             // 
@@ -364,9 +563,9 @@
             this.panelDataGridView.Controls.Add(this.gbDataGridView);
             this.panelDataGridView.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelDataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelDataGridView.Location = new System.Drawing.Point(0, 193);
+            this.panelDataGridView.Location = new System.Drawing.Point(0, 184);
             this.panelDataGridView.Name = "panelDataGridView";
-            this.panelDataGridView.Size = new System.Drawing.Size(1083, 366);
+            this.panelDataGridView.Size = new System.Drawing.Size(1083, 375);
             this.panelDataGridView.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelDataGridView.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelDataGridView.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -386,7 +585,7 @@
             this.gbDataGridView.Controls.Add(this.dgvPrintServices);
             this.gbDataGridView.Location = new System.Drawing.Point(12, 6);
             this.gbDataGridView.Name = "gbDataGridView";
-            this.gbDataGridView.Size = new System.Drawing.Size(1059, 357);
+            this.gbDataGridView.Size = new System.Drawing.Size(1059, 366);
             this.gbDataGridView.TabIndex = 1;
             this.gbDataGridView.TabStop = false;
             // 
@@ -408,19 +607,19 @@
             // 
             this.dgvPrintServices.AllowUserToAddRows = false;
             this.dgvPrintServices.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvPrintServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvPrintServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvPrintServices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPrintServices.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvPrintServices.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPrintServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPrintServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvPrintServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPrintServices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmId,
@@ -434,31 +633,31 @@
             this.clmPrintServiceName,
             this.clmPrice,
             this.clmDescription});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPrintServices.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPrintServices.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvPrintServices.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPrintServices.EnableHeadersVisualStyles = false;
             this.dgvPrintServices.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.dgvPrintServices.Location = new System.Drawing.Point(3, 17);
             this.dgvPrintServices.Name = "dgvPrintServices";
             this.dgvPrintServices.ReadOnly = true;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPrintServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPrintServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvPrintServices.RowHeadersVisible = false;
             this.dgvPrintServices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPrintServices.Size = new System.Drawing.Size(1053, 337);
+            this.dgvPrintServices.Size = new System.Drawing.Size(1053, 346);
             this.dgvPrintServices.TabIndex = 3;
             this.dgvPrintServices.UseCustomBackgroundColor = true;
             // 
@@ -558,24 +757,6 @@
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2010Silver;
             this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255))))), System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199))))));
             // 
-            // تعریفخدماتچاپجدیدToolStripMenuItem
-            // 
-            this.تعریفخدماتچاپجدیدToolStripMenuItem.Name = "تعریفخدماتچاپجدیدToolStripMenuItem";
-            this.تعریفخدماتچاپجدیدToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.تعریفخدماتچاپجدیدToolStripMenuItem.Text = "تعریف خدمات چاپ جدید";
-            // 
-            // ویرایشخدماتچاپToolStripMenuItem
-            // 
-            this.ویرایشخدماتچاپToolStripMenuItem.Name = "ویرایشخدماتچاپToolStripMenuItem";
-            this.ویرایشخدماتچاپToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.ویرایشخدماتچاپToolStripMenuItem.Text = "ویرایش خدمات چاپ";
-            // 
-            // حذفخدماتچاپToolStripMenuItem
-            // 
-            this.حذفخدماتچاپToolStripMenuItem.Name = "حذفخدماتچاپToolStripMenuItem";
-            this.حذفخدماتچاپToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.حذفخدماتچاپToolStripMenuItem.Text = "حذف خدمات چاپ";
-            // 
             // FrmAddEditPrintSizeServices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -595,22 +776,30 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "ثبت / ویرایش خدمات اندازه چاپ";
+            this.Text = "ثبت / ویرایش خدمات برای اندازه چاپ";
             this.Load += new System.EventHandler(this.FrmAddEditPrintSizeServices_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panelEx1.ResumeLayout(false);
             this.groupBoxPrintSize.ResumeLayout(false);
-            this.groupBoxPrintSize.PerformLayout();
-            this.panelEx2.ResumeLayout(false);
-            this.groupBoxPrintServices.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iiPrintServicePrice)).EndInit();
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            this.panelEx2.ResumeLayout(false);
+            this.groupBoxPrintServices.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.integerInput1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panelDataGridView.ResumeLayout(false);
             this.gbDataGridView.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrintServices)).EndInit();
@@ -661,5 +850,18 @@
         private System.Windows.Forms.ToolStripMenuItem تعریفخدماتچاپجدیدToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ویرایشخدماتچاپToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem حذفخدماتچاپToolStripMenuItem;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label5;
+        private DevComponents.Editors.IntegerInput integerInput1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel3;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
+        private System.Windows.Forms.Label label4;
+        private DevComponents.DotNetBar.ButtonX btnSaveEditedprintServiceValues;
+        private DevComponents.DotNetBar.ButtonX btnEditService;
     }
 }

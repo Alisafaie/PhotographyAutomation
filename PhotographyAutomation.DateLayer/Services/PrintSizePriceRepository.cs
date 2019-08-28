@@ -49,7 +49,7 @@ namespace PhotographyAutomation.DateLayer.Services
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception);
+                WriteDebugInfoToOutput(exception);
                 throw;
             }
         }

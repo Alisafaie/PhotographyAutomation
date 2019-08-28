@@ -47,19 +47,15 @@ namespace PhotographyAutomation.App.Forms.Admin
         {
             GetAllPhotoSizes();
 
-
-
             if (PrintSizeId > 0)
             {
-
+                cmbPrintSizes.SelectedValue = PrintSizeId;
             }
         }
 
         private void GetAllPhotoSizes()
         {
             _bgWorkerGetAllPhotoSizes.RunWorkerAsync();
-
-
             EnableOrDisableControlsToGetAllPrintSizes();
         }
         private void BgWorkerGetAllPhotoSizes_DoWork(object sender, DoWorkEventArgs e)
@@ -91,9 +87,16 @@ namespace PhotographyAutomation.App.Forms.Admin
                     cmbPrintSizes.DisplayMember = "Name";
                     cmbPrintSizes.ValueMember = "Id";
 
-                    cmbPrintSizes.SelectedIndex = 0;
+                    //cmbPrintSizes.SelectedValue = PrintSizeId;
 
                     cmbPrintSizes_SelectedIndexChanged(null, null);
+                }
+                else if (e.Result == null)
+                {
+                    MessageBox.Show(@"برای این اندازه چاپ، سرویس چاپی ثبت نشده است.", "",
+                        MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1,
+                        MessageBoxOptions.RtlReading);
+                    return;
                 }
                 else
                 {
@@ -110,6 +113,10 @@ namespace PhotographyAutomation.App.Forms.Admin
 
                 EnableOrDisableControlsToGetAllPrintSizes();
             }
+            catch (InvalidOperationException)
+            {
+
+            }
             catch (Exception exception)
             {
                 Console.WriteLine(exception);
@@ -122,7 +129,7 @@ namespace PhotographyAutomation.App.Forms.Admin
         private void cmbPrintSizes_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!int.TryParse(cmbPrintSizes.SelectedValue.ToString(), out var printSizeId)) return;
-
+            PrintSizeId = printSizeId;
             var printSizesViewModel = _printSizesViewModels.FirstOrDefault(x => x.Id == printSizeId);
             if (printSizesViewModel == null) return;
             _bgWorkerGetPrintSizeServices.RunWorkerAsync(printSizeId);
@@ -135,7 +142,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                 {
                     using (var db = new UnitOfWork())
                     {
-                        var result = db.PrintSizeRepository.GetAllPrintSizeServices(printSizeId);
+                        var result = db.PrintSizeRepository.GetAllPrintSizeServicesByPrintSizeId(printSizeId);
 
                         if (result == null || result.Count == 0) return;
                         e.Result = result;
@@ -159,9 +166,16 @@ namespace PhotographyAutomation.App.Forms.Admin
                     cmbPrintServices.DisplayMember = "PrintServiceName";
                     cmbPrintServices.ValueMember = "Id";
 
-                    cmbPrintSizes.SelectedIndex = 0;
+                    //cmbPrintSizes.SelectedIndex = PrintSizeId;
 
-                    cmbPrintServices_SelectedIndexChanged(null, null);
+                    //cmbPrintServices_SelectedIndexChanged(null, null);
+                }
+                else if (e.Result == null)
+                {
+                    MessageBox.Show(@"برای این اندازه چاپ، سرویس چاپی ثبت نشده است.", "",
+                        MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1,
+                        MessageBoxOptions.RtlReading);
+                    return;
                 }
                 else
                 {
@@ -201,6 +215,26 @@ namespace PhotographyAutomation.App.Forms.Admin
             groupBoxPrintServices.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
 
             panelDataGridView.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
+
+            menuStrip1.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
+        }
+
+        private void btnEditService_Click(object sender, EventArgs e)
+        {
+            if (iiPrintServicePrice.IsInputReadOnly)
+            {
+                iiPrintServicePrice.IsInputReadOnly = false;
+                txtPrintServiceCode.ReadOnly = false;
+            }
+        }
+
+        private void btnSaveEditedprintServiceValues_Click(object sender, EventArgs e)
+        {
+            if (iiPrintServicePrice.IsInputReadOnly == false)
+            {
+                iiPrintServicePrice.IsInputReadOnly = true;
+                txtPrintServiceCode.ReadOnly = true;
+            }
         }
     }
 }

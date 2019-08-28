@@ -12,13 +12,13 @@ namespace PhotographyAutomation.App.Forms.Admin
     {
         #region Variables
 
-        private bool _newSizeFlag;
-        private bool _editSizeFlag;
-        private bool _deleteSizeFlag;
+        //private bool _newSizeFlag;
+        //private bool _editSizeFlag;
+        //private bool _deleteSizeFlag;
 
-        private int _selectedPrintSizeId;
-        private int _selectedPrintServiceId;
-        private int _selectedPrintSizeServiceId;
+        //private int _selectedPrintSizeId;
+        //private int _selectedPrintServiceId;
+        //private int _selectedPrintSizeServiceId;
 
         //private readonly BackgroundWorker _bgWorkerUpdatePrintSizeService = new BackgroundWorker();
         //private readonly BackgroundWorker _bgWorkerSaveNewPrintSizeService = new BackgroundWorker();
@@ -30,6 +30,11 @@ namespace PhotographyAutomation.App.Forms.Admin
             WorkerSupportsCancellation = false
         };
         private readonly BackgroundWorker _bgWorkerGetAllPhotoSizePrices = new BackgroundWorker
+        {
+            WorkerReportsProgress = false,
+            WorkerSupportsCancellation = false
+        };
+        private readonly BackgroundWorker _bgWorkerGetAllPrintSizeServices = new BackgroundWorker
         {
             WorkerReportsProgress = false,
             WorkerSupportsCancellation = false
@@ -46,23 +51,51 @@ namespace PhotographyAutomation.App.Forms.Admin
         public FrmAddEditPrintSizeAndServices_Refactored()
         {
             InitializeComponent();
+
+            _bgWorkerGetAllPhotoSizePrices.DoWork += _bgWorkerGetAllPhotoSizePrices_DoWork;
+            _bgWorkerGetAllPhotoSizePrices.RunWorkerCompleted += _bgWorkerGetAllPhotoSizePrices_RunWorkerCompleted;
+
+            _bgWorkerGetAllPhotoSizes.DoWork += BgWorkerGetAllPhotoSizes_DoWork;
+            _bgWorkerGetAllPhotoSizes.RunWorkerCompleted += BgWorkerGetAllPhotoSizes_RunWorkerCompleted;
+
+            _bgWorkerGetAllPrintSizeServices.DoWork += _bgWorkerGetAllPrintSizeServices_DoWork;
+            _bgWorkerGetAllPrintSizeServices.RunWorkerCompleted += _bgWorkerGetAllPrintSizeServices_RunWorkerCompleted;
         }
+
+        
+
+        
 
         private void FrmAddEditPrintSizeAndServices_Refactored_Load(object sender, EventArgs e)
         {
             GetAllPhotoSizes();
             GetAllPhotoSizePrices();
+            //GetAllPrintSizeServices();
+        }
+
+        private void GetAllPrintSizeServices()
+        {
+            _bgWorkerGetAllPrintSizeServices.RunWorkerAsync();
+        }
+
+        private void _bgWorkerGetAllPrintSizeServices_DoWork(object sender, DoWorkEventArgs e)
+        {
+            //using (var db=new UnitOfWork())
+            //{
+            //    var result=
+            //}
+        }
+        private void _bgWorkerGetAllPrintSizeServices_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void GetAllPhotoSizePrices()
         {
-            _bgWorkerGetAllPhotoSizePrices.DoWork += _bgWorkerGetAllPhotoSizePrices_DoWork;
-            _bgWorkerGetAllPhotoSizePrices.RunWorkerCompleted += _bgWorkerGetAllPhotoSizePrices_RunWorkerCompleted;
-
             _bgWorkerGetAllPhotoSizePrices.RunWorkerAsync();
             EnableOrDisableControlsToGetAllPrintSizePrices();
         }
-        private void _bgWorkerGetAllPhotoSizePrices_DoWork(object sender, DoWorkEventArgs e)
+        private static void _bgWorkerGetAllPhotoSizePrices_DoWork(object sender, DoWorkEventArgs e)
         {
             try
             {
@@ -72,7 +105,6 @@ namespace PhotographyAutomation.App.Forms.Admin
 
                     if (result == null || result.Count == 0) return;
                     e.Result = result;
-                    _printSizePricesViewModels = result;
                 }
             }
             catch (Exception exception)
@@ -87,18 +119,18 @@ namespace PhotographyAutomation.App.Forms.Admin
             {
                 if (e.Result != null && e.Result is List<PrintSizePricesViewModel> viewModel)
                 {
-
+                    _printSizePricesViewModels = viewModel;
                 }
                 else
                 {
                     MessageBox.Show(
-                        @"اطلاعات قیمت اندازه قابل دریافت نمی باشد.",
+                        @"اطلاعات قیمت اندازه چاپ قابل دریافت نمی باشد.",
                         @"خطا در دریافت اطلاعات از سرور",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error,
                         MessageBoxDefaultButton.Button1,
                         MessageBoxOptions.RightAlign);
-                    Close();
+                    //Close();
                 }
 
 
@@ -116,27 +148,26 @@ namespace PhotographyAutomation.App.Forms.Admin
 
         private void GetAllPhotoSizes()
         {
-
-            _bgWorkerGetAllPhotoSizes.DoWork += BgWorkerGetAllPhotoSizes_DoWork;
-            _bgWorkerGetAllPhotoSizes.RunWorkerCompleted += BgWorkerGetAllPhotoSizes_RunWorkerCompleted;
-
             _bgWorkerGetAllPhotoSizes.RunWorkerAsync();
-
-
             EnableOrDisableControlsToGetAllPrintSizes();
         }
-        private void BgWorkerGetAllPhotoSizes_DoWork(object sender, DoWorkEventArgs e)
+        private static void BgWorkerGetAllPhotoSizes_DoWork(object sender, DoWorkEventArgs e)
         {
+            RetryGetInfo:
             try
             {
+                
                 using (var db = new UnitOfWork())
                 {
                     var result = db.PrintSizeRepository.GetAllPrintSizes();
 
                     if (result == null || result.Count == 0) return;
                     e.Result = result;
-                    _printSizesViewModels = result;
                 }
+            }
+            catch (NullReferenceException)
+            {
+                goto RetryGetInfo;
             }
             catch (Exception exception)
             {
@@ -150,6 +181,9 @@ namespace PhotographyAutomation.App.Forms.Admin
             {
                 if (e.Result != null && e.Result is List<PrintSizesViewModel> viewModel)
                 {
+                    _printSizesViewModels = viewModel;
+
+
                     cmbPrintSizes.DataSource = viewModel;
                     cmbPrintSizes.DisplayMember = "Name";
                     cmbPrintSizes.ValueMember = "Id";
@@ -157,22 +191,25 @@ namespace PhotographyAutomation.App.Forms.Admin
                     cmbPrintSizes.SelectedIndex = 0;
 
                     cmbPrintSizes_SelectedIndexChanged(null, null);
-                    //cmbPrintSizes.SelectedIndex = -1;
                 }
                 else
                 {
                     MessageBox.Show(
-                        @"اطلاعات فرم قابل دریافت نمی باشد.",
+                        @"اطلاعات اندازه چاپ ها قابل دریافت نمی باشد.",
                         @"خطا در دریافت اطلاعات از سرور",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error,
                         MessageBoxDefaultButton.Button1,
                         MessageBoxOptions.RightAlign);
-                    Close();
+                    //Close();
                 }
 
 
                 EnableOrDisableControlsToGetAllPrintSizes();
+            }
+            catch (ArgumentNullException)
+            {
+                return;
             }
             catch (Exception exception)
             {
@@ -187,7 +224,6 @@ namespace PhotographyAutomation.App.Forms.Admin
         {
             cmbPrintSizes.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
             gbMainPrices.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
-            //btnSavePrintSizeProperties.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
 
             panelMinimumOrder.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
             panelMedicalPhoto.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
@@ -196,6 +232,8 @@ namespace PhotographyAutomation.App.Forms.Admin
             panelHasItalianAlbum.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
             panelIsActive.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
             panelIsDeleted.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
+
+            menuStrip1.Enabled=!_bgWorkerGetAllPhotoSizes.IsBusy;
         }
         private void EnableOrDisableControlsToGetAllPrintSizePrices()
         {
@@ -232,46 +270,34 @@ namespace PhotographyAutomation.App.Forms.Admin
         #endregion
 
 
-        #region Buttons
-
-        private void btnSavePrintSizeProperties_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void btnSavePhotoSizePrices_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnSavePrintServicePrice_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        #endregion
-
-
         #region ComboBoxes Selected Index Chenged
 
         private void cmbPrintSizes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            iiFirstPrintPrice.ResetText();
-            iiRePrintPrice.ResetText();
+            ResetInputs();
 
-            //int printSizeId = (int) cmbPrintSizes.SelectedValue;
-            if (!int.TryParse(cmbPrintSizes.SelectedValue.ToString(), out int printSizeId)) return;
+            if (!int.TryParse(cmbPrintSizes.SelectedValue.ToString(), out var printSizeId)) return;
 
             var sizeModel = _printSizesViewModels.FirstOrDefault(x => x.Id == printSizeId);
-            if (sizeModel == null) return;
+            var sizePriceModel = _printSizePricesViewModels.FirstOrDefault(x => x.PrintSizeId == printSizeId);
 
-
+            if (sizeModel == null)
+            {
+                MessageBox.Show("اطلاعات اندازه چاپ قابل دریافت نمی باشد.","",
+                    MessageBoxButtons.OK,MessageBoxIcon.Error,MessageBoxDefaultButton.Button1,
+                    MessageBoxOptions.RtlReading);
+                return;
+            };
 
             iiMinimumOrder.Value = sizeModel.MinimumOrder;
 
-            var sizePriceModel = _printSizePricesViewModels.Find(x => x.Id == sizeModel.Id);
-            if (sizePriceModel == null) return;
+            if (sizePriceModel == null)
+            {
+                MessageBox.Show("برای این اندازه چاپ قمیتی تعریف نشده است.","",
+                    MessageBoxButtons.OK,MessageBoxIcon.Error,MessageBoxDefaultButton.Button1,
+                    MessageBoxOptions.RtlReading);
+                return;
+            }
 
             if (sizePriceModel.FirstPrintPrice != null) iiFirstPrintPrice.Value = sizePriceModel.FirstPrintPrice.Value;
             if (sizePriceModel.RePrintPrice != null) iiRePrintPrice.Value = sizePriceModel.RePrintPrice.Value;
@@ -332,8 +358,6 @@ namespace PhotographyAutomation.App.Forms.Admin
                 chkHasScanAndProcess.Enabled = false;
             }
 
-
-
             if (sizeModel.HasItalianAlbum)
             {
                 panelHasItalianAlbum.Enabled = true;
@@ -346,6 +370,8 @@ namespace PhotographyAutomation.App.Forms.Admin
                 chkHasItalianAlbum.Checked = false;
                 chkHasItalianAlbum.Enabled = false;
             }
+
+
 
             if (sizeModel.IsActive)
             {
@@ -366,7 +392,28 @@ namespace PhotographyAutomation.App.Forms.Admin
             }
         }
 
+        private void ResetInputs()
+        {
+            chkHasItalianAlbum.Checked = false;
+            chkHasLitPrint.Checked = false;
+            chkHasMedialPhoto.Checked = false;
+            chkHasScanAndProcess.Checked = false;
+            chkIsActive.Checked = false;
+            chkIsDeleted.Checked = false;
 
+            iiMinimumOrder.Value = 0;
+
+            iiRePrintPrice.ResetText();
+            iiFirstPrintPrice.ResetText();
+            iiItalianAlbumBoundingPrice.ResetText();
+            iiItalianAlbumPagePrice.ResetText();
+            iiLitPrintFirstPrint.ResetText();
+            iiLitPrintRePrint.ResetText();
+            iiMedicalFirstPrint.ResetText();
+            iiMedicalRePrint.ResetText();
+            iiScanAndPrint.ResetText();
+            iiScanAndProcess.ResetText();
+        }
 
         #endregion
 
@@ -389,7 +436,8 @@ namespace PhotographyAutomation.App.Forms.Admin
             {
                 frmAddEditPrintSize.IsNewPrintSize = false;
                 frmAddEditPrintSize.PrintSizeId = printSizeId;
-                if (frmAddEditPrintSize.ShowDialog() == DialogResult.OK)
+                var dr = frmAddEditPrintSize.ShowDialog();
+                if ( dr== DialogResult.OK)
                 {
                     FrmAddEditPrintSizeAndServices_Refactored_Load(null, null);
                 }
@@ -403,11 +451,11 @@ namespace PhotographyAutomation.App.Forms.Admin
 
         private void تعریف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (cmbPrintSizes.DataSource == null || cmbPrintSizes.SelectedIndex == -1 || cmbPrintSizes.Items.Count <= 0) 
+            if (cmbPrintSizes.DataSource == null || cmbPrintSizes.SelectedIndex == -1 || cmbPrintSizes.Items.Count <= 0)
                 return;
-            if (!int.TryParse(cmbPrintSizes.SelectedValue.ToString(), out var selectedPrintSizeId)) 
+            if (!int.TryParse(cmbPrintSizes.SelectedValue.ToString(), out var selectedPrintSizeId))
                 return;
-            
+
             using (var frmPrintServices = new FrmAddEditPrintSizeServices())
             {
                 frmPrintServices.PrintSizeId = selectedPrintSizeId;

@@ -14,6 +14,7 @@ namespace PhotographyAutomation.App.Forms.Admin
     {
         public bool IsNewPrintSize = false;
         public int PrintSizeId = 0;
+        public bool HasSizePriceBefore = false;
 
         public FrmAddEditPrintSize()
         {
@@ -30,102 +31,98 @@ namespace PhotographyAutomation.App.Forms.Admin
                 {
                 RetryGetPrintSizeInfo:
                     var printSizeInDb = db.PrintSizesGenericRepository.GetById(PrintSizeId);
-                    if (printSizeInDb != null)
+
+                    if (printSizeInDb != null) GetPrintSizeInfoAndPlaceThem(printSizeInDb);
+                    else
                     {
-                        doubleInputWidth.Value = printSizeInDb.Width;
-                        doubleInputHeight.Value = printSizeInDb.Height;
-                        txtDescription.Text = printSizeInDb.Descriptions;
-                        chkHasItalianAlbum.Checked = printSizeInDb.HasItalianAlbum;
-                        chkHasLitPrint.Checked = printSizeInDb.HasLitPrint;
-                        chkHasMedialPhoto.Checked = printSizeInDb.HasMedicalPhoto;
-                        chkHasScanAndProcess.Checked = printSizeInDb.HasScanAndProcessing;
-                        chkIsActive.Checked = printSizeInDb.IsActive;
-                        chkIsDeleted.Checked = printSizeInDb.IsDeleted;
-                        iiMinimumOrder.Value = printSizeInDb.MinimumOrder;
-
-                        iiScanAndPrint.Enabled = iiScanAndProcess.Enabled = chkHasScanAndProcess.Checked;
-                        iiLitPrintFirstPrint.Enabled = iiLitPrintRePrint.Enabled = chkHasLitPrint.Checked;
-                        iiMedicalFirstPrint.Enabled = iiMedicalRePrint.Enabled = chkHasMedialPhoto.Checked;
-                        iiItalianAlbumPagePrice.Enabled =
-                            iiItalianAlbumBoundingPrice.Enabled = chkHasItalianAlbum.Checked;
-
-                    RetryGetPrintSizePriceInfo:
-                        var printSizePriceInDb =
-                            db.PrintSizePriceGenericRepository.Get(x => x.PrintSizeId == PrintSizeId).FirstOrDefault();
-                        if (printSizePriceInDb != null)
+                        var dr = MessageBox.Show(
+                            @"متاسفانه اطلاعات اندازه چاپ فایل دریافت نمی باشد." + Environment.NewLine +
+                            @"لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.",
+                            @"خطا در دریافت اطلاعات اندازه چاپ",
+                            MessageBoxButtons.RetryCancel, MessageBoxIcon.Error,
+                            MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
+                        if (dr == DialogResult.Retry)
                         {
-                            if (printSizePriceInDb.FirstPrintPrice != null)
-                                iiFirstPrintPrice.Value = printSizePriceInDb.FirstPrintPrice.Value;
-                            if (printSizePriceInDb.RePrintPrice != null)
-                                iiRePrintPrice.Value = printSizePriceInDb.RePrintPrice.Value;
+                            goto RetryGetPrintSizeInfo;
+                        }
 
-                            if (chkHasItalianAlbum.Checked)
-                            {
-                                if (printSizePriceInDb.ItalianAlbumPagePrice != null)
-                                    iiItalianAlbumPagePrice.Value = printSizePriceInDb.ItalianAlbumPagePrice.Value;
-                                if (printSizePriceInDb.ItalianAlbumBoundingPrice != null)
-                                    iiItalianAlbumBoundingPrice.Value =
-                                        printSizePriceInDb.ItalianAlbumBoundingPrice.Value;
-                            }
-                            else
-                            {
-                                iiItalianAlbumPagePrice.ResetText();
-                                iiItalianAlbumBoundingPrice.ResetText();
-                            }
+                        Close();
+                    }
 
-                            if (chkHasLitPrint.Checked)
-                            {
-                                if (printSizePriceInDb.LitPrintPrice != null)
-                                    iiLitPrintFirstPrint.Value = printSizePriceInDb.LitPrintPrice.Value;
-                                if (printSizePriceInDb.LitPrintRePrintPrice != null)
-                                    iiLitPrintRePrint.Value = printSizePriceInDb.LitPrintRePrintPrice.Value;
-                            }
-                            else
-                            {
-                                iiLitPrintFirstPrint.ResetText();
-                                iiLitPrintRePrint.ResetText();
-                            }
+                    var printSizePriceInDb = db.PrintSizePriceGenericRepository
+                                                .Get(x => x.PrintSizeId == PrintSizeId)
+                                                .FirstOrDefault();
 
-                            if (chkHasMedialPhoto.Checked)
-                            {
-                                if (printSizePriceInDb.MedicalPrice != null)
-                                    iiMedicalFirstPrint.Value = printSizePriceInDb.MedicalPrice.Value;
-                                if (printSizePriceInDb.MedicalRePrintPrice != null)
-                                    iiMedicalRePrint.Value = printSizePriceInDb.MedicalRePrintPrice.Value;
-                            }
-                            else
-                            {
-                                iiMedicalFirstPrint.ResetText();
-                                iiMedicalRePrint.ResetText();
-                            }
+                    if (printSizeInDb != null && printSizePriceInDb == null)
+                    {
+                        var dr = MessageBox.Show(
+                            @"ظاهرا اطلاعات قیمتی برای این اندازه چاپ ثبت نشده است. " +
+                            @"آیا مایل به ثبت قیمت برای این اندازه چاپ هستید؟",
+                            @"ثبت قیمت برای اندازه چاپ",
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                            MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign);
+                        if (dr != DialogResult.Yes) Close();
 
-                            if (chkHasScanAndProcess.Checked)
-                            {
-                                if (printSizePriceInDb.ScanAndPrintPrice != null)
-                                    iiScanAndPrint.Value = printSizePriceInDb.ScanAndPrintPrice.Value;
-                                if (printSizePriceInDb.ScanAndProcessingPrice != null)
-                                    iiScanAndProcess.Value = printSizePriceInDb.ScanAndProcessingPrice.Value;
-                            }
-                            else
-                            {
-                                iiScanAndPrint.ResetText();
-                                iiScanAndProcess.ResetText();
-                            }
+                        //GetPrintSizeInfoAndPlaceThem(printSizeInDb);
+                    }
+                    else if (printSizeInDb != null && printSizeInDb.TblPrintSizePrices.Count != 0)
+                    {
+                        if (printSizePriceInDb.FirstPrintPrice != null)
+                            iiFirstPrintPrice.Value = printSizePriceInDb.FirstPrintPrice.Value;
+                        if (printSizePriceInDb.RePrintPrice != null)
+                            iiRePrintPrice.Value = printSizePriceInDb.RePrintPrice.Value;
+
+                        if (chkHasItalianAlbum.Checked)
+                        {
+                            if (printSizePriceInDb.ItalianAlbumPagePrice != null)
+                                iiItalianAlbumPagePrice.Value = printSizePriceInDb.ItalianAlbumPagePrice.Value;
+                            if (printSizePriceInDb.ItalianAlbumBoundingPrice != null)
+                                iiItalianAlbumBoundingPrice.Value =
+                                    printSizePriceInDb.ItalianAlbumBoundingPrice.Value;
                         }
                         else
                         {
-                            var dr = MessageBox.Show(
-                                @"متاسفانه اطلاعات قیمت اندازه چاپ فایل دریافت نمی باشد." + Environment.NewLine +
-                                @"لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.",
-                                @"خطا در دریافت اطلاعات قیمت اندازه چاپ",
-                                MessageBoxButtons.RetryCancel, MessageBoxIcon.Error,
-                                MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
-                            if (dr == DialogResult.Retry)
-                            {
-                                goto RetryGetPrintSizePriceInfo;
-                            }
+                            iiItalianAlbumPagePrice.ResetText();
+                            iiItalianAlbumBoundingPrice.ResetText();
+                        }
 
-                            Close();
+                        if (chkHasLitPrint.Checked)
+                        {
+                            if (printSizePriceInDb.LitPrintPrice != null)
+                                iiLitPrintFirstPrint.Value = printSizePriceInDb.LitPrintPrice.Value;
+                            if (printSizePriceInDb.LitPrintRePrintPrice != null)
+                                iiLitPrintRePrint.Value = printSizePriceInDb.LitPrintRePrintPrice.Value;
+                        }
+                        else
+                        {
+                            iiLitPrintFirstPrint.ResetText();
+                            iiLitPrintRePrint.ResetText();
+                        }
+
+                        if (chkHasMedialPhoto.Checked)
+                        {
+                            if (printSizePriceInDb.MedicalPrice != null)
+                                iiMedicalFirstPrint.Value = printSizePriceInDb.MedicalPrice.Value;
+                            if (printSizePriceInDb.MedicalRePrintPrice != null)
+                                iiMedicalRePrint.Value = printSizePriceInDb.MedicalRePrintPrice.Value;
+                        }
+                        else
+                        {
+                            iiMedicalFirstPrint.ResetText();
+                            iiMedicalRePrint.ResetText();
+                        }
+
+                        if (chkHasScanAndProcess.Checked)
+                        {
+                            if (printSizePriceInDb.ScanAndPrintPrice != null)
+                                iiScanAndPrint.Value = printSizePriceInDb.ScanAndPrintPrice.Value;
+                            if (printSizePriceInDb.ScanAndProcessingPrice != null)
+                                iiScanAndProcess.Value = printSizePriceInDb.ScanAndProcessingPrice.Value;
+                        }
+                        else
+                        {
+                            iiScanAndPrint.ResetText();
+                            iiScanAndProcess.ResetText();
                         }
                     }
                     else
@@ -154,6 +151,26 @@ namespace PhotographyAutomation.App.Forms.Admin
                 MessageBox.Show(exception.Message, exception.HResult.ToString());
                 Close();
             }
+        }
+
+        private void GetPrintSizeInfoAndPlaceThem(TblPrintSizes printSizeInDb)
+        {
+            doubleInputWidth.Value = printSizeInDb.Width;
+            doubleInputHeight.Value = printSizeInDb.Height;
+            txtDescription.Text = printSizeInDb.Descriptions;
+
+            chkHasItalianAlbum.Checked = printSizeInDb.HasItalianAlbum;
+            chkHasLitPrint.Checked = printSizeInDb.HasLitPrint;
+            chkHasMedialPhoto.Checked = printSizeInDb.HasMedicalPhoto;
+            chkHasScanAndProcess.Checked = printSizeInDb.HasScanAndProcessing;
+            chkIsActive.Checked = printSizeInDb.IsActive;
+            chkIsDeleted.Checked = printSizeInDb.IsDeleted;
+            iiMinimumOrder.Value = printSizeInDb.MinimumOrder;
+
+            iiScanAndPrint.Enabled = iiScanAndProcess.Enabled = chkHasScanAndProcess.Checked;
+            iiLitPrintFirstPrint.Enabled = iiLitPrintRePrint.Enabled = chkHasLitPrint.Checked;
+            iiMedicalFirstPrint.Enabled = iiMedicalRePrint.Enabled = chkHasMedialPhoto.Checked;
+            iiItalianAlbumPagePrice.Enabled = iiItalianAlbumBoundingPrice.Enabled = chkHasItalianAlbum.Checked;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -332,89 +349,99 @@ namespace PhotographyAutomation.App.Forms.Admin
                             printSizeInDb.IsDeleted = chkIsDeleted.Checked;
                             printSizeInDb.MinimumOrder = (byte)iiMinimumOrder.Value;
 
-                            var printSizePriceInDb = db.PrintSizePriceGenericRepository
+                            db.PrintSizesGenericRepository.Update(printSizeInDb);
+
+                            var sizePrices = db.PrintSizePriceGenericRepository
                                 .Get(x => x.PrintSizeId == PrintSizeId)
                                 .FirstOrDefault();
-                            if (printSizePriceInDb != null)
+                            HasSizePriceBefore = sizePrices != null;
+
+                            if (sizePrices == null) sizePrices = new TblPrintSizePrices();
+
+                            sizePrices.FirstPrintPrice = iiFirstPrintPrice.Value;
+                            sizePrices.RePrintPrice = iiRePrintPrice.Value;
+
+
+                            if (chkHasItalianAlbum.Checked)
                             {
+                                sizePrices.ItalianAlbumPagePrice = iiItalianAlbumPagePrice.Value;
+                                sizePrices.ItalianAlbumBoundingPrice = iiItalianAlbumBoundingPrice.Value;
+                            }
+                            else
+                            {
+                                sizePrices.ItalianAlbumPagePrice = null;
+                                sizePrices.ItalianAlbumBoundingPrice = null;
+                            }
+
+                            if (chkHasLitPrint.Checked)
+                            {
+                                sizePrices.LitPrintPrice = iiLitPrintFirstPrint.Value;
+                                sizePrices.LitPrintRePrintPrice = iiLitPrintRePrint.Value;
+                            }
+                            else
+                            {
+                                sizePrices.LitPrintPrice = null;
+                                sizePrices.LitPrintRePrintPrice = null;
+                            }
+
+                            if (chkHasMedialPhoto.Checked)
+                            {
+                                sizePrices.MedicalPrice = iiMedicalFirstPrint.Value;
+                                sizePrices.MedicalRePrintPrice = iiMedicalRePrint.Value;
+                            }
+                            else
+                            {
+                                sizePrices.MedicalPrice = null;
+                                sizePrices.MedicalRePrintPrice = null;
+                            }
+
+                            if (chkHasScanAndProcess.Checked)
+                            {
+                                sizePrices.ScanAndPrintPrice = iiScanAndPrint.Value;
+                                sizePrices.ScanAndProcessingPrice = iiScanAndProcess.Value;
+                            }
+                            else
+                            {
+                                sizePrices.ScanAndPrintPrice = null;
+                                sizePrices.ScanAndProcessingPrice = null;
+                            }
+
+                            if (HasSizePriceBefore == false)
+                            {
+                                sizePrices.PrintSizeId = PrintSizeId;
+                                db.PrintSizePriceGenericRepository.Insert(sizePrices);
+                            }
+                            else
+                            {
+                                sizePrices.PrintSizeId = PrintSizeId;
+                                db.PrintSizePriceGenericRepository.Update(sizePrices);
+                            }
+
+
                             RetryUpdatePrintSizeAndPrice:
-                                printSizePriceInDb.FirstPrintPrice = iiFirstPrintPrice.Value;
-                                printSizePriceInDb.RePrintPrice = iiRePrintPrice.Value;
+                            var resultInsertOrUpdatePrintSizePrice = db.Save();
 
-                                if (chkHasItalianAlbum.Checked)
-                                {
-                                    printSizePriceInDb.ItalianAlbumPagePrice = iiItalianAlbumPagePrice.Value;
-                                    printSizePriceInDb.ItalianAlbumBoundingPrice = iiItalianAlbumBoundingPrice.Value;
-                                }
-                                else
-                                {
-                                    printSizePriceInDb.ItalianAlbumPagePrice = null;
-                                    printSizePriceInDb.ItalianAlbumBoundingPrice = null;
-                                }
-
-                                if (chkHasLitPrint.Checked)
-                                {
-                                    printSizePriceInDb.LitPrintPrice = iiLitPrintFirstPrint.Value;
-                                    printSizePriceInDb.LitPrintRePrintPrice = iiLitPrintRePrint.Value;
-                                }
-                                else
-                                {
-                                    printSizePriceInDb.LitPrintPrice = null;
-                                    printSizePriceInDb.LitPrintRePrintPrice = null;
-                                }
-
-                                if (chkHasMedialPhoto.Checked)
-                                {
-                                    printSizePriceInDb.MedicalPrice = iiMedicalFirstPrint.Value;
-                                    printSizePriceInDb.MedicalRePrintPrice = iiMedicalRePrint.Value;
-                                }
-                                else
-                                {
-                                    printSizePriceInDb.MedicalPrice = null;
-                                    printSizePriceInDb.MedicalRePrintPrice = null;
-                                }
-
-                                if (chkHasScanAndProcess.Checked)
-                                {
-                                    printSizePriceInDb.ScanAndPrintPrice = iiScanAndPrint.Value;
-                                    printSizePriceInDb.ScanAndProcessingPrice = iiScanAndProcess.Value;
-                                }
-                                else
-                                {
-                                    printSizePriceInDb.ScanAndPrintPrice = null;
-                                    printSizePriceInDb.ScanAndProcessingPrice = null;
-                                }
-
-                                db.PrintSizesGenericRepository.Update(printSizeInDb);
-                                //var resultUpdatePrintSize=db.Save();
-
-                                db.PrintSizePriceGenericRepository.Update(printSizePriceInDb);
-                                var resultUpdatePrintSizePrice = db.Save();
-
-                                if (resultUpdatePrintSizePrice > 0)
-                                {
-                                    MessageBox.Show(
-                                        @"اطلاعات اندازه چاپ و قیمت آن با موفقیت در سیستم به روز گردید.",
-                                        @"ثبت اطلاعات در سیستم",
-                                        MessageBoxButtons.OK, MessageBoxIcon.Information,
-                                        MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
-                                    DialogResult = DialogResult.OK;
-                                }
-                                else
-                                {
-                                    var dr = MessageBox.Show(
-                                        @"متاسفانه اطلاعات اندازه عکس و قیمت با موفقیت در سیستم ثبت نگردید." +
-                                        Environment.NewLine +
-                                        @"لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.",
-                                        @"خطا در به روز رسانی اطلاعات ",
-                                        MessageBoxButtons.RetryCancel,
-                                        MessageBoxIcon.Error, MessageBoxDefaultButton.Button1,
-                                        MessageBoxOptions.RtlReading);
-                                    if (dr == DialogResult.Retry)
-                                    {
-                                        goto RetryUpdatePrintSizeAndPrice;
-                                    }
-                                }
+                            if (resultInsertOrUpdatePrintSizePrice > 0)
+                            {
+                                MessageBox.Show(
+                                    @"اطلاعات اندازه چاپ و قیمت آن با موفقیت در سیستم به روز گردید.",
+                                    @"ثبت اطلاعات در سیستم",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information,
+                                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
+                                DialogResult = DialogResult.OK;
+                            }
+                            else
+                            {
+                                var dr = MessageBox.Show(
+                                    @"متاسفانه اطلاعات اندازه عکس و قیمت با موفقیت در سیستم ثبت نگردید." +
+                                    Environment.NewLine +
+                                    @"لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.",
+                                    @"خطا در به روز رسانی اطلاعات ",
+                                    MessageBoxButtons.RetryCancel,
+                                    MessageBoxIcon.Error, MessageBoxDefaultButton.Button1,
+                                    MessageBoxOptions.RtlReading);
+                                if (dr == DialogResult.Retry)
+                                    goto RetryUpdatePrintSizeAndPrice;
                             }
                         }
                         else
@@ -436,9 +463,9 @@ namespace PhotographyAutomation.App.Forms.Admin
                 }
                 catch (Exception exception)
                 {
-                    MessageBox.Show(@"خطا در دریافت اطلاعات اندازه چاپ از سیستم", exception.HResult.ToString(),
-                        MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1,
-                        MessageBoxOptions.RtlReading);
+                    MessageBox.Show(@"خطا در دریافت اطلاعات اندازه چاپ از سیستم", "",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Asterisk,
+                                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
 
                     MessageBox.Show(exception.Message, exception.HResult.ToString());
                     Close();

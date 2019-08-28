@@ -226,7 +226,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="10" />
           <Property Name="PrintSizeId" Type="int" Nullable="false" />
           <Property Name="PrintServiceId" Type="int" Nullable="false" />
           <Property Name="Price" Type="int" Nullable="false" />
@@ -648,7 +648,7 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TblPrintServicePrice_TblPrintServices1">
+        <Association Name="FK_TblPrintServicePrices_TblPrintServices">
           <End Role="TblPrintServices" Type="Self.TblPrintServices" Multiplicity="1" />
           <End Role="TblPrintServicePrices" Type="Self.TblPrintServicePrices" Multiplicity="*" />
           <ReferentialConstraint>
@@ -660,7 +660,7 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TblPrintServicePrice_TblPrintSizes">
+        <Association Name="FK_TblPrintServicePrices_TblPrintSizes">
           <End Role="TblPrintSizes" Type="Self.TblPrintSizes" Multiplicity="1" />
           <End Role="TblPrintServicePrices" Type="Self.TblPrintServicePrices" Multiplicity="*" />
           <ReferentialConstraint>
@@ -895,11 +895,11 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
             <End Role="TblOrder" EntitySet="TblOrder" />
             <End Role="TblOrderFiles" EntitySet="TblOrderFiles" />
           </AssociationSet>
-          <AssociationSet Name="FK_TblPrintServicePrice_TblPrintServices1" Association="Self.FK_TblPrintServicePrice_TblPrintServices1">
+          <AssociationSet Name="FK_TblPrintServicePrices_TblPrintServices" Association="Self.FK_TblPrintServicePrices_TblPrintServices">
             <End Role="TblPrintServices" EntitySet="TblPrintServices" />
             <End Role="TblPrintServicePrices" EntitySet="TblPrintServicePrices" />
           </AssociationSet>
-          <AssociationSet Name="FK_TblPrintServicePrice_TblPrintSizes" Association="Self.FK_TblPrintServicePrice_TblPrintSizes">
+          <AssociationSet Name="FK_TblPrintServicePrices_TblPrintSizes" Association="Self.FK_TblPrintServicePrices_TblPrintSizes">
             <End Role="TblPrintSizes" EntitySet="TblPrintSizes" />
             <End Role="TblPrintServicePrices" EntitySet="TblPrintServicePrices" />
           </AssociationSet>
@@ -1002,9 +1002,15 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           <EntitySet Name="TblPrintCustomerFiles" EntityType="PhotographyAutomationDBModel.TblPrintCustomerFiles" />
           <EntitySet Name="TblPrintServicePrices" EntityType="PhotographyAutomationDBModel.TblPrintServicePrices" />
           <EntitySet Name="TblPrintServices" EntityType="PhotographyAutomationDBModel.TblPrintServices" />
+          <EntitySet Name="TblPrintSizePrices" EntityType="PhotographyAutomationDBModel.TblPrintSizePrices" />
+          <EntitySet Name="TblPrintSizes" EntityType="PhotographyAutomationDBModel.TblPrintSizes" />
           <EntitySet Name="TblPrintSpecialServices" EntityType="PhotographyAutomationDBModel.TblPrintSpecialServices" />
           <EntitySet Name="View_GetAllPhotos" EntityType="PhotographyAutomationDBModel.View_GetAllPhotos" />
           <EntitySet Name="View_GetDocumentsFolders" EntityType="PhotographyAutomationDBModel.View_GetDocumentsFolders" />
+          <AssociationSet Name="FK_TblAlbums_TblPrintSizes" Association="PhotographyAutomationDBModel.FK_TblAlbums_TblPrintSizes">
+            <End Role="TblPrintSizes" EntitySet="TblPrintSizes" />
+            <End Role="TblAlbums" EntitySet="TblAlbums" />
+          </AssociationSet>
           <AssociationSet Name="FK_TblAllOrderStatus_TblOrder" Association="PhotographyAutomationDBModel.FK_TblAllOrderStatus_TblOrder">
             <End Role="TblOrder" EntitySet="TblOrder" />
             <End Role="TblAllOrderStatus" EntitySet="TblAllOrderStatus" />
@@ -1093,27 +1099,21 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
             <End Role="TblPrintServices" EntitySet="TblPrintServices" />
             <End Role="TblOrderPrintDetails" EntitySet="TblOrderPrintDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK_TblPrintServicePrice_TblPrintServices1" Association="PhotographyAutomationDBModel.FK_TblPrintServicePrice_TblPrintServices1">
-            <End Role="TblPrintServices" EntitySet="TblPrintServices" />
-            <End Role="TblPrintServicePrices" EntitySet="TblPrintServicePrices" />
-          </AssociationSet>
-          <EntitySet Name="TblPrintSizes" EntityType="PhotographyAutomationDBModel.TblPrintSizes" />
-          <AssociationSet Name="FK_TblAlbums_TblPrintSizes" Association="PhotographyAutomationDBModel.FK_TblAlbums_TblPrintSizes">
-            <End Role="TblPrintSizes" EntitySet="TblPrintSizes" />
-            <End Role="TblAlbums" EntitySet="TblAlbums" />
-          </AssociationSet>
           <AssociationSet Name="FK_TblCustomerFilePrint_TblPrintSizes" Association="PhotographyAutomationDBModel.FK_TblCustomerFilePrint_TblPrintSizes">
             <End Role="TblPrintSizes" EntitySet="TblPrintSizes" />
             <End Role="TblPrintCustomerFiles" EntitySet="TblPrintCustomerFiles" />
           </AssociationSet>
-          <AssociationSet Name="FK_TblPrintServicePrice_TblPrintSizes" Association="PhotographyAutomationDBModel.FK_TblPrintServicePrice_TblPrintSizes">
-            <End Role="TblPrintSizes" EntitySet="TblPrintSizes" />
-            <End Role="TblPrintServicePrices" EntitySet="TblPrintServicePrices" />
-          </AssociationSet>
-          <EntitySet Name="TblPrintSizePrices" EntityType="PhotographyAutomationDBModel.TblPrintSizePrices" />
           <AssociationSet Name="FK_TblSizePrice_TblPrintSizes1" Association="PhotographyAutomationDBModel.FK_TblSizePrice_TblPrintSizes1">
             <End Role="TblPrintSizes" EntitySet="TblPrintSizes" />
             <End Role="TblPrintSizePrices" EntitySet="TblPrintSizePrices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblPrintServicePrices_TblPrintServices" Association="PhotographyAutomationDBModel.FK_TblPrintServicePrices_TblPrintServices">
+            <End Role="TblPrintServices" EntitySet="TblPrintServices" />
+            <End Role="TblPrintServicePrices" EntitySet="TblPrintServicePrices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblPrintServicePrices_TblPrintSizes" Association="PhotographyAutomationDBModel.FK_TblPrintServicePrices_TblPrintSizes">
+            <End Role="TblPrintSizes" EntitySet="TblPrintSizes" />
+            <End Role="TblPrintServicePrices" EntitySet="TblPrintServicePrices" />
           </AssociationSet>
           </EntityContainer>
         <ComplexType Name="usp_CreateFileTableFile_Result">
@@ -1432,12 +1432,12 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Code" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="PrintSizeId" Type="Int32" Nullable="false" />
           <Property Name="PrintServiceId" Type="Int32" Nullable="false" />
           <Property Name="Price" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="TblPrintServices" Relationship="PhotographyAutomationDBModel.FK_TblPrintServicePrice_TblPrintServices1" FromRole="TblPrintServicePrices" ToRole="TblPrintServices" />
-          <NavigationProperty Name="TblPrintSizes" Relationship="PhotographyAutomationDBModel.FK_TblPrintServicePrice_TblPrintSizes" FromRole="TblPrintServicePrices" ToRole="TblPrintSizes" />
+          <NavigationProperty Name="TblPrintServices" Relationship="PhotographyAutomationDBModel.FK_TblPrintServicePrices_TblPrintServices" FromRole="TblPrintServicePrices" ToRole="TblPrintServices" />
+          <NavigationProperty Name="TblPrintSizes" Relationship="PhotographyAutomationDBModel.FK_TblPrintServicePrices_TblPrintSizes" FromRole="TblPrintServicePrices" ToRole="TblPrintSizes" />
         </EntityType>
         <EntityType Name="TblPrintServices">
           <Key>
@@ -1448,7 +1448,49 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           <Property Name="PrintServiceName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PrintServiceDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TblOrderPrintDetails" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintServices" FromRole="TblPrintServices" ToRole="TblOrderPrintDetails" />
-          <NavigationProperty Name="TblPrintServicePrices" Relationship="PhotographyAutomationDBModel.FK_TblPrintServicePrice_TblPrintServices1" FromRole="TblPrintServices" ToRole="TblPrintServicePrices" />
+          <NavigationProperty Name="TblPrintServicePrices" Relationship="PhotographyAutomationDBModel.FK_TblPrintServicePrices_TblPrintServices" FromRole="TblPrintServices" ToRole="TblPrintServicePrices" />
+        </EntityType>
+        <EntityType Name="TblPrintSizePrices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrintSizeId" Type="Int32" Nullable="false" />
+          <Property Name="FirstPrintPrice" Type="Int32" />
+          <Property Name="RePrintPrice" Type="Int32" />
+          <Property Name="MedicalPrice" Type="Int32" />
+          <Property Name="MedicalRePrintPrice" Type="Int32" />
+          <Property Name="LitPrintPrice" Type="Int32" />
+          <Property Name="LitPrintRePrintPrice" Type="Int32" />
+          <Property Name="ScanAndPrintPrice" Type="Int32" />
+          <Property Name="ScanAndProcessingPrice" Type="Int32" />
+          <Property Name="ItalianAlbumPagePrice" Type="Int32" />
+          <Property Name="ItalianAlbumBoundingPrice" Type="Int32" />
+          <NavigationProperty Name="TblPrintSizes" Relationship="PhotographyAutomationDBModel.FK_TblSizePrice_TblPrintSizes1" FromRole="TblPrintSizePrices" ToRole="TblPrintSizes" />
+        </EntityType>
+        <EntityType Name="TblPrintSizes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Width" Type="Double" Nullable="false" />
+          <Property Name="Height" Type="Double" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="HasFirstPrint" Type="Boolean" Nullable="false" />
+          <Property Name="HasRePrint" Type="Boolean" Nullable="false" />
+          <Property Name="HasMedicalPhoto" Type="Boolean" Nullable="false" />
+          <Property Name="HasLitPrint" Type="Boolean" Nullable="false" />
+          <Property Name="HasScanAndProcessing" Type="Boolean" Nullable="false" />
+          <Property Name="HasAlbum" Type="Boolean" Nullable="false" />
+          <Property Name="HasItalianAlbum" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="MinimumOrder" Type="Byte" Nullable="false" />
+          <Property Name="Descriptions" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblAlbums" Relationship="PhotographyAutomationDBModel.FK_TblAlbums_TblPrintSizes" FromRole="TblPrintSizes" ToRole="TblAlbums" />
+          <NavigationProperty Name="TblPrintCustomerFiles" Relationship="PhotographyAutomationDBModel.FK_TblCustomerFilePrint_TblPrintSizes" FromRole="TblPrintSizes" ToRole="TblPrintCustomerFiles" />
+          <NavigationProperty Name="TblPrintSizePrices" Relationship="PhotographyAutomationDBModel.FK_TblSizePrice_TblPrintSizes1" FromRole="TblPrintSizes" ToRole="TblPrintSizePrices" />
+          <NavigationProperty Name="TblPrintServicePrices" Relationship="PhotographyAutomationDBModel.FK_TblPrintServicePrices_TblPrintSizes" FromRole="TblPrintSizes" ToRole="TblPrintServicePrices" />
         </EntityType>
         <EntityType Name="TblPrintSpecialServices">
           <Key>
@@ -1529,6 +1571,18 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           <Property Name="IsTemporary" Type="Boolean" Nullable="false" />
           <Property Name="IsDirectory" Type="Boolean" Nullable="false" />
         </EntityType>
+        <Association Name="FK_TblAlbums_TblPrintSizes">
+          <End Type="PhotographyAutomationDBModel.TblPrintSizes" Role="TblPrintSizes" Multiplicity="1" />
+          <End Type="PhotographyAutomationDBModel.TblAlbums" Role="TblAlbums" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblPrintSizes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblAlbums">
+              <PropertyRef Name="PrintSizeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TblAllOrderStatus_TblOrder">
           <End Type="PhotographyAutomationDBModel.TblOrder" Role="TblOrder" Multiplicity="1" />
           <End Type="PhotographyAutomationDBModel.TblAllOrderStatus" Role="TblAllOrderStatus" Multiplicity="*" />
@@ -1793,54 +1847,6 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TblPrintServicePrice_TblPrintServices1">
-          <End Type="PhotographyAutomationDBModel.TblPrintServices" Role="TblPrintServices" Multiplicity="1" />
-          <End Type="PhotographyAutomationDBModel.TblPrintServicePrices" Role="TblPrintServicePrices" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblPrintServices">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TblPrintServicePrices">
-              <PropertyRef Name="PrintServiceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="TblPrintSizes">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Width" Type="Double" Nullable="false" />
-          <Property Name="Height" Type="Double" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="HasFirstPrint" Type="Boolean" Nullable="false" />
-          <Property Name="HasRePrint" Type="Boolean" Nullable="false" />
-          <Property Name="HasMedicalPhoto" Type="Boolean" Nullable="false" />
-          <Property Name="HasLitPrint" Type="Boolean" Nullable="false" />
-          <Property Name="HasScanAndProcessing" Type="Boolean" Nullable="false" />
-          <Property Name="HasAlbum" Type="Boolean" Nullable="false" />
-          <Property Name="HasItalianAlbum" Type="Boolean" Nullable="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
-          <Property Name="MinimumOrder" Type="Byte" Nullable="false" />
-          <Property Name="Descriptions" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="TblAlbums" Relationship="PhotographyAutomationDBModel.FK_TblAlbums_TblPrintSizes" FromRole="TblPrintSizes" ToRole="TblAlbums" />
-          <NavigationProperty Name="TblPrintCustomerFiles" Relationship="PhotographyAutomationDBModel.FK_TblCustomerFilePrint_TblPrintSizes" FromRole="TblPrintSizes" ToRole="TblPrintCustomerFiles" />
-          <NavigationProperty Name="TblPrintServicePrices" Relationship="PhotographyAutomationDBModel.FK_TblPrintServicePrice_TblPrintSizes" FromRole="TblPrintSizes" ToRole="TblPrintServicePrices" />
-          <NavigationProperty Name="TblPrintSizePrices" Relationship="PhotographyAutomationDBModel.FK_TblSizePrice_TblPrintSizes1" FromRole="TblPrintSizes" ToRole="TblPrintSizePrices" />
-        </EntityType>
-        <Association Name="FK_TblAlbums_TblPrintSizes">
-          <End Type="PhotographyAutomationDBModel.TblPrintSizes" Role="TblPrintSizes" Multiplicity="1" />
-          <End Type="PhotographyAutomationDBModel.TblAlbums" Role="TblAlbums" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblPrintSizes">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TblAlbums">
-              <PropertyRef Name="PrintSizeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TblCustomerFilePrint_TblPrintSizes">
           <End Type="PhotographyAutomationDBModel.TblPrintSizes" Role="TblPrintSizes" Multiplicity="1" />
           <End Type="PhotographyAutomationDBModel.TblPrintCustomerFiles" Role="TblPrintCustomerFiles" Multiplicity="*" />
@@ -1853,36 +1859,6 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TblPrintServicePrice_TblPrintSizes">
-          <End Type="PhotographyAutomationDBModel.TblPrintSizes" Role="TblPrintSizes" Multiplicity="1" />
-          <End Type="PhotographyAutomationDBModel.TblPrintServicePrices" Role="TblPrintServicePrices" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblPrintSizes">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TblPrintServicePrices">
-              <PropertyRef Name="PrintSizeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="TblPrintSizePrices">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PrintSizeId" Type="Int32" Nullable="false" />
-          <Property Name="FirstPrintPrice" Type="Int32" />
-          <Property Name="RePrintPrice" Type="Int32" />
-          <Property Name="MedicalPrice" Type="Int32" />
-          <Property Name="MedicalRePrintPrice" Type="Int32" />
-          <Property Name="LitPrintPrice" Type="Int32" />
-          <Property Name="LitPrintRePrintPrice" Type="Int32" />
-          <Property Name="ScanAndPrintPrice" Type="Int32" />
-          <Property Name="ScanAndProcessingPrice" Type="Int32" />
-          <Property Name="ItalianAlbumPagePrice" Type="Int32" />
-          <Property Name="ItalianAlbumBoundingPrice" Type="Int32" />
-          <NavigationProperty Name="TblPrintSizes" Relationship="PhotographyAutomationDBModel.FK_TblSizePrice_TblPrintSizes1" FromRole="TblPrintSizePrices" ToRole="TblPrintSizes" />
-        </EntityType>
         <Association Name="FK_TblSizePrice_TblPrintSizes1">
           <End Type="PhotographyAutomationDBModel.TblPrintSizes" Role="TblPrintSizes" Multiplicity="1" />
           <End Type="PhotographyAutomationDBModel.TblPrintSizePrices" Role="TblPrintSizePrices" Multiplicity="*" />
@@ -1891,6 +1867,30 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="TblPrintSizePrices">
+              <PropertyRef Name="PrintSizeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblPrintServicePrices_TblPrintServices">
+          <End Type="PhotographyAutomationDBModel.TblPrintServices" Role="TblPrintServices" Multiplicity="1" />
+          <End Type="PhotographyAutomationDBModel.TblPrintServicePrices" Role="TblPrintServicePrices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblPrintServices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblPrintServicePrices">
+              <PropertyRef Name="PrintServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblPrintServicePrices_TblPrintSizes">
+          <End Type="PhotographyAutomationDBModel.TblPrintSizes" Role="TblPrintSizes" Multiplicity="1" />
+          <End Type="PhotographyAutomationDBModel.TblPrintServicePrices" Role="TblPrintServicePrices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblPrintSizes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblPrintServicePrices">
               <PropertyRef Name="PrintSizeId" />
             </Dependent>
           </ReferentialConstraint>
@@ -2219,6 +2219,45 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TblPrintSizePrices">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblPrintSizePrices">
+              <MappingFragment StoreEntitySet="TblPrintSizePrices">
+                <ScalarProperty Name="ItalianAlbumBoundingPrice" ColumnName="ItalianAlbumBoundingPrice" />
+                <ScalarProperty Name="ItalianAlbumPagePrice" ColumnName="ItalianAlbumPagePrice" />
+                <ScalarProperty Name="ScanAndProcessingPrice" ColumnName="ScanAndProcessingPrice" />
+                <ScalarProperty Name="ScanAndPrintPrice" ColumnName="ScanAndPrintPrice" />
+                <ScalarProperty Name="LitPrintRePrintPrice" ColumnName="LitPrintRePrintPrice" />
+                <ScalarProperty Name="LitPrintPrice" ColumnName="LitPrintPrice" />
+                <ScalarProperty Name="MedicalRePrintPrice" ColumnName="MedicalRePrintPrice" />
+                <ScalarProperty Name="MedicalPrice" ColumnName="MedicalPrice" />
+                <ScalarProperty Name="RePrintPrice" ColumnName="RePrintPrice" />
+                <ScalarProperty Name="FirstPrintPrice" ColumnName="FirstPrintPrice" />
+                <ScalarProperty Name="PrintSizeId" ColumnName="PrintSizeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblPrintSizes">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblPrintSizes">
+              <MappingFragment StoreEntitySet="TblPrintSizes">
+                <ScalarProperty Name="Descriptions" ColumnName="Descriptions" />
+                <ScalarProperty Name="MinimumOrder" ColumnName="MinimumOrder" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="HasItalianAlbum" ColumnName="HasItalianAlbum" />
+                <ScalarProperty Name="HasAlbum" ColumnName="HasAlbum" />
+                <ScalarProperty Name="HasScanAndProcessing" ColumnName="HasScanAndProcessing" />
+                <ScalarProperty Name="HasLitPrint" ColumnName="HasLitPrint" />
+                <ScalarProperty Name="HasMedicalPhoto" ColumnName="HasMedicalPhoto" />
+                <ScalarProperty Name="HasRePrint" ColumnName="HasRePrint" />
+                <ScalarProperty Name="HasFirstPrint" ColumnName="HasFirstPrint" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TblPrintSpecialServices">
             <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblPrintSpecialServices">
               <MappingFragment StoreEntitySet="TblPrintSpecialServices">
@@ -2279,45 +2318,6 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
                 <ScalarProperty Name="FolderName" ColumnName="FolderName" />
                 <ScalarProperty Name="FileStream" ColumnName="FileStream" />
                 <ScalarProperty Name="StreamId" ColumnName="StreamId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TblPrintSizes">
-            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblPrintSizes">
-              <MappingFragment StoreEntitySet="TblPrintSizes">
-                <ScalarProperty Name="Descriptions" ColumnName="Descriptions" />
-                <ScalarProperty Name="MinimumOrder" ColumnName="MinimumOrder" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="HasItalianAlbum" ColumnName="HasItalianAlbum" />
-                <ScalarProperty Name="HasAlbum" ColumnName="HasAlbum" />
-                <ScalarProperty Name="HasScanAndProcessing" ColumnName="HasScanAndProcessing" />
-                <ScalarProperty Name="HasLitPrint" ColumnName="HasLitPrint" />
-                <ScalarProperty Name="HasMedicalPhoto" ColumnName="HasMedicalPhoto" />
-                <ScalarProperty Name="HasRePrint" ColumnName="HasRePrint" />
-                <ScalarProperty Name="HasFirstPrint" ColumnName="HasFirstPrint" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Height" ColumnName="Height" />
-                <ScalarProperty Name="Width" ColumnName="Width" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TblPrintSizePrices">
-            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblPrintSizePrices">
-              <MappingFragment StoreEntitySet="TblPrintSizePrices">
-                <ScalarProperty Name="ItalianAlbumBoundingPrice" ColumnName="ItalianAlbumBoundingPrice" />
-                <ScalarProperty Name="ItalianAlbumPagePrice" ColumnName="ItalianAlbumPagePrice" />
-                <ScalarProperty Name="ScanAndProcessingPrice" ColumnName="ScanAndProcessingPrice" />
-                <ScalarProperty Name="ScanAndPrintPrice" ColumnName="ScanAndPrintPrice" />
-                <ScalarProperty Name="LitPrintRePrintPrice" ColumnName="LitPrintRePrintPrice" />
-                <ScalarProperty Name="LitPrintPrice" ColumnName="LitPrintPrice" />
-                <ScalarProperty Name="MedicalRePrintPrice" ColumnName="MedicalRePrintPrice" />
-                <ScalarProperty Name="MedicalPrice" ColumnName="MedicalPrice" />
-                <ScalarProperty Name="RePrintPrice" ColumnName="RePrintPrice" />
-                <ScalarProperty Name="FirstPrintPrice" ColumnName="FirstPrintPrice" />
-                <ScalarProperty Name="PrintSizeId" ColumnName="PrintSizeId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

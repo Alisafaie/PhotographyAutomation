@@ -6,6 +6,6 @@ namespace PhotographyAutomation.DateLayer.Repositories
     public interface IPrintSizeRepository
     {
         List<PrintSizesViewModel> GetAllPrintSizes();
-        List<PrintServicesViewModel> GetAllPrintSizeServices(int printSizeId);
+        List<PrintServicesViewModel> GetAllPrintSizeServicesByPrintSizeId(int printSizeId);
     }
 }

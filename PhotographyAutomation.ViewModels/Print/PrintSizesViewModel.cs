@@ -31,6 +31,15 @@ namespace PhotographyAutomation.ViewModels.Print
         public int ItalianAlbumPagePrice { get; set; }
         public int ItalianAlbumBoundingPrice { get; set; }
 
+        public int PrintServiceId { get; set; }
+        public string PrintServiceName { get; set; }
+        public string PrintServiceCode { get; set; }
+        public int PrintServicePrice { get; set; }
+        public string PrintServicePriceCode { get; set; }
+
+
         public List<PrintServicesViewModel> PrintServicesViewModels { get; set; }
+
+
     }
 }

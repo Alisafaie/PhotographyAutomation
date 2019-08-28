@@ -47,11 +47,11 @@ namespace PhotographyAutomation.DateLayer.Services
             catch (Exception exception)
             {
                 WriteDebugInfoToOutput(exception);
-                throw exception;
+                throw;
             }
         }
 
-        public List<PrintServicesViewModel> GetAllPrintSizeServices(int printSizeId)
+        public List<PrintServicesViewModel> GetAllPrintSizeServicesByPrintSizeId(int printSizeId)
         {
             try
             {
@@ -71,13 +71,11 @@ namespace PhotographyAutomation.DateLayer.Services
                                 .ToList();
 
                 return result;
-
-
             }
             catch (Exception exception)
             {
                 WriteDebugInfoToOutput(exception);
-                throw exception;
+                throw;
             }
         }
 
