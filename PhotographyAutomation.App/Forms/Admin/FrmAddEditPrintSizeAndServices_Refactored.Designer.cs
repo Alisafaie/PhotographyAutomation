@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.groupBoxPrintSize = new System.Windows.Forms.GroupBox();
             this.panelPrintSize1 = new System.Windows.Forms.Panel();
@@ -121,6 +121,7 @@
             this.clmPrintServiceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panelEx1.SuspendLayout();
             this.groupBoxPrintSize.SuspendLayout();
             this.panelPrintSize1.SuspendLayout();
@@ -152,6 +153,7 @@
             this.panelEx3.SuspendLayout();
             this.gbDataGridView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrintServices)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelEx1
@@ -198,9 +200,9 @@
             this.panelPrintSize1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelPrintSize1.Controls.Add(this.cmbPrintSizes);
             this.panelPrintSize1.Controls.Add(this.label1);
-            this.panelPrintSize1.Location = new System.Drawing.Point(856, 23);
+            this.panelPrintSize1.Location = new System.Drawing.Point(838, 23);
             this.panelPrintSize1.Name = "panelPrintSize1";
-            this.panelPrintSize1.Size = new System.Drawing.Size(197, 37);
+            this.panelPrintSize1.Size = new System.Drawing.Size(215, 37);
             this.panelPrintSize1.TabIndex = 0;
             // 
             // cmbPrintSizes
@@ -209,7 +211,7 @@
             this.cmbPrintSizes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPrintSizes.FormattingEnabled = true;
             this.highlighter1.SetHighlightOnFocus(this.cmbPrintSizes, true);
-            this.cmbPrintSizes.Location = new System.Drawing.Point(4, 8);
+            this.cmbPrintSizes.Location = new System.Drawing.Point(22, 8);
             this.cmbPrintSizes.Name = "cmbPrintSizes";
             this.cmbPrintSizes.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cmbPrintSizes.Size = new System.Drawing.Size(124, 21);
@@ -220,7 +222,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(141, 12);
+            this.label1.Location = new System.Drawing.Point(159, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 6;
@@ -230,7 +232,7 @@
             // 
             this.panelIsDeleted.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelIsDeleted.Controls.Add(this.chkIsDeleted);
-            this.panelIsDeleted.Location = new System.Drawing.Point(209, 23);
+            this.panelIsDeleted.Location = new System.Drawing.Point(233, 23);
             this.panelIsDeleted.Name = "panelIsDeleted";
             this.panelIsDeleted.Size = new System.Drawing.Size(54, 37);
             this.panelIsDeleted.TabIndex = 1;
@@ -255,7 +257,7 @@
             // 
             this.panelIsActive.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelIsActive.Controls.Add(this.chkIsActive);
-            this.panelIsActive.Location = new System.Drawing.Point(269, 23);
+            this.panelIsActive.Location = new System.Drawing.Point(286, 23);
             this.panelIsActive.Name = "panelIsActive";
             this.panelIsActive.Size = new System.Drawing.Size(54, 37);
             this.panelIsActive.TabIndex = 1;
@@ -281,7 +283,7 @@
             this.panelHasItalianAlbum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelHasItalianAlbum.Controls.Add(this.chkHasItalianAlbum);
             this.panelHasItalianAlbum.Enabled = false;
-            this.panelHasItalianAlbum.Location = new System.Drawing.Point(329, 23);
+            this.panelHasItalianAlbum.Location = new System.Drawing.Point(339, 23);
             this.panelHasItalianAlbum.Name = "panelHasItalianAlbum";
             this.panelHasItalianAlbum.Size = new System.Drawing.Size(90, 37);
             this.panelHasItalianAlbum.TabIndex = 1;
@@ -308,7 +310,7 @@
             this.panelScanAndProcessing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelScanAndProcessing.Controls.Add(this.chkHasScanAndProcess);
             this.panelScanAndProcessing.Enabled = false;
-            this.panelScanAndProcessing.Location = new System.Drawing.Point(425, 23);
+            this.panelScanAndProcessing.Location = new System.Drawing.Point(428, 23);
             this.panelScanAndProcessing.Name = "panelScanAndProcessing";
             this.panelScanAndProcessing.Size = new System.Drawing.Size(132, 37);
             this.panelScanAndProcessing.TabIndex = 1;
@@ -335,7 +337,7 @@
             this.panelLitPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelLitPrint.Controls.Add(this.chkHasLitPrint);
             this.panelLitPrint.Enabled = false;
-            this.panelLitPrint.Location = new System.Drawing.Point(563, 23);
+            this.panelLitPrint.Location = new System.Drawing.Point(559, 23);
             this.panelLitPrint.Name = "panelLitPrint";
             this.panelLitPrint.Size = new System.Drawing.Size(73, 37);
             this.panelLitPrint.TabIndex = 1;
@@ -362,7 +364,7 @@
             this.panelMinimumOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelMinimumOrder.Controls.Add(this.iiMinimumOrder);
             this.panelMinimumOrder.Controls.Add(this.label2);
-            this.panelMinimumOrder.Location = new System.Drawing.Point(746, 23);
+            this.panelMinimumOrder.Location = new System.Drawing.Point(735, 23);
             this.panelMinimumOrder.Name = "panelMinimumOrder";
             this.panelMinimumOrder.Size = new System.Drawing.Size(104, 37);
             this.panelMinimumOrder.TabIndex = 1;
@@ -391,7 +393,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(40, 12);
+            this.label2.Location = new System.Drawing.Point(39, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 13);
             this.label2.TabIndex = 49;
@@ -402,7 +404,7 @@
             this.panelMedicalPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelMedicalPhoto.Controls.Add(this.chkHasMedialPhoto);
             this.panelMedicalPhoto.Enabled = false;
-            this.panelMedicalPhoto.Location = new System.Drawing.Point(642, 23);
+            this.panelMedicalPhoto.Location = new System.Drawing.Point(631, 23);
             this.panelMedicalPhoto.Name = "panelMedicalPhoto";
             this.panelMedicalPhoto.Size = new System.Drawing.Size(98, 37);
             this.panelMedicalPhoto.TabIndex = 1;
@@ -1149,19 +1151,19 @@
             // 
             this.dgvPrintServices.AllowUserToAddRows = false;
             this.dgvPrintServices.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvPrintServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvPrintServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
             this.dgvPrintServices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPrintServices.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvPrintServices.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPrintServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPrintServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.dgvPrintServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPrintServices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmId,
@@ -1175,28 +1177,28 @@
             this.clmPrintServiceName,
             this.clmPrice,
             this.clmDescription});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPrintServices.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPrintServices.DefaultCellStyle = dataGridViewCellStyle19;
             this.dgvPrintServices.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPrintServices.EnableHeadersVisualStyles = false;
             this.dgvPrintServices.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.dgvPrintServices.Location = new System.Drawing.Point(3, 17);
             this.dgvPrintServices.Name = "dgvPrintServices";
             this.dgvPrintServices.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPrintServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPrintServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.dgvPrintServices.RowHeadersVisible = false;
             this.dgvPrintServices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPrintServices.Size = new System.Drawing.Size(1053, 315);
@@ -1258,6 +1260,7 @@
             this.clmCode.HeaderText = "کد";
             this.clmCode.Name = "clmCode";
             this.clmCode.ReadOnly = true;
+            this.clmCode.Visible = false;
             // 
             // clmPrintSizeDescription
             // 
@@ -1291,6 +1294,11 @@
             this.clmDescription.Name = "clmDescription";
             this.clmDescription.ReadOnly = true;
             this.clmDescription.Visible = false;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.RightToLeft = true;
             // 
             // FrmAddEditPrintSizeAndServices_Refactored
             // 
@@ -1359,6 +1367,7 @@
             this.panelEx3.ResumeLayout(false);
             this.gbDataGridView.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrintServices)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1454,5 +1463,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPrintServiceName;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmDescription;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

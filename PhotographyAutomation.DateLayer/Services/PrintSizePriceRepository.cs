@@ -39,7 +39,10 @@ namespace PhotographyAutomation.DateLayer.Services
                                     Width = x.TblPrintSizes.Width,
                                     Height = x.TblPrintSizes.Height,
                                     SizeName = x.TblPrintSizes.Name,
-                                    SizeDescription = x.TblPrintSizes.Descriptions
+                                    SizeDescription = x.TblPrintSizes.Descriptions,
+                                    ItalianAlbumPagePrice = x.ItalianAlbumPagePrice,
+                                    ItalianAlbumPageBoundingPrice = x.ItalianAlbumBoundingPrice
+
                                 })
                     .OrderBy(x => x.Width)
                     .ThenBy(x => x.Height)

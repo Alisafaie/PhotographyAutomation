@@ -3,7 +3,7 @@ using PhotographyAutomation.ViewModels.Print;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace PhotographyAutomation.App.Forms.Admin
@@ -11,18 +11,6 @@ namespace PhotographyAutomation.App.Forms.Admin
     public partial class FrmAddEditPrintSizeAndServices_Refactored : Form
     {
         #region Variables
-
-        //private bool _newSizeFlag;
-        //private bool _editSizeFlag;
-        //private bool _deleteSizeFlag;
-
-        //private int _selectedPrintSizeId;
-        //private int _selectedPrintServiceId;
-        //private int _selectedPrintSizeServiceId;
-
-        //private readonly BackgroundWorker _bgWorkerUpdatePrintSizeService = new BackgroundWorker();
-        //private readonly BackgroundWorker _bgWorkerSaveNewPrintSizeService = new BackgroundWorker();
-
 
         private readonly BackgroundWorker _bgWorkerGetAllPhotoSizes = new BackgroundWorker
         {
@@ -62,10 +50,6 @@ namespace PhotographyAutomation.App.Forms.Admin
             _bgWorkerGetAllPrintSizeServices.RunWorkerCompleted += _bgWorkerGetAllPrintSizeServices_RunWorkerCompleted;
         }
 
-        
-
-        
-
         private void FrmAddEditPrintSizeAndServices_Refactored_Load(object sender, EventArgs e)
         {
             GetAllPhotoSizes();
@@ -73,90 +57,26 @@ namespace PhotographyAutomation.App.Forms.Admin
             //GetAllPrintSizeServices();
         }
 
-        private void GetAllPrintSizeServices()
-        {
-            _bgWorkerGetAllPrintSizeServices.RunWorkerAsync();
-        }
-
-        private void _bgWorkerGetAllPrintSizeServices_DoWork(object sender, DoWorkEventArgs e)
-        {
-            //using (var db=new UnitOfWork())
-            //{
-            //    var result=
-            //}
-        }
-        private void _bgWorkerGetAllPrintSizeServices_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void GetAllPhotoSizePrices()
-        {
-            _bgWorkerGetAllPhotoSizePrices.RunWorkerAsync();
-            EnableOrDisableControlsToGetAllPrintSizePrices();
-        }
-        private static void _bgWorkerGetAllPhotoSizePrices_DoWork(object sender, DoWorkEventArgs e)
-        {
-            try
-            {
-                using (var db = new UnitOfWork())
-                {
-                    var result = db.PrintSizePriceRepository.GetAllPrintSizePrices();
-
-                    if (result == null || result.Count == 0) return;
-                    e.Result = result;
-                }
-            }
-            catch (Exception exception)
-            {
-                Console.WriteLine(exception);
-                throw;
-            }
-        }
-        private void _bgWorkerGetAllPhotoSizePrices_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            try
-            {
-                if (e.Result != null && e.Result is List<PrintSizePricesViewModel> viewModel)
-                {
-                    _printSizePricesViewModels = viewModel;
-                }
-                else
-                {
-                    MessageBox.Show(
-                        @"اطلاعات قیمت اندازه چاپ قابل دریافت نمی باشد.",
-                        @"خطا در دریافت اطلاعات از سرور",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error,
-                        MessageBoxDefaultButton.Button1,
-                        MessageBoxOptions.RightAlign);
-                    //Close();
-                }
-
-
-                EnableOrDisableControlsToGetAllPrintSizePrices();
-            }
-            catch (Exception exception)
-            {
-                Console.WriteLine(exception);
-                throw;
-            }
-        }
-
-
-
+        #region GetAllPhotoSizes
 
         private void GetAllPhotoSizes()
         {
-            _bgWorkerGetAllPhotoSizes.RunWorkerAsync();
-            EnableOrDisableControlsToGetAllPrintSizes();
+            try
+            {
+                _bgWorkerGetAllPhotoSizes.RunWorkerAsync();
+                EnableOrDisableControlsToGetAllPrintSizes();
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
         }
         private static void BgWorkerGetAllPhotoSizes_DoWork(object sender, DoWorkEventArgs e)
         {
-            RetryGetInfo:
+        RetryGetInfo:
             try
             {
-                
+
                 using (var db = new UnitOfWork())
                 {
                     var result = db.PrintSizeRepository.GetAllPrintSizes();
@@ -171,8 +91,23 @@ namespace PhotographyAutomation.App.Forms.Admin
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception);
-                throw;
+                Debug.WriteLine("Message: ");
+                Debug.WriteLine(exception.Message);
+
+                Debug.WriteLine("Inner Exception: ");
+                Debug.WriteLine(exception.InnerException);
+
+                Debug.WriteLine("Inner Exception Message:");
+                Debug.WriteLine(exception.InnerException?.Message);
+
+                Debug.WriteLine("Source: ");
+                Debug.WriteLine(exception.Source);
+
+                Debug.WriteLine("Data: ");
+                Debug.WriteLine(exception.Data);
+
+                Debug.WriteLine("Stack Trace: ");
+                Debug.WriteLine(exception.StackTrace);
             }
         }
         private void BgWorkerGetAllPhotoSizes_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -187,29 +122,37 @@ namespace PhotographyAutomation.App.Forms.Admin
                     cmbPrintSizes.DataSource = viewModel;
                     cmbPrintSizes.DisplayMember = "Name";
                     cmbPrintSizes.ValueMember = "Id";
-
-                    cmbPrintSizes.SelectedIndex = 0;
-
-                    cmbPrintSizes_SelectedIndexChanged(null, null);
                 }
                 else
                 {
-                    MessageBox.Show(
-                        @"اطلاعات اندازه چاپ ها قابل دریافت نمی باشد.",
-                        @"خطا در دریافت اطلاعات از سرور",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error,
-                        MessageBoxDefaultButton.Button1,
-                        MessageBoxOptions.RightAlign);
-                    //Close();
+                    ShowErrorProvider(errorProvider1, cmbPrintSizes, 4, "اطلاعات اندازه چاپ ها قابل دریافت نمی باشد.");
                 }
 
 
                 EnableOrDisableControlsToGetAllPrintSizes();
             }
-            catch (ArgumentNullException)
+            catch (ArgumentNullException exception)
             {
-                return;
+                ShowErrorProvider(errorProvider1, cmbPrintSizes, 4,
+                    "خطا در دریافت اطلاعات. لطفا فرم را بسته و مجددا باز نمایید.");
+
+                Debug.WriteLine("Message: ");
+                Debug.WriteLine(exception.Message);
+
+                Debug.WriteLine("Inner Exception: ");
+                Debug.WriteLine(exception.InnerException);
+
+                Debug.WriteLine("Inner Exception Message:");
+                Debug.WriteLine(exception.InnerException?.Message);
+
+                Debug.WriteLine("Source: ");
+                Debug.WriteLine(exception.Source);
+
+                Debug.WriteLine("Data: ");
+                Debug.WriteLine(exception.Data);
+
+                Debug.WriteLine("Stack Trace: ");
+                Debug.WriteLine(exception.StackTrace);
             }
             catch (Exception exception)
             {
@@ -217,6 +160,261 @@ namespace PhotographyAutomation.App.Forms.Admin
                 throw;
             }
         }
+
+        #endregion
+
+
+        #region GetAllPhotoSizePrices
+
+        private void GetAllPhotoSizePrices()
+        {
+            _bgWorkerGetAllPhotoSizePrices.RunWorkerAsync();
+            EnableOrDisableControlsToGetAllPrintSizePrices();
+        }
+        private void _bgWorkerGetAllPhotoSizePrices_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                using (var db = new UnitOfWork())
+                {
+                    var result = db.PrintSizePriceRepository.GetAllPrintSizePrices();
+
+                    if (result == null || result.Count == 0) return;
+                    e.Result = result;
+                    _printSizePricesViewModels = result;
+                }
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine("Message: ");
+                Debug.WriteLine(exception.Message);
+
+                Debug.WriteLine("Inner Exception: ");
+                Debug.WriteLine(exception.InnerException);
+
+                Debug.WriteLine("Inner Exception Message:");
+                Debug.WriteLine(exception.InnerException?.Message);
+
+                Debug.WriteLine("Source: ");
+                Debug.WriteLine(exception.Source);
+
+                Debug.WriteLine("Data: ");
+                Debug.WriteLine(exception.Data);
+
+                Debug.WriteLine("Stack Trace: ");
+                Debug.WriteLine(exception.StackTrace);
+            }
+        }
+        private void _bgWorkerGetAllPhotoSizePrices_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                if (cmbPrintSizes.DataSource != null && cmbPrintSizes.Items.Count > 0)
+                {
+                    if (int.TryParse(cmbPrintSizes.SelectedValue.ToString(), out var firstPrintSizeId))
+                    {
+                        if (_printSizesViewModels != null && _printSizesViewModels.Count > 0)
+                        {
+                            cmbPrintSizes.SelectedIndex = 1;
+                            PrintSizesViewModel pSize = _printSizesViewModels.Find(x => x.Id == firstPrintSizeId);
+                            if (pSize != null)
+                            {
+                                iiMinimumOrder.Value = pSize.MinimumOrder;
+                                chkHasItalianAlbum.Checked = pSize.HasItalianAlbum;
+                                chkHasLitPrint.Checked = pSize.HasLitPrint;
+                                chkHasMedialPhoto.Checked = pSize.HasMedicalPhoto;
+                                chkHasScanAndProcess.Checked = pSize.HasScanAndProcessing;
+                                chkIsActive.Checked = pSize.IsActive;
+                                chkIsDeleted.Checked = pSize.IsDeleted;
+                            }
+                        }
+
+                        if (_printSizePricesViewModels != null && _printSizePricesViewModels.Count > 0)
+                        {
+                            PrintSizePricesViewModel pSizePrice =
+                                 _printSizePricesViewModels.Find(x => x.PrintSizeId == firstPrintSizeId);
+                            if (pSizePrice != null)
+                            {
+                                if (pSizePrice.FirstPrintPrice != null)
+                                    iiFirstPrintPrice.Value = pSizePrice.FirstPrintPrice.Value;
+                                if (pSizePrice.RePrintPrice != null) iiRePrintPrice.Value = pSizePrice.RePrintPrice.Value;
+
+                                if (chkHasItalianAlbum.Checked)
+                                {
+                                    if (pSizePrice.ItalianAlbumPagePrice != null)
+                                        iiItalianAlbumPagePrice.Value = pSizePrice.ItalianAlbumPagePrice.Value;
+                                    if (pSizePrice.ItalianAlbumPageBoundingPrice != null)
+                                        iiItalianAlbumBoundingPrice.Value = pSizePrice.ItalianAlbumPageBoundingPrice.Value;
+                                }
+
+                                if (chkHasLitPrint.Checked)
+                                {
+                                    if (pSizePrice.LitPrintPrice != null)
+                                        iiLitPrintFirstPrint.Value = pSizePrice.LitPrintPrice.Value;
+                                    if (pSizePrice.LitPrintReprintPrice != null)
+                                        iiLitPrintRePrint.Value = pSizePrice.LitPrintReprintPrice.Value;
+                                }
+
+                                if (chkHasMedialPhoto.Checked)
+                                {
+                                    if (pSizePrice.MedicalPrice != null)
+                                        iiMedicalFirstPrint.Value = pSizePrice.MedicalPrice.Value;
+                                    if (pSizePrice.MedicalRePrintPrice != null)
+                                        iiMedicalRePrint.Value = pSizePrice.MedicalRePrintPrice.Value;
+                                }
+
+                                if (chkHasScanAndProcess.Checked)
+                                {
+                                    if (pSizePrice.ScanAndPrintPrice != null)
+                                        iiScanAndPrint.Value = pSizePrice.ScanAndPrintPrice.Value;
+                                    if (pSizePrice.ScanAndProcessingPrice != null)
+                                        iiScanAndProcess.Value = pSizePrice.ScanAndProcessingPrice.Value;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                //else
+                //{
+                //    MessageBox.Show(
+                //        @"اطلاعات قیمت اندازه چاپ قابل دریافت نمی باشد.",
+                //        @"خطا در دریافت اطلاعات از سرور",
+                //        MessageBoxButtons.OK,
+                //        MessageBoxIcon.Error,
+                //        MessageBoxDefaultButton.Button1,
+                //        MessageBoxOptions.RightAlign);
+                //    //Close();
+                //}
+                EnableOrDisableControlsToGetAllPrintSizePrices();
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine("Message: ");
+                Debug.WriteLine(exception.Message);
+
+                Debug.WriteLine("Inner Exception: ");
+                Debug.WriteLine(exception.InnerException);
+
+                Debug.WriteLine("Inner Exception Message:");
+                Debug.WriteLine(exception.InnerException?.Message);
+
+                Debug.WriteLine("Source: ");
+                Debug.WriteLine(exception.Source);
+
+                Debug.WriteLine("Data: ");
+                Debug.WriteLine(exception.Data);
+
+                Debug.WriteLine("Stack Trace: ");
+                Debug.WriteLine(exception.StackTrace);
+            }
+        }
+
+        #endregion
+
+
+        #region GetAllPrintSizeServices
+
+        private void GetAllPrintSizeServices()
+        {
+            _bgWorkerGetAllPrintSizeServices.RunWorkerAsync();
+        }
+        private void _bgWorkerGetAllPrintSizeServices_DoWork(object sender, DoWorkEventArgs e)
+        {
+            //using (var db=new UnitOfWork())
+            //{
+            //    var result=
+            //}
+        }
+        private void _bgWorkerGetAllPrintSizeServices_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+
+        private void GetFirstComboxPrintSizeInfo()
+        {
+            //int retryCount = 0;
+            //RetryGetPrintSizePrice:
+            if (cmbPrintSizes.DataSource != null && cmbPrintSizes.Items.Count > 0)
+            {
+                if (int.TryParse(cmbPrintSizes.SelectedValue.ToString(), out var firstPrintSizeId))
+                {
+                    if (_printSizesViewModels != null && _printSizesViewModels.Count > 0)
+                    {
+                        PrintSizesViewModel pSize = _printSizesViewModels.Find(x => x.Id == firstPrintSizeId);
+                        if (pSize != null)
+                        {
+                            iiMinimumOrder.Value = pSize.MinimumOrder;
+                            chkHasItalianAlbum.Checked = pSize.HasItalianAlbum;
+                            chkHasLitPrint.Checked = pSize.HasLitPrint;
+                            chkHasMedialPhoto.Checked = pSize.HasMedicalPhoto;
+                            chkHasScanAndProcess.Checked = pSize.HasScanAndProcessing;
+                            chkIsActive.Checked = pSize.IsActive;
+                            chkIsDeleted.Checked = pSize.IsDeleted;
+                        }
+                    }
+
+                    if (_printSizePricesViewModels != null && _printSizePricesViewModels.Count > 0)
+                    {
+                        PrintSizePricesViewModel pSizePrice =
+                             _printSizePricesViewModels.Find(x => x.PrintSizeId == firstPrintSizeId);
+                        if (pSizePrice != null)
+                        {
+                            if (pSizePrice.FirstPrintPrice != null)
+                                iiFirstPrintPrice.Value = pSizePrice.FirstPrintPrice.Value;
+                            if (pSizePrice.RePrintPrice != null) iiRePrintPrice.Value = pSizePrice.RePrintPrice.Value;
+
+                            if (chkHasItalianAlbum.Checked)
+                            {
+                                if (pSizePrice.ItalianAlbumPagePrice != null)
+                                    iiItalianAlbumPagePrice.Value = pSizePrice.ItalianAlbumPagePrice.Value;
+                                if (pSizePrice.ItalianAlbumPageBoundingPrice != null)
+                                    iiItalianAlbumBoundingPrice.Value = pSizePrice.ItalianAlbumPageBoundingPrice.Value;
+                            }
+
+                            if (chkHasLitPrint.Checked)
+                            {
+                                if (pSizePrice.LitPrintPrice != null)
+                                    iiLitPrintFirstPrint.Value = pSizePrice.LitPrintPrice.Value;
+                                if (pSizePrice.LitPrintReprintPrice != null)
+                                    iiLitPrintRePrint.Value = pSizePrice.LitPrintReprintPrice.Value;
+                            }
+
+                            if (chkHasMedialPhoto.Checked)
+                            {
+                                if (pSizePrice.MedicalPrice != null)
+                                    iiMedicalFirstPrint.Value = pSizePrice.MedicalPrice.Value;
+                                if (pSizePrice.MedicalRePrintPrice != null)
+                                    iiMedicalRePrint.Value = pSizePrice.MedicalRePrintPrice.Value;
+                            }
+
+                            if (chkHasScanAndProcess.Checked)
+                            {
+                                if (pSizePrice.ScanAndPrintPrice != null)
+                                    iiScanAndPrint.Value = pSizePrice.ScanAndPrintPrice.Value;
+                                if (pSizePrice.ScanAndProcessingPrice != null)
+                                    iiScanAndProcess.Value = pSizePrice.ScanAndProcessingPrice.Value;
+                            }
+                        }
+                    }
+                }
+            }
+
+            //if (_bgWorkerGetAllPhotoSizes.IsBusy == false && _bgWorkerGetAllPhotoSizePrices.IsBusy == false)
+            //{
+            //    if (iiFirstPrintPrice.Text == null || iiRePrintPrice.Text == null)
+            //    {
+            //        retryCount++;
+            //        if (retryCount < 5)
+            //            goto RetryGetPrintSizePrice;
+            //    }
+            //}
+        }
+
+
 
 
 
@@ -233,7 +431,7 @@ namespace PhotographyAutomation.App.Forms.Admin
             panelIsActive.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
             panelIsDeleted.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
 
-            menuStrip1.Enabled=!_bgWorkerGetAllPhotoSizes.IsBusy;
+            menuStrip1.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
         }
         private void EnableOrDisableControlsToGetAllPrintSizePrices()
         {
@@ -278,26 +476,21 @@ namespace PhotographyAutomation.App.Forms.Admin
 
             if (!int.TryParse(cmbPrintSizes.SelectedValue.ToString(), out var printSizeId)) return;
 
-            var sizeModel = _printSizesViewModels.FirstOrDefault(x => x.Id == printSizeId);
-            var sizePriceModel = _printSizePricesViewModels.FirstOrDefault(x => x.PrintSizeId == printSizeId);
-
+            var sizeModel = _printSizesViewModels.Find(x => x.Id == printSizeId);
             if (sizeModel == null)
             {
-                MessageBox.Show("اطلاعات اندازه چاپ قابل دریافت نمی باشد.","",
-                    MessageBoxButtons.OK,MessageBoxIcon.Error,MessageBoxDefaultButton.Button1,
-                    MessageBoxOptions.RtlReading);
-                return;
-            };
-
-            iiMinimumOrder.Value = sizeModel.MinimumOrder;
-
-            if (sizePriceModel == null)
-            {
-                MessageBox.Show("برای این اندازه چاپ قمیتی تعریف نشده است.","",
-                    MessageBoxButtons.OK,MessageBoxIcon.Error,MessageBoxDefaultButton.Button1,
-                    MessageBoxOptions.RtlReading);
+                ShowErrorProvider(errorProvider1, cmbPrintSizes, 4, "اطلاعات اندازه چاپ قابل دریافت نمی باشد.");
                 return;
             }
+
+            var sizePriceModel = _printSizePricesViewModels.Find(x => x.PrintSizeId == printSizeId);
+            if (sizePriceModel == null)
+            {
+                ShowErrorProvider(errorProvider1, cmbPrintSizes, 4, "اطلاعات قیمت برای این اندازه چاپ ثبت نشده است.");
+                return;
+            }
+
+            iiMinimumOrder.Value = sizeModel.MinimumOrder;
 
             if (sizePriceModel.FirstPrintPrice != null) iiFirstPrintPrice.Value = sizePriceModel.FirstPrintPrice.Value;
             if (sizePriceModel.RePrintPrice != null) iiRePrintPrice.Value = sizePriceModel.RePrintPrice.Value;
@@ -392,6 +585,13 @@ namespace PhotographyAutomation.App.Forms.Admin
             }
         }
 
+        private static void ShowErrorProvider(ErrorProvider errorProvider, Control control, int padding, string message)
+        {
+            errorProvider.Clear();
+            errorProvider.SetIconPadding(control, padding);
+            errorProvider.SetError(control, message);
+        }
+
         private void ResetInputs()
         {
             chkHasItalianAlbum.Checked = false;
@@ -413,6 +613,8 @@ namespace PhotographyAutomation.App.Forms.Admin
             iiMedicalRePrint.ResetText();
             iiScanAndPrint.ResetText();
             iiScanAndProcess.ResetText();
+
+            errorProvider1.Clear();
         }
 
         #endregion
@@ -437,7 +639,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                 frmAddEditPrintSize.IsNewPrintSize = false;
                 frmAddEditPrintSize.PrintSizeId = printSizeId;
                 var dr = frmAddEditPrintSize.ShowDialog();
-                if ( dr== DialogResult.OK)
+                if (dr == DialogResult.OK)
                 {
                     FrmAddEditPrintSizeAndServices_Refactored_Load(null, null);
                 }

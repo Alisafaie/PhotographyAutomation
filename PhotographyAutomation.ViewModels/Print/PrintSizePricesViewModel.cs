@@ -15,6 +15,9 @@
         public int? LitPrintReprintPrice { get; set; }
         public int? ScanAndPrintPrice { get; set; }
         public int? ScanAndProcessingPrice { get; set; }
+
+        public int? ItalianAlbumPagePrice { get; set; }
+        public int? ItalianAlbumPageBoundingPrice { get; set; }
         public string SizeDescription { get; set; }
     }
 }
