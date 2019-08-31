@@ -95,10 +95,15 @@ namespace PhotographyAutomation.DateLayer.Context
 
 
         private IPrintSizePriceRepository _printSizePriceRepository;
-
         public IPrintSizePriceRepository PrintSizePriceRepository => _printSizePriceRepository ??
                                                                      (_printSizePriceRepository =
                                                                          new PrintSizePriceRepository(_db));
+
+
+        private IPrintServiceRepository _printServiceRepository;
+        public IPrintServiceRepository PrintServiceRepository => _printServiceRepository ??
+                                                                 (_printServiceRepository =
+                                                                     new PrintServiceRepository(_db));
 
 
 

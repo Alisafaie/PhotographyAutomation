@@ -77,7 +77,5 @@ namespace PhotographyAutomation.DateLayer.Services
             Debug.WriteLine("Stack Trace: ");
             Debug.WriteLine(exception.StackTrace);
         }
-
-
     }
 }

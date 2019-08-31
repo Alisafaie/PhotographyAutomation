@@ -154,6 +154,9 @@
     <Compile Include="Models\View_GetAllPhotos.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\View_GetAllPrintSizeAndServicesInfo.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\View_GetDocumentsFolders.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
@@ -162,6 +165,7 @@
     <Compile Include="Repositories\IOrderRepository.cs" />
     <Compile Include="Repositories\IPhotoRepository.cs" />
     <Compile Include="Repositories\ICustomerRepository.cs" />
+    <Compile Include="Repositories\IPrintServiceRepository.cs" />
     <Compile Include="Repositories\IPrintSizePriceRepository.cs" />
     <Compile Include="Repositories\IPrintSizeRepository.cs" />
     <Compile Include="Services\BookingRepository.cs" />
@@ -169,6 +173,7 @@
     <Compile Include="Services\PhotoRepository.cs" />
     <Compile Include="Services\GenericRepository.cs" />
     <Compile Include="Services\CustomerRepository.cs" />
+    <Compile Include="Services\PrintServiceRepository.cs" />
     <Compile Include="Services\PrintSizePriceRepository.cs" />
     <Compile Include="Services\PrintSizeRepository.cs" />
   </ItemGroup>

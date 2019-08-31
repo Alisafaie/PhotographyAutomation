@@ -1,4 +1,5 @@
 ﻿using PhotographyAutomation.DateLayer.Context;
+using PhotographyAutomation.DateLayer.Models;
 using PhotographyAutomation.ViewModels.Print;
 using System;
 using System.Collections.Generic;
@@ -46,12 +47,130 @@ namespace PhotographyAutomation.App.Forms.Admin
 
             _bgWorkerGetAllPhotoSizes.DoWork += BgWorkerGetAllPhotoSizes_DoWork;
             _bgWorkerGetAllPhotoSizes.RunWorkerCompleted += BgWorkerGetAllPhotoSizes_RunWorkerCompleted;
+
+            _bgWorkerGetAllPrintSizeServices.DoWork += _bgWorkerGetAllPrintSizeServices_DoWork;
+            _bgWorkerGetAllPrintSizeServices.RunWorkerCompleted += _bgWorkerGetAllPrintSizeServices_RunWorkerCompleted;
         }
+
+
+
+
 
         private void FrmAddEditPrintSizeAndServices_Refactored_Load(object sender, EventArgs e)
         {
             GetAllPhotoSizes();
             GetAllPhotoSizePrices();
+            GetAllPrintSizeAndServicesInfo();
+        }
+
+        private void GetAllPrintSizeAndServicesInfo()
+        {
+            try
+            {
+                _bgWorkerGetAllPrintSizeServices.RunWorkerAsync();
+                cpLoadDataGridView.IsRunning = _bgWorkerGetAllPrintSizeServices.IsBusy;
+            }
+            catch (Exception)
+            {
+                //ignored
+            }
+        }
+
+        private static void _bgWorkerGetAllPrintSizeServices_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                using (var db = new UnitOfWork())
+                {
+                    var result = db.PrintServiceRepository.GetAllPrintSizeAndServicesInfo();
+                    e.Result = result;
+                }
+            }
+            catch (Exception)
+            {
+                //ignored
+            }
+        }
+        private void _bgWorkerGetAllPrintSizeServices_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                if (e.Result != null && e.Result is List<View_GetAllPrintSizeAndServicesInfo> viewInfo)
+                {
+                    PopulateDataGridView(viewInfo);
+
+                    cpLoadDataGridView.IsRunning = _bgWorkerGetAllPrintSizeServices.IsBusy;
+                    cpLoadDataGridView.Visible = false;
+                    cpLoadDataGridView.Hide();
+                }
+                else
+                {
+                    MessageBox.Show(
+                        @"اطلاعات اندازه چاپ و خدمات مربوطه در سیستم وجود ندارد.",
+                        @"عدم وجود اطلاعات در سرور",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error,
+                        MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(
+                    @"خطا در دریافت اطلاعات از سرور", exception.HResult.ToString());
+                MessageBox.Show(
+                        @"Exception Message: " + exception.Message + Environment.NewLine +
+                            @"Inner Exception: " + exception.InnerException + Environment.NewLine +
+                            @"Exception Source: " + exception.Source + Environment.NewLine +
+                            @"Exception Data: " + exception.Data, 
+                        @"Exception",
+                        MessageBoxButtons.OK,MessageBoxIcon.Error,
+                        MessageBoxDefaultButton.Button1);
+                throw;
+            }
+        }
+
+        private void PopulateDataGridView(List<View_GetAllPrintSizeAndServicesInfo> viewInfo)
+        {
+            dgvPrintServices.Rows.Clear();
+            dgvPrintServices.RowCount = viewInfo.Count;
+            dgvPrintServices.AutoGenerateColumns = false;
+
+            for (int i = 0; i < viewInfo.Count; i++)
+            {
+                dgvPrintServices.Rows[i].Cells["clmPrintSizeId"].Value = viewInfo[i].PrintSizeId;
+                dgvPrintServices.Rows[i].Cells["clmPrintServiceId"].Value = viewInfo[i].PrintServiceId;
+                dgvPrintServices.Rows[i].Cells["clmPrintSizePriceId"].Value = viewInfo[i].PrintSizePriceId;
+                dgvPrintServices.Rows[i].Cells["clmPrintServicePriceId"].Value = viewInfo[i].PrintServicePriceId;
+
+                dgvPrintServices.Rows[i].Cells["clmPrintSizeName"].Value = viewInfo[i].PrintSizeName;
+                //dgvPrintServices.Rows[i].Cells["clmPrintSizeName"].Style.Alignment = DataGridViewContentAlignment.;
+
+
+                dgvPrintServices.Rows[i].Cells["clmPrintServiceName"].Value = viewInfo[i].PrintServiceName;
+                dgvPrintServices.Rows[i].Cells["clmPrintServicePrice"].Value = viewInfo[i].PrintServicePrice;
+
+                dgvPrintServices.Rows[i].Cells["clmFirstPrintPrice"].Value = viewInfo[i].FirstPrintPrice;
+                dgvPrintServices.Rows[i].Cells["clmRePrintPrice"].Value = viewInfo[i].RePrintPrice;
+
+                dgvPrintServices.Rows[i].Cells["clmHasMedicalPhoto"].Value = viewInfo[i].HasMedicalPhoto;
+
+                dgvPrintServices.Rows[i].Cells["clmMedicalPrice"].Value = viewInfo[i].MedicalPrice;
+                dgvPrintServices.Rows[i].Cells["clmMedicalRePrintPrice"].Value = viewInfo[i].MedicalRePrintPrice;
+
+                dgvPrintServices.Rows[i].Cells["clmHasLitPrint"].Value = viewInfo[i].HasLitPrint;
+
+                dgvPrintServices.Rows[i].Cells["clmLitPrintPrice"].Value = viewInfo[i].LitPrintPrice;
+                dgvPrintServices.Rows[i].Cells["clmLitPrintRePrintPrice"].Value = viewInfo[i].LitPrintRePrintPrice;
+
+                dgvPrintServices.Rows[i].Cells["clmHasScanAndProcessing"].Value = viewInfo[i].HasScanAndProcessing;
+
+                dgvPrintServices.Rows[i].Cells["clmScanAndPrintPrice"].Value = viewInfo[i].ScanAndPrintPrice;
+                dgvPrintServices.Rows[i].Cells["clmScanAndProcessingPrice"].Value = viewInfo[i].ScanAndProcessingPrice;
+
+                dgvPrintServices.Rows[i].Cells["clmHasItalianAlbum"].Value = viewInfo[i].HasItalianAlbum;
+
+                dgvPrintServices.Rows[i].Cells["clmItalianAlbumPagePrice"].Value = viewInfo[i].ItalianAlbumPagePrice;
+                dgvPrintServices.Rows[i].Cells["clmItalianAlbumBoundingPrice"].Value = viewInfo[i].ItalianAlbumBoundingPrice;
+            }
         }
 
         #endregion
@@ -92,14 +211,14 @@ namespace PhotographyAutomation.App.Forms.Admin
             var sizeModel = _printSizesViewModels.Find(x => x.Id == printSizeId);
             if (sizeModel == null)
             {
-                ShowErrorProvider(errorProvider1, cmbPrintSizes,"اطلاعات اندازه چاپ قابل دریافت نمی باشد.");
+                ShowErrorProvider(errorProvider1, cmbPrintSizes, "اطلاعات اندازه چاپ قابل دریافت نمی باشد.");
                 return;
             }
 
             var sizePriceModel = _printSizePricesViewModels.Find(x => x.PrintSizeId == printSizeId);
             if (sizePriceModel == null)
             {
-                ShowErrorProvider(errorProvider1, cmbPrintSizes,"اطلاعات قیمت برای این اندازه چاپ ثبت نشده است.");
+                ShowErrorProvider(errorProvider1, cmbPrintSizes, "اطلاعات قیمت برای این اندازه چاپ ثبت نشده است.");
                 return;
             }
 
@@ -176,7 +295,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                 chkHasItalianAlbum.Checked = false;
                 //chkHasItalianAlbum.Enabled = false;
             }
-            
+
             chkIsActive.Checked = sizeModel.IsActive;
 
             chkIsDeleted.Checked = sizeModel.IsDeleted;
@@ -328,7 +447,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                 }
                 else
                 {
-                    ShowErrorProvider(errorProvider1, cmbPrintSizes,  "اطلاعات اندازه چاپ ها قابل دریافت نمی باشد.");
+                    ShowErrorProvider(errorProvider1, cmbPrintSizes, "اطلاعات اندازه چاپ ها قابل دریافت نمی باشد.");
                 }
 
 

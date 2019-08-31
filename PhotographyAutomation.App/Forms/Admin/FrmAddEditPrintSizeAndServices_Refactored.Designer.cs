@@ -111,26 +111,27 @@
             this.cpLoadDataGridView = new DevComponents.DotNetBar.Controls.CircularProgress();
             this.dgvPrintServices = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.clmItalianAlbumBoundingPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmItalianAlbumPagePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmHasItalianAlbum = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.clmScanAndProcessingPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmScanAndPrintPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmHasScanAndProcessing = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.clmLitPrintRePrintPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmLitPrintPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmHasLitPrint = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.clmMedicalRePrintPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmMedicalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmHasMedicalPhoto = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.clmRePrintPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmFirstPrintPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPrintServicePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPrintServiceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPrintSizeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPrintSizePriceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPrintServiceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmPrintSizeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPrintServiceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPrintSizePriceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPrintServicePriceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPrintSizeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPrintServiceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPrintServicePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmFirstPrintPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmRePrintPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmHasMedicalPhoto = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.clmMedicalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmMedicalRePrintPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmHasLitPrint = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.clmLitPrintPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmLitPrintRePrintPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmHasScanAndProcessing = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.clmScanAndPrintPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmScanAndProcessingPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmHasItalianAlbum = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.clmItalianAlbumPagePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmItalianAlbumBoundingPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelEx1.SuspendLayout();
             this.groupBoxPrintSize.SuspendLayout();
             this.panelPrintSize1.SuspendLayout();
@@ -197,9 +198,9 @@
             this.groupBoxPrintSize.Controls.Add(this.panelLitPrint);
             this.groupBoxPrintSize.Controls.Add(this.panelMinimumOrder);
             this.groupBoxPrintSize.Controls.Add(this.panelMedicalPhoto);
-            this.groupBoxPrintSize.Location = new System.Drawing.Point(12, 10);
+            this.groupBoxPrintSize.Location = new System.Drawing.Point(13, 10);
             this.groupBoxPrintSize.Name = "groupBoxPrintSize";
-            this.groupBoxPrintSize.Size = new System.Drawing.Size(1060, 67);
+            this.groupBoxPrintSize.Size = new System.Drawing.Size(1059, 67);
             this.groupBoxPrintSize.TabIndex = 0;
             this.groupBoxPrintSize.TabStop = false;
             this.groupBoxPrintSize.Text = "اندازه و ویژگی های اندازه عکس";
@@ -209,7 +210,7 @@
             this.panelPrintSize1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelPrintSize1.Controls.Add(this.cmbPrintSizes);
             this.panelPrintSize1.Controls.Add(this.label1);
-            this.panelPrintSize1.Location = new System.Drawing.Point(839, 24);
+            this.panelPrintSize1.Location = new System.Drawing.Point(838, 24);
             this.panelPrintSize1.Name = "panelPrintSize1";
             this.panelPrintSize1.Size = new System.Drawing.Size(215, 37);
             this.panelPrintSize1.TabIndex = 0;
@@ -241,7 +242,7 @@
             // 
             this.panelIsDeleted.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelIsDeleted.Controls.Add(this.chkIsDeleted);
-            this.panelIsDeleted.Location = new System.Drawing.Point(234, 24);
+            this.panelIsDeleted.Location = new System.Drawing.Point(233, 24);
             this.panelIsDeleted.Name = "panelIsDeleted";
             this.panelIsDeleted.Size = new System.Drawing.Size(54, 37);
             this.panelIsDeleted.TabIndex = 1;
@@ -267,7 +268,7 @@
             // 
             this.panelIsActive.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelIsActive.Controls.Add(this.chkIsActive);
-            this.panelIsActive.Location = new System.Drawing.Point(287, 24);
+            this.panelIsActive.Location = new System.Drawing.Point(286, 24);
             this.panelIsActive.Name = "panelIsActive";
             this.panelIsActive.Size = new System.Drawing.Size(54, 37);
             this.panelIsActive.TabIndex = 1;
@@ -294,7 +295,7 @@
             this.panelHasItalianAlbum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelHasItalianAlbum.Controls.Add(this.chkHasItalianAlbum);
             this.panelHasItalianAlbum.Enabled = false;
-            this.panelHasItalianAlbum.Location = new System.Drawing.Point(340, 24);
+            this.panelHasItalianAlbum.Location = new System.Drawing.Point(339, 24);
             this.panelHasItalianAlbum.Name = "panelHasItalianAlbum";
             this.panelHasItalianAlbum.Size = new System.Drawing.Size(90, 37);
             this.panelHasItalianAlbum.TabIndex = 1;
@@ -322,7 +323,7 @@
             this.panelScanAndProcessing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelScanAndProcessing.Controls.Add(this.chkHasScanAndProcess);
             this.panelScanAndProcessing.Enabled = false;
-            this.panelScanAndProcessing.Location = new System.Drawing.Point(429, 24);
+            this.panelScanAndProcessing.Location = new System.Drawing.Point(428, 24);
             this.panelScanAndProcessing.Name = "panelScanAndProcessing";
             this.panelScanAndProcessing.Size = new System.Drawing.Size(132, 37);
             this.panelScanAndProcessing.TabIndex = 1;
@@ -350,7 +351,7 @@
             this.panelLitPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelLitPrint.Controls.Add(this.chkHasLitPrint);
             this.panelLitPrint.Enabled = false;
-            this.panelLitPrint.Location = new System.Drawing.Point(560, 24);
+            this.panelLitPrint.Location = new System.Drawing.Point(559, 24);
             this.panelLitPrint.Name = "panelLitPrint";
             this.panelLitPrint.Size = new System.Drawing.Size(73, 37);
             this.panelLitPrint.TabIndex = 1;
@@ -378,7 +379,7 @@
             this.panelMinimumOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelMinimumOrder.Controls.Add(this.iiMinimumOrder);
             this.panelMinimumOrder.Controls.Add(this.label2);
-            this.panelMinimumOrder.Location = new System.Drawing.Point(736, 24);
+            this.panelMinimumOrder.Location = new System.Drawing.Point(735, 24);
             this.panelMinimumOrder.Name = "panelMinimumOrder";
             this.panelMinimumOrder.Size = new System.Drawing.Size(104, 37);
             this.panelMinimumOrder.TabIndex = 1;
@@ -418,7 +419,7 @@
             this.panelMedicalPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelMedicalPhoto.Controls.Add(this.chkHasMedialPhoto);
             this.panelMedicalPhoto.Enabled = false;
-            this.panelMedicalPhoto.Location = new System.Drawing.Point(632, 24);
+            this.panelMedicalPhoto.Location = new System.Drawing.Point(631, 24);
             this.panelMedicalPhoto.Name = "panelMedicalPhoto";
             this.panelMedicalPhoto.Size = new System.Drawing.Size(98, 37);
             this.panelMedicalPhoto.TabIndex = 1;
@@ -1110,7 +1111,7 @@
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 569);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 570);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1084, 22);
             this.statusStrip1.TabIndex = 23;
@@ -1125,7 +1126,7 @@
             this.panelEx3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx3.Location = new System.Drawing.Point(0, 206);
             this.panelEx3.Name = "panelEx3";
-            this.panelEx3.Size = new System.Drawing.Size(1084, 363);
+            this.panelEx3.Size = new System.Drawing.Size(1084, 364);
             this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx3.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx3.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -1142,9 +1143,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbDataGridView.Controls.Add(this.cpLoadDataGridView);
             this.gbDataGridView.Controls.Add(this.dgvPrintServices);
-            this.gbDataGridView.Location = new System.Drawing.Point(12, 0);
+            this.gbDataGridView.Location = new System.Drawing.Point(13, 0);
             this.gbDataGridView.Name = "gbDataGridView";
-            this.gbDataGridView.Size = new System.Drawing.Size(1060, 360);
+            this.gbDataGridView.Size = new System.Drawing.Size(1059, 361);
             this.gbDataGridView.TabIndex = 0;
             this.gbDataGridView.TabStop = false;
             // 
@@ -1166,9 +1167,10 @@
             // 
             this.dgvPrintServices.AllowUserToAddRows = false;
             this.dgvPrintServices.AllowUserToDeleteRows = false;
+            this.dgvPrintServices.AllowUserToResizeColumns = false;
+            this.dgvPrintServices.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvPrintServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvPrintServices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dgvPrintServices.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvPrintServices.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -1184,6 +1186,7 @@
             this.clmPrintSizeId,
             this.clmPrintServiceId,
             this.clmPrintSizePriceId,
+            this.clmPrintServicePriceId,
             this.clmPrintSizeName,
             this.clmPrintServiceName,
             this.clmPrintServicePrice,
@@ -1213,6 +1216,7 @@
             this.dgvPrintServices.EnableHeadersVisualStyles = false;
             this.dgvPrintServices.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.dgvPrintServices.Location = new System.Drawing.Point(3, 17);
+            this.dgvPrintServices.MultiSelect = false;
             this.dgvPrintServices.Name = "dgvPrintServices";
             this.dgvPrintServices.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -1224,8 +1228,9 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvPrintServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvPrintServices.RowHeadersVisible = false;
+            this.dgvPrintServices.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvPrintServices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPrintServices.Size = new System.Drawing.Size(1054, 340);
+            this.dgvPrintServices.Size = new System.Drawing.Size(1053, 341);
             this.dgvPrintServices.TabIndex = 3;
             this.dgvPrintServices.UseCustomBackgroundColor = true;
             // 
@@ -1234,171 +1239,169 @@
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.RightToLeft = true;
             // 
-            // clmItalianAlbumBoundingPrice
+            // clmPrintSizeId
             // 
-            this.clmItalianAlbumBoundingPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.clmItalianAlbumBoundingPrice.HeaderText = "هزینه صحافی آلبوم";
-            this.clmItalianAlbumBoundingPrice.Name = "clmItalianAlbumBoundingPrice";
-            this.clmItalianAlbumBoundingPrice.ReadOnly = true;
-            this.clmItalianAlbumBoundingPrice.Width = 111;
-            // 
-            // clmItalianAlbumPagePrice
-            // 
-            this.clmItalianAlbumPagePrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.clmItalianAlbumPagePrice.HeaderText = "هزینه هر برگ";
-            this.clmItalianAlbumPagePrice.Name = "clmItalianAlbumPagePrice";
-            this.clmItalianAlbumPagePrice.ReadOnly = true;
-            this.clmItalianAlbumPagePrice.Width = 71;
-            // 
-            // clmHasItalianAlbum
-            // 
-            this.clmHasItalianAlbum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.clmHasItalianAlbum.HeaderText = "آلبوم ایتالیایی";
-            this.clmHasItalianAlbum.Name = "clmHasItalianAlbum";
-            this.clmHasItalianAlbum.ReadOnly = true;
-            this.clmHasItalianAlbum.Width = 68;
-            // 
-            // clmScanAndProcessingPrice
-            // 
-            this.clmScanAndProcessingPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.clmScanAndProcessingPrice.HeaderText = "هزینه اسکن و پردازش";
-            this.clmScanAndProcessingPrice.Name = "clmScanAndProcessingPrice";
-            this.clmScanAndProcessingPrice.ReadOnly = true;
-            this.clmScanAndProcessingPrice.Width = 92;
-            // 
-            // clmScanAndPrintPrice
-            // 
-            this.clmScanAndPrintPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.clmScanAndPrintPrice.HeaderText = "هزینه اسکن و چاپ";
-            this.clmScanAndPrintPrice.Name = "clmScanAndPrintPrice";
-            this.clmScanAndPrintPrice.ReadOnly = true;
-            this.clmScanAndPrintPrice.Width = 92;
-            // 
-            // clmHasScanAndProcessing
-            // 
-            this.clmHasScanAndProcessing.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.clmHasScanAndProcessing.HeaderText = "اسکن و پردازش";
-            this.clmHasScanAndProcessing.Name = "clmHasScanAndProcessing";
-            this.clmHasScanAndProcessing.ReadOnly = true;
-            this.clmHasScanAndProcessing.Width = 77;
-            // 
-            // clmLitPrintRePrintPrice
-            // 
-            this.clmLitPrintRePrintPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.clmLitPrintRePrintPrice.HeaderText = "هزینه لیت پرینت اضافه چاپ";
-            this.clmLitPrintRePrintPrice.Name = "clmLitPrintRePrintPrice";
-            this.clmLitPrintRePrintPrice.ReadOnly = true;
-            this.clmLitPrintRePrintPrice.Width = 126;
-            // 
-            // clmLitPrintPrice
-            // 
-            this.clmLitPrintPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.clmLitPrintPrice.HeaderText = "هزینه لیت پرینت";
-            this.clmLitPrintPrice.Name = "clmLitPrintPrice";
-            this.clmLitPrintPrice.ReadOnly = true;
-            this.clmLitPrintPrice.Width = 97;
-            // 
-            // clmHasLitPrint
-            // 
-            this.clmHasLitPrint.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.clmHasLitPrint.HeaderText = "لیت پرینت";
-            this.clmHasLitPrint.Name = "clmHasLitPrint";
-            this.clmHasLitPrint.ReadOnly = true;
-            this.clmHasLitPrint.Width = 52;
-            // 
-            // clmMedicalRePrintPrice
-            // 
-            this.clmMedicalRePrintPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.clmMedicalRePrintPrice.HeaderText = "پزشکی اضافه چاپ";
-            this.clmMedicalRePrintPrice.Name = "clmMedicalRePrintPrice";
-            this.clmMedicalRePrintPrice.ReadOnly = true;
-            this.clmMedicalRePrintPrice.Width = 92;
-            // 
-            // clmMedicalPrice
-            // 
-            this.clmMedicalPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.clmMedicalPrice.HeaderText = "پزشکی اصل چاپ";
-            this.clmMedicalPrice.Name = "clmMedicalPrice";
-            this.clmMedicalPrice.ReadOnly = true;
-            this.clmMedicalPrice.Width = 87;
-            // 
-            // clmHasMedicalPhoto
-            // 
-            this.clmHasMedicalPhoto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.clmHasMedicalPhoto.HeaderText = "پزشکی";
-            this.clmHasMedicalPhoto.Name = "clmHasMedicalPhoto";
-            this.clmHasMedicalPhoto.ReadOnly = true;
-            this.clmHasMedicalPhoto.Width = 49;
-            // 
-            // clmRePrintPrice
-            // 
-            this.clmRePrintPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.clmRePrintPrice.HeaderText = "هزینه اضافه چاپ";
-            this.clmRePrintPrice.Name = "clmRePrintPrice";
-            this.clmRePrintPrice.ReadOnly = true;
-            this.clmRePrintPrice.Width = 83;
-            // 
-            // clmFirstPrintPrice
-            // 
-            this.clmFirstPrintPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.clmFirstPrintPrice.HeaderText = "هزینه اصل چاپ";
-            this.clmFirstPrintPrice.MinimumWidth = 100;
-            this.clmFirstPrintPrice.Name = "clmFirstPrintPrice";
-            this.clmFirstPrintPrice.ReadOnly = true;
-            // 
-            // clmPrintServicePrice
-            // 
-            this.clmPrintServicePrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.clmPrintServicePrice.HeaderText = "هزینه خدمات";
-            this.clmPrintServicePrice.Name = "clmPrintServicePrice";
-            this.clmPrintServicePrice.ReadOnly = true;
-            this.clmPrintServicePrice.Width = 92;
-            // 
-            // clmPrintServiceName
-            // 
-            this.clmPrintServiceName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.clmPrintServiceName.HeaderText = "خدمات چاپ";
-            this.clmPrintServiceName.Name = "clmPrintServiceName";
-            this.clmPrintServiceName.ReadOnly = true;
-            this.clmPrintServiceName.Width = 85;
-            // 
-            // clmPrintSizeName
-            // 
-            this.clmPrintSizeName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.clmPrintSizeName.HeaderText = "اندازه چاپ";
-            this.clmPrintSizeName.Name = "clmPrintSizeName";
-            this.clmPrintSizeName.ReadOnly = true;
-            this.clmPrintSizeName.Width = 78;
-            // 
-            // clmPrintSizePriceId
-            // 
-            this.clmPrintSizePriceId.HeaderText = "PrintSizePriceId";
-            this.clmPrintSizePriceId.Name = "clmPrintSizePriceId";
-            this.clmPrintSizePriceId.ReadOnly = true;
-            this.clmPrintSizePriceId.Visible = false;
-            this.clmPrintSizePriceId.Width = 87;
+            this.clmPrintSizeId.HeaderText = "PrintSizeId";
+            this.clmPrintSizeId.Name = "clmPrintSizeId";
+            this.clmPrintSizeId.ReadOnly = true;
+            this.clmPrintSizeId.Width = 64;
             // 
             // clmPrintServiceId
             // 
             this.clmPrintServiceId.HeaderText = "PrintServiceId";
             this.clmPrintServiceId.Name = "clmPrintServiceId";
             this.clmPrintServiceId.ReadOnly = true;
-            this.clmPrintServiceId.Visible = false;
             this.clmPrintServiceId.Width = 80;
             // 
-            // clmPrintSizeId
+            // clmPrintSizePriceId
             // 
-            this.clmPrintSizeId.HeaderText = "PrintSizeId";
-            this.clmPrintSizeId.Name = "clmPrintSizeId";
-            this.clmPrintSizeId.ReadOnly = true;
-            this.clmPrintSizeId.Visible = false;
-            this.clmPrintSizeId.Width = 64;
+            this.clmPrintSizePriceId.HeaderText = "PrintSizePriceId";
+            this.clmPrintSizePriceId.Name = "clmPrintSizePriceId";
+            this.clmPrintSizePriceId.ReadOnly = true;
+            this.clmPrintSizePriceId.Width = 87;
+            // 
+            // clmPrintServicePriceId
+            // 
+            this.clmPrintServicePriceId.HeaderText = "PrintServicePriceId";
+            this.clmPrintServicePriceId.Name = "clmPrintServicePriceId";
+            this.clmPrintServicePriceId.ReadOnly = true;
+            // 
+            // clmPrintSizeName
+            // 
+            this.clmPrintSizeName.HeaderText = "اندازه چاپ";
+            this.clmPrintSizeName.MinimumWidth = 100;
+            this.clmPrintSizeName.Name = "clmPrintSizeName";
+            this.clmPrintSizeName.ReadOnly = true;
+            // 
+            // clmPrintServiceName
+            // 
+            this.clmPrintServiceName.HeaderText = "خدمات چاپ";
+            this.clmPrintServiceName.MinimumWidth = 100;
+            this.clmPrintServiceName.Name = "clmPrintServiceName";
+            this.clmPrintServiceName.ReadOnly = true;
+            // 
+            // clmPrintServicePrice
+            // 
+            this.clmPrintServicePrice.HeaderText = "هزینه خدمات";
+            this.clmPrintServicePrice.MinimumWidth = 100;
+            this.clmPrintServicePrice.Name = "clmPrintServicePrice";
+            this.clmPrintServicePrice.ReadOnly = true;
+            // 
+            // clmFirstPrintPrice
+            // 
+            this.clmFirstPrintPrice.HeaderText = "اصل چاپ";
+            this.clmFirstPrintPrice.MinimumWidth = 120;
+            this.clmFirstPrintPrice.Name = "clmFirstPrintPrice";
+            this.clmFirstPrintPrice.ReadOnly = true;
+            this.clmFirstPrintPrice.Width = 120;
+            // 
+            // clmRePrintPrice
+            // 
+            this.clmRePrintPrice.HeaderText = " چاپ مجدد";
+            this.clmRePrintPrice.MinimumWidth = 120;
+            this.clmRePrintPrice.Name = "clmRePrintPrice";
+            this.clmRePrintPrice.ReadOnly = true;
+            this.clmRePrintPrice.Width = 120;
+            // 
+            // clmHasMedicalPhoto
+            // 
+            this.clmHasMedicalPhoto.HeaderText = "عکس پزشکی";
+            this.clmHasMedicalPhoto.MinimumWidth = 100;
+            this.clmHasMedicalPhoto.Name = "clmHasMedicalPhoto";
+            this.clmHasMedicalPhoto.ReadOnly = true;
+            // 
+            // clmMedicalPrice
+            // 
+            this.clmMedicalPrice.HeaderText = "پزشکی اصل چاپ";
+            this.clmMedicalPrice.MinimumWidth = 120;
+            this.clmMedicalPrice.Name = "clmMedicalPrice";
+            this.clmMedicalPrice.ReadOnly = true;
+            this.clmMedicalPrice.Width = 120;
+            // 
+            // clmMedicalRePrintPrice
+            // 
+            this.clmMedicalRePrintPrice.HeaderText = "پزشکی چاپ مجدد";
+            this.clmMedicalRePrintPrice.MinimumWidth = 120;
+            this.clmMedicalRePrintPrice.Name = "clmMedicalRePrintPrice";
+            this.clmMedicalRePrintPrice.ReadOnly = true;
+            this.clmMedicalRePrintPrice.Width = 120;
+            // 
+            // clmHasLitPrint
+            // 
+            this.clmHasLitPrint.HeaderText = "لیت پرینت";
+            this.clmHasLitPrint.MinimumWidth = 100;
+            this.clmHasLitPrint.Name = "clmHasLitPrint";
+            this.clmHasLitPrint.ReadOnly = true;
+            // 
+            // clmLitPrintPrice
+            // 
+            this.clmLitPrintPrice.HeaderText = "لیت پرینت اصل چاپ";
+            this.clmLitPrintPrice.MinimumWidth = 150;
+            this.clmLitPrintPrice.Name = "clmLitPrintPrice";
+            this.clmLitPrintPrice.ReadOnly = true;
+            this.clmLitPrintPrice.Width = 150;
+            // 
+            // clmLitPrintRePrintPrice
+            // 
+            this.clmLitPrintRePrintPrice.HeaderText = " لیت پرینت چاپ مجدد";
+            this.clmLitPrintRePrintPrice.MinimumWidth = 130;
+            this.clmLitPrintRePrintPrice.Name = "clmLitPrintRePrintPrice";
+            this.clmLitPrintRePrintPrice.ReadOnly = true;
+            this.clmLitPrintRePrintPrice.Width = 130;
+            // 
+            // clmHasScanAndProcessing
+            // 
+            this.clmHasScanAndProcessing.HeaderText = "اسکن و پردازش";
+            this.clmHasScanAndProcessing.MinimumWidth = 120;
+            this.clmHasScanAndProcessing.Name = "clmHasScanAndProcessing";
+            this.clmHasScanAndProcessing.ReadOnly = true;
+            this.clmHasScanAndProcessing.Width = 120;
+            // 
+            // clmScanAndPrintPrice
+            // 
+            this.clmScanAndPrintPrice.HeaderText = "هزینه اسکن و چاپ";
+            this.clmScanAndPrintPrice.MinimumWidth = 120;
+            this.clmScanAndPrintPrice.Name = "clmScanAndPrintPrice";
+            this.clmScanAndPrintPrice.ReadOnly = true;
+            this.clmScanAndPrintPrice.Width = 120;
+            // 
+            // clmScanAndProcessingPrice
+            // 
+            this.clmScanAndProcessingPrice.HeaderText = "هزینه اسکن و پردازش";
+            this.clmScanAndProcessingPrice.MinimumWidth = 150;
+            this.clmScanAndProcessingPrice.Name = "clmScanAndProcessingPrice";
+            this.clmScanAndProcessingPrice.ReadOnly = true;
+            this.clmScanAndProcessingPrice.Width = 150;
+            // 
+            // clmHasItalianAlbum
+            // 
+            this.clmHasItalianAlbum.HeaderText = "آلبوم ایتالیایی";
+            this.clmHasItalianAlbum.MinimumWidth = 120;
+            this.clmHasItalianAlbum.Name = "clmHasItalianAlbum";
+            this.clmHasItalianAlbum.ReadOnly = true;
+            this.clmHasItalianAlbum.Width = 120;
+            // 
+            // clmItalianAlbumPagePrice
+            // 
+            this.clmItalianAlbumPagePrice.HeaderText = "هزینه هر برگ";
+            this.clmItalianAlbumPagePrice.MinimumWidth = 120;
+            this.clmItalianAlbumPagePrice.Name = "clmItalianAlbumPagePrice";
+            this.clmItalianAlbumPagePrice.ReadOnly = true;
+            this.clmItalianAlbumPagePrice.Width = 120;
+            // 
+            // clmItalianAlbumBoundingPrice
+            // 
+            this.clmItalianAlbumBoundingPrice.HeaderText = "صحافی آلبوم";
+            this.clmItalianAlbumBoundingPrice.MinimumWidth = 120;
+            this.clmItalianAlbumBoundingPrice.Name = "clmItalianAlbumBoundingPrice";
+            this.clmItalianAlbumBoundingPrice.ReadOnly = true;
+            this.clmItalianAlbumBoundingPrice.Width = 120;
             // 
             // FrmAddEditPrintSizeAndServices_Refactored
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1084, 591);
+            this.ClientSize = new System.Drawing.Size(1084, 592);
             this.Controls.Add(this.panelEx3);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panelPhotoSizePrices);
@@ -1409,6 +1412,7 @@
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(1100, 630);
             this.Name = "FrmAddEditPrintSizeAndServices_Refactored";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ShowInTaskbar = false;
@@ -1549,6 +1553,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPrintSizeId;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPrintServiceId;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPrintSizePriceId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmPrintServicePriceId;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPrintSizeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPrintServiceName;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPrintServicePrice;
