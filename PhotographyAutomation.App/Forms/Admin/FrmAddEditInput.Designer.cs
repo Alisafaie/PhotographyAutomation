@@ -97,7 +97,7 @@
             this.btnSave.Size = new System.Drawing.Size(89, 36);
             this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnSave.TabIndex = 1;
-            this.btnSave.Text = "ثبت توضیحات";
+            this.btnSave.Text = "ثبت";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lblFormQuestion

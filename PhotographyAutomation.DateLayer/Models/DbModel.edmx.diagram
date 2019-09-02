@@ -60,7 +60,7 @@
         </AssociationConnector>
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblPrintServicePrices_TblPrintSizes" ManuallyRouted="false" >
         </AssociationConnector>
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.View_GetAllPrintSizeAndServicesInfo" Width="1.5" PointX="15.375" PointY="13.75" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.View_GetAllPrintSizeAndServicesInfo" Width="2.75" PointX="15.375" PointY="0.75" IsExpanded="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

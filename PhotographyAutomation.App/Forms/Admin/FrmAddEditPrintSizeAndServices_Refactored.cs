@@ -54,13 +54,17 @@ namespace PhotographyAutomation.App.Forms.Admin
 
         private void FrmAddEditPrintSizeAndServices_Refactored_Load(object sender, EventArgs e)
         {
-            GetAllPhotoSizes();
-            GetAllPhotoSizePrices();
-            GetAllPrintSizeAndServicesInfo();
+            try
+            {
+                GetAllPhotoSizes();
+                GetAllPhotoSizePrices();
+                GetAllPrintSizeAndServicesInfo();
+            }
+            catch (Exception exception)
+            {
+                WriteDebugInfo(exception);
+            }
         }
-
-
-        
 
         #endregion
 
@@ -204,13 +208,32 @@ namespace PhotographyAutomation.App.Forms.Admin
                     frmAddEditPrintSize.IsNewPrintSize = true;
                     if (frmAddEditPrintSize.ShowDialog() == DialogResult.OK)
                     {
-                        GetAllPhotoSizes();
+                        FrmAddEditPrintSizeAndServices_Refactored_Load(null,null);
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                // ignored
+                WriteDebugInfo(exception);
+            }
+        }
+
+        private void تعریف_خدمات_چاپ_جدید_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (var addEditPrintServiceName = new FrmAddEditPrintServiceName())
+                {
+                    addEditPrintServiceName.IsNewPrintSize = true;
+                    if (addEditPrintServiceName.ShowDialog() == DialogResult.OK)
+                    {
+                        FrmAddEditPrintSizeAndServices_Refactored_Load(null,null);
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                WriteDebugInfo(exception);
             }
         }
 
@@ -230,9 +253,9 @@ namespace PhotographyAutomation.App.Forms.Admin
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                // ignored
+                WriteDebugInfo(exception);
             }
         }
 
@@ -259,9 +282,9 @@ namespace PhotographyAutomation.App.Forms.Admin
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                // ignored
+                WriteDebugInfo(exception);
             }
         }
 
@@ -276,9 +299,9 @@ namespace PhotographyAutomation.App.Forms.Admin
                 _bgWorkerGetAllPrintSizeServices.RunWorkerAsync();
                 cpLoadDataGridView.IsRunning = _bgWorkerGetAllPrintSizeServices.IsBusy;
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                //ignored
+                WriteDebugInfo(exception);
             }
         }
         private static void _bgWorkerGetAllPrintSizeServices_DoWork(object sender, DoWorkEventArgs e)
@@ -293,7 +316,7 @@ namespace PhotographyAutomation.App.Forms.Admin
             }
             catch (Exception exception)
             {
-                //ignored
+                WriteDebugInfo(exception);
             }
         }
         private void _bgWorkerGetAllPrintSizeServices_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -329,12 +352,14 @@ namespace PhotographyAutomation.App.Forms.Admin
                         @"Exception",
                         MessageBoxButtons.OK, MessageBoxIcon.Error,
                         MessageBoxDefaultButton.Button1);
+
+                WriteDebugInfo(exception);
                 throw;
             }
         }
         private void PopulateDataGridView(IReadOnlyList<View_GetAllPrintSizeAndServicesInfo> viewInfo)
         {
-            //dgvPrintServices.Rows.Clear();
+            dgvPrintServices.Rows.Clear();
             dgvPrintServices.RowCount = viewInfo.Count;
             dgvPrintServices.AutoGenerateColumns = false;
 
@@ -414,9 +439,9 @@ namespace PhotographyAutomation.App.Forms.Admin
                 _bgWorkerGetAllPhotoSizes.RunWorkerAsync();
                 EnableOrDisableControlsToGetAllPrintSizes();
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                // ignored
+                WriteDebugInfo(exception);
             }
         }
         private static void BgWorkerGetAllPhotoSizes_DoWork(object sender, DoWorkEventArgs e)
@@ -439,23 +464,7 @@ namespace PhotographyAutomation.App.Forms.Admin
             }
             catch (Exception exception)
             {
-                Debug.WriteLine("Message: ");
-                Debug.WriteLine(exception.Message);
-
-                Debug.WriteLine("Inner Exception: ");
-                Debug.WriteLine(exception.InnerException);
-
-                Debug.WriteLine("Inner Exception Message:");
-                Debug.WriteLine(exception.InnerException?.Message);
-
-                Debug.WriteLine("Source: ");
-                Debug.WriteLine(exception.Source);
-
-                Debug.WriteLine("Data: ");
-                Debug.WriteLine(exception.Data);
-
-                Debug.WriteLine("Stack Trace: ");
-                Debug.WriteLine(exception.StackTrace);
+                WriteDebugInfo(exception);
             }
         }
         private void BgWorkerGetAllPhotoSizes_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -483,27 +492,11 @@ namespace PhotographyAutomation.App.Forms.Admin
             {
                 ShowErrorProvider(errorProvider1, cmbPrintSizes, "خطا در دریافت اطلاعات. لطفا فرم را بسته و مجددا باز نمایید.");
 
-                Debug.WriteLine("Message: ");
-                Debug.WriteLine(exception.Message);
-
-                Debug.WriteLine("Inner Exception: ");
-                Debug.WriteLine(exception.InnerException);
-
-                Debug.WriteLine("Inner Exception Message:");
-                Debug.WriteLine(exception.InnerException?.Message);
-
-                Debug.WriteLine("Source: ");
-                Debug.WriteLine(exception.Source);
-
-                Debug.WriteLine("Data: ");
-                Debug.WriteLine(exception.Data);
-
-                Debug.WriteLine("Stack Trace: ");
-                Debug.WriteLine(exception.StackTrace);
+                WriteDebugInfo(exception);
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception);
+                WriteDebugInfo(exception);
                 throw;
             }
         }
@@ -519,10 +512,11 @@ namespace PhotographyAutomation.App.Forms.Admin
             {
                 _bgWorkerGetAllPhotoSizePrices.RunWorkerAsync();
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                // ignored
+                WriteDebugInfo(exception);
             }
+
             EnableOrDisableControlsToGetAllPrintSizePrices();
         }
         private void _bgWorkerGetAllPhotoSizePrices_DoWork(object sender, DoWorkEventArgs e)
@@ -540,23 +534,7 @@ namespace PhotographyAutomation.App.Forms.Admin
             }
             catch (Exception exception)
             {
-                Debug.WriteLine("Message: ");
-                Debug.WriteLine(exception.Message);
-
-                Debug.WriteLine("Inner Exception: ");
-                Debug.WriteLine(exception.InnerException);
-
-                Debug.WriteLine("Inner Exception Message:");
-                Debug.WriteLine(exception.InnerException?.Message);
-
-                Debug.WriteLine("Source: ");
-                Debug.WriteLine(exception.Source);
-
-                Debug.WriteLine("Data: ");
-                Debug.WriteLine(exception.Data);
-
-                Debug.WriteLine("Stack Trace: ");
-                Debug.WriteLine(exception.StackTrace);
+                WriteDebugInfo(exception);
             }
         }
         private void _bgWorkerGetAllPhotoSizePrices_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -646,23 +624,7 @@ namespace PhotographyAutomation.App.Forms.Admin
             }
             catch (Exception exception)
             {
-                Debug.WriteLine("Message: ");
-                Debug.WriteLine(exception.Message);
-
-                Debug.WriteLine("Inner Exception: ");
-                Debug.WriteLine(exception.InnerException);
-
-                Debug.WriteLine("Inner Exception Message:");
-                Debug.WriteLine(exception.InnerException?.Message);
-
-                Debug.WriteLine("Source: ");
-                Debug.WriteLine(exception.Source);
-
-                Debug.WriteLine("Data: ");
-                Debug.WriteLine(exception.Data);
-
-                Debug.WriteLine("Stack Trace: ");
-                Debug.WriteLine(exception.StackTrace);
+                WriteDebugInfo(exception);
             }
         }
 
@@ -695,6 +657,27 @@ namespace PhotographyAutomation.App.Forms.Admin
             errorProvider1.Clear();
         }
 
+        private static void WriteDebugInfo(Exception exception)
+        {
+            Debug.WriteLine("Message: ");
+            Debug.WriteLine(exception.Message);
+
+            Debug.WriteLine("Inner Exception: ");
+            Debug.WriteLine(exception.InnerException);
+
+            Debug.WriteLine("Inner Exception Message:");
+            Debug.WriteLine(exception.InnerException?.Message);
+
+            Debug.WriteLine("Source: ");
+            Debug.WriteLine(exception.Source);
+
+            Debug.WriteLine("Data: ");
+            Debug.WriteLine(exception.Data);
+
+            Debug.WriteLine("Stack Trace: ");
+            Debug.WriteLine(exception.StackTrace);
+        }
+
         private void EnableOrDisableControlsToGetAllPrintSizes()
         {
             cmbPrintSizes.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
@@ -710,6 +693,7 @@ namespace PhotographyAutomation.App.Forms.Admin
 
             menuStrip1.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy;
         }
+
         private void EnableOrDisableControlsToGetAllPrintSizePrices()
         {
             panelPhotoSizePrices.Enabled = !_bgWorkerGetAllPhotoSizePrices.IsBusy;
@@ -723,5 +707,7 @@ namespace PhotographyAutomation.App.Forms.Admin
         }
 
         #endregion
+
+        
     }
 }
