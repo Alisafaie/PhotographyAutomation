@@ -706,8 +706,28 @@ namespace PhotographyAutomation.App.Forms.Admin
             errorProvider.SetError(control, message);
         }
 
+
         #endregion
 
-        
+        private void ویرایش_خدمات_چاپ_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (var addEditPrintServiceName = new FrmAddEditPrintServiceName())
+                {
+                    addEditPrintServiceName.IsNewPrintSize = false;
+                    addEditPrintServiceName.PrintServiceId = 14;
+
+                    if (addEditPrintServiceName.ShowDialog() == DialogResult.OK)
+                    {
+                        FrmAddEditPrintSizeAndServices_Refactored_Load(null,null);
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                WriteDebugInfo(exception);
+            }
+        }
     }
 }

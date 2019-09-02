@@ -29,20 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.groupBoxPrintSize = new System.Windows.Forms.GroupBox();
             this.panelPrintSize1 = new System.Windows.Forms.Panel();
@@ -120,7 +122,6 @@
             this.gbDataGridView = new System.Windows.Forms.GroupBox();
             this.cpLoadDataGridView = new DevComponents.DotNetBar.Controls.CircularProgress();
             this.dgvPrintServices = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.clmPrintSizeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmPrintServiceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmPrintSizePriceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -145,6 +146,7 @@
             this.clmLitPrintRePrintPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmIsActive = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
             this.clmIsDeleted = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panelEx1.SuspendLayout();
             this.groupBoxPrintSize.SuspendLayout();
             this.panelPrintSize1.SuspendLayout();
@@ -1064,7 +1066,7 @@
             this.ویرایش_اندازه_چاپ_ToolStripMenuItem,
             this.ویرایش_خدمات_چاپ_ToolStripMenuItem});
             this.ویرایشToolStripMenuItem.Name = "ویرایشToolStripMenuItem";
-            this.ویرایشToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.ویرایشToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ویرایشToolStripMenuItem.Text = "ویرایش";
             // 
             // ویرایش_اندازه_چاپ_ToolStripMenuItem
@@ -1079,19 +1081,20 @@
             this.ویرایش_خدمات_چاپ_ToolStripMenuItem.Name = "ویرایش_خدمات_چاپ_ToolStripMenuItem";
             this.ویرایش_خدمات_چاپ_ToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.ویرایش_خدمات_چاپ_ToolStripMenuItem.Text = "ویرایش خدمات چاپ";
+            this.ویرایش_خدمات_چاپ_ToolStripMenuItem.Click += new System.EventHandler(this.ویرایش_خدمات_چاپ_ToolStripMenuItem_Click);
             // 
             // حذف_ToolStripMenuItem
             // 
             this.حذف_ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.حذف_اندازه_چاپ_ToolStripMenuItem});
             this.حذف_ToolStripMenuItem.Name = "حذف_ToolStripMenuItem";
-            this.حذف_ToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.حذف_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.حذف_ToolStripMenuItem.Text = "حذف";
             // 
             // حذف_اندازه_چاپ_ToolStripMenuItem
             // 
             this.حذف_اندازه_چاپ_ToolStripMenuItem.Name = "حذف_اندازه_چاپ_ToolStripMenuItem";
-            this.حذف_اندازه_چاپ_ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.حذف_اندازه_چاپ_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.حذف_اندازه_چاپ_ToolStripMenuItem.Text = "حذف اندازه چاپ";
             this.حذف_اندازه_چاپ_ToolStripMenuItem.Click += new System.EventHandler(this.حذف_اندازه_چاپ_ToolStripMenuItem_Click);
             // 
@@ -1183,11 +1186,19 @@
             this.dgvPrintServices.AllowUserToAddRows = false;
             this.dgvPrintServices.AllowUserToDeleteRows = false;
             this.dgvPrintServices.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvPrintServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvPrintServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPrintServices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dgvPrintServices.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvPrintServices.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPrintServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPrintServices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmPrintSizeId,
             this.clmPrintServiceId,
@@ -1213,20 +1224,29 @@
             this.clmLitPrintRePrintPrice,
             this.clmIsActive,
             this.clmIsDeleted});
-            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle42.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle42.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle42.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle42.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle42.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPrintServices.DefaultCellStyle = dataGridViewCellStyle42;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPrintServices.DefaultCellStyle = dataGridViewCellStyle15;
             this.dgvPrintServices.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPrintServices.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvPrintServices.EnableHeadersVisualStyles = false;
             this.dgvPrintServices.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.dgvPrintServices.Location = new System.Drawing.Point(3, 17);
             this.dgvPrintServices.Name = "dgvPrintServices";
             this.dgvPrintServices.ReadOnly = true;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPrintServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvPrintServices.RowHeadersVisible = false;
             this.dgvPrintServices.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgvPrintServices.ScrollBarAppearance = DevComponents.DotNetBar.eScrollBarAppearance.Default;
@@ -1234,11 +1254,6 @@
             this.dgvPrintServices.ShowEditingIcon = false;
             this.dgvPrintServices.Size = new System.Drawing.Size(1053, 341);
             this.dgvPrintServices.TabIndex = 0;
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            this.errorProvider1.RightToLeft = true;
             // 
             // clmPrintSizeId
             // 
@@ -1281,9 +1296,9 @@
             // 
             // clmMinimumOrder
             // 
-            dataGridViewCellStyle30.Format = "N0";
-            dataGridViewCellStyle30.NullValue = null;
-            this.clmMinimumOrder.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = null;
+            this.clmMinimumOrder.DefaultCellStyle = dataGridViewCellStyle3;
             this.clmMinimumOrder.HeaderText = "حداقل تعداد";
             this.clmMinimumOrder.Name = "clmMinimumOrder";
             this.clmMinimumOrder.ReadOnly = true;
@@ -1299,9 +1314,9 @@
             // 
             // clmPrintServicePrice
             // 
-            dataGridViewCellStyle31.Format = "N0";
-            dataGridViewCellStyle31.NullValue = null;
-            this.clmPrintServicePrice.DefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle4.Format = "N0";
+            dataGridViewCellStyle4.NullValue = null;
+            this.clmPrintServicePrice.DefaultCellStyle = dataGridViewCellStyle4;
             this.clmPrintServicePrice.HeaderText = "هزینه خدمات";
             this.clmPrintServicePrice.Name = "clmPrintServicePrice";
             this.clmPrintServicePrice.ReadOnly = true;
@@ -1309,9 +1324,9 @@
             // 
             // clmFirstPrintPrice
             // 
-            dataGridViewCellStyle32.Format = "N0";
-            dataGridViewCellStyle32.NullValue = null;
-            this.clmFirstPrintPrice.DefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle5.Format = "N0";
+            dataGridViewCellStyle5.NullValue = null;
+            this.clmFirstPrintPrice.DefaultCellStyle = dataGridViewCellStyle5;
             this.clmFirstPrintPrice.HeaderText = "اصل چاپ";
             this.clmFirstPrintPrice.Name = "clmFirstPrintPrice";
             this.clmFirstPrintPrice.ReadOnly = true;
@@ -1319,8 +1334,8 @@
             // 
             // clmRePrintPrice
             // 
-            dataGridViewCellStyle33.Format = "N0";
-            this.clmRePrintPrice.DefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle6.Format = "N0";
+            this.clmRePrintPrice.DefaultCellStyle = dataGridViewCellStyle6;
             this.clmRePrintPrice.HeaderText = " چاپ مجدد";
             this.clmRePrintPrice.Name = "clmRePrintPrice";
             this.clmRePrintPrice.ReadOnly = true;
@@ -1338,8 +1353,8 @@
             // 
             // clmMedicalPrice
             // 
-            dataGridViewCellStyle34.Format = "N0";
-            this.clmMedicalPrice.DefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle7.Format = "N0";
+            this.clmMedicalPrice.DefaultCellStyle = dataGridViewCellStyle7;
             this.clmMedicalPrice.HeaderText = "پزشکی اصل چاپ";
             this.clmMedicalPrice.Name = "clmMedicalPrice";
             this.clmMedicalPrice.ReadOnly = true;
@@ -1347,8 +1362,8 @@
             // 
             // clmMedicalRePrintPrice
             // 
-            dataGridViewCellStyle35.Format = "N0";
-            this.clmMedicalRePrintPrice.DefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle8.Format = "N0";
+            this.clmMedicalRePrintPrice.DefaultCellStyle = dataGridViewCellStyle8;
             this.clmMedicalRePrintPrice.HeaderText = "پزشکی چاپ مجدد";
             this.clmMedicalRePrintPrice.Name = "clmMedicalRePrintPrice";
             this.clmMedicalRePrintPrice.ReadOnly = true;
@@ -1366,8 +1381,8 @@
             // 
             // clmScanAndPrintPrice
             // 
-            dataGridViewCellStyle36.Format = "N0";
-            this.clmScanAndPrintPrice.DefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle9.Format = "N0";
+            this.clmScanAndPrintPrice.DefaultCellStyle = dataGridViewCellStyle9;
             this.clmScanAndPrintPrice.HeaderText = "هزینه اسکن و چاپ";
             this.clmScanAndPrintPrice.Name = "clmScanAndPrintPrice";
             this.clmScanAndPrintPrice.ReadOnly = true;
@@ -1375,8 +1390,8 @@
             // 
             // clmScanAndProcessingPrice
             // 
-            dataGridViewCellStyle37.Format = "N0";
-            this.clmScanAndProcessingPrice.DefaultCellStyle = dataGridViewCellStyle37;
+            dataGridViewCellStyle10.Format = "N0";
+            this.clmScanAndProcessingPrice.DefaultCellStyle = dataGridViewCellStyle10;
             this.clmScanAndProcessingPrice.HeaderText = "هزینه اسکن و پردازش";
             this.clmScanAndProcessingPrice.Name = "clmScanAndProcessingPrice";
             this.clmScanAndProcessingPrice.ReadOnly = true;
@@ -1394,8 +1409,8 @@
             // 
             // clmItalianAlbumPagePrice
             // 
-            dataGridViewCellStyle38.Format = "N0";
-            this.clmItalianAlbumPagePrice.DefaultCellStyle = dataGridViewCellStyle38;
+            dataGridViewCellStyle11.Format = "N0";
+            this.clmItalianAlbumPagePrice.DefaultCellStyle = dataGridViewCellStyle11;
             this.clmItalianAlbumPagePrice.HeaderText = "هزینه هر برگ";
             this.clmItalianAlbumPagePrice.Name = "clmItalianAlbumPagePrice";
             this.clmItalianAlbumPagePrice.ReadOnly = true;
@@ -1403,8 +1418,8 @@
             // 
             // clmItalianAlbumBoundingPrice
             // 
-            dataGridViewCellStyle39.Format = "N0";
-            this.clmItalianAlbumBoundingPrice.DefaultCellStyle = dataGridViewCellStyle39;
+            dataGridViewCellStyle12.Format = "N0";
+            this.clmItalianAlbumBoundingPrice.DefaultCellStyle = dataGridViewCellStyle12;
             this.clmItalianAlbumBoundingPrice.HeaderText = "هزینه صحافی";
             this.clmItalianAlbumBoundingPrice.Name = "clmItalianAlbumBoundingPrice";
             this.clmItalianAlbumBoundingPrice.ReadOnly = true;
@@ -1422,8 +1437,8 @@
             // 
             // clmLitPrintPrice
             // 
-            dataGridViewCellStyle40.Format = "N0";
-            this.clmLitPrintPrice.DefaultCellStyle = dataGridViewCellStyle40;
+            dataGridViewCellStyle13.Format = "N0";
+            this.clmLitPrintPrice.DefaultCellStyle = dataGridViewCellStyle13;
             this.clmLitPrintPrice.HeaderText = "لیت پرینت اصل چاپ";
             this.clmLitPrintPrice.Name = "clmLitPrintPrice";
             this.clmLitPrintPrice.ReadOnly = true;
@@ -1431,8 +1446,8 @@
             // 
             // clmLitPrintRePrintPrice
             // 
-            dataGridViewCellStyle41.Format = "N0";
-            this.clmLitPrintRePrintPrice.DefaultCellStyle = dataGridViewCellStyle41;
+            dataGridViewCellStyle14.Format = "N0";
+            this.clmLitPrintRePrintPrice.DefaultCellStyle = dataGridViewCellStyle14;
             this.clmLitPrintRePrintPrice.HeaderText = " لیت پرینت چاپ مجدد";
             this.clmLitPrintRePrintPrice.Name = "clmLitPrintRePrintPrice";
             this.clmLitPrintRePrintPrice.ReadOnly = true;
@@ -1457,6 +1472,11 @@
             this.clmIsDeleted.Name = "clmIsDeleted";
             this.clmIsDeleted.ReadOnly = true;
             this.clmIsDeleted.Width = 36;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.RightToLeft = true;
             // 
             // FrmAddEditPrintSizeAndServices_Refactored
             // 

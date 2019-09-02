@@ -45,12 +45,17 @@
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbPrintServices = new System.Windows.Forms.ComboBox();
+            this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.panelEx2.SuspendLayout();
             this.groupBoxPrintService.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelEx2
@@ -62,7 +67,7 @@
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx2.Location = new System.Drawing.Point(0, 0);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(588, 165);
+            this.panelEx2.Size = new System.Drawing.Size(588, 205);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -77,6 +82,7 @@
             this.groupBoxPrintService.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxPrintService.Controls.Add(this.panel4);
             this.groupBoxPrintService.Controls.Add(this.panel1);
             this.groupBoxPrintService.Controls.Add(this.btnCancel);
             this.groupBoxPrintService.Controls.Add(this.btnSave);
@@ -84,17 +90,17 @@
             this.groupBoxPrintService.Controls.Add(this.panel3);
             this.groupBoxPrintService.Location = new System.Drawing.Point(3, 10);
             this.groupBoxPrintService.Name = "groupBoxPrintService";
-            this.groupBoxPrintService.Size = new System.Drawing.Size(582, 151);
+            this.groupBoxPrintService.Size = new System.Drawing.Size(582, 191);
             this.groupBoxPrintService.TabIndex = 0;
             this.groupBoxPrintService.TabStop = false;
             this.groupBoxPrintService.Text = "اطلاعات خدمت چاپ";
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.txtPrintServiceDescription);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(0, 60);
+            this.panel1.Location = new System.Drawing.Point(0, 100);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(576, 52);
             this.panel1.TabIndex = 2;
@@ -135,7 +141,7 @@
             this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.highlighter1.SetHighlightOnFocus(this.btnCancel, true);
-            this.btnCancel.Location = new System.Drawing.Point(420, 120);
+            this.btnCancel.Location = new System.Drawing.Point(420, 160);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
@@ -152,7 +158,7 @@
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.highlighter1.SetHighlightOnFocus(this.btnSave, true);
-            this.btnSave.Location = new System.Drawing.Point(501, 120);
+            this.btnSave.Location = new System.Drawing.Point(501, 160);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
@@ -165,10 +171,10 @@
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.txtPrintServiceName);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(223, 20);
+            this.panel2.Location = new System.Drawing.Point(223, 60);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(353, 34);
             this.panel2.TabIndex = 0;
@@ -203,10 +209,10 @@
             // 
             // panel3
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Controls.Add(this.txtPrintServiceCode);
             this.panel3.Controls.Add(this.label4);
-            this.panel3.Location = new System.Drawing.Point(0, 20);
+            this.panel3.Location = new System.Drawing.Point(0, 60);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(224, 34);
             this.panel3.TabIndex = 1;
@@ -256,12 +262,63 @@
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.RightToLeft = true;
             // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Controls.Add(this.checkBoxX1);
+            this.panel4.Controls.Add(this.cmbPrintServices);
+            this.panel4.Controls.Add(this.label3);
+            this.panel4.Enabled = false;
+            this.panel4.Location = new System.Drawing.Point(0, 20);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(576, 34);
+            this.panel4.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(521, 11);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(52, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "نام خدمت";
+            // 
+            // cmbPrintServices
+            // 
+            this.cmbPrintServices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbPrintServices.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPrintServices.FormattingEnabled = true;
+            this.highlighter1.SetHighlightOnFocus(this.cmbPrintServices, true);
+            this.cmbPrintServices.Location = new System.Drawing.Point(247, 8);
+            this.cmbPrintServices.Name = "cmbPrintServices";
+            this.cmbPrintServices.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.cmbPrintServices.Size = new System.Drawing.Size(268, 21);
+            this.cmbPrintServices.TabIndex = 0;
+            this.cmbPrintServices.SelectedIndexChanged += new System.EventHandler(this.cmbPrintServices_SelectedIndexChanged);
+            // 
+            // checkBoxX1
+            // 
+            this.checkBoxX1.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX1.Enabled = false;
+            this.highlighter1.SetHighlightOnFocus(this.checkBoxX1, true);
+            this.checkBoxX1.Location = new System.Drawing.Point(98, 11);
+            this.checkBoxX1.Name = "checkBoxX1";
+            this.checkBoxX1.Size = new System.Drawing.Size(126, 16);
+            this.checkBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX1.TabIndex = 1;
+            this.checkBoxX1.Text = "حذف کامل خدمت چاپ";
+            // 
             // FrmAddEditPrintServiceName
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(588, 165);
+            this.ClientSize = new System.Drawing.Size(588, 205);
             this.Controls.Add(this.panelEx2);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -283,6 +340,8 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -305,5 +364,9 @@
         private DevComponents.DotNetBar.Validator.Highlighter highlighter1;
         private DevComponents.DotNetBar.StyleManager styleManager1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cmbPrintServices;
+        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX1;
     }
 }

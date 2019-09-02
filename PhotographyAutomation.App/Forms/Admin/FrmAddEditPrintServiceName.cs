@@ -2,6 +2,7 @@
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.DateLayer.Models;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
@@ -16,6 +17,11 @@ namespace PhotographyAutomation.App.Forms.Admin
         public bool IsNewPrintSize = false;
         public int PrintServiceId = 0;
 
+        private readonly BackgroundWorker _bgWorkerLoadAllPrintServices = new BackgroundWorker
+        {
+            WorkerSupportsCancellation = false,
+            WorkerReportsProgress = false
+        };
         private readonly BackgroundWorker _bgWorkerGetPrintServiceInfo = new BackgroundWorker
         {
             WorkerSupportsCancellation = false,
@@ -31,6 +37,10 @@ namespace PhotographyAutomation.App.Forms.Admin
         {
             InitializeComponent();
 
+            _bgWorkerLoadAllPrintServices.DoWork += _bgWorkerLoadAllPrintServices_DoWork;
+            _bgWorkerLoadAllPrintServices.RunWorkerCompleted += _bgWorkerLoadAllPrintServices_RunWorkerCompleted;
+
+
             _bgWorkerGetPrintServiceInfo.DoWork += BgWorkerGetPrintServiceInfo_DoWork;
             _bgWorkerGetPrintServiceInfo.RunWorkerCompleted += BgWorkerGetPrintServiceInfo_RunWorkerCompleted;
         }
@@ -38,8 +48,10 @@ namespace PhotographyAutomation.App.Forms.Admin
         {
             if (IsNewPrintSize == false && PrintServiceId > 0)
             {
+                panel4.Enabled = true;
                 try
                 {
+                    LoadAllPrintServices();
                     GetPrintServiceInfo();
                 }
                 catch (Exception exception)
@@ -48,6 +60,60 @@ namespace PhotographyAutomation.App.Forms.Admin
                 }
             }
         }
+
+
+        #endregion
+
+
+        #region LoadAllPrintServices
+
+        private void LoadAllPrintServices()
+        {
+            try
+            {
+                _bgWorkerLoadAllPrintServices.RunWorkerAsync();
+            }
+            catch (Exception exception)
+            {
+                WriteDebugInfo(exception);
+                throw;
+            }
+        }
+        private static void _bgWorkerLoadAllPrintServices_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                using (var db = new UnitOfWork())
+                {
+                    List<TblPrintServices> result = db.PrintServicesGenericRepository
+                                                        .Get()
+                                                        .OrderBy(x => x.Code)
+                                                        .ToList();
+                    e.Result = result;
+                }
+            }
+            catch (Exception exception)
+            {
+                WriteDebugInfo(exception);
+                throw;
+            }
+        }
+        private void _bgWorkerLoadAllPrintServices_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Result != null && e.Result is List<TblPrintServices> printServicesList)
+            {
+                cmbPrintServices.DataSource = printServicesList;
+                cmbPrintServices.DisplayMember = "PrintServiceName";
+                cmbPrintServices.ValueMember = "Id";
+
+                cmbPrintServices.SelectedValue = PrintServiceId;
+            }
+            else
+            {
+                ShowErrorProvider(errorProvider1, cmbPrintServices, "اطلاعات خدمات چاپ قابل دریافت نمی باشد و یا اطلاعاتی موجود نیست.");
+            }
+        }
+
         #endregion
 
 
@@ -273,5 +339,13 @@ namespace PhotographyAutomation.App.Forms.Admin
 
         #endregion
 
+        private void cmbPrintServices_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbPrintServices.Items.Count > 0 && cmbPrintServices.DataSource != null &&
+                int.TryParse(cmbPrintServices.SelectedValue.ToString(), out var selectedPrintServiceId))
+            {
+                PrintServiceId = selectedPrintServiceId;
+            }
+        }
     }
 }
