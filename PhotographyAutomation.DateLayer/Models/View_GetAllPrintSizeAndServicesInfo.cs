@@ -16,9 +16,11 @@ namespace PhotographyAutomation.DateLayer.Models
     {
         public int PrintSizeId { get; set; }
         public Nullable<int> PrintServiceId { get; set; }
-        public int PrintSizePriceId { get; set; }
+        public Nullable<int> PrintSizePriceId { get; set; }
         public Nullable<int> PrintServicePriceId { get; set; }
         public string PrintSizeName { get; set; }
+        public string PrintServiceName { get; set; }
+        public Nullable<int> PrintServicePrice { get; set; }
         public Nullable<int> FirstPrintPrice { get; set; }
         public Nullable<int> RePrintPrice { get; set; }
         public bool HasMedicalPhoto { get; set; }
@@ -33,7 +35,10 @@ namespace PhotographyAutomation.DateLayer.Models
         public bool HasItalianAlbum { get; set; }
         public Nullable<int> ItalianAlbumPagePrice { get; set; }
         public Nullable<int> ItalianAlbumBoundingPrice { get; set; }
-        public string PrintServiceName { get; set; }
-        public Nullable<int> PrintServicePrice { get; set; }
+        public bool IsActive { get; set; }
+        public bool IsDeleted { get; set; }
+        public byte MinimumOrder { get; set; }
+        public double Width { get; set; }
+        public double Height { get; set; }
     }
 }

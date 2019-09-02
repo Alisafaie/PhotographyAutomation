@@ -12,9 +12,16 @@ namespace PhotographyAutomation.App.Forms.Admin
 {
     public partial class FrmAddEditPrintSize : Form
     {
+        #region Variables
+
         public bool IsNewPrintSize = false;
         public int PrintSizeId = 0;
         public bool HasSizePriceBefore = false;
+
+        #endregion
+
+
+        #region Form Events
 
         public FrmAddEditPrintSize()
         {
@@ -153,25 +160,10 @@ namespace PhotographyAutomation.App.Forms.Admin
             }
         }
 
-        private void GetPrintSizeInfoAndPlaceThem(TblPrintSizes printSizeInDb)
-        {
-            doubleInputWidth.Value = printSizeInDb.Width;
-            doubleInputHeight.Value = printSizeInDb.Height;
-            txtDescription.Text = printSizeInDb.Descriptions;
+        #endregion
 
-            chkHasItalianAlbum.Checked = printSizeInDb.HasItalianAlbum;
-            chkHasLitPrint.Checked = printSizeInDb.HasLitPrint;
-            chkHasMedialPhoto.Checked = printSizeInDb.HasMedicalPhoto;
-            chkHasScanAndProcess.Checked = printSizeInDb.HasScanAndProcessing;
-            chkIsActive.Checked = printSizeInDb.IsActive;
-            chkIsDeleted.Checked = printSizeInDb.IsDeleted;
-            iiMinimumOrder.Value = printSizeInDb.MinimumOrder;
 
-            iiScanAndPrint.Enabled = iiScanAndProcess.Enabled = chkHasScanAndProcess.Checked;
-            iiLitPrintFirstPrint.Enabled = iiLitPrintRePrint.Enabled = chkHasLitPrint.Checked;
-            iiMedicalFirstPrint.Enabled = iiMedicalRePrint.Enabled = chkHasMedialPhoto.Checked;
-            iiItalianAlbumPagePrice.Enabled = iiItalianAlbumBoundingPrice.Enabled = chkHasItalianAlbum.Checked;
-        }
+        #region Buttons
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -473,6 +465,11 @@ namespace PhotographyAutomation.App.Forms.Admin
             }
         }
 
+        #endregion
+
+
+        #region CheckBoxes CheckedChanged Events
+
         private void chkHasScanAndProcess_CheckedChanged(object sender, EventArgs e)
         {
             if (chkHasScanAndProcess.Checked)
@@ -528,5 +525,32 @@ namespace PhotographyAutomation.App.Forms.Admin
                 iiItalianAlbumBoundingPrice.Enabled = false;
             }
         }
+
+        #endregion
+
+
+        #region Methods
+
+        private void GetPrintSizeInfoAndPlaceThem(TblPrintSizes printSizeInDb)
+        {
+            doubleInputWidth.Value = printSizeInDb.Width;
+            doubleInputHeight.Value = printSizeInDb.Height;
+            txtDescription.Text = printSizeInDb.Descriptions;
+
+            chkHasItalianAlbum.Checked = printSizeInDb.HasItalianAlbum;
+            chkHasLitPrint.Checked = printSizeInDb.HasLitPrint;
+            chkHasMedialPhoto.Checked = printSizeInDb.HasMedicalPhoto;
+            chkHasScanAndProcess.Checked = printSizeInDb.HasScanAndProcessing;
+            chkIsActive.Checked = printSizeInDb.IsActive;
+            chkIsDeleted.Checked = printSizeInDb.IsDeleted;
+            iiMinimumOrder.Value = printSizeInDb.MinimumOrder;
+
+            iiScanAndPrint.Enabled = iiScanAndProcess.Enabled = chkHasScanAndProcess.Checked;
+            iiLitPrintFirstPrint.Enabled = iiLitPrintRePrint.Enabled = chkHasLitPrint.Checked;
+            iiMedicalFirstPrint.Enabled = iiMedicalRePrint.Enabled = chkHasMedialPhoto.Checked;
+            iiItalianAlbumPagePrice.Enabled = iiItalianAlbumBoundingPrice.Enabled = chkHasItalianAlbum.Checked;
+        }
+
+        #endregion
     }
 }

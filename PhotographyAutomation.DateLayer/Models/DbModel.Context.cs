@@ -69,7 +69,7 @@ namespace PhotographyAutomation.DateLayer.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("usp_CreateCustomerFinancialDirectory", customerFinancialNumberParameter, monthNumberParameter, parent_levelParameter, returnValue);
         }
     
-        public virtual ObjectResult<usp_CreateFileTableFile_Result> usp_CreateFileTableFile(string name, string parent_name, Nullable<byte> parent_level)
+        public virtual ObjectResult<usp_CreateFileTableFile_Result1> usp_CreateFileTableFile(string name, string parent_name, Nullable<byte> parent_level)
         {
             var nameParameter = name != null ?
                 new ObjectParameter("name", name) :
@@ -83,7 +83,7 @@ namespace PhotographyAutomation.DateLayer.Models
                 new ObjectParameter("parent_level", parent_level) :
                 new ObjectParameter("parent_level", typeof(byte));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_CreateFileTableFile_Result>("usp_CreateFileTableFile", nameParameter, parent_nameParameter, parent_levelParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_CreateFileTableFile_Result1>("usp_CreateFileTableFile", nameParameter, parent_nameParameter, parent_levelParameter);
         }
     
         public virtual ObjectResult<string> usp_CreateMonthFolder(string monthName, string year, Nullable<byte> parent_level, ObjectParameter returnValue)
@@ -120,15 +120,6 @@ namespace PhotographyAutomation.DateLayer.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("usp_CreateYearFolder", nameParameter, parent_nameParameter, parent_levelParameter, returnValue);
         }
     
-        public virtual ObjectResult<string> usp_GetOrderFolderStreamId(string customerFinancialNumber, ObjectParameter returnValue)
-        {
-            var customerFinancialNumberParameter = customerFinancialNumber != null ?
-                new ObjectParameter("customerFinancialNumber", customerFinancialNumber) :
-                new ObjectParameter("customerFinancialNumber", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("usp_GetOrderFolderStreamId", customerFinancialNumberParameter, returnValue);
-        }
-    
         public virtual int usp_DeleteOrderFolderFiles(string pathLocator)
         {
             var pathLocatorParameter = pathLocator != null ?
@@ -138,22 +129,22 @@ namespace PhotographyAutomation.DateLayer.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_DeleteOrderFolderFiles", pathLocatorParameter);
         }
     
-        public virtual int usp_GetTotalFilesOfFolder(string parent_path_locator, ObjectParameter returnValue)
+        public virtual ObjectResult<usp_GetImageInfo_Result1> usp_GetImageInfo(Nullable<System.Guid> photoStreamId)
         {
-            var parent_path_locatorParameter = parent_path_locator != null ?
-                new ObjectParameter("parent_path_locator", parent_path_locator) :
-                new ObjectParameter("parent_path_locator", typeof(string));
+            var photoStreamIdParameter = photoStreamId.HasValue ?
+                new ObjectParameter("photoStreamId", photoStreamId) :
+                new ObjectParameter("photoStreamId", typeof(System.Guid));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_GetTotalFilesOfFolder", parent_path_locatorParameter, returnValue);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_GetImageInfo_Result1>("usp_GetImageInfo", photoStreamIdParameter);
         }
     
-        public virtual ObjectResult<usp_GetListOfFilesInFolder_Result> usp_GetListOfFilesInFolder(string path_locator)
+        public virtual ObjectResult<usp_GetListOfFilesInFolder_Result1> usp_GetListOfFilesInFolder(string path_locator)
         {
             var path_locatorParameter = path_locator != null ?
                 new ObjectParameter("path_locator", path_locator) :
                 new ObjectParameter("path_locator", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_GetListOfFilesInFolder_Result>("usp_GetListOfFilesInFolder", path_locatorParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_GetListOfFilesInFolder_Result1>("usp_GetListOfFilesInFolder", path_locatorParameter);
         }
     
         public virtual ObjectResult<Nullable<System.Guid>> usp_GetListOfFilesOfOrder(string path_locator)
@@ -165,100 +156,27 @@ namespace PhotographyAutomation.DateLayer.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("usp_GetListOfFilesOfOrder", path_locatorParameter);
         }
     
-        public virtual ObjectResult<usp_GetImageInfo_Result> usp_GetImageInfo(Nullable<System.Guid> photoStreamId)
-        {
-            var photoStreamIdParameter = photoStreamId.HasValue ?
-                new ObjectParameter("photoStreamId", photoStreamId) :
-                new ObjectParameter("photoStreamId", typeof(System.Guid));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_GetImageInfo_Result>("usp_GetImageInfo", photoStreamIdParameter);
-        }
-    
-        public virtual ObjectResult<usp_GetPrintSizePriceServices_Result> usp_GetPrintSizePriceServices()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_GetPrintSizePriceServices_Result>("usp_GetPrintSizePriceServices");
-        }
-    
-        public virtual int sp_upgraddiagrams()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
-        }
-    
-        public virtual ObjectResult<string> usp_CreateOrderPrintDirectory(string customerFinancialNumber, string monthNumber, Nullable<byte> parent_level, ObjectParameter returnValue)
+        public virtual ObjectResult<string> usp_GetOrderFolderStreamId(string customerFinancialNumber, ObjectParameter returnValue)
         {
             var customerFinancialNumberParameter = customerFinancialNumber != null ?
                 new ObjectParameter("customerFinancialNumber", customerFinancialNumber) :
                 new ObjectParameter("customerFinancialNumber", typeof(string));
     
-            var monthNumberParameter = monthNumber != null ?
-                new ObjectParameter("monthNumber", monthNumber) :
-                new ObjectParameter("monthNumber", typeof(string));
-    
-            var parent_levelParameter = parent_level.HasValue ?
-                new ObjectParameter("parent_level", parent_level) :
-                new ObjectParameter("parent_level", typeof(byte));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("usp_CreateOrderPrintDirectory", customerFinancialNumberParameter, monthNumberParameter, parent_levelParameter, returnValue);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("usp_GetOrderFolderStreamId", customerFinancialNumberParameter, returnValue);
         }
     
-        public virtual ObjectResult<usp_CreateSelectedPhotosFileTableFile_Result> usp_CreateSelectedPhotosFileTableFile(string name, string parent_name, Nullable<byte> parent_level)
+        public virtual int usp_GetPrintSizePriceServices()
         {
-            var nameParameter = name != null ?
-                new ObjectParameter("name", name) :
-                new ObjectParameter("name", typeof(string));
-    
-            var parent_nameParameter = parent_name != null ?
-                new ObjectParameter("parent_name", parent_name) :
-                new ObjectParameter("parent_name", typeof(string));
-    
-            var parent_levelParameter = parent_level.HasValue ?
-                new ObjectParameter("parent_level", parent_level) :
-                new ObjectParameter("parent_level", typeof(byte));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_CreateSelectedPhotosFileTableFile_Result>("usp_CreateSelectedPhotosFileTableFile", nameParameter, parent_nameParameter, parent_levelParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_GetPrintSizePriceServices");
         }
     
-        public virtual ObjectResult<string> usp_CreateSelectedPhotosMonthFolder(string monthName, string year, Nullable<byte> parent_level, ObjectParameter returnValue)
+        public virtual int usp_GetTotalFilesOfFolder(string parent_path_locator, ObjectParameter returnValue)
         {
-            var monthNameParameter = monthName != null ?
-                new ObjectParameter("monthName", monthName) :
-                new ObjectParameter("monthName", typeof(string));
+            var parent_path_locatorParameter = parent_path_locator != null ?
+                new ObjectParameter("parent_path_locator", parent_path_locator) :
+                new ObjectParameter("parent_path_locator", typeof(string));
     
-            var yearParameter = year != null ?
-                new ObjectParameter("year", year) :
-                new ObjectParameter("year", typeof(string));
-    
-            var parent_levelParameter = parent_level.HasValue ?
-                new ObjectParameter("parent_level", parent_level) :
-                new ObjectParameter("parent_level", typeof(byte));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("usp_CreateSelectedPhotosMonthFolder", monthNameParameter, yearParameter, parent_levelParameter, returnValue);
-        }
-    
-        public virtual ObjectResult<string> usp_CreateSelectedPhotosYearFolder(string name, string parent_name, Nullable<byte> parent_level, ObjectParameter returnValue)
-        {
-            var nameParameter = name != null ?
-                new ObjectParameter("name", name) :
-                new ObjectParameter("name", typeof(string));
-    
-            var parent_nameParameter = parent_name != null ?
-                new ObjectParameter("parent_name", parent_name) :
-                new ObjectParameter("parent_name", typeof(string));
-    
-            var parent_levelParameter = parent_level.HasValue ?
-                new ObjectParameter("parent_level", parent_level) :
-                new ObjectParameter("parent_level", typeof(byte));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("usp_CreateSelectedPhotosYearFolder", nameParameter, parent_nameParameter, parent_levelParameter, returnValue);
-        }
-    
-        public virtual int usp_DeleteSelectedPhotosFolderFiles(string pathLocator)
-        {
-            var pathLocatorParameter = pathLocator != null ?
-                new ObjectParameter("pathLocator", pathLocator) :
-                new ObjectParameter("pathLocator", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_DeleteSelectedPhotosFolderFiles", pathLocatorParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_GetTotalFilesOfFolder", parent_path_locatorParameter, returnValue);
         }
     }
 }

@@ -24,7 +24,7 @@
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPrintServicePrices" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPrintServices" Width="1.5" PointX="13.5" PointY="5.75" />
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPrintSizePrices" Width="1.5" PointX="5" PointY="21.5" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPrintSizes" Width="1.5" PointX="2.75" PointY="18" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPrintSizes" Width="1.5" PointX="2.375" PointY="18.125" />
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPrintSpecialServices" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.View_GetAllPhotos" Width="1.875" PointX="10.375" PointY="0.75" IsExpanded="false" />
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.View_GetDocumentsFolders" Width="2.5" PointX="12.375" PointY="0.75" IsExpanded="false" />
@@ -53,9 +53,14 @@
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintServices" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblCustomerFilePrint_TblPrintSizes" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblSizePrice_TblPrintSizes1" />
-        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblPrintServicePrices_TblPrintServices" />
-        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblPrintServicePrices_TblPrintSizes" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.View_GetAllPrintSizeAndServicesInfo" Width="2.625" PointX="15" PointY="0.75" IsExpanded="false" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblPrintServicePrices_TblPrintServices" ManuallyRouted="true" >
+          <ConnectorPoint PointX="14.96875" PointY="5.75" />
+          <ConnectorPoint PointX="14.96875" PointY="2.7777603873697982" />
+          <ConnectorPoint PointX="2.25" PointY="2.7777603873697982" />
+        </AssociationConnector>
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblPrintServicePrices_TblPrintSizes" ManuallyRouted="false" >
+        </AssociationConnector>
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.View_GetAllPrintSizeAndServicesInfo" Width="1.5" PointX="15.375" PointY="13.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

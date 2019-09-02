@@ -37,11 +37,11 @@ namespace PhotographyAutomation.DateLayer.Services
                         IsActive = x.IsActive,
                         IsDeleted = x.IsDeleted
                     })
+                    .AsNoTracking()
                     .OrderBy(x => x.Width)
                     .ThenBy(x => x.Height)
                     .ToList();
                 return result;
-
 
             }
             catch (Exception exception)
@@ -68,6 +68,7 @@ namespace PhotographyAutomation.DateLayer.Services
                                         PrintServiceName = x.TblPrintServices.PrintServiceName,
                                         PrintServiceDescription = x.TblPrintServices.PrintServiceDescription,
                                     })
+                                .AsNoTracking()
                                 .ToList();
 
                 return result;

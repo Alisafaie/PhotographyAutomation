@@ -139,13 +139,22 @@
     <Compile Include="Models\usp_CreateFileTableFile_Result.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\usp_CreateFileTableFile_Result1.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\usp_CreateSelectedPhotosFileTableFile_Result.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\usp_GetImageInfo_Result.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\usp_GetImageInfo_Result1.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\usp_GetListOfFilesInFolder_Result.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_GetListOfFilesInFolder_Result1.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\usp_GetPrintSizePriceServices_Result.cs">

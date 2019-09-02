@@ -21,7 +21,15 @@ namespace PhotographyAutomation.DateLayer.Services
         {
             try
             {
-                var result = _db.View_GetAllPrintSizeAndServicesInfo.ToList();
+                //var result2 = _db.View_GetAllPrintSizeAndServicesInfo.AsNoTracking().ToList();
+
+                var result = _db.View_GetAllPrintSizeAndServicesInfo
+                                .SqlQuery("SELECT * FROM View_GetAllPrintSizeAndServicesInfo")
+                                .AsNoTracking()
+                                .OrderBy(x=>x.Width)
+                                .ThenBy(x=>x.Height)
+                                .ToList();
+                
                 return result;
             }
             catch (Exception exception)

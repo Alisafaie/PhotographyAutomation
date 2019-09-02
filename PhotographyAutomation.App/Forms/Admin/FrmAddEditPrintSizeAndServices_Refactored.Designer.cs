@@ -29,10 +29,20 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.groupBoxPrintSize = new System.Windows.Forms.GroupBox();
             this.panelPrintSize1 = new System.Windows.Forms.Panel();
@@ -109,29 +119,32 @@
             this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
             this.gbDataGridView = new System.Windows.Forms.GroupBox();
             this.cpLoadDataGridView = new DevComponents.DotNetBar.Controls.CircularProgress();
-            this.dgvPrintServices = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.dgvPrintServices = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.clmPrintSizeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmPrintServiceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmPrintSizePriceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmPrintServicePriceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmPrintSizeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmMinimumOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmPrintServiceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmPrintServicePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmFirstPrintPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmRePrintPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmHasMedicalPhoto = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.clmHasMedicalPhoto = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
             this.clmMedicalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmMedicalRePrintPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmHasLitPrint = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.clmHasLitPrint = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
             this.clmLitPrintPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmLitPrintRePrintPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmHasScanAndProcessing = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.clmHasScanAndProcessing = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
             this.clmScanAndPrintPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmScanAndProcessingPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmHasItalianAlbum = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.clmHasItalianAlbum = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
             this.clmItalianAlbumPagePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmItalianAlbumBoundingPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmIsActive = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
+            this.clmIsDeleted = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
             this.panelEx1.SuspendLayout();
             this.groupBoxPrintSize.SuspendLayout();
             this.panelPrintSize1.SuspendLayout();
@@ -162,8 +175,8 @@
             this.menuStrip1.SuspendLayout();
             this.panelEx3.SuspendLayout();
             this.gbDataGridView.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPrintServices)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPrintServices)).BeginInit();
             this.SuspendLayout();
             // 
             // panelEx1
@@ -1151,43 +1164,39 @@
             // 
             // cpLoadDataGridView
             // 
-            this.cpLoadDataGridView.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cpLoadDataGridView.BackColor = System.Drawing.SystemColors.AppWorkspace;
             // 
             // 
             // 
             this.cpLoadDataGridView.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.cpLoadDataGridView.Location = new System.Drawing.Point(501, 108);
+            this.cpLoadDataGridView.Location = new System.Drawing.Point(501, 149);
             this.cpLoadDataGridView.Name = "cpLoadDataGridView";
             this.cpLoadDataGridView.ProgressColor = System.Drawing.Color.Blue;
             this.cpLoadDataGridView.Size = new System.Drawing.Size(57, 63);
             this.cpLoadDataGridView.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.cpLoadDataGridView.TabIndex = 34;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.RightToLeft = true;
+            // 
             // dgvPrintServices
             // 
             this.dgvPrintServices.AllowUserToAddRows = false;
             this.dgvPrintServices.AllowUserToDeleteRows = false;
-            this.dgvPrintServices.AllowUserToResizeColumns = false;
-            this.dgvPrintServices.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvPrintServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvPrintServices.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgvPrintServices.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPrintServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvPrintServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPrintServices.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvPrintServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle15;
+            this.dgvPrintServices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.dgvPrintServices.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dgvPrintServices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmPrintSizeId,
             this.clmPrintServiceId,
             this.clmPrintSizePriceId,
             this.clmPrintServicePriceId,
             this.clmPrintSizeName,
+            this.clmMinimumOrder,
             this.clmPrintServiceName,
             this.clmPrintServicePrice,
             this.clmFirstPrintPrice,
@@ -1203,199 +1212,248 @@
             this.clmScanAndProcessingPrice,
             this.clmHasItalianAlbum,
             this.clmItalianAlbumPagePrice,
-            this.clmItalianAlbumBoundingPrice});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPrintServices.DefaultCellStyle = dataGridViewCellStyle3;
+            this.clmItalianAlbumBoundingPrice,
+            this.clmIsActive,
+            this.clmIsDeleted});
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPrintServices.DefaultCellStyle = dataGridViewCellStyle28;
             this.dgvPrintServices.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPrintServices.EnableHeadersVisualStyles = false;
-            this.dgvPrintServices.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.dgvPrintServices.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvPrintServices.GridColor = System.Drawing.Color.White;
             this.dgvPrintServices.Location = new System.Drawing.Point(3, 17);
-            this.dgvPrintServices.MultiSelect = false;
             this.dgvPrintServices.Name = "dgvPrintServices";
             this.dgvPrintServices.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPrintServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvPrintServices.RowHeadersVisible = false;
-            this.dgvPrintServices.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvPrintServices.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dgvPrintServices.ScrollBarAppearance = DevComponents.DotNetBar.eScrollBarAppearance.Default;
             this.dgvPrintServices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPrintServices.ShowEditingIcon = false;
             this.dgvPrintServices.Size = new System.Drawing.Size(1053, 341);
-            this.dgvPrintServices.TabIndex = 3;
-            this.dgvPrintServices.UseCustomBackgroundColor = true;
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            this.errorProvider1.RightToLeft = true;
+            this.dgvPrintServices.TabIndex = 0;
             // 
             // clmPrintSizeId
             // 
             this.clmPrintSizeId.HeaderText = "PrintSizeId";
             this.clmPrintSizeId.Name = "clmPrintSizeId";
             this.clmPrintSizeId.ReadOnly = true;
-            this.clmPrintSizeId.Width = 64;
+            this.clmPrintSizeId.Visible = false;
+            this.clmPrintSizeId.Width = 83;
             // 
             // clmPrintServiceId
             // 
             this.clmPrintServiceId.HeaderText = "PrintServiceId";
             this.clmPrintServiceId.Name = "clmPrintServiceId";
             this.clmPrintServiceId.ReadOnly = true;
-            this.clmPrintServiceId.Width = 80;
+            this.clmPrintServiceId.Visible = false;
+            this.clmPrintServiceId.Width = 99;
             // 
             // clmPrintSizePriceId
             // 
             this.clmPrintSizePriceId.HeaderText = "PrintSizePriceId";
             this.clmPrintSizePriceId.Name = "clmPrintSizePriceId";
             this.clmPrintSizePriceId.ReadOnly = true;
-            this.clmPrintSizePriceId.Width = 87;
+            this.clmPrintSizePriceId.Visible = false;
+            this.clmPrintSizePriceId.Width = 106;
             // 
             // clmPrintServicePriceId
             // 
             this.clmPrintServicePriceId.HeaderText = "PrintServicePriceId";
             this.clmPrintServicePriceId.Name = "clmPrintServicePriceId";
             this.clmPrintServicePriceId.ReadOnly = true;
+            this.clmPrintServicePriceId.Visible = false;
+            this.clmPrintServicePriceId.Width = 122;
             // 
             // clmPrintSizeName
             // 
             this.clmPrintSizeName.HeaderText = "اندازه چاپ";
-            this.clmPrintSizeName.MinimumWidth = 100;
             this.clmPrintSizeName.Name = "clmPrintSizeName";
             this.clmPrintSizeName.ReadOnly = true;
+            this.clmPrintSizeName.Width = 78;
+            // 
+            // clmMinimumOrder
+            // 
+            dataGridViewCellStyle16.Format = "N0";
+            dataGridViewCellStyle16.NullValue = null;
+            this.clmMinimumOrder.DefaultCellStyle = dataGridViewCellStyle16;
+            this.clmMinimumOrder.HeaderText = "حداقل تعداد";
+            this.clmMinimumOrder.Name = "clmMinimumOrder";
+            this.clmMinimumOrder.ReadOnly = true;
+            this.clmMinimumOrder.Width = 87;
             // 
             // clmPrintServiceName
             // 
             this.clmPrintServiceName.HeaderText = "خدمات چاپ";
-            this.clmPrintServiceName.MinimumWidth = 100;
+            this.clmPrintServiceName.MinimumWidth = 120;
             this.clmPrintServiceName.Name = "clmPrintServiceName";
             this.clmPrintServiceName.ReadOnly = true;
+            this.clmPrintServiceName.Width = 120;
             // 
             // clmPrintServicePrice
             // 
+            dataGridViewCellStyle17.Format = "N0";
+            dataGridViewCellStyle17.NullValue = null;
+            this.clmPrintServicePrice.DefaultCellStyle = dataGridViewCellStyle17;
             this.clmPrintServicePrice.HeaderText = "هزینه خدمات";
-            this.clmPrintServicePrice.MinimumWidth = 100;
             this.clmPrintServicePrice.Name = "clmPrintServicePrice";
             this.clmPrintServicePrice.ReadOnly = true;
+            this.clmPrintServicePrice.Width = 92;
             // 
             // clmFirstPrintPrice
             // 
+            dataGridViewCellStyle18.Format = "N0";
+            dataGridViewCellStyle18.NullValue = null;
+            this.clmFirstPrintPrice.DefaultCellStyle = dataGridViewCellStyle18;
             this.clmFirstPrintPrice.HeaderText = "اصل چاپ";
-            this.clmFirstPrintPrice.MinimumWidth = 120;
             this.clmFirstPrintPrice.Name = "clmFirstPrintPrice";
             this.clmFirstPrintPrice.ReadOnly = true;
-            this.clmFirstPrintPrice.Width = 120;
+            this.clmFirstPrintPrice.Width = 74;
             // 
             // clmRePrintPrice
             // 
+            dataGridViewCellStyle19.Format = "N0";
+            this.clmRePrintPrice.DefaultCellStyle = dataGridViewCellStyle19;
             this.clmRePrintPrice.HeaderText = " چاپ مجدد";
-            this.clmRePrintPrice.MinimumWidth = 120;
             this.clmRePrintPrice.Name = "clmRePrintPrice";
             this.clmRePrintPrice.ReadOnly = true;
-            this.clmRePrintPrice.Width = 120;
+            this.clmRePrintPrice.Width = 81;
             // 
             // clmHasMedicalPhoto
             // 
+            this.clmHasMedicalPhoto.Checked = true;
+            this.clmHasMedicalPhoto.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.clmHasMedicalPhoto.CheckValue = "N";
             this.clmHasMedicalPhoto.HeaderText = "عکس پزشکی";
-            this.clmHasMedicalPhoto.MinimumWidth = 100;
             this.clmHasMedicalPhoto.Name = "clmHasMedicalPhoto";
             this.clmHasMedicalPhoto.ReadOnly = true;
+            this.clmHasMedicalPhoto.Width = 79;
             // 
             // clmMedicalPrice
             // 
+            dataGridViewCellStyle20.Format = "N0";
+            this.clmMedicalPrice.DefaultCellStyle = dataGridViewCellStyle20;
             this.clmMedicalPrice.HeaderText = "پزشکی اصل چاپ";
-            this.clmMedicalPrice.MinimumWidth = 120;
             this.clmMedicalPrice.Name = "clmMedicalPrice";
             this.clmMedicalPrice.ReadOnly = true;
-            this.clmMedicalPrice.Width = 120;
+            this.clmMedicalPrice.Width = 113;
             // 
             // clmMedicalRePrintPrice
             // 
+            dataGridViewCellStyle21.Format = "N0";
+            this.clmMedicalRePrintPrice.DefaultCellStyle = dataGridViewCellStyle21;
             this.clmMedicalRePrintPrice.HeaderText = "پزشکی چاپ مجدد";
-            this.clmMedicalRePrintPrice.MinimumWidth = 120;
             this.clmMedicalRePrintPrice.Name = "clmMedicalRePrintPrice";
             this.clmMedicalRePrintPrice.ReadOnly = true;
-            this.clmMedicalRePrintPrice.Width = 120;
+            this.clmMedicalRePrintPrice.Width = 117;
             // 
             // clmHasLitPrint
             // 
+            this.clmHasLitPrint.Checked = true;
+            this.clmHasLitPrint.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.clmHasLitPrint.CheckValue = "N";
             this.clmHasLitPrint.HeaderText = "لیت پرینت";
-            this.clmHasLitPrint.MinimumWidth = 100;
             this.clmHasLitPrint.Name = "clmHasLitPrint";
             this.clmHasLitPrint.ReadOnly = true;
+            this.clmHasLitPrint.Width = 58;
             // 
             // clmLitPrintPrice
             // 
+            dataGridViewCellStyle22.Format = "N0";
+            this.clmLitPrintPrice.DefaultCellStyle = dataGridViewCellStyle22;
             this.clmLitPrintPrice.HeaderText = "لیت پرینت اصل چاپ";
-            this.clmLitPrintPrice.MinimumWidth = 150;
             this.clmLitPrintPrice.Name = "clmLitPrintPrice";
             this.clmLitPrintPrice.ReadOnly = true;
-            this.clmLitPrintPrice.Width = 150;
+            this.clmLitPrintPrice.Width = 122;
             // 
             // clmLitPrintRePrintPrice
             // 
+            dataGridViewCellStyle23.Format = "N0";
+            this.clmLitPrintRePrintPrice.DefaultCellStyle = dataGridViewCellStyle23;
             this.clmLitPrintRePrintPrice.HeaderText = " لیت پرینت چاپ مجدد";
-            this.clmLitPrintRePrintPrice.MinimumWidth = 130;
             this.clmLitPrintRePrintPrice.Name = "clmLitPrintRePrintPrice";
             this.clmLitPrintRePrintPrice.ReadOnly = true;
-            this.clmLitPrintRePrintPrice.Width = 130;
+            this.clmLitPrintRePrintPrice.Width = 129;
             // 
             // clmHasScanAndProcessing
             // 
+            this.clmHasScanAndProcessing.Checked = true;
+            this.clmHasScanAndProcessing.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.clmHasScanAndProcessing.CheckValue = "N";
             this.clmHasScanAndProcessing.HeaderText = "اسکن و پردازش";
-            this.clmHasScanAndProcessing.MinimumWidth = 120;
             this.clmHasScanAndProcessing.Name = "clmHasScanAndProcessing";
             this.clmHasScanAndProcessing.ReadOnly = true;
-            this.clmHasScanAndProcessing.Width = 120;
+            this.clmHasScanAndProcessing.Width = 85;
             // 
             // clmScanAndPrintPrice
             // 
+            dataGridViewCellStyle24.Format = "N0";
+            this.clmScanAndPrintPrice.DefaultCellStyle = dataGridViewCellStyle24;
             this.clmScanAndPrintPrice.HeaderText = "هزینه اسکن و چاپ";
-            this.clmScanAndPrintPrice.MinimumWidth = 120;
             this.clmScanAndPrintPrice.Name = "clmScanAndPrintPrice";
             this.clmScanAndPrintPrice.ReadOnly = true;
-            this.clmScanAndPrintPrice.Width = 120;
+            this.clmScanAndPrintPrice.Width = 119;
             // 
             // clmScanAndProcessingPrice
             // 
+            dataGridViewCellStyle25.Format = "N0";
+            this.clmScanAndProcessingPrice.DefaultCellStyle = dataGridViewCellStyle25;
             this.clmScanAndProcessingPrice.HeaderText = "هزینه اسکن و پردازش";
-            this.clmScanAndProcessingPrice.MinimumWidth = 150;
             this.clmScanAndProcessingPrice.Name = "clmScanAndProcessingPrice";
             this.clmScanAndProcessingPrice.ReadOnly = true;
-            this.clmScanAndProcessingPrice.Width = 150;
+            this.clmScanAndProcessingPrice.Width = 133;
             // 
             // clmHasItalianAlbum
             // 
+            this.clmHasItalianAlbum.Checked = true;
+            this.clmHasItalianAlbum.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.clmHasItalianAlbum.CheckValue = "N";
             this.clmHasItalianAlbum.HeaderText = "آلبوم ایتالیایی";
-            this.clmHasItalianAlbum.MinimumWidth = 120;
             this.clmHasItalianAlbum.Name = "clmHasItalianAlbum";
             this.clmHasItalianAlbum.ReadOnly = true;
-            this.clmHasItalianAlbum.Width = 120;
+            this.clmHasItalianAlbum.Width = 75;
             // 
             // clmItalianAlbumPagePrice
             // 
+            dataGridViewCellStyle26.Format = "N0";
+            this.clmItalianAlbumPagePrice.DefaultCellStyle = dataGridViewCellStyle26;
             this.clmItalianAlbumPagePrice.HeaderText = "هزینه هر برگ";
-            this.clmItalianAlbumPagePrice.MinimumWidth = 120;
             this.clmItalianAlbumPagePrice.Name = "clmItalianAlbumPagePrice";
             this.clmItalianAlbumPagePrice.ReadOnly = true;
-            this.clmItalianAlbumPagePrice.Width = 120;
+            this.clmItalianAlbumPagePrice.Width = 95;
             // 
             // clmItalianAlbumBoundingPrice
             // 
-            this.clmItalianAlbumBoundingPrice.HeaderText = "صحافی آلبوم";
-            this.clmItalianAlbumBoundingPrice.MinimumWidth = 120;
+            dataGridViewCellStyle27.Format = "N0";
+            this.clmItalianAlbumBoundingPrice.DefaultCellStyle = dataGridViewCellStyle27;
+            this.clmItalianAlbumBoundingPrice.HeaderText = "هزینه صحافی";
             this.clmItalianAlbumBoundingPrice.Name = "clmItalianAlbumBoundingPrice";
             this.clmItalianAlbumBoundingPrice.ReadOnly = true;
-            this.clmItalianAlbumBoundingPrice.Width = 120;
+            this.clmItalianAlbumBoundingPrice.Width = 96;
+            // 
+            // clmIsActive
+            // 
+            this.clmIsActive.Checked = true;
+            this.clmIsActive.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.clmIsActive.CheckValue = "N";
+            this.clmIsActive.HeaderText = "فعال";
+            this.clmIsActive.Name = "clmIsActive";
+            this.clmIsActive.ReadOnly = true;
+            this.clmIsActive.Width = 34;
+            // 
+            // clmIsDeleted
+            // 
+            this.clmIsDeleted.Checked = true;
+            this.clmIsDeleted.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.clmIsDeleted.CheckValue = "N";
+            this.clmIsDeleted.HeaderText = "حذف";
+            this.clmIsDeleted.Name = "clmIsDeleted";
+            this.clmIsDeleted.ReadOnly = true;
+            this.clmIsDeleted.Width = 36;
             // 
             // FrmAddEditPrintSizeAndServices_Refactored
             // 
@@ -1463,8 +1521,8 @@
             this.menuStrip1.PerformLayout();
             this.panelEx3.ResumeLayout(false);
             this.gbDataGridView.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPrintServices)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPrintServices)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1493,7 +1551,6 @@
         private DevComponents.DotNetBar.PanelEx panelEx3;
         private System.Windows.Forms.GroupBox gbDataGridView;
         private DevComponents.DotNetBar.Controls.CircularProgress cpLoadDataGridView;
-        private DevComponents.DotNetBar.Controls.DataGridViewX dgvPrintServices;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Panel panelIsDeleted;
         private DevComponents.DotNetBar.Controls.CheckBoxX chkIsDeleted;
@@ -1550,26 +1607,30 @@
         private System.Windows.Forms.ToolStripMenuItem ویرایش_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem حذف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private DevComponents.DotNetBar.Controls.DataGridViewX dgvPrintServices;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPrintSizeId;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPrintServiceId;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPrintSizePriceId;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPrintServicePriceId;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPrintSizeName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmMinimumOrder;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPrintServiceName;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPrintServicePrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmFirstPrintPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmRePrintPrice;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn clmHasMedicalPhoto;
+        private DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn clmHasMedicalPhoto;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmMedicalPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmMedicalRePrintPrice;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn clmHasLitPrint;
+        private DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn clmHasLitPrint;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmLitPrintPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmLitPrintRePrintPrice;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn clmHasScanAndProcessing;
+        private DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn clmHasScanAndProcessing;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmScanAndPrintPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmScanAndProcessingPrice;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn clmHasItalianAlbum;
+        private DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn clmHasItalianAlbum;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmItalianAlbumPagePrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmItalianAlbumBoundingPrice;
+        private DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn clmIsActive;
+        private DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn clmIsDeleted;
     }
 }

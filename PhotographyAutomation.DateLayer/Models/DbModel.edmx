@@ -327,18 +327,24 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetAllPrintSizeAn
         <EntityType Name="View_GetAllPrintSizeAndServicesInfo">
           <Key>
             <PropertyRef Name="PrintSizeId" />
-            <PropertyRef Name="PrintSizePriceId" />
             <PropertyRef Name="PrintSizeName" />
             <PropertyRef Name="HasMedicalPhoto" />
             <PropertyRef Name="HasLitPrint" />
             <PropertyRef Name="HasScanAndProcessing" />
             <PropertyRef Name="HasItalianAlbum" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="IsDeleted" />
+            <PropertyRef Name="MinimumOrder" />
+            <PropertyRef Name="Width" />
+            <PropertyRef Name="Height" />
           </Key>
           <Property Name="PrintSizeId" Type="int" Nullable="false" />
           <Property Name="PrintServiceId" Type="int" />
-          <Property Name="PrintSizePriceId" Type="int" Nullable="false" />
+          <Property Name="PrintSizePriceId" Type="int" />
           <Property Name="PrintServicePriceId" Type="int" />
           <Property Name="PrintSizeName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PrintServiceName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PrintServicePrice" Type="int" />
           <Property Name="FirstPrintPrice" Type="int" />
           <Property Name="RePrintPrice" Type="int" />
           <Property Name="HasMedicalPhoto" Type="bit" Nullable="false" />
@@ -353,8 +359,11 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetAllPrintSizeAn
           <Property Name="HasItalianAlbum" Type="bit" Nullable="false" />
           <Property Name="ItalianAlbumPagePrice" Type="int" />
           <Property Name="ItalianAlbumBoundingPrice" Type="int" />
-          <Property Name="PrintServiceName" Type="nvarchar" MaxLength="50" />
-          <Property Name="PrintServicePrice" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="MinimumOrder" Type="tinyint" Nullable="false" />
+          <Property Name="Width" Type="float" Nullable="false" />
+          <Property Name="Height" Type="float" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolders' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -718,6 +727,50 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="usp_CreateCustomerFinancialDirectory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="customerFinancialNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="monthNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="parent_level" Type="tinyint" Mode="In" />
+          <Parameter Name="returnValue" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="usp_CreateFileTableFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="parent_name" Type="nvarchar" Mode="In" />
+          <Parameter Name="parent_level" Type="tinyint" Mode="In" />
+        </Function>
+        <Function Name="usp_CreateMonthFolder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="monthName" Type="nvarchar" Mode="In" />
+          <Parameter Name="year" Type="nvarchar" Mode="In" />
+          <Parameter Name="parent_level" Type="tinyint" Mode="In" />
+          <Parameter Name="returnValue" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="usp_CreateYearFolder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="parent_name" Type="nvarchar" Mode="In" />
+          <Parameter Name="parent_level" Type="tinyint" Mode="In" />
+          <Parameter Name="returnValue" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="usp_DeleteOrderFolderFiles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pathLocator" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="usp_GetImageInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="photoStreamId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="usp_GetListOfFilesInFolder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="path_locator" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_GetListOfFilesOfOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="path_locator" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_GetOrderFolderStreamId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="customerFinancialNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="returnValue" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="usp_GetPrintSizePriceServices" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_GetTotalFilesOfFolder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="parent_path_locator" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="returnValue" Type="int" Mode="InOut" />
+        </Function>
         <EntityContainer Name="PhotographyAutomationDBModelStoreContainer">
           <EntitySet Name="TblAlbums" EntityType="Self.TblAlbums" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblAllOrderStatus" EntityType="Self.TblAllOrderStatus" Schema="dbo" store:Type="Tables" />
@@ -771,6 +824,8 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
     [View_GetAllPrintSizeAndServicesInfo].[PrintSizePriceId] AS [PrintSizePriceId], 
     [View_GetAllPrintSizeAndServicesInfo].[PrintServicePriceId] AS [PrintServicePriceId], 
     [View_GetAllPrintSizeAndServicesInfo].[PrintSizeName] AS [PrintSizeName], 
+    [View_GetAllPrintSizeAndServicesInfo].[PrintServiceName] AS [PrintServiceName], 
+    [View_GetAllPrintSizeAndServicesInfo].[PrintServicePrice] AS [PrintServicePrice], 
     [View_GetAllPrintSizeAndServicesInfo].[FirstPrintPrice] AS [FirstPrintPrice], 
     [View_GetAllPrintSizeAndServicesInfo].[RePrintPrice] AS [RePrintPrice], 
     [View_GetAllPrintSizeAndServicesInfo].[HasMedicalPhoto] AS [HasMedicalPhoto], 
@@ -785,8 +840,11 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
     [View_GetAllPrintSizeAndServicesInfo].[HasItalianAlbum] AS [HasItalianAlbum], 
     [View_GetAllPrintSizeAndServicesInfo].[ItalianAlbumPagePrice] AS [ItalianAlbumPagePrice], 
     [View_GetAllPrintSizeAndServicesInfo].[ItalianAlbumBoundingPrice] AS [ItalianAlbumBoundingPrice], 
-    [View_GetAllPrintSizeAndServicesInfo].[PrintServiceName] AS [PrintServiceName], 
-    [View_GetAllPrintSizeAndServicesInfo].[PrintServicePrice] AS [PrintServicePrice]
+    [View_GetAllPrintSizeAndServicesInfo].[IsActive] AS [IsActive], 
+    [View_GetAllPrintSizeAndServicesInfo].[IsDeleted] AS [IsDeleted], 
+    [View_GetAllPrintSizeAndServicesInfo].[MinimumOrder] AS [MinimumOrder], 
+    [View_GetAllPrintSizeAndServicesInfo].[Width] AS [Width], 
+    [View_GetAllPrintSizeAndServicesInfo].[Height] AS [Height]
     FROM [dbo].[View_GetAllPrintSizeAndServicesInfo] AS [View_GetAllPrintSizeAndServicesInfo]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="View_GetDocumentsFolders" EntityType="Self.View_GetDocumentsFolders" store:Type="Views" store:Schema="dbo">
@@ -928,77 +986,6 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
     <edmx:ConceptualModels>
       <Schema Namespace="PhotographyAutomationDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="PhotographyAutomationDBEntities" annotation:LazyLoadingEnabled="true">
-          <FunctionImport Name="usp_CreateCustomerFinancialDirectory" ReturnType="Collection(String)">
-            <Parameter Name="customerFinancialNumber" Mode="In" Type="String" />
-            <Parameter Name="monthNumber" Mode="In" Type="String" />
-            <Parameter Name="parent_level" Mode="In" Type="Byte" />
-            <Parameter Name="returnValue" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="usp_CreateFileTableFile" ReturnType="Collection(PhotographyAutomationDBModel.usp_CreateFileTableFile_Result)">
-            <Parameter Name="name" Mode="In" Type="String" />
-            <Parameter Name="parent_name" Mode="In" Type="String" />
-            <Parameter Name="parent_level" Mode="In" Type="Byte" />
-          </FunctionImport>
-          <FunctionImport Name="usp_CreateMonthFolder" ReturnType="Collection(String)">
-            <Parameter Name="monthName" Mode="In" Type="String" />
-            <Parameter Name="year" Mode="In" Type="String" />
-            <Parameter Name="parent_level" Mode="In" Type="Byte" />
-            <Parameter Name="returnValue" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="usp_CreateYearFolder" ReturnType="Collection(String)">
-            <Parameter Name="name" Mode="In" Type="String" />
-            <Parameter Name="parent_name" Mode="In" Type="String" />
-            <Parameter Name="parent_level" Mode="In" Type="Byte" />
-            <Parameter Name="returnValue" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="usp_GetOrderFolderStreamId" ReturnType="Collection(String)">
-            <Parameter Name="customerFinancialNumber" Mode="In" Type="String" />
-            <Parameter Name="returnValue" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="usp_DeleteOrderFolderFiles">
-          <Parameter Name="pathLocator" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="usp_GetTotalFilesOfFolder">
-            <Parameter Name="parent_path_locator" Mode="In" Type="String" />
-            <Parameter Name="returnValue" Mode="InOut" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_GetListOfFilesInFolder" ReturnType="Collection(PhotographyAutomationDBModel.usp_GetListOfFilesInFolder_Result)">
-          <Parameter Name="path_locator" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="usp_GetListOfFilesOfOrder" ReturnType="Collection(Guid)">
-          <Parameter Name="path_locator" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="usp_GetImageInfo" ReturnType="Collection(PhotographyAutomationDBModel.usp_GetImageInfo_Result)">
-          <Parameter Name="photoStreamId" Mode="In" Type="Guid" />
-          </FunctionImport>
-          <FunctionImport Name="usp_GetPrintSizePriceServices" ReturnType="Collection(PhotographyAutomationDBModel.usp_GetPrintSizePriceServices_Result)" />
-          <FunctionImport Name="sp_upgraddiagrams" />
-          <FunctionImport Name="usp_CreateOrderPrintDirectory" ReturnType="Collection(String)">
-            <Parameter Name="customerFinancialNumber" Mode="In" Type="String" />
-            <Parameter Name="monthNumber" Mode="In" Type="String" />
-            <Parameter Name="parent_level" Mode="In" Type="Byte" />
-            <Parameter Name="returnValue" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="usp_CreateSelectedPhotosFileTableFile" ReturnType="Collection(PhotographyAutomationDBModel.usp_CreateSelectedPhotosFileTableFile_Result)">
-            <Parameter Name="name" Mode="In" Type="String" />
-            <Parameter Name="parent_name" Mode="In" Type="String" />
-            <Parameter Name="parent_level" Mode="In" Type="Byte" />
-          </FunctionImport>
-          <FunctionImport Name="usp_CreateSelectedPhotosMonthFolder" ReturnType="Collection(String)">
-            <Parameter Name="monthName" Mode="In" Type="String" />
-            <Parameter Name="year" Mode="In" Type="String" />
-            <Parameter Name="parent_level" Mode="In" Type="Byte" />
-            <Parameter Name="returnValue" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="usp_CreateSelectedPhotosYearFolder" ReturnType="Collection(String)">
-            <Parameter Name="name" Mode="In" Type="String" />
-            <Parameter Name="parent_name" Mode="In" Type="String" />
-            <Parameter Name="parent_level" Mode="In" Type="Byte" />
-            <Parameter Name="returnValue" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="usp_DeleteSelectedPhotosFolderFiles">
-          <Parameter Name="pathLocator" Mode="In" Type="String" />
-          </FunctionImport>
           <EntitySet Name="TblAlbums" EntityType="PhotographyAutomationDBModel.TblAlbums" />
           <EntitySet Name="TblAllOrderStatus" EntityType="PhotographyAutomationDBModel.TblAllOrderStatus" />
           <EntitySet Name="TblAtelierType" EntityType="PhotographyAutomationDBModel.TblAtelierType" />
@@ -1130,6 +1117,50 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
             <End Role="TblPrintSizes" EntitySet="TblPrintSizes" />
             <End Role="TblPrintServicePrices" EntitySet="TblPrintServicePrices" />
           </AssociationSet>
+          <FunctionImport Name="usp_CreateCustomerFinancialDirectory" ReturnType="Collection(String)">
+            <Parameter Name="customerFinancialNumber" Mode="In" Type="String" />
+            <Parameter Name="monthNumber" Mode="In" Type="String" />
+            <Parameter Name="parent_level" Mode="In" Type="Byte" />
+            <Parameter Name="returnValue" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_CreateFileTableFile" ReturnType="Collection(PhotographyAutomationDBModel.usp_CreateFileTableFile_Result1)">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="parent_name" Mode="In" Type="String" />
+            <Parameter Name="parent_level" Mode="In" Type="Byte" />
+          </FunctionImport>
+          <FunctionImport Name="usp_CreateMonthFolder" ReturnType="Collection(String)">
+            <Parameter Name="monthName" Mode="In" Type="String" />
+            <Parameter Name="year" Mode="In" Type="String" />
+            <Parameter Name="parent_level" Mode="In" Type="Byte" />
+            <Parameter Name="returnValue" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_CreateYearFolder" ReturnType="Collection(String)">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="parent_name" Mode="In" Type="String" />
+            <Parameter Name="parent_level" Mode="In" Type="Byte" />
+            <Parameter Name="returnValue" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeleteOrderFolderFiles">
+          <Parameter Name="pathLocator" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetImageInfo" ReturnType="Collection(PhotographyAutomationDBModel.usp_GetImageInfo_Result1)">
+          <Parameter Name="photoStreamId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetListOfFilesInFolder" ReturnType="Collection(PhotographyAutomationDBModel.usp_GetListOfFilesInFolder_Result1)">
+          <Parameter Name="path_locator" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetListOfFilesOfOrder" ReturnType="Collection(Guid)">
+          <Parameter Name="path_locator" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetOrderFolderStreamId" ReturnType="Collection(String)">
+            <Parameter Name="customerFinancialNumber" Mode="In" Type="String" />
+            <Parameter Name="returnValue" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetPrintSizePriceServices" />
+          <FunctionImport Name="usp_GetTotalFilesOfFolder">
+            <Parameter Name="parent_path_locator" Mode="In" Type="String" />
+            <Parameter Name="returnValue" Mode="InOut" Type="Int32" />
+          </FunctionImport>
           <EntitySet Name="View_GetAllPrintSizeAndServicesInfo" EntityType="PhotographyAutomationDBModel.View_GetAllPrintSizeAndServicesInfo" />
           </EntityContainer>
         <ComplexType Name="usp_CreateFileTableFile_Result">
@@ -1911,21 +1942,62 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="usp_CreateFileTableFile_Result1">
+          <Property Type="String" Name="streamId" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="parent_locator" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="path_name" Nullable="true" />
+          <Property Type="Binary" Name="filestreamTxn" Nullable="true" />
+          <Property Type="String" Name="path_locator_str" Nullable="true" MaxLength="4000" />
+        </ComplexType>
+        <ComplexType Name="usp_GetImageInfo_Result1">
+          <Property Type="String" Name="PathLocator" Nullable="true" MaxLength="4000" />
+          <Property Type="Binary" Name="TransactionContext" Nullable="true" />
+          <Property Type="Int64" Name="FileSize" Nullable="true" />
+          <Property Type="String" Name="StreamFileName" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="usp_GetListOfFilesInFolder_Result1">
+          <Property Type="Guid" Name="stream_id" Nullable="false" />
+          <Property Type="Binary" Name="file_stream" Nullable="true" />
+          <Property Type="String" Name="FullUncPath" Nullable="true" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="PathLocator" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="ParentPathLocator" Nullable="true" MaxLength="4000" />
+          <Property Type="Binary" Name="TransactionContext" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="file_type" Nullable="true" MaxLength="255" />
+          <Property Type="Int64" Name="cached_file_size" Nullable="true" />
+          <Property Type="DateTimeOffset" Name="creation_time" Nullable="false" />
+          <Property Type="DateTimeOffset" Name="last_write_time" Nullable="false" />
+          <Property Type="DateTimeOffset" Name="last_access_time" Nullable="true" />
+          <Property Type="Boolean" Name="is_directory" Nullable="false" />
+          <Property Type="Boolean" Name="is_offline" Nullable="false" />
+          <Property Type="Boolean" Name="is_hidden" Nullable="false" />
+          <Property Type="Boolean" Name="is_readonly" Nullable="false" />
+          <Property Type="Boolean" Name="is_archive" Nullable="false" />
+          <Property Type="Boolean" Name="is_system" Nullable="false" />
+          <Property Type="Boolean" Name="is_temporary" Nullable="false" />
+        </ComplexType>
         <EntityType Name="View_GetAllPrintSizeAndServicesInfo">
           <Key>
             <PropertyRef Name="PrintSizeId" />
-            <PropertyRef Name="PrintSizePriceId" />
             <PropertyRef Name="PrintSizeName" />
             <PropertyRef Name="HasMedicalPhoto" />
             <PropertyRef Name="HasLitPrint" />
             <PropertyRef Name="HasScanAndProcessing" />
             <PropertyRef Name="HasItalianAlbum" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="IsDeleted" />
+            <PropertyRef Name="MinimumOrder" />
+            <PropertyRef Name="Width" />
+            <PropertyRef Name="Height" />
           </Key>
           <Property Name="PrintSizeId" Type="Int32" Nullable="false" />
           <Property Name="PrintServiceId" Type="Int32" />
-          <Property Name="PrintSizePriceId" Type="Int32" Nullable="false" />
+          <Property Name="PrintSizePriceId" Type="Int32" />
           <Property Name="PrintServicePriceId" Type="Int32" />
           <Property Name="PrintSizeName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PrintServiceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrintServicePrice" Type="Int32" />
           <Property Name="FirstPrintPrice" Type="Int32" />
           <Property Name="RePrintPrice" Type="Int32" />
           <Property Name="HasMedicalPhoto" Type="Boolean" Nullable="false" />
@@ -1940,8 +2012,11 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
           <Property Name="HasItalianAlbum" Type="Boolean" Nullable="false" />
           <Property Name="ItalianAlbumPagePrice" Type="Int32" />
           <Property Name="ItalianAlbumBoundingPrice" Type="Int32" />
-          <Property Name="PrintServiceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PrintServicePrice" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="MinimumOrder" Type="Byte" Nullable="false" />
+          <Property Name="Width" Type="Double" Nullable="false" />
+          <Property Name="Height" Type="Double" Nullable="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -2304,11 +2379,69 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_CreateCustomerFinancialDirectory" FunctionName="PhotographyAutomationDBModel.Store.usp_CreateCustomerFinancialDirectory" />
+          <FunctionImportMapping FunctionImportName="usp_CreateFileTableFile" FunctionName="PhotographyAutomationDBModel.Store.usp_CreateFileTableFile">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PhotographyAutomationDBModel.usp_CreateFileTableFile_Result1">
+                <ScalarProperty Name="streamId" ColumnName="streamId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="parent_locator" ColumnName="parent_locator" />
+                <ScalarProperty Name="path_name" ColumnName="path_name" />
+                <ScalarProperty Name="filestreamTxn" ColumnName="filestreamTxn" />
+                <ScalarProperty Name="path_locator_str" ColumnName="path_locator_str" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_CreateMonthFolder" FunctionName="PhotographyAutomationDBModel.Store.usp_CreateMonthFolder" />
+          <FunctionImportMapping FunctionImportName="usp_CreateYearFolder" FunctionName="PhotographyAutomationDBModel.Store.usp_CreateYearFolder" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteOrderFolderFiles" FunctionName="PhotographyAutomationDBModel.Store.usp_DeleteOrderFolderFiles" />
+          <FunctionImportMapping FunctionImportName="usp_GetImageInfo" FunctionName="PhotographyAutomationDBModel.Store.usp_GetImageInfo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PhotographyAutomationDBModel.usp_GetImageInfo_Result1">
+                <ScalarProperty Name="PathLocator" ColumnName="PathLocator" />
+                <ScalarProperty Name="TransactionContext" ColumnName="TransactionContext" />
+                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+                <ScalarProperty Name="StreamFileName" ColumnName="StreamFileName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_GetListOfFilesInFolder" FunctionName="PhotographyAutomationDBModel.Store.usp_GetListOfFilesInFolder">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PhotographyAutomationDBModel.usp_GetListOfFilesInFolder_Result1">
+                <ScalarProperty Name="stream_id" ColumnName="stream_id" />
+                <ScalarProperty Name="file_stream" ColumnName="file_stream" />
+                <ScalarProperty Name="FullUncPath" ColumnName="FullUncPath" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="PathLocator" ColumnName="PathLocator" />
+                <ScalarProperty Name="ParentPathLocator" ColumnName="ParentPathLocator" />
+                <ScalarProperty Name="TransactionContext" ColumnName="TransactionContext" />
+                <ScalarProperty Name="file_type" ColumnName="file_type" />
+                <ScalarProperty Name="cached_file_size" ColumnName="cached_file_size" />
+                <ScalarProperty Name="creation_time" ColumnName="creation_time" />
+                <ScalarProperty Name="last_write_time" ColumnName="last_write_time" />
+                <ScalarProperty Name="last_access_time" ColumnName="last_access_time" />
+                <ScalarProperty Name="is_directory" ColumnName="is_directory" />
+                <ScalarProperty Name="is_offline" ColumnName="is_offline" />
+                <ScalarProperty Name="is_hidden" ColumnName="is_hidden" />
+                <ScalarProperty Name="is_readonly" ColumnName="is_readonly" />
+                <ScalarProperty Name="is_archive" ColumnName="is_archive" />
+                <ScalarProperty Name="is_system" ColumnName="is_system" />
+                <ScalarProperty Name="is_temporary" ColumnName="is_temporary" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_GetListOfFilesOfOrder" FunctionName="PhotographyAutomationDBModel.Store.usp_GetListOfFilesOfOrder" />
+          <FunctionImportMapping FunctionImportName="usp_GetOrderFolderStreamId" FunctionName="PhotographyAutomationDBModel.Store.usp_GetOrderFolderStreamId" />
+          <FunctionImportMapping FunctionImportName="usp_GetPrintSizePriceServices" FunctionName="PhotographyAutomationDBModel.Store.usp_GetPrintSizePriceServices" />
+          <FunctionImportMapping FunctionImportName="usp_GetTotalFilesOfFolder" FunctionName="PhotographyAutomationDBModel.Store.usp_GetTotalFilesOfFolder" />
           <EntitySetMapping Name="View_GetAllPrintSizeAndServicesInfo">
             <EntityTypeMapping TypeName="PhotographyAutomationDBModel.View_GetAllPrintSizeAndServicesInfo">
               <MappingFragment StoreEntitySet="View_GetAllPrintSizeAndServicesInfo">
-                <ScalarProperty Name="PrintServicePrice" ColumnName="PrintServicePrice" />
-                <ScalarProperty Name="PrintServiceName" ColumnName="PrintServiceName" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="MinimumOrder" ColumnName="MinimumOrder" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="ItalianAlbumBoundingPrice" ColumnName="ItalianAlbumBoundingPrice" />
                 <ScalarProperty Name="ItalianAlbumPagePrice" ColumnName="ItalianAlbumPagePrice" />
                 <ScalarProperty Name="HasItalianAlbum" ColumnName="HasItalianAlbum" />
@@ -2323,6 +2456,8 @@ warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolde
                 <ScalarProperty Name="HasMedicalPhoto" ColumnName="HasMedicalPhoto" />
                 <ScalarProperty Name="RePrintPrice" ColumnName="RePrintPrice" />
                 <ScalarProperty Name="FirstPrintPrice" ColumnName="FirstPrintPrice" />
+                <ScalarProperty Name="PrintServicePrice" ColumnName="PrintServicePrice" />
+                <ScalarProperty Name="PrintServiceName" ColumnName="PrintServiceName" />
                 <ScalarProperty Name="PrintSizeName" ColumnName="PrintSizeName" />
                 <ScalarProperty Name="PrintServicePriceId" ColumnName="PrintServicePriceId" />
                 <ScalarProperty Name="PrintSizePriceId" ColumnName="PrintSizePriceId" />
