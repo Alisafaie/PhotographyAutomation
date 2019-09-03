@@ -285,7 +285,7 @@
             this.chkIsDeleted.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.chkIsDeleted.CheckBoxPosition = DevComponents.DotNetBar.eCheckBoxPosition.Right;
             this.highlighter1.SetHighlightOnFocus(this.chkIsDeleted, true);
-            this.chkIsDeleted.Location = new System.Drawing.Point(6, 20);
+            this.chkIsDeleted.Location = new System.Drawing.Point(6, 23);
             this.chkIsDeleted.Name = "chkIsDeleted";
             this.chkIsDeleted.Size = new System.Drawing.Size(45, 16);
             this.chkIsDeleted.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -305,7 +305,7 @@
             this.chkIsActive.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkIsActive.CheckValue = "Y";
             this.highlighter1.SetHighlightOnFocus(this.chkIsActive, true);
-            this.chkIsActive.Location = new System.Drawing.Point(57, 20);
+            this.chkIsActive.Location = new System.Drawing.Point(57, 23);
             this.chkIsActive.Name = "chkIsActive";
             this.chkIsActive.Size = new System.Drawing.Size(43, 16);
             this.chkIsActive.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;

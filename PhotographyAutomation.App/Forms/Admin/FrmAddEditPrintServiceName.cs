@@ -67,11 +67,17 @@ namespace PhotographyAutomation.App.Forms.Admin
 
         #region LoadAllPrintServices
 
+
         private void LoadAllPrintServices()
         {
             try
             {
-                _bgWorkerLoadAllPrintServices.RunWorkerAsync();
+                if (_bgWorkerLoadAllPrintServices.IsBusy == false)
+                {
+                    _bgWorkerLoadAllPrintServices.RunWorkerAsync();
+                    EnableOrDisableControls();
+                }
+
             }
             catch (Exception exception)
             {
@@ -112,18 +118,25 @@ namespace PhotographyAutomation.App.Forms.Admin
             {
                 ShowErrorProvider(errorProvider1, cmbPrintServices, "اطلاعات خدمات چاپ قابل دریافت نمی باشد و یا اطلاعاتی موجود نیست.");
             }
+            EnableOrDisableControls();
         }
+
 
         #endregion
 
 
         #region GetPrintServiceInfo
 
-        void GetPrintServiceInfo()
+
+        private void GetPrintServiceInfo()
         {
             try
             {
-                _bgWorkerGetPrintServiceInfo.RunWorkerAsync(PrintServiceId);
+                if (_bgWorkerGetPrintServiceInfo.IsBusy == false && _bgWorkerLoadAllPrintServices.IsBusy == false)
+                {
+                    _bgWorkerGetPrintServiceInfo.RunWorkerAsync(PrintServiceId);
+                    EnableOrDisableControls();
+                }
             }
             catch (Exception exception)
             {
@@ -159,12 +172,16 @@ namespace PhotographyAutomation.App.Forms.Admin
                 txtPrintServiceCode.Text = printServiceInDb.Code;
                 txtPrintServiceDescription.Text = printServiceInDb.PrintServiceDescription;
             }
+
+            EnableOrDisableControls();
         }
+
 
         #endregion
 
 
         #region Button Events
+
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -233,16 +250,17 @@ namespace PhotographyAutomation.App.Forms.Admin
             }
 
         }
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
         }
 
+
         #endregion
 
 
         #region Methods
+
 
         private bool CheckInputs()
         {
@@ -270,11 +288,16 @@ namespace PhotographyAutomation.App.Forms.Admin
                     }
 
                     var checkCodeResult = db.PrintServicesGenericRepository
-                        .Get(x => x.Code == txtPrintServiceCode.Text.Trim()).ToList();
+                        .Get(x => x.Code == txtPrintServiceCode.Text.Trim())
+                        .ToList();
+
                     if (checkCodeResult.Any() && checkCodeResult.Count > 0)
                     {
-                        ShowErrorProvider(errorProvider1, txtPrintServiceCode, "این نام قبلا وارد شده است.");
-                        return false;
+                        if (checkCodeResult.First().Id != PrintServiceId)
+                        {
+                            ShowErrorProvider(errorProvider1, txtPrintServiceCode, "این کد خدمت قبلا وارد شده است.");
+                            return false;
+                        }
                     }
                 }
             }
@@ -286,6 +309,13 @@ namespace PhotographyAutomation.App.Forms.Admin
 
             errorProvider1.Clear();
             return true;
+        }
+        private void EnableOrDisableControls()
+        {
+            cmbPrintServices.Enabled = !_bgWorkerLoadAllPrintServices.IsBusy;
+            txtPrintServiceName.Enabled = !_bgWorkerGetPrintServiceInfo.IsBusy;
+            txtPrintServiceCode.Enabled = !_bgWorkerGetPrintServiceInfo.IsBusy;
+            txtPrintServiceDescription.Enabled = !_bgWorkerGetPrintServiceInfo.IsBusy;
         }
         private static void ShowErrorProvider(ErrorProvider errorProvider, Control control, string message)
         {
@@ -320,6 +350,7 @@ namespace PhotographyAutomation.App.Forms.Admin
             Debug.WriteLine(exception.StackTrace);
         }
 
+
         #endregion
 
 
@@ -330,12 +361,12 @@ namespace PhotographyAutomation.App.Forms.Admin
             var language = new System.Globalization.CultureInfo("fa-IR");
             InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
         }
-
         private void txtEnglish_Leave(object sender, EventArgs e)
         {
             var language = new System.Globalization.CultureInfo("en-US");
             InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
         }
+
 
         #endregion
 
@@ -345,6 +376,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                 int.TryParse(cmbPrintServices.SelectedValue.ToString(), out var selectedPrintServiceId))
             {
                 PrintServiceId = selectedPrintServiceId;
+                GetPrintServiceInfo();
             }
         }
     }
