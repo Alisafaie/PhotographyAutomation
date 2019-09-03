@@ -199,6 +199,7 @@ namespace PhotographyAutomation.App.Forms.Admin
 
         #region Top Menu
 
+        //تنظیمات
         private void تعریف_اندازه_چاپ_جدید_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -208,7 +209,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                     frmAddEditPrintSize.IsNewPrintSize = true;
                     if (frmAddEditPrintSize.ShowDialog() == DialogResult.OK)
                     {
-                        FrmAddEditPrintSizeAndServices_Refactored_Load(null,null);
+                        FrmAddEditPrintSizeAndServices_Refactored_Load(null, null);
                     }
                 }
             }
@@ -217,7 +218,6 @@ namespace PhotographyAutomation.App.Forms.Admin
                 WriteDebugInfo(exception);
             }
         }
-
         private void تعریف_خدمات_چاپ_جدید_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -227,7 +227,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                     addEditPrintServiceName.IsNewPrintSize = true;
                     if (addEditPrintServiceName.ShowDialog() == DialogResult.OK)
                     {
-                        FrmAddEditPrintSizeAndServices_Refactored_Load(null,null);
+                        FrmAddEditPrintSizeAndServices_Refactored_Load(null, null);
                     }
                 }
             }
@@ -236,6 +236,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                 WriteDebugInfo(exception);
             }
         }
+
 
         private void ویرایش_اندازه_چاپ_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -258,12 +259,35 @@ namespace PhotographyAutomation.App.Forms.Admin
                 WriteDebugInfo(exception);
             }
         }
+        private void ویرایش_خدمات_چاپ_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (var addEditPrintServiceName = new FrmAddEditPrintServiceName())
+                {
+                    addEditPrintServiceName.IsNewPrintSize = false;
+                    addEditPrintServiceName.PrintServiceId = 14;
+
+                    if (addEditPrintServiceName.ShowDialog() == DialogResult.OK)
+                    {
+                        FrmAddEditPrintSizeAndServices_Refactored_Load(null, null);
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                WriteDebugInfo(exception);
+            }
+        }
+
 
         private void حذف_اندازه_چاپ_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
+
+        //خدمات چاپ
         private void تعریف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (cmbPrintSizes.DataSource == null || cmbPrintSizes.SelectedIndex == -1 || cmbPrintSizes.Items.Count <= 0)
@@ -273,12 +297,12 @@ namespace PhotographyAutomation.App.Forms.Admin
 
             try
             {
-                using (var frmPrintServices = new FrmAddEditPrintSizeServices())
+                using (var frmAddEditPrintSizeServices = new FrmAddEditPrintSizeServices())
                 {
-                    frmPrintServices.PrintSizeId = selectedPrintSizeId;
-                    if (frmPrintServices.ShowDialog() == DialogResult.OK)
+                    frmAddEditPrintSizeServices.PrintSizeId = selectedPrintSizeId;
+                    if (frmAddEditPrintSizeServices.ShowDialog() == DialogResult.OK)
                     {
-
+                        FrmAddEditPrintSizeAndServices_Refactored_Load(null, null);
                     }
                 }
             }
@@ -286,6 +310,14 @@ namespace PhotographyAutomation.App.Forms.Admin
             {
                 WriteDebugInfo(exception);
             }
+        }
+        private void ویرایش_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void حذف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
 
         #endregion
@@ -296,8 +328,12 @@ namespace PhotographyAutomation.App.Forms.Admin
         {
             try
             {
-                _bgWorkerGetAllPrintSizeServices.RunWorkerAsync();
-                cpLoadDataGridView.IsRunning = _bgWorkerGetAllPrintSizeServices.IsBusy;
+                if (_bgWorkerGetAllPrintSizeServices.IsBusy == false)
+                {
+                    _bgWorkerGetAllPrintSizeServices.RunWorkerAsync();
+                    cpLoadDataGridView.Visible = _bgWorkerGetAllPrintSizeServices.IsBusy;
+                    cpLoadDataGridView.IsRunning = _bgWorkerGetAllPrintSizeServices.IsBusy;
+                }
             }
             catch (Exception exception)
             {
@@ -328,8 +364,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                     PopulateDataGridView(viewInfo);
 
                     cpLoadDataGridView.IsRunning = _bgWorkerGetAllPrintSizeServices.IsBusy;
-                    cpLoadDataGridView.Visible = false;
-                    cpLoadDataGridView.Hide();
+                    cpLoadDataGridView.Visible = _bgWorkerGetAllPrintSizeServices.IsBusy;
                 }
                 else
                 {
@@ -436,8 +471,11 @@ namespace PhotographyAutomation.App.Forms.Admin
         {
             try
             {
-                _bgWorkerGetAllPhotoSizes.RunWorkerAsync();
-                EnableOrDisableControlsToGetAllPrintSizes();
+                if (_bgWorkerGetAllPhotoSizes.IsBusy == false)
+                {
+                    _bgWorkerGetAllPhotoSizes.RunWorkerAsync();
+                    EnableOrDisableControlsToGetAllPrintSizes();
+                }
             }
             catch (Exception exception)
             {
@@ -510,7 +548,8 @@ namespace PhotographyAutomation.App.Forms.Admin
 
             try
             {
-                _bgWorkerGetAllPhotoSizePrices.RunWorkerAsync();
+                if (_bgWorkerGetAllPhotoSizePrices.IsBusy == false)
+                    _bgWorkerGetAllPhotoSizePrices.RunWorkerAsync();
             }
             catch (Exception exception)
             {
@@ -708,26 +747,5 @@ namespace PhotographyAutomation.App.Forms.Admin
 
 
         #endregion
-
-        private void ویرایش_خدمات_چاپ_ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                using (var addEditPrintServiceName = new FrmAddEditPrintServiceName())
-                {
-                    addEditPrintServiceName.IsNewPrintSize = false;
-                    addEditPrintServiceName.PrintServiceId = 14;
-
-                    if (addEditPrintServiceName.ShowDialog() == DialogResult.OK)
-                    {
-                        FrmAddEditPrintSizeAndServices_Refactored_Load(null,null);
-                    }
-                }
-            }
-            catch (Exception exception)
-            {
-                WriteDebugInfo(exception);
-            }
-        }
     }
 }

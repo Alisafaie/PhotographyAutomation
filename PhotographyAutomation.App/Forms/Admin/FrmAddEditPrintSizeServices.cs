@@ -3,6 +3,7 @@ using PhotographyAutomation.ViewModels.Print;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -46,17 +47,20 @@ namespace PhotographyAutomation.App.Forms.Admin
         private void FrmAddEditPrintSizeServices_Load(object sender, EventArgs e)
         {
             GetAllPhotoSizes();
-
-            if (PrintSizeId > 0)
-            {
-                cmbPrintSizes.SelectedValue = PrintSizeId;
-            }
         }
 
         private void GetAllPhotoSizes()
         {
-            _bgWorkerGetAllPhotoSizes.RunWorkerAsync();
-            EnableOrDisableControlsToGetAllPrintSizes();
+            try
+            {
+                _bgWorkerGetAllPhotoSizes.RunWorkerAsync();
+                EnableOrDisableControlsToGetAllPrintSizes();
+            }
+            catch (Exception exception)
+            {
+                WriteDebugInfo(exception);
+            }
+
         }
         private void BgWorkerGetAllPhotoSizes_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -73,7 +77,7 @@ namespace PhotographyAutomation.App.Forms.Admin
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception);
+                WriteDebugInfo(exception);
                 throw;
             }
         }
@@ -87,9 +91,12 @@ namespace PhotographyAutomation.App.Forms.Admin
                     cmbPrintSizes.DisplayMember = "Name";
                     cmbPrintSizes.ValueMember = "Id";
 
-                    //cmbPrintSizes.SelectedValue = PrintSizeId;
+                    if (PrintSizeId > 0)
+                    {
+                        cmbPrintSizes.SelectedValue = PrintSizeId;
+                    }
 
-                    cmbPrintSizes_SelectedIndexChanged(null, null);
+                    //cmbPrintSizes_SelectedIndexChanged(null, null);
                 }
                 else if (e.Result == null)
                 {
@@ -113,13 +120,14 @@ namespace PhotographyAutomation.App.Forms.Admin
 
                 EnableOrDisableControlsToGetAllPrintSizes();
             }
-            catch (InvalidOperationException)
+            catch (InvalidOperationException exception)
             {
-
+                WriteDebugInfo(exception);
+                throw;
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception);
+                WriteDebugInfo(exception);
                 throw;
             }
         }
@@ -128,11 +136,21 @@ namespace PhotographyAutomation.App.Forms.Admin
 
         private void cmbPrintSizes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!int.TryParse(cmbPrintSizes.SelectedValue.ToString(), out var printSizeId)) return;
+            if (int.TryParse(cmbPrintSizes.SelectedValue.ToString(), out var printSizeId) == false)
+                return;
             PrintSizeId = printSizeId;
             var printSizesViewModel = _printSizesViewModels.FirstOrDefault(x => x.Id == printSizeId);
-            if (printSizesViewModel == null) return;
-            _bgWorkerGetPrintSizeServices.RunWorkerAsync(printSizeId);
+            if (printSizesViewModel == null)
+                return;
+
+            try
+            {
+                _bgWorkerGetPrintSizeServices.RunWorkerAsync(printSizeId);
+            }
+            catch (Exception exception)
+            {
+                WriteDebugInfo(exception);
+            }
         }
         private void _bgWorkerGetPrintSizeServices_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -151,7 +169,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                 }
                 catch (Exception exception)
                 {
-                    Console.WriteLine(exception);
+                    WriteDebugInfo(exception);
                     throw;
                 }
             }
@@ -166,6 +184,10 @@ namespace PhotographyAutomation.App.Forms.Admin
                     cmbPrintServices.DisplayMember = "PrintServiceName";
                     cmbPrintServices.ValueMember = "Id";
 
+                    cmbPrintServices.SelectedIndex = 0;
+
+                    iiPrintServicePrice.Value = viewModel.FirstOrDefault().PrintServicePrice;
+                    txtServiceCode.Text = viewModel.FirstOrDefault()?.PrintServiceCode;
                     //cmbPrintSizes.SelectedIndex = PrintSizeId;
 
                     //cmbPrintServices_SelectedIndexChanged(null, null);
@@ -193,7 +215,7 @@ namespace PhotographyAutomation.App.Forms.Admin
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception);
+                WriteDebugInfo(exception);
                 throw;
             }
         }
@@ -235,6 +257,29 @@ namespace PhotographyAutomation.App.Forms.Admin
                 iiPrintServicePrice.IsInputReadOnly = true;
                 txtPrintServiceCode.ReadOnly = true;
             }
+        }
+
+
+
+        private static void WriteDebugInfo(Exception exception)
+        {
+            Debug.WriteLine("Message: ");
+            Debug.WriteLine(exception.Message);
+
+            Debug.WriteLine("Inner Exception: ");
+            Debug.WriteLine(exception.InnerException);
+
+            Debug.WriteLine("Inner Exception Message:");
+            Debug.WriteLine(exception.InnerException?.Message);
+
+            Debug.WriteLine("Source: ");
+            Debug.WriteLine(exception.Source);
+
+            Debug.WriteLine("Data: ");
+            Debug.WriteLine(exception.Data);
+
+            Debug.WriteLine("Stack Trace: ");
+            Debug.WriteLine(exception.StackTrace);
         }
     }
 }

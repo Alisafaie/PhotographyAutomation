@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.تنظیماتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تعریفخدماتچاپجدیدToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,14 +61,14 @@
             this.btnCancel = new DevComponents.DotNetBar.ButtonX();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
-            this.integerInput1 = new DevComponents.Editors.IntegerInput();
+            this.iiServicePrice = new DevComponents.Editors.IntegerInput();
             this.label6 = new System.Windows.Forms.Label();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.panel2 = new System.Windows.Forms.Panel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtServiceCode = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.label4 = new System.Windows.Forms.Label();
             this.panelDataGridView = new DevComponents.DotNetBar.PanelEx();
             this.gbDataGridView = new System.Windows.Forms.GroupBox();
@@ -97,7 +97,7 @@
             this.panelEx2.SuspendLayout();
             this.groupBoxPrintServices.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.integerInput1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iiServicePrice)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panelDataGridView.SuspendLayout();
@@ -426,7 +426,7 @@
             // 
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.Controls.Add(this.label5);
-            this.panel4.Controls.Add(this.integerInput1);
+            this.panel4.Controls.Add(this.iiServicePrice);
             this.panel4.Controls.Add(this.label6);
             this.panel4.Location = new System.Drawing.Point(637, 18);
             this.panel4.Name = "panel4";
@@ -444,25 +444,25 @@
             this.label5.TabIndex = 50;
             this.label5.Text = "ريال";
             // 
-            // integerInput1
+            // iiServicePrice
             // 
-            this.integerInput1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iiServicePrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
-            this.integerInput1.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.integerInput1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.integerInput1.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.integerInput1.DisplayFormat = "N0";
-            this.integerInput1.Increment = 10000;
-            this.integerInput1.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
-            this.integerInput1.IsInputReadOnly = true;
-            this.integerInput1.Location = new System.Drawing.Point(31, 7);
-            this.integerInput1.MinValue = 0;
-            this.integerInput1.Name = "integerInput1";
-            this.integerInput1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.integerInput1.Size = new System.Drawing.Size(100, 21);
-            this.integerInput1.TabIndex = 0;
+            this.iiServicePrice.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.iiServicePrice.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.iiServicePrice.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.iiServicePrice.DisplayFormat = "N0";
+            this.iiServicePrice.Increment = 10000;
+            this.iiServicePrice.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
+            this.iiServicePrice.IsInputReadOnly = true;
+            this.iiServicePrice.Location = new System.Drawing.Point(31, 7);
+            this.iiServicePrice.MinValue = 0;
+            this.iiServicePrice.Name = "iiServicePrice";
+            this.iiServicePrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.iiServicePrice.Size = new System.Drawing.Size(100, 21);
+            this.iiServicePrice.TabIndex = 0;
             // 
             // label6
             // 
@@ -523,28 +523,28 @@
             // panel3
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Controls.Add(this.textBoxX1);
+            this.panel3.Controls.Add(this.txtServiceCode);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Location = new System.Drawing.Point(438, 18);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(193, 34);
             this.panel3.TabIndex = 1;
             // 
-            // textBoxX1
+            // txtServiceCode
             // 
-            this.textBoxX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtServiceCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
-            this.textBoxX1.Border.Class = "TextBoxBorder";
-            this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX1.Location = new System.Drawing.Point(3, 7);
-            this.textBoxX1.Name = "textBoxX1";
-            this.textBoxX1.PreventEnterBeep = true;
-            this.textBoxX1.ReadOnly = true;
-            this.textBoxX1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBoxX1.Size = new System.Drawing.Size(124, 21);
-            this.textBoxX1.TabIndex = 0;
+            this.txtServiceCode.Border.Class = "TextBoxBorder";
+            this.txtServiceCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtServiceCode.Location = new System.Drawing.Point(3, 7);
+            this.txtServiceCode.Name = "txtServiceCode";
+            this.txtServiceCode.PreventEnterBeep = true;
+            this.txtServiceCode.ReadOnly = true;
+            this.txtServiceCode.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtServiceCode.Size = new System.Drawing.Size(124, 21);
+            this.txtServiceCode.TabIndex = 0;
             // 
             // label4
             // 
@@ -607,19 +607,19 @@
             // 
             this.dgvPrintServices.AllowUserToAddRows = false;
             this.dgvPrintServices.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvPrintServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvPrintServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPrintServices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPrintServices.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvPrintServices.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPrintServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPrintServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPrintServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPrintServices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmId,
@@ -633,28 +633,28 @@
             this.clmPrintServiceName,
             this.clmPrice,
             this.clmDescription});
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPrintServices.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPrintServices.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvPrintServices.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPrintServices.EnableHeadersVisualStyles = false;
             this.dgvPrintServices.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.dgvPrintServices.Location = new System.Drawing.Point(3, 17);
             this.dgvPrintServices.Name = "dgvPrintServices";
             this.dgvPrintServices.ReadOnly = true;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPrintServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPrintServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvPrintServices.RowHeadersVisible = false;
             this.dgvPrintServices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPrintServices.Size = new System.Drawing.Size(1053, 346);
@@ -795,7 +795,7 @@
             this.groupBoxPrintServices.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.integerInput1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iiServicePrice)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -853,13 +853,13 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label5;
-        private DevComponents.Editors.IntegerInput integerInput1;
+        private DevComponents.Editors.IntegerInput iiServicePrice;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel3;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtServiceCode;
         private System.Windows.Forms.Label label4;
         private DevComponents.DotNetBar.ButtonX btnSaveEditedprintServiceValues;
         private DevComponents.DotNetBar.ButtonX btnEditService;
