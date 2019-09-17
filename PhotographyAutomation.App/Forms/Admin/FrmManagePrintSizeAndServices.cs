@@ -335,13 +335,67 @@ namespace PhotographyAutomation.App.Forms.Admin
                         _selectedRowIndex = dgvPrintServices.SelectedRows[0].Index;
 
                         frm.ShowDialog();
-                        FrmManagePrintSizeAndServices_Load(null, null);
+                        GetAllPrintSizeAndServicesInfo();
                     }
                 }
             }
         }
         private void حذف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (dgvPrintServices.SelectedRows.Count == 1)
+                {
+                    if (int.TryParse(dgvPrintServices.SelectedRows[0].Cells["clmPrintServicePriceId"].Value.ToString(),
+                        out var selectedPrintServicePriceId))
+                    {
+                        var dr = MessageBox.Show(
+                            @"آیا از حذف این خدمت چاپ اطمینان دارید؟",
+                            @"تائید حذف",
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1,
+                            MessageBoxOptions.RtlReading);
+
+                        if (dr == DialogResult.Yes)
+                        {
+                            try
+                            {
+                                using (var db = new UnitOfWork())
+                                {
+                                    db.PrintServicePricesGenericRepository.Delete(selectedPrintServicePriceId);
+                                    var result = db.Save();
+                                    if (result > 0)
+                                    {
+                                        MessageBox.Show(
+                                            @"خدمت چاپ مورد نظر با موفقت از سیستم حذف گردید.",
+                                            "",
+                                            MessageBoxButtons.OK, MessageBoxIcon.Information,
+                                            MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
+
+                                        GetAllPrintSizeAndServicesInfo();
+
+                                    }
+                                }
+                            }
+                            catch (Exception exception)
+                            {
+                                WriteDebugInfo(exception);
+                                throw;
+                            }
+                        }
+                    }
+                    
+                }
+            }
+            catch (Exception exception)
+            {
+                if (exception.HResult == -2147467261 &&
+                    exception.Message == "Object reference not set to an instance of an object.")
+                {
+                    MessageBox.Show("برای اندازه چاپ مورد نظر، خدمات چاپ تعریف نشده است.","",
+                        MessageBoxButtons.OK,MessageBoxIcon.Error,MessageBoxDefaultButton.Button1,
+                        MessageBoxOptions.RtlReading);
+                }
+            }
 
         }
 

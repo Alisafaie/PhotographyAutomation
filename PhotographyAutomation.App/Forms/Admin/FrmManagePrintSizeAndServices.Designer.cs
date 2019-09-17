@@ -1174,7 +1174,7 @@
             this.cpLoadDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cpLoadDataGridView.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cpLoadDataGridView.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
@@ -1195,7 +1195,7 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvPrintServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPrintServices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            this.dgvPrintServices.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgvPrintServices.BackgroundColor = System.Drawing.Color.White;
             this.dgvPrintServices.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvPrintServices.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -1236,13 +1236,13 @@
             dataGridViewCellStyle15.Font = new System.Drawing.Font("Tahoma", 8.25F);
             dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
             dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvPrintServices.DefaultCellStyle = dataGridViewCellStyle15;
             this.dgvPrintServices.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPrintServices.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvPrintServices.EnableHeadersVisualStyles = false;
-            this.dgvPrintServices.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.dgvPrintServices.GridColor = System.Drawing.Color.White;
             this.dgvPrintServices.Location = new System.Drawing.Point(3, 17);
             this.dgvPrintServices.Name = "dgvPrintServices";
             this.dgvPrintServices.ReadOnly = true;
@@ -1261,6 +1261,7 @@
             this.dgvPrintServices.ShowEditingIcon = false;
             this.dgvPrintServices.Size = new System.Drawing.Size(1053, 388);
             this.dgvPrintServices.TabIndex = 0;
+            this.dgvPrintServices.UseCustomBackgroundColor = true;
             // 
             // clmPrintSizeId
             // 
