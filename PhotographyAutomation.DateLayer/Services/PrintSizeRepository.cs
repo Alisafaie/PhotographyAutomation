@@ -57,16 +57,22 @@ namespace PhotographyAutomation.DateLayer.Services
             {
                 var result = _db.TblPrintServicePrices
                                 .Include(x => x.TblPrintServices)
+                                .Include(x=>x.TblPrintSizes)
                                 .Where(x => x.PrintSizeId == printSizeId)
                                 .Select(x =>
                                     new PrintServicesViewModel
                                     {
                                         Id = x.Id,
                                         PrintSizeId = x.PrintSizeId,
+                                        PrintServiceId = x.PrintServiceId,
                                         PrintServicePrice = x.Price,
                                         PrintServiceCode = x.TblPrintServices.Code,
                                         PrintServiceName = x.TblPrintServices.PrintServiceName,
                                         PrintServiceDescription = x.TblPrintServices.PrintServiceDescription,
+                                        SizeWidth = x.TblPrintSizes.Width,
+                                        SizeHeight = x.TblPrintSizes.Height,
+                                        SizeName = x.TblPrintSizes.Name,
+                                        SizeDescription = x.TblPrintSizes.Descriptions
                                     })
                                 .AsNoTracking()
                                 .ToList();

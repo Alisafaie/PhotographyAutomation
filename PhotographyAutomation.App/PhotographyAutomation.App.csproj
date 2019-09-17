@@ -109,11 +109,11 @@
     <Compile Include="Forms\Admin\FrmAddEditInput.Designer.cs">
       <DependentUpon>FrmAddEditInput.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Admin\FrmAddEditPrintSizeAndServices_Refactored.cs">
+    <Compile Include="Forms\Admin\FrmManagePrintSizeAndServices.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Admin\FrmAddEditPrintSizeAndServices_Refactored.Designer.cs">
-      <DependentUpon>FrmAddEditPrintSizeAndServices_Refactored.cs</DependentUpon>
+    <Compile Include="Forms\Admin\FrmManagePrintSizeAndServices.Designer.cs">
+      <DependentUpon>FrmManagePrintSizeAndServices.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Admin\FrmAddEditPrintSizeServices.cs">
       <SubType>Form</SubType>
@@ -234,8 +234,8 @@
     <EmbeddedResource Include="Forms\Admin\FrmAddEditInput.resx">
       <DependentUpon>FrmAddEditInput.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Admin\FrmAddEditPrintSizeAndServices_Refactored.resx">
-      <DependentUpon>FrmAddEditPrintSizeAndServices_Refactored.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Admin\FrmManagePrintSizeAndServices.resx">
+      <DependentUpon>FrmManagePrintSizeAndServices.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Admin\FrmAddEditPrintSizeServices.resx">
       <DependentUpon>FrmAddEditPrintSizeServices.cs</DependentUpon>

@@ -14,7 +14,7 @@ namespace PhotographyAutomation.App.Forms.Admin
     {
         #region Variables
 
-        public bool IsNewPrintSize = false;
+        public bool IsNewPrintService = false;
         public int PrintServiceId = 0;
 
         private readonly BackgroundWorker _bgWorkerLoadAllPrintServices = new BackgroundWorker
@@ -46,7 +46,7 @@ namespace PhotographyAutomation.App.Forms.Admin
         }
         private void FrmAddEditPrintServiceName_Load(object sender, EventArgs e)
         {
-            if (IsNewPrintSize == false && PrintServiceId > 0)
+            if (IsNewPrintService == false && PrintServiceId > 0)
             {
                 panel4.Enabled = true;
                 try
@@ -201,7 +201,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                 PrintServiceDescription = txtPrintServiceDescription.Text
             };
 
-            if (IsNewPrintSize == false && PrintServiceId > 0)
+            if (IsNewPrintService == false && PrintServiceId > 0)
                 printService.Id = PrintServiceId;
 
 
@@ -209,7 +209,7 @@ namespace PhotographyAutomation.App.Forms.Admin
             {
                 using (var db = new UnitOfWork())
                 {
-                    if (IsNewPrintSize && PrintServiceId == 0)
+                    if (IsNewPrintService && PrintServiceId == 0)
                         db.PrintServicesGenericRepository.Insert(printService);
                     else
                         db.PrintServicesGenericRepository.Update(printService);

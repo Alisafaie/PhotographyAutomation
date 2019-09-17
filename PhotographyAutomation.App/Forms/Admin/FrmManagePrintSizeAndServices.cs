@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace PhotographyAutomation.App.Forms.Admin
 {
-    public partial class FrmAddEditPrintSizeAndServices_Refactored : Form
+    public partial class FrmManagePrintSizeAndServices : Form
     {
         #region Variables
 
@@ -38,7 +38,7 @@ namespace PhotographyAutomation.App.Forms.Admin
 
         #region Form Events
 
-        public FrmAddEditPrintSizeAndServices_Refactored()
+        public FrmManagePrintSizeAndServices()
         {
             InitializeComponent();
 
@@ -52,7 +52,7 @@ namespace PhotographyAutomation.App.Forms.Admin
             _bgWorkerGetAllPrintSizeServices.RunWorkerCompleted += _bgWorkerGetAllPrintSizeServices_RunWorkerCompleted;
         }
 
-        private void FrmAddEditPrintSizeAndServices_Refactored_Load(object sender, EventArgs e)
+        private void FrmManagePrintSizeAndServices_Load(object sender, EventArgs e)
         {
             try
             {
@@ -209,7 +209,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                     frmAddEditPrintSize.IsNewPrintSize = true;
                     if (frmAddEditPrintSize.ShowDialog() == DialogResult.OK)
                     {
-                        FrmAddEditPrintSizeAndServices_Refactored_Load(null, null);
+                        FrmManagePrintSizeAndServices_Load(null, null);
                     }
                 }
             }
@@ -224,10 +224,10 @@ namespace PhotographyAutomation.App.Forms.Admin
             {
                 using (var addEditPrintServiceName = new FrmAddEditPrintServiceName())
                 {
-                    addEditPrintServiceName.IsNewPrintSize = true;
+                    addEditPrintServiceName.IsNewPrintService = true;
                     if (addEditPrintServiceName.ShowDialog() == DialogResult.OK)
                     {
-                        FrmAddEditPrintSizeAndServices_Refactored_Load(null, null);
+                        FrmManagePrintSizeAndServices_Load(null, null);
                     }
                 }
             }
@@ -250,7 +250,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                     var dr = frmAddEditPrintSize.ShowDialog();
                     if (dr == DialogResult.OK)
                     {
-                        FrmAddEditPrintSizeAndServices_Refactored_Load(null, null);
+                        FrmManagePrintSizeAndServices_Load(null, null);
                     }
                 }
             }
@@ -265,12 +265,12 @@ namespace PhotographyAutomation.App.Forms.Admin
             {
                 using (var addEditPrintServiceName = new FrmAddEditPrintServiceName())
                 {
-                    addEditPrintServiceName.IsNewPrintSize = false;
+                    addEditPrintServiceName.IsNewPrintService = false;
                     addEditPrintServiceName.PrintServiceId = 14;
 
                     if (addEditPrintServiceName.ShowDialog() == DialogResult.OK)
                     {
-                        FrmAddEditPrintSizeAndServices_Refactored_Load(null, null);
+                        FrmManagePrintSizeAndServices_Load(null, null);
                     }
                 }
             }
@@ -290,8 +290,11 @@ namespace PhotographyAutomation.App.Forms.Admin
         //خدمات چاپ
         private void تعریف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (cmbPrintSizes.DataSource == null || cmbPrintSizes.SelectedIndex == -1 || cmbPrintSizes.Items.Count <= 0)
+            if (cmbPrintSizes.DataSource == null ||
+                cmbPrintSizes.SelectedIndex == -1 ||
+                cmbPrintSizes.Items.Count <= 0)
                 return;
+
             if (!int.TryParse(cmbPrintSizes.SelectedValue.ToString(), out var selectedPrintSizeId))
                 return;
 
@@ -300,10 +303,8 @@ namespace PhotographyAutomation.App.Forms.Admin
                 using (var frmAddEditPrintSizeServices = new FrmAddEditPrintSizeServices())
                 {
                     frmAddEditPrintSizeServices.PrintSizeId = selectedPrintSizeId;
-                    if (frmAddEditPrintSizeServices.ShowDialog() == DialogResult.OK)
-                    {
-                        FrmAddEditPrintSizeAndServices_Refactored_Load(null, null);
-                    }
+                    frmAddEditPrintSizeServices.ShowDialog();
+                    //FrmManagePrintSizeAndServices_Load(null, null);
                 }
             }
             catch (Exception exception)

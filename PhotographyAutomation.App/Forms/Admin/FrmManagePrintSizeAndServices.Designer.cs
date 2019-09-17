@@ -1,6 +1,6 @@
 ﻿namespace PhotographyAutomation.App.Forms.Admin
 {
-    partial class FrmAddEditPrintSizeAndServices_Refactored
+    partial class FrmManagePrintSizeAndServices
     {
         /// <summary>
         /// Required designer variable.
@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle65 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle66 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle79 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle80 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle67 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle68 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle69 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle70 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle71 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle72 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle73 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle74 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle75 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle76 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle77 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle78 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.groupBoxPrintSize = new System.Windows.Forms.GroupBox();
             this.panelPrintSize1 = new System.Windows.Forms.Panel();
@@ -122,7 +122,6 @@
             this.gbDataGridView = new System.Windows.Forms.GroupBox();
             this.cpLoadDataGridView = new DevComponents.DotNetBar.Controls.CircularProgress();
             this.dgvPrintServices = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.clmPrintSizeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmPrintServiceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmPrintSizePriceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -147,6 +146,7 @@
             this.clmItalianAlbumBoundingPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmIsActive = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
             this.clmIsDeleted = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panelEx1.SuspendLayout();
             this.groupBoxPrintSize.SuspendLayout();
             this.panelPrintSize1.SuspendLayout();
@@ -190,7 +190,7 @@
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelEx1.Location = new System.Drawing.Point(0, 24);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(1084, 86);
+            this.panelEx1.Size = new System.Drawing.Size(1084, 117);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -215,7 +215,7 @@
             this.groupBoxPrintSize.Controls.Add(this.panelMedicalPhoto);
             this.groupBoxPrintSize.Location = new System.Drawing.Point(13, 10);
             this.groupBoxPrintSize.Name = "groupBoxPrintSize";
-            this.groupBoxPrintSize.Size = new System.Drawing.Size(1059, 67);
+            this.groupBoxPrintSize.Size = new System.Drawing.Size(1059, 98);
             this.groupBoxPrintSize.TabIndex = 0;
             this.groupBoxPrintSize.TabStop = false;
             this.groupBoxPrintSize.Text = "اندازه و ویژگی های اندازه عکس";
@@ -257,9 +257,9 @@
             // 
             this.panelIsDeleted.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelIsDeleted.Controls.Add(this.chkIsDeleted);
-            this.panelIsDeleted.Location = new System.Drawing.Point(233, 24);
+            this.panelIsDeleted.Location = new System.Drawing.Point(420, 67);
             this.panelIsDeleted.Name = "panelIsDeleted";
-            this.panelIsDeleted.Size = new System.Drawing.Size(54, 37);
+            this.panelIsDeleted.Size = new System.Drawing.Size(54, 21);
             this.panelIsDeleted.TabIndex = 1;
             // 
             // chkIsDeleted
@@ -272,7 +272,7 @@
             // 
             this.chkIsDeleted.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.chkIsDeleted, true);
-            this.chkIsDeleted.Location = new System.Drawing.Point(6, 11);
+            this.chkIsDeleted.Location = new System.Drawing.Point(6, 3);
             this.chkIsDeleted.Name = "chkIsDeleted";
             this.chkIsDeleted.Size = new System.Drawing.Size(45, 16);
             this.chkIsDeleted.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -283,9 +283,9 @@
             // 
             this.panelIsActive.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelIsActive.Controls.Add(this.chkIsActive);
-            this.panelIsActive.Location = new System.Drawing.Point(286, 24);
+            this.panelIsActive.Location = new System.Drawing.Point(480, 67);
             this.panelIsActive.Name = "panelIsActive";
-            this.panelIsActive.Size = new System.Drawing.Size(54, 37);
+            this.panelIsActive.Size = new System.Drawing.Size(54, 21);
             this.panelIsActive.TabIndex = 1;
             // 
             // chkIsActive
@@ -298,7 +298,7 @@
             // 
             this.chkIsActive.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.chkIsActive, true);
-            this.chkIsActive.Location = new System.Drawing.Point(8, 11);
+            this.chkIsActive.Location = new System.Drawing.Point(8, 3);
             this.chkIsActive.Name = "chkIsActive";
             this.chkIsActive.Size = new System.Drawing.Size(43, 16);
             this.chkIsActive.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -310,9 +310,9 @@
             this.panelHasItalianAlbum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelHasItalianAlbum.Controls.Add(this.chkHasItalianAlbum);
             this.panelHasItalianAlbum.Enabled = false;
-            this.panelHasItalianAlbum.Location = new System.Drawing.Point(339, 24);
+            this.panelHasItalianAlbum.Location = new System.Drawing.Point(537, 67);
             this.panelHasItalianAlbum.Name = "panelHasItalianAlbum";
-            this.panelHasItalianAlbum.Size = new System.Drawing.Size(90, 37);
+            this.panelHasItalianAlbum.Size = new System.Drawing.Size(90, 21);
             this.panelHasItalianAlbum.TabIndex = 1;
             // 
             // chkHasItalianAlbum
@@ -325,7 +325,7 @@
             // 
             this.chkHasItalianAlbum.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.chkHasItalianAlbum, true);
-            this.chkHasItalianAlbum.Location = new System.Drawing.Point(3, 11);
+            this.chkHasItalianAlbum.Location = new System.Drawing.Point(3, 3);
             this.chkHasItalianAlbum.Name = "chkHasItalianAlbum";
             this.chkHasItalianAlbum.Size = new System.Drawing.Size(84, 16);
             this.chkHasItalianAlbum.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -338,9 +338,9 @@
             this.panelScanAndProcessing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelScanAndProcessing.Controls.Add(this.chkHasScanAndProcess);
             this.panelScanAndProcessing.Enabled = false;
-            this.panelScanAndProcessing.Location = new System.Drawing.Point(428, 24);
+            this.panelScanAndProcessing.Location = new System.Drawing.Point(633, 67);
             this.panelScanAndProcessing.Name = "panelScanAndProcessing";
-            this.panelScanAndProcessing.Size = new System.Drawing.Size(132, 37);
+            this.panelScanAndProcessing.Size = new System.Drawing.Size(132, 21);
             this.panelScanAndProcessing.TabIndex = 1;
             // 
             // chkHasScanAndProcess
@@ -353,7 +353,7 @@
             // 
             this.chkHasScanAndProcess.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.chkHasScanAndProcess, true);
-            this.chkHasScanAndProcess.Location = new System.Drawing.Point(4, 11);
+            this.chkHasScanAndProcess.Location = new System.Drawing.Point(7, 3);
             this.chkHasScanAndProcess.Name = "chkHasScanAndProcess";
             this.chkHasScanAndProcess.Size = new System.Drawing.Size(125, 16);
             this.chkHasScanAndProcess.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -366,9 +366,9 @@
             this.panelLitPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelLitPrint.Controls.Add(this.chkHasLitPrint);
             this.panelLitPrint.Enabled = false;
-            this.panelLitPrint.Location = new System.Drawing.Point(559, 24);
+            this.panelLitPrint.Location = new System.Drawing.Point(769, 67);
             this.panelLitPrint.Name = "panelLitPrint";
-            this.panelLitPrint.Size = new System.Drawing.Size(73, 37);
+            this.panelLitPrint.Size = new System.Drawing.Size(73, 21);
             this.panelLitPrint.TabIndex = 1;
             // 
             // chkHasLitPrint
@@ -381,7 +381,7 @@
             // 
             this.chkHasLitPrint.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.chkHasLitPrint, true);
-            this.chkHasLitPrint.Location = new System.Drawing.Point(2, 11);
+            this.chkHasLitPrint.Location = new System.Drawing.Point(2, 3);
             this.chkHasLitPrint.Name = "chkHasLitPrint";
             this.chkHasLitPrint.Size = new System.Drawing.Size(68, 16);
             this.chkHasLitPrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -394,9 +394,9 @@
             this.panelMinimumOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelMinimumOrder.Controls.Add(this.iiMinimumOrder);
             this.panelMinimumOrder.Controls.Add(this.label2);
-            this.panelMinimumOrder.Location = new System.Drawing.Point(735, 24);
+            this.panelMinimumOrder.Location = new System.Drawing.Point(949, 67);
             this.panelMinimumOrder.Name = "panelMinimumOrder";
-            this.panelMinimumOrder.Size = new System.Drawing.Size(104, 37);
+            this.panelMinimumOrder.Size = new System.Drawing.Size(104, 21);
             this.panelMinimumOrder.TabIndex = 1;
             // 
             // iiMinimumOrder
@@ -411,7 +411,7 @@
             this.iiMinimumOrder.DisabledBackColor = System.Drawing.Color.White;
             this.highlighter1.SetHighlightOnFocus(this.iiMinimumOrder, true);
             this.iiMinimumOrder.IsInputReadOnly = true;
-            this.iiMinimumOrder.Location = new System.Drawing.Point(3, 8);
+            this.iiMinimumOrder.Location = new System.Drawing.Point(3, 0);
             this.iiMinimumOrder.MaxValue = 10;
             this.iiMinimumOrder.MinValue = 0;
             this.iiMinimumOrder.Name = "iiMinimumOrder";
@@ -423,7 +423,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(39, 12);
+            this.label2.Location = new System.Drawing.Point(39, 3);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 13);
             this.label2.TabIndex = 49;
@@ -434,9 +434,9 @@
             this.panelMedicalPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelMedicalPhoto.Controls.Add(this.chkHasMedialPhoto);
             this.panelMedicalPhoto.Enabled = false;
-            this.panelMedicalPhoto.Location = new System.Drawing.Point(631, 24);
+            this.panelMedicalPhoto.Location = new System.Drawing.Point(848, 67);
             this.panelMedicalPhoto.Name = "panelMedicalPhoto";
-            this.panelMedicalPhoto.Size = new System.Drawing.Size(98, 37);
+            this.panelMedicalPhoto.Size = new System.Drawing.Size(98, 21);
             this.panelMedicalPhoto.TabIndex = 1;
             // 
             // chkHasMedialPhoto
@@ -449,7 +449,7 @@
             // 
             this.chkHasMedialPhoto.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.chkHasMedialPhoto, true);
-            this.chkHasMedialPhoto.Location = new System.Drawing.Point(7, 11);
+            this.chkHasMedialPhoto.Location = new System.Drawing.Point(9, 3);
             this.chkHasMedialPhoto.Name = "chkHasMedialPhoto";
             this.chkHasMedialPhoto.Size = new System.Drawing.Size(88, 16);
             this.chkHasMedialPhoto.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -468,7 +468,7 @@
             this.panelPhotoSizePrices.Controls.Add(this.gbMainPrices);
             this.panelPhotoSizePrices.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelPhotoSizePrices.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelPhotoSizePrices.Location = new System.Drawing.Point(0, 110);
+            this.panelPhotoSizePrices.Location = new System.Drawing.Point(0, 141);
             this.panelPhotoSizePrices.Name = "panelPhotoSizePrices";
             this.panelPhotoSizePrices.Size = new System.Drawing.Size(1084, 96);
             this.panelPhotoSizePrices.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -1131,7 +1131,7 @@
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 570);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 648);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1084, 22);
             this.statusStrip1.TabIndex = 23;
@@ -1144,9 +1144,9 @@
             this.panelEx3.Controls.Add(this.gbDataGridView);
             this.panelEx3.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx3.Location = new System.Drawing.Point(0, 206);
+            this.panelEx3.Location = new System.Drawing.Point(0, 237);
             this.panelEx3.Name = "panelEx3";
-            this.panelEx3.Size = new System.Drawing.Size(1084, 364);
+            this.panelEx3.Size = new System.Drawing.Size(1084, 411);
             this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx3.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx3.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -1165,12 +1165,15 @@
             this.gbDataGridView.Controls.Add(this.dgvPrintServices);
             this.gbDataGridView.Location = new System.Drawing.Point(13, 0);
             this.gbDataGridView.Name = "gbDataGridView";
-            this.gbDataGridView.Size = new System.Drawing.Size(1059, 361);
+            this.gbDataGridView.Size = new System.Drawing.Size(1059, 408);
             this.gbDataGridView.TabIndex = 0;
             this.gbDataGridView.TabStop = false;
             // 
             // cpLoadDataGridView
             // 
+            this.cpLoadDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cpLoadDataGridView.BackColor = System.Drawing.SystemColors.AppWorkspace;
             // 
             // 
@@ -1189,19 +1192,19 @@
             this.dgvPrintServices.AllowUserToDeleteRows = false;
             this.dgvPrintServices.AllowUserToOrderColumns = true;
             this.dgvPrintServices.AllowUserToResizeRows = false;
-            dataGridViewCellStyle65.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvPrintServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle65;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvPrintServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPrintServices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dgvPrintServices.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvPrintServices.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            dataGridViewCellStyle66.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle66.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle66.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle66.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle66.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle66.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle66.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPrintServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle66;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPrintServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPrintServices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmPrintSizeId,
             this.clmPrintServiceId,
@@ -1227,14 +1230,14 @@
             this.clmItalianAlbumBoundingPrice,
             this.clmIsActive,
             this.clmIsDeleted});
-            dataGridViewCellStyle79.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle79.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle79.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle79.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle79.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle79.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle79.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPrintServices.DefaultCellStyle = dataGridViewCellStyle79;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPrintServices.DefaultCellStyle = dataGridViewCellStyle15;
             this.dgvPrintServices.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPrintServices.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvPrintServices.EnableHeadersVisualStyles = false;
@@ -1242,25 +1245,20 @@
             this.dgvPrintServices.Location = new System.Drawing.Point(3, 17);
             this.dgvPrintServices.Name = "dgvPrintServices";
             this.dgvPrintServices.ReadOnly = true;
-            dataGridViewCellStyle80.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle80.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle80.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle80.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle80.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle80.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle80.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPrintServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle80;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPrintServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvPrintServices.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgvPrintServices.ScrollBarAppearance = DevComponents.DotNetBar.eScrollBarAppearance.Default;
             this.dgvPrintServices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPrintServices.ShowEditingIcon = false;
-            this.dgvPrintServices.Size = new System.Drawing.Size(1053, 341);
+            this.dgvPrintServices.Size = new System.Drawing.Size(1053, 388);
             this.dgvPrintServices.TabIndex = 0;
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            this.errorProvider1.RightToLeft = true;
             // 
             // clmPrintSizeId
             // 
@@ -1303,9 +1301,9 @@
             // 
             // clmMinimumOrder
             // 
-            dataGridViewCellStyle67.Format = "N0";
-            dataGridViewCellStyle67.NullValue = null;
-            this.clmMinimumOrder.DefaultCellStyle = dataGridViewCellStyle67;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = null;
+            this.clmMinimumOrder.DefaultCellStyle = dataGridViewCellStyle3;
             this.clmMinimumOrder.HeaderText = "حداقل تعداد";
             this.clmMinimumOrder.Name = "clmMinimumOrder";
             this.clmMinimumOrder.ReadOnly = true;
@@ -1313,9 +1311,9 @@
             // 
             // clmFirstPrintPrice
             // 
-            dataGridViewCellStyle68.Format = "N0";
-            dataGridViewCellStyle68.NullValue = null;
-            this.clmFirstPrintPrice.DefaultCellStyle = dataGridViewCellStyle68;
+            dataGridViewCellStyle4.Format = "N0";
+            dataGridViewCellStyle4.NullValue = null;
+            this.clmFirstPrintPrice.DefaultCellStyle = dataGridViewCellStyle4;
             this.clmFirstPrintPrice.HeaderText = "اصل چاپ";
             this.clmFirstPrintPrice.Name = "clmFirstPrintPrice";
             this.clmFirstPrintPrice.ReadOnly = true;
@@ -1323,8 +1321,8 @@
             // 
             // clmRePrintPrice
             // 
-            dataGridViewCellStyle69.Format = "N0";
-            this.clmRePrintPrice.DefaultCellStyle = dataGridViewCellStyle69;
+            dataGridViewCellStyle5.Format = "N0";
+            this.clmRePrintPrice.DefaultCellStyle = dataGridViewCellStyle5;
             this.clmRePrintPrice.HeaderText = " چاپ مجدد";
             this.clmRePrintPrice.Name = "clmRePrintPrice";
             this.clmRePrintPrice.ReadOnly = true;
@@ -1340,9 +1338,9 @@
             // 
             // clmPrintServicePrice
             // 
-            dataGridViewCellStyle70.Format = "N0";
-            dataGridViewCellStyle70.NullValue = null;
-            this.clmPrintServicePrice.DefaultCellStyle = dataGridViewCellStyle70;
+            dataGridViewCellStyle6.Format = "N0";
+            dataGridViewCellStyle6.NullValue = null;
+            this.clmPrintServicePrice.DefaultCellStyle = dataGridViewCellStyle6;
             this.clmPrintServicePrice.HeaderText = "هزینه خدمات";
             this.clmPrintServicePrice.Name = "clmPrintServicePrice";
             this.clmPrintServicePrice.ReadOnly = true;
@@ -1382,8 +1380,8 @@
             // 
             // clmMedicalPrice
             // 
-            dataGridViewCellStyle71.Format = "N0";
-            this.clmMedicalPrice.DefaultCellStyle = dataGridViewCellStyle71;
+            dataGridViewCellStyle7.Format = "N0";
+            this.clmMedicalPrice.DefaultCellStyle = dataGridViewCellStyle7;
             this.clmMedicalPrice.HeaderText = "پزشکی اصل چاپ";
             this.clmMedicalPrice.Name = "clmMedicalPrice";
             this.clmMedicalPrice.ReadOnly = true;
@@ -1391,8 +1389,8 @@
             // 
             // clmMedicalRePrintPrice
             // 
-            dataGridViewCellStyle72.Format = "N0";
-            this.clmMedicalRePrintPrice.DefaultCellStyle = dataGridViewCellStyle72;
+            dataGridViewCellStyle8.Format = "N0";
+            this.clmMedicalRePrintPrice.DefaultCellStyle = dataGridViewCellStyle8;
             this.clmMedicalRePrintPrice.HeaderText = "پزشکی چاپ مجدد";
             this.clmMedicalRePrintPrice.Name = "clmMedicalRePrintPrice";
             this.clmMedicalRePrintPrice.ReadOnly = true;
@@ -1400,8 +1398,8 @@
             // 
             // clmScanAndPrintPrice
             // 
-            dataGridViewCellStyle73.Format = "N0";
-            this.clmScanAndPrintPrice.DefaultCellStyle = dataGridViewCellStyle73;
+            dataGridViewCellStyle9.Format = "N0";
+            this.clmScanAndPrintPrice.DefaultCellStyle = dataGridViewCellStyle9;
             this.clmScanAndPrintPrice.HeaderText = "هزینه اسکن و چاپ";
             this.clmScanAndPrintPrice.Name = "clmScanAndPrintPrice";
             this.clmScanAndPrintPrice.ReadOnly = true;
@@ -1409,8 +1407,8 @@
             // 
             // clmScanAndProcessingPrice
             // 
-            dataGridViewCellStyle74.Format = "N0";
-            this.clmScanAndProcessingPrice.DefaultCellStyle = dataGridViewCellStyle74;
+            dataGridViewCellStyle10.Format = "N0";
+            this.clmScanAndProcessingPrice.DefaultCellStyle = dataGridViewCellStyle10;
             this.clmScanAndProcessingPrice.HeaderText = "هزینه اسکن و پردازش";
             this.clmScanAndProcessingPrice.Name = "clmScanAndProcessingPrice";
             this.clmScanAndProcessingPrice.ReadOnly = true;
@@ -1418,8 +1416,8 @@
             // 
             // clmLitPrintPrice
             // 
-            dataGridViewCellStyle75.Format = "N0";
-            this.clmLitPrintPrice.DefaultCellStyle = dataGridViewCellStyle75;
+            dataGridViewCellStyle11.Format = "N0";
+            this.clmLitPrintPrice.DefaultCellStyle = dataGridViewCellStyle11;
             this.clmLitPrintPrice.HeaderText = "لیت پرینت اصل چاپ";
             this.clmLitPrintPrice.Name = "clmLitPrintPrice";
             this.clmLitPrintPrice.ReadOnly = true;
@@ -1427,8 +1425,8 @@
             // 
             // clmLitPrintRePrintPrice
             // 
-            dataGridViewCellStyle76.Format = "N0";
-            this.clmLitPrintRePrintPrice.DefaultCellStyle = dataGridViewCellStyle76;
+            dataGridViewCellStyle12.Format = "N0";
+            this.clmLitPrintRePrintPrice.DefaultCellStyle = dataGridViewCellStyle12;
             this.clmLitPrintRePrintPrice.HeaderText = " لیت پرینت چاپ مجدد";
             this.clmLitPrintRePrintPrice.Name = "clmLitPrintRePrintPrice";
             this.clmLitPrintRePrintPrice.ReadOnly = true;
@@ -1436,8 +1434,8 @@
             // 
             // clmItalianAlbumPagePrice
             // 
-            dataGridViewCellStyle77.Format = "N0";
-            this.clmItalianAlbumPagePrice.DefaultCellStyle = dataGridViewCellStyle77;
+            dataGridViewCellStyle13.Format = "N0";
+            this.clmItalianAlbumPagePrice.DefaultCellStyle = dataGridViewCellStyle13;
             this.clmItalianAlbumPagePrice.HeaderText = "هزینه هر برگ";
             this.clmItalianAlbumPagePrice.Name = "clmItalianAlbumPagePrice";
             this.clmItalianAlbumPagePrice.ReadOnly = true;
@@ -1445,8 +1443,8 @@
             // 
             // clmItalianAlbumBoundingPrice
             // 
-            dataGridViewCellStyle78.Format = "N0";
-            this.clmItalianAlbumBoundingPrice.DefaultCellStyle = dataGridViewCellStyle78;
+            dataGridViewCellStyle14.Format = "N0";
+            this.clmItalianAlbumBoundingPrice.DefaultCellStyle = dataGridViewCellStyle14;
             this.clmItalianAlbumBoundingPrice.HeaderText = "هزینه صحافی";
             this.clmItalianAlbumBoundingPrice.Name = "clmItalianAlbumBoundingPrice";
             this.clmItalianAlbumBoundingPrice.ReadOnly = true;
@@ -1472,11 +1470,16 @@
             this.clmIsDeleted.ReadOnly = true;
             this.clmIsDeleted.Width = 36;
             // 
-            // FrmAddEditPrintSizeAndServices_Refactored
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.RightToLeft = true;
+            // 
+            // FrmManagePrintSizeAndServices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1084, 592);
+            this.ClientSize = new System.Drawing.Size(1084, 670);
             this.Controls.Add(this.panelEx3);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panelPhotoSizePrices);
@@ -1488,12 +1491,12 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1100, 630);
-            this.Name = "FrmAddEditPrintSizeAndServices_Refactored";
+            this.Name = "FrmManagePrintSizeAndServices";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "ثبت و ویرایش اندازه و خدمات عکس ها";
-            this.Load += new System.EventHandler(this.FrmAddEditPrintSizeAndServices_Refactored_Load);
+            this.Text = "مدیریت اندازه چاپ و خدمات مربوطه";
+            this.Load += new System.EventHandler(this.FrmManagePrintSizeAndServices_Load);
             this.panelEx1.ResumeLayout(false);
             this.groupBoxPrintSize.ResumeLayout(false);
             this.panelPrintSize1.ResumeLayout(false);
