@@ -1174,14 +1174,14 @@
             this.cpLoadDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cpLoadDataGridView.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.cpLoadDataGridView.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             // 
             // 
             // 
             this.cpLoadDataGridView.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.cpLoadDataGridView.Location = new System.Drawing.Point(501, 149);
             this.cpLoadDataGridView.Name = "cpLoadDataGridView";
-            this.cpLoadDataGridView.ProgressColor = System.Drawing.Color.White;
+            this.cpLoadDataGridView.ProgressColor = System.Drawing.Color.Blue;
             this.cpLoadDataGridView.Size = new System.Drawing.Size(57, 63);
             this.cpLoadDataGridView.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.cpLoadDataGridView.TabIndex = 34;
@@ -1195,6 +1195,7 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvPrintServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPrintServices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.dgvPrintServices.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvPrintServices.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvPrintServices.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -1253,6 +1254,7 @@
             dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvPrintServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            this.dgvPrintServices.RowHeadersVisible = false;
             this.dgvPrintServices.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgvPrintServices.ScrollBarAppearance = DevComponents.DotNetBar.eScrollBarAppearance.Default;
             this.dgvPrintServices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;

@@ -33,6 +33,8 @@ namespace PhotographyAutomation.App.Forms.Admin
         private List<PrintSizesViewModel> _printSizesViewModels;
         private List<PrintSizePricesViewModel> _printSizePricesViewModels;
 
+        private int _selectedRowIndex = -1;
+
         #endregion Variables
 
 
@@ -314,7 +316,29 @@ namespace PhotographyAutomation.App.Forms.Admin
         }
         private void ویرایش_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (dgvPrintServices.SelectedRows.Count == 1)
+            {
+                if (int.TryParse(dgvPrintServices.SelectedRows[0].Cells["clmPrintSizeId"].Value.ToString(),
+                        out var selectedPrintSizeId) &&
+                    int.TryParse(dgvPrintServices.SelectedRows[0].Cells["clmPrintServiceId"].Value.ToString(),
+                        out var selectedPrintServiceId) &&
+                    int.TryParse(dgvPrintServices.SelectedRows[0].Cells["clmPrintServicePriceId"].Value.ToString(),
+                        out var selectePrintServicePriceId))
+                {
+                    using (var frm = new FrmAddEditPrintSizeServices())
+                    {
+                        frm.EditPrintSizeServiceMode = true;
+                        frm.PrintServiceId = selectedPrintServiceId;
+                        frm.PrintSizeId = selectedPrintSizeId;
+                        frm.PrintServicePriceId = selectePrintServicePriceId;
 
+                        _selectedRowIndex = dgvPrintServices.SelectedRows[0].Index;
+
+                        frm.ShowDialog();
+                        FrmManagePrintSizeAndServices_Load(null, null);
+                    }
+                }
+            }
         }
         private void حذف_خدمات_چاپ_مربوط_به_اندازه_چاپ_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -461,6 +485,17 @@ namespace PhotographyAutomation.App.Forms.Admin
 
                 dgvPrintServices.Rows[i].Cells["clmIsActive"].Value = viewInfo[i].IsActive;
                 dgvPrintServices.Rows[i].Cells["clmIsDeleted"].Value = viewInfo[i].IsDeleted;
+            }
+
+            dgvPrintServices.Rows[0].Selected = false;
+
+            if (_selectedRowIndex > 0)
+            {
+                dgvPrintServices.Rows[_selectedRowIndex].Selected = true;
+
+                dgvPrintServices.FirstDisplayedScrollingRowIndex = dgvPrintServices.Rows[_selectedRowIndex].Index;
+
+                //dgvPrintServices.CurrentCell = dgvPrintServices.Rows[_selectedRowIndex].Cells["clmPrintSizeName"];
             }
         }
 

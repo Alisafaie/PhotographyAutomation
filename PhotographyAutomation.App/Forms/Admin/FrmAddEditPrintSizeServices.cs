@@ -15,6 +15,9 @@ namespace PhotographyAutomation.App.Forms.Admin
         #region Variables
 
         public int PrintSizeId;
+        public int PrintServiceId;
+        public int PrintServicePriceId;
+        public bool EditPrintSizeServiceMode = false;
 
         private List<PrintSizesViewModel> _printSizesViewModels;
 
@@ -145,7 +148,7 @@ namespace PhotographyAutomation.App.Forms.Admin
         }
 
         #endregion
-        
+
 
         #region GetAllPrintServices
 
@@ -189,6 +192,23 @@ namespace PhotographyAutomation.App.Forms.Admin
                 cmbPrintServices.ValueMember = "Id";
 
                 EnableOrDisableControlsToGetAllPrintSizes();
+
+
+                if (EditPrintSizeServiceMode && PrintSizeId > 0 && PrintServiceId > 0 && PrintServicePriceId > 0)
+                {
+                    using (var db = new UnitOfWork())
+                    {
+                        var printServicePrice = db.PrintServicePricesGenericRepository.GetById(PrintServicePriceId);
+                        if (printServicePrice != null)
+                        {
+                            txtPrintServiceCode.Text = printServicePrice.TblPrintServices.Code;
+                            iiPrintServicePrice.Value = printServicePrice.Price;
+
+                            cmbPrintSizes.SelectedValue = PrintSizeId;
+                            cmbPrintServices.SelectedValue = PrintServiceId;
+                        }
+                    }
+                }
             }
             catch (Exception exception)
             {
@@ -284,7 +304,7 @@ namespace PhotographyAutomation.App.Forms.Admin
 
         #endregion
 
-        
+
         private void btnSaveEditedprintServiceValues_Click(object sender, EventArgs e)
         {
             if (cmbPrintSizes.Items.Count == 0)
@@ -409,7 +429,7 @@ namespace PhotographyAutomation.App.Forms.Admin
             }
         }
 
-        
+
         #region Methods
 
         private void EnableOrDisableControlsToGetAllPrintSizes()
@@ -450,6 +470,28 @@ namespace PhotographyAutomation.App.Forms.Admin
 
                 dgvPrintServices.Rows[i].Cells["clmPrintServiceDescription"].Value = viewModel[i].PrintServiceDescription;
             }
+
+            dgvPrintServices.Rows[0].Selected = false;
+            
+            if (EditPrintSizeServiceMode && PrintSizeId > 0 && PrintServiceId > 0 && PrintServicePriceId > 0)
+            {
+                //foreach (DataGridViewRow row in dgvPrintServices.Rows)
+                //{
+                //    if (row.Cells["clmPrintServicePriceId"].Value.ToString() == PrintServicePriceId.ToString())
+                //    {
+                //        rowIndex = row.Index;
+                //    }
+                //}
+
+                var row = dgvPrintServices.Rows
+                                        .Cast<DataGridViewRow>()
+                                        .First(r => int.Parse(r.Cells["clmPrintServicePriceId"].Value.ToString()).Equals(PrintServicePriceId));
+                if (row != null)
+                {
+                    var rowIndex = row.Index;
+                    dgvPrintServices.Rows[rowIndex].Selected = true;
+                }
+            }
         }
 
         private static void WriteDebugInfo(Exception exception)
@@ -475,7 +517,7 @@ namespace PhotographyAutomation.App.Forms.Admin
 
         #endregion
 
-        
+
         #region Top Menu
 
         private void تعریف_خدمات_چاپ_جدید_ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -509,16 +551,16 @@ namespace PhotographyAutomation.App.Forms.Admin
                     }
                 }
             }
-            
+
         }
 
         private void حذف_خدمات_چاپ_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(!int.TryParse(cmbPrintServices.SelectedValue.ToString(),out var selectedPrintServiceId)||!int.TryParse(cmbPrintSizes.SelectedValue.ToString(),out var selectedPrintSizeId))
+            if (!int.TryParse(cmbPrintServices.SelectedValue.ToString(), out var selectedPrintServiceId) || !int.TryParse(cmbPrintSizes.SelectedValue.ToString(), out var selectedPrintSizeId))
                 return;
             try
             {
-                using (var db=new UnitOfWork())
+                using (var db = new UnitOfWork())
                 {
                     var result = db.PrintServicePricesGenericRepository
                         .Get(x => x.PrintServiceId == selectedPrintServiceId).ToList();
@@ -526,7 +568,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                     {
                         MessageBox.Show(
                             @"این خدمت چاپ قبلا برای اندازه چاپ هایی تخصیص داده شده است و قابل حذف نمی باشد.",
-                            @"",MessageBoxButtons.OK,MessageBoxIcon.Error,MessageBoxDefaultButton.Button1,
+                            @"", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1,
                             MessageBoxOptions.RtlReading);
                         return;
                     }
@@ -545,8 +587,8 @@ namespace PhotographyAutomation.App.Forms.Admin
                             if (deleteResult > 0)
                             {
                                 MessageBox.Show(
-                                    @"خدمت چاپ مورد نظر با موفقت از سیستم حذف گردید.","",
-                                    MessageBoxButtons.OK,MessageBoxIcon.Information,MessageBoxDefaultButton.Button1,
+                                    @"خدمت چاپ مورد نظر با موفقت از سیستم حذف گردید.", "",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1,
                                     MessageBoxOptions.RtlReading);
 
                                 GetAllPrintServices();
@@ -597,7 +639,7 @@ namespace PhotographyAutomation.App.Forms.Admin
             {
                 MessageBox.Show(
                     @"خدمت چاپی برای ویرایش انتخاب نشده است.",
-                    @"",MessageBoxButtons.OK,MessageBoxIcon.Error,MessageBoxDefaultButton.Button1,MessageBoxOptions.RtlReading);
+                    @"", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
             }
         }
 
@@ -610,7 +652,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                 return;
 
             var dr = MessageBox.Show(
-                @"آیا از حذف خدمت چاپ مورد نظر اطمینان دارید؟", 
+                @"آیا از حذف خدمت چاپ مورد نظر اطمینان دارید؟",
                 @"تائید حذف",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1,
                 MessageBoxOptions.RtlReading);
