@@ -29,16 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.تنظیماتToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تعریف_خدمات_چاپ_جدید_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ویرایش_خدمات_چاپ_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.حذف_خدمات_چاپ_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.اندازهچاپToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.تعریف_خدمت_چاپ_جدید_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ویرایش_خدمت_چاپ_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.حذف_خدمت_چاپ_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -73,9 +76,6 @@
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.تعریف_خدمت_چاپ_جدید_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ویرایش_خدمت_چاپ_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.حذف_خدمت_چاپ_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panelEx1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -143,6 +143,27 @@
             this.اندازهچاپToolStripMenuItem.Name = "اندازهچاپToolStripMenuItem";
             this.اندازهچاپToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.اندازهچاپToolStripMenuItem.Text = "اندازه چاپ";
+            // 
+            // تعریف_خدمت_چاپ_جدید_ToolStripMenuItem
+            // 
+            this.تعریف_خدمت_چاپ_جدید_ToolStripMenuItem.Name = "تعریف_خدمت_چاپ_جدید_ToolStripMenuItem";
+            this.تعریف_خدمت_چاپ_جدید_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.تعریف_خدمت_چاپ_جدید_ToolStripMenuItem.Text = "تعریف خدمت چاپ جدید";
+            this.تعریف_خدمت_چاپ_جدید_ToolStripMenuItem.Click += new System.EventHandler(this.تعریف_خدمت_چاپ_جدید_ToolStripMenuItem_Click);
+            // 
+            // ویرایش_خدمت_چاپ_ToolStripMenuItem
+            // 
+            this.ویرایش_خدمت_چاپ_ToolStripMenuItem.Name = "ویرایش_خدمت_چاپ_ToolStripMenuItem";
+            this.ویرایش_خدمت_چاپ_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ویرایش_خدمت_چاپ_ToolStripMenuItem.Text = "ویرایش خدمت چاپ";
+            this.ویرایش_خدمت_چاپ_ToolStripMenuItem.Click += new System.EventHandler(this.ویرایش_خدمت_چاپ_ToolStripMenuItem_Click);
+            // 
+            // حذف_خدمت_چاپ_ToolStripMenuItem
+            // 
+            this.حذف_خدمت_چاپ_ToolStripMenuItem.Name = "حذف_خدمت_چاپ_ToolStripMenuItem";
+            this.حذف_خدمت_چاپ_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.حذف_خدمت_چاپ_ToolStripMenuItem.Text = "حذف خدمت چاپ";
+            this.حذف_خدمت_چاپ_ToolStripMenuItem.Click += new System.EventHandler(this.حذف_خدمت_چاپ_ToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -312,7 +333,6 @@
             this.cmbPrintServices.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.cmbPrintServices.Size = new System.Drawing.Size(183, 21);
             this.cmbPrintServices.TabIndex = 0;
-            this.cmbPrintServices.SelectedIndexChanged += new System.EventHandler(this.cmbPrintServices_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -422,19 +442,19 @@
             this.dgvPrintServices.AllowUserToAddRows = false;
             this.dgvPrintServices.AllowUserToDeleteRows = false;
             this.dgvPrintServices.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvPrintServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvPrintServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPrintServices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPrintServices.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvPrintServices.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPrintServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPrintServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPrintServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPrintServices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmPrintServicePriceId,
@@ -446,28 +466,28 @@
             this.clmPrintServicePrice,
             this.clmPrintSizeDescription,
             this.clmPrintServiceDescription});
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPrintServices.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPrintServices.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvPrintServices.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPrintServices.EnableHeadersVisualStyles = false;
             this.dgvPrintServices.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.dgvPrintServices.Location = new System.Drawing.Point(3, 17);
             this.dgvPrintServices.Name = "dgvPrintServices";
             this.dgvPrintServices.ReadOnly = true;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPrintServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPrintServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvPrintServices.RowHeadersVisible = false;
             this.dgvPrintServices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPrintServices.Size = new System.Drawing.Size(916, 353);
@@ -564,27 +584,6 @@
             // 
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.RightToLeft = true;
-            // 
-            // تعریف_خدمت_چاپ_جدید_ToolStripMenuItem
-            // 
-            this.تعریف_خدمت_چاپ_جدید_ToolStripMenuItem.Name = "تعریف_خدمت_چاپ_جدید_ToolStripMenuItem";
-            this.تعریف_خدمت_چاپ_جدید_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.تعریف_خدمت_چاپ_جدید_ToolStripMenuItem.Text = "تعریف خدمت چاپ جدید";
-            this.تعریف_خدمت_چاپ_جدید_ToolStripMenuItem.Click += new System.EventHandler(this.تعریف_خدمت_چاپ_جدید_ToolStripMenuItem_Click);
-            // 
-            // ویرایش_خدمت_چاپ_ToolStripMenuItem
-            // 
-            this.ویرایش_خدمت_چاپ_ToolStripMenuItem.Name = "ویرایش_خدمت_چاپ_ToolStripMenuItem";
-            this.ویرایش_خدمت_چاپ_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.ویرایش_خدمت_چاپ_ToolStripMenuItem.Text = "ویرایش خدمت چاپ";
-            this.ویرایش_خدمت_چاپ_ToolStripMenuItem.Click += new System.EventHandler(this.ویرایش_خدمت_چاپ_ToolStripMenuItem_Click);
-            // 
-            // حذف_خدمت_چاپ_ToolStripMenuItem
-            // 
-            this.حذف_خدمت_چاپ_ToolStripMenuItem.Name = "حذف_خدمت_چاپ_ToolStripMenuItem";
-            this.حذف_خدمت_چاپ_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.حذف_خدمت_چاپ_ToolStripMenuItem.Text = "حذف خدمت چاپ";
-            this.حذف_خدمت_چاپ_ToolStripMenuItem.Click += new System.EventHandler(this.حذف_خدمت_چاپ_ToolStripMenuItem_Click);
             // 
             // FrmAddEditPrintSizeServices
             // 

@@ -4,7 +4,6 @@ using PhotographyAutomation.ViewModels.Print;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data.Entity.Core.Common.CommandTrees;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
@@ -18,20 +17,17 @@ namespace PhotographyAutomation.App.Forms.Admin
         public int PrintSizeId;
 
         private List<PrintSizesViewModel> _printSizesViewModels;
-        //private List<PrintServicesViewModel> _printServicesViewModels = new List<PrintServicesViewModel>();
 
         private readonly BackgroundWorker _bgWorkerGetAllPhotoSizes = new BackgroundWorker
         {
             WorkerReportsProgress = false,
             WorkerSupportsCancellation = false
         };
-
         private readonly BackgroundWorker _bgWorkerGetPrintSizeServices = new BackgroundWorker
         {
             WorkerReportsProgress = false,
             WorkerSupportsCancellation = false
         };
-
         private readonly BackgroundWorker _bgWorkerGetAllPrintServices = new BackgroundWorker
         {
             WorkerSupportsCancellation = false,
@@ -39,6 +35,9 @@ namespace PhotographyAutomation.App.Forms.Admin
         };
 
         #endregion
+
+
+        #region Form Events
 
         public FrmAddEditPrintSizeServices()
         {
@@ -53,16 +52,16 @@ namespace PhotographyAutomation.App.Forms.Admin
             _bgWorkerGetAllPrintServices.DoWork += _bgWorkerGetAllPrintServices_DoWork;
             _bgWorkerGetAllPrintServices.RunWorkerCompleted += _bgWorkerGetAllPrintServices_RunWorkerCompleted;
         }
-
-
-
-
-
         private void FrmAddEditPrintSizeServices_Load(object sender, EventArgs e)
         {
             GetAllPhotoSizes();
             GetAllPrintServices();
         }
+
+        #endregion
+
+
+        #region GetAllPhotoSizes
 
         private void GetAllPhotoSizes()
         {
@@ -145,6 +144,10 @@ namespace PhotographyAutomation.App.Forms.Admin
             }
         }
 
+        #endregion
+        
+
+        #region GetAllPrintServices
 
         private void GetAllPrintServices()
         {
@@ -194,28 +197,9 @@ namespace PhotographyAutomation.App.Forms.Admin
             }
         }
 
+        #endregion
 
-
-
-
-        private void cmbPrintSizes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (int.TryParse(cmbPrintSizes.SelectedValue.ToString(), out var printSizeId) == false)
-                return;
-            PrintSizeId = printSizeId;
-            var printSizesViewModel = _printSizesViewModels.FirstOrDefault(x => x.Id == printSizeId);
-            if (printSizesViewModel == null)
-                return;
-
-            try
-            {
-                GetPrintSizeServicesByPrintSizeId(printSizeId);
-            }
-            catch (Exception exception)
-            {
-                WriteDebugInfo(exception);
-            }
-        }
+        #region GetPrintSizeServicesByPrintSizeId
 
         private void GetPrintSizeServicesByPrintSizeId(int printSizeId)
         {
@@ -298,58 +282,9 @@ namespace PhotographyAutomation.App.Forms.Admin
             }
         }
 
-        private void PopulateDataFridView(IReadOnlyList<PrintServicesViewModel> viewModel)
-        {
-            dgvPrintServices.Rows.Clear();
-            dgvPrintServices.RowCount = viewModel.Count;
-            dgvPrintServices.AutoGenerateColumns = false;
+        #endregion
 
-            for (int i = 0; i < viewModel.Count; i++)
-            {
-                dgvPrintServices.Rows[i].Cells["clmPrintServicePriceId"].Value = viewModel[i].Id;
-                dgvPrintServices.Rows[i].Cells["clmPrintServiceId"].Value = viewModel[i].PrintServiceId;
-                dgvPrintServices.Rows[i].Cells["clmPrintSizeId"].Value = viewModel[i].PrintSizeId;
-
-                dgvPrintServices.Rows[i].Cells["clmPrintSizeName"].Value = viewModel[i].SizeWidth + "x" + viewModel[i].SizeHeight;
-                dgvPrintServices.Rows[i].Cells["clmPrintSizeName"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-
-                dgvPrintServices.Rows[i].Cells["clmPrintSizeDescription"].Value = viewModel[i].SizeDescription;
-                dgvPrintServices.Rows[i].Cells["clmPrintServiceName"].Value = viewModel[i].PrintServiceName;
-
-                dgvPrintServices.Rows[i].Cells["clmPrintServiceCode"].Value = viewModel[i].PrintServiceCode;
-                dgvPrintServices.Rows[i].Cells["clmPrintServiceCode"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-
-                dgvPrintServices.Rows[i].Cells["clmPrintServicePrice"].Value = viewModel[i].PrintServicePrice.ToString("N0");
-                dgvPrintServices.Rows[i].Cells["clmPrintServicePrice"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-                dgvPrintServices.Rows[i].Cells["clmPrintServiceDescription"].Value = viewModel[i].PrintServiceDescription;
-            }
-        }
-
-
-        private void cmbPrintServices_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-
-        private void EnableOrDisableControlsToGetAllPrintSizes()
-        {
-            cmbPrintSizes.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy == !_bgWorkerGetAllPrintServices.IsBusy;
-            //groupBoxPrintSize.Enabled = (!_bgWorkerGetAllPhotoSizes.IsBusy ^ !_bgWorkerGetAllPrintServices.IsBusy);
-
-            panelDataGridView.Enabled = (!_bgWorkerGetAllPhotoSizes.IsBusy == !_bgWorkerGetAllPrintServices.IsBusy);
-
-            menuStrip1.Enabled = (!_bgWorkerGetAllPhotoSizes.IsBusy == !_bgWorkerGetAllPrintServices.IsBusy);
-        }
-
-
-
-
+        
         private void btnSaveEditedprintServiceValues_Click(object sender, EventArgs e)
         {
             if (cmbPrintSizes.Items.Count == 0)
@@ -455,8 +390,67 @@ namespace PhotographyAutomation.App.Forms.Admin
                 }
             }
         }
+        private void cmbPrintSizes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (int.TryParse(cmbPrintSizes.SelectedValue.ToString(), out var printSizeId) == false)
+                return;
+            PrintSizeId = printSizeId;
+            var printSizesViewModel = _printSizesViewModels.FirstOrDefault(x => x.Id == printSizeId);
+            if (printSizesViewModel == null)
+                return;
+
+            try
+            {
+                GetPrintSizeServicesByPrintSizeId(printSizeId);
+            }
+            catch (Exception exception)
+            {
+                WriteDebugInfo(exception);
+            }
+        }
+
+        
+        #region Methods
+
+        private void EnableOrDisableControlsToGetAllPrintSizes()
+        {
+            cmbPrintSizes.Enabled = !_bgWorkerGetAllPhotoSizes.IsBusy == !_bgWorkerGetAllPrintServices.IsBusy;
+            //groupBoxPrintSize.Enabled = (!_bgWorkerGetAllPhotoSizes.IsBusy ^ !_bgWorkerGetAllPrintServices.IsBusy);
+
+            panelDataGridView.Enabled = (!_bgWorkerGetAllPhotoSizes.IsBusy == !_bgWorkerGetAllPrintServices.IsBusy);
+
+            menuStrip1.Enabled = (!_bgWorkerGetAllPhotoSizes.IsBusy == !_bgWorkerGetAllPrintServices.IsBusy);
+        }
+
+        private void PopulateDataFridView(IReadOnlyList<PrintServicesViewModel> viewModel)
+        {
+            dgvPrintServices.Rows.Clear();
+            dgvPrintServices.RowCount = viewModel.Count;
+            dgvPrintServices.AutoGenerateColumns = false;
+
+            for (int i = 0; i < viewModel.Count; i++)
+            {
+                dgvPrintServices.Rows[i].Cells["clmPrintServicePriceId"].Value = viewModel[i].Id;
+                dgvPrintServices.Rows[i].Cells["clmPrintServiceId"].Value = viewModel[i].PrintServiceId;
+                dgvPrintServices.Rows[i].Cells["clmPrintSizeId"].Value = viewModel[i].PrintSizeId;
+
+                dgvPrintServices.Rows[i].Cells["clmPrintSizeName"].Value = viewModel[i].SizeWidth + "x" + viewModel[i].SizeHeight;
+                dgvPrintServices.Rows[i].Cells["clmPrintSizeName"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 
 
+                dgvPrintServices.Rows[i].Cells["clmPrintSizeDescription"].Value = viewModel[i].SizeDescription;
+                dgvPrintServices.Rows[i].Cells["clmPrintServiceName"].Value = viewModel[i].PrintServiceName;
+
+                dgvPrintServices.Rows[i].Cells["clmPrintServiceCode"].Value = viewModel[i].PrintServiceCode;
+                dgvPrintServices.Rows[i].Cells["clmPrintServiceCode"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+
+                dgvPrintServices.Rows[i].Cells["clmPrintServicePrice"].Value = viewModel[i].PrintServicePrice.ToString("N0");
+                dgvPrintServices.Rows[i].Cells["clmPrintServicePrice"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+                dgvPrintServices.Rows[i].Cells["clmPrintServiceDescription"].Value = viewModel[i].PrintServiceDescription;
+            }
+        }
 
         private static void WriteDebugInfo(Exception exception)
         {
@@ -479,6 +473,10 @@ namespace PhotographyAutomation.App.Forms.Admin
             Debug.WriteLine(exception.StackTrace);
         }
 
+        #endregion
+
+        
+        #region Top Menu
 
         private void تعریف_خدمات_چاپ_جدید_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -563,6 +561,8 @@ namespace PhotographyAutomation.App.Forms.Admin
             }
         }
 
+
+
         private void تعریف_خدمت_چاپ_جدید_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (int.TryParse(cmbPrintSizes.SelectedValue.ToString(), out var selectedPrintSizeId))
@@ -642,5 +642,8 @@ namespace PhotographyAutomation.App.Forms.Admin
                 }
             }
         }
+
+
+        #endregion
     }
 }
