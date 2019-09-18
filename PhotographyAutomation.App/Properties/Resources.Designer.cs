@@ -3253,6 +3253,16 @@ namespace PhotographyAutomation.App.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_select_by_color_64624 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_select_by_color_64624", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconfinder_settings_1167993 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_settings_1167993", resourceCulture);

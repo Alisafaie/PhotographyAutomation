@@ -1713,5 +1713,8 @@
   <ItemGroup>
     <Folder Include="Forms\Test\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_select_by_color_64624.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
