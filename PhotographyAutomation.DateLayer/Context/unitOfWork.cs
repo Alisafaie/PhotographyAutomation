@@ -364,9 +364,6 @@ namespace PhotographyAutomation.DateLayer.Context
 
 
 
-
-
-
         public int Save()
         {
             try
