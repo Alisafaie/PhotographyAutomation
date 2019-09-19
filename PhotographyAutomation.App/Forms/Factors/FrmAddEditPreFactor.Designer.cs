@@ -138,7 +138,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.bgWorkerGetOrderPrintInfo = new System.ComponentModel.BackgroundWorker();
             this.bgWorkerLoadPicture = new System.ComponentModel.BackgroundWorker();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip1.SuspendLayout();
@@ -1941,11 +1940,6 @@
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(109, 17);
             this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
             // 
-            // bgWorkerGetOrderPrintInfo
-            // 
-            this.bgWorkerGetOrderPrintInfo.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerGetOrderPrintInfo_DoWork);
-            this.bgWorkerGetOrderPrintInfo.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerGetOrderPrintInfo_RunWorkerCompleted);
-            // 
             // bgWorkerLoadPicture
             // 
             this.bgWorkerLoadPicture.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerLoadPicture_DoWork);
@@ -2059,7 +2053,6 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private DevComponents.DotNetBar.LabelX labelX12;
         private DevComponents.DotNetBar.Controls.TextBoxX txtOrderPrintCodeCustomerId;
-        private System.ComponentModel.BackgroundWorker bgWorkerGetOrderPrintInfo;
         private System.ComponentModel.BackgroundWorker bgWorkerLoadPicture;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.GroupBox groupBox7;

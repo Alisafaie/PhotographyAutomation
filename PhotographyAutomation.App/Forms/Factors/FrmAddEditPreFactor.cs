@@ -1,5 +1,4 @@
-﻿using DevComponents.DotNetBar.Controls;
-using PhotographyAutomation.App.Forms.Photos;
+﻿using PhotographyAutomation.App.Forms.Photos;
 using PhotographyAutomation.Business.OrderDetails;
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.DateLayer.Models;
@@ -13,6 +12,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+#pragma warning disable 168
 
 namespace PhotographyAutomation.App.Forms.Factors
 {
@@ -33,27 +33,17 @@ namespace PhotographyAutomation.App.Forms.Factors
         private int _photoCursor;
         private int _selectedOriginalSizeId;
 
-        private List<PrintSizesViewModel> _listPrintSizes;
-        private List<PrintServicesViewModel> _listPrintServicePrices;
+        private OrderPrintViewModel _orderPrintViewModel;
 
-        private readonly BackgroundWorker _bgWorkerGetPrintServicePrices = new BackgroundWorker
-        {
-            WorkerReportsProgress = false,
-            WorkerSupportsCancellation = false
-        };
-        private readonly BackgroundWorker _bgWorkerGetFirstPrintPrintSizes = new BackgroundWorker
+        private static List<PrintSizesViewModel> _listPrintSizes;
+        private static List<PrintServicesViewModel> _listPrintServicePrices;
+        private static List<TblPrintSpecialServices> _printSpecialServicesList;
+
+        private readonly BackgroundWorker _bgWorkerLoadPrintSizeAndServicesInfo = new BackgroundWorker
         {
             WorkerSupportsCancellation = false,
             WorkerReportsProgress = false
         };
-        private readonly BackgroundWorker _bgWorkerGetPrintSpecialServices = new BackgroundWorker
-        {
-            WorkerReportsProgress = false,
-            WorkerSupportsCancellation = false
-        };
-
-        private List<TblPrintSpecialServices> _printSpecialServicesList;
-
 
         #endregion
 
@@ -64,32 +54,20 @@ namespace PhotographyAutomation.App.Forms.Factors
         {
             InitializeComponent();
 
-            _bgWorkerGetPrintServicePrices.DoWork += _bgWorkerGetPrintServicePrices_DoWork;
-            _bgWorkerGetPrintServicePrices.RunWorkerCompleted += _bgWorkerGetPrintServicePrices_RunWorkerCompleted;
-
-            _bgWorkerGetFirstPrintPrintSizes.DoWork += _bgWorkerGetFirstPrintPrintSizes_DoWork;
-            _bgWorkerGetFirstPrintPrintSizes.RunWorkerCompleted += _bgWorkerGetFirstPrintPrintSizes_RunWorkerCompleted;
-
-            _bgWorkerGetPrintSpecialServices.DoWork += _bgWorkerGetPrintSpecialServices_DoWork;
-            _bgWorkerGetPrintSpecialServices.RunWorkerCompleted += _bgWorkerGetPrintSpecialServices_RunWorkerCompleted;
+            _bgWorkerLoadPrintSizeAndServicesInfo.DoWork += _bgWorkerLoadPrintSizeAndServicesInfo_DoWork;
+            _bgWorkerLoadPrintSizeAndServicesInfo.RunWorkerCompleted += _bgWorkerLoadPrintSizeAndServicesInfo_RunWorkerCompleted;
         }
         private void FrmAddEditPreFactor_Load(object sender, EventArgs e)
         {
             if (FileStreamsGuids.Any())
             {
-                LoadOriginalPrintSizes();
-                LoadPrintServicePrices();
-                GetOrderPrintInfo();
-                GetPrintSpecialServices();
+                LoadPrintSizeAndServicesInfo();
                 LoadPicture(FileStreamsGuids[_photoCursor]);
-
-
                 if (FileStreamsGuids.Count == 1)
                 {
                     btnNextPhoto.Enabled = false;
                     btnPreviousPhoto.Enabled = false;
                 }
-
                 btnPreviousPhoto.Enabled = false;
             }
             else
@@ -109,230 +87,162 @@ namespace PhotographyAutomation.App.Forms.Factors
         #endregion
 
 
-        #region LoadOriginalPrintSizes
+        #region LoadPrintSizeAndServicesInfo
 
-        private void LoadOriginalPrintSizes()
+        private void LoadPrintSizeAndServicesInfo()
         {
             try
             {
-                if (!_bgWorkerGetFirstPrintPrintSizes.IsBusy)
+                if (_bgWorkerLoadPrintSizeAndServicesInfo.IsBusy == false)
                 {
-                    _bgWorkerGetFirstPrintPrintSizes.RunWorkerAsync();
-                    circularProgress.IsRunning = _bgWorkerGetFirstPrintPrintSizes.IsBusy;
-                    cmbOriginalPrintSizes.Enabled = !_bgWorkerGetFirstPrintPrintSizes.IsBusy;
+                    _bgWorkerLoadPrintSizeAndServicesInfo.RunWorkerAsync();
+                    circularProgress.IsRunning = _bgWorkerLoadPrintSizeAndServicesInfo.IsBusy;
                 }
             }
             catch (Exception exception)
             {
-                MessageBox.Show(exception.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error,
-                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
+                //ignored
             }
         }
-        private void _bgWorkerGetFirstPrintPrintSizes_DoWork(object sender, DoWorkEventArgs e)
+        private void _bgWorkerLoadPrintSizeAndServicesInfo_DoWork(object sender, DoWorkEventArgs e)
         {
             using (var db = new UnitOfWork())
             {
-                List<PrintSizesViewModel> result = db.PrintSizeRepository.GetAllPrintSizes();
-                e.Result = result;
-            }
-        }
-        private void _bgWorkerGetFirstPrintPrintSizes_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if (e.Result != null && e.Result is List<PrintSizesViewModel> printSizeList)
-            {
-                _listPrintSizes = printSizeList;
+                _listPrintSizes = db.PrintSizeRepository.GetAllPrintSizes();
 
-                cmbOriginalPrintSizes.DataSource = printSizeList;
-                cmbOriginalPrintSizes.DisplayMember = "Name";
-                cmbOriginalPrintSizes.ValueMember = "Id";
-            }
+                _listPrintServicePrices = db.PrintServicePricesGenericRepository
+                    .Get().Select(x => new PrintServicesViewModel
+                    {
+                        Id = x.Id,
+                        PrintServiceId = x.PrintServiceId,
+                        PrintSizeId = x.PrintSizeId,
+                        PrintServiceName = x.TblPrintServices.PrintServiceName,
+                        PrintServiceDescription = x.TblPrintServices.PrintServiceDescription,
+                        PrintServicePrice = x.Price,
+                        PrintServiceCode = x.TblPrintServices.Code,
+                        SizeName = x.TblPrintSizes.Name,
+                        SizeWidth = x.TblPrintSizes.Width,
+                        SizeHeight = x.TblPrintSizes.Height,
+                        SizeDescription = x.TblPrintSizes.Descriptions
+                    }).ToList();
 
-
-            cmbOriginalPrintSizes.Enabled = !_bgWorkerGetFirstPrintPrintSizes.IsBusy;
-            circularProgress.IsRunning = _bgWorkerGetFirstPrintPrintSizes.IsBusy;
-
-
-            if (_bgWorkerGetFirstPrintPrintSizes.IsBusy == false)
-                circularProgress.Hide();
-
-            cmbOriginalPrintSizes.SelectedIndex = -1;
-            txtOriginalPrintSizePrice.ResetText();
-        }
-
-        #endregion
+                _printSpecialServicesList = db.PrintSpecialServicesGenericRepository.Get().ToList();
 
 
-        #region LoadPrintServicePrices
 
-        private void LoadPrintServicePrices()
-        {
-            if (!_bgWorkerGetPrintServicePrices.IsBusy)
-            {
-                _bgWorkerGetPrintServicePrices.RunWorkerAsync();
-                if (!circularProgress.IsRunning)
-                    circularProgress.IsRunning = _bgWorkerGetPrintServicePrices.IsBusy;
-            }
-        }
-        private static void _bgWorkerGetPrintServicePrices_DoWork(object sender, DoWorkEventArgs e)
-        {
-            try
-            {
-                using (var db = new UnitOfWork())
+                TblOrder orderInfo = db.OrderGenericRepository.GetById(OrderId);
+                TblOrderPrint orderPrintInfo = db.OrderPrintGenericRepository.GetById(OrderPrintId);
+                TblCustomer customerInfo = db.CustomerGenericRepository.GetById(CustomerId);
+                TblOrderPrintStatus orderPrintStatusInfo = new TblOrderPrintStatus();
+                TblPhotographyType photographyType = new TblPhotographyType();
+
+                if (orderPrintInfo != null)
                 {
-                    var result = db.PrintServicePricesGenericRepository
-                        .Get()
-                        .Select(x => new PrintServicesViewModel
-                        {
-                            Id = x.Id,
-                            PrintServiceId = x.PrintServiceId,
-                            PrintSizeId = x.PrintSizeId,
-                            PrintServiceName = x.TblPrintServices.PrintServiceName,
-                            PrintServiceDescription = x.TblPrintServices.PrintServiceDescription,
-                            PrintServicePrice = x.Price,
-                            PrintServiceCode = x.TblPrintServices.Code,
-                            SizeName = x.TblPrintSizes.Name,
-                            SizeWidth = x.TblPrintSizes.Width,
-                            SizeHeight = x.TblPrintSizes.Height,
-                            SizeDescription = x.TblPrintSizes.Descriptions
-                        })
-                        .ToList();
-                    e.Result = result;
+                    orderPrintStatusInfo =
+                        db.OrderPrintStatusGenericRepository.GetById(orderPrintInfo.OrderPrintStatusId);
                 }
-            }
-            catch (Exception exception)
-            {
-                //ignored
-            }
-        }
-        private void _bgWorkerGetPrintServicePrices_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if (e.Result != null && e.Result is List<PrintServicesViewModel> viewModel)
-            {
-                _listPrintServicePrices = viewModel;
-                circularProgress.IsRunning = _bgWorkerGetPrintServicePrices.IsBusy;
-            }
-        }
-
-        #endregion
-
-
-        #region GetOrderPrintInfo
-
-        private void GetOrderPrintInfo()
-        {
-            if (bgWorkerGetOrderPrintInfo.IsBusy == false)
-            {
-                bgWorkerGetOrderPrintInfo.RunWorkerAsync();
-                circularProgress.IsRunning = bgWorkerGetOrderPrintInfo.IsBusy;
-            }
-        }
-        private void bgWorkerGetOrderPrintInfo_DoWork(object sender, DoWorkEventArgs e)
-        {
-            var orderPrintStatusInfo = new TblOrderPrintStatus();
-            var photographyType = new TblPhotographyType();
-
-            try
-            {
-                using (var db = new UnitOfWork())
+                else
                 {
-                    var orderInfo = db.OrderGenericRepository.GetById(OrderId);
-                    var orderPrintInfo = db.OrderPrintGenericRepository.GetById(OrderPrintId);
-                    var customerInfo = db.CustomerGenericRepository.GetById(CustomerId);
+                    MessageBox.Show(
+                        @"اطلاعات سفارش فابل دریافت نمی باشد." +
+                        @" لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.", "",
+                        MessageBoxButtons.OK);
+                    DialogResult = DialogResult.Abort;
+                }
+
+                if (orderInfo != null)
+                {
+                    photographyType = db.PhotographyTypesGenericRepository.GetById(orderInfo.PhotographyTypeId);
+                }
+                else
+                {
+                    MessageBox.Show(
+                        @"اطلاعات سفارش فابل دریافت نمی باشد." +
+                        @" لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.", "",
+                        MessageBoxButtons.OK);
+                    DialogResult = DialogResult.Abort;
+                }
+
+                if (customerInfo == null || orderPrintStatusInfo == null)
+                {
+                    MessageBox.Show(
+                        @"اطلاعات سفارش فابل دریافت نمی باشد." +
+                        @" لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.", "",
+                        MessageBoxButtons.OK);
+                    DialogResult = DialogResult.Abort;
+                }
+                else
+                {
                     if (orderPrintInfo != null)
-                        orderPrintStatusInfo =
-                            db.OrderPrintStatusGenericRepository.GetById(orderPrintInfo.OrderPrintStatusId);
-                    else
                     {
-                        MessageBox.Show(
-                            @"اطلاعات سفارش فابل دریافت نمی باشد." +
-                            @" لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.", "",
-                            MessageBoxButtons.OK);
-                        DialogResult = DialogResult.Abort;
-                    }
-
-                    if (orderInfo != null)
-                        photographyType = db.PhotographyTypesGenericRepository.GetById(orderInfo.PhotographyTypeId);
-                    else
-                    {
-                        MessageBox.Show(
-                            @"اطلاعات سفارش فابل دریافت نمی باشد." +
-                            @" لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.", "",
-                            MessageBoxButtons.OK);
-                        DialogResult = DialogResult.Abort;
-                    }
-
-                    if (customerInfo == null || orderPrintStatusInfo == null)
-                    {
-                        MessageBox.Show(
-                            @"اطلاعات سفارش فابل دریافت نمی باشد." +
-                            @" لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.", "",
-                            MessageBoxButtons.OK);
-                        DialogResult = DialogResult.Abort;
-                    }
-                    else
-                    {
-                        if (orderPrintInfo != null)
+                        if (orderInfo != null)
                         {
-                            if (orderInfo != null)
+                            _orderPrintViewModel = new OrderPrintViewModel
                             {
-                                var orderPrintViewModel = new OrderPrintViewModel
-                                {
-                                    CustomerId = CustomerId,
-                                    OrderId = OrderId,
-                                    OrderCode = orderInfo.OrderCode,
-                                    OrderPrintCode = orderPrintInfo.OrderPrintCode,
-                                    OrderPrintId = orderPrintInfo.Id,
-                                    CreatedDateTime = orderPrintInfo.CreatedDateTime,
-                                    ModifiedDateTime = orderPrintInfo.ModifiedDateTime,
-                                    CustomerFirstName = customerInfo.FirstName,
-                                    CustomerLastName = customerInfo.LastName,
-                                    TotalPhotos = orderPrintInfo.TotalPhotos,
-                                    OrderPrintStatusId = orderPrintInfo.OrderPrintStatusId,
-                                    Deposit = orderPrintInfo.Deposit,
-                                    Payment = orderPrintInfo.Payment,
-                                    Remaining = orderPrintInfo.Remaining,
-                                    TotalPrice = orderPrintInfo.TotalPrice,
-                                    IsActiveOrderPrint = orderPrintInfo.IsActive,
-                                    OrderPrintStatusName = orderPrintStatusInfo.Name,
-                                    PhotographyDate = orderInfo.Date,
-                                    PhotographyDateShamsi = orderInfo.Date?.ToShamsiDate(),
-                                    RetouchDescriptions = orderPrintInfo.RetochDescriptions,
-                                    PhotographyTypeId = orderInfo.PhotographyTypeId,
-                                    PhotographyTypeName = photographyType.TypeName
-                                };
-                                e.Result = orderPrintViewModel;
-                            }
+                                CustomerId = CustomerId,
+                                OrderId = OrderId,
+                                OrderCode = orderInfo.OrderCode,
+                                OrderPrintCode = orderPrintInfo.OrderPrintCode,
+                                OrderPrintId = orderPrintInfo.Id,
+                                CreatedDateTime = orderPrintInfo.CreatedDateTime,
+                                ModifiedDateTime = orderPrintInfo.ModifiedDateTime,
+                                CustomerFirstName = customerInfo.FirstName,
+                                CustomerLastName = customerInfo.LastName,
+                                TotalPhotos = orderPrintInfo.TotalPhotos,
+                                OrderPrintStatusId = orderPrintInfo.OrderPrintStatusId,
+                                Deposit = orderPrintInfo.Deposit,
+                                Payment = orderPrintInfo.Payment,
+                                Remaining = orderPrintInfo.Remaining,
+                                TotalPrice = orderPrintInfo.TotalPrice,
+                                IsActiveOrderPrint = orderPrintInfo.IsActive,
+                                OrderPrintStatusName = orderPrintStatusInfo.Name,
+                                PhotographyDate = orderInfo.Date,
+                                PhotographyDateShamsi = orderInfo.Date?.ToShamsiDate(),
+                                RetouchDescriptions = orderPrintInfo.RetochDescriptions,
+                                PhotographyTypeId = orderInfo.PhotographyTypeId,
+                                PhotographyTypeName = photographyType.TypeName
+                            };
                         }
                     }
                 }
-            }
-            catch (Exception exception)
-            {
-                //ignored
+
             }
         }
-        private void bgWorkerGetOrderPrintInfo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void _bgWorkerLoadPrintSizeAndServicesInfo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (e.Result != null && e.Result is OrderPrintViewModel orderPrintInfo)
+            if (_listPrintSizes != null && _listPrintSizes.Any())
             {
-                txtOrderCodeDate.Text = orderPrintInfo.OrderCode.Substring(0, 7);
-                txtOrderCodeCustomerIdBookingId.Text = orderPrintInfo.OrderCode.Substring(8);
-                txtCustomerName.Text = orderPrintInfo.CustomerFirstName + @" " + orderPrintInfo.CustomerLastName;
+                cmbOriginalPrintSizes.DataSource = _listPrintSizes;
+                cmbOriginalPrintSizes.DisplayMember = "Name";
+                cmbOriginalPrintSizes.ValueMember = "Id";
 
-                if (orderPrintInfo.PhotographyDate.HasValue)
-                    datePickerOrderDate.Value = orderPrintInfo.PhotographyDate.Value;
+                cmbOriginalPrintSizes.Enabled = !_bgWorkerLoadPrintSizeAndServicesInfo.IsBusy;
+                cmbOriginalPrintSizes.SelectedIndex = -1;
+                txtOriginalPrintSizePrice.ResetText();
+            }
 
-                txtPhotographyType.Text = orderPrintInfo.PhotographyTypeName;
+            if (_orderPrintViewModel != null)
+            {
+                txtOrderCodeDate.Text = _orderPrintViewModel.OrderCode.Substring(0, 7);
+                txtOrderCodeCustomerIdBookingId.Text = _orderPrintViewModel.OrderCode.Substring(8);
+                txtCustomerName.Text =
+                    _orderPrintViewModel.CustomerFirstName + @" " + _orderPrintViewModel.CustomerLastName;
 
-                var ss = orderPrintInfo.OrderPrintCode.Split('-');
+                if (_orderPrintViewModel.PhotographyDate.HasValue)
+                    datePickerOrderDate.Value = _orderPrintViewModel.PhotographyDate.Value;
+
+                txtPhotographyType.Text = _orderPrintViewModel.PhotographyTypeName;
+
+                var ss = _orderPrintViewModel.OrderPrintCode.Split('-');
                 txtOrderPrintCodeDate.Text = ss[0];
                 txtOrderPrintCodeOrderId.Text = ss[1];
                 txtOrderPrintCodeCustomerId.Text = ss[2];
 
-                lblTotalPhotos.Text = orderPrintInfo.TotalPhotos.ToString();
+                lblTotalPhotos.Text = _orderPrintViewModel.TotalPhotos.ToString();
             }
 
-            circularProgress.IsRunning = bgWorkerGetOrderPrintInfo.IsBusy;
+
+            circularProgress.IsRunning = _bgWorkerLoadPrintSizeAndServicesInfo.IsBusy;
         }
 
         #endregion
@@ -390,63 +300,11 @@ namespace PhotographyAutomation.App.Forms.Factors
             }
             catch (Exception exception)
             {
-
-            }
-        }
-
-        #endregion
-
-
-        #region GetPrintSpecialServices
-
-        private void GetPrintSpecialServices()
-        {
-            try
-            {
-                if (!_bgWorkerGetPrintSpecialServices.IsBusy)
-                {
-                    _bgWorkerGetPrintSpecialServices.RunWorkerAsync();
-                    circularProgress.IsRunning = _bgWorkerGetPrintSpecialServices.IsBusy;
-                }
-            }
-            catch (Exception exception)
-            {
-                //ignored
-            }
-        }
-        private static void _bgWorkerGetPrintSpecialServices_DoWork(object sender, DoWorkEventArgs e)
-        {
-            try
-            {
-                using (var db = new UnitOfWork())
-                {
-                    var result = db.PrintSpecialServicesGenericRepository.Get();
-                    e.Result = result;
-                }
-            }
-            catch (Exception exception)
-            {
-                //ignored
-            }
-        }
-        private void _bgWorkerGetPrintSpecialServices_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            try
-            {
-                if (e.Result != null && e.Result is List<TblPrintSpecialServices> result)
-                {
-                    _printSpecialServicesList = result;
-                }
-            }
-            catch (Exception exception)
-            {
                 //ignored
             }
         }
 
         #endregion
-        
-
 
 
         #region cmbOriginalPrintSize
@@ -486,20 +344,11 @@ namespace PhotographyAutomation.App.Forms.Factors
         #endregion
 
 
-
-
         #region chkHasOriginalPrintService_CheckedChanged
 
         private void chkHasOriginalPrintService_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkHasOriginalPrintService.Checked)
-            {
-                cmbOriginalPrintServices.Enabled = true;
-            }
-            else
-            {
-                cmbOriginalPrintServices.Enabled = false;
-            }
+            cmbOriginalPrintServices.Enabled = chkHasOriginalPrintService.Checked;
         }
         private void cmbOriginalPrintService_EnabledChanged(object sender, EventArgs e)
         {
@@ -581,7 +430,7 @@ namespace PhotographyAutomation.App.Forms.Factors
 
 
                 //کد هزینه دورچین =10 
-                iiOriginalMultiPhotoPrice.Value = 
+                iiOriginalMultiPhotoPrice.Value =
                     GetMultiPhotoPricePrePhoto(code: "10");
             }
             else
@@ -608,14 +457,84 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         #endregion
 
-        
-        
 
+        #region rbOriginalLitPrint
 
         private void rbOriginalLitPrint_CheckedChanged(object sender, EventArgs e)
         {
 
         }
+
+        #endregion
+
+
+        #region TXT Enter Persian Leave English
+
+        private void txt_TypeFarsi_Enter(object sender, EventArgs e)
+        {
+            var language = new System.Globalization.CultureInfo("fa-IR");
+            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
+        }
+
+        private void txt_TypeFarsi_Leave(object sender, EventArgs e)
+        {
+            var language = new System.Globalization.CultureInfo("en-US");
+            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
+        }
+
+        #endregion TXT Enter Persian Leave English
+
+        #region Methods
+
+        private void ResetTextBoxesAndComboxes()
+        {
+
+            #region Original Print Size Service
+
+            //textPhotoRetouchDescription.ResetText();
+            //txtOriginalPrintServicePrice.ResetText();
+            ////cmbOriginalPrintService.SelectedIndex = -1;
+            //cmbOriginalPrintServices.Enabled = false;
+            //rbOriginalMultiPhoto.Checked = false;
+            //rbOriginalLitPrint.Enabled = false;
+            //txtOriginalPrintSizePrice.ResetText();
+            //cmbOriginalPrintSize.SelectedIndex = -1;
+
+            #endregion
+        }
+
+        private void CalculateTotalPhotosConfirmed()
+        {
+            var totalPhotosConfirmed = 0;
+            foreach (var photo in PhotoOrderDetailsList)
+            {
+                if (photo.IsAccepted == 1)
+                    totalPhotosConfirmed++;
+            }
+
+            txtTotalSelectedPhotos.Text = totalPhotosConfirmed.ToString();
+        }
+        private void CaculateTotalPhotoServicesConfirmed()
+        {
+            var totalPhotoServices = 0;
+            foreach (var photo in PhotoOrderDetailsList)
+            {
+                if (photo.HasOriginalPrintService && photo.OriginalServiceId > 0)
+                    totalPhotoServices++;
+                if (photo.HasSecondPrint1Service && photo.SecondPrint1ServiceId > 0)
+                    totalPhotoServices += photo.SecondPrint1ServiceCount;
+                if (photo.HasSecondPrint2Service && photo.SecondPrint2ServiceId > 0)
+                    totalPhotoServices += photo.SecondPrint2ServiceCount;
+                if (photo.HasSecondPrint3Service && photo.SecondPrint3ServiceId > 0)
+                    totalPhotoServices += photo.SecondPrint3ServiceCount;
+                if (photo.HasSecondPrint4Service && photo.SecondPrint4ServiceId > 0)
+                    totalPhotoServices += photo.SecondPrint4ServiceCount;
+            }
+
+            txtTotalPrintServices.Text = totalPhotoServices.ToString();
+        }
+
+        #endregion
 
 
 
@@ -708,39 +627,6 @@ namespace PhotographyAutomation.App.Forms.Factors
                     MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
             }
         }
-
-        private void CalculateTotalPhotosConfirmed()
-        {
-            var totalPhotosConfirmed = 0;
-            foreach (var photo in PhotoOrderDetailsList)
-            {
-                if (photo.IsAccepted == 1)
-                    totalPhotosConfirmed++;
-            }
-
-            txtTotalSelectedPhotos.Text = totalPhotosConfirmed.ToString();
-        }
-
-        private void CaculateTotalPhotoServicesConfirmed()
-        {
-            var totalPhotoServices = 0;
-            foreach (var photo in PhotoOrderDetailsList)
-            {
-                if (photo.HasOriginalPrintService && photo.OriginalServiceId > 0)
-                    totalPhotoServices++;
-                if (photo.HasSecondPrint1Service && photo.SecondPrint1ServiceId > 0)
-                    totalPhotoServices += photo.SecondPrint1ServiceCount;
-                if (photo.HasSecondPrint2Service && photo.SecondPrint2ServiceId > 0)
-                    totalPhotoServices += photo.SecondPrint2ServiceCount;
-                if (photo.HasSecondPrint3Service && photo.SecondPrint3ServiceId > 0)
-                    totalPhotoServices += photo.SecondPrint3ServiceCount;
-                if (photo.HasSecondPrint4Service && photo.SecondPrint4ServiceId > 0)
-                    totalPhotoServices += photo.SecondPrint4ServiceCount;
-            }
-
-            txtTotalPrintServices.Text = totalPhotoServices.ToString();
-        }
-
         private void btnCancelPhotoOrderPrint_Click(object sender, EventArgs e)
         {
             var dr = MessageBox.Show(
@@ -773,6 +659,25 @@ namespace PhotographyAutomation.App.Forms.Factors
                     MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
             }
         }
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+        }
+        private void btnMagnifyPhoto_Click(object sender, EventArgs e)
+        {
+            var image = pictureBoxPreview.Image;
+            var imageBytes = ImageConvertor.ImageToByteArray(image);
+            //byte[] imageBytes = imageConvertor.ConvertImageToByteArray(image);
+            using (var photoViewer = new FrmPhotoViewer())
+            {
+                photoViewer.myImage = imageBytes;
+                photoViewer.ShowDialog();
+            }
+        }
+
+        #endregion
+
+        #region btnNextPhoto
 
         private void btnNextPhoto_Click(object sender, EventArgs e)
         {
@@ -799,16 +704,16 @@ namespace PhotographyAutomation.App.Forms.Factors
                 if (int.TryParse(txtOriginalPrintSizePrice.Text.Replace(",", ""), out var tt))
                     currentOrderDetails.OriginalPrintSizePrice = tt;
 
-                if (rbOriginalNormalPrint.Checked)
-                {
-                    if (cmbOriginalPrintServices.Items.Count > 0)
-                    {
-                        currentOrderDetails.OriginalServiceId = (int)cmbOriginalPrintServices.SelectedValue;
-                        currentOrderDetails.HasOriginalPrintService = true;
-                        if (int.TryParse(txtOriginalPrintServicePrice.Text.Replace(",", ""), out var result))
-                            currentOrderDetails.OriginalPrintServicePrice = result;
-                    }
-                }
+                //if (rbOriginalNormalPrint.Checked)
+                //{
+                //    if (cmbOriginalPrintServices.Items.Count > 0)
+                //    {
+                //        currentOrderDetails.OriginalServiceId = (int)cmbOriginalPrintServices.SelectedValue;
+                //        currentOrderDetails.HasOriginalPrintService = true;
+                //        if (int.TryParse(txtOriginalPrintServicePrice.Text.Replace(",", ""), out var result))
+                //            currentOrderDetails.OriginalPrintServicePrice = result;
+                //    }
+                //}
 
                 currentOrderDetails.RetouchDescriptions = textPhotoRetouchDescription.Text;
 
@@ -1035,7 +940,7 @@ namespace PhotographyAutomation.App.Forms.Factors
 
                 if (nextOrderDetails.HasOriginalPrintService)
                 {
-                    rbOriginalNormalPrint.Checked = true;
+                    //rbOriginalNormalPrint.Checked = true;
                     if (nextOrderDetails.OriginalServiceId != 0)
                     {
                         cmbOriginalPrintServices.SelectedValue = nextOrderDetails.OriginalServiceId;
@@ -1506,6 +1411,7 @@ namespace PhotographyAutomation.App.Forms.Factors
             //}
 
 
+            // ReSharper disable once PossibleNullReferenceException
             var itemIndex = PhotoOrderDetailsList.FindIndex(x => x.StreamId == currentOrderDetails.StreamId);
             PhotoOrderDetailsList[itemIndex] = currentOrderDetails;
 
@@ -1541,7 +1447,7 @@ namespace PhotographyAutomation.App.Forms.Factors
 
                 if (previousOrderDetails.HasOriginalPrintService)
                 {
-                    rbOriginalNormalPrint.Checked = true;
+                    //rbOriginalNormalPrint.Checked = true;
                     if (previousOrderDetails.OriginalServiceId == 0)
                         cmbOriginalPrintServices.SelectedIndex = -1;
                     else
@@ -1772,86 +1678,7 @@ namespace PhotographyAutomation.App.Forms.Factors
             }
         }
 
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-        }
-
-        private void btnMagnifyPhoto_Click(object sender, EventArgs e)
-        {
-            var image = pictureBoxPreview.Image;
-            var imageBytes = ImageConvertor.ImageToByteArray(image);
-            //byte[] imageBytes = imageConvertor.ConvertImageToByteArray(image);
-            using (var photoViewer = new FrmPhotoViewer())
-            {
-                photoViewer.myImage = imageBytes;
-                photoViewer.ShowDialog();
-            }
-        }
-
-        #endregion Buttons
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-
-
-
-
-
-
-        private void rbSecondPrintNormalPrint_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rbRePrintNormalPrint.Checked)
-            {
-                gpRePrintNormalPrint.Enabled = true;
-                iiRePrintCounts.Enabled = true;
-                //iiSecondPrintCounts_.Value = 1;
-                cmbRePrintPrintServices.Enabled = true;
-            }
-            else
-            {
-                gpRePrintNormalPrint.Enabled = false;
-                cmbRePrintPrintServices.Enabled = false;
-                txtRePrintPrintServicePrice.ResetText();
-                iiRePrintCounts.Enabled = false;
-            }
-        }
-
-
-        private void rbSecondPrintMultiplePicture_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rbRePrintMultiPhoto.Checked)
-            {
-                gpRePrintMultiPhotos.Enabled = true;
-                //iiSecondPrintCounts_.Value = 1;
-                cmbRePrintMultiPhotoPrintServices.Enabled = true;
-                iiRePrintMutiPhotosCounts.Enabled = true;
-                txtRePrintMultiPrintServicePrice.Enabled = true;
-            }
-            else
-            {
-                gpRePrintMultiPhotos.Enabled = false;
-                cmbRePrintMultiPhotoPrintServices.Enabled = false;
-                //txtSecondPrintMultiplePrintServicePrice.ResetText();
-                iiRePrintMutiPhotosCounts.Enabled = false;
-            }
-        }
+        #endregion
 
         //private void rbSecondPrintLitPrint_CheckedChanged(object sender, EventArgs e)
         //{
@@ -1932,130 +1759,5 @@ namespace PhotographyAutomation.App.Forms.Factors
         //        GetSecondPrintSizePrice(ss);
         //    }
         //}
-
-        #region TXT Enter Persian Leave English
-
-        private void txt_TypeFarsi_Enter(object sender, EventArgs e)
-        {
-            var language = new System.Globalization.CultureInfo("fa-IR");
-            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
-        }
-
-        private void txt_TypeFarsi_Leave(object sender, EventArgs e)
-        {
-            var language = new System.Globalization.CultureInfo("en-US");
-            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
-        }
-
-        #endregion TXT Enter Persian Leave English
-
-        private void ResetTextBoxesAndComboxes()
-        {
-
-            #region Original Print Size Service
-
-            textPhotoRetouchDescription.ResetText();
-            txtOriginalPrintServicePrice.ResetText();
-            //cmbOriginalPrintService.SelectedIndex = -1;
-            cmbOriginalPrintServices.Enabled = false;
-            rbOriginalNormalPrint.Checked = false;
-            rbOriginalNormalPrint.Enabled = false;
-            txtOriginalPrintSizePrice.ResetText();
-            //cmbOriginalPrintSize.SelectedIndex = -1;
-
-            #endregion
-        }
-
-        #region Internal Classes
-
-        internal class OriginalPrintServiceDataStructure
-        {
-            public string Price { get; set; }
-            public int Count { get; set; }
-            public int PrintSizePriceId { get; set; }
-            public int PrintServiceId { get; set; }
-
-            public OriginalPrintServiceDataStructure()
-            {
-                Count = 1;
-            }
-        }
-
-        internal class OriginalPrintSizeServiceListDataStructure
-        {
-            public int SizeId { get; set; }
-            public string DisplayMember { get; set; }
-
-            public string ValueMember { get; set; }
-            //public List<PrintServiceType_PrintSizePriceViewModel> SizeServiceList { get; set; }
-        }
-
-        internal class SecondPrintSizeDataStructure
-        {
-            public TextBoxX MyTextBoxX { get; set; }
-
-            public string Price { get; set; }
-            public int Count { get; set; }
-            public string TextBoxName { get; set; }
-
-            public int PrintSizeId { get; set; }
-
-            public int PreviousSizeId { get; set; }
-
-            public SecondPrintSizeDataStructure()
-            {
-                MyTextBoxX = new TextBoxX();
-                Count = 1;
-            }
-        }
-
-        internal class SecondPrintSizeServiceListDataStructure
-        {
-            public int SizeId { get; set; }
-            public string ComboBoxName { get; set; }
-            public string DisplayMember { get; set; }
-
-            public string ValueMember { get; set; }
-            //public List<PrintServiceType_PrintSizePriceViewModel> SizeServiceList { get; set; }
-
-        }
-
-        internal class SecondPrintServiceDataStructure
-        {
-            public TextBoxX MyTextBoxX { get; set; }
-            public string Price { get; set; }
-            public int Count { get; set; }
-            public string TextBoxName { get; set; }
-            public int PrintSizePriceId { get; set; }
-            public int PrintServiceId { get; set; }
-
-
-            public SecondPrintServiceDataStructure()
-            {
-                MyTextBoxX = new TextBoxX();
-                Count = 1;
-            }
-        }
-
-        internal class SecondPrintServiceListDataStructure
-        {
-            public string ComboBoxName { get; set; }
-            public string DisplayMember { get; set; }
-
-            public string ValueMember { get; set; }
-            //public List<PrintSizePriceViewModel> SizeList { get; set; }
-        }
-
-
-
-
-
-
-
-
-
-
-
-        #endregion Internal Classes
     }
 }
