@@ -1819,7 +1819,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                 if (resultDownload)
                 {
                     if (MessageBox.Show(
-                            "فایل ها با موفقیت در سیستم دریافت شد. آیا فولدر نگهداری آنها باز شود؟",
+                            @"فایل ها با موفقیت در سیستم دریافت شد. آیا فولدر نگهداری آنها باز شود؟",
                             @"",
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Information,
@@ -1924,7 +1924,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                                     if (length == file.fileSize.Value)
                                     {
                                         dr = MessageBox.Show(
-                                            $"فایل  {file.name}  قبلا در سیستم ثبت شده است. آیا می خواهید بازنویسی شود؟  " +
+                                            $@"فایل  {file.name}  قبلا در سیستم ثبت شده است. آیا می خواهید بازنویسی شود؟  " +
                                             Environment.NewLine +
                                             "در صورت تایید محتوای فایل قبلی از بین می رود." +
                                             Environment.NewLine +
@@ -1937,10 +1937,10 @@ namespace PhotographyAutomation.App.Forms.Orders
                                     else
                                     {
                                         dr = MessageBox.Show(
-                                            "فایلی با همین نام ولی با حجم متفاوت در مسیر دریافت عکس ها وجود دارد. " +
+                                            @"فایلی با همین نام ولی با حجم متفاوت در مسیر دریافت عکس ها وجود دارد. " +
                                             Environment.NewLine +
-                                            "آیا می خواهید فایل روی سیستم شما بازنویسی شود؟" +
-                                            " در صورت بازنویسی محتوای قبلی فایل از بین خواهد رفت." +
+                                            @"آیا می خواهید فایل روی سیستم شما بازنویسی شود؟" +
+                                            @" در صورت بازنویسی محتوای قبلی فایل از بین خواهد رفت." +
                                             Environment.NewLine +
                                             "در صورت انصراف، کل فرایند دریافت فایل ها متوقف خواهد شد.",
                                             @"وجود عکس هم نام با سایز متفاوت در مسیر دریافت عکس ها",

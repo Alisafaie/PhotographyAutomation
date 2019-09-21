@@ -236,7 +236,8 @@ namespace PhotographyAutomation.App.Forms.Booking
             else
             {
                 MessageBox.Show(@"اطلاعات مشتری قابل دریافت نمی باشد.", @"خطا در دریافت اطلاعات مشتری",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBoxButtons.OK, MessageBoxIcon.Error, 
+                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
                 DialogResult = DialogResult.Cancel;
             }
         }

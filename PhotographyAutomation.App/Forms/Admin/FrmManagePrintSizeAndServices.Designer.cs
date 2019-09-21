@@ -1174,7 +1174,7 @@
             this.cpLoadDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cpLoadDataGridView.BackColor = System.Drawing.Color.Transparent;
+            this.cpLoadDataGridView.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
@@ -1236,13 +1236,13 @@
             dataGridViewCellStyle15.Font = new System.Drawing.Font("Tahoma", 8.25F);
             dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvPrintServices.DefaultCellStyle = dataGridViewCellStyle15;
             this.dgvPrintServices.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPrintServices.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvPrintServices.EnableHeadersVisualStyles = false;
-            this.dgvPrintServices.GridColor = System.Drawing.Color.White;
+            this.dgvPrintServices.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.dgvPrintServices.Location = new System.Drawing.Point(3, 17);
             this.dgvPrintServices.Name = "dgvPrintServices";
             this.dgvPrintServices.ReadOnly = true;

@@ -311,20 +311,35 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         private void cmbOriginalPrintSize_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbOriginalPrintSizes.SelectedIndex != -1 &&
-                int.TryParse(cmbOriginalPrintSizes.SelectedValue.ToString(),
-                                    out var selectedOriginalPrintSizeId))
+            try
             {
-                _selectedOriginalSizeId = selectedOriginalPrintSizeId;
-                cmbOriginalPrintServices.SelectedIndex = -1;
+                if (cmbOriginalPrintSizes.SelectedIndex != -1 &&
+                    int.TryParse(cmbOriginalPrintSizes.SelectedValue.ToString(),
+                        out var selectedOriginalPrintSizeId))
+                {
+                    _selectedOriginalSizeId = selectedOriginalPrintSizeId;
+                    cmbOriginalPrintServices.SelectedIndex = -1;
 
-                var result = _listPrintSizes.FirstOrDefault(x => x.Id == _selectedOriginalSizeId);
-                if (result != null)
-                    rbOriginalLitPrint.Enabled = result.HasLitPrint;
+                    PrintSizesViewModel printSize = _listPrintSizes.Find(x => x.Id == _selectedOriginalSizeId);
+                    List<PrintServicesViewModel> printServices = _listPrintServicePrices.Where(x => x.PrintSizeId == _selectedOriginalSizeId).ToList();
+                    if (printSize != null)
+                    {
+                        rbOriginalLitPrint.Enabled = printSize.HasLitPrint;
+                    }
 
-                txtOriginalPrintSizePrice.ResetText();
+                    if (printServices.Any())
+                    {
+                        chkHasOriginalPrintService.Enabled = true;
+                    }
 
-                GetOriginalPrintSizePrice(_selectedOriginalSizeId);
+                    txtOriginalPrintSizePrice.ResetText();
+
+                    GetOriginalPrintSizePrice(_selectedOriginalSizeId);
+                }
+            }
+            catch (Exception exception)
+            {
+                //ignored
             }
         }
         private void GetOriginalPrintSizePrice(int printSizeId)
@@ -462,7 +477,31 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         private void rbOriginalLitPrint_CheckedChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (int.TryParse(cmbOriginalPrintSizes.SelectedValue.ToString(), out int selectedPrintSizeId))
+                {
+                    GetOriginalLitPrintPrice(selectedPrintSizeId);
+                }
+            }
+            catch (Exception exception)
+            {
+                //ignored
+            }
+        }
+        private void GetOriginalLitPrintPrice(int selectedPrintSizeId)
+        {
+            try
+            {
+                var printSize = _listPrintSizes.Find(x => x.Id == selectedPrintSizeId);
+                if (printSize.HasLitPrint)
+                    txtOriginalPrintSizePrice.Text = printSize.LitPrintPrice.ToString("N0");
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error,
+                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
+            }
         }
 
         #endregion
@@ -483,6 +522,7 @@ namespace PhotographyAutomation.App.Forms.Factors
         }
 
         #endregion TXT Enter Persian Leave English
+
 
         #region Methods
 

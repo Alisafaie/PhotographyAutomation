@@ -16,8 +16,9 @@ namespace PhotographyAutomation.App
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmManagePrintSizeAndServices());
+            //Application.Run(new FrmManagePrintSizeAndServices());
             //Application.Run(new FrmAddEditMultiPicture());
+            Application.Run(new FrmMain());
         }
     }
 }

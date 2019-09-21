@@ -39,7 +39,5 @@ namespace PhotographyAutomation.ViewModels.Print
 
 
         public List<PrintServicesViewModel> PrintServicesViewModels { get; set; }
-
-
     }
 }
