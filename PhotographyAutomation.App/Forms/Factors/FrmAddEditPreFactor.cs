@@ -506,8 +506,8 @@ namespace PhotographyAutomation.App.Forms.Factors
                 }
                 else
                 {
-                    btnOriginalShowFrmAddEditLitPrint.Enabled = true;
-                    iiOriginalLitPrintPrice.Enabled = true;
+                    btnOriginalShowFrmAddEditLitPrint.Enabled = false;
+                    iiOriginalLitPrintPrice.Enabled = false;
                     //txtOriginalLitPrintTotalPrice.Enabled = true;
                     //txtOriginalLitPrintTotalPrice.Text = string.Empty;
                     iiOriginalLitPrintPrice.Text = string.Empty;
