@@ -301,11 +301,11 @@ namespace PhotographyAutomation.App.Forms.Booking
                     Date = datePickerBookingDate.Value,
                     PersonCount = txtPersonCount.Value,
                     PhotographyTypeId = (int)cmbPhotographyTypes.SelectedValue,
-                    StatusId = 6
                 };
 
                 if (!string.IsNullOrEmpty(txtBookingTime.Text))
-                    booking.Time = new TimeSpan(GetHour(txtBookingTime.Text), GetMinute(txtBookingTime.Text), 0);
+                    booking.Time = 
+                        new TimeSpan(GetHour(txtBookingTime.Text), GetMinute(txtBookingTime.Text), 0);
 
                 booking.PrepaymentIsOk = 0;
 
@@ -317,8 +317,13 @@ namespace PhotographyAutomation.App.Forms.Booking
 
                 using (var db = new UnitOfWork())
                 {
-                    if (BookingId == 0)
+                    var bookingStatus = db.BookingStatusGenericRepository.Get(x => x.Code == 50).FirstOrDefault();
+
+                    if (BookingId == 0 &&bookingStatus != null)
+                    {
+                        booking.StatusId = bookingStatus.Id;
                         db.BookingGenericRepository.Insert(booking);
+                    }
                     else
                     {
                         booking.Id = BookingId;

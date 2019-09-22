@@ -3,6 +3,7 @@ using System;
 using System.Windows.Forms;
 using PhotographyAutomation.App.Forms;
 using PhotographyAutomation.App.Forms.Admin;
+using PhotographyAutomation.App.Forms.Orders;
 
 namespace PhotographyAutomation.App
 {
@@ -16,8 +17,7 @@ namespace PhotographyAutomation.App
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new FrmManagePrintSizeAndServices());
-            //Application.Run(new FrmAddEditMultiPicture());
+            //Application.Run(new FrmAddEditPreFactor());
             Application.Run(new FrmMain());
         }
     }

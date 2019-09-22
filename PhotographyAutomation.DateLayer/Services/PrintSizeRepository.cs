@@ -21,6 +21,7 @@ namespace PhotographyAutomation.DateLayer.Services
             try
             {
                 var result = _db.TblPrintSizes
+                    //.Include(x=>x.TblPrintSizes)
                     .Select(x => new PrintSizesViewModel
                     {
                         Id = x.Id,
@@ -35,7 +36,17 @@ namespace PhotographyAutomation.DateLayer.Services
                         HasItalianAlbum = x.HasItalianAlbum,
                         HasMedicalPhoto = x.HasMedicalPhoto,
                         IsActive = x.IsActive,
-                        IsDeleted = x.IsDeleted
+                        IsDeleted = x.IsDeleted,
+                        //FirstPrintPrice = x.FirstPrintPrice,
+                        //RePrintPrice = x.RePrintPrice,
+                        //LitPrintPrice = x.LitPrintPrice,
+                        //LitPrintRePrintPrice = x.LitPrintRePrintPrice,
+                        //MedicalPrice = x.MedicalPrice,
+                        //MedicalRePrintPrice = x.MedicalRePrintPrice,
+                        //ItalianAlbumPagePrice = x.ItalianAlbumPagePrice,
+                        //ItalianAlbumBoundingPrice = x.ItalianAlbumBoundingPrice,
+                        //ScanAndPrintPrice = x.ScanAndPrintPrice,
+                        //ScanAndProcessingPrice = x.ScanAndProcessingPrice
                     })
                     .AsNoTracking()
                     .OrderBy(x => x.Width)

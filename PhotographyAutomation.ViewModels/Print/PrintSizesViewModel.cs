@@ -19,17 +19,17 @@ namespace PhotographyAutomation.ViewModels.Print
         public int MinimumOrder { get; set; }
         public string Descriptions { get; set; }
 
-        public int FirstPrintPrice { get; set; }
-        public int RePrintPrice { get; set; }
-        public int MedicalPrice { get; set; }
-        public int MedicalRePrintPrice { get; set; }
-        public int LitPrintPrice { get; set; }
-        public int LitPrintRePrintPrice { get; set; }
-        public int ScanAndPrintPrice { get; set; }
-        public int ScanAndProcessingPrice { get; set; }
+        public int? FirstPrintPrice { get; set; }
+        public int? RePrintPrice { get; set; }
+        public int? MedicalPrice { get; set; }
+        public int? MedicalRePrintPrice { get; set; }
+        public int? LitPrintPrice { get; set; }
+        public int? LitPrintRePrintPrice { get; set; }
+        public int? ScanAndPrintPrice { get; set; }
+        public int? ScanAndProcessingPrice { get; set; }
 
-        public int ItalianAlbumPagePrice { get; set; }
-        public int ItalianAlbumBoundingPrice { get; set; }
+        public int? ItalianAlbumPagePrice { get; set; }
+        public int? ItalianAlbumBoundingPrice { get; set; }
 
         public int PrintServiceId { get; set; }
         public string PrintServiceName { get; set; }

@@ -731,7 +731,6 @@
             // 
             // 
             this.chkOriginalHasChangingElements.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.chkOriginalHasChangingElements.Enabled = false;
             this.chkOriginalHasChangingElements.Location = new System.Drawing.Point(295, 48);
             this.chkOriginalHasChangingElements.Name = "chkOriginalHasChangingElements";
             this.chkOriginalHasChangingElements.Size = new System.Drawing.Size(70, 16);
@@ -819,7 +818,6 @@
             // 
             this.btnOriginalCustomPrintSize.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnOriginalCustomPrintSize.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnOriginalCustomPrintSize.Enabled = false;
             this.btnOriginalCustomPrintSize.Image = ((System.Drawing.Image)(resources.GetObject("btnOriginalCustomPrintSize.Image")));
             this.btnOriginalCustomPrintSize.Location = new System.Drawing.Point(411, 45);
             this.btnOriginalCustomPrintSize.Name = "btnOriginalCustomPrintSize";
@@ -877,7 +875,6 @@
             // 
             this.btnOriginalChangingElements.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnOriginalChangingElements.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnOriginalChangingElements.Enabled = false;
             this.highlighter1.SetHighlightOnFocus(this.btnOriginalChangingElements, true);
             this.btnOriginalChangingElements.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_select_by_color_64624;
             this.btnOriginalChangingElements.Location = new System.Drawing.Point(190, 45);
