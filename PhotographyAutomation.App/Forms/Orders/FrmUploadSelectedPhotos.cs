@@ -592,7 +592,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                                     @"",
                                     MessageBoxButtons.YesNo,
                                     MessageBoxIcon.Question,
-                                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
+                                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign);
 
                                 if (drShowPreFactor == DialogResult.Yes)
                                 {

@@ -52,6 +52,7 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemOrderCode = new System.Windows.Forms.ToolStripMenuItem();
             this.ناممشتریToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemCustomerName = new System.Windows.Forms.ToolStripMenuItem();
             this.تاریخعکسبرداریToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,7 +61,6 @@
             this.toolStripMenuItemTotalPhotos = new System.Windows.Forms.ToolStripMenuItem();
             this.وضعیتسفارشToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemOrderstatus = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemOrderCode = new System.Windows.Forms.ToolStripMenuItem();
             this.panelEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.collapsibleSplitContainer1)).BeginInit();
@@ -133,7 +133,6 @@
             this.btnUploadPhotos.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnUploadPhotos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUploadPhotos.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnUploadPhotos.HoverImage = global::PhotographyAutomation.App.Properties.Resources.iconfinder_folder_upload_66809__2_;
             this.btnUploadPhotos.Image = global::PhotographyAutomation.App.Properties.Resources.iconfinder_folder_closed_59915;
             this.btnUploadPhotos.Location = new System.Drawing.Point(12, 20);
             this.btnUploadPhotos.Name = "btnUploadPhotos";
@@ -376,6 +375,12 @@
             this.toolStripMenuItem2.Size = new System.Drawing.Size(98, 20);
             this.toolStripMenuItem2.Text = "شناسه سفارش:";
             // 
+            // toolStripMenuItemOrderCode
+            // 
+            this.toolStripMenuItemOrderCode.Name = "toolStripMenuItemOrderCode";
+            this.toolStripMenuItemOrderCode.Size = new System.Drawing.Size(27, 20);
+            this.toolStripMenuItemOrderCode.Text = "--";
+            // 
             // ناممشتریToolStripMenuItem
             // 
             this.ناممشتریToolStripMenuItem.Name = "ناممشتریToolStripMenuItem";
@@ -431,12 +436,6 @@
             this.toolStripMenuItemOrderstatus.Size = new System.Drawing.Size(29, 20);
             this.toolStripMenuItemOrderstatus.Text = "--";
             this.toolStripMenuItemOrderstatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // toolStripMenuItemOrderCode
-            // 
-            this.toolStripMenuItemOrderCode.Name = "toolStripMenuItemOrderCode";
-            this.toolStripMenuItemOrderCode.Size = new System.Drawing.Size(27, 20);
-            this.toolStripMenuItemOrderCode.Text = "--";
             // 
             // FrmUploadSelectedPhotos
             // 
