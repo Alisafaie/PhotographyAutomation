@@ -41,6 +41,8 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         private static List<PrintSizePricesViewModel> _printSizePricesList;
 
+        private List<PrintServicesViewModel> _printsizePrintServicesList;
+
         private readonly BackgroundWorker _bgWorkerLoadPrintSizeAndServicesInfo = new BackgroundWorker
         {
             WorkerSupportsCancellation = false,
@@ -221,7 +223,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                 cmbOriginalPrintSizes.ValueMember = "Id";
 
                 cmbOriginalPrintSizes.Enabled = !_bgWorkerLoadPrintSizeAndServicesInfo.IsBusy;
-                cmbOriginalPrintSizes.SelectedIndex = -1;
+                //cmbOriginalPrintSizes.SelectedIndex = -1;
                 txtOriginalPrintSizePrice.ResetText();
             }
 
@@ -315,34 +317,47 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         private void cmbOriginalPrintSize_SelectedIndexChanged(object sender, EventArgs e)
         {
+            chkHasOriginalPrintService.Checked = false;
             try
             {
-                if (cmbOriginalPrintSizes.SelectedIndex != -1 &&
-                    int.TryParse(cmbOriginalPrintSizes.SelectedValue.ToString(),
-                        out var selectedOriginalPrintSizeId))
+                var resultSelectedOriginalPrintSizeId = 
+                    int.TryParse(cmbOriginalPrintSizes.SelectedValue.ToString(), out var selectedOriginalPrintSizeId);
+
+                if (cmbOriginalPrintSizes.SelectedIndex != -1 && resultSelectedOriginalPrintSizeId)
                 {
                     _selectedOriginalSizeId = selectedOriginalPrintSizeId;
                     //cmbOriginalPrintServices.SelectedIndex = -1;
 
-                    PrintSizesViewModel printSize = _listPrintSizes.FirstOrDefault(x => x.Id == _selectedOriginalSizeId);
-                    List<PrintServicesViewModel> printServices = _listPrintServicePrices.Where(x => x.PrintSizeId == _selectedOriginalSizeId).ToList();
+                    PrintSizesViewModel printSize =
+                        _listPrintSizes.FirstOrDefault(x => x.Id == _selectedOriginalSizeId);
+                    List<PrintServicesViewModel> printServices =
+                        _listPrintServicePrices.Where(x => x.PrintSizeId == _selectedOriginalSizeId).ToList();
+
                     if (printSize != null)
-                    {
                         rbOriginalLitPrint.Enabled = printSize.HasLitPrint;
-                    }
+                    
 
                     if (printServices.Any())
                     {
                         chkHasOriginalPrintService.Enabled = true;
+                        _printsizePrintServicesList = printServices;
+
+                        cmbOriginalPrintServices.DataSource = _printsizePrintServicesList;
+                        cmbOriginalPrintServices.DisplayMember = "PrintServiceName";
+                        cmbOriginalPrintServices.ValueMember = "Id";
+
+                        //قیمت اولین سرویس موجود نشان داده شود.
                     }
                     else
                     {
                         chkHasOriginalPrintService.Checked = false;
                         chkHasOriginalPrintService.Enabled = false;
+
+                        cmbOriginalPrintServices.DataSource = null;
+                        cmbOriginalPrintServices.Enabled = false;
                     }
 
                     txtOriginalPrintSizePrice.ResetText();
-
                     GetOriginalPrintSizePrice(_selectedOriginalSizeId);
                 }
             }
@@ -405,14 +420,35 @@ namespace PhotographyAutomation.App.Forms.Factors
 
             try
             {
-                if (selectedPrintSizeId != -1)
-                {
-                    LoadOriginalPrintSizeServices(_selectedOriginalSizeId);
-                }
+                //if (selectedPrintSizeId != -1)
+                //{
+                //LoadOriginalPrintSizeServices(_selectedOriginalSizeId);
+
+                //if (_listPrintServicePrices != null && _listPrintServicePrices.Count > 0)
+                //{
+                //    cmbOriginalPrintServices.DataSource = null;
+                //    cmbOriginalPrintServices.Items.Clear();
+
+                //    var result = _listPrintServicePrices.Where(x => x.PrintSizeId == _selectedOriginalSizeId).ToList();
+                //    if (result.Any())
+                //    {
+                //        cmbOriginalPrintServices.DataSource = result;
+                //        cmbOriginalPrintServices.DisplayMember = "PrintServiceName";
+                //        cmbOriginalPrintServices.ValueMember = "Id";
+                //    }
+                //}
+
+
+                //}
+                cmbOriginalPrintServices.DataSource = null;
+                cmbOriginalPrintServices.Items.Clear();
+                cmbOriginalPrintServices.DataSource = _printsizePrintServicesList;
+                cmbOriginalPrintServices.DisplayMember = "PrintServiceName";
+                cmbOriginalPrintServices.ValueMember = "Id";
             }
             catch (Exception exception)
             {
-                MessageBox.Show(@"exception: " + exception.Message);
+                //ignored
             }
         }
         private void cmbOriginalPrintService_SelectedIndexChanged(object sender, EventArgs e)
@@ -420,31 +456,31 @@ namespace PhotographyAutomation.App.Forms.Factors
             if (cmbOriginalPrintServices.Enabled && cmbOriginalPrintServices.Items.Count > 0 &&
                 int.TryParse(cmbOriginalPrintServices.SelectedValue.ToString(), out var selectedPrintServicePriceId))
             {
-                GetPrintServicePrice(selectedPrintServicePriceId);
+                //GetPrintServicePrice(selectedPrintServicePriceId);
             }
         }
-        
+
         private void GetPrintServicePrice(int selectedPrintServicePriceId)
         {
             iiOriginalServicePrice.Text = _listPrintServicePrices.Find(x => x.Id == selectedPrintServicePriceId)
                 .PrintServicePrice.ToString("N0");
         }
-        private void LoadOriginalPrintSizeServices(int selectedOriginalSizeId)
-        {
-            if (_listPrintServicePrices != null && _listPrintServicePrices.Count > 0)
-            {
-                cmbOriginalPrintServices.DataSource = null;
-                cmbOriginalPrintServices.Items.Clear();
+        //private void LoadOriginalPrintSizeServices(int selectedOriginalSizeId)
+        //{
+        //    if (_listPrintServicePrices != null && _listPrintServicePrices.Count > 0)
+        //    {
+        //        cmbOriginalPrintServices.DataSource = null;
+        //        cmbOriginalPrintServices.Items.Clear();
 
-                var result = _listPrintServicePrices.Where(x => x.PrintSizeId == selectedOriginalSizeId).ToList();
-                if (result.Any())
-                {
-                    cmbOriginalPrintServices.DataSource = result;
-                    cmbOriginalPrintServices.DisplayMember = "PrintServiceName";
-                    cmbOriginalPrintServices.ValueMember = "Id";
-                }
-            }
-        }
+        //        var result = _listPrintServicePrices.Where(x => x.PrintSizeId == selectedOriginalSizeId).ToList();
+        //        if (result.Any())
+        //        {
+        //            cmbOriginalPrintServices.DataSource = result;
+        //            cmbOriginalPrintServices.DisplayMember = "PrintServiceName";
+        //            cmbOriginalPrintServices.ValueMember = "Id";
+        //        }
+        //    }
+        //}
 
         #endregion
 
