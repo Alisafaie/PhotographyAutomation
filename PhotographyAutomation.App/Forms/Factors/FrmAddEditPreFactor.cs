@@ -245,7 +245,12 @@ namespace PhotographyAutomation.App.Forms.Factors
                 cmbOriginalPrintSizes.ValueMember = "Id";
 
                 cmbOriginalPrintSizes.Enabled = !_bgWorkerLoadPrintSizeAndServicesInfo.IsBusy;
-                //txtOriginalPrintSizePrice.ResetText();
+                if (_listPrintSizes.FirstOrDefault() != null)
+                {
+                    iiOriginalMinimumOrder.Value = _listPrintSizes.First().MinimumOrder;
+                    txtOriginalPrintSizePrice.Text =
+                        _printSizePricesList.First().FirstPrintPrice?.ToString("N0");
+                }
             }
         }
 
@@ -334,8 +339,16 @@ namespace PhotographyAutomation.App.Forms.Factors
                     if (printSize != null)
                     {
                         iiOriginalMinimumOrder.Value = printSize.MinimumOrder;
-                        rbOriginalLitPrint.Enabled = printSize.HasLitPrint;
-                        btnOriginalShowFrmAddEditLitPrint.Enabled = rbOriginalLitPrint.Enabled;
+                        if (printSize.HasLitPrint)
+                        {
+                            rbOriginalLitPrint.Enabled = true;
+                            btnOriginalShowFrmAddEditLitPrint.Enabled = true;
+                        }
+                        else
+                        {
+                            rbOriginalLitPrint.Enabled = false;
+                            btnOriginalShowFrmAddEditLitPrint.Enabled = false;
+                        }
                     }
 
                     GetOriginalPrintSizePrice(_selectedOriginalSizeId);
