@@ -84,8 +84,6 @@ namespace PhotographyAutomation.App.Forms.Factors
                     MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign);
                 DialogResult = DialogResult.Cancel;
             }
-
-            //cmbOriginalPrintSizes.SelectedIndex = -1;
         }
 
         #endregion
@@ -117,7 +115,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                 _printSizePricesList = db.PrintSizePriceRepository.GetAllPrintSizePrices();
 
                 _listPrintServicePrices = db.PrintServicePricesGenericRepository
-                    .Get().Select(x => new PrintServicesViewModel
+                                            .Get().Select(x => new PrintServicesViewModel
                     {
                         Id = x.Id,
                         PrintServiceId = x.PrintServiceId,
@@ -216,6 +214,7 @@ namespace PhotographyAutomation.App.Forms.Factors
         }
         private void _bgWorkerLoadPrintSizeAndServicesInfo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            cmbOriginalPrintSizes.Enabled = !_bgWorkerLoadPrintSizeAndServicesInfo.IsBusy;
             circularProgress.IsRunning = _bgWorkerLoadPrintSizeAndServicesInfo.IsBusy;
 
             if (_orderPrintViewModel != null)
@@ -243,14 +242,14 @@ namespace PhotographyAutomation.App.Forms.Factors
                 cmbOriginalPrintSizes.DataSource = _listPrintSizes;
                 cmbOriginalPrintSizes.DisplayMember = "Name";
                 cmbOriginalPrintSizes.ValueMember = "Id";
-
-                cmbOriginalPrintSizes.Enabled = !_bgWorkerLoadPrintSizeAndServicesInfo.IsBusy;
+                
                 if (_listPrintSizes.FirstOrDefault() != null)
                 {
-                    iiOriginalMinimumOrder.Value = _listPrintSizes.First().MinimumOrder;
-                    txtOriginalPrintSizePrice.Text =
-                        _printSizePricesList.First().FirstPrintPrice?.ToString("N0");
+                    lblOriginalMinimumOrder.Text = _listPrintSizes.First().MinimumOrder.ToString();
+                    txtOriginalPrintSizePrice.Text = _printSizePricesList.First().FirstPrintPrice?.ToString("N0");
                 }
+
+                cmbOriginalPrintSizes.Focus();
             }
         }
 
@@ -321,6 +320,9 @@ namespace PhotographyAutomation.App.Forms.Factors
         private void cmbOriginalPrintSize_SelectedIndexChanged(object sender, EventArgs e)
         {
             chkHasOriginalPrintService.Checked = false;
+            rbOriginalMultiPhoto.Checked = false;
+            rbOriginalLitPrint.Checked = false;
+
             try
             {
                 var resultSelectedOriginalPrintSizeId =
@@ -338,11 +340,11 @@ namespace PhotographyAutomation.App.Forms.Factors
 
                     if (printSize != null)
                     {
-                        iiOriginalMinimumOrder.Value = printSize.MinimumOrder;
+                        lblOriginalMinimumOrder.Text = printSize.MinimumOrder.ToString();
                         if (printSize.HasLitPrint)
                         {
                             rbOriginalLitPrint.Enabled = true;
-                            btnOriginalShowFrmAddEditLitPrint.Enabled = true;
+                            //btnOriginalShowFrmAddEditLitPrint.Enabled = true;
                         }
                         else
                         {
@@ -479,7 +481,7 @@ namespace PhotographyAutomation.App.Forms.Factors
             if (rbOriginalMultiPhoto.Checked)
             {
                 btnOriginalShowFrmAddEditMutiPhotos.Enabled = true;
-                iiOriginalMutiPhotosCounts.Enabled = true;
+                //lblOriginalMutiPhotosCounts.Enabled = true;
                 iiOriginalMultiPhotoPrice.Enabled = true;
 
                 //کد هزینه دورچین =10 
@@ -489,7 +491,7 @@ namespace PhotographyAutomation.App.Forms.Factors
             else
             {
                 btnOriginalShowFrmAddEditMutiPhotos.Enabled = false;
-                iiOriginalMutiPhotosCounts.Enabled = false;
+                lblOriginalMutiPhotosCounts.Text = @"---";
                 iiOriginalMultiPhotoPrice.Enabled = false;
             }
         }
@@ -697,10 +699,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                     MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
             }
         }
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-        }
+        
         private void btnMagnifyPhoto_Click(object sender, EventArgs e)
         {
             var image = pictureBoxPreview.Image;
