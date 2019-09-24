@@ -36,12 +36,12 @@ namespace PhotographyAutomation.App.Forms.Factors
         private OrderPrintViewModel _orderPrintViewModel;
 
         private static List<PrintSizesViewModel> _listPrintSizes;
+        private static List<PrintSizePricesViewModel> _printSizePricesList;
         private static List<PrintServicesViewModel> _listPrintServicePrices;
         private static List<TblPrintSpecialServices> _printSpecialServicesList;
 
-        private static List<PrintSizePricesViewModel> _printSizePricesList;
-
         private List<PrintServicesViewModel> _printsizePrintServicesList;
+
 
         private readonly BackgroundWorker _bgWorkerLoadPrintSizeAndServicesInfo = new BackgroundWorker
         {
@@ -80,12 +80,12 @@ namespace PhotographyAutomation.App.Forms.Factors
                     @"متاسفانه اطلاعات سفارش قابل دریافت نمی باشد. " +
                     @"لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.",
                     @"خطا در دریافت اطلاعات از سرور",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error, 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error,
                     MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign);
                 DialogResult = DialogResult.Cancel;
             }
 
-            cmbOriginalPrintSizes.SelectedIndex = -1;
+            //cmbOriginalPrintSizes.SelectedIndex = -1;
         }
 
         #endregion
@@ -216,15 +216,7 @@ namespace PhotographyAutomation.App.Forms.Factors
         }
         private void _bgWorkerLoadPrintSizeAndServicesInfo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (_listPrintSizes != null && _listPrintSizes.Any())
-            {
-                cmbOriginalPrintSizes.DataSource = _listPrintSizes;
-                cmbOriginalPrintSizes.DisplayMember = "Name";
-                cmbOriginalPrintSizes.ValueMember = "Id";
-
-                cmbOriginalPrintSizes.Enabled = !_bgWorkerLoadPrintSizeAndServicesInfo.IsBusy;
-                txtOriginalPrintSizePrice.ResetText();
-            }
+            circularProgress.IsRunning = _bgWorkerLoadPrintSizeAndServicesInfo.IsBusy;
 
             if (_orderPrintViewModel != null)
             {
@@ -245,7 +237,16 @@ namespace PhotographyAutomation.App.Forms.Factors
 
                 lblTotalPhotos.Text = _orderPrintViewModel.TotalPhotos.ToString();
             }
-            circularProgress.IsRunning = _bgWorkerLoadPrintSizeAndServicesInfo.IsBusy;
+
+            if (_listPrintSizes != null && _listPrintSizes.Any())
+            {
+                cmbOriginalPrintSizes.DataSource = _listPrintSizes;
+                cmbOriginalPrintSizes.DisplayMember = "Name";
+                cmbOriginalPrintSizes.ValueMember = "Id";
+
+                cmbOriginalPrintSizes.Enabled = !_bgWorkerLoadPrintSizeAndServicesInfo.IsBusy;
+                //txtOriginalPrintSizePrice.ResetText();
+            }
         }
 
         #endregion
@@ -325,14 +326,19 @@ namespace PhotographyAutomation.App.Forms.Factors
                     _selectedOriginalSizeId = selectedOriginalPrintSizeId;
                     //cmbOriginalPrintServices.SelectedIndex = -1;
 
-                    PrintSizesViewModel printSize =
-                        _listPrintSizes.FirstOrDefault(x => x.Id == _selectedOriginalSizeId);
-                    List<PrintServicesViewModel> printServices =
-                        _listPrintServicePrices.Where(x => x.PrintSizeId == _selectedOriginalSizeId).ToList();
+                    PrintSizesViewModel printSize = _listPrintSizes.FirstOrDefault(x => x.Id == _selectedOriginalSizeId);
+                    List<PrintServicesViewModel> printServices = _listPrintServicePrices
+                                                                .Where(x => x.PrintSizeId == _selectedOriginalSizeId)
+                                                                .ToList();
 
                     if (printSize != null)
+                    {
+                        iiOriginalMinimumOrder.Value = printSize.MinimumOrder;
                         rbOriginalLitPrint.Enabled = printSize.HasLitPrint;
+                        btnOriginalShowFrmAddEditLitPrint.Enabled = rbOriginalLitPrint.Enabled;
+                    }
 
+                    GetOriginalPrintSizePrice(_selectedOriginalSizeId);
 
                     if (printServices.Any())
                     {
@@ -353,8 +359,6 @@ namespace PhotographyAutomation.App.Forms.Factors
 
                         iiOriginalServicePrice.ResetText();
                     }
-
-                    GetOriginalPrintSizePrice(_selectedOriginalSizeId);
                 }
             }
             catch (Exception exception)
@@ -417,8 +421,7 @@ namespace PhotographyAutomation.App.Forms.Factors
         {
             try
             {
-                
-                cmbOriginalPrintServices.DataSource = null;
+                //cmbOriginalPrintServices.DataSource = null;
                 cmbOriginalPrintServices.DataSource = _printsizePrintServicesList;
                 cmbOriginalPrintServices.DisplayMember = "PrintServiceName";
                 cmbOriginalPrintServices.ValueMember = "Id";
@@ -428,15 +431,13 @@ namespace PhotographyAutomation.App.Forms.Factors
                 //ignored
             }
         }
-
-
         private void cmbOriginalPrintServices_SelectedValueChanged(object sender, EventArgs e)
         {
             try
             {
-                if (chkHasOriginalPrintService.Enabled && cmbOriginalPrintServices.Items.Count > 0 &&
-                    int.TryParse(cmbOriginalPrintServices.SelectedValue.ToString(),
-                        out var selectedPrintServicePriceId))
+                if (chkHasOriginalPrintService.Enabled &&
+                    cmbOriginalPrintServices.Items.Count > 0 &&
+                    int.TryParse(cmbOriginalPrintServices.SelectedValue.ToString(), out var selectedPrintServicePriceId))
                 {
                     GetPrintServicePrice(selectedPrintServicePriceId);
                 }
@@ -446,7 +447,6 @@ namespace PhotographyAutomation.App.Forms.Factors
                 //ignored
             }
         }
-
         private void GetPrintServicePrice(int selectedPrintServicePriceId)
         {
             iiOriginalServicePrice.ResetText();
@@ -480,13 +480,12 @@ namespace PhotographyAutomation.App.Forms.Factors
                 iiOriginalMultiPhotoPrice.Enabled = false;
             }
         }
-        private int GetMultiPhotoPricePrePhoto(string code)
+        private static int GetMultiPhotoPricePrePhoto(string code)
         {
             int servicePrice = 0;
             if (_printSpecialServicesList != null)
             {
                 servicePrice = _printSpecialServicesList.Find(x => x.Code == code).Price;
-
             }
             return servicePrice;
         }
@@ -504,19 +503,14 @@ namespace PhotographyAutomation.App.Forms.Factors
         {
             try
             {
-                if (rbOriginalLitPrint.Checked)
+                if (rbOriginalLitPrint.Checked && int.TryParse(cmbOriginalPrintSizes.SelectedValue.ToString(), out int selectedPrintSizeId))
                 {
-                    if (int.TryParse(cmbOriginalPrintSizes.SelectedValue.ToString(), out int selectedPrintSizeId))
-                    {
-                        btnOriginalShowFrmAddEditLitPrint.Enabled = true;
-                        iiOriginalLitPrintPrice.Enabled = true;
-                        GetOriginalLitPrintPrice(selectedPrintSizeId);
-                    }
+                    GetOriginalLitPrintPrice(selectedPrintSizeId);
+                    btnOriginalShowFrmAddEditLitPrint.Enabled = iiOriginalLitPrintPrice.Enabled = rbOriginalLitPrint.Checked;
                 }
                 else
                 {
-                    btnOriginalShowFrmAddEditLitPrint.Enabled = false;
-                    iiOriginalLitPrintPrice.Enabled = false;
+                    btnOriginalShowFrmAddEditLitPrint.Enabled = iiOriginalLitPrintPrice.Enabled = rbOriginalLitPrint.Checked;
                     iiOriginalLitPrintPrice.Text = string.Empty;
                 }
             }
