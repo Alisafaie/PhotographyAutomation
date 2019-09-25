@@ -35,12 +35,21 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         private OrderPrintViewModel _orderPrintViewModel;
 
-        private static List<PrintSizesViewModel> _listPrintSizes;
-        private static List<PrintSizePricesViewModel> _printSizePricesList;
-        private static List<PrintServicesViewModel> _listPrintServicePrices;
-        private static List<TblPrintSpecialServices> _printSpecialServicesList;
+        private static List<PrintSizesViewModel> _listOriginalPrintSizes;
+        private static List<PrintSizesViewModel> _listRePrintPrintSizes;
 
-        private List<PrintServicesViewModel> _printsizePrintServicesList;
+        private static List<PrintSizePricesViewModel> _listOriginalPrintSizePrices;
+        private static List<PrintSizePricesViewModel> _listRePrintPrintSizePrices;
+
+        private static List<PrintServicesViewModel> _listOriginalPrintServicePrices;
+        private static List<PrintServicesViewModel> _listRePrintPrintServicePrices;
+
+
+        private static List<TblPrintSpecialServices> _listOriginalPrintSpecialServices;
+        private static List<TblPrintSpecialServices> _listRePrintPrintSpecialServices;
+
+        private List<PrintServicesViewModel> _listOriginalPrintSizePrintServices;
+        private List<PrintServicesViewModel> _listRePrintPrintSizePrintServices;
 
 
         private readonly BackgroundWorker _bgWorkerLoadPrintSizeAndServicesInfo = new BackgroundWorker
@@ -110,12 +119,29 @@ namespace PhotographyAutomation.App.Forms.Factors
         {
             using (var db = new UnitOfWork())
             {
-                _listPrintSizes = db.PrintSizeRepository.GetAllPrintSizes();
+                _listOriginalPrintSizes = db.PrintSizeRepository.GetAllPrintSizes();;
+                _listRePrintPrintSizes = db.PrintSizeRepository.GetAllPrintSizes();;
 
-                _printSizePricesList = db.PrintSizePriceRepository.GetAllPrintSizePrices();
+                _listOriginalPrintSizePrices = db.PrintSizePriceRepository.GetAllPrintSizePrices();
+                _listRePrintPrintSizePrices = db.PrintSizePriceRepository.GetAllPrintSizePrices();
 
-                _listPrintServicePrices = db.PrintServicePricesGenericRepository
+                _listOriginalPrintServicePrices = db.PrintServicePricesGenericRepository
                                             .Get().Select(x => new PrintServicesViewModel
+                                            {
+                                                Id = x.Id,
+                                                PrintServiceId = x.PrintServiceId,
+                                                PrintSizeId = x.PrintSizeId,
+                                                PrintServiceName = x.TblPrintServices.PrintServiceName,
+                                                PrintServiceDescription = x.TblPrintServices.PrintServiceDescription,
+                                                PrintServicePrice = x.Price,
+                                                PrintServiceCode = x.TblPrintServices.Code,
+                                                SizeName = x.TblPrintSizes.Name,
+                                                SizeWidth = x.TblPrintSizes.Width,
+                                                SizeHeight = x.TblPrintSizes.Height,
+                                                SizeDescription = x.TblPrintSizes.Descriptions
+                                            }).ToList();
+                _listRePrintPrintServicePrices = db.PrintServicePricesGenericRepository
+                    .Get().Select(x => new PrintServicesViewModel
                     {
                         Id = x.Id,
                         PrintServiceId = x.PrintServiceId,
@@ -130,7 +156,8 @@ namespace PhotographyAutomation.App.Forms.Factors
                         SizeDescription = x.TblPrintSizes.Descriptions
                     }).ToList();
 
-                _printSpecialServicesList = db.PrintSpecialServicesGenericRepository.Get().ToList();
+                _listOriginalPrintSpecialServices = db.PrintSpecialServicesGenericRepository.Get().ToList();
+                _listRePrintPrintSpecialServices = db.PrintSpecialServicesGenericRepository.Get().ToList();
 
 
 
@@ -237,16 +264,22 @@ namespace PhotographyAutomation.App.Forms.Factors
                 lblTotalPhotos.Text = _orderPrintViewModel.TotalPhotos.ToString();
             }
 
-            if (_listPrintSizes != null && _listPrintSizes.Any())
+            if (_listOriginalPrintSizes != null && _listOriginalPrintSizes.Any())
             {
-                cmbOriginalPrintSizes.DataSource = _listPrintSizes;
+                cmbOriginalPrintSizes.DataSource = _listOriginalPrintSizes;
                 cmbOriginalPrintSizes.DisplayMember = "Name";
                 cmbOriginalPrintSizes.ValueMember = "Id";
-                
-                if (_listPrintSizes.FirstOrDefault() != null)
+
+
+                cmbRePrintSize.DataSource = _listRePrintPrintSizes;
+                cmbRePrintSize.DisplayMember = "Name";
+                cmbRePrintSize.ValueMember = "Id";
+
+
+                if (_listOriginalPrintSizes.FirstOrDefault() != null)
                 {
-                    lblOriginalMinimumOrder.Text = _listPrintSizes.First().MinimumOrder.ToString();
-                    txtOriginalPrintSizePrice.Text = _printSizePricesList.First().FirstPrintPrice?.ToString("N0");
+                    txtOriginalMinimumOrder.Text = _listOriginalPrintSizes.First().MinimumOrder.ToString();
+                    txtTotalPriceOriginalPrintSize.Text = _listOriginalPrintSizePrices.First().FirstPrintPrice?.ToString("N0");
                 }
 
                 cmbOriginalPrintSizes.Focus();
@@ -333,14 +366,14 @@ namespace PhotographyAutomation.App.Forms.Factors
                     _selectedOriginalSizeId = selectedOriginalPrintSizeId;
                     //cmbOriginalPrintServices.SelectedIndex = -1;
 
-                    PrintSizesViewModel printSize = _listPrintSizes.FirstOrDefault(x => x.Id == _selectedOriginalSizeId);
-                    List<PrintServicesViewModel> printServices = _listPrintServicePrices
+                    PrintSizesViewModel printSize = _listOriginalPrintSizes.FirstOrDefault(x => x.Id == _selectedOriginalSizeId);
+                    List<PrintServicesViewModel> printServices = _listOriginalPrintServicePrices
                                                                 .Where(x => x.PrintSizeId == _selectedOriginalSizeId)
                                                                 .ToList();
 
                     if (printSize != null)
                     {
-                        lblOriginalMinimumOrder.Text = printSize.MinimumOrder.ToString();
+                        txtOriginalMinimumOrder.Text = printSize.MinimumOrder.ToString();
                         if (printSize.HasLitPrint)
                         {
                             rbOriginalLitPrint.Enabled = true;
@@ -358,9 +391,9 @@ namespace PhotographyAutomation.App.Forms.Factors
                     if (printServices.Any())
                     {
                         chkHasOriginalPrintService.Enabled = true;
-                        _printsizePrintServicesList = printServices;
+                        _listOriginalPrintSizePrintServices = printServices;
 
-                        cmbOriginalPrintServices.DataSource = _printsizePrintServicesList;
+                        cmbOriginalPrintServices.DataSource = _listOriginalPrintSizePrintServices;
                         cmbOriginalPrintServices.DisplayMember = "PrintServiceName";
                         cmbOriginalPrintServices.ValueMember = "Id";
                     }
@@ -372,7 +405,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                         cmbOriginalPrintServices.DataSource = null;
                         cmbOriginalPrintServices.Enabled = false;
 
-                        iiOriginalServicePrice.ResetText();
+                        txtOriginalServicePrice.ResetText();
                     }
                 }
             }
@@ -385,11 +418,11 @@ namespace PhotographyAutomation.App.Forms.Factors
         {
             try
             {
-                if (_listPrintSizes != null)
+                if (_listOriginalPrintSizes != null)
                 {
-                    var printSizePrice = _printSizePricesList.FirstOrDefault(x => x.PrintSizeId == printSizeId);
+                    var printSizePrice = _listOriginalPrintSizePrices.FirstOrDefault(x => x.PrintSizeId == printSizeId);
                     if (printSizePrice != null)
-                        txtOriginalPrintSizePrice.Text = printSizePrice.FirstPrintPrice?.ToString("N0");
+                        txtTotalPriceOriginalPrintSize.Text = printSizePrice.FirstPrintPrice?.ToString("N0");
                 }
             }
             catch (Exception exception)
@@ -428,7 +461,7 @@ namespace PhotographyAutomation.App.Forms.Factors
         private void chkHasOriginalPrintService_CheckedChanged(object sender, EventArgs e)
         {
             cmbOriginalPrintServices.Enabled =
-                iiOriginalServicePrice.Enabled =
+                txtOriginalServicePrice.Enabled =
                     chkHasOriginalPrintService.Checked;
 
         }
@@ -437,7 +470,7 @@ namespace PhotographyAutomation.App.Forms.Factors
             try
             {
                 //cmbOriginalPrintServices.DataSource = null;
-                cmbOriginalPrintServices.DataSource = _printsizePrintServicesList;
+                cmbOriginalPrintServices.DataSource = _listOriginalPrintSizePrintServices;
                 cmbOriginalPrintServices.DisplayMember = "PrintServiceName";
                 cmbOriginalPrintServices.ValueMember = "Id";
             }
@@ -464,9 +497,9 @@ namespace PhotographyAutomation.App.Forms.Factors
         }
         private void GetPrintServicePrice(int selectedPrintServicePriceId)
         {
-            iiOriginalServicePrice.ResetText();
-            iiOriginalServicePrice.Value =
-                _listPrintServicePrices.Single(x => x.Id == selectedPrintServicePriceId).PrintServicePrice;
+            txtOriginalServicePrice.ResetText();
+            txtOriginalServicePrice.Text =
+                _listOriginalPrintServicePrices.Single(x => x.Id == selectedPrintServicePriceId).PrintServicePrice.ToString("N0");
         }
 
 
@@ -482,26 +515,27 @@ namespace PhotographyAutomation.App.Forms.Factors
             {
                 btnOriginalShowFrmAddEditMutiPhotos.Enabled = true;
                 //lblOriginalMutiPhotosCounts.Enabled = true;
-                iiOriginalMultiPhotoPrice.Enabled = true;
+                txtOriginalMultiPhotoPrice.Enabled = true;
 
                 //کد هزینه دورچین =10 
-                iiOriginalMultiPhotoPrice.Value =
+                txtOriginalMultiPhotoPrice.Text =
                     GetMultiPhotoPricePrePhoto(code: "10");
             }
             else
             {
                 btnOriginalShowFrmAddEditMutiPhotos.Enabled = false;
-                lblOriginalMutiPhotosCounts.Text = @"---";
-                iiOriginalMultiPhotoPrice.Enabled = false;
+                txtOriginalMutiPhotoSelectedPhotos.Text = @"---";
+                txtOriginalMultiPhotoPrice.Enabled = false;
             }
         }
-        private static int GetMultiPhotoPricePrePhoto(string code)
+        private static string GetMultiPhotoPricePrePhoto(string code)
         {
-            int servicePrice = 0;
-            if (_printSpecialServicesList != null)
+            var servicePrice = string.Empty;
+            if (_listOriginalPrintSpecialServices != null)
             {
-                servicePrice = _printSpecialServicesList.Find(x => x.Code == code).Price;
+                servicePrice = _listOriginalPrintSpecialServices.Find(x => x.Code == code).Price.ToString("N0");
             }
+
             return servicePrice;
         }
         private void btnOriginalShowFrmAddEditMutiPhotos_Click(object sender, EventArgs e)
@@ -521,12 +555,12 @@ namespace PhotographyAutomation.App.Forms.Factors
                 if (rbOriginalLitPrint.Checked && int.TryParse(cmbOriginalPrintSizes.SelectedValue.ToString(), out int selectedPrintSizeId))
                 {
                     GetOriginalLitPrintPrice(selectedPrintSizeId);
-                    btnOriginalShowFrmAddEditLitPrint.Enabled = iiOriginalLitPrintPrice.Enabled = rbOriginalLitPrint.Checked;
+                    btnOriginalShowFrmAddEditLitPrint.Enabled = txtOriginalLitPrintPrice.Enabled = rbOriginalLitPrint.Checked;
                 }
                 else
                 {
-                    btnOriginalShowFrmAddEditLitPrint.Enabled = iiOriginalLitPrintPrice.Enabled = rbOriginalLitPrint.Checked;
-                    iiOriginalLitPrintPrice.Text = string.Empty;
+                    btnOriginalShowFrmAddEditLitPrint.Enabled = txtOriginalLitPrintPrice.Enabled = rbOriginalLitPrint.Checked;
+                    txtOriginalLitPrintPrice.Text = string.Empty;
                 }
             }
             catch (Exception exception)
@@ -538,9 +572,9 @@ namespace PhotographyAutomation.App.Forms.Factors
         {
             try
             {
-                var printSize = _listPrintSizes.Find(x => x.Id == selectedPrintSizeId);
+                var printSize = _listOriginalPrintSizes.Find(x => x.Id == selectedPrintSizeId);
                 if (printSize.HasLitPrint)
-                    txtOriginalPrintSizePrice.Text = printSize.LitPrintPrice?.ToString("N0");
+                    txtTotalPriceOriginalPrintSize.Text = printSize.LitPrintPrice?.ToString("N0");
             }
             catch (Exception exception)
             {
@@ -699,7 +733,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                     MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
             }
         }
-        
+
         private void btnMagnifyPhoto_Click(object sender, EventArgs e)
         {
             var image = pictureBoxPreview.Image;
@@ -738,7 +772,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                     int.TryParse(cmbOriginalPrintSizes.SelectedValue.ToString(), out var ttt))
                     currentOrderDetails.OriginalSizeId = ttt;
 
-                if (int.TryParse(txtOriginalPrintSizePrice.Text.Replace(",", ""), out var tt))
+                if (int.TryParse(txtTotalPriceOriginalPrintSize.Text.Replace(",", ""), out var tt))
                     currentOrderDetails.OriginalPrintSizePrice = tt;
 
                 //if (rbOriginalNormalPrint.Checked)
@@ -1717,5 +1751,15 @@ namespace PhotographyAutomation.App.Forms.Factors
 
 
         #endregion
+
+        private void chkOriginalHasChangingElements_CheckedChanged(object sender, EventArgs e)
+        {
+            btnOriginalChangingElements.Enabled = chkOriginalHasChangingElements.Checked;
+        }
+
+        private void chkRePrintHasChangingElements_CheckedChanged(object sender, EventArgs e)
+        {
+            btnRePrintChangingElements.Enabled = chkRePrintHasChangingElements.Checked;
+        }
     }
 }
