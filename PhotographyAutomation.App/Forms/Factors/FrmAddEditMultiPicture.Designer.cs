@@ -143,6 +143,7 @@
             // highlighter1
             // 
             this.highlighter1.ContainerControl = this;
+            this.highlighter1.FocusHighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Orange;
             this.highlighter1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F";
             // 
             // styleManager1
@@ -457,7 +458,6 @@
             this.collapsibleSplitContainer1.SplitterDistance = 330;
             this.collapsibleSplitContainer1.SplitterWidth = 20;
             this.collapsibleSplitContainer1.TabIndex = 1;
-            //this.collapsibleSplitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.collapsibleSplitContainer1_SplitterMoved);
             // 
             // FrmAddEditMultiPicture
             // 

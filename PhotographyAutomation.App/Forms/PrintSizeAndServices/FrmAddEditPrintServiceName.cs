@@ -8,7 +8,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace PhotographyAutomation.App.Forms.Admin
+namespace PhotographyAutomation.App.Forms.PrintSizeAndServices
 {
     public partial class FrmAddEditPrintServiceName : Form
     {

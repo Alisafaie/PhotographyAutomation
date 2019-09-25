@@ -1,4 +1,4 @@
-﻿namespace PhotographyAutomation.App.Forms.Admin
+﻿namespace PhotographyAutomation.App.Forms.PrintSizeAndServices
 {
     partial class FrmAddEditPrintSizeServices
     {

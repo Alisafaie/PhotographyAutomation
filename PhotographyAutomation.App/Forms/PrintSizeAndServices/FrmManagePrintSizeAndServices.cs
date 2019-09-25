@@ -7,7 +7,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows.Forms;
 
-namespace PhotographyAutomation.App.Forms.Admin
+namespace PhotographyAutomation.App.Forms.PrintSizeAndServices
 {
     public partial class FrmManagePrintSizeAndServices : Form
     {
@@ -383,7 +383,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                             }
                         }
                     }
-                    
+
                 }
             }
             catch (Exception exception)
@@ -391,8 +391,8 @@ namespace PhotographyAutomation.App.Forms.Admin
                 if (exception.HResult == -2147467261 &&
                     exception.Message == "Object reference not set to an instance of an object.")
                 {
-                    MessageBox.Show("برای اندازه چاپ مورد نظر، خدمات چاپ تعریف نشده است.","",
-                        MessageBoxButtons.OK,MessageBoxIcon.Error,MessageBoxDefaultButton.Button1,
+                    MessageBox.Show("برای اندازه چاپ مورد نظر، خدمات چاپ تعریف نشده است.", "",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1,
                         MessageBoxOptions.RtlReading);
                 }
             }

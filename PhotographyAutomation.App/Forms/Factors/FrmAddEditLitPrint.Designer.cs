@@ -54,6 +54,7 @@
             this.textBoxX3 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.collapsibleSplitContainer1 = new DevComponents.DotNetBar.Controls.CollapsibleSplitContainer();
+            this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
             this.panelEx3.SuspendLayout();
             this.panelEx1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -418,7 +419,13 @@
             this.collapsibleSplitContainer1.SplitterWidth = 20;
             this.collapsibleSplitContainer1.TabIndex = 0;
             // 
-            // FrmAddEditLit
+            // highlighter1
+            // 
+            this.highlighter1.ContainerControl = this;
+            this.highlighter1.FocusHighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Orange;
+            this.highlighter1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F";
+            // 
+            // FrmAddEditLitPrint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -431,7 +438,7 @@
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "FrmAddEditLit";
+            this.Name = "FrmAddEditLitPrint";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -483,5 +490,6 @@
         private DevComponents.DotNetBar.ButtonX btnOkPhotoOrderPrint;
         private DevComponents.DotNetBar.Controls.CollapsibleSplitContainer collapsibleSplitContainer1;
         private DevComponents.DotNetBar.ButtonX buttonX1;
+        private DevComponents.DotNetBar.Validator.Highlighter highlighter1;
     }
 }

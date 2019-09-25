@@ -1,9 +1,6 @@
-﻿using PhotographyAutomation.App.Forms.Factors;
+﻿using PhotographyAutomation.App.Forms;
 using System;
 using System.Windows.Forms;
-using PhotographyAutomation.App.Forms;
-using PhotographyAutomation.App.Forms.Admin;
-using PhotographyAutomation.App.Forms.Orders;
 
 namespace PhotographyAutomation.App
 {

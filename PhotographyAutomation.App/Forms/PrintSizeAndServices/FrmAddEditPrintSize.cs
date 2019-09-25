@@ -8,7 +8,7 @@ using Exception = System.Exception;
 
 // ReSharper disable BadControlBracesIndent
 
-namespace PhotographyAutomation.App.Forms.Admin
+namespace PhotographyAutomation.App.Forms.PrintSizeAndServices
 {
     public partial class FrmAddEditPrintSize : Form
     {
@@ -410,7 +410,7 @@ namespace PhotographyAutomation.App.Forms.Admin
                             }
 
 
-                            RetryUpdatePrintSizeAndPrice:
+                        RetryUpdatePrintSizeAndPrice:
                             var resultInsertOrUpdatePrintSizePrice = db.Save();
 
                             if (resultInsertOrUpdatePrintSizePrice > 0)

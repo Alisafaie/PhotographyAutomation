@@ -5,8 +5,7 @@ using PhotographyAutomation.App.Forms.EntranceToAtelier;
 using PhotographyAutomation.App.Forms.Orders;
 using System;
 using System.Windows.Forms;
-using PhotographyAutomation.App.Forms.Admin;
-using PhotographyAutomation.App.Forms.Factors;
+using PhotographyAutomation.App.Forms.PrintSizeAndServices;
 
 namespace PhotographyAutomation.App.Forms
 {

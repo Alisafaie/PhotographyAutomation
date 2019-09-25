@@ -8,7 +8,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace PhotographyAutomation.App.Forms.Admin
+namespace PhotographyAutomation.App.Forms.PrintSizeAndServices
 {
     public partial class FrmAddEditPrintSizeServices : Form
     {
@@ -472,7 +472,7 @@ namespace PhotographyAutomation.App.Forms.Admin
             }
 
             dgvPrintServices.Rows[0].Selected = false;
-            
+
             if (EditPrintSizeServiceMode && PrintSizeId > 0 && PrintServiceId > 0 && PrintServicePriceId > 0)
             {
                 //foreach (DataGridViewRow row in dgvPrintServices.Rows)
