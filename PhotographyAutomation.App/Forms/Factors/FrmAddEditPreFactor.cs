@@ -723,7 +723,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                     if (printSize?.RePrintPrice != null)
                     {
                         int printSizePrice = printSize.RePrintPrice.Value;
-                        int printCounts = iiRePrintPrintsCount.Value;
+                        int printCounts = iiRePrintPrintCounts.Value;
                         int totalPrice = printSizePrice * printCounts;
                         int minimumOrder = int.Parse(txtRePrintMinimumOrder.Text);
                         txtRePrintTotalPrintCounts.Text = (minimumOrder * printCounts).ToString();
@@ -897,36 +897,13 @@ namespace PhotographyAutomation.App.Forms.Factors
 
 
 
-        private void iiRePrintPrintsCount_ValueChanged(object sender, EventArgs e)
+        private void iiRePrintPrintCounts_ValueChanged(object sender, EventArgs e)
         {
             try
             {
                 if (int.TryParse(cmbRePrintPrintSizes.SelectedValue.ToString(), out int selectedPrintSizeId))
                 {
                     GetRePrintPrintSizePrice(selectedPrintSizeId);
-                    //if (_listRePrintPrintSizePrices != null)
-                    //{
-                    //    // ReSharper disable once PossibleNullReferenceException
-
-                    //    var printSizePrice = _listRePrintPrintSizePrices
-                    //        .SingleOrDefault(x => x.Id == selectedPrintSizeId).RePrintPrice;
-
-                    //    if (int.TryParse(iiRePrintPrintsCount.Value.ToString(), out int printCounts)
-                    //        && int.TryParse(txtRePrintMinimumOrder.Text, out int minimumOrder))
-                    //    {
-                    //        //printCounts = minimumOrder * printCounts;
-                    //        txtRePrintTotalPrintCounts.Text = (minimumOrder * printCounts).ToString();
-                    //        txtTotalPriceRePrintPrintSize.Text = (printCounts * printSizePrice).ToString();
-                    //    }
-                    //    else
-                    //    {
-                    //        txtTotalPriceRePrintPrintSize.Text = (1 * printSizePrice).ToString();
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    throw new NullReferenceException("اطلاعات قیمت عکس دریافت نشده است.");
-                    //}
                 }
             }
             catch (NullReferenceException exception)
@@ -2121,7 +2098,5 @@ namespace PhotographyAutomation.App.Forms.Factors
 
 
         #endregion
-
-
     }
 }

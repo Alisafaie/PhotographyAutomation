@@ -18,8 +18,8 @@ namespace PhotographyAutomation.DateLayer.Models
         public TblOrderPrint()
         {
             this.TblAllOrderStatus = new HashSet<TblAllOrderStatus>();
-            this.TblOrderPrintDetails = new HashSet<TblOrderPrintDetails>();
             this.TblOrderPrintFiles = new HashSet<TblOrderPrintFiles>();
+            this.TblOrderPrintDetails = new HashSet<TblOrderPrintDetails>();
         }
     
         public int Id { get; set; }
@@ -44,8 +44,8 @@ namespace PhotographyAutomation.DateLayer.Models
         public virtual TblOrder TblOrder { get; set; }
         public virtual TblOrderPrintStatus TblOrderPrintStatus { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblOrderPrintDetails> TblOrderPrintDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblOrderPrintFiles> TblOrderPrintFiles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblOrderPrintDetails> TblOrderPrintDetails { get; set; }
     }
 }

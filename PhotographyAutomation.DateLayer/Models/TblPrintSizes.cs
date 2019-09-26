@@ -21,6 +21,8 @@ namespace PhotographyAutomation.DateLayer.Models
             this.TblPrintCustomerFiles = new HashSet<TblPrintCustomerFiles>();
             this.TblPrintServicePrices = new HashSet<TblPrintServicePrices>();
             this.TblPrintSizePrices = new HashSet<TblPrintSizePrices>();
+            this.TblOrderPrintDetails = new HashSet<TblOrderPrintDetails>();
+            this.TblOrderPrintDetails1 = new HashSet<TblOrderPrintDetails>();
         }
     
         public int Id { get; set; }
@@ -47,5 +49,9 @@ namespace PhotographyAutomation.DateLayer.Models
         public virtual ICollection<TblPrintServicePrices> TblPrintServicePrices { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblPrintSizePrices> TblPrintSizePrices { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblOrderPrintDetails> TblOrderPrintDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblOrderPrintDetails> TblOrderPrintDetails1 { get; set; }
     }
 }

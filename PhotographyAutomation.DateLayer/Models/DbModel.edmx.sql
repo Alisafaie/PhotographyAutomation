@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 08/28/2019 21:36:27
+-- Date Created: 09/27/2019 00:16:26
 -- Generated from EDMX file: C:\Users\Dell\Documents\GitHub\PhotographyAutomation\PhotographyAutomation.DateLayer\Models\DbModel.edmx
 -- --------------------------------------------------
 
@@ -74,17 +74,53 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_TblOrderPrint_TblOrderPrintStatus]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[TblOrderPrint] DROP CONSTRAINT [FK_TblOrderPrint_TblOrderPrintStatus];
 GO
+IF OBJECT_ID(N'[dbo].[FK_TblOrderPrintChangingElements_TblOrderPrintDetails]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TblOrderPrintChangingElements] DROP CONSTRAINT [FK_TblOrderPrintChangingElements_TblOrderPrintDetails];
+GO
 IF OBJECT_ID(N'[dbo].[FK_TblOrderPrintDetails_TblCustomer]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[TblOrderPrintDetails] DROP CONSTRAINT [FK_TblOrderPrintDetails_TblCustomer];
 GO
 IF OBJECT_ID(N'[dbo].[FK_TblOrderPrintDetails_TblOrderPrint]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[TblOrderPrintDetails] DROP CONSTRAINT [FK_TblOrderPrintDetails_TblOrderPrint];
 GO
+IF OBJECT_ID(N'[dbo].[FK_TblOrderPrintDetails_TblPrintServicePrices]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TblOrderPrintDetails] DROP CONSTRAINT [FK_TblOrderPrintDetails_TblPrintServicePrices];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TblOrderPrintDetails_TblPrintServicePrices_RePrint]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TblOrderPrintDetails] DROP CONSTRAINT [FK_TblOrderPrintDetails_TblPrintServicePrices_RePrint];
+GO
 IF OBJECT_ID(N'[dbo].[FK_TblOrderPrintDetails_TblPrintServices]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[TblOrderPrintDetails] DROP CONSTRAINT [FK_TblOrderPrintDetails_TblPrintServices];
 GO
+IF OBJECT_ID(N'[dbo].[FK_TblOrderPrintDetails_TblPrintServices_RePrint]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TblOrderPrintDetails] DROP CONSTRAINT [FK_TblOrderPrintDetails_TblPrintServices_RePrint];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TblOrderPrintDetails_TblPrintSizePrices]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TblOrderPrintDetails] DROP CONSTRAINT [FK_TblOrderPrintDetails_TblPrintSizePrices];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TblOrderPrintDetails_TblPrintSizePrices_RePrint]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TblOrderPrintDetails] DROP CONSTRAINT [FK_TblOrderPrintDetails_TblPrintSizePrices_RePrint];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TblOrderPrintDetails_TblPrintSizes]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TblOrderPrintDetails] DROP CONSTRAINT [FK_TblOrderPrintDetails_TblPrintSizes];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TblOrderPrintDetails_TblPrintSizes_RePrint]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TblOrderPrintDetails] DROP CONSTRAINT [FK_TblOrderPrintDetails_TblPrintSizes_RePrint];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TblOrderPrintDetails_TblPrintSpecialServices]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TblOrderPrintDetails] DROP CONSTRAINT [FK_TblOrderPrintDetails_TblPrintSpecialServices];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TblOrderPrintDetails_TblPrintSpecialServices_RePrint]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TblOrderPrintDetails] DROP CONSTRAINT [FK_TblOrderPrintDetails_TblPrintSpecialServices_RePrint];
+GO
 IF OBJECT_ID(N'[dbo].[FK_TblOrderPrintFiles_TblOrderPrint]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[TblOrderPrintFiles] DROP CONSTRAINT [FK_TblOrderPrintFiles_TblOrderPrint];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TblOrderPrintLitPrint_TblOrderPrintDetails]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TblOrderPrintLitPrint] DROP CONSTRAINT [FK_TblOrderPrintLitPrint_TblOrderPrintDetails];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TblOrderPrintMultiPhotoOrder_TblOrderPrintDetails]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TblOrderPrintMultiPhotoOrder] DROP CONSTRAINT [FK_TblOrderPrintMultiPhotoOrder_TblOrderPrintDetails];
 GO
 IF OBJECT_ID(N'[dbo].[FK_TblOrderStreams_TblOrder]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[TblOrderFiles] DROP CONSTRAINT [FK_TblOrderStreams_TblOrder];
@@ -133,11 +169,20 @@ GO
 IF OBJECT_ID(N'[dbo].[TblOrderPrint]', 'U') IS NOT NULL
     DROP TABLE [dbo].[TblOrderPrint];
 GO
+IF OBJECT_ID(N'[dbo].[TblOrderPrintChangingElements]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TblOrderPrintChangingElements];
+GO
 IF OBJECT_ID(N'[dbo].[TblOrderPrintDetails]', 'U') IS NOT NULL
     DROP TABLE [dbo].[TblOrderPrintDetails];
 GO
 IF OBJECT_ID(N'[dbo].[TblOrderPrintFiles]', 'U') IS NOT NULL
     DROP TABLE [dbo].[TblOrderPrintFiles];
+GO
+IF OBJECT_ID(N'[dbo].[TblOrderPrintLitPrint]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TblOrderPrintLitPrint];
+GO
+IF OBJECT_ID(N'[dbo].[TblOrderPrintMultiPhotoOrder]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TblOrderPrintMultiPhotoOrder];
 GO
 IF OBJECT_ID(N'[dbo].[TblOrderPrintStatus]', 'U') IS NOT NULL
     DROP TABLE [dbo].[TblOrderPrintStatus];
@@ -168,6 +213,9 @@ IF OBJECT_ID(N'[dbo].[TblPrintSpecialServices]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[PhotographyAutomationDBModelStoreContainer].[View_GetAllPhotos]', 'U') IS NOT NULL
     DROP TABLE [PhotographyAutomationDBModelStoreContainer].[View_GetAllPhotos];
+GO
+IF OBJECT_ID(N'[PhotographyAutomationDBModelStoreContainer].[View_GetAllPrintSizeAndServicesInfo]', 'U') IS NOT NULL
+    DROP TABLE [PhotographyAutomationDBModelStoreContainer].[View_GetAllPrintSizeAndServicesInfo];
 GO
 IF OBJECT_ID(N'[PhotographyAutomationDBModelStoreContainer].[View_GetDocumentsFolders]', 'U') IS NOT NULL
     DROP TABLE [PhotographyAutomationDBModelStoreContainer].[View_GetDocumentsFolders];
@@ -332,25 +380,6 @@ CREATE TABLE [dbo].[TblOrderPrint] (
 );
 GO
 
--- Creating table 'TblOrderPrintDetails'
-CREATE TABLE [dbo].[TblOrderPrintDetails] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [OrderPrintId] int  NOT NULL,
-    [StreamId] uniqueidentifier  NOT NULL,
-    [CustomerId] int  NOT NULL,
-    [FileName] nvarchar(255)  NOT NULL,
-    [RetochDescription] nvarchar(4000)  NULL,
-    [IsFirstPrint] bit  NULL,
-    [HasPrintService] bit  NULL,
-    [PrintServiceId] int  NULL,
-    [PrintSizePriceId] int  NULL,
-    [PrintSizeServiceId] int  NULL,
-    [CreatedDateTime] datetime  NOT NULL,
-    [ModifiedDateTime] datetime  NULL,
-    [Description] nvarchar(4000)  NULL
-);
-GO
-
 -- Creating table 'TblOrderPrintFiles'
 CREATE TABLE [dbo].[TblOrderPrintFiles] (
     [Id] int IDENTITY(1,1) NOT NULL,
@@ -452,6 +481,7 @@ GO
 -- Creating table 'TblPrintSpecialServices'
 CREATE TABLE [dbo].[TblPrintSpecialServices] (
     [Id] int IDENTITY(1,1) NOT NULL,
+    [Code] varchar(50)  NULL,
     [Name] nvarchar(200)  NOT NULL,
     [Price] int  NOT NULL,
     [Description] nvarchar(500)  NULL
@@ -483,6 +513,37 @@ CREATE TABLE [dbo].[View_GetAllPhotos] (
 );
 GO
 
+-- Creating table 'View_GetAllPrintSizeAndServicesInfo'
+CREATE TABLE [dbo].[View_GetAllPrintSizeAndServicesInfo] (
+    [PrintSizeId] int  NOT NULL,
+    [PrintServiceId] int  NULL,
+    [PrintSizePriceId] int  NULL,
+    [PrintServicePriceId] int  NULL,
+    [PrintSizeName] nvarchar(20)  NOT NULL,
+    [PrintServiceName] nvarchar(50)  NULL,
+    [PrintServicePrice] int  NULL,
+    [FirstPrintPrice] int  NULL,
+    [RePrintPrice] int  NULL,
+    [HasMedicalPhoto] bit  NOT NULL,
+    [MedicalPrice] int  NULL,
+    [MedicalRePrintPrice] int  NULL,
+    [HasLitPrint] bit  NOT NULL,
+    [LitPrintPrice] int  NULL,
+    [LitPrintRePrintPrice] int  NULL,
+    [HasScanAndProcessing] bit  NOT NULL,
+    [ScanAndPrintPrice] int  NULL,
+    [ScanAndProcessingPrice] int  NULL,
+    [HasItalianAlbum] bit  NOT NULL,
+    [ItalianAlbumPagePrice] int  NULL,
+    [ItalianAlbumBoundingPrice] int  NULL,
+    [IsActive] bit  NOT NULL,
+    [IsDeleted] bit  NOT NULL,
+    [MinimumOrder] tinyint  NOT NULL,
+    [Width] float  NOT NULL,
+    [Height] float  NOT NULL
+);
+GO
+
 -- Creating table 'View_GetDocumentsFolders'
 CREATE TABLE [dbo].[View_GetDocumentsFolders] (
     [StreamId] uniqueidentifier  NOT NULL,
@@ -506,6 +567,86 @@ CREATE TABLE [dbo].[View_GetDocumentsFolders] (
     [IsSystem] bit  NOT NULL,
     [IsTemporary] bit  NOT NULL,
     [IsDirectory] bit  NOT NULL
+);
+GO
+
+-- Creating table 'TblOrderPrintChangingElements'
+CREATE TABLE [dbo].[TblOrderPrintChangingElements] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [OrderPrintDetailsId] int  NULL,
+    [MainPhotoStreamId] uniqueidentifier  NULL,
+    [StreamId] uniqueidentifier  NULL,
+    [MainPhotoFileName] nvarchar(255)  NULL,
+    [FileName] nvarchar(255)  NULL,
+    [Description] nvarchar(1000)  NULL
+);
+GO
+
+-- Creating table 'TblOrderPrintLitPrint'
+CREATE TABLE [dbo].[TblOrderPrintLitPrint] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [OrderPrintDetailsId] int  NULL,
+    [MainPhotoStreamId] uniqueidentifier  NULL,
+    [StreamId] uniqueidentifier  NULL,
+    [MainPhotoFileName] nvarchar(255)  NULL,
+    [FileName] nvarchar(255)  NULL,
+    [Description] nvarchar(1000)  NULL
+);
+GO
+
+-- Creating table 'TblOrderPrintMultiPhotoOrder'
+CREATE TABLE [dbo].[TblOrderPrintMultiPhotoOrder] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [OrderPrintDetailId] int  NULL,
+    [MainPhotoStreamId] uniqueidentifier  NULL,
+    [StreamId] uniqueidentifier  NULL,
+    [MainPhotoFileName] nvarchar(255)  NULL,
+    [FileName] nvarchar(255)  NULL,
+    [Description] nvarchar(500)  NULL
+);
+GO
+
+-- Creating table 'TblOrderPrintDetails'
+CREATE TABLE [dbo].[TblOrderPrintDetails] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [OrderPrintId] int  NOT NULL,
+    [StreamId] uniqueidentifier  NOT NULL,
+    [CustomerId] int  NOT NULL,
+    [FileName] nvarchar(255)  NOT NULL,
+    [IsFirstPrint] bit  NULL,
+    [HasPrintService] bit  NULL,
+    [HasMultiPhoto] bit  NULL,
+    [HasLitPrint] bit  NULL,
+    [HasChangingElements] bit  NULL,
+    [PrintSizeId] int  NULL,
+    [PrintSizePriceId] int  NULL,
+    [PrintServiceId] int  NULL,
+    [PrintServicePriceId] int  NULL,
+    [PrintSpecialServiceId] int  NULL,
+    [RePrintSequence] int  NULL,
+    [HasRePrintPrintService] bit  NULL,
+    [HasRePrintMultiPhoto] bit  NULL,
+    [HasRePrintLitPrint] bit  NULL,
+    [HasRePrintChangingElements] bit  NULL,
+    [RePrintPrintSizeId] int  NULL,
+    [RePrintPrintSizePriceId] int  NULL,
+    [RePrintPrintServiceId] int  NULL,
+    [RePrintPrintServicePriceId] int  NULL,
+    [RePrintPrintSpecialServiceId] int  NULL,
+    [RePrintTotalPrints] int  NULL,
+    [RePrintTotalPrintServices] int  NULL,
+    [CreatedDateTime] datetime  NOT NULL,
+    [ModifiedDateTime] datetime  NULL,
+    [RetouchDescription] nvarchar(4000)  NULL,
+    [TotalPricePrint] int  NULL,
+    [TotalPriceMultiPhoto] int  NULL,
+    [TotalPriceLitPrint] int  NULL,
+    [TotalPricePrintService] int  NULL,
+    [TotalPriceOriginalPrint] int  NULL,
+    [TotalPriceRePrint] int  NULL,
+    [TotalPriceRePrintMultiPhoto] int  NULL,
+    [TotalPriceRePrintLitPrint] int  NULL,
+    [TotalPrice] int  NULL
 );
 GO
 
@@ -570,12 +711,6 @@ GO
 -- Creating primary key on [Id] in table 'TblOrderPrint'
 ALTER TABLE [dbo].[TblOrderPrint]
 ADD CONSTRAINT [PK_TblOrderPrint]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
--- Creating primary key on [Id] in table 'TblOrderPrintDetails'
-ALTER TABLE [dbo].[TblOrderPrintDetails]
-ADD CONSTRAINT [PK_TblOrderPrintDetails]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -645,10 +780,40 @@ ADD CONSTRAINT [PK_View_GetAllPhotos]
     PRIMARY KEY CLUSTERED ([StreamId], [FileName], [CreationTime], [LastWriteTime], [IsOffline], [IsHidden], [IsReadonly], [IsArchive], [IsSystem], [IsTemporary] ASC);
 GO
 
+-- Creating primary key on [PrintSizeId], [PrintSizeName], [HasMedicalPhoto], [HasLitPrint], [HasScanAndProcessing], [HasItalianAlbum], [IsActive], [IsDeleted], [MinimumOrder], [Width], [Height] in table 'View_GetAllPrintSizeAndServicesInfo'
+ALTER TABLE [dbo].[View_GetAllPrintSizeAndServicesInfo]
+ADD CONSTRAINT [PK_View_GetAllPrintSizeAndServicesInfo]
+    PRIMARY KEY CLUSTERED ([PrintSizeId], [PrintSizeName], [HasMedicalPhoto], [HasLitPrint], [HasScanAndProcessing], [HasItalianAlbum], [IsActive], [IsDeleted], [MinimumOrder], [Width], [Height] ASC);
+GO
+
 -- Creating primary key on [StreamId], [FolderName], [CreationTime], [LastWriteTime], [IsOffline], [IsHidden], [IsReadonly], [IsArchive], [IsSystem], [IsTemporary], [IsDirectory] in table 'View_GetDocumentsFolders'
 ALTER TABLE [dbo].[View_GetDocumentsFolders]
 ADD CONSTRAINT [PK_View_GetDocumentsFolders]
     PRIMARY KEY CLUSTERED ([StreamId], [FolderName], [CreationTime], [LastWriteTime], [IsOffline], [IsHidden], [IsReadonly], [IsArchive], [IsSystem], [IsTemporary], [IsDirectory] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'TblOrderPrintChangingElements'
+ALTER TABLE [dbo].[TblOrderPrintChangingElements]
+ADD CONSTRAINT [PK_TblOrderPrintChangingElements]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'TblOrderPrintLitPrint'
+ALTER TABLE [dbo].[TblOrderPrintLitPrint]
+ADD CONSTRAINT [PK_TblOrderPrintLitPrint]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'TblOrderPrintMultiPhotoOrder'
+ALTER TABLE [dbo].[TblOrderPrintMultiPhotoOrder]
+ADD CONSTRAINT [PK_TblOrderPrintMultiPhotoOrder]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'TblOrderPrintDetails'
+ALTER TABLE [dbo].[TblOrderPrintDetails]
+ADD CONSTRAINT [PK_TblOrderPrintDetails]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
 -- --------------------------------------------------
@@ -844,21 +1009,6 @@ ON [dbo].[TblOrderPrint]
     ([CustomerId]);
 GO
 
--- Creating foreign key on [CustomerId] in table 'TblOrderPrintDetails'
-ALTER TABLE [dbo].[TblOrderPrintDetails]
-ADD CONSTRAINT [FK_TblOrderPrintDetails_TblCustomer]
-    FOREIGN KEY ([CustomerId])
-    REFERENCES [dbo].[TblCustomer]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_TblOrderPrintDetails_TblCustomer'
-CREATE INDEX [IX_FK_TblOrderPrintDetails_TblCustomer]
-ON [dbo].[TblOrderPrintDetails]
-    ([CustomerId]);
-GO
-
 -- Creating foreign key on [OrderId] in table 'TblFilesError'
 ALTER TABLE [dbo].[TblFilesError]
 ADD CONSTRAINT [FK_TblFilesError_TblOrder]
@@ -949,21 +1099,6 @@ ON [dbo].[TblOrderPrint]
     ([OrderPrintStatusId]);
 GO
 
--- Creating foreign key on [OrderPrintId] in table 'TblOrderPrintDetails'
-ALTER TABLE [dbo].[TblOrderPrintDetails]
-ADD CONSTRAINT [FK_TblOrderPrintDetails_TblOrderPrint]
-    FOREIGN KEY ([OrderPrintId])
-    REFERENCES [dbo].[TblOrderPrint]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_TblOrderPrintDetails_TblOrderPrint'
-CREATE INDEX [IX_FK_TblOrderPrintDetails_TblOrderPrint]
-ON [dbo].[TblOrderPrintDetails]
-    ([OrderPrintId]);
-GO
-
 -- Creating foreign key on [OrderPrintId] in table 'TblOrderPrintFiles'
 ALTER TABLE [dbo].[TblOrderPrintFiles]
 ADD CONSTRAINT [FK_TblOrderPrintFiles_TblOrderPrint]
@@ -979,21 +1114,6 @@ ON [dbo].[TblOrderPrintFiles]
     ([OrderPrintId]);
 GO
 
--- Creating foreign key on [PrintServiceId] in table 'TblOrderPrintDetails'
-ALTER TABLE [dbo].[TblOrderPrintDetails]
-ADD CONSTRAINT [FK_TblOrderPrintDetails_TblPrintServices]
-    FOREIGN KEY ([PrintServiceId])
-    REFERENCES [dbo].[TblPrintServices]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_TblOrderPrintDetails_TblPrintServices'
-CREATE INDEX [IX_FK_TblOrderPrintDetails_TblPrintServices]
-ON [dbo].[TblOrderPrintDetails]
-    ([PrintServiceId]);
-GO
-
 -- Creating foreign key on [PrintSizeId] in table 'TblPrintCustomerFiles'
 ALTER TABLE [dbo].[TblPrintCustomerFiles]
 ADD CONSTRAINT [FK_TblCustomerFilePrint_TblPrintSizes]
@@ -1006,21 +1126,6 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_TblCustomerFilePrint_TblPrintSizes'
 CREATE INDEX [IX_FK_TblCustomerFilePrint_TblPrintSizes]
 ON [dbo].[TblPrintCustomerFiles]
-    ([PrintSizeId]);
-GO
-
--- Creating foreign key on [PrintSizeId] in table 'TblPrintSizePrices'
-ALTER TABLE [dbo].[TblPrintSizePrices]
-ADD CONSTRAINT [FK_TblSizePrice_TblPrintSizes1]
-    FOREIGN KEY ([PrintSizeId])
-    REFERENCES [dbo].[TblPrintSizes]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_TblSizePrice_TblPrintSizes1'
-CREATE INDEX [IX_FK_TblSizePrice_TblPrintSizes1]
-ON [dbo].[TblPrintSizePrices]
     ([PrintSizeId]);
 GO
 
@@ -1052,6 +1157,246 @@ GO
 CREATE INDEX [IX_FK_TblPrintServicePrices_TblPrintSizes]
 ON [dbo].[TblPrintServicePrices]
     ([PrintSizeId]);
+GO
+
+-- Creating foreign key on [PrintSizeId] in table 'TblPrintSizePrices'
+ALTER TABLE [dbo].[TblPrintSizePrices]
+ADD CONSTRAINT [FK_TblSizePrice_TblPrintSizes1]
+    FOREIGN KEY ([PrintSizeId])
+    REFERENCES [dbo].[TblPrintSizes]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TblSizePrice_TblPrintSizes1'
+CREATE INDEX [IX_FK_TblSizePrice_TblPrintSizes1]
+ON [dbo].[TblPrintSizePrices]
+    ([PrintSizeId]);
+GO
+
+-- Creating foreign key on [CustomerId] in table 'TblOrderPrintDetails'
+ALTER TABLE [dbo].[TblOrderPrintDetails]
+ADD CONSTRAINT [FK_TblOrderPrintDetails_TblCustomer]
+    FOREIGN KEY ([CustomerId])
+    REFERENCES [dbo].[TblCustomer]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TblOrderPrintDetails_TblCustomer'
+CREATE INDEX [IX_FK_TblOrderPrintDetails_TblCustomer]
+ON [dbo].[TblOrderPrintDetails]
+    ([CustomerId]);
+GO
+
+-- Creating foreign key on [OrderPrintId] in table 'TblOrderPrintDetails'
+ALTER TABLE [dbo].[TblOrderPrintDetails]
+ADD CONSTRAINT [FK_TblOrderPrintDetails_TblOrderPrint]
+    FOREIGN KEY ([OrderPrintId])
+    REFERENCES [dbo].[TblOrderPrint]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TblOrderPrintDetails_TblOrderPrint'
+CREATE INDEX [IX_FK_TblOrderPrintDetails_TblOrderPrint]
+ON [dbo].[TblOrderPrintDetails]
+    ([OrderPrintId]);
+GO
+
+-- Creating foreign key on [OrderPrintDetailsId] in table 'TblOrderPrintChangingElements'
+ALTER TABLE [dbo].[TblOrderPrintChangingElements]
+ADD CONSTRAINT [FK_TblOrderPrintChangingElements_TblOrderPrintDetails]
+    FOREIGN KEY ([OrderPrintDetailsId])
+    REFERENCES [dbo].[TblOrderPrintDetails]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TblOrderPrintChangingElements_TblOrderPrintDetails'
+CREATE INDEX [IX_FK_TblOrderPrintChangingElements_TblOrderPrintDetails]
+ON [dbo].[TblOrderPrintChangingElements]
+    ([OrderPrintDetailsId]);
+GO
+
+-- Creating foreign key on [PrintServicePriceId] in table 'TblOrderPrintDetails'
+ALTER TABLE [dbo].[TblOrderPrintDetails]
+ADD CONSTRAINT [FK_TblOrderPrintDetails_TblPrintServicePrices]
+    FOREIGN KEY ([PrintServicePriceId])
+    REFERENCES [dbo].[TblPrintServicePrices]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TblOrderPrintDetails_TblPrintServicePrices'
+CREATE INDEX [IX_FK_TblOrderPrintDetails_TblPrintServicePrices]
+ON [dbo].[TblOrderPrintDetails]
+    ([PrintServicePriceId]);
+GO
+
+-- Creating foreign key on [RePrintPrintServicePriceId] in table 'TblOrderPrintDetails'
+ALTER TABLE [dbo].[TblOrderPrintDetails]
+ADD CONSTRAINT [FK_TblOrderPrintDetails_TblPrintServicePrices_RePrint]
+    FOREIGN KEY ([RePrintPrintServicePriceId])
+    REFERENCES [dbo].[TblPrintServicePrices]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TblOrderPrintDetails_TblPrintServicePrices_RePrint'
+CREATE INDEX [IX_FK_TblOrderPrintDetails_TblPrintServicePrices_RePrint]
+ON [dbo].[TblOrderPrintDetails]
+    ([RePrintPrintServicePriceId]);
+GO
+
+-- Creating foreign key on [PrintServiceId] in table 'TblOrderPrintDetails'
+ALTER TABLE [dbo].[TblOrderPrintDetails]
+ADD CONSTRAINT [FK_TblOrderPrintDetails_TblPrintServices]
+    FOREIGN KEY ([PrintServiceId])
+    REFERENCES [dbo].[TblPrintServices]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TblOrderPrintDetails_TblPrintServices'
+CREATE INDEX [IX_FK_TblOrderPrintDetails_TblPrintServices]
+ON [dbo].[TblOrderPrintDetails]
+    ([PrintServiceId]);
+GO
+
+-- Creating foreign key on [RePrintPrintServiceId] in table 'TblOrderPrintDetails'
+ALTER TABLE [dbo].[TblOrderPrintDetails]
+ADD CONSTRAINT [FK_TblOrderPrintDetails_TblPrintServices_RePrint]
+    FOREIGN KEY ([RePrintPrintServiceId])
+    REFERENCES [dbo].[TblPrintServices]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TblOrderPrintDetails_TblPrintServices_RePrint'
+CREATE INDEX [IX_FK_TblOrderPrintDetails_TblPrintServices_RePrint]
+ON [dbo].[TblOrderPrintDetails]
+    ([RePrintPrintServiceId]);
+GO
+
+-- Creating foreign key on [PrintSizePriceId] in table 'TblOrderPrintDetails'
+ALTER TABLE [dbo].[TblOrderPrintDetails]
+ADD CONSTRAINT [FK_TblOrderPrintDetails_TblPrintSizePrices]
+    FOREIGN KEY ([PrintSizePriceId])
+    REFERENCES [dbo].[TblPrintSizePrices]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TblOrderPrintDetails_TblPrintSizePrices'
+CREATE INDEX [IX_FK_TblOrderPrintDetails_TblPrintSizePrices]
+ON [dbo].[TblOrderPrintDetails]
+    ([PrintSizePriceId]);
+GO
+
+-- Creating foreign key on [RePrintPrintSizePriceId] in table 'TblOrderPrintDetails'
+ALTER TABLE [dbo].[TblOrderPrintDetails]
+ADD CONSTRAINT [FK_TblOrderPrintDetails_TblPrintSizePrices_RePrint]
+    FOREIGN KEY ([RePrintPrintSizePriceId])
+    REFERENCES [dbo].[TblPrintSizePrices]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TblOrderPrintDetails_TblPrintSizePrices_RePrint'
+CREATE INDEX [IX_FK_TblOrderPrintDetails_TblPrintSizePrices_RePrint]
+ON [dbo].[TblOrderPrintDetails]
+    ([RePrintPrintSizePriceId]);
+GO
+
+-- Creating foreign key on [PrintSizeId] in table 'TblOrderPrintDetails'
+ALTER TABLE [dbo].[TblOrderPrintDetails]
+ADD CONSTRAINT [FK_TblOrderPrintDetails_TblPrintSizes]
+    FOREIGN KEY ([PrintSizeId])
+    REFERENCES [dbo].[TblPrintSizes]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TblOrderPrintDetails_TblPrintSizes'
+CREATE INDEX [IX_FK_TblOrderPrintDetails_TblPrintSizes]
+ON [dbo].[TblOrderPrintDetails]
+    ([PrintSizeId]);
+GO
+
+-- Creating foreign key on [RePrintPrintSizeId] in table 'TblOrderPrintDetails'
+ALTER TABLE [dbo].[TblOrderPrintDetails]
+ADD CONSTRAINT [FK_TblOrderPrintDetails_TblPrintSizes_RePrint]
+    FOREIGN KEY ([RePrintPrintSizeId])
+    REFERENCES [dbo].[TblPrintSizes]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TblOrderPrintDetails_TblPrintSizes_RePrint'
+CREATE INDEX [IX_FK_TblOrderPrintDetails_TblPrintSizes_RePrint]
+ON [dbo].[TblOrderPrintDetails]
+    ([RePrintPrintSizeId]);
+GO
+
+-- Creating foreign key on [PrintSpecialServiceId] in table 'TblOrderPrintDetails'
+ALTER TABLE [dbo].[TblOrderPrintDetails]
+ADD CONSTRAINT [FK_TblOrderPrintDetails_TblPrintSpecialServices]
+    FOREIGN KEY ([PrintSpecialServiceId])
+    REFERENCES [dbo].[TblPrintSpecialServices]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TblOrderPrintDetails_TblPrintSpecialServices'
+CREATE INDEX [IX_FK_TblOrderPrintDetails_TblPrintSpecialServices]
+ON [dbo].[TblOrderPrintDetails]
+    ([PrintSpecialServiceId]);
+GO
+
+-- Creating foreign key on [RePrintPrintSpecialServiceId] in table 'TblOrderPrintDetails'
+ALTER TABLE [dbo].[TblOrderPrintDetails]
+ADD CONSTRAINT [FK_TblOrderPrintDetails_TblPrintSpecialServices_RePrint]
+    FOREIGN KEY ([RePrintPrintSpecialServiceId])
+    REFERENCES [dbo].[TblPrintSpecialServices]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TblOrderPrintDetails_TblPrintSpecialServices_RePrint'
+CREATE INDEX [IX_FK_TblOrderPrintDetails_TblPrintSpecialServices_RePrint]
+ON [dbo].[TblOrderPrintDetails]
+    ([RePrintPrintSpecialServiceId]);
+GO
+
+-- Creating foreign key on [OrderPrintDetailsId] in table 'TblOrderPrintLitPrint'
+ALTER TABLE [dbo].[TblOrderPrintLitPrint]
+ADD CONSTRAINT [FK_TblOrderPrintLitPrint_TblOrderPrintDetails]
+    FOREIGN KEY ([OrderPrintDetailsId])
+    REFERENCES [dbo].[TblOrderPrintDetails]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TblOrderPrintLitPrint_TblOrderPrintDetails'
+CREATE INDEX [IX_FK_TblOrderPrintLitPrint_TblOrderPrintDetails]
+ON [dbo].[TblOrderPrintLitPrint]
+    ([OrderPrintDetailsId]);
+GO
+
+-- Creating foreign key on [OrderPrintDetailId] in table 'TblOrderPrintMultiPhotoOrder'
+ALTER TABLE [dbo].[TblOrderPrintMultiPhotoOrder]
+ADD CONSTRAINT [FK_TblOrderPrintMultiPhotoOrder_TblOrderPrintDetails]
+    FOREIGN KEY ([OrderPrintDetailId])
+    REFERENCES [dbo].[TblOrderPrintDetails]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TblOrderPrintMultiPhotoOrder_TblOrderPrintDetails'
+CREATE INDEX [IX_FK_TblOrderPrintMultiPhotoOrder_TblOrderPrintDetails]
+ON [dbo].[TblOrderPrintMultiPhotoOrder]
+    ([OrderPrintDetailId]);
 GO
 
 -- --------------------------------------------------

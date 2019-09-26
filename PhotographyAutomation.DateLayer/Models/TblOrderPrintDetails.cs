@@ -14,23 +14,71 @@ namespace PhotographyAutomation.DateLayer.Models
     
     public partial class TblOrderPrintDetails
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TblOrderPrintDetails()
+        {
+            this.TblOrderPrintChangingElements = new HashSet<TblOrderPrintChangingElements>();
+            this.TblOrderPrintLitPrint = new HashSet<TblOrderPrintLitPrint>();
+            this.TblOrderPrintMultiPhotoOrder = new HashSet<TblOrderPrintMultiPhotoOrder>();
+        }
+    
         public int Id { get; set; }
         public int OrderPrintId { get; set; }
         public System.Guid StreamId { get; set; }
         public int CustomerId { get; set; }
         public string FileName { get; set; }
-        public string RetochDescription { get; set; }
         public Nullable<bool> IsFirstPrint { get; set; }
         public Nullable<bool> HasPrintService { get; set; }
-        public Nullable<int> PrintServiceId { get; set; }
+        public Nullable<bool> HasMultiPhoto { get; set; }
+        public Nullable<bool> HasLitPrint { get; set; }
+        public Nullable<bool> HasChangingElements { get; set; }
+        public Nullable<int> PrintSizeId { get; set; }
         public Nullable<int> PrintSizePriceId { get; set; }
-        public Nullable<int> PrintSizeServiceId { get; set; }
+        public Nullable<int> PrintServiceId { get; set; }
+        public Nullable<int> PrintServicePriceId { get; set; }
+        public Nullable<int> PrintSpecialServiceId { get; set; }
+        public Nullable<int> RePrintSequence { get; set; }
+        public Nullable<bool> HasRePrintPrintService { get; set; }
+        public Nullable<bool> HasRePrintMultiPhoto { get; set; }
+        public Nullable<bool> HasRePrintLitPrint { get; set; }
+        public Nullable<bool> HasRePrintChangingElements { get; set; }
+        public Nullable<int> RePrintPrintSizeId { get; set; }
+        public Nullable<int> RePrintPrintSizePriceId { get; set; }
+        public Nullable<int> RePrintPrintServiceId { get; set; }
+        public Nullable<int> RePrintPrintServicePriceId { get; set; }
+        public Nullable<int> RePrintPrintSpecialServiceId { get; set; }
+        public Nullable<int> RePrintTotalPrints { get; set; }
+        public Nullable<int> RePrintTotalPrintServices { get; set; }
         public System.DateTime CreatedDateTime { get; set; }
         public Nullable<System.DateTime> ModifiedDateTime { get; set; }
-        public string Description { get; set; }
+        public string RetouchDescription { get; set; }
+        public Nullable<int> TotalPricePrint { get; set; }
+        public Nullable<int> TotalPriceMultiPhoto { get; set; }
+        public Nullable<int> TotalPriceLitPrint { get; set; }
+        public Nullable<int> TotalPricePrintService { get; set; }
+        public Nullable<int> TotalPriceOriginalPrint { get; set; }
+        public Nullable<int> TotalPriceRePrint { get; set; }
+        public Nullable<int> TotalPriceRePrintMultiPhoto { get; set; }
+        public Nullable<int> TotalPriceRePrintLitPrint { get; set; }
+        public Nullable<int> TotalPrice { get; set; }
     
         public virtual TblCustomer TblCustomer { get; set; }
         public virtual TblOrderPrint TblOrderPrint { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblOrderPrintChangingElements> TblOrderPrintChangingElements { get; set; }
+        public virtual TblPrintServicePrices TblPrintServicePrices { get; set; }
+        public virtual TblPrintServicePrices TblPrintServicePrices1 { get; set; }
         public virtual TblPrintServices TblPrintServices { get; set; }
+        public virtual TblPrintServices TblPrintServices1 { get; set; }
+        public virtual TblPrintSizePrices TblPrintSizePrices { get; set; }
+        public virtual TblPrintSizePrices TblPrintSizePrices1 { get; set; }
+        public virtual TblPrintSizes TblPrintSizes { get; set; }
+        public virtual TblPrintSizes TblPrintSizes1 { get; set; }
+        public virtual TblPrintSpecialServices TblPrintSpecialServices { get; set; }
+        public virtual TblPrintSpecialServices TblPrintSpecialServices1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblOrderPrintLitPrint> TblOrderPrintLitPrint { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblOrderPrintMultiPhotoOrder> TblOrderPrintMultiPhotoOrder { get; set; }
     }
 }

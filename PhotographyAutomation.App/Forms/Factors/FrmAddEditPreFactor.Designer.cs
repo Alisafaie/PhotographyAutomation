@@ -106,7 +106,7 @@
             this.txtRePrintMultiPhotoPrice = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtRePrintServicePrice = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.iiRePrintServiceCounts = new DevComponents.Editors.IntegerInput();
-            this.iiRePrintPrintsCount = new DevComponents.Editors.IntegerInput();
+            this.iiRePrintPrintCounts = new DevComponents.Editors.IntegerInput();
             this.labelX17 = new DevComponents.DotNetBar.LabelX();
             this.labelX16 = new DevComponents.DotNetBar.LabelX();
             this.labelX15 = new DevComponents.DotNetBar.LabelX();
@@ -118,7 +118,6 @@
             this.rbRePrintLitPrint = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.btnRePrintShowFrmAddEditLitPrint = new DevComponents.DotNetBar.ButtonX();
             this.btnRePrintCustomPrintSize = new DevComponents.DotNetBar.ButtonX();
-            this.txtTotalPriceRePrintLitPrint = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtTotalPriceRePrintMutiPhoto = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.btnRePrintChangingElements = new DevComponents.DotNetBar.ButtonX();
             this.txtTotalPriceRePrintPrintSize = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -171,6 +170,7 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.bgWorkerLoadPicture = new System.ComponentModel.BackgroundWorker();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.txtTotalPriceRePrintLitPrint = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.menuStrip1.SuspendLayout();
             this.panelEx1.SuspendLayout();
             this.groupBoxPreviewPictures.SuspendLayout();
@@ -187,7 +187,7 @@
             this.tabPageRePrint.SuspendLayout();
             this.gBoxRePrint.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iiRePrintServiceCounts)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iiRePrintPrintsCount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iiRePrintPrintCounts)).BeginInit();
             this.panel1.SuspendLayout();
             this.panelEx4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIsAccepted)).BeginInit();
@@ -318,8 +318,8 @@
             this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
-            this.superTabControl1.Controls.Add(this.superTabControlPanel1);
             this.superTabControl1.Controls.Add(this.superTabControlPanel2);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel1);
             this.superTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControl1.Location = new System.Drawing.Point(0, 0);
             this.superTabControl1.Name = "superTabControl1";
@@ -564,7 +564,7 @@
             dataGridViewCellStyle15.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1204,7 +1204,7 @@
             this.gBoxRePrint.Controls.Add(this.txtRePrintMultiPhotoPrice);
             this.gBoxRePrint.Controls.Add(this.txtRePrintServicePrice);
             this.gBoxRePrint.Controls.Add(this.iiRePrintServiceCounts);
-            this.gBoxRePrint.Controls.Add(this.iiRePrintPrintsCount);
+            this.gBoxRePrint.Controls.Add(this.iiRePrintPrintCounts);
             this.gBoxRePrint.Controls.Add(this.labelX17);
             this.gBoxRePrint.Controls.Add(this.labelX16);
             this.gBoxRePrint.Controls.Add(this.labelX15);
@@ -1280,7 +1280,7 @@
             this.txtRePrintMultiPhotoSelectedPhotos.ReadOnly = true;
             this.txtRePrintMultiPhotoSelectedPhotos.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtRePrintMultiPhotoSelectedPhotos.Size = new System.Drawing.Size(60, 21);
-            this.txtRePrintMultiPhotoSelectedPhotos.TabIndex = 275;
+            this.txtRePrintMultiPhotoSelectedPhotos.TabIndex = 5;
             this.txtRePrintMultiPhotoSelectedPhotos.TabStop = false;
             this.txtRePrintMultiPhotoSelectedPhotos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -1376,25 +1376,25 @@
             this.iiRePrintServiceCounts.Name = "iiRePrintServiceCounts";
             this.iiRePrintServiceCounts.ShowUpDown = true;
             this.iiRePrintServiceCounts.Size = new System.Drawing.Size(60, 21);
-            this.iiRePrintServiceCounts.TabIndex = 2;
+            this.iiRePrintServiceCounts.TabIndex = 10;
             // 
-            // iiRePrintPrintsCount
+            // iiRePrintPrintCounts
             // 
-            this.iiRePrintPrintsCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iiRePrintPrintCounts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
-            this.iiRePrintPrintsCount.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.iiRePrintPrintsCount.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.iiRePrintPrintsCount.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.iiRePrintPrintsCount.Location = new System.Drawing.Point(309, 44);
-            this.iiRePrintPrintsCount.MaxValue = 1000;
-            this.iiRePrintPrintsCount.MinValue = 0;
-            this.iiRePrintPrintsCount.Name = "iiRePrintPrintsCount";
-            this.iiRePrintPrintsCount.ShowUpDown = true;
-            this.iiRePrintPrintsCount.Size = new System.Drawing.Size(60, 21);
-            this.iiRePrintPrintsCount.TabIndex = 2;
-            this.iiRePrintPrintsCount.ValueChanged += new System.EventHandler(this.iiRePrintPrintsCount_ValueChanged);
+            this.iiRePrintPrintCounts.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.iiRePrintPrintCounts.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.iiRePrintPrintCounts.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.iiRePrintPrintCounts.Location = new System.Drawing.Point(309, 44);
+            this.iiRePrintPrintCounts.MaxValue = 1000;
+            this.iiRePrintPrintCounts.MinValue = 0;
+            this.iiRePrintPrintCounts.Name = "iiRePrintPrintCounts";
+            this.iiRePrintPrintCounts.ShowUpDown = true;
+            this.iiRePrintPrintCounts.Size = new System.Drawing.Size(60, 21);
+            this.iiRePrintPrintCounts.TabIndex = 2;
+            this.iiRePrintPrintCounts.ValueChanged += new System.EventHandler(this.iiRePrintPrintCounts_ValueChanged);
             // 
             // labelX17
             // 
@@ -1489,7 +1489,7 @@
             this.chkRePrintHasChangingElements.Name = "chkRePrintHasChangingElements";
             this.chkRePrintHasChangingElements.Size = new System.Drawing.Size(70, 16);
             this.chkRePrintHasChangingElements.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.chkRePrintHasChangingElements.TabIndex = 9;
+            this.chkRePrintHasChangingElements.TabIndex = 11;
             this.chkRePrintHasChangingElements.Text = "تغییر المان";
             this.chkRePrintHasChangingElements.CheckedChanged += new System.EventHandler(this.chkRePrintHasChangingElements_CheckedChanged);
             // 
@@ -1507,7 +1507,7 @@
             this.chkHasRePrintPrintService.Name = "chkHasRePrintPrintService";
             this.chkHasRePrintPrintService.Size = new System.Drawing.Size(76, 16);
             this.chkHasRePrintPrintService.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.chkHasRePrintPrintService.TabIndex = 7;
+            this.chkHasRePrintPrintService.TabIndex = 8;
             this.chkHasRePrintPrintService.Text = "خدمات چاپ";
             this.chkHasRePrintPrintService.CheckedChanged += new System.EventHandler(this.chkHasRePrintPrintService_CheckedChanged);
             // 
@@ -1521,7 +1521,7 @@
             this.cmbRePrintPrintServices.Location = new System.Drawing.Point(592, 131);
             this.cmbRePrintPrintServices.Name = "cmbRePrintPrintServices";
             this.cmbRePrintPrintServices.Size = new System.Drawing.Size(134, 21);
-            this.cmbRePrintPrintServices.TabIndex = 8;
+            this.cmbRePrintPrintServices.TabIndex = 9;
             this.cmbRePrintPrintServices.SelectedValueChanged += new System.EventHandler(this.cmbRePrintPrintServices_SelectedValueChanged);
             this.cmbRePrintPrintServices.EnabledChanged += new System.EventHandler(this.cmbRePrintPrintServices_EnabledChanged);
             // 
@@ -1574,27 +1574,9 @@
             this.btnRePrintCustomPrintSize.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnRePrintCustomPrintSize.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnRePrintCustomPrintSize.SymbolSize = 10F;
-            this.btnRePrintCustomPrintSize.TabIndex = 11;
+            this.btnRePrintCustomPrintSize.TabIndex = 13;
             this.btnRePrintCustomPrintSize.Text = "اندازه خاص";
             this.btnRePrintCustomPrintSize.Click += new System.EventHandler(this.btnRePrintCustomPrintSize_Click);
-            // 
-            // txtTotalPriceRePrintLitPrint
-            // 
-            // 
-            // 
-            // 
-            this.txtTotalPriceRePrintLitPrint.Border.Class = "TextBoxBorder";
-            this.txtTotalPriceRePrintLitPrint.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtTotalPriceRePrintLitPrint.Location = new System.Drawing.Point(10, 102);
-            this.txtTotalPriceRePrintLitPrint.Name = "txtTotalPriceRePrintLitPrint";
-            this.txtTotalPriceRePrintLitPrint.PreventEnterBeep = true;
-            this.txtTotalPriceRePrintLitPrint.ReadOnly = true;
-            this.txtTotalPriceRePrintLitPrint.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtTotalPriceRePrintLitPrint.Size = new System.Drawing.Size(121, 21);
-            this.txtTotalPriceRePrintLitPrint.TabIndex = 229;
-            this.txtTotalPriceRePrintLitPrint.TabStop = false;
-            this.txtTotalPriceRePrintLitPrint.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtTotalPriceRePrintLitPrint.WatermarkText = "هزینه لیت پرینت (ريال)";
             // 
             // txtTotalPriceRePrintMutiPhoto
             // 
@@ -1628,7 +1610,7 @@
             this.btnRePrintChangingElements.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnRePrintChangingElements.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnRePrintChangingElements.SymbolSize = 10F;
-            this.btnRePrintChangingElements.TabIndex = 10;
+            this.btnRePrintChangingElements.TabIndex = 12;
             this.btnRePrintChangingElements.Text = "انتخاب عکس ها";
             this.btnRePrintChangingElements.Click += new System.EventHandler(this.btnRePrintChangingElements_Click);
             // 
@@ -1955,7 +1937,7 @@
             this.btnReloadPhotoPrintOrder.Symbol = "";
             this.btnReloadPhotoPrintOrder.SymbolColor = System.Drawing.Color.RoyalBlue;
             this.btnReloadPhotoPrintOrder.SymbolSize = 10F;
-            this.btnReloadPhotoPrintOrder.TabIndex = 4;
+            this.btnReloadPhotoPrintOrder.TabIndex = 3;
             this.btnReloadPhotoPrintOrder.Text = "تعریف مجدد";
             this.btnReloadPhotoPrintOrder.Click += new System.EventHandler(this.btnCancelPhotoOrderPrint_Click);
             // 
@@ -1972,7 +1954,7 @@
             this.btnCancelPhotoOrderPrintItem.Symbol = "";
             this.btnCancelPhotoOrderPrintItem.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnCancelPhotoOrderPrintItem.SymbolSize = 10F;
-            this.btnCancelPhotoOrderPrintItem.TabIndex = 3;
+            this.btnCancelPhotoOrderPrintItem.TabIndex = 4;
             this.btnCancelPhotoOrderPrintItem.Text = "حذف";
             this.btnCancelPhotoOrderPrintItem.Click += new System.EventHandler(this.btnCancelPhotoOrderPrint_Click);
             // 
@@ -2324,6 +2306,24 @@
             this.bgWorkerLoadPicture.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerLoadPicture_DoWork);
             this.bgWorkerLoadPicture.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerLoadPicture_RunWorkerCompleted);
             // 
+            // txtTotalPriceRePrintLitPrint
+            // 
+            // 
+            // 
+            // 
+            this.txtTotalPriceRePrintLitPrint.Border.Class = "TextBoxBorder";
+            this.txtTotalPriceRePrintLitPrint.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTotalPriceRePrintLitPrint.Location = new System.Drawing.Point(10, 102);
+            this.txtTotalPriceRePrintLitPrint.Name = "txtTotalPriceRePrintLitPrint";
+            this.txtTotalPriceRePrintLitPrint.PreventEnterBeep = true;
+            this.txtTotalPriceRePrintLitPrint.ReadOnly = true;
+            this.txtTotalPriceRePrintLitPrint.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtTotalPriceRePrintLitPrint.Size = new System.Drawing.Size(121, 21);
+            this.txtTotalPriceRePrintLitPrint.TabIndex = 229;
+            this.txtTotalPriceRePrintLitPrint.TabStop = false;
+            this.txtTotalPriceRePrintLitPrint.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTotalPriceRePrintLitPrint.WatermarkText = "هزینه لیت پرینت (ريال)";
+            // 
             // FrmAddEditPreFactor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2364,7 +2364,7 @@
             this.gBoxRePrint.ResumeLayout(false);
             this.gBoxRePrint.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iiRePrintServiceCounts)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iiRePrintPrintsCount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iiRePrintPrintCounts)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panelEx4.ResumeLayout(false);
             this.panelEx4.PerformLayout();
@@ -2469,7 +2469,6 @@
         private DevComponents.DotNetBar.Controls.CheckBoxX rbOriginalLitPrint;
         private DevComponents.DotNetBar.Controls.CheckBoxX chkOriginalHasChangingElements;
         private DevComponents.DotNetBar.Controls.CheckBoxX chkRePrintHasChangingElements;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtTotalPriceRePrintLitPrint;
         private DevComponents.DotNetBar.Controls.TextBoxX txtTotalPriceRePrintMutiPhoto;
         private DevComponents.DotNetBar.Controls.TextBoxX txtTotalPriceOriginalLitPrint;
         private DevComponents.DotNetBar.Controls.TextBoxX txtTotalPriceOriginalMutiPhoto;
@@ -2509,7 +2508,7 @@
         private DevComponents.DotNetBar.LabelX labelX17;
         private DevComponents.DotNetBar.LabelX labelX16;
         private DevComponents.DotNetBar.LabelX labelX15;
-        private DevComponents.Editors.IntegerInput iiRePrintPrintsCount;
+        private DevComponents.Editors.IntegerInput iiRePrintPrintCounts;
         private DevComponents.DotNetBar.LabelX labelX7;
         private DevComponents.DotNetBar.Controls.TextBoxX txtOriginalLitPrintPrice;
         private DevComponents.DotNetBar.Controls.TextBoxX txtOriginalMultiPhotoPrice;
@@ -2526,5 +2525,6 @@
         private DevComponents.DotNetBar.ButtonX btnReloadPhotoPrintOrder;
         private DevComponents.Editors.IntegerInput iiRePrintServiceCounts;
         private DevComponents.DotNetBar.Controls.TextBoxX txtRePrintTotalPrintCounts;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtTotalPriceRePrintLitPrint;
     }
 }
