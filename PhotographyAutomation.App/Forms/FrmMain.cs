@@ -3,9 +3,9 @@ using PhotographyAutomation.App.Forms.Booking;
 using PhotographyAutomation.App.Forms.Customers;
 using PhotographyAutomation.App.Forms.EntranceToAtelier;
 using PhotographyAutomation.App.Forms.Orders;
+using PhotographyAutomation.App.Forms.PrintSizeAndServices;
 using System;
 using System.Windows.Forms;
-using PhotographyAutomation.App.Forms.PrintSizeAndServices;
 
 namespace PhotographyAutomation.App.Forms
 {
@@ -77,13 +77,9 @@ namespace PhotographyAutomation.App.Forms
 
         private void btnShowFrmAddEditPrintServices_Click(object sender, EventArgs e)
         {
-            //using (FrmAddEditPrintServices frmPrintServices=new FrmAddEditPrintServices())
-            //{
-            //    frmPrintServices.ShowDialog();
-            //}
-            using (var frmAddPrintService=new FrmManagePrintSizeAndServices())
+            using (var frmManagePrintSizeAndServices = new FrmManagePrintSizeAndServices())
             {
-                frmAddPrintService.ShowDialog();
+                frmManagePrintSizeAndServices.ShowDialog();
             }
         }
     }

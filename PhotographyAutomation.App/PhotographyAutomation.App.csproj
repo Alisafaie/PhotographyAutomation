@@ -91,12 +91,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\PrintSizeAndServices\FrmAddEditCustomPrintSize.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\PrintSizeAndServices\FrmAddEditCustomPrintSize.Designer.cs">
-      <DependentUpon>FrmAddEditCustomPrintSize.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\PrintSizeAndServices\FrmAddEditPrintServiceName.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -237,9 +231,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\PrintSizeAndServices\FrmAddEditCustomPrintSize.resx">
-      <DependentUpon>FrmAddEditCustomPrintSize.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\PrintSizeAndServices\FrmAddEditPrintServiceName.resx">
       <DependentUpon>FrmAddEditPrintServiceName.cs</DependentUpon>
     </EmbeddedResource>

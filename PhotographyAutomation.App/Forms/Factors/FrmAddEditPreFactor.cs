@@ -147,25 +147,25 @@ namespace PhotographyAutomation.App.Forms.Factors
 
 
 
-                    _listOriginalPrintServicePrices = 
+                    _listOriginalPrintServicePrices =
                         db.PrintServicePricesGenericRepository
                             .Get()
                             .Select(x => new PrintServicesViewModel
-                        {
-                            Id = x.Id,
-                            PrintServiceId = x.PrintServiceId,
-                            PrintSizeId = x.PrintSizeId,
-                            PrintServiceName = x.TblPrintServices.PrintServiceName,
-                            PrintServiceDescription = x.TblPrintServices.PrintServiceDescription,
-                            PrintServicePrice = x.Price,
-                            PrintServiceCode = x.TblPrintServices.Code,
-                            SizeName = x.TblPrintSizes.Name,
-                            SizeWidth = x.TblPrintSizes.Width,
-                            SizeHeight = x.TblPrintSizes.Height,
-                            SizeDescription = x.TblPrintSizes.Descriptions
-                        })
+                            {
+                                Id = x.Id,
+                                PrintServiceId = x.PrintServiceId,
+                                PrintSizeId = x.PrintSizeId,
+                                PrintServiceName = x.TblPrintServices.PrintServiceName,
+                                PrintServiceDescription = x.TblPrintServices.PrintServiceDescription,
+                                PrintServicePrice = x.Price,
+                                PrintServiceCode = x.TblPrintServices.Code,
+                                SizeName = x.TblPrintSizes.Name,
+                                SizeWidth = x.TblPrintSizes.Width,
+                                SizeHeight = x.TblPrintSizes.Height,
+                                SizeDescription = x.TblPrintSizes.Descriptions
+                            })
                             .ToList();
-                    _listRePrintPrintServicePrices = 
+                    _listRePrintPrintServicePrices =
                         db.PrintServicePricesGenericRepository
                         .Get()
                         .Select(x => new PrintServicesViewModel
@@ -314,12 +314,14 @@ namespace PhotographyAutomation.App.Forms.Factors
                     if (_listOriginalPrintSizes.FirstOrDefault() != null)
                     {
                         txtOriginalMinimumOrder.Text = _listOriginalPrintSizes.First().MinimumOrder.ToString();
-                        
+
                         txtTotalPriceOriginalPrintSize.Text =
                             _listOriginalPrintSizePrices.First().FirstPrintPrice?.ToString("N0");
-                        
+
 
                         txtRePrintMinimumOrder.Text = _listRePrintPrintSizes.First().MinimumOrder.ToString();
+                        if (_listRePrintPrintSizes.First().MinimumOrder > 1)
+                            txtRePrintTotalPrintCounts.Visible = true;
                         txtTotalPriceRePrintPrintSize.Text =
                             _listRePrintPrintSizePrices.First().FirstPrintPrice?.ToString("N0");
                     }
@@ -408,7 +410,7 @@ namespace PhotographyAutomation.App.Forms.Factors
             try
             {
                 var resultSelectedOriginalPrintSizeId =
-                    int.TryParse(cmbOriginalPrintSizes.SelectedValue.ToString(), 
+                    int.TryParse(cmbOriginalPrintSizes.SelectedValue.ToString(),
                                    out var selectedOriginalPrintSizeId);
 
                 if (cmbOriginalPrintSizes.SelectedIndex != -1 && resultSelectedOriginalPrintSizeId)
@@ -433,7 +435,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                     GetOriginalPrintSizePrice(_selectedOriginalSizeId);
 
 
-                    List<PrintServicesViewModel> originalPrintServices = 
+                    List<PrintServicesViewModel> originalPrintServices =
                         _listOriginalPrintServicePrices
                         .Where(x => x.PrintSizeId == _selectedOriginalSizeId)
                         .ToList();
@@ -471,7 +473,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                     var printSizePrice = _listOriginalPrintSizePrices
                                         .FirstOrDefault(x => x.PrintSizeId == printSizeId);
                     if (printSizePrice != null)
-                        txtTotalPriceOriginalPrintSize.Text = 
+                        txtTotalPriceOriginalPrintSize.Text =
                             printSizePrice.FirstPrintPrice?.ToString("N0");
                 }
             }
@@ -655,7 +657,7 @@ namespace PhotographyAutomation.App.Forms.Factors
             try
             {
                 var resultSelectedRePrintPrintSizeId =
-                    int.TryParse(cmbRePrintPrintSizes.SelectedValue.ToString(), 
+                    int.TryParse(cmbRePrintPrintSizes.SelectedValue.ToString(),
                         out var selectedRePrintPrintSizeId);
 
                 if (cmbRePrintPrintSizes.SelectedIndex != -1 && resultSelectedRePrintPrintSizeId)
@@ -664,9 +666,11 @@ namespace PhotographyAutomation.App.Forms.Factors
 
                     PrintSizesViewModel printSize = _listRePrintPrintSizes
                                                     .FirstOrDefault(x => x.Id == _selectedRePrintSizeId);
+
                     if (printSize != null)
                     {
                         txtRePrintMinimumOrder.Text = printSize.MinimumOrder.ToString();
+                        txtRePrintTotalPrintCounts.Visible = printSize.MinimumOrder > 1;
                         if (printSize.HasLitPrint)
                         {
                             rbRePrintLitPrint.Enabled = true;
@@ -680,7 +684,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                     GetRePrintPrintSizePrice(_selectedRePrintSizeId);
 
 
-                    List<PrintServicesViewModel> rePrintPrintServices = 
+                    List<PrintServicesViewModel> rePrintPrintServices =
                         _listRePrintPrintServicePrices
                         .Where(x => x.PrintSizeId == _selectedRePrintSizeId)
                         .ToList();
@@ -688,7 +692,6 @@ namespace PhotographyAutomation.App.Forms.Factors
                     {
                         chkHasRePrintPrintService.Enabled = true;
                         _listRePrintPrintSizePrintServices = rePrintPrintServices;
-                        cmbRePrintPrintServices.Enabled = true;
                         cmbRePrintPrintServices.DisplayMember = "PrintServiceName";
                         cmbRePrintPrintServices.ValueMember = "Id";
                     }
@@ -715,11 +718,17 @@ namespace PhotographyAutomation.App.Forms.Factors
             {
                 if (_listRePrintPrintSizes != null)
                 {
-                    var printSizePrice = _listRePrintPrintSizePrices
+                    var printSize = _listRePrintPrintSizePrices
                                         .FirstOrDefault(x => x.PrintSizeId == printSizeId);
-                    if (printSizePrice != null)
-                        txtTotalPriceRePrintPrintSize.Text = 
-                                        printSizePrice.FirstPrintPrice?.ToString("N0");
+                    if (printSize?.RePrintPrice != null)
+                    {
+                        int printSizePrice = printSize.RePrintPrice.Value;
+                        int printCounts = iiRePrintPrintsCount.Value;
+                        int totalPrice = printSizePrice * printCounts;
+                        int minimumOrder = int.Parse(txtRePrintMinimumOrder.Text);
+                        txtRePrintTotalPrintCounts.Text = (minimumOrder * printCounts).ToString();
+                        txtTotalPriceRePrintPrintSize.Text = totalPrice.ToString("N0");
+                    }
                 }
             }
             catch (Exception exception)
@@ -736,7 +745,8 @@ namespace PhotographyAutomation.App.Forms.Factors
         {
             cmbRePrintPrintServices.Enabled =
                 txtRePrintServicePrice.Enabled =
-                    chkHasRePrintPrintService.Checked;
+                    iiRePrintServiceCounts.Enabled =
+                        chkHasRePrintPrintService.Checked;
         }
         private void cmbRePrintPrintServices_EnabledChanged(object sender, EventArgs e)
         {
@@ -883,6 +893,50 @@ namespace PhotographyAutomation.App.Forms.Factors
         private void btnRePrintChangingElements_Click(object sender, EventArgs e)
         {
 
+        }
+
+
+
+        private void iiRePrintPrintsCount_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (int.TryParse(cmbRePrintPrintSizes.SelectedValue.ToString(), out int selectedPrintSizeId))
+                {
+                    GetRePrintPrintSizePrice(selectedPrintSizeId);
+                    //if (_listRePrintPrintSizePrices != null)
+                    //{
+                    //    // ReSharper disable once PossibleNullReferenceException
+
+                    //    var printSizePrice = _listRePrintPrintSizePrices
+                    //        .SingleOrDefault(x => x.Id == selectedPrintSizeId).RePrintPrice;
+
+                    //    if (int.TryParse(iiRePrintPrintsCount.Value.ToString(), out int printCounts)
+                    //        && int.TryParse(txtRePrintMinimumOrder.Text, out int minimumOrder))
+                    //    {
+                    //        //printCounts = minimumOrder * printCounts;
+                    //        txtRePrintTotalPrintCounts.Text = (minimumOrder * printCounts).ToString();
+                    //        txtTotalPriceRePrintPrintSize.Text = (printCounts * printSizePrice).ToString();
+                    //    }
+                    //    else
+                    //    {
+                    //        txtTotalPriceRePrintPrintSize.Text = (1 * printSizePrice).ToString();
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    throw new NullReferenceException("اطلاعات قیمت عکس دریافت نشده است.");
+                    //}
+                }
+            }
+            catch (NullReferenceException exception)
+            {
+                //ignored
+            }
+            catch (Exception exception)
+            {
+                //ignored
+            }
         }
 
         #endregion
@@ -2067,5 +2121,7 @@ namespace PhotographyAutomation.App.Forms.Factors
 
 
         #endregion
+
+
     }
 }

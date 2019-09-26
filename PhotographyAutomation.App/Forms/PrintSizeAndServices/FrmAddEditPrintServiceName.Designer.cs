@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.groupBoxPrintService = new System.Windows.Forms.GroupBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.cmbPrintServices = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtPrintServiceDescription = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,17 +49,13 @@
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cmbPrintServices = new System.Windows.Forms.ComboBox();
-            this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.panelEx2.SuspendLayout();
             this.groupBoxPrintService.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelEx2
@@ -94,6 +94,57 @@
             this.groupBoxPrintService.TabIndex = 0;
             this.groupBoxPrintService.TabStop = false;
             this.groupBoxPrintService.Text = "اطلاعات خدمت چاپ";
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Controls.Add(this.checkBoxX1);
+            this.panel4.Controls.Add(this.cmbPrintServices);
+            this.panel4.Controls.Add(this.label3);
+            this.panel4.Enabled = false;
+            this.panel4.Location = new System.Drawing.Point(0, 20);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(576, 34);
+            this.panel4.TabIndex = 0;
+            // 
+            // checkBoxX1
+            // 
+            this.checkBoxX1.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX1.Enabled = false;
+            this.highlighter1.SetHighlightOnFocus(this.checkBoxX1, true);
+            this.checkBoxX1.Location = new System.Drawing.Point(98, 11);
+            this.checkBoxX1.Name = "checkBoxX1";
+            this.checkBoxX1.Size = new System.Drawing.Size(126, 16);
+            this.checkBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX1.TabIndex = 1;
+            this.checkBoxX1.Text = "حذف کامل خدمت چاپ";
+            // 
+            // cmbPrintServices
+            // 
+            this.cmbPrintServices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbPrintServices.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPrintServices.FormattingEnabled = true;
+            this.highlighter1.SetHighlightOnFocus(this.cmbPrintServices, true);
+            this.cmbPrintServices.Location = new System.Drawing.Point(247, 8);
+            this.cmbPrintServices.Name = "cmbPrintServices";
+            this.cmbPrintServices.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.cmbPrintServices.Size = new System.Drawing.Size(268, 21);
+            this.cmbPrintServices.TabIndex = 0;
+            this.cmbPrintServices.SelectedIndexChanged += new System.EventHandler(this.cmbPrintServices_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(521, 11);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(52, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "نام خدمت";
             // 
             // panel1
             // 
@@ -262,57 +313,6 @@
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.RightToLeft = true;
             // 
-            // panel4
-            // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.Controls.Add(this.checkBoxX1);
-            this.panel4.Controls.Add(this.cmbPrintServices);
-            this.panel4.Controls.Add(this.label3);
-            this.panel4.Enabled = false;
-            this.panel4.Location = new System.Drawing.Point(0, 20);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(576, 34);
-            this.panel4.TabIndex = 0;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(521, 11);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "نام خدمت";
-            // 
-            // cmbPrintServices
-            // 
-            this.cmbPrintServices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbPrintServices.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPrintServices.FormattingEnabled = true;
-            this.highlighter1.SetHighlightOnFocus(this.cmbPrintServices, true);
-            this.cmbPrintServices.Location = new System.Drawing.Point(247, 8);
-            this.cmbPrintServices.Name = "cmbPrintServices";
-            this.cmbPrintServices.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.cmbPrintServices.Size = new System.Drawing.Size(268, 21);
-            this.cmbPrintServices.TabIndex = 0;
-            this.cmbPrintServices.SelectedIndexChanged += new System.EventHandler(this.cmbPrintServices_SelectedIndexChanged);
-            // 
-            // checkBoxX1
-            // 
-            this.checkBoxX1.AutoSize = true;
-            // 
-            // 
-            // 
-            this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX1.Enabled = false;
-            this.highlighter1.SetHighlightOnFocus(this.checkBoxX1, true);
-            this.checkBoxX1.Location = new System.Drawing.Point(98, 11);
-            this.checkBoxX1.Name = "checkBoxX1";
-            this.checkBoxX1.Size = new System.Drawing.Size(126, 16);
-            this.checkBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX1.TabIndex = 1;
-            this.checkBoxX1.Text = "حذف کامل خدمت چاپ";
-            // 
             // FrmAddEditPrintServiceName
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -321,7 +321,7 @@
             this.ClientSize = new System.Drawing.Size(588, 205);
             this.Controls.Add(this.panelEx2);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -333,6 +333,8 @@
             this.Load += new System.EventHandler(this.FrmAddEditPrintServiceName_Load);
             this.panelEx2.ResumeLayout(false);
             this.groupBoxPrintService.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -340,8 +342,6 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
