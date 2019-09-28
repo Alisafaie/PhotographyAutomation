@@ -302,7 +302,7 @@ namespace PhotographyAutomation.App.Forms.PrintSizeAndServices
 
             try
             {
-                using (var frmAddEditPrintSizeServices = new FrmAddEditPrintSizeServices())
+                using (var frmAddEditPrintSizeServices = new FrmManagePrintSizeServices())
                 {
                     frmAddEditPrintSizeServices.PrintSizeId = selectedPrintSizeId;
                     frmAddEditPrintSizeServices.ShowDialog();
@@ -325,7 +325,7 @@ namespace PhotographyAutomation.App.Forms.PrintSizeAndServices
                     int.TryParse(dgvPrintServices.SelectedRows[0].Cells["clmPrintServicePriceId"].Value.ToString(),
                         out var selectePrintServicePriceId))
                 {
-                    using (var frm = new FrmAddEditPrintSizeServices())
+                    using (var frm = new FrmManagePrintSizeServices())
                     {
                         frm.EditPrintSizeServiceMode = true;
                         frm.PrintServiceId = selectedPrintServiceId;

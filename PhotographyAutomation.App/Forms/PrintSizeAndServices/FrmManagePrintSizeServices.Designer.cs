@@ -1,6 +1,6 @@
 ﻿namespace PhotographyAutomation.App.Forms.PrintSizeAndServices
 {
-    partial class FrmAddEditPrintSizeServices
+    partial class FrmManagePrintSizeServices
     {
         /// <summary>
         /// Required designer variable.
@@ -604,7 +604,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ثبت / ویرایش خدمات برای اندازه چاپ";
-            this.Load += new System.EventHandler(this.FrmAddEditPrintSizeServices_Load);
+            this.Load += new System.EventHandler(this.FrmManagePrintSizeServices_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panelEx1.ResumeLayout(false);

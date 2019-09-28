@@ -172,6 +172,7 @@ namespace PhotographyAutomation.App.Forms.PrintSizeAndServices
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+        StartOver:
             if (IsNewPrintSize)
             {
                 var newPrintSizesViewModel = new PrintSizesViewModel
@@ -235,6 +236,30 @@ namespace PhotographyAutomation.App.Forms.PrintSizeAndServices
                 {
                     using (var db = new UnitOfWork())
                     {
+                        int heightTolerance = 0;
+                        int widthTolerance = 0;
+                        var check2 = db.PrintSizesGenericRepository
+                            .Get(x => Math.Abs(x.Width - newPrintSize.Width) < widthTolerance && Math.Abs(x.Height - newPrintSize.Height) < heightTolerance).ToList();
+                        var check = db.PrintSizesGenericRepository
+                            .Get(x => x.Width == newPrintSize.Width && x.Height == newPrintSize.Height).ToList();
+
+                        if (check.Any())
+                        {
+                            var dr = MessageBox.Show(
+                                @"این اندازه چاپ قبلا در سیستم ثبت شده است." +
+                                Environment.NewLine +
+                                @"آیا می خواهید آن را به روز رسانی کنید؟", "",
+                                MessageBoxButtons.YesNo, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1,
+                                MessageBoxOptions.RtlReading);
+                            if (dr == DialogResult.Yes)
+                            {
+                                PrintSizeId = check.First().Id;
+                                IsNewPrintSize = false;
+                                goto StartOver;
+                            }
+                            return;
+                        }
+
                         db.PrintSizesGenericRepository.Insert(newPrintSize);
                         var resultSaveSize = db.Save();
                         if (resultSaveSize > 0 && newPrintSize.Id > 0)
@@ -326,7 +351,7 @@ namespace PhotographyAutomation.App.Forms.PrintSizeAndServices
                 {
                     using (var db = new UnitOfWork())
                     {
-                    RetryGetPrintSizeInfo:
+                        RetryGetPrintSizeInfo:
                         var printSizeInDb = db.PrintSizesGenericRepository.GetById(PrintSizeId);
                         if (printSizeInDb != null)
                         {
@@ -439,7 +464,8 @@ namespace PhotographyAutomation.App.Forms.PrintSizeAndServices
                         else
                         {
                             var dr = MessageBox.Show(
-                                @"متاسفانه اطلاعات اندازه چاپ از سیستم قابل دریافت نمی باشد. " + Environment.NewLine +
+                                @"متاسفانه اطلاعات اندازه چاپ از سیستم قابل دریافت نمی باشد. " +
+                                Environment.NewLine +
                                 @"لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.",
                                 @"خطا در دریافت اطلاعات اندازه چاپ",
                                 MessageBoxButtons.RetryCancel,

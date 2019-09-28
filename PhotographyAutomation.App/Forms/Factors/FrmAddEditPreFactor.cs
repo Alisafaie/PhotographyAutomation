@@ -1,4 +1,5 @@
 ﻿using PhotographyAutomation.App.Forms.Photos;
+using PhotographyAutomation.App.Forms.PrintSizeAndServices;
 using PhotographyAutomation.Business.OrderDetails;
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.DateLayer.Models;
@@ -623,7 +624,15 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         private void btnOriginalCustomPrintSize_Click(object sender, EventArgs e)
         {
-
+            using (var f = new FrmAddEditPrintSize())
+            {
+                f.IsNewPrintSize = true;
+                f.HasSizePriceBefore = false;
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    LoadPrintSizeAndServicesInfo();
+                }
+            }
         }
 
         private void btnOriginalShowFrmAddEditMutiPhotos_Click(object sender, EventArgs e)

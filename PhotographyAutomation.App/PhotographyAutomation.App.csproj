@@ -115,11 +115,11 @@
     <Compile Include="Forms\PrintSizeAndServices\FrmManagePrintSizeAndServices.Designer.cs">
       <DependentUpon>FrmManagePrintSizeAndServices.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\PrintSizeAndServices\FrmAddEditPrintSizeServices.cs">
+    <Compile Include="Forms\PrintSizeAndServices\FrmManagePrintSizeServices.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\PrintSizeAndServices\FrmAddEditPrintSizeServices.Designer.cs">
-      <DependentUpon>FrmAddEditPrintSizeServices.cs</DependentUpon>
+    <Compile Include="Forms\PrintSizeAndServices\FrmManagePrintSizeServices.Designer.cs">
+      <DependentUpon>FrmManagePrintSizeServices.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Booking\FrmAddEditBooking.cs">
       <SubType>Form</SubType>
@@ -243,8 +243,8 @@
     <EmbeddedResource Include="Forms\PrintSizeAndServices\FrmManagePrintSizeAndServices.resx">
       <DependentUpon>FrmManagePrintSizeAndServices.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\PrintSizeAndServices\FrmAddEditPrintSizeServices.resx">
-      <DependentUpon>FrmAddEditPrintSizeServices.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\PrintSizeAndServices\FrmManagePrintSizeServices.resx">
+      <DependentUpon>FrmManagePrintSizeServices.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Booking\FrmAddEditBooking.resx">
       <DependentUpon>FrmAddEditBooking.cs</DependentUpon>

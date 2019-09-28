@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace PhotographyAutomation.App.Forms.PrintSizeAndServices
 {
-    public partial class FrmAddEditPrintSizeServices : Form
+    public partial class FrmManagePrintSizeServices : Form
     {
         #region Variables
 
@@ -42,7 +42,7 @@ namespace PhotographyAutomation.App.Forms.PrintSizeAndServices
 
         #region Form Events
 
-        public FrmAddEditPrintSizeServices()
+        public FrmManagePrintSizeServices()
         {
             InitializeComponent();
 
@@ -55,7 +55,7 @@ namespace PhotographyAutomation.App.Forms.PrintSizeAndServices
             _bgWorkerGetAllPrintServices.DoWork += _bgWorkerGetAllPrintServices_DoWork;
             _bgWorkerGetAllPrintServices.RunWorkerCompleted += _bgWorkerGetAllPrintServices_RunWorkerCompleted;
         }
-        private void FrmAddEditPrintSizeServices_Load(object sender, EventArgs e)
+        private void FrmManagePrintSizeServices_Load(object sender, EventArgs e)
         {
             GetAllPhotoSizes();
             GetAllPrintServices();
