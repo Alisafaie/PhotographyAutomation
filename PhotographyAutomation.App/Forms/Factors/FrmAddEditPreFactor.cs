@@ -42,19 +42,20 @@ namespace PhotographyAutomation.App.Forms.Factors
         private static List<PrintSizesViewModel> _listOriginalPrintSizes;
         private static List<PrintSizesViewModel> _listRePrintPrintSizes;
 
+        private List<PrintServicesViewModel> _listOriginalPrintSizePrintServices;
+        private List<PrintServicesViewModel> _listRePrintPrintSizePrintServices;
+
         private static List<PrintSizePricesViewModel> _listOriginalPrintSizePrices;
         private static List<PrintSizePricesViewModel> _listRePrintPrintSizePrices;
 
         private static List<PrintServicesViewModel> _listOriginalPrintServicePrices;
         private static List<PrintServicesViewModel> _listRePrintPrintServicePrices;
 
-
         private static List<TblPrintSpecialServices> _listOriginalPrintSpecialServices;
         private static List<TblPrintSpecialServices> _listRePrintPrintSpecialServices;
 
-        private List<PrintServicesViewModel> _listOriginalPrintSizePrintServices;
-        private List<PrintServicesViewModel> _listRePrintPrintSizePrintServices;
 
+        private List<TblOrderPrintDetails> _listOrderPrintDetails;
 
         private readonly BackgroundWorker _bgWorkerLoadPrintSizeAndServicesInfo = new BackgroundWorker
         {
@@ -90,6 +91,8 @@ namespace PhotographyAutomation.App.Forms.Factors
                     }
 
                     btnPreviousPhoto.Enabled = false;
+
+                    _listOrderPrintDetails=new List<TblOrderPrintDetails>(FileStreamsGuids.Count);
                 }
                 else
                 {
