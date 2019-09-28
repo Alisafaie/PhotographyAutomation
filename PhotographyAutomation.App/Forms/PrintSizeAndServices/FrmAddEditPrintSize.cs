@@ -236,10 +236,6 @@ namespace PhotographyAutomation.App.Forms.PrintSizeAndServices
                 {
                     using (var db = new UnitOfWork())
                     {
-                        int heightTolerance = 0;
-                        int widthTolerance = 0;
-                        var check2 = db.PrintSizesGenericRepository
-                            .Get(x => Math.Abs(x.Width - newPrintSize.Width) < widthTolerance && Math.Abs(x.Height - newPrintSize.Height) < heightTolerance).ToList();
                         var check = db.PrintSizesGenericRepository
                             .Get(x => x.Width == newPrintSize.Width && x.Height == newPrintSize.Height).ToList();
 
@@ -247,10 +243,9 @@ namespace PhotographyAutomation.App.Forms.PrintSizeAndServices
                         {
                             var dr = MessageBox.Show(
                                 @"این اندازه چاپ قبلا در سیستم ثبت شده است." +
-                                Environment.NewLine +
                                 @"آیا می خواهید آن را به روز رسانی کنید؟", "",
-                                MessageBoxButtons.YesNo, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1,
-                                MessageBoxOptions.RtlReading);
+                                MessageBoxButtons.YesNo, MessageBoxIcon.Error, MessageBoxDefaultButton.Button2,
+                                MessageBoxOptions.RightAlign);
                             if (dr == DialogResult.Yes)
                             {
                                 PrintSizeId = check.First().Id;
