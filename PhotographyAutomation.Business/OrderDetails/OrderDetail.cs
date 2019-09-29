@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PhotographyAutomation.Business.OrderDetails
 {
@@ -23,6 +19,31 @@ namespace PhotographyAutomation.Business.OrderDetails
         public int PrintServiceId { get; set; }
         public int PrintServicePriceId { get; set; }
         public int PrintSpecialServiceId { get; set; }
+        public int RePrintSequence { get; set; }
+        public bool HasRePrintPrintService { get; set; }
+        public bool HasRePrintMultiPhoto { get; set; }
+        public bool HasRePrintLitPrint { get; set; }
+        public bool HasRePrintChangingElements { get; set; }
+        public int RePrintPrintSizeId { get; set; }
+        public int RePrintPrintSizePriceId { get; set; }
+        public int RePrintPrintServiceId { get; set; }
+        public int RePrintPrintServicePriceId { get; set; }
+        public int RePrintPrintSpecialServiceId { get; set; }
+        public int RePrintTotalPrints { get; set; }
+        public int RePrintTotalPrintServices { get; set; }
+        public int TotalPricePrint { get; set; }
+        public int TotalPriceMultiPhoto { get; set; }
+        public int TotalPriceLitPrint { get; set; }
+        public int TotalPricePrintService { get; set; }
+        public int TotalPriceOriginalPrint { get; set; }
+        public int TotalPriceRePrint { get; set; }
+        public int TotalPriceRePrintMultiPhoto { get; set; }
+        public int TotalPriceRePrintLitPrint { get; set; }
+        public int TotalPrice { get; set; }
+        public DateTime CreatedDateTime { get; set; }
+        public DateTime ModifiedDateTime { get; set; }
+        public string RetouchDescription { get; set; }
 
+        public bool IsAccepted { get; set; }
     }
 }

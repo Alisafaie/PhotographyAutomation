@@ -32,6 +32,8 @@ namespace PhotographyAutomation.App.Forms.Factors
         public List<Guid> FileStreamsGuids;
         public List<PhotoOrderDetails> PhotoOrderDetailsList;
 
+        
+
 
         private int _photoCursor;
         private int _selectedOriginalSizeId;
@@ -54,8 +56,8 @@ namespace PhotographyAutomation.App.Forms.Factors
         private static List<TblPrintSpecialServices> _listOriginalPrintSpecialServices;
         private static List<TblPrintSpecialServices> _listRePrintPrintSpecialServices;
 
-
-        private List<TblOrderPrintDetails> _listOrderPrintDetails;
+        private List<OrderDetail> _listOrderDetails;
+        //private List<TblOrderPrintDetails> _listOrderPrintDetails;
 
         private readonly BackgroundWorker _bgWorkerLoadPrintSizeAndServicesInfo = new BackgroundWorker
         {
@@ -92,7 +94,8 @@ namespace PhotographyAutomation.App.Forms.Factors
 
                     btnPreviousPhoto.Enabled = false;
 
-                    _listOrderPrintDetails=new List<TblOrderPrintDetails>(FileStreamsGuids.Count);
+                    //_listOrderPrintDetails=new List<TblOrderPrintDetails>(FileStreamsGuids.Count);
+                    _listOrderDetails=new List<OrderDetail>(FileStreamsGuids.Count);
                 }
                 else
                 {
@@ -990,46 +993,71 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         #region Buttons
 
+        //[SuppressMessage("ReSharper", "PossibleNullReferenceException")]
         private void btnOkPhotoOrderPrint_Click(object sender, EventArgs e)
         {
-            try
+            //try
+            //{
+            //    var currentGuid = PhotoOrderDetailsList[_photoCursor].StreamId;
+
+            //    var currentOrderDetails =
+            //        PhotoOrderDetailsList
+            //            .FirstOrDefault(x => x.StreamId == currentGuid);
+
+            //    var itemIndex = PhotoOrderDetailsList
+            //        .FindIndex(x => currentOrderDetails != null &&
+            //                        x.StreamId == currentOrderDetails.StreamId);
+
+            //    if (currentOrderDetails == null)
+            //        return;
+
+            //    currentOrderDetails.IsAccepted = 1;
+            //    currentOrderDetails.AcceptRejectImage = Properties.Resources.iconfinder_accept_blue_41177;
+
+            //    if (cmbOriginalPrintServices.SelectedValue != null &&
+            //        int.TryParse(cmbOriginalPrintServices.SelectedValue.ToString(),
+            //            out var selectedOriginalPrintServiceId))
+            //    {
+            //        currentOrderDetails.HasOriginalPrintService = true;
+            //        currentOrderDetails.OriginalServiceId = selectedOriginalPrintServiceId;
+            //    }
+
+            //    PhotoOrderDetailsList[itemIndex] = currentOrderDetails;
+
+            //    toolTip1.SetToolTip(pictureBoxIsAccepted, "عکس برای ثبت در پیش فاکتور تائید شده است.");
+            //    pictureBoxIsAccepted.Image = currentOrderDetails.AcceptRejectImage;
+
+            //    CalculateTotalPhotosConfirmed();
+            //    CaculateTotalPhotoServicesConfirmed();
+            //}
+            //catch (Exception exception)
+            //{
+            //    MessageBox.Show(exception.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error,
+            //        MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
+            //}
+            var currentGuid = PhotoOrderDetailsList[_photoCursor].StreamId;
+            var orderItem = new OrderDetail
             {
-                var currentGuid = PhotoOrderDetailsList[_photoCursor].StreamId;
+                CreatedDateTime = DateTime.Now,
+                CustomerId = CustomerId,
+                FileName = lblPhotoName.Text,
+                IsAccepted = true,
+                PrintSizeId = (int) cmbOriginalPrintSizes.SelectedValue,
+                StreamId = currentGuid,
+                RetouchDescription = textPhotoRetouchDescription.Text
+            };
 
-                var currentOrderDetails =
-                    PhotoOrderDetailsList
-                        .FirstOrDefault(x => x.StreamId == currentGuid);
-
-                var itemIndex = PhotoOrderDetailsList
-                    .FindIndex(x => currentOrderDetails != null &&
-                                    x.StreamId == currentOrderDetails.StreamId);
-
-                if (currentOrderDetails == null)
-                    return;
-
-                currentOrderDetails.IsAccepted = 1;
-                currentOrderDetails.AcceptRejectImage = Properties.Resources.iconfinder_accept_blue_41177;
-
-                if (cmbOriginalPrintServices.SelectedValue != null &&
-                    int.TryParse(cmbOriginalPrintServices.SelectedValue.ToString(),
-                        out var selectedOriginalPrintServiceId))
+            if (chkHasOriginalPrintService.Checked && cmbOriginalPrintServices.Enabled &&
+                int.TryParse(cmbOriginalPrintServices.SelectedValue.ToString(), 
+                    out int selectedPrintServiceId))
+            {
+                orderItem.HasPrintService = true;
+                orderItem.PrintServiceId = selectedPrintServiceId;
+                if (_listOriginalPrintServicePrices?.SingleOrDefault(x => x.Id == selectedPrintServiceId) != null)
                 {
-                    currentOrderDetails.HasOriginalPrintService = true;
-                    currentOrderDetails.OriginalServiceId = selectedOriginalPrintServiceId;
+                    orderItem.PrintServicePriceId = _listOriginalPrintServicePrices
+                        .SingleOrDefault(x => x.Id == selectedPrintServiceId).PrintServicePrice;
                 }
-
-                PhotoOrderDetailsList[itemIndex] = currentOrderDetails;
-
-                toolTip1.SetToolTip(pictureBoxIsAccepted, "عکس برای ثبت در پیش فاکتور تائید شده است.");
-                pictureBoxIsAccepted.Image = currentOrderDetails.AcceptRejectImage;
-
-                CalculateTotalPhotosConfirmed();
-                CaculateTotalPhotoServicesConfirmed();
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error,
-                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
             }
         }
 
