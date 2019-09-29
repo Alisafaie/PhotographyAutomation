@@ -18,8 +18,8 @@ namespace PhotographyAutomation.DateLayer.Models
         public TblOrderPrint()
         {
             this.TblAllOrderStatus = new HashSet<TblAllOrderStatus>();
-            this.TblOrderPrintFiles = new HashSet<TblOrderPrintFiles>();
             this.TblOrderPrintDetails = new HashSet<TblOrderPrintDetails>();
+            this.TblOrderPrintFiles = new HashSet<TblOrderPrintFiles>();
         }
     
         public int Id { get; set; }
@@ -29,12 +29,19 @@ namespace PhotographyAutomation.DateLayer.Models
         public int OrderPrintStatusId { get; set; }
         public int CustomerId { get; set; }
         public string RetochDescriptions { get; set; }
-        public Nullable<int> TotalPhotos { get; set; }
-        public Nullable<long> TotalPrice { get; set; }
-        public Nullable<long> Payment { get; set; }
-        public Nullable<long> Deposit { get; set; }
-        public Nullable<long> Remaining { get; set; }
         public bool IsActive { get; set; }
+        public Nullable<int> TotalPhotos { get; set; }
+        public Nullable<int> TotalPriceOriginalPrint { get; set; }
+        public Nullable<int> TotalPriceMultiPhoto { get; set; }
+        public Nullable<int> TotalPriceLitPrint { get; set; }
+        public Nullable<int> TotalPricePrintService { get; set; }
+        public Nullable<int> TotalPriceRePrint { get; set; }
+        public Nullable<int> TotalPriceRePrintMultiPhoto { get; set; }
+        public Nullable<int> TotalPriceRePrintLitPrint { get; set; }
+        public Nullable<long> TotalPrice { get; set; }
+        public Nullable<long> Deposit { get; set; }
+        public Nullable<long> Payment { get; set; }
+        public Nullable<long> Remaining { get; set; }
         public System.DateTime CreatedDateTime { get; set; }
         public Nullable<System.DateTime> ModifiedDateTime { get; set; }
     
@@ -44,8 +51,8 @@ namespace PhotographyAutomation.DateLayer.Models
         public virtual TblOrder TblOrder { get; set; }
         public virtual TblOrderPrintStatus TblOrderPrintStatus { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblOrderPrintFiles> TblOrderPrintFiles { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblOrderPrintDetails> TblOrderPrintDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblOrderPrintFiles> TblOrderPrintFiles { get; set; }
     }
 }

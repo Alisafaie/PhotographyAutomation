@@ -15,8 +15,6 @@ using System.Linq;
 using System.Windows.Forms;
 using Exception = System.Exception;
 
-#pragma warning disable 168
-
 namespace PhotographyAutomation.App.Forms.Factors
 {
     public partial class FrmAddEditPreFactor : Form
@@ -31,8 +29,6 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         public List<Guid> FileStreamsGuids;
         public List<PhotoOrderDetails> PhotoOrderDetailsList;
-
-        
 
 
         private int _photoCursor;
@@ -95,7 +91,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                     btnPreviousPhoto.Enabled = false;
 
                     //_listOrderPrintDetails=new List<TblOrderPrintDetails>(FileStreamsGuids.Count);
-                    _listOrderDetails=new List<OrderDetail>(FileStreamsGuids.Count);
+                    _listOrderDetails = new List<OrderDetail>(FileStreamsGuids.Count);
                 }
                 else
                 {
@@ -543,7 +539,7 @@ namespace PhotographyAutomation.App.Forms.Factors
 
 
 
-        private void rbOriginalMultiPhoto_CheckedChanged(object sender, EventArgs e)
+        private void RbOriginalMultiPhoto_CheckedChanged(object sender, EventArgs e)
         {
             if (rbOriginalMultiPhoto.Checked)
             {
@@ -577,7 +573,7 @@ namespace PhotographyAutomation.App.Forms.Factors
 
 
 
-        private void rbOriginalLitPrint_CheckedChanged(object sender, EventArgs e)
+        private void RbOriginalLitPrint_CheckedChanged(object sender, EventArgs e)
         {
             try
             {
@@ -620,7 +616,7 @@ namespace PhotographyAutomation.App.Forms.Factors
 
 
 
-        private void chkOriginalHasChangingElements_CheckedChanged(object sender, EventArgs e)
+        private void ChkOriginalHasChangingElements_CheckedChanged(object sender, EventArgs e)
         {
             btnOriginalChangingElements.Enabled = chkOriginalHasChangingElements.Checked;
         }
@@ -628,7 +624,7 @@ namespace PhotographyAutomation.App.Forms.Factors
 
 
 
-        private void btnOriginalCustomPrintSize_Click(object sender, EventArgs e)
+        private void BtnOriginalCustomPrintSize_Click(object sender, EventArgs e)
         {
             using (var f = new FrmAddEditPrintSize())
             {
@@ -641,17 +637,17 @@ namespace PhotographyAutomation.App.Forms.Factors
             }
         }
 
-        private void btnOriginalShowFrmAddEditMutiPhotos_Click(object sender, EventArgs e)
+        private void BtnOriginalShowFrmAddEditMutiPhotos_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void btnOriginalShowFrmAddEditLitPrint_Click(object sender, EventArgs e)
+        private void BtnOriginalShowFrmAddEditLitPrint_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void btnOriginalChangingElements_Click(object sender, EventArgs e)
+        private void BtnOriginalChangingElements_Click(object sender, EventArgs e)
         {
 
         }
@@ -805,7 +801,7 @@ namespace PhotographyAutomation.App.Forms.Factors
 
 
 
-        private void rbRePrintMultiPhoto_CheckedChanged(object sender, EventArgs e)
+        private void RbRePrintMultiPhoto_CheckedChanged(object sender, EventArgs e)
         {
             if (rbRePrintMultiPhoto.Checked)
             {
@@ -839,7 +835,7 @@ namespace PhotographyAutomation.App.Forms.Factors
 
 
 
-        private void rbRePrintLitPrint_CheckedChanged(object sender, EventArgs e)
+        private void RbRePrintLitPrint_CheckedChanged(object sender, EventArgs e)
         {
             try
             {
@@ -992,9 +988,141 @@ namespace PhotographyAutomation.App.Forms.Factors
 
 
         #region Buttons
+        //btnOkOriginalPrint
+        private int CalculateOriginalPrintTotalPrice()
+        {
+            int totalPriceOriginalPrintSize = 0;
+            int totalPriceOriginalMutiPhoto = 0;
+            int totalPriceOriginalLitPrint = 0;
+            int totalPriceOriginalServices = 0;
+
+            int.TryParse(txtTotalPriceOriginalPrintSize.Text, out totalPriceOriginalPrintSize);
+            int.TryParse(txtTotalPriceOriginalMutiPhoto.Text, out totalPriceOriginalMutiPhoto);
+            int.TryParse(txtTotalPriceOriginalLitPrint.Text, out totalPriceOriginalLitPrint);
+            int.TryParse(txtTotalPriceOriginalServices.Text, out totalPriceOriginalServices);
+
+            int result = totalPriceOriginalPrintSize + totalPriceOriginalMutiPhoto +
+                totalPriceOriginalLitPrint + totalPriceOriginalServices;
+            return result;
+        }
+        private void btnOkOriginalPrint_Click(object sender, EventArgs e)
+        {
+            var currentGuid = PhotoOrderDetailsList[_photoCursor].StreamId;
+            var orderItem = new OrderDetail
+            {
+                OrderPrintId = OrderPrintId,
+                CustomerId = CustomerId,
+                StreamId = currentGuid,
+                FileName = lblPhotoName.Text,
+                IsAccepted = true,
+                PrintSizeId = (int)cmbOriginalPrintSizes.SelectedValue,
+                RetouchDescription = textOriginalPhotoRetouchDescription.Text,
+                CreatedDateTime = DateTime.Now,
+                IsFirstprint = true,
+            };
+            
+
+            if (chkHasOriginalPrintService.Checked && cmbOriginalPrintServices.Enabled &&
+                int.TryParse(cmbOriginalPrintServices.SelectedValue.ToString(),
+                    out int selectedPrintServiceId))
+            {
+                orderItem.HasPrintService = true;
+                orderItem.PrintServiceId = selectedPrintServiceId;
+                int printServerPrice = 0;
+                if (_listOriginalPrintServicePrices?.SingleOrDefault(x => x.Id == selectedPrintServiceId) != null)
+                {
+                    printServerPrice = _listOriginalPrintServicePrices
+                        .SingleOrDefault(x => x.Id == selectedPrintServiceId)
+                        .PrintServicePrice;
+                }
+                orderItem.PrintServicePriceId = printServerPrice;
+            }
+
+            orderItem.TotalPrice = CalculateOriginalPrintTotalPrice();
+
+            _listOrderDetails.Add(orderItem);
+        }
+
+
+        //btnOkRePrint
+
+        private void ChkIsActiveRePrint_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkIsActiveRePrint.Checked)
+            {
+                chkIsActiveRePrint.Text = "فعال";
+                btnOKRePrint.Enabled = true;
+                btnReloadRePrintPhotoPrintOrder.Enabled = true;
+                btnCancelRePrintPhotoOrderPrint.Enabled = true;
+            }
+            else
+            {
+                chkIsActiveRePrint.Text = "غیرفعال";
+                btnOKRePrint.Enabled = false;
+                btnReloadRePrintPhotoPrintOrder.Enabled = false;
+                btnCancelRePrintPhotoOrderPrint.Enabled = false;
+            }
+        }
+        private int CalculateRePrintTotalPrice()
+        {
+            int totalPriceRePrintPrintSize = 0;
+            int totalPriceRePrintMutiPhoto = 0;
+            int totalPriceRePrintLitPrint = 0;
+            int totalPriceRePrintServices = 0;
+
+            int.TryParse(txtTotalPriceRePrintPrintSize.Text, out totalPriceRePrintPrintSize);
+            int.TryParse(txtTotalPriceRePrintMutiPhoto.Text, out totalPriceRePrintMutiPhoto);
+            int.TryParse(txtTotalPriceRePrintLitPrint.Text, out totalPriceRePrintLitPrint);
+            int.TryParse(txtTotalPriceRePrintServices.Text, out totalPriceRePrintServices);
+
+            int result = totalPriceRePrintPrintSize + totalPriceRePrintMutiPhoto +
+                totalPriceRePrintLitPrint + totalPriceRePrintServices;
+            return result;
+        }
+        private void BtnOKRePrint_Click(object sender, EventArgs e)
+        {
+            var currentGuid = PhotoOrderDetailsList[_photoCursor].StreamId;
+            var orderItemReprint = new OrderDetail
+            {
+                OrderPrintId = OrderPrintId,
+                CustomerId = CustomerId,
+                StreamId = currentGuid,
+                RePrintSequence = (cmbRePrintSequence.SelectedIndex) + 1,
+                FileName = lblPhotoName.Text,
+                IsAccepted = true,
+                PrintSizeId = (int)cmbRePrintPrintSizes.SelectedValue,
+                RePrintTotalPrints = iiRePrintPrintCounts.Value,
+                RetouchDescription = textRePrintPhotoRetouchDescription.Text,
+                CreatedDateTime = DateTime.Now,
+                IsFirstprint = false,
+            };
+
+            if (chkHasRePrintPrintService.Checked && cmbRePrintPrintServices.Enabled &&
+                int.TryParse(cmbRePrintPrintServices.SelectedValue.ToString(),
+                    out int selectedPrintServiceId))
+            {
+                orderItemReprint.HasPrintService = true;
+                orderItemReprint.PrintServiceId = selectedPrintServiceId;
+                int printServerPrice = 0;
+                if (_listRePrintPrintServicePrices?.SingleOrDefault(x => x.Id == selectedPrintServiceId) != null)
+                {
+                    printServerPrice = _listRePrintPrintServicePrices
+                        .SingleOrDefault(x => x.Id == selectedPrintServiceId)
+                        .PrintServicePrice;
+                }
+                orderItemReprint.PrintServicePriceId = printServerPrice;
+            }
+
+            orderItemReprint.TotalPrice = CalculateRePrintTotalPrice();
+
+            _listOrderDetails.Add(orderItemReprint);
+        }
+
+
+
 
         //[SuppressMessage("ReSharper", "PossibleNullReferenceException")]
-        private void btnOkPhotoOrderPrint_Click(object sender, EventArgs e)
+        private void BtnOkPhotoOrderPrint_Click(object sender, EventArgs e)
         {
             //try
             //{
@@ -1035,33 +1163,10 @@ namespace PhotographyAutomation.App.Forms.Factors
             //    MessageBox.Show(exception.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error,
             //        MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
             //}
-            var currentGuid = PhotoOrderDetailsList[_photoCursor].StreamId;
-            var orderItem = new OrderDetail
-            {
-                CreatedDateTime = DateTime.Now,
-                CustomerId = CustomerId,
-                FileName = lblPhotoName.Text,
-                IsAccepted = true,
-                PrintSizeId = (int) cmbOriginalPrintSizes.SelectedValue,
-                StreamId = currentGuid,
-                RetouchDescription = textPhotoRetouchDescription.Text
-            };
 
-            if (chkHasOriginalPrintService.Checked && cmbOriginalPrintServices.Enabled &&
-                int.TryParse(cmbOriginalPrintServices.SelectedValue.ToString(), 
-                    out int selectedPrintServiceId))
-            {
-                orderItem.HasPrintService = true;
-                orderItem.PrintServiceId = selectedPrintServiceId;
-                if (_listOriginalPrintServicePrices?.SingleOrDefault(x => x.Id == selectedPrintServiceId) != null)
-                {
-                    orderItem.PrintServicePriceId = _listOriginalPrintServicePrices
-                        .SingleOrDefault(x => x.Id == selectedPrintServiceId).PrintServicePrice;
-                }
-            }
         }
 
-        private void btnCancelPhotoOrderPrint_Click(object sender, EventArgs e)
+        private void BtnCancelPhotoOrderPrint_Click(object sender, EventArgs e)
         {
             var dr = MessageBox.Show(
                 @"آیا واقعا می خواهید عکس مورد نظر را از پیش فاکتور حذف کنید؟",
@@ -1113,13 +1218,13 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         #region TXT Enter Persian Leave English
 
-        private void txt_TypeFarsi_Enter(object sender, EventArgs e)
+        private void Txt_TypeFarsi_Enter(object sender, EventArgs e)
         {
             var language = new System.Globalization.CultureInfo("fa-IR");
             InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
         }
 
-        private void txt_TypeFarsi_Leave(object sender, EventArgs e)
+        private void Txt_TypeFarsi_Leave(object sender, EventArgs e)
         {
             var language = new System.Globalization.CultureInfo("en-US");
             InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
@@ -1167,7 +1272,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                 //    }
                 //}
 
-                currentOrderDetails.RetouchDescriptions = textPhotoRetouchDescription.Text;
+                currentOrderDetails.RetouchDescriptions = textOriginalPhotoRetouchDescription.Text;
 
                 ///////
                 // Second Print 1
@@ -1403,7 +1508,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                 }
 
                 if (nextOrderDetails.RetouchDescriptions != null)
-                    textPhotoRetouchDescription.Text = nextOrderDetails.RetouchDescriptions;
+                    textOriginalPhotoRetouchDescription.Text = nextOrderDetails.RetouchDescriptions;
                 pictureBoxIsAccepted.Image = nextOrderDetails.AcceptRejectImage ??
                                              Properties.Resources.iconfinder_flickr_317744;
 
@@ -1910,7 +2015,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                 }
 
                 if (previousOrderDetails.RetouchDescriptions != null)
-                    textPhotoRetouchDescription.Text = previousOrderDetails.RetouchDescriptions;
+                    textOriginalPhotoRetouchDescription.Text = previousOrderDetails.RetouchDescriptions;
 
                 pictureBoxIsAccepted.Image = previousOrderDetails.AcceptRejectImage ??
                                              Properties.Resources.iconfinder_flickr_317744;
@@ -2137,6 +2242,9 @@ namespace PhotographyAutomation.App.Forms.Factors
 
 
 
+
         #endregion
+
+
     }
 }

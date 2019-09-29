@@ -292,8 +292,8 @@
             this.txtCustomerInfo.Size = new System.Drawing.Size(238, 21);
             this.txtCustomerInfo.TabIndex = 3;
             this.txtCustomerInfo.WatermarkText = "(نام ، نام خانوادگی ، تلفن ثابت، تلفن همراه)";
-            this.txtCustomerInfo.Enter += new System.EventHandler(this.txtCustomerInfo_Enter);
-            this.txtCustomerInfo.Leave += new System.EventHandler(this.txtCustomerInfo_Leave);
+            this.txtCustomerInfo.Enter += new System.EventHandler(this.TxtCustomerInfo_Enter);
+            this.txtCustomerInfo.Leave += new System.EventHandler(this.TxtCustomerInfo_Leave);
             // 
             // datePickerBookingDateTo
             // 

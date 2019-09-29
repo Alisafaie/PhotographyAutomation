@@ -5,32 +5,30 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="e7e41739ebbd420381004722f0754320" Name="Diagram1" ZoomLevel="100">
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblAlbums" Width="1.5" PointX="5" PointY="27" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblAllOrderStatus" Width="1.875" PointX="12.75" PointY="9.375" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblAtelierType" Width="1.5" PointX="0.75" PointY="14.75" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblBooking" Width="1.5" PointX="3" PointY="8.5" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblBookingStatus" Width="1.5" PointX="0.75" PointY="5.25" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblCustomer" Width="1.5" PointX="0.75" PointY="8" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblFilesError" Width="1.5" PointX="5.25" PointY="9" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrder" Width="1.5" PointX="8.25" PointY="7.375" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrderFiles" Width="1.5" PointX="10.5" PointY="18.875" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrderPrint" Width="1.5" PointX="10.5" PointY="8.25" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrderPrintFiles" Width="1.75" PointX="12.75" PointY="14.75" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrderPrintStatus" Width="1.75" PointX="11.125" PointY="5.125" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrderStatus" Width="1.5" PointX="11.125" PointY="3" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPhotographyType" Width="1.875" PointX="0.75" PointY="17.375" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPrintCustomerFiles" Width="1.5" PointX="5" PointY="24.375" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPrintServicePrices" Width="1.5" PointX="15.75" PointY="13.75" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPrintServices" Width="1.5" PointX="13.5" PointY="5.75" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPrintSizePrices" Width="1.5" PointX="5" PointY="20.125" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPrintSizes" Width="1.5" PointX="2.75" PointY="19.625" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPrintSpecialServices" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblAlbums" Width="1.5" PointX="5" PointY="27" IsExpanded="false" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblAllOrderStatus" Width="1.875" PointX="12.75" PointY="9.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblAtelierType" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblBooking" Width="1.5" PointX="3" PointY="8.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblBookingStatus" Width="1.625" PointX="5.25" PointY="11.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblCustomer" Width="1.5" PointX="0.625" PointY="6.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblFilesError" Width="1.5" PointX="5.25" PointY="9" IsExpanded="false" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrder" Width="1.5" PointX="8.25" PointY="7.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrderFiles" Width="1.5" PointX="10.5" PointY="18.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrderPrintFiles" Width="1.75" PointX="16.25" PointY="15.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrderPrintStatus" Width="1.75" PointX="11.125" PointY="5.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrderStatus" Width="1.5" PointX="11.125" PointY="3" IsExpanded="false" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPhotographyType" Width="1.875" PointX="0.75" PointY="17.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPrintCustomerFiles" Width="1.875" PointX="5" PointY="24.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPrintServicePrices" Width="1.5" PointX="12.75" PointY="13.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPrintServices" Width="1.5" PointX="13.5" PointY="5.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPrintSizePrices" Width="1.875" PointX="5" PointY="20.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPrintSizes" Width="1.5" PointX="2.75" PointY="19.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblPrintSpecialServices" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="false" />
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.View_GetAllPhotos" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="false" />
         <EntityTypeShape EntityType="PhotographyAutomationDBModel.View_GetAllPrintSizeAndServicesInfo" Width="2.625" PointX="4.5" PointY="0.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.View_GetDocumentsFolders" Width="1.5" PointX="15.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.View_GetDocumentsFolders" Width="2.25" PointX="15.75" PointY="0.75" IsExpanded="false" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblAlbums_TblPrintSizes" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblAllOrderStatus_TblOrder" />
-        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblAllOrderStatus_TblOrderPrint" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblBooking_TblAtelierType" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblBooking_TblBookingStatus" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblBooking_TblPhotographyType" />
@@ -40,24 +38,27 @@
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblFilesError_TblCustomer" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrder_TblCustomer" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrder_TblCustomer1" />
-        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderPrint_TblCustomer" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblFilesError_TblOrder" />
-        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrder_TblOrderPrint" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrder_TblOrderStatus" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrder_TblPhotographyType" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderStreams_TblOrder" />
-        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderPrint_TblOrderPrintStatus" />
-        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderPrintFiles_TblOrderPrint" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblCustomerFilePrint_TblPrintSizes" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblPrintServicePrices_TblPrintServices" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblPrintServicePrices_TblPrintSizes" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblSizePrice_TblPrintSizes1" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrderPrintChangingElements" Width="1.5" PointX="21.625" PointY="14.625" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrderPrintLitPrint" Width="1.5" PointX="21.625" PointY="8.125" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrderPrintMultiPhotoOrder" Width="1.5" PointX="21.625" PointY="11.375" />
-        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrderPrintDetails" Width="2.375" PointX="18" PointY="7" />
-        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblCustomer" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrderPrintChangingElements" Width="1.5" PointX="19.125" PointY="16.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrderPrintLitPrint" Width="1.5" PointX="22.5" PointY="8.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrderPrintMultiPhotoOrder" Width="1.5" PointX="22.5" PointY="11.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrderPrint" Width="2.125" PointX="16.25" PointY="6.375" />
+        <EntityTypeShape EntityType="PhotographyAutomationDBModel.TblOrderPrintDetails" Width="2.625" PointX="19.125" PointY="5.625" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblAllOrderStatus_TblOrderPrint" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderPrint_TblCustomer" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblCustomer" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrder_TblOrderPrint" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderPrint_TblOrderPrintStatus" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblOrderPrint" />
+        <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderPrintFiles_TblOrderPrint" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderPrintChangingElements_TblOrderPrintDetails" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintServicePrices" />
         <AssociationConnector Association="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintServicePrices_RePrint" />

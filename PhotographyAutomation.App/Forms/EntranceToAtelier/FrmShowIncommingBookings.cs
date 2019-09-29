@@ -552,42 +552,42 @@ namespace PhotographyAutomation.App.Forms.EntranceToAtelier
 
         private void ارسالپیامکبهمشتریToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Kavenegar.KavenegarApi api =
-                    new Kavenegar.KavenegarApi("3235536372716D7A42464C4C344A54374E6A324271644F65317766784E46372B");
-                var res = api.Send("10004346", "00989133138675", "استودیو عکاسی سایان.");
-                //Console.Write(res.Messageid.ToString());
-                MessageBox.Show(res.Messageid.ToString());
+            //try
+            //{
+            //    Kavenegar.KavenegarApi api =
+            //        new Kavenegar.KavenegarApi("3235536372716D7A42464C4C344A54374E6A324271644F65317766784E46372B");
+            //    var res = api.Send("10004346", "00989133138675", "استودیو عکاسی سایان.");
+            //    //Console.Write(res.Messageid.ToString());
+            //    MessageBox.Show(res.Messageid.ToString());
 
-                //foreach (SendResult r in res)
-                //{
-                //    Console.Write(r.Messageid.ToString());  //Collect MessageId(s) and store them
-                //}
-            }
-            catch (Kavenegar.Exceptions.ApiException ex)
-            {
-                // در صورتی که خروجی وب سرویس 200 نباشد این خطارخ می دهد.
-                MessageBox.Show(@"Message : " + ex.Message);
-            }
-            catch (Kavenegar.Exceptions.HttpException ex)
-            {
-                // در زمانی که مشکلی در برقرای ارتباط با وب سرویس وجود داشته باشد این خطا رخ می دهد
-                MessageBox.Show(@"Message : " + ex.Message);
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(@"Message : " + exception.Message);
-            }
+            //    //foreach (SendResult r in res)
+            //    //{
+            //    //    Console.Write(r.Messageid.ToString());  //Collect MessageId(s) and store them
+            //    //}
+            //}
+            //catch (Kavenegar.Exceptions.ApiException ex)
+            //{
+            //    // در صورتی که خروجی وب سرویس 200 نباشد این خطارخ می دهد.
+            //    MessageBox.Show(@"Message : " + ex.Message);
+            //}
+            //catch (Kavenegar.Exceptions.HttpException ex)
+            //{
+            //    // در زمانی که مشکلی در برقرای ارتباط با وب سرویس وجود داشته باشد این خطا رخ می دهد
+            //    MessageBox.Show(@"Message : " + ex.Message);
+            //}
+            //catch (Exception exception)
+            //{
+            //    MessageBox.Show(@"Message : " + exception.Message);
+            //}
         }
 
-        private void txtCustomerInfo_Enter(object sender, EventArgs e)
+        private void TxtCustomerInfo_Enter(object sender, EventArgs e)
         {
             var language = new System.Globalization.CultureInfo("fa-IR");
             InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);
         }
 
-        private void txtCustomerInfo_Leave(object sender, EventArgs e)
+        private void TxtCustomerInfo_Leave(object sender, EventArgs e)
         {
             var language = new System.Globalization.CultureInfo("en-US");
             InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(language);

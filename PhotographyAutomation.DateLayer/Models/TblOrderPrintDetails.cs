@@ -27,6 +27,7 @@ namespace PhotographyAutomation.DateLayer.Models
         public System.Guid StreamId { get; set; }
         public int CustomerId { get; set; }
         public string FileName { get; set; }
+        public Nullable<bool> IsAccepted { get; set; }
         public Nullable<bool> IsFirstPrint { get; set; }
         public Nullable<bool> HasPrintService { get; set; }
         public Nullable<bool> HasMultiPhoto { get; set; }
@@ -49,18 +50,10 @@ namespace PhotographyAutomation.DateLayer.Models
         public Nullable<int> RePrintPrintSpecialServiceId { get; set; }
         public Nullable<int> RePrintTotalPrints { get; set; }
         public Nullable<int> RePrintTotalPrintServices { get; set; }
+        public string RetouchDescription { get; set; }
+        public Nullable<int> TotalPrice { get; set; }
         public System.DateTime CreatedDateTime { get; set; }
         public Nullable<System.DateTime> ModifiedDateTime { get; set; }
-        public string RetouchDescription { get; set; }
-        public Nullable<int> TotalPricePrint { get; set; }
-        public Nullable<int> TotalPriceMultiPhoto { get; set; }
-        public Nullable<int> TotalPriceLitPrint { get; set; }
-        public Nullable<int> TotalPricePrintService { get; set; }
-        public Nullable<int> TotalPriceOriginalPrint { get; set; }
-        public Nullable<int> TotalPriceRePrint { get; set; }
-        public Nullable<int> TotalPriceRePrintMultiPhoto { get; set; }
-        public Nullable<int> TotalPriceRePrintLitPrint { get; set; }
-        public Nullable<int> TotalPrice { get; set; }
     
         public virtual TblCustomer TblCustomer { get; set; }
         public virtual TblOrderPrint TblOrderPrint { get; set; }
