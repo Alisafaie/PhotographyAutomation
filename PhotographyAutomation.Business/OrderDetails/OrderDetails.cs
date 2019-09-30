@@ -2,7 +2,7 @@
 
 namespace PhotographyAutomation.Business.OrderDetails
 {
-    public class OrderDetail
+    public class OrderDetails
     {
         public int Id { get; set; }
         public int OrderPrintId { get; set; }
@@ -45,5 +45,6 @@ namespace PhotographyAutomation.Business.OrderDetails
         public string RetouchDescription { get; set; }
 
         public bool IsAccepted { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

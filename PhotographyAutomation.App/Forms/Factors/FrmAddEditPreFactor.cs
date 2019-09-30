@@ -28,7 +28,6 @@ namespace PhotographyAutomation.App.Forms.Factors
         public bool IsNewPreFactor = true;
 
         public List<Guid> FileStreamsGuids;
-        public List<PhotoOrderDetails> PhotoOrderDetailsList;
 
 
         private int _photoCursor;
@@ -52,8 +51,7 @@ namespace PhotographyAutomation.App.Forms.Factors
         private static List<TblPrintSpecialServices> _listOriginalPrintSpecialServices;
         private static List<TblPrintSpecialServices> _listRePrintPrintSpecialServices;
 
-        private List<OrderDetail> _listOrderDetails;
-        //private List<TblOrderPrintDetails> _listOrderPrintDetails;
+        public List<OrderDetails> OrderDetailsList;
 
         private readonly BackgroundWorker _bgWorkerLoadPrintSizeAndServicesInfo = new BackgroundWorker
         {
@@ -91,7 +89,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                     btnPreviousPhoto.Enabled = false;
 
                     //_listOrderPrintDetails=new List<TblOrderPrintDetails>(FileStreamsGuids.Count);
-                    _listOrderDetails = new List<OrderDetail>(FileStreamsGuids.Count);
+                    //OrderDetailsList = new List<OrderDetails>(FileStreamsGuids.Count);
                 }
                 else
                 {
@@ -639,17 +637,14 @@ namespace PhotographyAutomation.App.Forms.Factors
                 }
             }
         }
-
         private void BtnOriginalShowFrmAddEditMutiPhotos_Click(object sender, EventArgs e)
         {
 
         }
-
         private void BtnOriginalShowFrmAddEditLitPrint_Click(object sender, EventArgs e)
         {
 
         }
-
         private void BtnOriginalChangingElements_Click(object sender, EventArgs e)
         {
 
@@ -895,17 +890,14 @@ namespace PhotographyAutomation.App.Forms.Factors
         {
 
         }
-
         private void btnRePrintShowFrmAddEditMutiPhotos_Click(object sender, EventArgs e)
         {
 
         }
-
         private void btnRePrintShowFrmAddEditLitPrint_Click(object sender, EventArgs e)
         {
 
         }
-
         private void btnRePrintChangingElements_Click(object sender, EventArgs e)
         {
 
@@ -935,8 +927,6 @@ namespace PhotographyAutomation.App.Forms.Factors
         #endregion
 
 
-
-
         #region Methods
 
         private void ResetTextBoxesAndComboxes()
@@ -954,40 +944,39 @@ namespace PhotographyAutomation.App.Forms.Factors
 
             #endregion
         }
-        private void CalculateTotalPhotosConfirmed()
-        {
-            var totalPhotosConfirmed = 0;
-            foreach (var photo in PhotoOrderDetailsList)
-            {
-                if (photo.IsAccepted == 1)
-                    totalPhotosConfirmed++;
-            }
 
-            txtTotalSelectedPhotos.Text = totalPhotosConfirmed.ToString();
-        }
-        private void CaculateTotalPhotoServicesConfirmed()
-        {
-            var totalPhotoServices = 0;
-            foreach (var photo in PhotoOrderDetailsList)
-            {
-                if (photo.HasOriginalPrintService && photo.OriginalServiceId > 0)
-                    totalPhotoServices++;
-                if (photo.HasSecondPrint1Service && photo.SecondPrint1ServiceId > 0)
-                    totalPhotoServices += photo.SecondPrint1ServiceCount;
-                if (photo.HasSecondPrint2Service && photo.SecondPrint2ServiceId > 0)
-                    totalPhotoServices += photo.SecondPrint2ServiceCount;
-                if (photo.HasSecondPrint3Service && photo.SecondPrint3ServiceId > 0)
-                    totalPhotoServices += photo.SecondPrint3ServiceCount;
-                if (photo.HasSecondPrint4Service && photo.SecondPrint4ServiceId > 0)
-                    totalPhotoServices += photo.SecondPrint4ServiceCount;
-            }
+        //private void CalculateTotalPhotosConfirmed()
+        //{
+        //    var totalPhotosConfirmed = 0;
+        //    foreach (var photo in PhotoOrderDetailsList)
+        //    {
+        //        if (photo.IsAccepted == 1)
+        //            totalPhotosConfirmed++;
+        //    }
 
-            txtTotalPrintServices.Text = totalPhotoServices.ToString();
-        }
+        //    txtTotalSelectedPhotos.Text = totalPhotosConfirmed.ToString();
+        //}
+        //private void CaculateTotalPhotoServicesConfirmed()
+        //{
+        //    var totalPhotoServices = 0;
+        //    foreach (var photo in PhotoOrderDetailsList)
+        //    {
+        //        if (photo.HasOriginalPrintService && photo.OriginalServiceId > 0)
+        //            totalPhotoServices++;
+        //        if (photo.HasSecondPrint1Service && photo.SecondPrint1ServiceId > 0)
+        //            totalPhotoServices += photo.SecondPrint1ServiceCount;
+        //        if (photo.HasSecondPrint2Service && photo.SecondPrint2ServiceId > 0)
+        //            totalPhotoServices += photo.SecondPrint2ServiceCount;
+        //        if (photo.HasSecondPrint3Service && photo.SecondPrint3ServiceId > 0)
+        //            totalPhotoServices += photo.SecondPrint3ServiceCount;
+        //        if (photo.HasSecondPrint4Service && photo.SecondPrint4ServiceId > 0)
+        //            totalPhotoServices += photo.SecondPrint4ServiceCount;
+        //    }
+
+        //    txtTotalPrintServices.Text = totalPhotoServices.ToString();
+        //}
 
         #endregion
-
-
 
 
         #region Buttons
@@ -1027,10 +1016,12 @@ namespace PhotographyAutomation.App.Forms.Factors
 
             textOriginalPhotoRetouchDescription.ResetText();
         }
+
+
         private void btnOkOriginalPrint_Click(object sender, EventArgs e)
         {
-            var currentGuid = PhotoOrderDetailsList[_photoCursor].StreamId;
-            var orderItem = new OrderDetail
+            var currentGuid = OrderDetailsList[_photoCursor].StreamId;
+            var orderItem = new OrderDetails
             {
                 OrderPrintId = OrderPrintId,
                 CustomerId = CustomerId,
@@ -1043,7 +1034,6 @@ namespace PhotographyAutomation.App.Forms.Factors
                 IsFirstprint = true,
             };
 
-
             if (chkHasOriginalPrintService.Checked && cmbOriginalPrintServices.Enabled &&
                 int.TryParse(cmbOriginalPrintServices.SelectedValue.ToString(),
                     out int selectedPrintServiceId))
@@ -1051,18 +1041,47 @@ namespace PhotographyAutomation.App.Forms.Factors
                 orderItem.HasPrintService = true;
                 orderItem.PrintServiceId = selectedPrintServiceId;
                 int printServerPrice = 0;
-                if (_listOriginalPrintServicePrices?.SingleOrDefault(x => x.Id == selectedPrintServiceId) != null)
+                PrintServicesViewModel printServicesViewModel = 
+                    _listOriginalPrintServicePrices?.SingleOrDefault(x => x.Id == selectedPrintServiceId);
+
+                if (printServicesViewModel != null)
                 {
-                    printServerPrice = _listOriginalPrintServicePrices
-                        .SingleOrDefault(x => x.Id == selectedPrintServiceId)
-                        .PrintServicePrice;
+                    printServerPrice = printServicesViewModel.PrintServicePrice;
                 }
                 orderItem.PrintServicePriceId = printServerPrice;
             }
 
             orderItem.TotalPrice = CalculateOriginalPrintTotalPrice();
+            //چک کن قبلا در لیست سفارشات وجود دارد  
+            //اگر وجود دارد پیامی نشان دهد و آن را در صورت تائید آپدیت کند
 
-            _listOrderDetails.Add(orderItem);
+            var check = OrderDetailsList.SingleOrDefault(x =>
+                x.StreamId == orderItem.StreamId && x.IsFirstprint == orderItem.IsFirstprint);
+
+
+            //create newOrderDetailsList and check on this new list
+
+            //if (check == null)
+            //    OrderDetailsList.Add(orderItem);
+            //else
+            //{
+                var itemIndex = OrderDetailsList.FindIndex(x =>
+                    x.StreamId == orderItem.StreamId && x.IsFirstprint == orderItem.IsFirstprint);
+
+                var dr = MessageBox.Show(
+                    @"این سفارش اصل چاپ قبلا در لیست سفارشات ثبت شده است. " +
+                    @"آیا می خواهید آن را به روز رسانی کنید؟",
+                    @"به روز رسانی سفارش چاپ",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign);
+                if (dr != DialogResult.Yes) return;
+                OrderDetailsList[itemIndex] = orderItem;
+
+                MessageBox.Show(
+                    @"سفارش چاپ مورد نظر با موفقیت به روز رسانی گردید.", "",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information,
+                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign);
+            //}
         }
         private void btnReloadOriginalPhotoPrintOrder_Click(object sender, EventArgs e)
         {
@@ -1074,36 +1093,42 @@ namespace PhotographyAutomation.App.Forms.Factors
 
             ResetOriginalPrintControls();
 
-            //در صورتی که اطلاعاتی از این سفارش در لیست سفارشات وجود دارد باید در لیست مربوطه هم اصلاح صورت گیرد.
+            //،در صورتی که اطلاعاتی از این سفارش در لیست سفارشات وجود دارد
+            //.باید در لیست مربوطه هم اصلاحات مربوطه صورت گیرد
+
+            //var itemIndex = OrderDetailsList.FindIndex(x =>
+            //    x.StreamId == orderItem.StreamId && x.IsFirstprint == orderItem.IsFirstprint);
         }
-
-        
-
         private void BtnCancelPhotoOrderPrint_Click(object sender, EventArgs e)
         {
-            var dr = MessageBox.Show(
-                @"آیا واقعا می خواهید عکس مورد نظر را از پیش فاکتور حذف کنید؟",
-                @"تایید حذف عکس از پیش فاکتور",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning,
-                MessageBoxDefaultButton.Button2);
-            if (dr == DialogResult.No)
-                return;
             try
             {
-                var currentGuid = PhotoOrderDetailsList[_photoCursor].StreamId;
-                var currentOrderDetails = PhotoOrderDetailsList.FirstOrDefault(x => x.StreamId == currentGuid);
-                var itemIndex = PhotoOrderDetailsList.FindIndex(x =>
-                    currentOrderDetails != null && x.StreamId == currentOrderDetails.StreamId);
-
+                var currentGuid = OrderDetailsList[_photoCursor].StreamId;
+                var currentOrderDetails = OrderDetailsList.FirstOrDefault(x => x.StreamId == currentGuid);
                 if (currentOrderDetails == null)
+                {
+                    MessageBox.Show(
+                        @"این آیتم قبلا تائید نشده است و قابل حذف نیز نمی باشد.", "",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning,
+                        MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign);
                     return;
+                }
+                //var itemIndex = _listOrderDetails
+                //                .FindIndex(x => currentOrderDetails != null && x.StreamId == currentOrderDetails.StreamId);
+                var itemIndex = OrderDetailsList.FindIndex(x => x.StreamId == currentOrderDetails.StreamId);
 
-                currentOrderDetails.IsAccepted = -1;
-                currentOrderDetails.AcceptRejectImage = Properties.Resources.iconfinder_cancel_round_41190;
-                pictureBoxIsAccepted.Image = currentOrderDetails.AcceptRejectImage;
-                PhotoOrderDetailsList[itemIndex].IsAccepted = currentOrderDetails.IsAccepted;
-                toolTip1.SetToolTip(pictureBoxIsAccepted, "این عکس در پیش فاکتور حذف شده است.");
+                var dr = MessageBox.Show(
+                    @"آیا واقعا می خواهید عکس مورد نظر را از پیش فاکتور حذف کنید؟",
+                    @"تایید حذف عکس از پیش فاکتور",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2,
+                    MessageBoxOptions.RightAlign);
+                if (dr != DialogResult.Yes) return;
+
+                currentOrderDetails.IsAccepted = false;
+                currentOrderDetails.IsDeleted = true;
+                pictureBoxIsAccepted.Image = Properties.Resources.iconfinder_cancel_round_41190;
+                OrderDetailsList[itemIndex].IsAccepted = currentOrderDetails.IsAccepted;
+                toolTip1.SetToolTip(pictureBoxIsAccepted, "این عکس از پیش فاکتور حذف گردید.");
             }
             catch (Exception exception)
             {
@@ -1112,6 +1137,9 @@ namespace PhotographyAutomation.App.Forms.Factors
             }
         }
 
+
+
+        /////////////////////////////////////////////////////////////////////////////
         //btnOkRePrint
         private void ResetRePrintControls()
         {
@@ -1140,7 +1168,6 @@ namespace PhotographyAutomation.App.Forms.Factors
 
             textRePrintPhotoRetouchDescription.ResetText();
         }
-        
         private int CalculateRePrintTotalPrice()
         {
             int.TryParse(txtTotalPriceRePrintPrintSize.Text, out var totalPriceRePrintPrintSize);
@@ -1152,10 +1179,12 @@ namespace PhotographyAutomation.App.Forms.Factors
                 totalPriceRePrintLitPrint + totalPriceRePrintServices;
             return result;
         }
+
+
         private void BtnOKRePrint_Click(object sender, EventArgs e)
         {
-            var currentGuid = PhotoOrderDetailsList[_photoCursor].StreamId;
-            var orderItemReprint = new OrderDetail
+            var currentGuid = OrderDetailsList[_photoCursor].StreamId;
+            var orderItemReprint = new OrderDetails
             {
                 OrderPrintId = OrderPrintId,
                 CustomerId = CustomerId,
@@ -1188,7 +1217,7 @@ namespace PhotographyAutomation.App.Forms.Factors
 
             orderItemReprint.TotalPrice = CalculateRePrintTotalPrice();
 
-            _listOrderDetails.Add(orderItemReprint);
+            OrderDetailsList.Add(orderItemReprint);
         }
         private void btnReloadRePrintPhotoPrintOrder_Click(object sender, EventArgs e)
         {
@@ -1254,8 +1283,6 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         }
 
-
-
         private void btnMagnifyPhoto_Click(object sender, EventArgs e)
         {
             var image = pictureBoxPreview.Image;
@@ -1297,15 +1324,15 @@ namespace PhotographyAutomation.App.Forms.Factors
         {
             //try
             //{
-            var totalItems = PhotoOrderDetailsList.Count;
+            var totalItems = OrderDetailsList.Count;
 
             if (_photoCursor < 0 || _photoCursor >= totalItems)
                 return;
 
             //Save Photo Order Details to Class
             //...
-            var currentGuid = PhotoOrderDetailsList[_photoCursor].StreamId;
-            var currentOrderDetails = PhotoOrderDetailsList.FirstOrDefault(x => x.StreamId == currentGuid);
+            var currentGuid = OrderDetailsList[_photoCursor].StreamId;
+            var currentOrderDetails = OrderDetailsList.FirstOrDefault(x => x.StreamId == currentGuid);
             if (currentOrderDetails != null)
             {
                 ///////
@@ -1313,10 +1340,10 @@ namespace PhotographyAutomation.App.Forms.Factors
                 //
                 if (cmbOriginalPrintSizes.SelectedValue != null &&
                     int.TryParse(cmbOriginalPrintSizes.SelectedValue.ToString(), out var ttt))
-                    currentOrderDetails.OriginalSizeId = ttt;
+                    currentOrderDetails.PrintSizeId = ttt;
 
-                if (int.TryParse(txtTotalPriceOriginalPrintSize.Text.Replace(",", ""), out var tt))
-                    currentOrderDetails.OriginalPrintSizePrice = tt;
+                //if (int.TryParse(txtTotalPriceOriginalPrintSize.Text.Replace(",", ""), out var tt))
+                //    currentOrderDetails.OriginalPrintSizePrice = tt;
 
                 //if (rbOriginalNormalPrint.Checked)
                 //{
@@ -1329,7 +1356,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                 //    }
                 //}
 
-                currentOrderDetails.RetouchDescriptions = textOriginalPhotoRetouchDescription.Text;
+                currentOrderDetails.RetouchDescription = textOriginalPhotoRetouchDescription.Text;
 
                 ///////
                 // Second Print 1
@@ -1503,21 +1530,21 @@ namespace PhotographyAutomation.App.Forms.Factors
                 //    }
                 //}
 
-                switch (currentOrderDetails.IsAccepted)
-                {
-                    case 1:
-                        currentOrderDetails.AcceptRejectImage =
-                            Properties.Resources.iconfinder_accept_blue_41177;
-                        break;
-                    case -1:
-                        currentOrderDetails.AcceptRejectImage =
-                            Properties.Resources.iconfinder_cancel_round_41190;
-                        break;
-                    default:
-                        currentOrderDetails.AcceptRejectImage =
-                            Properties.Resources.iconfinder_flickr_317744;
-                        break;
-                }
+                //switch (currentOrderDetails.IsAccepted)
+                //{
+                //    case 1:
+                //        currentOrderDetails.AcceptRejectImage =
+                //            Properties.Resources.iconfinder_accept_blue_41177;
+                //        break;
+                //    case -1:
+                //        currentOrderDetails.AcceptRejectImage =
+                //            Properties.Resources.iconfinder_cancel_round_41190;
+                //        break;
+                //    default:
+                //        currentOrderDetails.AcceptRejectImage =
+                //            Properties.Resources.iconfinder_flickr_317744;
+                //        break;
+                //}
 
                 //var itemIndex = PhotoOrderDetailsList.FindIndex(x => x.StreamId == currentOrderDetails.StreamId);
                 //PhotoOrderDetailsList[itemIndex] = currentOrderDetails;
@@ -1536,38 +1563,38 @@ namespace PhotographyAutomation.App.Forms.Factors
                 btnNextPhoto.Enabled = false;
             }
 
-            var nextGuid = PhotoOrderDetailsList[_photoCursor].StreamId;
-            var nextOrderDetails = PhotoOrderDetailsList.FirstOrDefault(x => x.StreamId == nextGuid);
+            var nextGuid = OrderDetailsList[_photoCursor].StreamId;
+            var nextOrderDetails = OrderDetailsList.FirstOrDefault(x => x.StreamId == nextGuid);
             if (nextOrderDetails != null)
             {
                 LoadPicture(nextGuid);
 
                 ////Original Photo
                 //
-                if (nextOrderDetails.OriginalSizeId == 0)
+                if (nextOrderDetails.PrintSizeId == 0)
                     cmbOriginalPrintSizes.SelectedIndex = -1;
                 else
                 {
-                    cmbOriginalPrintSizes.SelectedValue = nextOrderDetails.OriginalSizeId;
+                    cmbOriginalPrintSizes.SelectedValue = nextOrderDetails.PrintSizeId;
                     cmbOriginalPrintSize_SelectedIndexChanged(null, null);
                 }
 
-                if (nextOrderDetails.HasOriginalPrintService)
+                if (nextOrderDetails.HasPrintService)
                 {
                     //rbOriginalNormalPrint.Checked = true;
-                    if (nextOrderDetails.OriginalServiceId != 0)
+                    if (nextOrderDetails.PrintServiceId != 0)
                     {
-                        cmbOriginalPrintServices.SelectedValue = nextOrderDetails.OriginalServiceId;
+                        cmbOriginalPrintServices.SelectedValue = nextOrderDetails.PrintServiceId;
                         //cmbOriginalPrintService_SelectedIndexChanged(null, null);
                     }
                     else
                         cmbOriginalPrintServices.SelectedIndex = -1;
                 }
 
-                if (nextOrderDetails.RetouchDescriptions != null)
-                    textOriginalPhotoRetouchDescription.Text = nextOrderDetails.RetouchDescriptions;
-                pictureBoxIsAccepted.Image = nextOrderDetails.AcceptRejectImage ??
-                                             Properties.Resources.iconfinder_flickr_317744;
+                if (nextOrderDetails.RetouchDescription != null)
+                    textOriginalPhotoRetouchDescription.Text = nextOrderDetails.RetouchDescription;
+                //pictureBoxIsAccepted.Image = nextOrderDetails.AcceptRejectImage ??
+                //                             Properties.Resources.iconfinder_flickr_317744;
 
 
 
@@ -1575,54 +1602,54 @@ namespace PhotographyAutomation.App.Forms.Factors
                 //
                 ////SecondPrint1
                 //
-                if (nextOrderDetails.HasSecondPrint1)
-                {
-                    //if (nextOrderDetails.SecondPrint1SizeId != 0)
-                    //{
-                    //checkBoxSecondPrint1.Checked = true;
-                    //checkBoxSecondPrint1.CheckState = CheckState.Checked;
-                    //cmbSecondPrintSize1.SelectedValue = nextOrderDetails.SecondPrint1SizeId;
+                //if (nextOrderDetails.HasSecondPrint1)
+                //{
+                //if (nextOrderDetails.SecondPrint1SizeId != 0)
+                //{
+                //checkBoxSecondPrint1.Checked = true;
+                //checkBoxSecondPrint1.CheckState = CheckState.Checked;
+                //cmbSecondPrintSize1.SelectedValue = nextOrderDetails.SecondPrint1SizeId;
 
-                    //checkBoxSecondPrint1.Enabled = true;
-                    //cmbSecondPrintSize1.Enabled = true;
+                //checkBoxSecondPrint1.Enabled = true;
+                //cmbSecondPrintSize1.Enabled = true;
 
-                    //txtSecondPrintSizePrice1.Text =
-                    //    nextOrderDetails.SecondPrint1SizePrice.ToString("##,###");
-                    //integerInputSecondPrintCount1.Value = nextOrderDetails.SecondPrint1Count;
+                //txtSecondPrintSizePrice1.Text =
+                //    nextOrderDetails.SecondPrint1SizePrice.ToString("##,###");
+                //integerInputSecondPrintCount1.Value = nextOrderDetails.SecondPrint1Count;
 
-                    //var ss = new SecondPrintSizeDataStructure
-                    //{
-                    //    Count = integerInputSecondPrintCount1.Value,
-                    //    PrintSizeId = (int)cmbSecondPrintSize1.SelectedValue,
-                    //    TextBoxName = txtSecondPrintSizePrice1.Name,
-                    //    PreviousSizeId = nextOrderDetails.SecondPrint1SizeId
-                    //};
-                    //    cmbSecondPrintSize1_SelectedValueChanged(ss);
-                    //    if (nextOrderDetails.HasSecondPrint1Service)
-                    //    {
-                    //        if (nextOrderDetails.SecondPrint1SizeId != 0)
-                    //        {
-                    //            if (nextOrderDetails.HasSecondPrint1Service)
-                    //            {
-                    //                if (nextOrderDetails.SecondPrint1ServiceId != 0)
-                    //                {
-                    //                    checkBoxLoadSecondPrintServices1.Checked = true;
-                    //                    cmbSecondPrintService1.SelectedValue =
-                    //                        nextOrderDetails.SecondPrint1ServiceId;
-                    //                    integerInputSecondPrintServiceCount1.Value =
-                    //                        nextOrderDetails.SecondPrint1ServiceCount;
+                //var ss = new SecondPrintSizeDataStructure
+                //{
+                //    Count = integerInputSecondPrintCount1.Value,
+                //    PrintSizeId = (int)cmbSecondPrintSize1.SelectedValue,
+                //    TextBoxName = txtSecondPrintSizePrice1.Name,
+                //    PreviousSizeId = nextOrderDetails.SecondPrint1SizeId
+                //};
+                //    cmbSecondPrintSize1_SelectedValueChanged(ss);
+                //    if (nextOrderDetails.HasSecondPrint1Service)
+                //    {
+                //        if (nextOrderDetails.SecondPrint1SizeId != 0)
+                //        {
+                //            if (nextOrderDetails.HasSecondPrint1Service)
+                //            {
+                //                if (nextOrderDetails.SecondPrint1ServiceId != 0)
+                //                {
+                //                    checkBoxLoadSecondPrintServices1.Checked = true;
+                //                    cmbSecondPrintService1.SelectedValue =
+                //                        nextOrderDetails.SecondPrint1ServiceId;
+                //                    integerInputSecondPrintServiceCount1.Value =
+                //                        nextOrderDetails.SecondPrint1ServiceCount;
 
-                    //                    cmbSecondPrintService1_SelectedIndexChanged(null, null);
-                    //                }
-                    //            }
-                    //        }
-                    //        else
-                    //            cmbSecondPrintSize1.SelectedIndex = -1;
-                    //    }
-                    //}
-                    //else
-                    //    cmbSecondPrintSize1.SelectedIndex = -1;
-                }
+                //                    cmbSecondPrintService1_SelectedIndexChanged(null, null);
+                //                }
+                //            }
+                //        }
+                //        else
+                //            cmbSecondPrintSize1.SelectedIndex = -1;
+                //    }
+                //}
+                //else
+                //    cmbSecondPrintSize1.SelectedIndex = -1;
+                //}
 
 
                 ////Second Photo
@@ -2026,8 +2053,8 @@ namespace PhotographyAutomation.App.Forms.Factors
 
 
             // ReSharper disable once PossibleNullReferenceException
-            var itemIndex = PhotoOrderDetailsList.FindIndex(x => x.StreamId == currentOrderDetails.StreamId);
-            PhotoOrderDetailsList[itemIndex] = currentOrderDetails;
+            var itemIndex = OrderDetailsList.FindIndex(x => x.StreamId == currentOrderDetails.StreamId);
+            OrderDetailsList[itemIndex] = currentOrderDetails;
 
             //}
 
@@ -2043,39 +2070,39 @@ namespace PhotographyAutomation.App.Forms.Factors
                 btnPreviousPhoto.Enabled = false;
             }
 
-            var previousGuid = PhotoOrderDetailsList[_photoCursor].StreamId;
-            var previousOrderDetails = PhotoOrderDetailsList.FirstOrDefault(x => x.StreamId == previousGuid);
+            var previousGuid = OrderDetailsList[_photoCursor].StreamId;
+            var previousOrderDetails = OrderDetailsList.FirstOrDefault(x => x.StreamId == previousGuid);
             if (previousOrderDetails != null)
             {
                 LoadPicture(previousGuid);
 
                 ////Original Photo
                 //
-                if (previousOrderDetails.OriginalSizeId == 0)
+                if (previousOrderDetails.PrintSizeId == 0)
                     cmbOriginalPrintSizes.SelectedIndex = -1;
                 else
                 {
-                    cmbOriginalPrintSizes.SelectedValue = previousOrderDetails.OriginalSizeId;
+                    cmbOriginalPrintSizes.SelectedValue = previousOrderDetails.PrintSizeId;
                     cmbOriginalPrintSize_SelectedIndexChanged(null, null);
                 }
 
-                if (previousOrderDetails.HasOriginalPrintService)
+                if (previousOrderDetails.HasPrintService)
                 {
                     //rbOriginalNormalPrint.Checked = true;
-                    if (previousOrderDetails.OriginalServiceId == 0)
+                    if (previousOrderDetails.PrintServiceId == 0)
                         cmbOriginalPrintServices.SelectedIndex = -1;
                     else
                     {
-                        cmbOriginalPrintServices.SelectedValue = previousOrderDetails.OriginalServiceId;
+                        cmbOriginalPrintServices.SelectedValue = previousOrderDetails.PrintServiceId;
                         //cmbOriginalPrintService_SelectedIndexChanged(null, null);
                     }
                 }
 
-                if (previousOrderDetails.RetouchDescriptions != null)
-                    textOriginalPhotoRetouchDescription.Text = previousOrderDetails.RetouchDescriptions;
+                if (previousOrderDetails.RetouchDescription != null)
+                    textOriginalPhotoRetouchDescription.Text = previousOrderDetails.RetouchDescription;
 
-                pictureBoxIsAccepted.Image = previousOrderDetails.AcceptRejectImage ??
-                                             Properties.Resources.iconfinder_flickr_317744;
+                //pictureBoxIsAccepted.Image = previousOrderDetails.AcceptRejectImage ??
+                //                             Properties.Resources.iconfinder_flickr_317744;
 
                 ////Second Photo
                 ////SecondPrint1
@@ -2291,16 +2318,6 @@ namespace PhotographyAutomation.App.Forms.Factors
                 //}
             }
         }
-
-
-
-
-
-
-
-
-
-
 
 
         #endregion

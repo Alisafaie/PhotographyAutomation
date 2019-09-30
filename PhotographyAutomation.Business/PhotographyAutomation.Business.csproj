@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OrderDetails\OrderDetail.cs" />
+    <Compile Include="OrderDetails\OrderDetails.cs" />
     <Compile Include="OrderDetails\PhotoOrderBrief.cs" />
     <Compile Include="OrderDetails\PhotoOrderDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

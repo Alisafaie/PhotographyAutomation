@@ -533,7 +533,7 @@ namespace PhotographyAutomation.App.Forms.Orders
             if (!CheckInputs(streamIdsToUploadList)) return;
 
             string orderPrintCode = OrderUtilities.GenerateOrderPrintCode(DateTime.Now, CustomerId, OrderId);
-
+            var orderDetailsList = new List<OrderDetails>();
             try
             {
                 using (var db = new UnitOfWork())
@@ -573,16 +573,30 @@ namespace PhotographyAutomation.App.Forms.Orders
                                     FileName = fileNamesUpload[i],
                                     CreatedDateTime = DateTime.Now
                                 };
+                                var orderDetailsItem = new OrderDetails
+                                {
+                                    OrderPrintId = orderPrintId,
+                                    StreamId = streamIdsToUploadList[i],
+                                    CustomerId = CustomerId,
+                                    FileName = fileNamesUpload[i],
+                                    CreatedDateTime = DateTime.Now,
+                                    IsFirstprint = true
+                                };
+                                orderDetailsList.Add(orderDetailsItem);
                                 db.OrderPrintDetailsGenericRepository.Insert(newOrderPrintDetails);
                             }
                             var resultSaveNewOrderPrintDetails = db.Save();
 
-                            var orderDetailsList = new List<PhotoOrderDetails>();
-                            foreach (var itemGuid in streamIdsToUploadList)
-                            {
-                                var od = new PhotoOrderDetails { StreamId = itemGuid };
-                                orderDetailsList.Add(od);
-                            }
+
+
+                            //foreach (var itemGuid in streamIdsToUploadList)
+                            //{
+                            //    var od = new OrderDetails
+                            //    {
+                            //        StreamId = itemGuid
+                            //    };
+                            //    orderDetailsList.Add(od);
+                            //}
 
                             if (resultSaveNewOrderPrintDetails > 0)
                             {
@@ -603,10 +617,10 @@ namespace PhotographyAutomation.App.Forms.Orders
                                         frmPreFactor.OrderPrintId = orderPrintId;
                                         frmPreFactor.IsNewPreFactor = true;
                                         frmPreFactor.FileStreamsGuids = streamIdsToUploadList;
-                                        frmPreFactor.PhotoOrderDetailsList = orderDetailsList;
+                                        frmPreFactor.OrderDetailsList = orderDetailsList;
                                         //Hide();
-                                        if (frmPreFactor.ShowDialog() == DialogResult.OK)
-                                            DialogResult = DialogResult.OK;
+                                        frmPreFactor.ShowDialog();
+                                        DialogResult = DialogResult.OK;
                                     }
                                 }
                                 else
