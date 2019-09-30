@@ -348,6 +348,123 @@
           <Property Name="Price" Type="int" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="500" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetAllPhotos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_GetAllPhotos">
+          <Key>
+            <PropertyRef Name="StreamId" />
+            <PropertyRef Name="FileName" />
+            <PropertyRef Name="CreationTime" />
+            <PropertyRef Name="LastWriteTime" />
+            <PropertyRef Name="IsOffline" />
+            <PropertyRef Name="IsHidden" />
+            <PropertyRef Name="IsReadonly" />
+            <PropertyRef Name="IsArchive" />
+            <PropertyRef Name="IsSystem" />
+            <PropertyRef Name="IsTemporary" />
+          </Key>
+          <Property Name="StreamId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FileStream" Type="varbinary(max)" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="PathLocator" Type="varchar" MaxLength="4000" />
+          <Property Name="ParentPathLocator" Type="varchar" MaxLength="4000" />
+          <Property Name="UncPath" Type="nvarchar" MaxLength="4000" />
+          <Property Name="RelativePath" Type="nvarchar(max)" />
+          <Property Name="FullUncPath" Type="nvarchar(max)" />
+          <Property Name="Level" Type="smallint" />
+          <Property Name="FileType" Type="nvarchar" MaxLength="255" />
+          <Property Name="FileSize" Type="bigint" />
+          <Property Name="CreationTime" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="LastWriteTime" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="LastAccessTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="IsOffline" Type="bit" Nullable="false" />
+          <Property Name="IsHidden" Type="bit" Nullable="false" />
+          <Property Name="IsReadonly" Type="bit" Nullable="false" />
+          <Property Name="IsArchive" Type="bit" Nullable="false" />
+          <Property Name="IsSystem" Type="bit" Nullable="false" />
+          <Property Name="IsTemporary" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetAllPrintSizeAndServicesInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_GetAllPrintSizeAndServicesInfo">
+          <Key>
+            <PropertyRef Name="PrintSizeId" />
+            <PropertyRef Name="PrintSizeName" />
+            <PropertyRef Name="HasMedicalPhoto" />
+            <PropertyRef Name="HasLitPrint" />
+            <PropertyRef Name="HasScanAndProcessing" />
+            <PropertyRef Name="HasItalianAlbum" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="IsDeleted" />
+            <PropertyRef Name="MinimumOrder" />
+            <PropertyRef Name="Width" />
+            <PropertyRef Name="Height" />
+          </Key>
+          <Property Name="PrintSizeId" Type="int" Nullable="false" />
+          <Property Name="PrintServiceId" Type="int" />
+          <Property Name="PrintSizePriceId" Type="int" />
+          <Property Name="PrintServicePriceId" Type="int" />
+          <Property Name="PrintSizeName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PrintServiceName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PrintServicePrice" Type="int" />
+          <Property Name="FirstPrintPrice" Type="int" />
+          <Property Name="RePrintPrice" Type="int" />
+          <Property Name="HasMedicalPhoto" Type="bit" Nullable="false" />
+          <Property Name="MedicalPrice" Type="int" />
+          <Property Name="MedicalRePrintPrice" Type="int" />
+          <Property Name="HasLitPrint" Type="bit" Nullable="false" />
+          <Property Name="LitPrintPrice" Type="int" />
+          <Property Name="LitPrintRePrintPrice" Type="int" />
+          <Property Name="HasScanAndProcessing" Type="bit" Nullable="false" />
+          <Property Name="ScanAndPrintPrice" Type="int" />
+          <Property Name="ScanAndProcessingPrice" Type="int" />
+          <Property Name="HasItalianAlbum" Type="bit" Nullable="false" />
+          <Property Name="ItalianAlbumPagePrice" Type="int" />
+          <Property Name="ItalianAlbumBoundingPrice" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="MinimumOrder" Type="tinyint" Nullable="false" />
+          <Property Name="Width" Type="float" Nullable="false" />
+          <Property Name="Height" Type="float" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PhotographyAutomationDB.dbo.View_GetDocumentsFolders' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_GetDocumentsFolders">
+          <Key>
+            <PropertyRef Name="StreamId" />
+            <PropertyRef Name="FolderName" />
+            <PropertyRef Name="CreationTime" />
+            <PropertyRef Name="LastWriteTime" />
+            <PropertyRef Name="IsOffline" />
+            <PropertyRef Name="IsHidden" />
+            <PropertyRef Name="IsReadonly" />
+            <PropertyRef Name="IsArchive" />
+            <PropertyRef Name="IsSystem" />
+            <PropertyRef Name="IsTemporary" />
+            <PropertyRef Name="IsDirectory" />
+          </Key>
+          <Property Name="StreamId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FileStream" Type="varbinary(max)" />
+          <Property Name="FolderName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="PathLocator" Type="varchar" MaxLength="4000" />
+          <Property Name="ParentPathLocator" Type="varchar" MaxLength="4000" />
+          <Property Name="UncPath" Type="nvarchar" MaxLength="4000" />
+          <Property Name="RelativePath" Type="nvarchar(max)" />
+          <Property Name="FullUncPath" Type="nvarchar(max)" />
+          <Property Name="Level" Type="smallint" />
+          <Property Name="FileType" Type="nvarchar" MaxLength="255" />
+          <Property Name="FileSize" Type="bigint" />
+          <Property Name="CreationTime" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="LastWriteTime" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="LastAccessTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="IsOffline" Type="bit" Nullable="false" />
+          <Property Name="IsHidden" Type="bit" Nullable="false" />
+          <Property Name="IsReadonly" Type="bit" Nullable="false" />
+          <Property Name="IsArchive" Type="bit" Nullable="false" />
+          <Property Name="IsSystem" Type="bit" Nullable="false" />
+          <Property Name="IsTemporary" Type="bit" Nullable="false" />
+          <Property Name="IsDirectory" Type="bit" Nullable="false" />
+        </EntityType>
         <Association Name="FK_TblAlbums_TblPrintSizes">
           <End Role="TblPrintSizes" Type="Self.TblPrintSizes" Multiplicity="1" />
           <End Role="TblAlbums" Type="Self.TblAlbums" Multiplicity="*" />
@@ -816,6 +933,50 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="usp_CreateCustomerFinancialDirectory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="customerFinancialNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="monthNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="parent_level" Type="tinyint" Mode="In" />
+          <Parameter Name="returnValue" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="usp_CreateFileTableFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="parent_name" Type="nvarchar" Mode="In" />
+          <Parameter Name="parent_level" Type="tinyint" Mode="In" />
+        </Function>
+        <Function Name="usp_CreateMonthFolder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="monthName" Type="nvarchar" Mode="In" />
+          <Parameter Name="year" Type="nvarchar" Mode="In" />
+          <Parameter Name="parent_level" Type="tinyint" Mode="In" />
+          <Parameter Name="returnValue" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="usp_CreateYearFolder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="parent_name" Type="nvarchar" Mode="In" />
+          <Parameter Name="parent_level" Type="tinyint" Mode="In" />
+          <Parameter Name="returnValue" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="usp_DeleteOrderFolderFiles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pathLocator" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="usp_GetImageInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="photoStreamId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="usp_GetListOfFilesInFolder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="path_locator" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_GetListOfFilesOfOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="path_locator" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_GetOrderFolderStreamId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="customerFinancialNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="returnValue" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="usp_GetPrintSizePriceServices" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_GetTotalFilesOfFolder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="parent_path_locator" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="returnValue" Type="int" Mode="InOut" />
+        </Function>
         <EntityContainer Name="PhotographyAutomationDBModelStoreContainer">
           <EntitySet Name="TblAlbums" EntityType="Self.TblAlbums" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblAllOrderStatus" EntityType="Self.TblAllOrderStatus" Schema="dbo" store:Type="Tables" />
@@ -841,6 +1002,85 @@
           <EntitySet Name="TblPrintSizePrices" EntityType="Self.TblPrintSizePrices" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblPrintSizes" EntityType="Self.TblPrintSizes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblPrintSpecialServices" EntityType="Self.TblPrintSpecialServices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_GetAllPhotos" EntityType="Self.View_GetAllPhotos" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_GetAllPhotos].[StreamId] AS [StreamId], 
+    [View_GetAllPhotos].[FileStream] AS [FileStream], 
+    [View_GetAllPhotos].[FileName] AS [FileName], 
+    [View_GetAllPhotos].[PathLocator] AS [PathLocator], 
+    [View_GetAllPhotos].[ParentPathLocator] AS [ParentPathLocator], 
+    [View_GetAllPhotos].[UncPath] AS [UncPath], 
+    [View_GetAllPhotos].[RelativePath] AS [RelativePath], 
+    [View_GetAllPhotos].[FullUncPath] AS [FullUncPath], 
+    [View_GetAllPhotos].[Level] AS [Level], 
+    [View_GetAllPhotos].[FileType] AS [FileType], 
+    [View_GetAllPhotos].[FileSize] AS [FileSize], 
+    [View_GetAllPhotos].[CreationTime] AS [CreationTime], 
+    [View_GetAllPhotos].[LastWriteTime] AS [LastWriteTime], 
+    [View_GetAllPhotos].[LastAccessTime] AS [LastAccessTime], 
+    [View_GetAllPhotos].[IsOffline] AS [IsOffline], 
+    [View_GetAllPhotos].[IsHidden] AS [IsHidden], 
+    [View_GetAllPhotos].[IsReadonly] AS [IsReadonly], 
+    [View_GetAllPhotos].[IsArchive] AS [IsArchive], 
+    [View_GetAllPhotos].[IsSystem] AS [IsSystem], 
+    [View_GetAllPhotos].[IsTemporary] AS [IsTemporary]
+    FROM [dbo].[View_GetAllPhotos] AS [View_GetAllPhotos]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_GetAllPrintSizeAndServicesInfo" EntityType="Self.View_GetAllPrintSizeAndServicesInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_GetAllPrintSizeAndServicesInfo].[PrintSizeId] AS [PrintSizeId], 
+    [View_GetAllPrintSizeAndServicesInfo].[PrintServiceId] AS [PrintServiceId], 
+    [View_GetAllPrintSizeAndServicesInfo].[PrintSizePriceId] AS [PrintSizePriceId], 
+    [View_GetAllPrintSizeAndServicesInfo].[PrintServicePriceId] AS [PrintServicePriceId], 
+    [View_GetAllPrintSizeAndServicesInfo].[PrintSizeName] AS [PrintSizeName], 
+    [View_GetAllPrintSizeAndServicesInfo].[PrintServiceName] AS [PrintServiceName], 
+    [View_GetAllPrintSizeAndServicesInfo].[PrintServicePrice] AS [PrintServicePrice], 
+    [View_GetAllPrintSizeAndServicesInfo].[FirstPrintPrice] AS [FirstPrintPrice], 
+    [View_GetAllPrintSizeAndServicesInfo].[RePrintPrice] AS [RePrintPrice], 
+    [View_GetAllPrintSizeAndServicesInfo].[HasMedicalPhoto] AS [HasMedicalPhoto], 
+    [View_GetAllPrintSizeAndServicesInfo].[MedicalPrice] AS [MedicalPrice], 
+    [View_GetAllPrintSizeAndServicesInfo].[MedicalRePrintPrice] AS [MedicalRePrintPrice], 
+    [View_GetAllPrintSizeAndServicesInfo].[HasLitPrint] AS [HasLitPrint], 
+    [View_GetAllPrintSizeAndServicesInfo].[LitPrintPrice] AS [LitPrintPrice], 
+    [View_GetAllPrintSizeAndServicesInfo].[LitPrintRePrintPrice] AS [LitPrintRePrintPrice], 
+    [View_GetAllPrintSizeAndServicesInfo].[HasScanAndProcessing] AS [HasScanAndProcessing], 
+    [View_GetAllPrintSizeAndServicesInfo].[ScanAndPrintPrice] AS [ScanAndPrintPrice], 
+    [View_GetAllPrintSizeAndServicesInfo].[ScanAndProcessingPrice] AS [ScanAndProcessingPrice], 
+    [View_GetAllPrintSizeAndServicesInfo].[HasItalianAlbum] AS [HasItalianAlbum], 
+    [View_GetAllPrintSizeAndServicesInfo].[ItalianAlbumPagePrice] AS [ItalianAlbumPagePrice], 
+    [View_GetAllPrintSizeAndServicesInfo].[ItalianAlbumBoundingPrice] AS [ItalianAlbumBoundingPrice], 
+    [View_GetAllPrintSizeAndServicesInfo].[IsActive] AS [IsActive], 
+    [View_GetAllPrintSizeAndServicesInfo].[IsDeleted] AS [IsDeleted], 
+    [View_GetAllPrintSizeAndServicesInfo].[MinimumOrder] AS [MinimumOrder], 
+    [View_GetAllPrintSizeAndServicesInfo].[Width] AS [Width], 
+    [View_GetAllPrintSizeAndServicesInfo].[Height] AS [Height]
+    FROM [dbo].[View_GetAllPrintSizeAndServicesInfo] AS [View_GetAllPrintSizeAndServicesInfo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_GetDocumentsFolders" EntityType="Self.View_GetDocumentsFolders" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_GetDocumentsFolders].[StreamId] AS [StreamId], 
+    [View_GetDocumentsFolders].[FileStream] AS [FileStream], 
+    [View_GetDocumentsFolders].[FolderName] AS [FolderName], 
+    [View_GetDocumentsFolders].[PathLocator] AS [PathLocator], 
+    [View_GetDocumentsFolders].[ParentPathLocator] AS [ParentPathLocator], 
+    [View_GetDocumentsFolders].[UncPath] AS [UncPath], 
+    [View_GetDocumentsFolders].[RelativePath] AS [RelativePath], 
+    [View_GetDocumentsFolders].[FullUncPath] AS [FullUncPath], 
+    [View_GetDocumentsFolders].[Level] AS [Level], 
+    [View_GetDocumentsFolders].[FileType] AS [FileType], 
+    [View_GetDocumentsFolders].[FileSize] AS [FileSize], 
+    [View_GetDocumentsFolders].[CreationTime] AS [CreationTime], 
+    [View_GetDocumentsFolders].[LastWriteTime] AS [LastWriteTime], 
+    [View_GetDocumentsFolders].[LastAccessTime] AS [LastAccessTime], 
+    [View_GetDocumentsFolders].[IsOffline] AS [IsOffline], 
+    [View_GetDocumentsFolders].[IsHidden] AS [IsHidden], 
+    [View_GetDocumentsFolders].[IsReadonly] AS [IsReadonly], 
+    [View_GetDocumentsFolders].[IsArchive] AS [IsArchive], 
+    [View_GetDocumentsFolders].[IsSystem] AS [IsSystem], 
+    [View_GetDocumentsFolders].[IsTemporary] AS [IsTemporary], 
+    [View_GetDocumentsFolders].[IsDirectory] AS [IsDirectory]
+    FROM [dbo].[View_GetDocumentsFolders] AS [View_GetDocumentsFolders]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_TblAlbums_TblPrintSizes" Association="Self.FK_TblAlbums_TblPrintSizes">
             <End Role="TblPrintSizes" EntitySet="TblPrintSizes" />
             <End Role="TblAlbums" EntitySet="TblAlbums" />
@@ -1003,50 +1243,6 @@
     <edmx:ConceptualModels>
       <Schema Namespace="PhotographyAutomationDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="PhotographyAutomationDBEntities" annotation:LazyLoadingEnabled="true">
-          <FunctionImport Name="usp_CreateCustomerFinancialDirectory" ReturnType="Collection(String)">
-            <Parameter Name="customerFinancialNumber" Mode="In" Type="String" />
-            <Parameter Name="monthNumber" Mode="In" Type="String" />
-            <Parameter Name="parent_level" Mode="In" Type="Byte" />
-            <Parameter Name="returnValue" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="usp_CreateFileTableFile" ReturnType="Collection(PhotographyAutomationDBModel.usp_CreateFileTableFile_Result1)">
-            <Parameter Name="name" Mode="In" Type="String" />
-            <Parameter Name="parent_name" Mode="In" Type="String" />
-            <Parameter Name="parent_level" Mode="In" Type="Byte" />
-          </FunctionImport>
-          <FunctionImport Name="usp_CreateMonthFolder" ReturnType="Collection(String)">
-            <Parameter Name="monthName" Mode="In" Type="String" />
-            <Parameter Name="year" Mode="In" Type="String" />
-            <Parameter Name="parent_level" Mode="In" Type="Byte" />
-            <Parameter Name="returnValue" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="usp_CreateYearFolder" ReturnType="Collection(String)">
-            <Parameter Name="name" Mode="In" Type="String" />
-            <Parameter Name="parent_name" Mode="In" Type="String" />
-            <Parameter Name="parent_level" Mode="In" Type="Byte" />
-            <Parameter Name="returnValue" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="usp_DeleteOrderFolderFiles">
-          <Parameter Name="pathLocator" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="usp_GetImageInfo" ReturnType="Collection(PhotographyAutomationDBModel.usp_GetImageInfo_Result1)">
-          <Parameter Name="photoStreamId" Mode="In" Type="Guid" />
-          </FunctionImport>
-          <FunctionImport Name="usp_GetListOfFilesInFolder" ReturnType="Collection(PhotographyAutomationDBModel.usp_GetListOfFilesInFolder_Result1)">
-          <Parameter Name="path_locator" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="usp_GetListOfFilesOfOrder" ReturnType="Collection(Guid)">
-          <Parameter Name="path_locator" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="usp_GetOrderFolderStreamId" ReturnType="Collection(String)">
-            <Parameter Name="customerFinancialNumber" Mode="In" Type="String" />
-            <Parameter Name="returnValue" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="usp_GetPrintSizePriceServices" />
-          <FunctionImport Name="usp_GetTotalFilesOfFolder">
-            <Parameter Name="parent_path_locator" Mode="In" Type="String" />
-            <Parameter Name="returnValue" Mode="InOut" Type="Int32" />
-          </FunctionImport>
           <EntitySet Name="TblAlbums" EntityType="PhotographyAutomationDBModel.TblAlbums" />
           <EntitySet Name="TblAllOrderStatus" EntityType="PhotographyAutomationDBModel.TblAllOrderStatus" />
           <EntitySet Name="TblAtelierType" EntityType="PhotographyAutomationDBModel.TblAtelierType" />
@@ -1056,7 +1252,12 @@
           <EntitySet Name="TblFilesError" EntityType="PhotographyAutomationDBModel.TblFilesError" />
           <EntitySet Name="TblOrder" EntityType="PhotographyAutomationDBModel.TblOrder" />
           <EntitySet Name="TblOrderFiles" EntityType="PhotographyAutomationDBModel.TblOrderFiles" />
+          <EntitySet Name="TblOrderPrint" EntityType="PhotographyAutomationDBModel.TblOrderPrint" />
+          <EntitySet Name="TblOrderPrintChangingElements" EntityType="PhotographyAutomationDBModel.TblOrderPrintChangingElements" />
+          <EntitySet Name="TblOrderPrintDetails" EntityType="PhotographyAutomationDBModel.TblOrderPrintDetails" />
           <EntitySet Name="TblOrderPrintFiles" EntityType="PhotographyAutomationDBModel.TblOrderPrintFiles" />
+          <EntitySet Name="TblOrderPrintLitPrint" EntityType="PhotographyAutomationDBModel.TblOrderPrintLitPrint" />
+          <EntitySet Name="TblOrderPrintMultiPhotoOrder" EntityType="PhotographyAutomationDBModel.TblOrderPrintMultiPhotoOrder" />
           <EntitySet Name="TblOrderPrintStatus" EntityType="PhotographyAutomationDBModel.TblOrderPrintStatus" />
           <EntitySet Name="TblOrderStatus" EntityType="PhotographyAutomationDBModel.TblOrderStatus" />
           <EntitySet Name="TblPhotographyType" EntityType="PhotographyAutomationDBModel.TblPhotographyType" />
@@ -1075,6 +1276,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_TblAllOrderStatus_TblOrder" Association="PhotographyAutomationDBModel.FK_TblAllOrderStatus_TblOrder">
             <End Role="TblOrder" EntitySet="TblOrder" />
+            <End Role="TblAllOrderStatus" EntitySet="TblAllOrderStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblAllOrderStatus_TblOrderPrint" Association="PhotographyAutomationDBModel.FK_TblAllOrderStatus_TblOrderPrint">
+            <End Role="TblOrderPrint" EntitySet="TblOrderPrint" />
             <End Role="TblAllOrderStatus" EntitySet="TblAllOrderStatus" />
           </AssociationSet>
           <AssociationSet Name="FK_TblBooking_TblAtelierType" Association="PhotographyAutomationDBModel.FK_TblBooking_TblAtelierType">
@@ -1113,9 +1318,21 @@
             <End Role="TblCustomer" EntitySet="TblCustomer" />
             <End Role="TblOrder" EntitySet="TblOrder" />
           </AssociationSet>
+          <AssociationSet Name="FK_TblOrderPrint_TblCustomer" Association="PhotographyAutomationDBModel.FK_TblOrderPrint_TblCustomer">
+            <End Role="TblCustomer" EntitySet="TblCustomer" />
+            <End Role="TblOrderPrint" EntitySet="TblOrderPrint" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblOrderPrintDetails_TblCustomer" Association="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblCustomer">
+            <End Role="TblCustomer" EntitySet="TblCustomer" />
+            <End Role="TblOrderPrintDetails" EntitySet="TblOrderPrintDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK_TblFilesError_TblOrder" Association="PhotographyAutomationDBModel.FK_TblFilesError_TblOrder">
             <End Role="TblOrder" EntitySet="TblOrder" />
             <End Role="TblFilesError" EntitySet="TblFilesError" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblOrder_TblOrderPrint" Association="PhotographyAutomationDBModel.FK_TblOrder_TblOrderPrint">
+            <End Role="TblOrder" EntitySet="TblOrder" />
+            <End Role="TblOrderPrint" EntitySet="TblOrderPrint" />
           </AssociationSet>
           <AssociationSet Name="FK_TblOrder_TblOrderStatus" Association="PhotographyAutomationDBModel.FK_TblOrder_TblOrderStatus">
             <End Role="TblOrderStatus" EntitySet="TblOrderStatus" />
@@ -1128,43 +1345,6 @@
           <AssociationSet Name="FK_TblOrderStreams_TblOrder" Association="PhotographyAutomationDBModel.FK_TblOrderStreams_TblOrder">
             <End Role="TblOrder" EntitySet="TblOrder" />
             <End Role="TblOrderFiles" EntitySet="TblOrderFiles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblCustomerFilePrint_TblPrintSizes" Association="PhotographyAutomationDBModel.FK_TblCustomerFilePrint_TblPrintSizes">
-            <End Role="TblPrintSizes" EntitySet="TblPrintSizes" />
-            <End Role="TblPrintCustomerFiles" EntitySet="TblPrintCustomerFiles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblPrintServicePrices_TblPrintServices" Association="PhotographyAutomationDBModel.FK_TblPrintServicePrices_TblPrintServices">
-            <End Role="TblPrintServices" EntitySet="TblPrintServices" />
-            <End Role="TblPrintServicePrices" EntitySet="TblPrintServicePrices" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblPrintServicePrices_TblPrintSizes" Association="PhotographyAutomationDBModel.FK_TblPrintServicePrices_TblPrintSizes">
-            <End Role="TblPrintSizes" EntitySet="TblPrintSizes" />
-            <End Role="TblPrintServicePrices" EntitySet="TblPrintServicePrices" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblSizePrice_TblPrintSizes1" Association="PhotographyAutomationDBModel.FK_TblSizePrice_TblPrintSizes1">
-            <End Role="TblPrintSizes" EntitySet="TblPrintSizes" />
-            <End Role="TblPrintSizePrices" EntitySet="TblPrintSizePrices" />
-          </AssociationSet>
-          <EntitySet Name="TblOrderPrintChangingElements" EntityType="PhotographyAutomationDBModel.TblOrderPrintChangingElements" />
-          <EntitySet Name="TblOrderPrintLitPrint" EntityType="PhotographyAutomationDBModel.TblOrderPrintLitPrint" />
-          <EntitySet Name="TblOrderPrintMultiPhotoOrder" EntityType="PhotographyAutomationDBModel.TblOrderPrintMultiPhotoOrder" />
-          <EntitySet Name="TblOrderPrint" EntityType="PhotographyAutomationDBModel.TblOrderPrint" />
-          <EntitySet Name="TblOrderPrintDetails" EntityType="PhotographyAutomationDBModel.TblOrderPrintDetails" />
-          <AssociationSet Name="FK_TblAllOrderStatus_TblOrderPrint" Association="PhotographyAutomationDBModel.FK_TblAllOrderStatus_TblOrderPrint">
-            <End Role="TblOrderPrint" EntitySet="TblOrderPrint" />
-            <End Role="TblAllOrderStatus" EntitySet="TblAllOrderStatus" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblOrderPrint_TblCustomer" Association="PhotographyAutomationDBModel.FK_TblOrderPrint_TblCustomer">
-            <End Role="TblCustomer" EntitySet="TblCustomer" />
-            <End Role="TblOrderPrint" EntitySet="TblOrderPrint" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblOrderPrintDetails_TblCustomer" Association="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblCustomer">
-            <End Role="TblCustomer" EntitySet="TblCustomer" />
-            <End Role="TblOrderPrintDetails" EntitySet="TblOrderPrintDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblOrder_TblOrderPrint" Association="PhotographyAutomationDBModel.FK_TblOrder_TblOrderPrint">
-            <End Role="TblOrder" EntitySet="TblOrder" />
-            <End Role="TblOrderPrint" EntitySet="TblOrderPrint" />
           </AssociationSet>
           <AssociationSet Name="FK_TblOrderPrint_TblOrderPrintStatus" Association="PhotographyAutomationDBModel.FK_TblOrderPrint_TblOrderPrintStatus">
             <End Role="TblOrderPrintStatus" EntitySet="TblOrderPrintStatus" />
@@ -1230,6 +1410,66 @@
             <End Role="TblOrderPrintDetails" EntitySet="TblOrderPrintDetails" />
             <End Role="TblOrderPrintMultiPhotoOrder" EntitySet="TblOrderPrintMultiPhotoOrder" />
           </AssociationSet>
+          <AssociationSet Name="FK_TblCustomerFilePrint_TblPrintSizes" Association="PhotographyAutomationDBModel.FK_TblCustomerFilePrint_TblPrintSizes">
+            <End Role="TblPrintSizes" EntitySet="TblPrintSizes" />
+            <End Role="TblPrintCustomerFiles" EntitySet="TblPrintCustomerFiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblPrintServicePrices_TblPrintServices" Association="PhotographyAutomationDBModel.FK_TblPrintServicePrices_TblPrintServices">
+            <End Role="TblPrintServices" EntitySet="TblPrintServices" />
+            <End Role="TblPrintServicePrices" EntitySet="TblPrintServicePrices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblPrintServicePrices_TblPrintSizes" Association="PhotographyAutomationDBModel.FK_TblPrintServicePrices_TblPrintSizes">
+            <End Role="TblPrintSizes" EntitySet="TblPrintSizes" />
+            <End Role="TblPrintServicePrices" EntitySet="TblPrintServicePrices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblSizePrice_TblPrintSizes1" Association="PhotographyAutomationDBModel.FK_TblSizePrice_TblPrintSizes1">
+            <End Role="TblPrintSizes" EntitySet="TblPrintSizes" />
+            <End Role="TblPrintSizePrices" EntitySet="TblPrintSizePrices" />
+          </AssociationSet>
+          <FunctionImport Name="usp_CreateCustomerFinancialDirectory" ReturnType="Collection(String)">
+            <Parameter Name="customerFinancialNumber" Mode="In" Type="String" />
+            <Parameter Name="monthNumber" Mode="In" Type="String" />
+            <Parameter Name="parent_level" Mode="In" Type="Byte" />
+            <Parameter Name="returnValue" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_CreateFileTableFile" ReturnType="Collection(PhotographyAutomationDBModel.usp_CreateFileTableFile_Result2)">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="parent_name" Mode="In" Type="String" />
+            <Parameter Name="parent_level" Mode="In" Type="Byte" />
+          </FunctionImport>
+          <FunctionImport Name="usp_CreateMonthFolder" ReturnType="Collection(String)">
+            <Parameter Name="monthName" Mode="In" Type="String" />
+            <Parameter Name="year" Mode="In" Type="String" />
+            <Parameter Name="parent_level" Mode="In" Type="Byte" />
+            <Parameter Name="returnValue" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_CreateYearFolder" ReturnType="Collection(String)">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="parent_name" Mode="In" Type="String" />
+            <Parameter Name="parent_level" Mode="In" Type="Byte" />
+            <Parameter Name="returnValue" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeleteOrderFolderFiles">
+            <Parameter Name="pathLocator" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetImageInfo" ReturnType="Collection(PhotographyAutomationDBModel.usp_GetImageInfo_Result2)">
+            <Parameter Name="photoStreamId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetListOfFilesInFolder" ReturnType="Collection(PhotographyAutomationDBModel.usp_GetListOfFilesInFolder_Result2)">
+            <Parameter Name="path_locator" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetListOfFilesOfOrder" ReturnType="Collection(Guid)">
+            <Parameter Name="path_locator" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetOrderFolderStreamId" ReturnType="Collection(String)">
+            <Parameter Name="customerFinancialNumber" Mode="In" Type="String" />
+            <Parameter Name="returnValue" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_GetPrintSizePriceServices" />
+          <FunctionImport Name="usp_GetTotalFilesOfFolder">
+            <Parameter Name="parent_path_locator" Mode="In" Type="String" />
+            <Parameter Name="returnValue" Mode="InOut" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="usp_CreateFileTableFile_Result">
           <Property Type="String" Name="streamId" Nullable="true" MaxLength="4000" />
@@ -1464,10 +1704,10 @@
           <NavigationProperty Name="TblCustomer" Relationship="PhotographyAutomationDBModel.FK_TblOrder_TblCustomer" FromRole="TblOrder" ToRole="TblCustomer" />
           <NavigationProperty Name="TblCustomer1" Relationship="PhotographyAutomationDBModel.FK_TblOrder_TblCustomer1" FromRole="TblOrder" ToRole="TblCustomer" />
           <NavigationProperty Name="TblFilesError" Relationship="PhotographyAutomationDBModel.FK_TblFilesError_TblOrder" FromRole="TblOrder" ToRole="TblFilesError" />
+          <NavigationProperty Name="TblOrderPrint" Relationship="PhotographyAutomationDBModel.FK_TblOrder_TblOrderPrint" FromRole="TblOrder" ToRole="TblOrderPrint" />
           <NavigationProperty Name="TblOrderStatus" Relationship="PhotographyAutomationDBModel.FK_TblOrder_TblOrderStatus" FromRole="TblOrder" ToRole="TblOrderStatus" />
           <NavigationProperty Name="TblPhotographyType" Relationship="PhotographyAutomationDBModel.FK_TblOrder_TblPhotographyType" FromRole="TblOrder" ToRole="TblPhotographyType" />
           <NavigationProperty Name="TblOrderFiles" Relationship="PhotographyAutomationDBModel.FK_TblOrderStreams_TblOrder" FromRole="TblOrder" ToRole="TblOrderFiles" />
-          <NavigationProperty Name="TblOrderPrint" Relationship="PhotographyAutomationDBModel.FK_TblOrder_TblOrderPrint" FromRole="TblOrder" ToRole="TblOrderPrint" />
         </EntityType>
         <EntityType Name="TblOrderFiles">
           <Key>
@@ -1481,6 +1721,104 @@
           <Property Name="UploadDate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="TblOrder" Relationship="PhotographyAutomationDBModel.FK_TblOrderStreams_TblOrder" FromRole="TblOrderFiles" ToRole="TblOrder" />
         </EntityType>
+        <EntityType Name="TblOrderPrint">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderPrintCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="OrderType" Type="Boolean" />
+          <Property Name="OrderPrintStatusId" Type="Int32" Nullable="false" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="RetochDescriptions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="TotalPhotos" Type="Int32" />
+          <Property Name="TotalPriceOriginalPrint" Type="Int32" />
+          <Property Name="TotalPriceMultiPhoto" Type="Int32" />
+          <Property Name="TotalPriceLitPrint" Type="Int32" />
+          <Property Name="TotalPricePrintService" Type="Int32" />
+          <Property Name="TotalPriceRePrint" Type="Int32" />
+          <Property Name="TotalPriceRePrintMultiPhoto" Type="Int32" />
+          <Property Name="TotalPriceRePrintLitPrint" Type="Int32" />
+          <Property Name="TotalPrice" Type="Int64" />
+          <Property Name="Deposit" Type="Int64" />
+          <Property Name="Payment" Type="Int64" />
+          <Property Name="Remaining" Type="Int64" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TblAllOrderStatus" Relationship="PhotographyAutomationDBModel.FK_TblAllOrderStatus_TblOrderPrint" FromRole="TblOrderPrint" ToRole="TblAllOrderStatus" />
+          <NavigationProperty Name="TblCustomer" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrint_TblCustomer" FromRole="TblOrderPrint" ToRole="TblCustomer" />
+          <NavigationProperty Name="TblOrder" Relationship="PhotographyAutomationDBModel.FK_TblOrder_TblOrderPrint" FromRole="TblOrderPrint" ToRole="TblOrder" />
+          <NavigationProperty Name="TblOrderPrintStatus" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrint_TblOrderPrintStatus" FromRole="TblOrderPrint" ToRole="TblOrderPrintStatus" />
+          <NavigationProperty Name="TblOrderPrintDetails" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblOrderPrint" FromRole="TblOrderPrint" ToRole="TblOrderPrintDetails" />
+          <NavigationProperty Name="TblOrderPrintFiles" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintFiles_TblOrderPrint" FromRole="TblOrderPrint" ToRole="TblOrderPrintFiles" />
+        </EntityType>
+        <EntityType Name="TblOrderPrintChangingElements">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderPrintDetailsId" Type="Int32" />
+          <Property Name="MainPhotoStreamId" Type="Guid" />
+          <Property Name="StreamId" Type="Guid" />
+          <Property Name="MainPhotoFileName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblOrderPrintDetails" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintChangingElements_TblOrderPrintDetails" FromRole="TblOrderPrintChangingElements" ToRole="TblOrderPrintDetails" />
+        </EntityType>
+        <EntityType Name="TblOrderPrintDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderPrintId" Type="Int32" Nullable="false" />
+          <Property Name="StreamId" Type="Guid" Nullable="false" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IsAccepted" Type="Boolean" />
+          <Property Name="IsFirstPrint" Type="Boolean" />
+          <Property Name="HasPrintService" Type="Boolean" />
+          <Property Name="HasMultiPhoto" Type="Boolean" />
+          <Property Name="HasLitPrint" Type="Boolean" />
+          <Property Name="HasChangingElements" Type="Boolean" />
+          <Property Name="PrintSizeId" Type="Int32" />
+          <Property Name="PrintSizePriceId" Type="Int32" />
+          <Property Name="PrintServiceId" Type="Int32" />
+          <Property Name="PrintServicePriceId" Type="Int32" />
+          <Property Name="PrintSpecialServiceId" Type="Int32" />
+          <Property Name="RePrintSequence" Type="Int32" />
+          <Property Name="HasRePrintPrintService" Type="Boolean" />
+          <Property Name="HasRePrintMultiPhoto" Type="Boolean" />
+          <Property Name="HasRePrintLitPrint" Type="Boolean" />
+          <Property Name="HasRePrintChangingElements" Type="Boolean" />
+          <Property Name="RePrintPrintSizeId" Type="Int32" />
+          <Property Name="RePrintPrintSizePriceId" Type="Int32" />
+          <Property Name="RePrintPrintServiceId" Type="Int32" />
+          <Property Name="RePrintPrintServicePriceId" Type="Int32" />
+          <Property Name="RePrintPrintSpecialServiceId" Type="Int32" />
+          <Property Name="RePrintTotalPrints" Type="Int32" />
+          <Property Name="RePrintTotalPrintServices" Type="Int32" />
+          <Property Name="RetouchDescription" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="TotalPrice" Type="Int32" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TblCustomer" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblCustomer" FromRole="TblOrderPrintDetails" ToRole="TblCustomer" />
+          <NavigationProperty Name="TblOrderPrint" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblOrderPrint" FromRole="TblOrderPrintDetails" ToRole="TblOrderPrint" />
+          <NavigationProperty Name="TblOrderPrintChangingElements" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintChangingElements_TblOrderPrintDetails" FromRole="TblOrderPrintDetails" ToRole="TblOrderPrintChangingElements" />
+          <NavigationProperty Name="TblPrintServicePrices" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintServicePrices" FromRole="TblOrderPrintDetails" ToRole="TblPrintServicePrices" />
+          <NavigationProperty Name="TblPrintServicePrices1" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintServicePrices_RePrint" FromRole="TblOrderPrintDetails" ToRole="TblPrintServicePrices" />
+          <NavigationProperty Name="TblPrintServices" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintServices" FromRole="TblOrderPrintDetails" ToRole="TblPrintServices" />
+          <NavigationProperty Name="TblPrintServices1" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintServices_RePrint" FromRole="TblOrderPrintDetails" ToRole="TblPrintServices" />
+          <NavigationProperty Name="TblPrintSizePrices" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintSizePrices" FromRole="TblOrderPrintDetails" ToRole="TblPrintSizePrices" />
+          <NavigationProperty Name="TblPrintSizePrices1" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintSizePrices_RePrint" FromRole="TblOrderPrintDetails" ToRole="TblPrintSizePrices" />
+          <NavigationProperty Name="TblPrintSizes" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintSizes" FromRole="TblOrderPrintDetails" ToRole="TblPrintSizes" />
+          <NavigationProperty Name="TblPrintSizes1" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintSizes_RePrint" FromRole="TblOrderPrintDetails" ToRole="TblPrintSizes" />
+          <NavigationProperty Name="TblPrintSpecialServices" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintSpecialServices" FromRole="TblOrderPrintDetails" ToRole="TblPrintSpecialServices" />
+          <NavigationProperty Name="TblPrintSpecialServices1" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintSpecialServices_RePrint" FromRole="TblOrderPrintDetails" ToRole="TblPrintSpecialServices" />
+          <NavigationProperty Name="TblOrderPrintLitPrint" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintLitPrint_TblOrderPrintDetails" FromRole="TblOrderPrintDetails" ToRole="TblOrderPrintLitPrint" />
+          <NavigationProperty Name="TblOrderPrintMultiPhotoOrder" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintMultiPhotoOrder_TblOrderPrintDetails" FromRole="TblOrderPrintDetails" ToRole="TblOrderPrintMultiPhotoOrder" />
+        </EntityType>
         <EntityType Name="TblOrderPrintFiles">
           <Key>
             <PropertyRef Name="Id" />
@@ -1491,6 +1829,32 @@
           <Property Name="PathLocator" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CollectDate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="TblOrderPrint" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintFiles_TblOrderPrint" FromRole="TblOrderPrintFiles" ToRole="TblOrderPrint" />
+        </EntityType>
+        <EntityType Name="TblOrderPrintLitPrint">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderPrintDetailsId" Type="Int32" />
+          <Property Name="MainPhotoStreamId" Type="Guid" />
+          <Property Name="StreamId" Type="Guid" />
+          <Property Name="MainPhotoFileName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblOrderPrintDetails" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintLitPrint_TblOrderPrintDetails" FromRole="TblOrderPrintLitPrint" ToRole="TblOrderPrintDetails" />
+        </EntityType>
+        <EntityType Name="TblOrderPrintMultiPhotoOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderPrintDetailId" Type="Int32" />
+          <Property Name="MainPhotoStreamId" Type="Guid" />
+          <Property Name="StreamId" Type="Guid" />
+          <Property Name="MainPhotoFileName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblOrderPrintDetails" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintMultiPhotoOrder_TblOrderPrintDetails" FromRole="TblOrderPrintMultiPhotoOrder" ToRole="TblOrderPrintDetails" />
         </EntityType>
         <EntityType Name="TblOrderPrintStatus">
           <Key>
@@ -1538,11 +1902,11 @@
           <Property Name="PrintSizeId" Type="Int32" Nullable="false" />
           <Property Name="PrintServiceId" Type="Int32" Nullable="false" />
           <Property Name="Price" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="TblPrintServices" Relationship="PhotographyAutomationDBModel.FK_TblPrintServicePrices_TblPrintServices" FromRole="TblPrintServicePrices" ToRole="TblPrintServices" />
-          <NavigationProperty Name="TblPrintSizes" Relationship="PhotographyAutomationDBModel.FK_TblPrintServicePrices_TblPrintSizes" FromRole="TblPrintServicePrices" ToRole="TblPrintSizes" />
           <NavigationProperty Name="TblOrderPrintDetails" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintServicePrices" FromRole="TblPrintServicePrices" ToRole="TblOrderPrintDetails" />
           <NavigationProperty Name="TblOrderPrintDetails1" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintServicePrices_RePrint" FromRole="TblPrintServicePrices" ToRole="TblOrderPrintDetails" />
-          </EntityType>
+          <NavigationProperty Name="TblPrintServices" Relationship="PhotographyAutomationDBModel.FK_TblPrintServicePrices_TblPrintServices" FromRole="TblPrintServicePrices" ToRole="TblPrintServices" />
+          <NavigationProperty Name="TblPrintSizes" Relationship="PhotographyAutomationDBModel.FK_TblPrintServicePrices_TblPrintSizes" FromRole="TblPrintServicePrices" ToRole="TblPrintSizes" />
+        </EntityType>
         <EntityType Name="TblPrintServices">
           <Key>
             <PropertyRef Name="Id" />
@@ -1551,10 +1915,10 @@
           <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PrintServiceName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PrintServiceDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="TblPrintServicePrices" Relationship="PhotographyAutomationDBModel.FK_TblPrintServicePrices_TblPrintServices" FromRole="TblPrintServices" ToRole="TblPrintServicePrices" />
           <NavigationProperty Name="TblOrderPrintDetails" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintServices" FromRole="TblPrintServices" ToRole="TblOrderPrintDetails" />
           <NavigationProperty Name="TblOrderPrintDetails1" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintServices_RePrint" FromRole="TblPrintServices" ToRole="TblOrderPrintDetails" />
-          </EntityType>
+          <NavigationProperty Name="TblPrintServicePrices" Relationship="PhotographyAutomationDBModel.FK_TblPrintServicePrices_TblPrintServices" FromRole="TblPrintServices" ToRole="TblPrintServicePrices" />
+        </EntityType>
         <EntityType Name="TblPrintSizePrices">
           <Key>
             <PropertyRef Name="Id" />
@@ -1571,10 +1935,10 @@
           <Property Name="ScanAndProcessingPrice" Type="Int32" />
           <Property Name="ItalianAlbumPagePrice" Type="Int32" />
           <Property Name="ItalianAlbumBoundingPrice" Type="Int32" />
-          <NavigationProperty Name="TblPrintSizes" Relationship="PhotographyAutomationDBModel.FK_TblSizePrice_TblPrintSizes1" FromRole="TblPrintSizePrices" ToRole="TblPrintSizes" />
           <NavigationProperty Name="TblOrderPrintDetails" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintSizePrices" FromRole="TblPrintSizePrices" ToRole="TblOrderPrintDetails" />
           <NavigationProperty Name="TblOrderPrintDetails1" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintSizePrices_RePrint" FromRole="TblPrintSizePrices" ToRole="TblOrderPrintDetails" />
-          </EntityType>
+          <NavigationProperty Name="TblPrintSizes" Relationship="PhotographyAutomationDBModel.FK_TblSizePrice_TblPrintSizes1" FromRole="TblPrintSizePrices" ToRole="TblPrintSizes" />
+        </EntityType>
         <EntityType Name="TblPrintSizes">
           <Key>
             <PropertyRef Name="Id" />
@@ -1595,12 +1959,12 @@
           <Property Name="MinimumOrder" Type="Byte" Nullable="false" />
           <Property Name="Descriptions" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TblAlbums" Relationship="PhotographyAutomationDBModel.FK_TblAlbums_TblPrintSizes" FromRole="TblPrintSizes" ToRole="TblAlbums" />
+          <NavigationProperty Name="TblOrderPrintDetails" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintSizes" FromRole="TblPrintSizes" ToRole="TblOrderPrintDetails" />
+          <NavigationProperty Name="TblOrderPrintDetails1" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintSizes_RePrint" FromRole="TblPrintSizes" ToRole="TblOrderPrintDetails" />
           <NavigationProperty Name="TblPrintCustomerFiles" Relationship="PhotographyAutomationDBModel.FK_TblCustomerFilePrint_TblPrintSizes" FromRole="TblPrintSizes" ToRole="TblPrintCustomerFiles" />
           <NavigationProperty Name="TblPrintServicePrices" Relationship="PhotographyAutomationDBModel.FK_TblPrintServicePrices_TblPrintSizes" FromRole="TblPrintSizes" ToRole="TblPrintServicePrices" />
           <NavigationProperty Name="TblPrintSizePrices" Relationship="PhotographyAutomationDBModel.FK_TblSizePrice_TblPrintSizes1" FromRole="TblPrintSizes" ToRole="TblPrintSizePrices" />
-          <NavigationProperty Name="TblOrderPrintDetails" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintSizes" FromRole="TblPrintSizes" ToRole="TblOrderPrintDetails" />
-          <NavigationProperty Name="TblOrderPrintDetails1" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintSizes_RePrint" FromRole="TblPrintSizes" ToRole="TblOrderPrintDetails" />
-          </EntityType>
+        </EntityType>
         <EntityType Name="TblPrintSpecialServices">
           <Key>
             <PropertyRef Name="Id" />
@@ -1748,6 +2112,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TblAllOrderStatus_TblOrderPrint">
+          <End Type="PhotographyAutomationDBModel.TblOrderPrint" Role="TblOrderPrint" Multiplicity="1" />
+          <End Type="PhotographyAutomationDBModel.TblAllOrderStatus" Role="TblAllOrderStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblOrderPrint">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblAllOrderStatus">
+              <PropertyRef Name="OrderPrintId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TblBooking_TblAtelierType">
           <End Type="PhotographyAutomationDBModel.TblAtelierType" Role="TblAtelierType" Multiplicity="1" />
           <End Type="PhotographyAutomationDBModel.TblBooking" Role="TblBooking" Multiplicity="*" />
@@ -1856,6 +2232,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TblOrderPrint_TblCustomer">
+          <End Type="PhotographyAutomationDBModel.TblCustomer" Role="TblCustomer" Multiplicity="1" />
+          <End Type="PhotographyAutomationDBModel.TblOrderPrint" Role="TblOrderPrint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCustomer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblOrderPrint">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblOrderPrintDetails_TblCustomer">
+          <End Type="PhotographyAutomationDBModel.TblCustomer" Role="TblCustomer" Multiplicity="1" />
+          <End Type="PhotographyAutomationDBModel.TblOrderPrintDetails" Role="TblOrderPrintDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCustomer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblOrderPrintDetails">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TblFilesError_TblOrder">
           <End Type="PhotographyAutomationDBModel.TblOrder" Role="TblOrder" Multiplicity="0..1" />
           <End Type="PhotographyAutomationDBModel.TblFilesError" Role="TblFilesError" Multiplicity="*" />
@@ -1864,6 +2264,18 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="TblFilesError">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblOrder_TblOrderPrint">
+          <End Type="PhotographyAutomationDBModel.TblOrder" Role="TblOrder" Multiplicity="1" />
+          <End Type="PhotographyAutomationDBModel.TblOrderPrint" Role="TblOrderPrint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblOrder">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblOrderPrint">
               <PropertyRef Name="OrderId" />
             </Dependent>
           </ReferentialConstraint>
@@ -1900,226 +2312,6 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="TblOrderFiles">
-              <PropertyRef Name="OrderId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblCustomerFilePrint_TblPrintSizes">
-          <End Type="PhotographyAutomationDBModel.TblPrintSizes" Role="TblPrintSizes" Multiplicity="1" />
-          <End Type="PhotographyAutomationDBModel.TblPrintCustomerFiles" Role="TblPrintCustomerFiles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblPrintSizes">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TblPrintCustomerFiles">
-              <PropertyRef Name="PrintSizeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblPrintServicePrices_TblPrintServices">
-          <End Type="PhotographyAutomationDBModel.TblPrintServices" Role="TblPrintServices" Multiplicity="1" />
-          <End Type="PhotographyAutomationDBModel.TblPrintServicePrices" Role="TblPrintServicePrices" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblPrintServices">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TblPrintServicePrices">
-              <PropertyRef Name="PrintServiceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblPrintServicePrices_TblPrintSizes">
-          <End Type="PhotographyAutomationDBModel.TblPrintSizes" Role="TblPrintSizes" Multiplicity="1" />
-          <End Type="PhotographyAutomationDBModel.TblPrintServicePrices" Role="TblPrintServicePrices" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblPrintSizes">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TblPrintServicePrices">
-              <PropertyRef Name="PrintSizeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblSizePrice_TblPrintSizes1">
-          <End Type="PhotographyAutomationDBModel.TblPrintSizes" Role="TblPrintSizes" Multiplicity="1" />
-          <End Type="PhotographyAutomationDBModel.TblPrintSizePrices" Role="TblPrintSizePrices" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblPrintSizes">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TblPrintSizePrices">
-              <PropertyRef Name="PrintSizeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="TblOrderPrintChangingElements">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderPrintDetailsId" Type="Int32" />
-          <Property Name="MainPhotoStreamId" Type="Guid" />
-          <Property Name="StreamId" Type="Guid" />
-          <Property Name="MainPhotoFileName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="FileName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="TblOrderPrintDetails" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintChangingElements_TblOrderPrintDetails" FromRole="TblOrderPrintChangingElements" ToRole="TblOrderPrintDetails" />
-        </EntityType>
-        <EntityType Name="TblOrderPrintLitPrint">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderPrintDetailsId" Type="Int32" />
-          <Property Name="MainPhotoStreamId" Type="Guid" />
-          <Property Name="StreamId" Type="Guid" />
-          <Property Name="MainPhotoFileName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="FileName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="TblOrderPrintDetails" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintLitPrint_TblOrderPrintDetails" FromRole="TblOrderPrintLitPrint" ToRole="TblOrderPrintDetails" />
-        </EntityType>
-        <EntityType Name="TblOrderPrintMultiPhotoOrder">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderPrintDetailId" Type="Int32" />
-          <Property Name="MainPhotoStreamId" Type="Guid" />
-          <Property Name="StreamId" Type="Guid" />
-          <Property Name="MainPhotoFileName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="FileName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="TblOrderPrintDetails" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintMultiPhotoOrder_TblOrderPrintDetails" FromRole="TblOrderPrintMultiPhotoOrder" ToRole="TblOrderPrintDetails" />
-        </EntityType>
-        <EntityType Name="TblOrderPrint">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderPrintCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OrderId" Type="Int32" Nullable="false" />
-          <Property Name="OrderType" Type="Boolean" />
-          <Property Name="OrderPrintStatusId" Type="Int32" Nullable="false" />
-          <Property Name="CustomerId" Type="Int32" Nullable="false" />
-          <Property Name="RetochDescriptions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="TotalPhotos" Type="Int32" />
-          <Property Name="TotalPriceOriginalPrint" Type="Int32" />
-          <Property Name="TotalPriceMultiPhoto" Type="Int32" />
-          <Property Name="TotalPriceLitPrint" Type="Int32" />
-          <Property Name="TotalPricePrintService" Type="Int32" />
-          <Property Name="TotalPriceRePrint" Type="Int32" />
-          <Property Name="TotalPriceRePrintMultiPhoto" Type="Int32" />
-          <Property Name="TotalPriceRePrintLitPrint" Type="Int32" />
-          <Property Name="TotalPrice" Type="Int64" />
-          <Property Name="Deposit" Type="Int64" />
-          <Property Name="Payment" Type="Int64" />
-          <Property Name="Remaining" Type="Int64" />
-          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="TblAllOrderStatus" Relationship="PhotographyAutomationDBModel.FK_TblAllOrderStatus_TblOrderPrint" FromRole="TblOrderPrint" ToRole="TblAllOrderStatus" />
-          <NavigationProperty Name="TblCustomer" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrint_TblCustomer" FromRole="TblOrderPrint" ToRole="TblCustomer" />
-          <NavigationProperty Name="TblOrder" Relationship="PhotographyAutomationDBModel.FK_TblOrder_TblOrderPrint" FromRole="TblOrderPrint" ToRole="TblOrder" />
-          <NavigationProperty Name="TblOrderPrintStatus" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrint_TblOrderPrintStatus" FromRole="TblOrderPrint" ToRole="TblOrderPrintStatus" />
-          <NavigationProperty Name="TblOrderPrintDetails" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblOrderPrint" FromRole="TblOrderPrint" ToRole="TblOrderPrintDetails" />
-          <NavigationProperty Name="TblOrderPrintFiles" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintFiles_TblOrderPrint" FromRole="TblOrderPrint" ToRole="TblOrderPrintFiles" />
-        </EntityType>
-        <EntityType Name="TblOrderPrintDetails">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderPrintId" Type="Int32" Nullable="false" />
-          <Property Name="StreamId" Type="Guid" Nullable="false" />
-          <Property Name="CustomerId" Type="Int32" Nullable="false" />
-          <Property Name="FileName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="IsAccepted" Type="Boolean" />
-          <Property Name="IsFirstPrint" Type="Boolean" />
-          <Property Name="HasPrintService" Type="Boolean" />
-          <Property Name="HasMultiPhoto" Type="Boolean" />
-          <Property Name="HasLitPrint" Type="Boolean" />
-          <Property Name="HasChangingElements" Type="Boolean" />
-          <Property Name="PrintSizeId" Type="Int32" />
-          <Property Name="PrintSizePriceId" Type="Int32" />
-          <Property Name="PrintServiceId" Type="Int32" />
-          <Property Name="PrintServicePriceId" Type="Int32" />
-          <Property Name="PrintSpecialServiceId" Type="Int32" />
-          <Property Name="RePrintSequence" Type="Int32" />
-          <Property Name="HasRePrintPrintService" Type="Boolean" />
-          <Property Name="HasRePrintMultiPhoto" Type="Boolean" />
-          <Property Name="HasRePrintLitPrint" Type="Boolean" />
-          <Property Name="HasRePrintChangingElements" Type="Boolean" />
-          <Property Name="RePrintPrintSizeId" Type="Int32" />
-          <Property Name="RePrintPrintSizePriceId" Type="Int32" />
-          <Property Name="RePrintPrintServiceId" Type="Int32" />
-          <Property Name="RePrintPrintServicePriceId" Type="Int32" />
-          <Property Name="RePrintPrintSpecialServiceId" Type="Int32" />
-          <Property Name="RePrintTotalPrints" Type="Int32" />
-          <Property Name="RePrintTotalPrintServices" Type="Int32" />
-          <Property Name="RetouchDescription" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="TotalPrice" Type="Int32" />
-          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="TblCustomer" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblCustomer" FromRole="TblOrderPrintDetails" ToRole="TblCustomer" />
-          <NavigationProperty Name="TblOrderPrint" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblOrderPrint" FromRole="TblOrderPrintDetails" ToRole="TblOrderPrint" />
-          <NavigationProperty Name="TblOrderPrintChangingElements" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintChangingElements_TblOrderPrintDetails" FromRole="TblOrderPrintDetails" ToRole="TblOrderPrintChangingElements" />
-          <NavigationProperty Name="TblPrintServicePrices" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintServicePrices" FromRole="TblOrderPrintDetails" ToRole="TblPrintServicePrices" />
-          <NavigationProperty Name="TblPrintServicePrices1" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintServicePrices_RePrint" FromRole="TblOrderPrintDetails" ToRole="TblPrintServicePrices" />
-          <NavigationProperty Name="TblPrintServices" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintServices" FromRole="TblOrderPrintDetails" ToRole="TblPrintServices" />
-          <NavigationProperty Name="TblPrintServices1" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintServices_RePrint" FromRole="TblOrderPrintDetails" ToRole="TblPrintServices" />
-          <NavigationProperty Name="TblPrintSizePrices" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintSizePrices" FromRole="TblOrderPrintDetails" ToRole="TblPrintSizePrices" />
-          <NavigationProperty Name="TblPrintSizePrices1" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintSizePrices_RePrint" FromRole="TblOrderPrintDetails" ToRole="TblPrintSizePrices" />
-          <NavigationProperty Name="TblPrintSizes" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintSizes" FromRole="TblOrderPrintDetails" ToRole="TblPrintSizes" />
-          <NavigationProperty Name="TblPrintSizes1" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintSizes_RePrint" FromRole="TblOrderPrintDetails" ToRole="TblPrintSizes" />
-          <NavigationProperty Name="TblPrintSpecialServices" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintSpecialServices" FromRole="TblOrderPrintDetails" ToRole="TblPrintSpecialServices" />
-          <NavigationProperty Name="TblPrintSpecialServices1" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintDetails_TblPrintSpecialServices_RePrint" FromRole="TblOrderPrintDetails" ToRole="TblPrintSpecialServices" />
-          <NavigationProperty Name="TblOrderPrintLitPrint" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintLitPrint_TblOrderPrintDetails" FromRole="TblOrderPrintDetails" ToRole="TblOrderPrintLitPrint" />
-          <NavigationProperty Name="TblOrderPrintMultiPhotoOrder" Relationship="PhotographyAutomationDBModel.FK_TblOrderPrintMultiPhotoOrder_TblOrderPrintDetails" FromRole="TblOrderPrintDetails" ToRole="TblOrderPrintMultiPhotoOrder" />
-        </EntityType>
-        <Association Name="FK_TblAllOrderStatus_TblOrderPrint">
-          <End Type="PhotographyAutomationDBModel.TblOrderPrint" Role="TblOrderPrint" Multiplicity="1" />
-          <End Type="PhotographyAutomationDBModel.TblAllOrderStatus" Role="TblAllOrderStatus" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblOrderPrint">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TblAllOrderStatus">
-              <PropertyRef Name="OrderPrintId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblOrderPrint_TblCustomer">
-          <End Type="PhotographyAutomationDBModel.TblCustomer" Role="TblCustomer" Multiplicity="1" />
-          <End Type="PhotographyAutomationDBModel.TblOrderPrint" Role="TblOrderPrint" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblCustomer">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TblOrderPrint">
-              <PropertyRef Name="CustomerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblOrderPrintDetails_TblCustomer">
-          <End Type="PhotographyAutomationDBModel.TblCustomer" Role="TblCustomer" Multiplicity="1" />
-          <End Type="PhotographyAutomationDBModel.TblOrderPrintDetails" Role="TblOrderPrintDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblCustomer">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TblOrderPrintDetails">
-              <PropertyRef Name="CustomerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblOrder_TblOrderPrint">
-          <End Type="PhotographyAutomationDBModel.TblOrder" Role="TblOrder" Multiplicity="1" />
-          <End Type="PhotographyAutomationDBModel.TblOrderPrint" Role="TblOrderPrint" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblOrder">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TblOrderPrint">
               <PropertyRef Name="OrderId" />
             </Dependent>
           </ReferentialConstraint>
@@ -2316,313 +2508,274 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TblCustomerFilePrint_TblPrintSizes">
+          <End Type="PhotographyAutomationDBModel.TblPrintSizes" Role="TblPrintSizes" Multiplicity="1" />
+          <End Type="PhotographyAutomationDBModel.TblPrintCustomerFiles" Role="TblPrintCustomerFiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblPrintSizes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblPrintCustomerFiles">
+              <PropertyRef Name="PrintSizeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblPrintServicePrices_TblPrintServices">
+          <End Type="PhotographyAutomationDBModel.TblPrintServices" Role="TblPrintServices" Multiplicity="1" />
+          <End Type="PhotographyAutomationDBModel.TblPrintServicePrices" Role="TblPrintServicePrices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblPrintServices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblPrintServicePrices">
+              <PropertyRef Name="PrintServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblPrintServicePrices_TblPrintSizes">
+          <End Type="PhotographyAutomationDBModel.TblPrintSizes" Role="TblPrintSizes" Multiplicity="1" />
+          <End Type="PhotographyAutomationDBModel.TblPrintServicePrices" Role="TblPrintServicePrices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblPrintSizes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblPrintServicePrices">
+              <PropertyRef Name="PrintSizeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblSizePrice_TblPrintSizes1">
+          <End Type="PhotographyAutomationDBModel.TblPrintSizes" Role="TblPrintSizes" Multiplicity="1" />
+          <End Type="PhotographyAutomationDBModel.TblPrintSizePrices" Role="TblPrintSizePrices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblPrintSizes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TblPrintSizePrices">
+              <PropertyRef Name="PrintSizeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="usp_CreateFileTableFile1_Result">
+          <Property Type="String" Name="streamId" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="parent_locator" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="path_name" Nullable="true" />
+          <Property Type="Binary" Name="filestreamTxn" Nullable="true" />
+          <Property Type="String" Name="path_locator_str" Nullable="true" MaxLength="4000" />
+        </ComplexType>
+        <ComplexType Name="usp_GetImageInfo1_Result">
+          <Property Type="String" Name="PathLocator" Nullable="true" MaxLength="4000" />
+          <Property Type="Binary" Name="TransactionContext" Nullable="true" />
+          <Property Type="Int64" Name="FileSize" Nullable="true" />
+          <Property Type="String" Name="StreamFileName" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="usp_GetListOfFilesInFolder1_Result">
+          <Property Type="Guid" Name="stream_id" Nullable="false" />
+          <Property Type="Binary" Name="file_stream" Nullable="true" />
+          <Property Type="String" Name="FullUncPath" Nullable="true" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="PathLocator" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="ParentPathLocator" Nullable="true" MaxLength="4000" />
+          <Property Type="Binary" Name="TransactionContext" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="file_type" Nullable="true" MaxLength="255" />
+          <Property Type="Int64" Name="cached_file_size" Nullable="true" />
+          <Property Type="DateTimeOffset" Name="creation_time" Nullable="false" />
+          <Property Type="DateTimeOffset" Name="last_write_time" Nullable="false" />
+          <Property Type="DateTimeOffset" Name="last_access_time" Nullable="true" />
+          <Property Type="Boolean" Name="is_directory" Nullable="false" />
+          <Property Type="Boolean" Name="is_offline" Nullable="false" />
+          <Property Type="Boolean" Name="is_hidden" Nullable="false" />
+          <Property Type="Boolean" Name="is_readonly" Nullable="false" />
+          <Property Type="Boolean" Name="is_archive" Nullable="false" />
+          <Property Type="Boolean" Name="is_system" Nullable="false" />
+          <Property Type="Boolean" Name="is_temporary" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_CreateFileTableFile_Result2">
+          <Property Type="String" Name="streamId" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="parent_locator" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="path_name" Nullable="true" />
+          <Property Type="Binary" Name="filestreamTxn" Nullable="true" />
+          <Property Type="String" Name="path_locator_str" Nullable="true" MaxLength="4000" />
+        </ComplexType>
+        <ComplexType Name="usp_GetImageInfo_Result2">
+          <Property Type="String" Name="PathLocator" Nullable="true" MaxLength="4000" />
+          <Property Type="Binary" Name="TransactionContext" Nullable="true" />
+          <Property Type="Int64" Name="FileSize" Nullable="true" />
+          <Property Type="String" Name="StreamFileName" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="usp_GetListOfFilesInFolder_Result2">
+          <Property Type="Guid" Name="stream_id" Nullable="false" />
+          <Property Type="Binary" Name="file_stream" Nullable="true" />
+          <Property Type="String" Name="FullUncPath" Nullable="true" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="PathLocator" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="ParentPathLocator" Nullable="true" MaxLength="4000" />
+          <Property Type="Binary" Name="TransactionContext" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="file_type" Nullable="true" MaxLength="255" />
+          <Property Type="Int64" Name="cached_file_size" Nullable="true" />
+          <Property Type="DateTimeOffset" Name="creation_time" Nullable="false" />
+          <Property Type="DateTimeOffset" Name="last_write_time" Nullable="false" />
+          <Property Type="DateTimeOffset" Name="last_access_time" Nullable="true" />
+          <Property Type="Boolean" Name="is_directory" Nullable="false" />
+          <Property Type="Boolean" Name="is_offline" Nullable="false" />
+          <Property Type="Boolean" Name="is_hidden" Nullable="false" />
+          <Property Type="Boolean" Name="is_readonly" Nullable="false" />
+          <Property Type="Boolean" Name="is_archive" Nullable="false" />
+          <Property Type="Boolean" Name="is_system" Nullable="false" />
+          <Property Type="Boolean" Name="is_temporary" Nullable="false" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="PhotographyAutomationDBModelStoreContainer" CdmEntityContainer="PhotographyAutomationDBEntities">
-    <EntitySetMapping Name="TblAlbums">
-      <EntityTypeMapping TypeName="IsTypeOf(PhotographyAutomationDBModel.TblAlbums)">
-        <MappingFragment StoreEntitySet="TblAlbums">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="PrintSizeId" ColumnName="PrintSizeId" />
-          <ScalarProperty Name="AlbumName" ColumnName="AlbumName" />
-          <ScalarProperty Name="TotalPages" ColumnName="TotalPages" />
-          <ScalarProperty Name="CoverTypeName" ColumnName="CoverTypeName" />
-          <ScalarProperty Name="Color" ColumnName="Color" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="Code" ColumnName="Code" />
-          <ScalarProperty Name="ManufacturerId" ColumnName="ManufacturerId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TblAllOrderStatus">
-      <EntityTypeMapping TypeName="IsTypeOf(PhotographyAutomationDBModel.TblAllOrderStatus)">
-        <MappingFragment StoreEntitySet="TblAllOrderStatus">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-          <ScalarProperty Name="OrderPrintId" ColumnName="OrderPrintId" />
-          <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
-          <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TblAtelierType">
-      <EntityTypeMapping TypeName="IsTypeOf(PhotographyAutomationDBModel.TblAtelierType)">
-        <MappingFragment StoreEntitySet="TblAtelierType">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Code" ColumnName="Code" />
-          <ScalarProperty Name="AtelierName" ColumnName="AtelierName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TblBooking">
-      <EntityTypeMapping TypeName="IsTypeOf(PhotographyAutomationDBModel.TblBooking)">
-        <MappingFragment StoreEntitySet="TblBooking">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="Time" ColumnName="Time" />
-          <ScalarProperty Name="PhotographerGender" ColumnName="PhotographerGender" />
-          <ScalarProperty Name="PhotographyTypeId" ColumnName="PhotographyTypeId" />
-          <ScalarProperty Name="AtelierTypeId" ColumnName="AtelierTypeId" />
-          <ScalarProperty Name="PersonCount" ColumnName="PersonCount" />
-          <ScalarProperty Name="PrepaymentIsOk" ColumnName="PrepaymentIsOk" />
-          <ScalarProperty Name="Submitter" ColumnName="Submitter" />
-          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TblBookingStatus">
-      <EntityTypeMapping TypeName="IsTypeOf(PhotographyAutomationDBModel.TblBookingStatus)">
-        <MappingFragment StoreEntitySet="TblBookingStatus">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Code" ColumnName="Code" />
-          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TblCustomer">
-      <EntityTypeMapping TypeName="IsTypeOf(PhotographyAutomationDBModel.TblCustomer)">
-        <MappingFragment StoreEntitySet="TblCustomer">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="Gender" ColumnName="Gender" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="Tell" ColumnName="Tell" />
-          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="NationalId" ColumnName="NationalId" />
-          <ScalarProperty Name="CustomerType" ColumnName="CustomerType" />
-          <ScalarProperty Name="IsMarried" ColumnName="IsMarried" />
-          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-          <ScalarProperty Name="WeddingDate" ColumnName="WeddingDate" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-          <ScalarProperty Name="Submitter" ColumnName="Submitter" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TblFilesError">
-      <EntityTypeMapping TypeName="IsTypeOf(PhotographyAutomationDBModel.TblFilesError)">
-        <MappingFragment StoreEntitySet="TblFilesError">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="FileName" ColumnName="FileName" />
-          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
-          <ScalarProperty Name="Submitter" ColumnName="Submitter" />
-          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
-          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
-          <ScalarProperty Name="BookingId" ColumnName="BookingId" />
-          <ScalarProperty Name="ErrorInId" ColumnName="ErrorInId" />
-          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TblOrder">
-      <EntityTypeMapping TypeName="IsTypeOf(PhotographyAutomationDBModel.TblOrder)">
-        <MappingFragment StoreEntitySet="TblOrder">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
-          <ScalarProperty Name="OrderStatusId" ColumnName="OrderStatusId" />
-          <ScalarProperty Name="BookingId" ColumnName="BookingId" />
-          <ScalarProperty Name="PhotographyTypeId" ColumnName="PhotographyTypeId" />
-          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
-          <ScalarProperty Name="PhotographerId" ColumnName="PhotographerId" />
-          <ScalarProperty Name="PaymentIsOk" ColumnName="PaymentIsOk" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="Time" ColumnName="Time" />
-          <ScalarProperty Name="OrderFolderStreamId" ColumnName="OrderFolderStreamId" />
-          <ScalarProperty Name="OrderFolderPathLocator" ColumnName="OrderFolderPathLocator" />
-          <ScalarProperty Name="OrderFolderParentPathLocator" ColumnName="OrderFolderParentPathLocator" />
-          <ScalarProperty Name="TotalFiles" ColumnName="TotalFiles" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
-          <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
-          <ScalarProperty Name="Submitter" ColumnName="Submitter" />
-          <ScalarProperty Name="UploadDate" ColumnName="UploadDate" />
-          <ScalarProperty Name="OrderPrintIssued" ColumnName="OrderPrintIssued" />
-          <ScalarProperty Name="LastOrderPrintCustomerId" ColumnName="LastOrderPrintCustomerId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TblOrderFiles">
-      <EntityTypeMapping TypeName="IsTypeOf(PhotographyAutomationDBModel.TblOrderFiles)">
-        <MappingFragment StoreEntitySet="TblOrderFiles">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-          <ScalarProperty Name="StreamId" ColumnName="StreamId" />
-          <ScalarProperty Name="FileName" ColumnName="FileName" />
-          <ScalarProperty Name="PathLocator" ColumnName="PathLocator" />
-          <ScalarProperty Name="UploadDate" ColumnName="UploadDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TblOrderPrintFiles">
-      <EntityTypeMapping TypeName="IsTypeOf(PhotographyAutomationDBModel.TblOrderPrintFiles)">
-        <MappingFragment StoreEntitySet="TblOrderPrintFiles">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="OrderPrintId" ColumnName="OrderPrintId" />
-          <ScalarProperty Name="FileName" ColumnName="FileName" />
-          <ScalarProperty Name="PathLocator" ColumnName="PathLocator" />
-          <ScalarProperty Name="CollectDate" ColumnName="CollectDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TblOrderPrintStatus">
-      <EntityTypeMapping TypeName="IsTypeOf(PhotographyAutomationDBModel.TblOrderPrintStatus)">
-        <MappingFragment StoreEntitySet="TblOrderPrintStatus">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Code" ColumnName="Code" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TblOrderStatus">
-      <EntityTypeMapping TypeName="IsTypeOf(PhotographyAutomationDBModel.TblOrderStatus)">
-        <MappingFragment StoreEntitySet="TblOrderStatus">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Code" ColumnName="Code" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TblPhotographyType">
-      <EntityTypeMapping TypeName="IsTypeOf(PhotographyAutomationDBModel.TblPhotographyType)">
-        <MappingFragment StoreEntitySet="TblPhotographyType">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Code" ColumnName="Code" />
-          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TblPrintCustomerFiles">
-      <EntityTypeMapping TypeName="IsTypeOf(PhotographyAutomationDBModel.TblPrintCustomerFiles)">
-        <MappingFragment StoreEntitySet="TblPrintCustomerFiles">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="PrintSizeId" ColumnName="PrintSizeId" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TblPrintServicePrices">
-      <EntityTypeMapping TypeName="IsTypeOf(PhotographyAutomationDBModel.TblPrintServicePrices)">
-        <MappingFragment StoreEntitySet="TblPrintServicePrices">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Code" ColumnName="Code" />
-          <ScalarProperty Name="PrintSizeId" ColumnName="PrintSizeId" />
-          <ScalarProperty Name="PrintServiceId" ColumnName="PrintServiceId" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TblPrintServices">
-      <EntityTypeMapping TypeName="IsTypeOf(PhotographyAutomationDBModel.TblPrintServices)">
-        <MappingFragment StoreEntitySet="TblPrintServices">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Code" ColumnName="Code" />
-          <ScalarProperty Name="PrintServiceName" ColumnName="PrintServiceName" />
-          <ScalarProperty Name="PrintServiceDescription" ColumnName="PrintServiceDescription" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TblPrintSizePrices">
-      <EntityTypeMapping TypeName="IsTypeOf(PhotographyAutomationDBModel.TblPrintSizePrices)">
-        <MappingFragment StoreEntitySet="TblPrintSizePrices">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="PrintSizeId" ColumnName="PrintSizeId" />
-          <ScalarProperty Name="FirstPrintPrice" ColumnName="FirstPrintPrice" />
-          <ScalarProperty Name="RePrintPrice" ColumnName="RePrintPrice" />
-          <ScalarProperty Name="MedicalPrice" ColumnName="MedicalPrice" />
-          <ScalarProperty Name="MedicalRePrintPrice" ColumnName="MedicalRePrintPrice" />
-          <ScalarProperty Name="LitPrintPrice" ColumnName="LitPrintPrice" />
-          <ScalarProperty Name="LitPrintRePrintPrice" ColumnName="LitPrintRePrintPrice" />
-          <ScalarProperty Name="ScanAndPrintPrice" ColumnName="ScanAndPrintPrice" />
-          <ScalarProperty Name="ScanAndProcessingPrice" ColumnName="ScanAndProcessingPrice" />
-          <ScalarProperty Name="ItalianAlbumPagePrice" ColumnName="ItalianAlbumPagePrice" />
-          <ScalarProperty Name="ItalianAlbumBoundingPrice" ColumnName="ItalianAlbumBoundingPrice" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TblPrintSizes">
-      <EntityTypeMapping TypeName="IsTypeOf(PhotographyAutomationDBModel.TblPrintSizes)">
-        <MappingFragment StoreEntitySet="TblPrintSizes">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Width" ColumnName="Width" />
-          <ScalarProperty Name="Height" ColumnName="Height" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="HasFirstPrint" ColumnName="HasFirstPrint" />
-          <ScalarProperty Name="HasRePrint" ColumnName="HasRePrint" />
-          <ScalarProperty Name="HasMedicalPhoto" ColumnName="HasMedicalPhoto" />
-          <ScalarProperty Name="HasLitPrint" ColumnName="HasLitPrint" />
-          <ScalarProperty Name="HasScanAndProcessing" ColumnName="HasScanAndProcessing" />
-          <ScalarProperty Name="HasAlbum" ColumnName="HasAlbum" />
-          <ScalarProperty Name="HasItalianAlbum" ColumnName="HasItalianAlbum" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-          <ScalarProperty Name="MinimumOrder" ColumnName="MinimumOrder" />
-          <ScalarProperty Name="Descriptions" ColumnName="Descriptions" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TblPrintSpecialServices">
-      <EntityTypeMapping TypeName="IsTypeOf(PhotographyAutomationDBModel.TblPrintSpecialServices)">
-        <MappingFragment StoreEntitySet="TblPrintSpecialServices">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Code" ColumnName="Code" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TblOrderPrintChangingElements">
-      <EntityTypeMapping TypeName="IsTypeOf(PhotographyAutomationDBModel.TblOrderPrintChangingElements)">
-        <MappingFragment StoreEntitySet="TblOrderPrintChangingElements">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="OrderPrintDetailsId" ColumnName="OrderPrintDetailsId" />
-          <ScalarProperty Name="MainPhotoStreamId" ColumnName="MainPhotoStreamId" />
-          <ScalarProperty Name="StreamId" ColumnName="StreamId" />
-          <ScalarProperty Name="MainPhotoFileName" ColumnName="MainPhotoFileName" />
-          <ScalarProperty Name="FileName" ColumnName="FileName" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TblOrderPrintLitPrint">
-      <EntityTypeMapping TypeName="IsTypeOf(PhotographyAutomationDBModel.TblOrderPrintLitPrint)">
-        <MappingFragment StoreEntitySet="TblOrderPrintLitPrint">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="OrderPrintDetailsId" ColumnName="OrderPrintDetailsId" />
-          <ScalarProperty Name="MainPhotoStreamId" ColumnName="MainPhotoStreamId" />
-          <ScalarProperty Name="StreamId" ColumnName="StreamId" />
-          <ScalarProperty Name="MainPhotoFileName" ColumnName="MainPhotoFileName" />
-          <ScalarProperty Name="FileName" ColumnName="FileName" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TblOrderPrintMultiPhotoOrder">
-      <EntityTypeMapping TypeName="IsTypeOf(PhotographyAutomationDBModel.TblOrderPrintMultiPhotoOrder)">
-        <MappingFragment StoreEntitySet="TblOrderPrintMultiPhotoOrder">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="OrderPrintDetailId" ColumnName="OrderPrintDetailId" />
-          <ScalarProperty Name="MainPhotoStreamId" ColumnName="MainPhotoStreamId" />
-          <ScalarProperty Name="StreamId" ColumnName="StreamId" />
-          <ScalarProperty Name="MainPhotoFileName" ColumnName="MainPhotoFileName" />
-          <ScalarProperty Name="FileName" ColumnName="FileName" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
+          <EntitySetMapping Name="TblAlbums">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblAlbums">
+              <MappingFragment StoreEntitySet="TblAlbums">
+                <ScalarProperty Name="ManufacturerId" ColumnName="ManufacturerId" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="CoverTypeName" ColumnName="CoverTypeName" />
+                <ScalarProperty Name="TotalPages" ColumnName="TotalPages" />
+                <ScalarProperty Name="AlbumName" ColumnName="AlbumName" />
+                <ScalarProperty Name="PrintSizeId" ColumnName="PrintSizeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblAllOrderStatus">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblAllOrderStatus">
+              <MappingFragment StoreEntitySet="TblAllOrderStatus">
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+                <ScalarProperty Name="OrderPrintId" ColumnName="OrderPrintId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblAtelierType">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblAtelierType">
+              <MappingFragment StoreEntitySet="TblAtelierType">
+                <ScalarProperty Name="AtelierName" ColumnName="AtelierName" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblBooking">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblBooking">
+              <MappingFragment StoreEntitySet="TblBooking">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Submitter" ColumnName="Submitter" />
+                <ScalarProperty Name="PrepaymentIsOk" ColumnName="PrepaymentIsOk" />
+                <ScalarProperty Name="PersonCount" ColumnName="PersonCount" />
+                <ScalarProperty Name="AtelierTypeId" ColumnName="AtelierTypeId" />
+                <ScalarProperty Name="PhotographyTypeId" ColumnName="PhotographyTypeId" />
+                <ScalarProperty Name="PhotographerGender" ColumnName="PhotographerGender" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblBookingStatus">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblBookingStatus">
+              <MappingFragment StoreEntitySet="TblBookingStatus">
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblCustomer">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblCustomer">
+              <MappingFragment StoreEntitySet="TblCustomer">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Submitter" ColumnName="Submitter" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="WeddingDate" ColumnName="WeddingDate" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="IsMarried" ColumnName="IsMarried" />
+                <ScalarProperty Name="CustomerType" ColumnName="CustomerType" />
+                <ScalarProperty Name="NationalId" ColumnName="NationalId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Tell" ColumnName="Tell" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblFilesError">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblFilesError">
+              <MappingFragment StoreEntitySet="TblFilesError">
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+                <ScalarProperty Name="ErrorInId" ColumnName="ErrorInId" />
+                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Submitter" ColumnName="Submitter" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblOrder">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblOrder">
+              <MappingFragment StoreEntitySet="TblOrder">
+                <ScalarProperty Name="LastOrderPrintCustomerId" ColumnName="LastOrderPrintCustomerId" />
+                <ScalarProperty Name="OrderPrintIssued" ColumnName="OrderPrintIssued" />
+                <ScalarProperty Name="UploadDate" ColumnName="UploadDate" />
+                <ScalarProperty Name="Submitter" ColumnName="Submitter" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="TotalFiles" ColumnName="TotalFiles" />
+                <ScalarProperty Name="OrderFolderParentPathLocator" ColumnName="OrderFolderParentPathLocator" />
+                <ScalarProperty Name="OrderFolderPathLocator" ColumnName="OrderFolderPathLocator" />
+                <ScalarProperty Name="OrderFolderStreamId" ColumnName="OrderFolderStreamId" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="PaymentIsOk" ColumnName="PaymentIsOk" />
+                <ScalarProperty Name="PhotographerId" ColumnName="PhotographerId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="PhotographyTypeId" ColumnName="PhotographyTypeId" />
+                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+                <ScalarProperty Name="OrderStatusId" ColumnName="OrderStatusId" />
+                <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblOrderFiles">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblOrderFiles">
+              <MappingFragment StoreEntitySet="TblOrderFiles">
+                <ScalarProperty Name="UploadDate" ColumnName="UploadDate" />
+                <ScalarProperty Name="PathLocator" ColumnName="PathLocator" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="StreamId" ColumnName="StreamId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TblOrderPrint">
             <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblOrderPrint">
               <MappingFragment StoreEntitySet="TblOrderPrint">
@@ -2647,6 +2800,19 @@
                 <ScalarProperty Name="OrderType" ColumnName="OrderType" />
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
                 <ScalarProperty Name="OrderPrintCode" ColumnName="OrderPrintCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblOrderPrintChangingElements">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblOrderPrintChangingElements">
+              <MappingFragment StoreEntitySet="TblOrderPrintChangingElements">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="MainPhotoFileName" ColumnName="MainPhotoFileName" />
+                <ScalarProperty Name="StreamId" ColumnName="StreamId" />
+                <ScalarProperty Name="MainPhotoStreamId" ColumnName="MainPhotoStreamId" />
+                <ScalarProperty Name="OrderPrintDetailsId" ColumnName="OrderPrintDetailsId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -2689,7 +2855,291 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-  </EntityContainerMapping>
+          <EntitySetMapping Name="TblOrderPrintFiles">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblOrderPrintFiles">
+              <MappingFragment StoreEntitySet="TblOrderPrintFiles">
+                <ScalarProperty Name="CollectDate" ColumnName="CollectDate" />
+                <ScalarProperty Name="PathLocator" ColumnName="PathLocator" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="OrderPrintId" ColumnName="OrderPrintId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblOrderPrintLitPrint">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblOrderPrintLitPrint">
+              <MappingFragment StoreEntitySet="TblOrderPrintLitPrint">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="MainPhotoFileName" ColumnName="MainPhotoFileName" />
+                <ScalarProperty Name="StreamId" ColumnName="StreamId" />
+                <ScalarProperty Name="MainPhotoStreamId" ColumnName="MainPhotoStreamId" />
+                <ScalarProperty Name="OrderPrintDetailsId" ColumnName="OrderPrintDetailsId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblOrderPrintMultiPhotoOrder">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblOrderPrintMultiPhotoOrder">
+              <MappingFragment StoreEntitySet="TblOrderPrintMultiPhotoOrder">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="MainPhotoFileName" ColumnName="MainPhotoFileName" />
+                <ScalarProperty Name="StreamId" ColumnName="StreamId" />
+                <ScalarProperty Name="MainPhotoStreamId" ColumnName="MainPhotoStreamId" />
+                <ScalarProperty Name="OrderPrintDetailId" ColumnName="OrderPrintDetailId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblOrderPrintStatus">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblOrderPrintStatus">
+              <MappingFragment StoreEntitySet="TblOrderPrintStatus">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblOrderStatus">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblOrderStatus">
+              <MappingFragment StoreEntitySet="TblOrderStatus">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblPhotographyType">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblPhotographyType">
+              <MappingFragment StoreEntitySet="TblPhotographyType">
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblPrintCustomerFiles">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblPrintCustomerFiles">
+              <MappingFragment StoreEntitySet="TblPrintCustomerFiles">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="PrintSizeId" ColumnName="PrintSizeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblPrintServicePrices">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblPrintServicePrices">
+              <MappingFragment StoreEntitySet="TblPrintServicePrices">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="PrintServiceId" ColumnName="PrintServiceId" />
+                <ScalarProperty Name="PrintSizeId" ColumnName="PrintSizeId" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblPrintServices">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblPrintServices">
+              <MappingFragment StoreEntitySet="TblPrintServices">
+                <ScalarProperty Name="PrintServiceDescription" ColumnName="PrintServiceDescription" />
+                <ScalarProperty Name="PrintServiceName" ColumnName="PrintServiceName" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblPrintSizePrices">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblPrintSizePrices">
+              <MappingFragment StoreEntitySet="TblPrintSizePrices">
+                <ScalarProperty Name="ItalianAlbumBoundingPrice" ColumnName="ItalianAlbumBoundingPrice" />
+                <ScalarProperty Name="ItalianAlbumPagePrice" ColumnName="ItalianAlbumPagePrice" />
+                <ScalarProperty Name="ScanAndProcessingPrice" ColumnName="ScanAndProcessingPrice" />
+                <ScalarProperty Name="ScanAndPrintPrice" ColumnName="ScanAndPrintPrice" />
+                <ScalarProperty Name="LitPrintRePrintPrice" ColumnName="LitPrintRePrintPrice" />
+                <ScalarProperty Name="LitPrintPrice" ColumnName="LitPrintPrice" />
+                <ScalarProperty Name="MedicalRePrintPrice" ColumnName="MedicalRePrintPrice" />
+                <ScalarProperty Name="MedicalPrice" ColumnName="MedicalPrice" />
+                <ScalarProperty Name="RePrintPrice" ColumnName="RePrintPrice" />
+                <ScalarProperty Name="FirstPrintPrice" ColumnName="FirstPrintPrice" />
+                <ScalarProperty Name="PrintSizeId" ColumnName="PrintSizeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblPrintSizes">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblPrintSizes">
+              <MappingFragment StoreEntitySet="TblPrintSizes">
+                <ScalarProperty Name="Descriptions" ColumnName="Descriptions" />
+                <ScalarProperty Name="MinimumOrder" ColumnName="MinimumOrder" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="HasItalianAlbum" ColumnName="HasItalianAlbum" />
+                <ScalarProperty Name="HasAlbum" ColumnName="HasAlbum" />
+                <ScalarProperty Name="HasScanAndProcessing" ColumnName="HasScanAndProcessing" />
+                <ScalarProperty Name="HasLitPrint" ColumnName="HasLitPrint" />
+                <ScalarProperty Name="HasMedicalPhoto" ColumnName="HasMedicalPhoto" />
+                <ScalarProperty Name="HasRePrint" ColumnName="HasRePrint" />
+                <ScalarProperty Name="HasFirstPrint" ColumnName="HasFirstPrint" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblPrintSpecialServices">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.TblPrintSpecialServices">
+              <MappingFragment StoreEntitySet="TblPrintSpecialServices">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_GetAllPhotos">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.View_GetAllPhotos">
+              <MappingFragment StoreEntitySet="View_GetAllPhotos">
+                <ScalarProperty Name="IsTemporary" ColumnName="IsTemporary" />
+                <ScalarProperty Name="IsSystem" ColumnName="IsSystem" />
+                <ScalarProperty Name="IsArchive" ColumnName="IsArchive" />
+                <ScalarProperty Name="IsReadonly" ColumnName="IsReadonly" />
+                <ScalarProperty Name="IsHidden" ColumnName="IsHidden" />
+                <ScalarProperty Name="IsOffline" ColumnName="IsOffline" />
+                <ScalarProperty Name="LastAccessTime" ColumnName="LastAccessTime" />
+                <ScalarProperty Name="LastWriteTime" ColumnName="LastWriteTime" />
+                <ScalarProperty Name="CreationTime" ColumnName="CreationTime" />
+                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="FullUncPath" ColumnName="FullUncPath" />
+                <ScalarProperty Name="RelativePath" ColumnName="RelativePath" />
+                <ScalarProperty Name="UncPath" ColumnName="UncPath" />
+                <ScalarProperty Name="ParentPathLocator" ColumnName="ParentPathLocator" />
+                <ScalarProperty Name="PathLocator" ColumnName="PathLocator" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FileStream" ColumnName="FileStream" />
+                <ScalarProperty Name="StreamId" ColumnName="StreamId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_GetAllPrintSizeAndServicesInfo">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.View_GetAllPrintSizeAndServicesInfo">
+              <MappingFragment StoreEntitySet="View_GetAllPrintSizeAndServicesInfo">
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="MinimumOrder" ColumnName="MinimumOrder" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ItalianAlbumBoundingPrice" ColumnName="ItalianAlbumBoundingPrice" />
+                <ScalarProperty Name="ItalianAlbumPagePrice" ColumnName="ItalianAlbumPagePrice" />
+                <ScalarProperty Name="HasItalianAlbum" ColumnName="HasItalianAlbum" />
+                <ScalarProperty Name="ScanAndProcessingPrice" ColumnName="ScanAndProcessingPrice" />
+                <ScalarProperty Name="ScanAndPrintPrice" ColumnName="ScanAndPrintPrice" />
+                <ScalarProperty Name="HasScanAndProcessing" ColumnName="HasScanAndProcessing" />
+                <ScalarProperty Name="LitPrintRePrintPrice" ColumnName="LitPrintRePrintPrice" />
+                <ScalarProperty Name="LitPrintPrice" ColumnName="LitPrintPrice" />
+                <ScalarProperty Name="HasLitPrint" ColumnName="HasLitPrint" />
+                <ScalarProperty Name="MedicalRePrintPrice" ColumnName="MedicalRePrintPrice" />
+                <ScalarProperty Name="MedicalPrice" ColumnName="MedicalPrice" />
+                <ScalarProperty Name="HasMedicalPhoto" ColumnName="HasMedicalPhoto" />
+                <ScalarProperty Name="RePrintPrice" ColumnName="RePrintPrice" />
+                <ScalarProperty Name="FirstPrintPrice" ColumnName="FirstPrintPrice" />
+                <ScalarProperty Name="PrintServicePrice" ColumnName="PrintServicePrice" />
+                <ScalarProperty Name="PrintServiceName" ColumnName="PrintServiceName" />
+                <ScalarProperty Name="PrintSizeName" ColumnName="PrintSizeName" />
+                <ScalarProperty Name="PrintServicePriceId" ColumnName="PrintServicePriceId" />
+                <ScalarProperty Name="PrintSizePriceId" ColumnName="PrintSizePriceId" />
+                <ScalarProperty Name="PrintServiceId" ColumnName="PrintServiceId" />
+                <ScalarProperty Name="PrintSizeId" ColumnName="PrintSizeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_GetDocumentsFolders">
+            <EntityTypeMapping TypeName="PhotographyAutomationDBModel.View_GetDocumentsFolders">
+              <MappingFragment StoreEntitySet="View_GetDocumentsFolders">
+                <ScalarProperty Name="IsDirectory" ColumnName="IsDirectory" />
+                <ScalarProperty Name="IsTemporary" ColumnName="IsTemporary" />
+                <ScalarProperty Name="IsSystem" ColumnName="IsSystem" />
+                <ScalarProperty Name="IsArchive" ColumnName="IsArchive" />
+                <ScalarProperty Name="IsReadonly" ColumnName="IsReadonly" />
+                <ScalarProperty Name="IsHidden" ColumnName="IsHidden" />
+                <ScalarProperty Name="IsOffline" ColumnName="IsOffline" />
+                <ScalarProperty Name="LastAccessTime" ColumnName="LastAccessTime" />
+                <ScalarProperty Name="LastWriteTime" ColumnName="LastWriteTime" />
+                <ScalarProperty Name="CreationTime" ColumnName="CreationTime" />
+                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="FullUncPath" ColumnName="FullUncPath" />
+                <ScalarProperty Name="RelativePath" ColumnName="RelativePath" />
+                <ScalarProperty Name="UncPath" ColumnName="UncPath" />
+                <ScalarProperty Name="ParentPathLocator" ColumnName="ParentPathLocator" />
+                <ScalarProperty Name="PathLocator" ColumnName="PathLocator" />
+                <ScalarProperty Name="FolderName" ColumnName="FolderName" />
+                <ScalarProperty Name="FileStream" ColumnName="FileStream" />
+                <ScalarProperty Name="StreamId" ColumnName="StreamId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_CreateCustomerFinancialDirectory" FunctionName="PhotographyAutomationDBModel.Store.usp_CreateCustomerFinancialDirectory" />
+          <FunctionImportMapping FunctionImportName="usp_CreateFileTableFile" FunctionName="PhotographyAutomationDBModel.Store.usp_CreateFileTableFile">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PhotographyAutomationDBModel.usp_CreateFileTableFile_Result2">
+                <ScalarProperty Name="streamId" ColumnName="streamId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="parent_locator" ColumnName="parent_locator" />
+                <ScalarProperty Name="path_name" ColumnName="path_name" />
+                <ScalarProperty Name="filestreamTxn" ColumnName="filestreamTxn" />
+                <ScalarProperty Name="path_locator_str" ColumnName="path_locator_str" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_CreateMonthFolder" FunctionName="PhotographyAutomationDBModel.Store.usp_CreateMonthFolder" />
+          <FunctionImportMapping FunctionImportName="usp_CreateYearFolder" FunctionName="PhotographyAutomationDBModel.Store.usp_CreateYearFolder" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteOrderFolderFiles" FunctionName="PhotographyAutomationDBModel.Store.usp_DeleteOrderFolderFiles" />
+          <FunctionImportMapping FunctionImportName="usp_GetImageInfo" FunctionName="PhotographyAutomationDBModel.Store.usp_GetImageInfo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PhotographyAutomationDBModel.usp_GetImageInfo_Result2">
+                <ScalarProperty Name="PathLocator" ColumnName="PathLocator" />
+                <ScalarProperty Name="TransactionContext" ColumnName="TransactionContext" />
+                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+                <ScalarProperty Name="StreamFileName" ColumnName="StreamFileName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_GetListOfFilesInFolder" FunctionName="PhotographyAutomationDBModel.Store.usp_GetListOfFilesInFolder">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PhotographyAutomationDBModel.usp_GetListOfFilesInFolder_Result2">
+                <ScalarProperty Name="stream_id" ColumnName="stream_id" />
+                <ScalarProperty Name="file_stream" ColumnName="file_stream" />
+                <ScalarProperty Name="FullUncPath" ColumnName="FullUncPath" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="PathLocator" ColumnName="PathLocator" />
+                <ScalarProperty Name="ParentPathLocator" ColumnName="ParentPathLocator" />
+                <ScalarProperty Name="TransactionContext" ColumnName="TransactionContext" />
+                <ScalarProperty Name="file_type" ColumnName="file_type" />
+                <ScalarProperty Name="cached_file_size" ColumnName="cached_file_size" />
+                <ScalarProperty Name="creation_time" ColumnName="creation_time" />
+                <ScalarProperty Name="last_write_time" ColumnName="last_write_time" />
+                <ScalarProperty Name="last_access_time" ColumnName="last_access_time" />
+                <ScalarProperty Name="is_directory" ColumnName="is_directory" />
+                <ScalarProperty Name="is_offline" ColumnName="is_offline" />
+                <ScalarProperty Name="is_hidden" ColumnName="is_hidden" />
+                <ScalarProperty Name="is_readonly" ColumnName="is_readonly" />
+                <ScalarProperty Name="is_archive" ColumnName="is_archive" />
+                <ScalarProperty Name="is_system" ColumnName="is_system" />
+                <ScalarProperty Name="is_temporary" ColumnName="is_temporary" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_GetListOfFilesOfOrder" FunctionName="PhotographyAutomationDBModel.Store.usp_GetListOfFilesOfOrder" />
+          <FunctionImportMapping FunctionImportName="usp_GetOrderFolderStreamId" FunctionName="PhotographyAutomationDBModel.Store.usp_GetOrderFolderStreamId" />
+          <FunctionImportMapping FunctionImportName="usp_GetPrintSizePriceServices" FunctionName="PhotographyAutomationDBModel.Store.usp_GetPrintSizePriceServices" />
+          <FunctionImportMapping FunctionImportName="usp_GetTotalFilesOfFolder" FunctionName="PhotographyAutomationDBModel.Store.usp_GetTotalFilesOfFolder" />
+        </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->

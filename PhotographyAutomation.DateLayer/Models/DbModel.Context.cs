@@ -36,7 +36,12 @@ namespace PhotographyAutomation.DateLayer.Models
         public virtual DbSet<TblFilesError> TblFilesError { get; set; }
         public virtual DbSet<TblOrder> TblOrder { get; set; }
         public virtual DbSet<TblOrderFiles> TblOrderFiles { get; set; }
+        public virtual DbSet<TblOrderPrint> TblOrderPrint { get; set; }
+        public virtual DbSet<TblOrderPrintChangingElements> TblOrderPrintChangingElements { get; set; }
+        public virtual DbSet<TblOrderPrintDetails> TblOrderPrintDetails { get; set; }
         public virtual DbSet<TblOrderPrintFiles> TblOrderPrintFiles { get; set; }
+        public virtual DbSet<TblOrderPrintLitPrint> TblOrderPrintLitPrint { get; set; }
+        public virtual DbSet<TblOrderPrintMultiPhotoOrder> TblOrderPrintMultiPhotoOrder { get; set; }
         public virtual DbSet<TblOrderPrintStatus> TblOrderPrintStatus { get; set; }
         public virtual DbSet<TblOrderStatus> TblOrderStatus { get; set; }
         public virtual DbSet<TblPhotographyType> TblPhotographyType { get; set; }
@@ -49,11 +54,6 @@ namespace PhotographyAutomation.DateLayer.Models
         public virtual DbSet<View_GetAllPhotos> View_GetAllPhotos { get; set; }
         public virtual DbSet<View_GetAllPrintSizeAndServicesInfo> View_GetAllPrintSizeAndServicesInfo { get; set; }
         public virtual DbSet<View_GetDocumentsFolders> View_GetDocumentsFolders { get; set; }
-        public virtual DbSet<TblOrderPrintChangingElements> TblOrderPrintChangingElements { get; set; }
-        public virtual DbSet<TblOrderPrintLitPrint> TblOrderPrintLitPrint { get; set; }
-        public virtual DbSet<TblOrderPrintMultiPhotoOrder> TblOrderPrintMultiPhotoOrder { get; set; }
-        public virtual DbSet<TblOrderPrint> TblOrderPrint { get; set; }
-        public virtual DbSet<TblOrderPrintDetails> TblOrderPrintDetails { get; set; }
     
         public virtual ObjectResult<string> usp_CreateCustomerFinancialDirectory(string customerFinancialNumber, string monthNumber, Nullable<byte> parent_level, ObjectParameter returnValue)
         {
@@ -72,7 +72,7 @@ namespace PhotographyAutomation.DateLayer.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("usp_CreateCustomerFinancialDirectory", customerFinancialNumberParameter, monthNumberParameter, parent_levelParameter, returnValue);
         }
     
-        public virtual ObjectResult<usp_CreateFileTableFile_Result1> usp_CreateFileTableFile(string name, string parent_name, Nullable<byte> parent_level)
+        public virtual ObjectResult<usp_CreateFileTableFile_Result2> usp_CreateFileTableFile(string name, string parent_name, Nullable<byte> parent_level)
         {
             var nameParameter = name != null ?
                 new ObjectParameter("name", name) :
@@ -86,7 +86,7 @@ namespace PhotographyAutomation.DateLayer.Models
                 new ObjectParameter("parent_level", parent_level) :
                 new ObjectParameter("parent_level", typeof(byte));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_CreateFileTableFile_Result1>("usp_CreateFileTableFile", nameParameter, parent_nameParameter, parent_levelParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_CreateFileTableFile_Result2>("usp_CreateFileTableFile", nameParameter, parent_nameParameter, parent_levelParameter);
         }
     
         public virtual ObjectResult<string> usp_CreateMonthFolder(string monthName, string year, Nullable<byte> parent_level, ObjectParameter returnValue)
@@ -132,22 +132,22 @@ namespace PhotographyAutomation.DateLayer.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_DeleteOrderFolderFiles", pathLocatorParameter);
         }
     
-        public virtual ObjectResult<usp_GetImageInfo_Result1> usp_GetImageInfo(Nullable<System.Guid> photoStreamId)
+        public virtual ObjectResult<usp_GetImageInfo_Result2> usp_GetImageInfo(Nullable<System.Guid> photoStreamId)
         {
             var photoStreamIdParameter = photoStreamId.HasValue ?
                 new ObjectParameter("photoStreamId", photoStreamId) :
                 new ObjectParameter("photoStreamId", typeof(System.Guid));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_GetImageInfo_Result1>("usp_GetImageInfo", photoStreamIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_GetImageInfo_Result2>("usp_GetImageInfo", photoStreamIdParameter);
         }
     
-        public virtual ObjectResult<usp_GetListOfFilesInFolder_Result1> usp_GetListOfFilesInFolder(string path_locator)
+        public virtual ObjectResult<usp_GetListOfFilesInFolder_Result2> usp_GetListOfFilesInFolder(string path_locator)
         {
             var path_locatorParameter = path_locator != null ?
                 new ObjectParameter("path_locator", path_locator) :
                 new ObjectParameter("path_locator", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_GetListOfFilesInFolder_Result1>("usp_GetListOfFilesInFolder", path_locatorParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_GetListOfFilesInFolder_Result2>("usp_GetListOfFilesInFolder", path_locatorParameter);
         }
     
         public virtual ObjectResult<Nullable<System.Guid>> usp_GetListOfFilesOfOrder(string path_locator)

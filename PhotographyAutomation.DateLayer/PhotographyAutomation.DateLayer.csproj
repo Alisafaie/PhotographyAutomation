@@ -139,13 +139,22 @@
     <Compile Include="Models\TblPrintSpecialServices.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\usp_CreateFileTableFile1_Result.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\usp_CreateFileTableFile_Result.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\usp_CreateFileTableFile_Result1.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\usp_CreateFileTableFile_Result2.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\usp_CreateSelectedPhotosFileTableFile_Result.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_GetImageInfo1_Result.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\usp_GetImageInfo_Result.cs">
@@ -154,10 +163,19 @@
     <Compile Include="Models\usp_GetImageInfo_Result1.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\usp_GetImageInfo_Result2.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_GetListOfFilesInFolder1_Result.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\usp_GetListOfFilesInFolder_Result.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\usp_GetListOfFilesInFolder_Result1.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_GetListOfFilesInFolder_Result2.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\usp_GetPrintSizePriceServices_Result.cs">
@@ -212,7 +230,6 @@
       <DependentUpon>DbModel.edmx</DependentUpon>
       <LastGenOutput>DbModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\DbModel.edmx.sql" />
     <Content Include="Models\DbModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DbModel.edmx</DependentUpon>

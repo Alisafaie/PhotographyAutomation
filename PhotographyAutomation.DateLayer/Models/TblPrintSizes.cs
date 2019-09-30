@@ -18,11 +18,11 @@ namespace PhotographyAutomation.DateLayer.Models
         public TblPrintSizes()
         {
             this.TblAlbums = new HashSet<TblAlbums>();
+            this.TblOrderPrintDetails = new HashSet<TblOrderPrintDetails>();
+            this.TblOrderPrintDetails1 = new HashSet<TblOrderPrintDetails>();
             this.TblPrintCustomerFiles = new HashSet<TblPrintCustomerFiles>();
             this.TblPrintServicePrices = new HashSet<TblPrintServicePrices>();
             this.TblPrintSizePrices = new HashSet<TblPrintSizePrices>();
-            this.TblOrderPrintDetails = new HashSet<TblOrderPrintDetails>();
-            this.TblOrderPrintDetails1 = new HashSet<TblOrderPrintDetails>();
         }
     
         public int Id { get; set; }
@@ -44,14 +44,14 @@ namespace PhotographyAutomation.DateLayer.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblAlbums> TblAlbums { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblOrderPrintDetails> TblOrderPrintDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblOrderPrintDetails> TblOrderPrintDetails1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblPrintCustomerFiles> TblPrintCustomerFiles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblPrintServicePrices> TblPrintServicePrices { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblPrintSizePrices> TblPrintSizePrices { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblOrderPrintDetails> TblOrderPrintDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblOrderPrintDetails> TblOrderPrintDetails1 { get; set; }
     }
 }

@@ -34,10 +34,10 @@ namespace PhotographyAutomation.DateLayer.Models
         public Nullable<int> ItalianAlbumPagePrice { get; set; }
         public Nullable<int> ItalianAlbumBoundingPrice { get; set; }
     
-        public virtual TblPrintSizes TblPrintSizes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblOrderPrintDetails> TblOrderPrintDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblOrderPrintDetails> TblOrderPrintDetails1 { get; set; }
+        public virtual TblPrintSizes TblPrintSizes { get; set; }
     }
 }
