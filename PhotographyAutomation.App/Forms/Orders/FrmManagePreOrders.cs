@@ -2167,7 +2167,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                         @"لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
                         @"خطا در دریافت لیست عکس های سفارش",
                         MessageBoxButtons.RetryCancel,
-                        MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign);
+                        MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
                     if (dialogResult == DialogResult.Retry)
                     {
                         goto RetryGetListOfPhotos;
@@ -2185,7 +2185,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                     @"لطفا دوباره تلاش کنید و در صورت تکرار مشکل با مدیر سیستم تماس بگیرید.",
                     @"خطا در دریافت لیست عکس های سفارش",
                     MessageBoxButtons.RetryCancel,
-                    MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign);
+                    MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
                 if (dialogResult == DialogResult.Retry)
                 {
                     goto RetryGetListOfPhotos;

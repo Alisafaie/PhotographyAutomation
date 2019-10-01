@@ -106,7 +106,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                     exception.Message,
                     @"خطا در دریافت اطلاعات از سرور",
                     MessageBoxButtons.OK, MessageBoxIcon.Error,
-                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign);
+                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
                 DialogResult = DialogResult.Cancel;
             }
         }
@@ -268,7 +268,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                     exception.Message,
                     @"خطا در دریافت اطلاعات از سرور",
                     MessageBoxButtons.OK, MessageBoxIcon.Error,
-                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign);
+                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
                 DialogResult = DialogResult.Cancel;
             }
         }
@@ -438,10 +438,10 @@ namespace PhotographyAutomation.App.Forms.Factors
                     GetOriginalPrintSizePrice(_selectedOriginalSizeId);
 
 
-                    List<PrintServicesViewModel> originalPrintServices =
-                        _listOriginalPrintServicePrices
-                        .Where(x => x.PrintSizeId == _selectedOriginalSizeId)
-                        .ToList();
+                    List<PrintServicesViewModel> originalPrintServices = _listOriginalPrintServicePrices
+                                                                        .Where(x => x.PrintSizeId == _selectedOriginalSizeId)
+                                                                        .ToList();
+
                     if (originalPrintServices.Any())
                     {
                         chkHasOriginalPrintService.Enabled = true;
@@ -449,6 +449,12 @@ namespace PhotographyAutomation.App.Forms.Factors
                         cmbOriginalPrintServices.DataSource = _listOriginalPrintSizePrintServices;
                         cmbOriginalPrintServices.DisplayMember = "PrintServiceName";
                         cmbOriginalPrintServices.ValueMember = "Id";
+
+                        int? firstPrintServicePrice = _listOriginalPrintServicePrices
+                                                      .FirstOrDefault(x => x.PrintSizeId == _selectedOriginalSizeId)?
+                                                      .PrintServicePrice;
+
+                        txtOriginalServicePrice.Text = firstPrintServicePrice?.ToString("N0");
                     }
                     else
                     {
@@ -458,7 +464,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                         cmbOriginalPrintServices.DataSource = null;
                         cmbOriginalPrintServices.Enabled = false;
 
-                        txtOriginalServicePrice.ResetText();
+                        txtOriginalServicePrice.Text = null;
                     }
                 }
             }
@@ -492,9 +498,44 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         private void chkHasOriginalPrintService_CheckedChanged(object sender, EventArgs e)
         {
-            cmbOriginalPrintServices.Enabled =
-                txtOriginalServicePrice.Enabled =
-                    chkHasOriginalPrintService.Checked;
+            //Get First Print Service Price
+            bool selectedPrintSizeIdResult =
+                int.TryParse(cmbOriginalPrintSizes.SelectedValue.ToString(), out int selectedPrintSizeId);
+
+            if (selectedPrintSizeIdResult /*&& selectedPrintServiceIdResult*/ && _listOriginalPrintServicePrices != null)
+            {
+                int? printServicePrice = _listOriginalPrintServicePrices
+                    .FirstOrDefault(x => x.PrintSizeId == selectedPrintSizeId
+                        /*&& x.PrintServiceId == selectedPrintServiceId*/)?.PrintServicePrice;
+                txtOriginalServicePrice.Text = printServicePrice?.ToString("N0");
+            }
+
+            if (chkHasOriginalPrintService.Checked)
+            {
+                cmbOriginalPrintServices.Enabled =
+                    txtOriginalServicePrice.Enabled =
+                        true;
+
+                txtTotalPriceOriginalServices.Text = txtOriginalServicePrice.Text;
+
+                //cmbOriginalPrintServices.SelectedIndex = 0;
+                //bool selectedPrintServiceIdResult =
+                //    int.TryParse(cmbOriginalPrintServices.SelectedValue.ToString(), out int selectedPrintServiceId);
+
+            }
+            else
+            {
+                cmbOriginalPrintServices.Enabled =
+                    txtOriginalServicePrice.Enabled =
+                        false;
+
+                //txtOriginalServicePrice.Text = null;
+                //txtOriginalServicePrice.WatermarkEnabled = true;
+                //txtOriginalServicePrice.WatermarkText = "هزینه خدمات (ريال)";
+
+                txtTotalPriceOriginalServices.Text = null;
+                txtTotalPriceOriginalServices.WatermarkText = "هزینه خدمات (ريال)";
+            }
 
         }
         private void cmbOriginalPrintService_EnabledChanged(object sender, EventArgs e)
@@ -510,17 +551,27 @@ namespace PhotographyAutomation.App.Forms.Factors
                 //ignored
             }
         }
-        private void cmbOriginalPrintServices_SelectedValueChanged(object sender, EventArgs e)
+        private void cmbOriginalPrintServices_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cmbOriginalPrintServices.SelectedIndex == -1) return;
             try
             {
                 if (chkHasOriginalPrintService.Enabled &&
+                    cmbOriginalPrintServices.Enabled &&
                     cmbOriginalPrintServices.Items.Count > 0 &&
                     cmbOriginalPrintServices.SelectedIndex != -1 &&
                     int.TryParse(cmbOriginalPrintServices.SelectedValue.ToString(),
                         out var selectedPrintServicePriceId))
                 {
-                    GetOriginalPrintServicePrice(selectedPrintServicePriceId);
+                    txtOriginalServicePrice.Text = null;
+
+                    txtTotalPriceOriginalServices.Text =
+                        txtOriginalServicePrice.Text =
+                            GetOriginalPrintServicePrice(selectedPrintServicePriceId);
+                }
+                else
+                {
+                    txtOriginalServicePrice.Text = null;
                 }
             }
             catch (Exception exception)
@@ -528,12 +579,12 @@ namespace PhotographyAutomation.App.Forms.Factors
                 //ignored
             }
         }
-        private void GetOriginalPrintServicePrice(int selectedPrintServicePriceId)
+        private static string GetOriginalPrintServicePrice(int selectedPrintServicePriceId)
         {
-            txtOriginalServicePrice.ResetText();
-            txtOriginalServicePrice.Text = _listOriginalPrintServicePrices
-                                            .Single(x => x.Id == selectedPrintServicePriceId)
-                                            .PrintServicePrice.ToString("N0");
+            var price = _listOriginalPrintServicePrices
+                            .Single(x => x.Id == selectedPrintServicePriceId)
+                            .PrintServicePrice.ToString("N0");
+            return price;
         }
 
 
@@ -714,7 +765,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                         cmbRePrintPrintServices.Enabled = false;
                         cmbRePrintPrintServices.DataSource = null;
 
-                        txtRePrintServicePrice.ResetText();
+                        txtRePrintServicePrice.Text = null;
                     }
                 }
             }
@@ -791,7 +842,7 @@ namespace PhotographyAutomation.App.Forms.Factors
         }
         private void GetRePrintPrintServicePrice(int selectedPrintServicePriceId)
         {
-            txtRePrintServicePrice.ResetText();
+            txtRePrintServicePrice.Text = null;
             txtRePrintServicePrice.Text = _listRePrintPrintServicePrices
                 .Single(x => x.Id == selectedPrintServicePriceId)
                 .PrintServicePrice.ToString("N0");
@@ -933,13 +984,13 @@ namespace PhotographyAutomation.App.Forms.Factors
         {
             #region Original Print Size Service
 
-            //textPhotoRetouchDescription.ResetText();
-            //txtOriginalPrintServicePrice.ResetText();
+            //textPhotoRetouchDescription.Text=null;
+            //txtOriginalPrintServicePrice.Text=null;
             ////cmbOriginalPrintService.SelectedIndex = -1;
             //cmbOriginalPrintServices.Enabled = false;
             //rbOriginalMultiPhoto.Checked = false;
             //rbOriginalLitPrint.Enabled = false;
-            //txtOriginalPrintSizePrice.ResetText();
+            //txtOriginalPrintSizePrice.Text=null;
             //cmbOriginalPrintSize.SelectedIndex = -1;
 
             #endregion
@@ -983,13 +1034,12 @@ namespace PhotographyAutomation.App.Forms.Factors
         //btnOkOriginalPrint
         private int CalculateOriginalPrintTotalPrice()
         {
-            int.TryParse(txtTotalPriceOriginalPrintSize.Text, out var totalPriceOriginalPrintSize);
-            int.TryParse(txtTotalPriceOriginalMutiPhoto.Text, out var totalPriceOriginalMutiPhoto);
-            int.TryParse(txtTotalPriceOriginalLitPrint.Text, out var totalPriceOriginalLitPrint);
-            int.TryParse(txtTotalPriceOriginalServices.Text, out var totalPriceOriginalServices);
+            int.TryParse(txtTotalPriceOriginalPrintSize.Text.Replace(",", ""), out var totalPriceOriginalPrintSize);
+            int.TryParse(txtTotalPriceOriginalMutiPhoto.Text.Replace(",", ""), out var totalPriceOriginalMutiPhoto);
+            int.TryParse(txtTotalPriceOriginalLitPrint.Text.Replace(",", ""), out var totalPriceOriginalLitPrint);
+            int.TryParse(txtTotalPriceOriginalServices.Text.Replace(",", ""), out var totalPriceOriginalServices);
 
-            int result = totalPriceOriginalPrintSize + totalPriceOriginalMutiPhoto +
-                totalPriceOriginalLitPrint + totalPriceOriginalServices;
+            int result = totalPriceOriginalPrintSize + totalPriceOriginalMutiPhoto + totalPriceOriginalLitPrint + totalPriceOriginalServices;
             return result;
         }
         private void ResetOriginalPrintControls()
@@ -1003,18 +1053,34 @@ namespace PhotographyAutomation.App.Forms.Factors
             cmbOriginalPrintServices.SelectedIndex = -1;
             cmbOriginalPrintServices.Enabled = false;
 
-            txtOriginalMinimumOrder.ResetText();
-            txtOriginalMultiPhotoPrice.ResetText();
-            txtOriginalLitPrintPrice.ResetText();
-            txtOriginalServicePrice.ResetText();
+            txtOriginalMinimumOrder.Text = null;
+            txtOriginalMultiPhotoPrice.Text = null;
+            txtOriginalLitPrintPrice.Text = null;
+            txtOriginalServicePrice.Text = null;
 
-            txtTotalPriceOriginalPrintSize.ResetText();
-            txtTotalPriceOriginalMutiPhoto.ResetText();
-            txtTotalPriceOriginalLitPrint.ResetText();
-            txtTotalPriceOriginalServices.ResetText();
-            txtTotalPriceOriginal.ResetText();
+            txtTotalPriceOriginalPrintSize.Text = null;
+            txtTotalPriceOriginalMutiPhoto.Text = null;
+            txtTotalPriceOriginalLitPrint.Text = null;
+            txtTotalPriceOriginalServices.Text = null;
+            txtTotalPriceOriginal.Text = null;
 
-            textOriginalPhotoRetouchDescription.ResetText();
+            textOriginalPhotoRetouchDescription.Text = null;
+        }
+        private void ResetOrderItemValues(OrderDetails orderDetailsItem)
+        {
+            var newOrderDetails = new OrderDetails
+            {
+                CreatedDateTime = orderDetailsItem.CreatedDateTime,
+                CustomerId = orderDetailsItem.CustomerId,
+                FileName = orderDetailsItem.FileName,
+                Id = orderDetailsItem.Id,
+                ModifiedDateTime = orderDetailsItem.ModifiedDateTime,
+                OrderPrintId = orderDetailsItem.OrderPrintId,
+                StreamId = orderDetailsItem.StreamId,
+                IsFirstprint = orderDetailsItem.IsFirstprint
+            };
+            var itemIndex = OrderDetailsList.FindIndex(x => x.StreamId == orderDetailsItem.StreamId);
+            OrderDetailsList[itemIndex] = newOrderDetails;
         }
 
 
@@ -1040,55 +1106,56 @@ namespace PhotographyAutomation.App.Forms.Factors
             {
                 orderItem.HasPrintService = true;
                 orderItem.PrintServiceId = selectedPrintServiceId;
-                int printServerPrice = 0;
-                PrintServicesViewModel printServicesViewModel = 
-                    _listOriginalPrintServicePrices?.SingleOrDefault(x => x.Id == selectedPrintServiceId);
 
-                if (printServicesViewModel != null)
-                {
-                    printServerPrice = printServicesViewModel.PrintServicePrice;
-                }
-                orderItem.PrintServicePriceId = printServerPrice;
+                int servicePriceId = 0;
+                PrintServicesViewModel printServicesViewModel = _listOriginalPrintServicePrices?.SingleOrDefault(x => x.Id == selectedPrintServiceId);
+
+                if (printServicesViewModel != null) servicePriceId = printServicesViewModel.PrintServicePrice;
+                orderItem.PrintServicePriceId = servicePriceId;
             }
 
             orderItem.TotalPrice = CalculateOriginalPrintTotalPrice();
+
+
             //چک کن قبلا در لیست سفارشات وجود دارد  
             //اگر وجود دارد پیامی نشان دهد و آن را در صورت تائید آپدیت کند
 
-            var check = OrderDetailsList.SingleOrDefault(x =>
-                x.StreamId == orderItem.StreamId && x.IsFirstprint == orderItem.IsFirstprint);
+            var check = OrderDetailsList
+                        .SingleOrDefault(x => x.StreamId == orderItem.StreamId && 
+                                              x.IsFirstprint == orderItem.IsFirstprint && 
+                                              x.PrintSizeId > 0);
 
+            var itemIndex = OrderDetailsList.FindIndex(x => x.StreamId == orderItem.StreamId);
 
             //create newOrderDetailsList and check on this new list
 
-            //if (check == null)
-            //    OrderDetailsList.Add(orderItem);
-            //else
-            //{
-                var itemIndex = OrderDetailsList.FindIndex(x =>
-                    x.StreamId == orderItem.StreamId && x.IsFirstprint == orderItem.IsFirstprint);
-
+            if (check == null)
+            {
+                OrderDetailsList[itemIndex] = orderItem;
+            }
+            else
+            {
                 var dr = MessageBox.Show(
                     @"این سفارش اصل چاپ قبلا در لیست سفارشات ثبت شده است. " +
                     @"آیا می خواهید آن را به روز رسانی کنید؟",
                     @"به روز رسانی سفارش چاپ",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question,
-                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign);
+                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
                 if (dr != DialogResult.Yes) return;
                 OrderDetailsList[itemIndex] = orderItem;
 
                 MessageBox.Show(
                     @"سفارش چاپ مورد نظر با موفقیت به روز رسانی گردید.", "",
                     MessageBoxButtons.OK, MessageBoxIcon.Information,
-                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign);
-            //}
+                    MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
+            }
         }
         private void btnReloadOriginalPhotoPrintOrder_Click(object sender, EventArgs e)
         {
             var dr = MessageBox.Show(
                 @"تمامی موارد انتخابی شده مجددا تنظیم خواهد شد. آیا از این کار مطمئن هستید؟",
                 "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning,
-                MessageBoxDefaultButton.Button2, MessageBoxOptions.RightAlign);
+                MessageBoxDefaultButton.Button2, MessageBoxOptions.RtlReading);
             if (dr != DialogResult.Yes) return;
 
             ResetOriginalPrintControls();
@@ -1096,9 +1163,13 @@ namespace PhotographyAutomation.App.Forms.Factors
             //،در صورتی که اطلاعاتی از این سفارش در لیست سفارشات وجود دارد
             //.باید در لیست مربوطه هم اصلاحات مربوطه صورت گیرد
 
-            //var itemIndex = OrderDetailsList.FindIndex(x =>
-            //    x.StreamId == orderItem.StreamId && x.IsFirstprint == orderItem.IsFirstprint);
+            var currentGuid = OrderDetailsList[_photoCursor].StreamId;
+            var itemIndex = OrderDetailsList.FindIndex(x => x.StreamId == currentGuid);
+            ResetOrderItemValues(OrderDetailsList[itemIndex]);
         }
+
+
+
         private void BtnCancelPhotoOrderPrint_Click(object sender, EventArgs e)
         {
             try
@@ -1110,24 +1181,25 @@ namespace PhotographyAutomation.App.Forms.Factors
                     MessageBox.Show(
                         @"این آیتم قبلا تائید نشده است و قابل حذف نیز نمی باشد.", "",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning,
-                        MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign);
+                        MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
                     return;
                 }
-                //var itemIndex = _listOrderDetails
-                //                .FindIndex(x => currentOrderDetails != null && x.StreamId == currentOrderDetails.StreamId);
+
                 var itemIndex = OrderDetailsList.FindIndex(x => x.StreamId == currentOrderDetails.StreamId);
 
                 var dr = MessageBox.Show(
                     @"آیا واقعا می خواهید عکس مورد نظر را از پیش فاکتور حذف کنید؟",
                     @"تایید حذف عکس از پیش فاکتور",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2,
-                    MessageBoxOptions.RightAlign);
+                    MessageBoxOptions.RtlReading);
                 if (dr != DialogResult.Yes) return;
 
                 currentOrderDetails.IsAccepted = false;
                 currentOrderDetails.IsDeleted = true;
+                OrderDetailsList[itemIndex] = currentOrderDetails;
+
                 pictureBoxIsAccepted.Image = Properties.Resources.iconfinder_cancel_round_41190;
-                OrderDetailsList[itemIndex].IsAccepted = currentOrderDetails.IsAccepted;
+
                 toolTip1.SetToolTip(pictureBoxIsAccepted, "این عکس از پیش فاکتور حذف گردید.");
             }
             catch (Exception exception)
@@ -1155,18 +1227,18 @@ namespace PhotographyAutomation.App.Forms.Factors
             cmbRePrintPrintServices.SelectedIndex = -1;
             cmbRePrintPrintServices.Enabled = false;
 
-            txtRePrintMinimumOrder.ResetText();
-            txtRePrintMultiPhotoPrice.ResetText();
-            txtRePrintLitPrintPrice.ResetText();
-            txtRePrintServicePrice.ResetText();
+            txtRePrintMinimumOrder.Text = null;
+            txtRePrintMultiPhotoPrice.Text = null;
+            txtRePrintLitPrintPrice.Text = null;
+            txtRePrintServicePrice.Text = null;
 
-            txtTotalPriceRePrintPrintSize.ResetText();
-            txtTotalPriceRePrintMutiPhoto.ResetText();
-            txtTotalPriceRePrintLitPrint.ResetText();
-            txtTotalPriceRePrintServices.ResetText();
-            txtTotalPriceRePrint.ResetText();
+            txtTotalPriceRePrintPrintSize.Text = null;
+            txtTotalPriceRePrintMutiPhoto.Text = null;
+            txtTotalPriceRePrintLitPrint.Text = null;
+            txtTotalPriceRePrintServices.Text = null;
+            txtTotalPriceRePrint.Text = null;
 
-            textRePrintPhotoRetouchDescription.ResetText();
+            textRePrintPhotoRetouchDescription.Text = null;
         }
         private int CalculateRePrintTotalPrice()
         {
@@ -1224,7 +1296,7 @@ namespace PhotographyAutomation.App.Forms.Factors
             var dr = MessageBox.Show(
                 @"تمامی موارد انتخابی شده مجددا تنظیم خواهد شد. آیا از این کار مطمئن هستید؟",
                 "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning,
-                MessageBoxDefaultButton.Button2, MessageBoxOptions.RightAlign);
+                MessageBoxDefaultButton.Button2, MessageBoxOptions.RtlReading);
             if (dr != DialogResult.Yes) return;
 
             ResetRePrintControls();
@@ -2322,14 +2394,31 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         #endregion
 
-        private void cmbOriginalPrintServices_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbOriginalPrintServices.SelectedIndex == -1) return;
-        }
+
 
         private void cmbRePrintPrintServices_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+
+
+
+        private void txtTotalPriceOriginalPrintSize_TextChanged(object sender, EventArgs e)
+        {
+            txtTotalPriceOriginal.Text = CalculateOriginalPrintTotalPrice().ToString("N0");
+        }
+        private void txtTotalPriceOriginalMutiPhoto_TextChanged(object sender, EventArgs e)
+        {
+            txtTotalPriceOriginal.Text = CalculateOriginalPrintTotalPrice().ToString("N0");
+        }
+        private void txtTotalPriceOriginalLitPrint_TextChanged(object sender, EventArgs e)
+        {
+            txtTotalPriceOriginal.Text = CalculateOriginalPrintTotalPrice().ToString("N0");
+        }
+        private void txtTotalPriceOriginalServices_TextChanged(object sender, EventArgs e)
+        {
+            txtTotalPriceOriginal.Text = CalculateOriginalPrintTotalPrice().ToString("N0");
         }
     }
 }

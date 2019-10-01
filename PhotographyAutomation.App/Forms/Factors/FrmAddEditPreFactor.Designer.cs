@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAddEditPreFactor));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.منو_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,6 +45,8 @@
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.tabControlOrderPrintInfo = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.labelX9 = new DevComponents.DotNetBar.LabelX();
+            this.chkOkBeforePrint = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.txtBriefPrintServices = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX43 = new DevComponents.DotNetBar.LabelX();
             this.labelX42 = new DevComponents.DotNetBar.LabelX();
@@ -96,7 +98,6 @@
             this.txtTotalPriceOriginalPrintSize = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.tabPageRePrint = new System.Windows.Forms.TabPage();
             this.gBoxRePrint = new System.Windows.Forms.GroupBox();
-            this.chkOkBeforePrint = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.chkIsActiveRePrint = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.textRePrintPhotoRetouchDescription = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.btnCancelRePrintPhotoOrderPrint = new DevComponents.DotNetBar.ButtonX();
@@ -178,7 +179,6 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.bgWorkerLoadPicture = new System.ComponentModel.BackgroundWorker();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.labelX9 = new DevComponents.DotNetBar.LabelX();
             this.menuStrip1.SuspendLayout();
             this.panelEx1.SuspendLayout();
             this.groupBoxPreviewPictures.SuspendLayout();
@@ -341,6 +341,40 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "خلاصه وضعیت";
             // 
+            // labelX9
+            // 
+            this.labelX9.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelX9.AutoSize = true;
+            this.labelX9.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX9.Location = new System.Drawing.Point(1078, 30);
+            this.labelX9.Name = "labelX9";
+            this.labelX9.Size = new System.Drawing.Size(74, 16);
+            this.labelX9.TabIndex = 18;
+            this.labelX9.Text = "تائید قبل از چاپ";
+            // 
+            // chkOkBeforePrint
+            // 
+            this.chkOkBeforePrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkOkBeforePrint.AutoSize = true;
+            this.chkOkBeforePrint.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.chkOkBeforePrint.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.chkOkBeforePrint.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.highlighter1.SetHighlightOnFocus(this.chkOkBeforePrint, true);
+            this.chkOkBeforePrint.Location = new System.Drawing.Point(730, 32);
+            this.chkOkBeforePrint.Name = "chkOkBeforePrint";
+            this.chkOkBeforePrint.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.chkOkBeforePrint.Size = new System.Drawing.Size(328, 15);
+            this.chkOkBeforePrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.chkOkBeforePrint.TabIndex = 17;
+            this.chkOkBeforePrint.Text = ".این سفارش قبل از چاپ می بایست توسط مشتری تائید گردد";
+            // 
             // txtBriefPrintServices
             // 
             this.txtBriefPrintServices.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -351,7 +385,7 @@
             this.txtBriefPrintServices.Border.Class = "TextBoxBorder";
             this.txtBriefPrintServices.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.txtBriefPrintServices, true);
-            this.txtBriefPrintServices.Location = new System.Drawing.Point(28, 56);
+            this.txtBriefPrintServices.Location = new System.Drawing.Point(17, 55);
             this.txtBriefPrintServices.Multiline = true;
             this.txtBriefPrintServices.Name = "txtBriefPrintServices";
             this.txtBriefPrintServices.PreventEnterBeep = true;
@@ -370,7 +404,7 @@
             // 
             // 
             this.labelX43.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX43.Location = new System.Drawing.Point(447, 56);
+            this.labelX43.Location = new System.Drawing.Point(436, 55);
             this.labelX43.Name = "labelX43";
             this.labelX43.Size = new System.Drawing.Size(89, 16);
             this.labelX43.TabIndex = 6;
@@ -385,7 +419,7 @@
             // 
             // 
             this.labelX42.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX42.Location = new System.Drawing.Point(454, 31);
+            this.labelX42.Location = new System.Drawing.Point(443, 30);
             this.labelX42.Name = "labelX42";
             this.labelX42.Size = new System.Drawing.Size(82, 16);
             this.labelX42.TabIndex = 5;
@@ -400,7 +434,7 @@
             this.txtTotalPrintServices.Border.Class = "TextBoxBorder";
             this.txtTotalPrintServices.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.txtTotalPrintServices, true);
-            this.txtTotalPrintServices.Location = new System.Drawing.Point(348, 29);
+            this.txtTotalPrintServices.Location = new System.Drawing.Point(337, 28);
             this.txtTotalPrintServices.Name = "txtTotalPrintServices";
             this.txtTotalPrintServices.PreventEnterBeep = true;
             this.txtTotalPrintServices.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -417,7 +451,7 @@
             // 
             // 
             this.labelX41.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX41.Location = new System.Drawing.Point(127, 31);
+            this.labelX41.Location = new System.Drawing.Point(116, 30);
             this.labelX41.Name = "labelX41";
             this.labelX41.Size = new System.Drawing.Size(103, 16);
             this.labelX41.TabIndex = 7;
@@ -432,7 +466,7 @@
             this.txtTotalSelectedPhotos.Border.Class = "TextBoxBorder";
             this.txtTotalSelectedPhotos.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.txtTotalSelectedPhotos, true);
-            this.txtTotalSelectedPhotos.Location = new System.Drawing.Point(28, 29);
+            this.txtTotalSelectedPhotos.Location = new System.Drawing.Point(17, 28);
             this.txtTotalSelectedPhotos.Name = "txtTotalSelectedPhotos";
             this.txtTotalSelectedPhotos.PreventEnterBeep = true;
             this.txtTotalSelectedPhotos.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -449,7 +483,7 @@
             this.txtOrderDescriptions.Border.Class = "TextBoxBorder";
             this.txtOrderDescriptions.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.txtOrderDescriptions, true);
-            this.txtOrderDescriptions.Location = new System.Drawing.Point(653, 56);
+            this.txtOrderDescriptions.Location = new System.Drawing.Point(642, 55);
             this.txtOrderDescriptions.Multiline = true;
             this.txtOrderDescriptions.Name = "txtOrderDescriptions";
             this.txtOrderDescriptions.PreventEnterBeep = true;
@@ -465,7 +499,7 @@
             // 
             // 
             this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.Location = new System.Drawing.Point(1081, 56);
+            this.labelX6.Location = new System.Drawing.Point(1070, 55);
             this.labelX6.Name = "labelX6";
             this.labelX6.Size = new System.Drawing.Size(83, 16);
             this.labelX6.TabIndex = 4;
@@ -478,7 +512,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1170, 128);
+            this.tabPage2.Size = new System.Drawing.Size(1170, 154);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "اطلاعات سفارش";
             // 
@@ -486,20 +520,20 @@
             // 
             this.dataGridViewX1.AllowUserToAddRows = false;
             this.dataGridViewX1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewX1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewX1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
             this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewX1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewX1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridViewX1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -508,31 +542,31 @@
             this.Column4,
             this.Column5,
             this.Column6});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle19;
             this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewX1.EnableHeadersVisualStyles = false;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(3, 3);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.dataGridViewX1.RowHeadersVisible = false;
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewX1.Size = new System.Drawing.Size(1164, 122);
+            this.dataGridViewX1.Size = new System.Drawing.Size(1164, 148);
             this.dataGridViewX1.TabIndex = 143;
             this.dataGridViewX1.UseCustomBackgroundColor = true;
             // 
@@ -812,6 +846,7 @@
             this.txtTotalPriceOriginalLitPrint.TabStop = false;
             this.txtTotalPriceOriginalLitPrint.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtTotalPriceOriginalLitPrint.WatermarkText = "هزینه لیت پرینت (ريال)";
+            this.txtTotalPriceOriginalLitPrint.TextChanged += new System.EventHandler(this.txtTotalPriceOriginalLitPrint_TextChanged);
             // 
             // btnOkOriginalPrint
             // 
@@ -884,6 +919,7 @@
             this.txtTotalPriceOriginalMutiPhoto.TabStop = false;
             this.txtTotalPriceOriginalMutiPhoto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtTotalPriceOriginalMutiPhoto.WatermarkText = "هزینه دورچین (ريال)";
+            this.txtTotalPriceOriginalMutiPhoto.TextChanged += new System.EventHandler(this.txtTotalPriceOriginalMutiPhoto_TextChanged);
             // 
             // txtOriginalServicePrice
             // 
@@ -942,6 +978,7 @@
             this.txtTotalPriceOriginalServices.TabStop = false;
             this.txtTotalPriceOriginalServices.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtTotalPriceOriginalServices.WatermarkText = "هزینه خدمات (ريال)";
+            this.txtTotalPriceOriginalServices.TextChanged += new System.EventHandler(this.txtTotalPriceOriginalServices_TextChanged);
             // 
             // txtTotalPriceOriginal
             // 
@@ -974,7 +1011,6 @@
             this.cmbOriginalPrintServices.Size = new System.Drawing.Size(134, 21);
             this.cmbOriginalPrintServices.TabIndex = 6;
             this.cmbOriginalPrintServices.SelectedIndexChanged += new System.EventHandler(this.cmbOriginalPrintServices_SelectedIndexChanged);
-            this.cmbOriginalPrintServices.SelectedValueChanged += new System.EventHandler(this.cmbOriginalPrintServices_SelectedValueChanged);
             this.cmbOriginalPrintServices.EnabledChanged += new System.EventHandler(this.cmbOriginalPrintService_EnabledChanged);
             // 
             // chkHasOriginalPrintService
@@ -1163,6 +1199,7 @@
             this.txtTotalPriceOriginalPrintSize.TabStop = false;
             this.txtTotalPriceOriginalPrintSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtTotalPriceOriginalPrintSize.WatermarkText = "هزینه چاپ (ريال)";
+            this.txtTotalPriceOriginalPrintSize.TextChanged += new System.EventHandler(this.txtTotalPriceOriginalPrintSize_TextChanged);
             // 
             // tabPageRePrint
             // 
@@ -1222,25 +1259,6 @@
             this.gBoxRePrint.Size = new System.Drawing.Size(869, 309);
             this.gBoxRePrint.TabIndex = 0;
             this.gBoxRePrint.TabStop = false;
-            // 
-            // chkOkBeforePrint
-            // 
-            this.chkOkBeforePrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkOkBeforePrint.AutoSize = true;
-            this.chkOkBeforePrint.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.chkOkBeforePrint.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.chkOkBeforePrint.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.highlighter1.SetHighlightOnFocus(this.chkOkBeforePrint, true);
-            this.chkOkBeforePrint.Location = new System.Drawing.Point(741, 32);
-            this.chkOkBeforePrint.Name = "chkOkBeforePrint";
-            this.chkOkBeforePrint.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.chkOkBeforePrint.Size = new System.Drawing.Size(328, 15);
-            this.chkOkBeforePrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.chkOkBeforePrint.TabIndex = 17;
-            this.chkOkBeforePrint.Text = ".این سفارش قبل از چاپ می بایست توسط مشتری تائید گردد";
             // 
             // chkIsActiveRePrint
             // 
@@ -2449,21 +2467,6 @@
             // 
             this.bgWorkerLoadPicture.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerLoadPicture_DoWork);
             this.bgWorkerLoadPicture.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerLoadPicture_RunWorkerCompleted);
-            // 
-            // labelX9
-            // 
-            this.labelX9.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelX9.AutoSize = true;
-            this.labelX9.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX9.Location = new System.Drawing.Point(1089, 31);
-            this.labelX9.Name = "labelX9";
-            this.labelX9.Size = new System.Drawing.Size(74, 16);
-            this.labelX9.TabIndex = 18;
-            this.labelX9.Text = "تائید قبل از چاپ";
             // 
             // FrmAddEditPreFactor
             // 

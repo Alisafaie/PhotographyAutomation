@@ -128,7 +128,7 @@ namespace PhotographyAutomation.App.Forms.PrintSizeAndServices
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error,
                         MessageBoxDefaultButton.Button1,
-                        MessageBoxOptions.RightAlign);
+                        MessageBoxOptions.RtlReading);
                     Close();
                 }
 
@@ -289,7 +289,7 @@ namespace PhotographyAutomation.App.Forms.PrintSizeAndServices
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error,
                         MessageBoxDefaultButton.Button1,
-                        MessageBoxOptions.RightAlign);
+                        MessageBoxOptions.RtlReading);
                     Close();
                 }
 

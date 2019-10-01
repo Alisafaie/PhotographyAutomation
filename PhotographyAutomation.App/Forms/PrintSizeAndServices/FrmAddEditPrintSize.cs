@@ -67,7 +67,7 @@ namespace PhotographyAutomation.App.Forms.PrintSizeAndServices
                             @"آیا مایل به ثبت قیمت برای این اندازه چاپ هستید؟",
                             @"ثبت قیمت برای اندازه چاپ",
                             MessageBoxButtons.YesNo, MessageBoxIcon.Question,
-                            MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign);
+                            MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
                         if (dr != DialogResult.Yes) Close();
 
                         //GetPrintSizeInfoAndPlaceThem(printSizeInDb);
@@ -245,7 +245,7 @@ namespace PhotographyAutomation.App.Forms.PrintSizeAndServices
                                 @"این اندازه چاپ قبلا در سیستم ثبت شده است." +
                                 @"آیا می خواهید آن را به روز رسانی کنید؟", "",
                                 MessageBoxButtons.YesNo, MessageBoxIcon.Error, MessageBoxDefaultButton.Button2,
-                                MessageBoxOptions.RightAlign);
+                                MessageBoxOptions.RtlReading);
                             if (dr == DialogResult.Yes)
                             {
                                 PrintSizeId = check.First().Id;
