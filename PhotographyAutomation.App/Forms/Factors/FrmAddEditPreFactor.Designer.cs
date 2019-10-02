@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAddEditPreFactor));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.منو_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.نوسازی_تمامی_عکس_های_انتخابی_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,26 +43,10 @@
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.groupBoxPreviewPictures = new System.Windows.Forms.GroupBox();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
-            this.tabControlOrderPrintInfo = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.labelX9 = new DevComponents.DotNetBar.LabelX();
             this.chkOkBeforePrint = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.txtBriefPrintServices = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX43 = new DevComponents.DotNetBar.LabelX();
-            this.labelX42 = new DevComponents.DotNetBar.LabelX();
-            this.txtTotalPrintServices = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX41 = new DevComponents.DotNetBar.LabelX();
-            this.txtTotalSelectedPhotos = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtOrderDescriptions = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
             this.tabControlPrintSizeAndServices = new System.Windows.Forms.TabControl();
             this.tabPageOriginalPrint = new System.Windows.Forms.TabPage();
@@ -135,8 +119,32 @@
             this.labelX8 = new DevComponents.DotNetBar.LabelX();
             this.labelX21 = new DevComponents.DotNetBar.LabelX();
             this.tabPageMultiPhoto = new System.Windows.Forms.TabPage();
+            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX3 = new DevComponents.DotNetBar.ButtonX();
+            this.betterThumbnailBrowser1 = new ComponentOwl.BetterThumbnailBrowser.BetterThumbnailBrowser();
             this.tabPageLitPrint = new System.Windows.Forms.TabPage();
+            this.betterThumbnailBrowser2 = new ComponentOwl.BetterThumbnailBrowser.BetterThumbnailBrowser();
             this.tabPageChangingElements = new System.Windows.Forms.TabPage();
+            this.buttonX7 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX8 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX9 = new DevComponents.DotNetBar.ButtonX();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.txtBriefPrintServices = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX43 = new DevComponents.DotNetBar.LabelX();
+            this.labelX42 = new DevComponents.DotNetBar.LabelX();
+            this.txtTotalPrintServices = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX41 = new DevComponents.DotNetBar.LabelX();
+            this.txtTotalSelectedPhotos = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.clmRowNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelEx4 = new DevComponents.DotNetBar.PanelEx();
@@ -153,8 +161,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBoxPreview = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtOrderStatus = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.datePickerOrderDate = new FreeControls.PersianDateTimePicker();
             this.circularProgress = new DevComponents.DotNetBar.Controls.CircularProgress();
@@ -177,16 +183,41 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.txtOrderStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.bgWorkerLoadPicture = new System.ComponentModel.BackgroundWorker();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.betterThumbnailBrowser3 = new ComponentOwl.BetterThumbnailBrowser.BetterThumbnailBrowser();
+            this.buttonX6 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX5 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX4 = new DevComponents.DotNetBar.ButtonX();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.textBoxX3 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label3 = new System.Windows.Forms.Label();
+            this.checkBoxX2 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.textBoxX4 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label4 = new System.Windows.Forms.Label();
+            this.checkBoxX3 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxX4 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.textBoxX5 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label8 = new System.Windows.Forms.Label();
+            this.checkBoxX5 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxX6 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.label9 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panelEx1.SuspendLayout();
             this.groupBoxPreviewPictures.SuspendLayout();
             this.panelEx2.SuspendLayout();
-            this.tabControlOrderPrintInfo.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.panelEx3.SuspendLayout();
             this.tabControlPrintSizeAndServices.SuspendLayout();
             this.tabPageOriginalPrint.SuspendLayout();
@@ -195,19 +226,32 @@
             this.gBoxRePrint.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iiRePrintServiceCounts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iiRePrintPrintCounts)).BeginInit();
+            this.tabPageMultiPhoto.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.betterThumbnailBrowser1)).BeginInit();
+            this.tabPageLitPrint.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.betterThumbnailBrowser2)).BeginInit();
+            this.tabPageChangingElements.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panelEx4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIsAccepted)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.betterThumbnailBrowser3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -248,13 +292,13 @@
             // ثبت_پیش_فاکتور_ToolStripMenuItem
             // 
             this.ثبت_پیش_فاکتور_ToolStripMenuItem.Name = "ثبت_پیش_فاکتور_ToolStripMenuItem";
-            this.ثبت_پیش_فاکتور_ToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.ثبت_پیش_فاکتور_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ثبت_پیش_فاکتور_ToolStripMenuItem.Text = "ثبت پیش فاکتور";
             // 
             // انصراف_ToolStripMenuItem
             // 
             this.انصراف_ToolStripMenuItem.Name = "انصراف_ToolStripMenuItem";
-            this.انصراف_ToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.انصراف_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.انصراف_ToolStripMenuItem.Text = "انصراف";
             // 
             // panelEx1
@@ -267,7 +311,7 @@
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx1.Location = new System.Drawing.Point(0, 24);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(1208, 681);
+            this.panelEx1.Size = new System.Drawing.Size(1208, 598);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -286,7 +330,7 @@
             this.groupBoxPreviewPictures.Controls.Add(this.panelEx3);
             this.groupBoxPreviewPictures.Location = new System.Drawing.Point(12, 87);
             this.groupBoxPreviewPictures.Name = "groupBoxPreviewPictures";
-            this.groupBoxPreviewPictures.Size = new System.Drawing.Size(1184, 569);
+            this.groupBoxPreviewPictures.Size = new System.Drawing.Size(1184, 486);
             this.groupBoxPreviewPictures.TabIndex = 0;
             this.groupBoxPreviewPictures.TabStop = false;
             this.groupBoxPreviewPictures.Text = "اطلاعات عکس";
@@ -295,12 +339,15 @@
             // 
             this.panelEx2.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx2.Controls.Add(this.tabControlOrderPrintInfo);
+            this.panelEx2.Controls.Add(this.labelX9);
+            this.panelEx2.Controls.Add(this.chkOkBeforePrint);
+            this.panelEx2.Controls.Add(this.txtOrderDescriptions);
+            this.panelEx2.Controls.Add(this.labelX6);
             this.panelEx2.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx2.Location = new System.Drawing.Point(3, 387);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(1178, 179);
+            this.panelEx2.Size = new System.Drawing.Size(1178, 96);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -308,38 +355,6 @@
             this.panelEx2.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx2.Style.GradientAngle = 90;
             this.panelEx2.TabIndex = 1;
-            // 
-            // tabControlOrderPrintInfo
-            // 
-            this.tabControlOrderPrintInfo.Controls.Add(this.tabPage1);
-            this.tabControlOrderPrintInfo.Controls.Add(this.tabPage2);
-            this.tabControlOrderPrintInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlOrderPrintInfo.Location = new System.Drawing.Point(0, 0);
-            this.tabControlOrderPrintInfo.Name = "tabControlOrderPrintInfo";
-            this.tabControlOrderPrintInfo.RightToLeftLayout = true;
-            this.tabControlOrderPrintInfo.SelectedIndex = 0;
-            this.tabControlOrderPrintInfo.Size = new System.Drawing.Size(1178, 179);
-            this.tabControlOrderPrintInfo.TabIndex = 0;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.BackColor = System.Drawing.Color.GhostWhite;
-            this.tabPage1.Controls.Add(this.labelX9);
-            this.tabPage1.Controls.Add(this.chkOkBeforePrint);
-            this.tabPage1.Controls.Add(this.txtBriefPrintServices);
-            this.tabPage1.Controls.Add(this.labelX43);
-            this.tabPage1.Controls.Add(this.labelX42);
-            this.tabPage1.Controls.Add(this.txtTotalPrintServices);
-            this.tabPage1.Controls.Add(this.labelX41);
-            this.tabPage1.Controls.Add(this.txtTotalSelectedPhotos);
-            this.tabPage1.Controls.Add(this.txtOrderDescriptions);
-            this.tabPage1.Controls.Add(this.labelX6);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1170, 153);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "خلاصه وضعیت";
             // 
             // labelX9
             // 
@@ -350,15 +365,15 @@
             // 
             // 
             this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX9.Location = new System.Drawing.Point(1078, 30);
+            this.labelX9.Location = new System.Drawing.Point(1093, 9);
             this.labelX9.Name = "labelX9";
             this.labelX9.Size = new System.Drawing.Size(74, 16);
-            this.labelX9.TabIndex = 18;
+            this.labelX9.TabIndex = 22;
             this.labelX9.Text = "تائید قبل از چاپ";
             // 
             // chkOkBeforePrint
             // 
-            this.chkOkBeforePrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkOkBeforePrint.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.chkOkBeforePrint.AutoSize = true;
             this.chkOkBeforePrint.BackColor = System.Drawing.Color.Transparent;
             // 
@@ -367,112 +382,13 @@
             this.chkOkBeforePrint.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.chkOkBeforePrint.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.highlighter1.SetHighlightOnFocus(this.chkOkBeforePrint, true);
-            this.chkOkBeforePrint.Location = new System.Drawing.Point(730, 32);
+            this.chkOkBeforePrint.Location = new System.Drawing.Point(750, 12);
             this.chkOkBeforePrint.Name = "chkOkBeforePrint";
             this.chkOkBeforePrint.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.chkOkBeforePrint.Size = new System.Drawing.Size(328, 15);
             this.chkOkBeforePrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.chkOkBeforePrint.TabIndex = 17;
+            this.chkOkBeforePrint.TabIndex = 21;
             this.chkOkBeforePrint.Text = ".این سفارش قبل از چاپ می بایست توسط مشتری تائید گردد";
-            // 
-            // txtBriefPrintServices
-            // 
-            this.txtBriefPrintServices.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtBriefPrintServices.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.txtBriefPrintServices.Border.Class = "TextBoxBorder";
-            this.txtBriefPrintServices.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.highlighter1.SetHighlightOnFocus(this.txtBriefPrintServices, true);
-            this.txtBriefPrintServices.Location = new System.Drawing.Point(17, 55);
-            this.txtBriefPrintServices.Multiline = true;
-            this.txtBriefPrintServices.Name = "txtBriefPrintServices";
-            this.txtBriefPrintServices.PreventEnterBeep = true;
-            this.txtBriefPrintServices.ReadOnly = true;
-            this.txtBriefPrintServices.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtBriefPrintServices.Size = new System.Drawing.Size(413, 66);
-            this.txtBriefPrintServices.TabIndex = 3;
-            this.txtBriefPrintServices.TabStop = false;
-            // 
-            // labelX43
-            // 
-            this.labelX43.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelX43.AutoSize = true;
-            this.labelX43.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX43.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX43.Location = new System.Drawing.Point(436, 55);
-            this.labelX43.Name = "labelX43";
-            this.labelX43.Size = new System.Drawing.Size(89, 16);
-            this.labelX43.TabIndex = 6;
-            this.labelX43.Text = "خلاصه خدمات چاپ";
-            // 
-            // labelX42
-            // 
-            this.labelX42.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelX42.AutoSize = true;
-            this.labelX42.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX42.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX42.Location = new System.Drawing.Point(443, 30);
-            this.labelX42.Name = "labelX42";
-            this.labelX42.Size = new System.Drawing.Size(82, 16);
-            this.labelX42.TabIndex = 5;
-            this.labelX42.Text = "تعداد خدمات چاپ";
-            // 
-            // txtTotalPrintServices
-            // 
-            this.txtTotalPrintServices.Anchor = System.Windows.Forms.AnchorStyles.None;
-            // 
-            // 
-            // 
-            this.txtTotalPrintServices.Border.Class = "TextBoxBorder";
-            this.txtTotalPrintServices.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.highlighter1.SetHighlightOnFocus(this.txtTotalPrintServices, true);
-            this.txtTotalPrintServices.Location = new System.Drawing.Point(337, 28);
-            this.txtTotalPrintServices.Name = "txtTotalPrintServices";
-            this.txtTotalPrintServices.PreventEnterBeep = true;
-            this.txtTotalPrintServices.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtTotalPrintServices.Size = new System.Drawing.Size(93, 21);
-            this.txtTotalPrintServices.TabIndex = 1;
-            this.txtTotalPrintServices.TabStop = false;
-            // 
-            // labelX41
-            // 
-            this.labelX41.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelX41.AutoSize = true;
-            this.labelX41.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX41.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX41.Location = new System.Drawing.Point(116, 30);
-            this.labelX41.Name = "labelX41";
-            this.labelX41.Size = new System.Drawing.Size(103, 16);
-            this.labelX41.TabIndex = 7;
-            this.labelX41.Text = "تعداد عکس تائید شده";
-            // 
-            // txtTotalSelectedPhotos
-            // 
-            this.txtTotalSelectedPhotos.Anchor = System.Windows.Forms.AnchorStyles.None;
-            // 
-            // 
-            // 
-            this.txtTotalSelectedPhotos.Border.Class = "TextBoxBorder";
-            this.txtTotalSelectedPhotos.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.highlighter1.SetHighlightOnFocus(this.txtTotalSelectedPhotos, true);
-            this.txtTotalSelectedPhotos.Location = new System.Drawing.Point(17, 28);
-            this.txtTotalSelectedPhotos.Name = "txtTotalSelectedPhotos";
-            this.txtTotalSelectedPhotos.PreventEnterBeep = true;
-            this.txtTotalSelectedPhotos.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtTotalSelectedPhotos.Size = new System.Drawing.Size(93, 21);
-            this.txtTotalSelectedPhotos.TabIndex = 2;
-            this.txtTotalSelectedPhotos.TabStop = false;
             // 
             // txtOrderDescriptions
             // 
@@ -483,12 +399,12 @@
             this.txtOrderDescriptions.Border.Class = "TextBoxBorder";
             this.txtOrderDescriptions.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.txtOrderDescriptions, true);
-            this.txtOrderDescriptions.Location = new System.Drawing.Point(642, 55);
+            this.txtOrderDescriptions.Location = new System.Drawing.Point(7, 39);
             this.txtOrderDescriptions.Multiline = true;
             this.txtOrderDescriptions.Name = "txtOrderDescriptions";
             this.txtOrderDescriptions.PreventEnterBeep = true;
-            this.txtOrderDescriptions.Size = new System.Drawing.Size(416, 66);
-            this.txtOrderDescriptions.TabIndex = 0;
+            this.txtOrderDescriptions.Size = new System.Drawing.Size(1071, 48);
+            this.txtOrderDescriptions.TabIndex = 19;
             // 
             // labelX6
             // 
@@ -499,112 +415,11 @@
             // 
             // 
             this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.Location = new System.Drawing.Point(1070, 55);
+            this.labelX6.Location = new System.Drawing.Point(1084, 39);
             this.labelX6.Name = "labelX6";
             this.labelX6.Size = new System.Drawing.Size(83, 16);
-            this.labelX6.TabIndex = 4;
+            this.labelX6.TabIndex = 20;
             this.labelX6.Text = "توضیحات سفارش";
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.Color.GhostWhite;
-            this.tabPage2.Controls.Add(this.dataGridViewX1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1170, 154);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "اطلاعات سفارش";
-            // 
-            // dataGridViewX1
-            // 
-            this.dataGridViewX1.AllowUserToAddRows = false;
-            this.dataGridViewX1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridViewX1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
-            this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewX1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridViewX1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridViewX1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
-            this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6});
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle19;
-            this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewX1.EnableHeadersVisualStyles = false;
-            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridViewX1.Name = "dataGridViewX1";
-            this.dataGridViewX1.ReadOnly = true;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
-            this.dataGridViewX1.RowHeadersVisible = false;
-            this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewX1.Size = new System.Drawing.Size(1164, 148);
-            this.dataGridViewX1.TabIndex = 143;
-            this.dataGridViewX1.UseCustomBackgroundColor = true;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "شماره عکس";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "اندازه چاپ";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "خدمات چاپ";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "لیت پرینت";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "اضافه چاپ";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "دورچین";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
             // 
             // panelEx3
             // 
@@ -635,6 +450,8 @@
             this.tabControlPrintSizeAndServices.Controls.Add(this.tabPageMultiPhoto);
             this.tabControlPrintSizeAndServices.Controls.Add(this.tabPageLitPrint);
             this.tabControlPrintSizeAndServices.Controls.Add(this.tabPageChangingElements);
+            this.tabControlPrintSizeAndServices.Controls.Add(this.tabPage3);
+            this.tabControlPrintSizeAndServices.Controls.Add(this.tabPage4);
             this.tabControlPrintSizeAndServices.ImageList = this.imageList1;
             this.tabControlPrintSizeAndServices.Location = new System.Drawing.Point(3, 11);
             this.tabControlPrintSizeAndServices.Name = "tabControlPrintSizeAndServices";
@@ -1267,7 +1084,7 @@
             // 
             this.chkIsActiveRePrint.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.highlighter1.SetHighlightOnFocus(this.chkIsActiveRePrint, true);
-            this.chkIsActiveRePrint.Location = new System.Drawing.Point(344, 20);
+            this.chkIsActiveRePrint.Location = new System.Drawing.Point(399, 20);
             this.chkIsActiveRePrint.Name = "chkIsActiveRePrint";
             this.chkIsActiveRePrint.Size = new System.Drawing.Size(119, 23);
             this.chkIsActiveRePrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1881,33 +1698,398 @@
             // 
             // tabPageMultiPhoto
             // 
+            this.tabPageMultiPhoto.BackColor = System.Drawing.Color.GhostWhite;
+            this.tabPageMultiPhoto.Controls.Add(this.panel2);
+            this.tabPageMultiPhoto.Controls.Add(this.textBoxX1);
+            this.tabPageMultiPhoto.Controls.Add(this.buttonX1);
+            this.tabPageMultiPhoto.Controls.Add(this.buttonX2);
+            this.tabPageMultiPhoto.Controls.Add(this.buttonX3);
+            this.tabPageMultiPhoto.Controls.Add(this.betterThumbnailBrowser1);
             this.tabPageMultiPhoto.Location = new System.Drawing.Point(4, 23);
             this.tabPageMultiPhoto.Name = "tabPageMultiPhoto";
             this.tabPageMultiPhoto.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageMultiPhoto.Size = new System.Drawing.Size(890, 321);
             this.tabPageMultiPhoto.TabIndex = 9;
             this.tabPageMultiPhoto.Text = "دورچین";
-            this.tabPageMultiPhoto.UseVisualStyleBackColor = true;
+            // 
+            // buttonX1
+            // 
+            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.highlighter1.SetHighlightOnFocus(this.buttonX1, true);
+            this.buttonX1.Location = new System.Drawing.Point(584, 292);
+            this.buttonX1.Name = "buttonX1";
+            this.buttonX1.Size = new System.Drawing.Size(90, 23);
+            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX1.Symbol = "";
+            this.buttonX1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonX1.SymbolSize = 10F;
+            this.buttonX1.TabIndex = 19;
+            this.buttonX1.Text = "انصراف";
+            // 
+            // buttonX2
+            // 
+            this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.highlighter1.SetHighlightOnFocus(this.buttonX2, true);
+            this.buttonX2.Location = new System.Drawing.Point(680, 292);
+            this.buttonX2.Name = "buttonX2";
+            this.buttonX2.Size = new System.Drawing.Size(90, 23);
+            this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX2.Symbol = "";
+            this.buttonX2.SymbolColor = System.Drawing.Color.RoyalBlue;
+            this.buttonX2.SymbolSize = 10F;
+            this.buttonX2.TabIndex = 18;
+            this.buttonX2.Text = "تعریف مجدد";
+            // 
+            // buttonX3
+            // 
+            this.buttonX3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.highlighter1.SetHighlightOnFocus(this.buttonX3, true);
+            this.buttonX3.Location = new System.Drawing.Point(776, 292);
+            this.buttonX3.Name = "buttonX3";
+            this.buttonX3.Size = new System.Drawing.Size(108, 23);
+            this.buttonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX3.Symbol = "";
+            this.buttonX3.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.buttonX3.SymbolSize = 10F;
+            this.buttonX3.TabIndex = 17;
+            this.buttonX3.Text = "تائید";
+            // 
+            // betterThumbnailBrowser1
+            // 
+            this.betterThumbnailBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.betterThumbnailBrowser1.ContextMenuStripPlacement = ComponentOwl.BetterThumbnailBrowser.BetterListViewContextMenuPlacement.Default;
+            this.betterThumbnailBrowser1.LoadingThreadPriority = System.Threading.ThreadPriority.BelowNormal;
+            this.betterThumbnailBrowser1.Location = new System.Drawing.Point(6, 6);
+            this.betterThumbnailBrowser1.Name = "betterThumbnailBrowser1";
+            this.betterThumbnailBrowser1.Size = new System.Drawing.Size(512, 265);
+            this.betterThumbnailBrowser1.SupportedExtensions = "BMP;GIF;JIF;JPE;JPEG;JPG;PNG;TIF;TIFF";
+            this.betterThumbnailBrowser1.TabIndex = 0;
             // 
             // tabPageLitPrint
             // 
+            this.tabPageLitPrint.BackColor = System.Drawing.Color.GhostWhite;
+            this.tabPageLitPrint.Controls.Add(this.panel4);
+            this.tabPageLitPrint.Controls.Add(this.pictureBox1);
+            this.tabPageLitPrint.Controls.Add(this.pictureBox2);
+            this.tabPageLitPrint.Controls.Add(this.buttonX4);
+            this.tabPageLitPrint.Controls.Add(this.buttonX5);
+            this.tabPageLitPrint.Controls.Add(this.buttonX6);
+            this.tabPageLitPrint.Controls.Add(this.betterThumbnailBrowser2);
             this.tabPageLitPrint.Location = new System.Drawing.Point(4, 23);
             this.tabPageLitPrint.Name = "tabPageLitPrint";
             this.tabPageLitPrint.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageLitPrint.Size = new System.Drawing.Size(890, 321);
             this.tabPageLitPrint.TabIndex = 10;
             this.tabPageLitPrint.Text = "لیت پرینت";
-            this.tabPageLitPrint.UseVisualStyleBackColor = true;
+            // 
+            // betterThumbnailBrowser2
+            // 
+            this.betterThumbnailBrowser2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.betterThumbnailBrowser2.ContextMenuStripPlacement = ComponentOwl.BetterThumbnailBrowser.BetterListViewContextMenuPlacement.Default;
+            this.betterThumbnailBrowser2.LoadingThreadPriority = System.Threading.ThreadPriority.BelowNormal;
+            this.betterThumbnailBrowser2.Location = new System.Drawing.Point(6, 6);
+            this.betterThumbnailBrowser2.Name = "betterThumbnailBrowser2";
+            this.betterThumbnailBrowser2.Size = new System.Drawing.Size(512, 265);
+            this.betterThumbnailBrowser2.SupportedExtensions = "BMP;GIF;JIF;JPE;JPEG;JPG;PNG;TIF;TIFF";
+            this.betterThumbnailBrowser2.TabIndex = 1;
             // 
             // tabPageChangingElements
             // 
+            this.tabPageChangingElements.BackColor = System.Drawing.Color.GhostWhite;
+            this.tabPageChangingElements.Controls.Add(this.panel5);
+            this.tabPageChangingElements.Controls.Add(this.label7);
+            this.tabPageChangingElements.Controls.Add(this.textBoxX2);
+            this.tabPageChangingElements.Controls.Add(this.betterThumbnailBrowser3);
+            this.tabPageChangingElements.Controls.Add(this.buttonX7);
+            this.tabPageChangingElements.Controls.Add(this.buttonX8);
+            this.tabPageChangingElements.Controls.Add(this.buttonX9);
             this.tabPageChangingElements.Location = new System.Drawing.Point(4, 23);
             this.tabPageChangingElements.Name = "tabPageChangingElements";
             this.tabPageChangingElements.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageChangingElements.Size = new System.Drawing.Size(890, 321);
             this.tabPageChangingElements.TabIndex = 11;
             this.tabPageChangingElements.Text = "تغییر المان";
-            this.tabPageChangingElements.UseVisualStyleBackColor = true;
+            // 
+            // buttonX7
+            // 
+            this.buttonX7.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonX7.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.highlighter1.SetHighlightOnFocus(this.buttonX7, true);
+            this.buttonX7.Location = new System.Drawing.Point(584, 292);
+            this.buttonX7.Name = "buttonX7";
+            this.buttonX7.Size = new System.Drawing.Size(90, 23);
+            this.buttonX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX7.Symbol = "";
+            this.buttonX7.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonX7.SymbolSize = 10F;
+            this.buttonX7.TabIndex = 25;
+            this.buttonX7.Text = "انصراف";
+            // 
+            // buttonX8
+            // 
+            this.buttonX8.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonX8.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.highlighter1.SetHighlightOnFocus(this.buttonX8, true);
+            this.buttonX8.Location = new System.Drawing.Point(680, 292);
+            this.buttonX8.Name = "buttonX8";
+            this.buttonX8.Size = new System.Drawing.Size(90, 23);
+            this.buttonX8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX8.Symbol = "";
+            this.buttonX8.SymbolColor = System.Drawing.Color.RoyalBlue;
+            this.buttonX8.SymbolSize = 10F;
+            this.buttonX8.TabIndex = 24;
+            this.buttonX8.Text = "تعریف مجدد";
+            // 
+            // buttonX9
+            // 
+            this.buttonX9.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonX9.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.highlighter1.SetHighlightOnFocus(this.buttonX9, true);
+            this.buttonX9.Location = new System.Drawing.Point(776, 292);
+            this.buttonX9.Name = "buttonX9";
+            this.buttonX9.Size = new System.Drawing.Size(108, 23);
+            this.buttonX9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX9.Symbol = "";
+            this.buttonX9.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.buttonX9.SymbolSize = 10F;
+            this.buttonX9.TabIndex = 23;
+            this.buttonX9.Text = "تائید";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.txtBriefPrintServices);
+            this.tabPage3.Controls.Add(this.labelX43);
+            this.tabPage3.Controls.Add(this.labelX42);
+            this.tabPage3.Controls.Add(this.txtTotalPrintServices);
+            this.tabPage3.Controls.Add(this.labelX41);
+            this.tabPage3.Controls.Add(this.txtTotalSelectedPhotos);
+            this.tabPage3.Location = new System.Drawing.Point(4, 23);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(890, 321);
+            this.tabPage3.TabIndex = 12;
+            this.tabPage3.Text = "خلاصه وضعیت";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // txtBriefPrintServices
+            // 
+            this.txtBriefPrintServices.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtBriefPrintServices.BackColor = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.txtBriefPrintServices.Border.Class = "TextBoxBorder";
+            this.txtBriefPrintServices.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.highlighter1.SetHighlightOnFocus(this.txtBriefPrintServices, true);
+            this.txtBriefPrintServices.Location = new System.Drawing.Point(191, 141);
+            this.txtBriefPrintServices.Multiline = true;
+            this.txtBriefPrintServices.Name = "txtBriefPrintServices";
+            this.txtBriefPrintServices.PreventEnterBeep = true;
+            this.txtBriefPrintServices.ReadOnly = true;
+            this.txtBriefPrintServices.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtBriefPrintServices.Size = new System.Drawing.Size(413, 66);
+            this.txtBriefPrintServices.TabIndex = 10;
+            this.txtBriefPrintServices.TabStop = false;
+            // 
+            // labelX43
+            // 
+            this.labelX43.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelX43.AutoSize = true;
+            this.labelX43.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX43.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX43.Location = new System.Drawing.Point(610, 141);
+            this.labelX43.Name = "labelX43";
+            this.labelX43.Size = new System.Drawing.Size(89, 16);
+            this.labelX43.TabIndex = 12;
+            this.labelX43.Text = "خلاصه خدمات چاپ";
+            // 
+            // labelX42
+            // 
+            this.labelX42.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelX42.AutoSize = true;
+            this.labelX42.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX42.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX42.Location = new System.Drawing.Point(617, 116);
+            this.labelX42.Name = "labelX42";
+            this.labelX42.Size = new System.Drawing.Size(82, 16);
+            this.labelX42.TabIndex = 11;
+            this.labelX42.Text = "تعداد خدمات چاپ";
+            // 
+            // txtTotalPrintServices
+            // 
+            this.txtTotalPrintServices.Anchor = System.Windows.Forms.AnchorStyles.None;
+            // 
+            // 
+            // 
+            this.txtTotalPrintServices.Border.Class = "TextBoxBorder";
+            this.txtTotalPrintServices.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.highlighter1.SetHighlightOnFocus(this.txtTotalPrintServices, true);
+            this.txtTotalPrintServices.Location = new System.Drawing.Point(511, 114);
+            this.txtTotalPrintServices.Name = "txtTotalPrintServices";
+            this.txtTotalPrintServices.PreventEnterBeep = true;
+            this.txtTotalPrintServices.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtTotalPrintServices.Size = new System.Drawing.Size(93, 21);
+            this.txtTotalPrintServices.TabIndex = 8;
+            this.txtTotalPrintServices.TabStop = false;
+            // 
+            // labelX41
+            // 
+            this.labelX41.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelX41.AutoSize = true;
+            this.labelX41.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX41.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX41.Location = new System.Drawing.Point(290, 116);
+            this.labelX41.Name = "labelX41";
+            this.labelX41.Size = new System.Drawing.Size(103, 16);
+            this.labelX41.TabIndex = 13;
+            this.labelX41.Text = "تعداد عکس تائید شده";
+            // 
+            // txtTotalSelectedPhotos
+            // 
+            this.txtTotalSelectedPhotos.Anchor = System.Windows.Forms.AnchorStyles.None;
+            // 
+            // 
+            // 
+            this.txtTotalSelectedPhotos.Border.Class = "TextBoxBorder";
+            this.txtTotalSelectedPhotos.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.highlighter1.SetHighlightOnFocus(this.txtTotalSelectedPhotos, true);
+            this.txtTotalSelectedPhotos.Location = new System.Drawing.Point(191, 114);
+            this.txtTotalSelectedPhotos.Name = "txtTotalSelectedPhotos";
+            this.txtTotalSelectedPhotos.PreventEnterBeep = true;
+            this.txtTotalSelectedPhotos.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtTotalSelectedPhotos.Size = new System.Drawing.Size(93, 21);
+            this.txtTotalSelectedPhotos.TabIndex = 9;
+            this.txtTotalSelectedPhotos.TabStop = false;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.dataGridViewX1);
+            this.tabPage4.Location = new System.Drawing.Point(4, 23);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(890, 321);
+            this.tabPage4.TabIndex = 13;
+            this.tabPage4.Text = "جدول سفارش";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewX1
+            // 
+            this.dataGridViewX1.AllowUserToAddRows = false;
+            this.dataGridViewX1.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridViewX1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewX1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewX1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridViewX1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clmRowNumber,
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewX1.EnableHeadersVisualStyles = false;
+            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.dataGridViewX1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridViewX1.Name = "dataGridViewX1";
+            this.dataGridViewX1.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewX1.RowHeadersVisible = false;
+            this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewX1.Size = new System.Drawing.Size(884, 315);
+            this.dataGridViewX1.TabIndex = 144;
+            this.dataGridViewX1.UseCustomBackgroundColor = true;
+            // 
+            // clmRowNumber
+            // 
+            this.clmRowNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.clmRowNumber.HeaderText = "#";
+            this.clmRowNumber.Name = "clmRowNumber";
+            this.clmRowNumber.ReadOnly = true;
+            this.clmRowNumber.Width = 30;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "شماره عکس";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "اندازه چاپ";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "خدمات چاپ";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "لیت پرینت";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "اضافه چاپ";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "دورچین";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
             // 
             // imageList1
             // 
@@ -2111,7 +2293,6 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.groupBox1);
             this.groupBox2.Controls.Add(this.groupBox8);
             this.groupBox2.Controls.Add(this.circularProgress);
             this.groupBox2.Controls.Add(this.groupBox7);
@@ -2124,35 +2305,6 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "اطلاعات سفارش";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.txtOrderStatus);
-            this.groupBox1.Location = new System.Drawing.Point(75, 17);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(159, 53);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "وضعیت سفارش";
-            // 
-            // txtOrderStatus
-            // 
-            this.txtOrderStatus.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            // 
-            // 
-            // 
-            this.txtOrderStatus.Border.Class = "TextBoxBorder";
-            this.txtOrderStatus.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtOrderStatus.Enabled = false;
-            this.highlighter1.SetHighlightOnFocus(this.txtOrderStatus, true);
-            this.txtOrderStatus.Location = new System.Drawing.Point(7, 20);
-            this.txtOrderStatus.Name = "txtOrderStatus";
-            this.txtOrderStatus.PreventEnterBeep = true;
-            this.txtOrderStatus.ReadOnly = true;
-            this.txtOrderStatus.Size = new System.Drawing.Size(146, 21);
-            this.txtOrderStatus.TabIndex = 0;
-            this.txtOrderStatus.TabStop = false;
             // 
             // groupBox8
             // 
@@ -2444,8 +2596,10 @@
             this.statusStrip1.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
-            this.toolStripStatusLabel2});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 683);
+            this.toolStripStatusLabel2,
+            this.toolStripStatusLabel3,
+            this.txtOrderStatus});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 600);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1208, 22);
             this.statusStrip1.TabIndex = 4;
@@ -2463,16 +2617,389 @@
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(109, 17);
             this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
             // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(88, 17);
+            this.toolStripStatusLabel3.Text = "وضعیت سفارش :";
+            // 
+            // txtOrderStatus
+            // 
+            this.txtOrderStatus.Name = "txtOrderStatus";
+            this.txtOrderStatus.Size = new System.Drawing.Size(109, 17);
+            this.txtOrderStatus.Text = "toolStripStatusLabel4";
+            // 
             // bgWorkerLoadPicture
             // 
             this.bgWorkerLoadPicture.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerLoadPicture_DoWork);
             this.bgWorkerLoadPicture.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerLoadPicture_RunWorkerCompleted);
             // 
+            // textBoxX1
+            // 
+            this.textBoxX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.textBoxX1.Border.Class = "TextBoxBorder";
+            this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.highlighter1.SetHighlightOnFocus(this.textBoxX1, true);
+            this.textBoxX1.Location = new System.Drawing.Point(521, 6);
+            this.textBoxX1.MaxLength = 4000;
+            this.textBoxX1.Multiline = true;
+            this.textBoxX1.Name = "textBoxX1";
+            this.textBoxX1.PreventEnterBeep = true;
+            this.textBoxX1.Size = new System.Drawing.Size(363, 265);
+            this.textBoxX1.TabIndex = 20;
+            this.textBoxX1.WatermarkText = "توضیحات دورچین";
+            // 
+            // textBoxX2
+            // 
+            this.textBoxX2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.textBoxX2.Border.Class = "TextBoxBorder";
+            this.textBoxX2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.highlighter1.SetHighlightOnFocus(this.textBoxX2, true);
+            this.textBoxX2.Location = new System.Drawing.Point(3, 239);
+            this.textBoxX2.MaxLength = 4000;
+            this.textBoxX2.Multiline = true;
+            this.textBoxX2.Name = "textBoxX2";
+            this.textBoxX2.PreventEnterBeep = true;
+            this.textBoxX2.Size = new System.Drawing.Size(881, 44);
+            this.textBoxX2.TabIndex = 27;
+            this.textBoxX2.WatermarkText = "توضیحات رتوش و چاپ";
+            // 
+            // betterThumbnailBrowser3
+            // 
+            this.betterThumbnailBrowser3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.betterThumbnailBrowser3.ContextMenuStripPlacement = ComponentOwl.BetterThumbnailBrowser.BetterListViewContextMenuPlacement.Default;
+            this.betterThumbnailBrowser3.LoadingThreadPriority = System.Threading.ThreadPriority.BelowNormal;
+            this.betterThumbnailBrowser3.Location = new System.Drawing.Point(3, 6);
+            this.betterThumbnailBrowser3.Name = "betterThumbnailBrowser3";
+            this.betterThumbnailBrowser3.Size = new System.Drawing.Size(881, 227);
+            this.betterThumbnailBrowser3.SupportedExtensions = "BMP;GIF;JIF;JPE;JPEG;JPG;PNG;TIF;TIFF";
+            this.betterThumbnailBrowser3.TabIndex = 26;
+            // 
+            // buttonX6
+            // 
+            this.buttonX6.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonX6.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.highlighter1.SetHighlightOnFocus(this.buttonX6, true);
+            this.buttonX6.Location = new System.Drawing.Point(776, 292);
+            this.buttonX6.Name = "buttonX6";
+            this.buttonX6.Size = new System.Drawing.Size(108, 23);
+            this.buttonX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX6.Symbol = "";
+            this.buttonX6.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.buttonX6.SymbolSize = 10F;
+            this.buttonX6.TabIndex = 20;
+            this.buttonX6.Text = "تائید";
+            // 
+            // buttonX5
+            // 
+            this.buttonX5.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonX5.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.highlighter1.SetHighlightOnFocus(this.buttonX5, true);
+            this.buttonX5.Location = new System.Drawing.Point(680, 292);
+            this.buttonX5.Name = "buttonX5";
+            this.buttonX5.Size = new System.Drawing.Size(90, 23);
+            this.buttonX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX5.Symbol = "";
+            this.buttonX5.SymbolColor = System.Drawing.Color.RoyalBlue;
+            this.buttonX5.SymbolSize = 10F;
+            this.buttonX5.TabIndex = 21;
+            this.buttonX5.Text = "تعریف مجدد";
+            // 
+            // buttonX4
+            // 
+            this.buttonX4.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonX4.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.highlighter1.SetHighlightOnFocus(this.buttonX4, true);
+            this.buttonX4.Location = new System.Drawing.Point(584, 292);
+            this.buttonX4.Name = "buttonX4";
+            this.buttonX4.Size = new System.Drawing.Size(90, 23);
+            this.buttonX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX4.Symbol = "";
+            this.buttonX4.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.buttonX4.SymbolSize = 10F;
+            this.buttonX4.TabIndex = 22;
+            this.buttonX4.Text = "انصراف";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox2.Location = new System.Drawing.Point(707, 6);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(177, 265);
+            this.pictureBox2.TabIndex = 23;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox1.Location = new System.Drawing.Point(524, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(177, 265);
+            this.pictureBox1.TabIndex = 23;
+            this.pictureBox1.TabStop = false;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.textBoxX3);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.checkBoxX2);
+            this.panel2.Controls.Add(this.checkBoxX1);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Location = new System.Drawing.Point(0, 284);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(533, 34);
+            this.panel2.TabIndex = 21;
+            // 
+            // textBoxX3
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX3.Border.Class = "TextBoxBorder";
+            this.textBoxX3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX3.Location = new System.Drawing.Point(6, 7);
+            this.textBoxX3.Name = "textBoxX3";
+            this.textBoxX3.PreventEnterBeep = true;
+            this.textBoxX3.Size = new System.Drawing.Size(135, 21);
+            this.textBoxX3.TabIndex = 29;
+            this.textBoxX3.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(147, 10);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(90, 13);
+            this.label3.TabIndex = 28;
+            this.label3.Text = "ترتیب اضافه چاپ :";
+            this.label3.Visible = false;
+            // 
+            // checkBoxX2
+            // 
+            this.checkBoxX2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxX2.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX2.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
+            this.checkBoxX2.Location = new System.Drawing.Point(316, 9);
+            this.checkBoxX2.Name = "checkBoxX2";
+            this.checkBoxX2.Size = new System.Drawing.Size(70, 16);
+            this.checkBoxX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX2.TabIndex = 26;
+            this.checkBoxX2.Text = "اضافه چاپ";
+            // 
+            // checkBoxX1
+            // 
+            this.checkBoxX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxX1.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX1.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
+            this.checkBoxX1.Location = new System.Drawing.Point(392, 9);
+            this.checkBoxX1.Name = "checkBoxX1";
+            this.checkBoxX1.Size = new System.Drawing.Size(64, 16);
+            this.checkBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX1.TabIndex = 27;
+            this.checkBoxX1.Text = "اصل چاپ";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(462, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 13);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "نوع عکس :";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(342, 103);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(506, 13);
+            this.label7.TabIndex = 28;
+            this.label7.Text = "یک جدول از عکس ها نشان داده شود که هر عکس با زدن تیک مربوطه اطلاعات لازم نیز در ج" +
+    "لوی آن نوشته شود";
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.textBoxX4);
+            this.panel4.Controls.Add(this.label4);
+            this.panel4.Controls.Add(this.checkBoxX3);
+            this.panel4.Controls.Add(this.checkBoxX4);
+            this.panel4.Controls.Add(this.label6);
+            this.panel4.Location = new System.Drawing.Point(0, 284);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(533, 34);
+            this.panel4.TabIndex = 24;
+            // 
+            // textBoxX4
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX4.Border.Class = "TextBoxBorder";
+            this.textBoxX4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX4.Location = new System.Drawing.Point(6, 7);
+            this.textBoxX4.Name = "textBoxX4";
+            this.textBoxX4.PreventEnterBeep = true;
+            this.textBoxX4.Size = new System.Drawing.Size(135, 21);
+            this.textBoxX4.TabIndex = 29;
+            this.textBoxX4.Visible = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(147, 10);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(90, 13);
+            this.label4.TabIndex = 28;
+            this.label4.Text = "ترتیب اضافه چاپ :";
+            this.label4.Visible = false;
+            // 
+            // checkBoxX3
+            // 
+            this.checkBoxX3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxX3.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX3.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
+            this.checkBoxX3.Location = new System.Drawing.Point(316, 9);
+            this.checkBoxX3.Name = "checkBoxX3";
+            this.checkBoxX3.Size = new System.Drawing.Size(70, 16);
+            this.checkBoxX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX3.TabIndex = 26;
+            this.checkBoxX3.Text = "اضافه چاپ";
+            // 
+            // checkBoxX4
+            // 
+            this.checkBoxX4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxX4.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX4.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
+            this.checkBoxX4.Location = new System.Drawing.Point(392, 9);
+            this.checkBoxX4.Name = "checkBoxX4";
+            this.checkBoxX4.Size = new System.Drawing.Size(64, 16);
+            this.checkBoxX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX4.TabIndex = 27;
+            this.checkBoxX4.Text = "اصل چاپ";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(462, 10);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(59, 13);
+            this.label6.TabIndex = 25;
+            this.label6.Text = "نوع عکس :";
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.textBoxX5);
+            this.panel5.Controls.Add(this.label8);
+            this.panel5.Controls.Add(this.checkBoxX5);
+            this.panel5.Controls.Add(this.checkBoxX6);
+            this.panel5.Controls.Add(this.label9);
+            this.panel5.Location = new System.Drawing.Point(0, 284);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(533, 34);
+            this.panel5.TabIndex = 29;
+            // 
+            // textBoxX5
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX5.Border.Class = "TextBoxBorder";
+            this.textBoxX5.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX5.Location = new System.Drawing.Point(6, 7);
+            this.textBoxX5.Name = "textBoxX5";
+            this.textBoxX5.PreventEnterBeep = true;
+            this.textBoxX5.Size = new System.Drawing.Size(135, 21);
+            this.textBoxX5.TabIndex = 29;
+            this.textBoxX5.Visible = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(147, 10);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(90, 13);
+            this.label8.TabIndex = 28;
+            this.label8.Text = "ترتیب اضافه چاپ :";
+            this.label8.Visible = false;
+            // 
+            // checkBoxX5
+            // 
+            this.checkBoxX5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxX5.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX5.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
+            this.checkBoxX5.Location = new System.Drawing.Point(316, 9);
+            this.checkBoxX5.Name = "checkBoxX5";
+            this.checkBoxX5.Size = new System.Drawing.Size(70, 16);
+            this.checkBoxX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX5.TabIndex = 26;
+            this.checkBoxX5.Text = "اضافه چاپ";
+            // 
+            // checkBoxX6
+            // 
+            this.checkBoxX6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxX6.AutoSize = true;
+            // 
+            // 
+            // 
+            this.checkBoxX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX6.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
+            this.checkBoxX6.Location = new System.Drawing.Point(392, 9);
+            this.checkBoxX6.Name = "checkBoxX6";
+            this.checkBoxX6.Size = new System.Drawing.Size(64, 16);
+            this.checkBoxX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX6.TabIndex = 27;
+            this.checkBoxX6.Text = "اصل چاپ";
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(462, 10);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(59, 13);
+            this.label9.TabIndex = 25;
+            this.label9.Text = "نوع عکس :";
+            // 
             // FrmAddEditPreFactor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1208, 705);
+            this.ClientSize = new System.Drawing.Size(1208, 622);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panelEx1);
             this.Controls.Add(this.menuStrip1);
@@ -2492,11 +3019,7 @@
             this.panelEx1.ResumeLayout(false);
             this.groupBoxPreviewPictures.ResumeLayout(false);
             this.panelEx2.ResumeLayout(false);
-            this.tabControlOrderPrintInfo.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
+            this.panelEx2.PerformLayout();
             this.panelEx3.ResumeLayout(false);
             this.tabControlPrintSizeAndServices.ResumeLayout(false);
             this.tabPageOriginalPrint.ResumeLayout(false);
@@ -2507,6 +3030,16 @@
             this.gBoxRePrint.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iiRePrintServiceCounts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iiRePrintPrintCounts)).EndInit();
+            this.tabPageMultiPhoto.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.betterThumbnailBrowser1)).EndInit();
+            this.tabPageLitPrint.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.betterThumbnailBrowser2)).EndInit();
+            this.tabPageChangingElements.ResumeLayout(false);
+            this.tabPageChangingElements.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panelEx4.ResumeLayout(false);
             this.panelEx4.PerformLayout();
@@ -2514,7 +3047,6 @@
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).EndInit();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
@@ -2524,6 +3056,15 @@
             this.groupBox5.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.betterThumbnailBrowser3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2654,27 +3195,62 @@
         private System.Windows.Forms.TabPage tabPageChangingElements;
         private DevComponents.DotNetBar.Controls.CheckBoxX chkIsActiveRePrint;
         private DevComponents.DotNetBar.LabelX labelX8;
-        private System.Windows.Forms.TabControl tabControlOrderPrintInfo;
-        private System.Windows.Forms.TabPage tabPage1;
+        private DevComponents.DotNetBar.LabelX labelX9;
+        private DevComponents.DotNetBar.Controls.CheckBoxX chkOkBeforePrint;
         private DevComponents.DotNetBar.Controls.TextBoxX txtOrderDescriptions;
         private DevComponents.DotNetBar.LabelX labelX6;
-        private System.Windows.Forms.TabPage tabPage2;
-        private DevComponents.DotNetBar.Controls.CheckBoxX chkOkBeforePrint;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtOrderStatus;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TabPage tabPage3;
         private DevComponents.DotNetBar.Controls.TextBoxX txtBriefPrintServices;
         private DevComponents.DotNetBar.LabelX labelX43;
         private DevComponents.DotNetBar.LabelX labelX42;
         private DevComponents.DotNetBar.Controls.TextBoxX txtTotalPrintServices;
         private DevComponents.DotNetBar.LabelX labelX41;
         private DevComponents.DotNetBar.Controls.TextBoxX txtTotalSelectedPhotos;
+        private System.Windows.Forms.TabPage tabPage4;
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmRowNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private DevComponents.DotNetBar.LabelX labelX9;
+        private ComponentOwl.BetterThumbnailBrowser.BetterThumbnailBrowser betterThumbnailBrowser1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.ToolStripStatusLabel txtOrderStatus;
+        private DevComponents.DotNetBar.ButtonX buttonX1;
+        private DevComponents.DotNetBar.ButtonX buttonX2;
+        private DevComponents.DotNetBar.ButtonX buttonX3;
+        private ComponentOwl.BetterThumbnailBrowser.BetterThumbnailBrowser betterThumbnailBrowser2;
+        private DevComponents.DotNetBar.ButtonX buttonX7;
+        private DevComponents.DotNetBar.ButtonX buttonX8;
+        private DevComponents.DotNetBar.ButtonX buttonX9;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX2;
+        private ComponentOwl.BetterThumbnailBrowser.BetterThumbnailBrowser betterThumbnailBrowser3;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private DevComponents.DotNetBar.ButtonX buttonX4;
+        private DevComponents.DotNetBar.ButtonX buttonX5;
+        private DevComponents.DotNetBar.ButtonX buttonX6;
+        private System.Windows.Forms.Panel panel2;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX3;
+        private System.Windows.Forms.Label label3;
+        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX2;
+        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel panel4;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX4;
+        private System.Windows.Forms.Label label4;
+        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX3;
+        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel panel5;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX5;
+        private System.Windows.Forms.Label label8;
+        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX5;
+        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX6;
+        private System.Windows.Forms.Label label9;
     }
 }
