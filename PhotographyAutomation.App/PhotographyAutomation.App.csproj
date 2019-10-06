@@ -1705,10 +1705,10 @@
     <None Include="Resources\iconfinder_edit_383148.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Forms\Test\" />
+    <None Include="Resources\iconfinder_select_by_color_64624.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\iconfinder_select_by_color_64624.png" />
+    <Folder Include="Forms\Test\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
