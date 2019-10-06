@@ -1064,7 +1064,7 @@ namespace PhotographyAutomation.App.Forms.Factors
             txtTotalPriceOriginalServices.Text = null;
             txtTotalPriceOriginal.Text = null;
 
-            textOriginalPhotoRetouchDescription.Text = null;
+            txtOriginalPhotoRetouchDescription.Text = null;
         }
         private void ResetOrderItemValues(OrderDetails orderDetailsItem)
         {
@@ -1095,7 +1095,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                 FileName = lblPhotoName.Text,
                 IsAccepted = true,
                 PrintSizeId = (int)cmbOriginalPrintSizes.SelectedValue,
-                RetouchDescription = textOriginalPhotoRetouchDescription.Text,
+                RetouchDescription = txtOriginalPhotoRetouchDescription.Text,
                 CreatedDateTime = DateTime.Now,
                 IsFirstprint = true,
             };
@@ -1238,7 +1238,7 @@ namespace PhotographyAutomation.App.Forms.Factors
             txtTotalPriceRePrintServices.Text = null;
             txtTotalPriceRePrint.Text = null;
 
-            textRePrintPhotoRetouchDescription.Text = null;
+            txtRePrintPhotoRetouchDescription.Text = null;
         }
         private int CalculateRePrintTotalPrice()
         {
@@ -1266,7 +1266,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                 IsAccepted = true,
                 PrintSizeId = (int)cmbRePrintPrintSizes.SelectedValue,
                 RePrintTotalPrints = iiRePrintPrintCounts.Value,
-                RetouchDescription = textRePrintPhotoRetouchDescription.Text,
+                RetouchDescription = txtRePrintPhotoRetouchDescription.Text,
                 CreatedDateTime = DateTime.Now,
                 IsFirstprint = false,
             };
@@ -1428,7 +1428,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                 //    }
                 //}
 
-                currentOrderDetails.RetouchDescription = textOriginalPhotoRetouchDescription.Text;
+                currentOrderDetails.RetouchDescription = txtOriginalPhotoRetouchDescription.Text;
 
                 ///////
                 // Second Print 1
@@ -1664,7 +1664,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                 }
 
                 if (nextOrderDetails.RetouchDescription != null)
-                    textOriginalPhotoRetouchDescription.Text = nextOrderDetails.RetouchDescription;
+                    txtOriginalPhotoRetouchDescription.Text = nextOrderDetails.RetouchDescription;
                 //pictureBoxIsAccepted.Image = nextOrderDetails.AcceptRejectImage ??
                 //                             Properties.Resources.iconfinder_flickr_317744;
 
@@ -2171,7 +2171,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                 }
 
                 if (previousOrderDetails.RetouchDescription != null)
-                    textOriginalPhotoRetouchDescription.Text = previousOrderDetails.RetouchDescription;
+                    txtOriginalPhotoRetouchDescription.Text = previousOrderDetails.RetouchDescription;
 
                 //pictureBoxIsAccepted.Image = previousOrderDetails.AcceptRejectImage ??
                 //                             Properties.Resources.iconfinder_flickr_317744;
