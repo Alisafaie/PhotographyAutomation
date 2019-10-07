@@ -10,9 +10,12 @@ using PhotographyAutomation.ViewModels.Print;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using Ookii.Dialogs.WinForms;
 using Exception = System.Exception;
 
 namespace PhotographyAutomation.App.Forms.Factors
@@ -276,7 +279,7 @@ namespace PhotographyAutomation.App.Forms.Factors
         {
             try
             {
-                cmbOriginalPrintSizes.Enabled = !_bgWorkerLoadPrintSizeAndServicesInfo.IsBusy;
+                cmbOriginalPrintSize.Enabled = !_bgWorkerLoadPrintSizeAndServicesInfo.IsBusy;
                 circularProgress.IsRunning = _bgWorkerLoadPrintSizeAndServicesInfo.IsBusy;
 
                 if (_orderPrintViewModel != null)
@@ -302,14 +305,14 @@ namespace PhotographyAutomation.App.Forms.Factors
 
                 if (_listOriginalPrintSizes != null && _listOriginalPrintSizes.Any())
                 {
-                    cmbOriginalPrintSizes.DataSource = _listOriginalPrintSizes;
-                    cmbOriginalPrintSizes.DisplayMember = "Name";
-                    cmbOriginalPrintSizes.ValueMember = "Id";
+                    cmbOriginalPrintSize.DataSource = _listOriginalPrintSizes;
+                    cmbOriginalPrintSize.DisplayMember = "Name";
+                    cmbOriginalPrintSize.ValueMember = "Id";
 
 
-                    cmbRePrintPrintSizes.DataSource = _listRePrintPrintSizes;
-                    cmbRePrintPrintSizes.DisplayMember = "Name";
-                    cmbRePrintPrintSizes.ValueMember = "Id";
+                    cmbRePrintPrintSize.DataSource = _listRePrintPrintSizes;
+                    cmbRePrintPrintSize.DisplayMember = "Name";
+                    cmbRePrintPrintSize.ValueMember = "Id";
 
 
                     if (_listOriginalPrintSizes.FirstOrDefault() != null)
@@ -327,7 +330,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                             _listRePrintPrintSizePrices.First().FirstPrintPrice?.ToString("N0");
                     }
 
-                    cmbOriginalPrintSizes.Focus();
+                    cmbOriginalPrintSize.Focus();
                 }
             }
             catch (Exception exception)
@@ -407,15 +410,15 @@ namespace PhotographyAutomation.App.Forms.Factors
             rbOriginalMultiPhoto.Checked = false;
             rbOriginalLitPrint.Checked = false;
 
-            if (cmbOriginalPrintSizes.SelectedIndex == -1) return;
+            if (cmbOriginalPrintSize.SelectedIndex == -1) return;
 
             try
             {
                 var resultSelectedOriginalPrintSizeId =
-                    int.TryParse(cmbOriginalPrintSizes.SelectedValue.ToString(),
+                    int.TryParse(cmbOriginalPrintSize.SelectedValue.ToString(),
                                    out var selectedOriginalPrintSizeId);
 
-                if (cmbOriginalPrintSizes.SelectedIndex != -1 && resultSelectedOriginalPrintSizeId)
+                if (cmbOriginalPrintSize.SelectedIndex != -1 && resultSelectedOriginalPrintSizeId)
                 {
                     _selectedOriginalSizeId = selectedOriginalPrintSizeId;
 
@@ -499,7 +502,7 @@ namespace PhotographyAutomation.App.Forms.Factors
         {
             //Get First Print Service Price
             bool selectedPrintSizeIdResult =
-                int.TryParse(cmbOriginalPrintSizes.SelectedValue.ToString(), out int selectedPrintSizeId);
+                int.TryParse(cmbOriginalPrintSize.SelectedValue.ToString(), out int selectedPrintSizeId);
 
             if (selectedPrintSizeIdResult /*&& selectedPrintServiceIdResult*/ && _listOriginalPrintServicePrices != null)
             {
@@ -628,7 +631,7 @@ namespace PhotographyAutomation.App.Forms.Factors
             try
             {
                 if (rbOriginalLitPrint.Checked &&
-                    int.TryParse(cmbOriginalPrintSizes.SelectedValue.ToString(), out int selectedPrintSizeId)
+                    int.TryParse(cmbOriginalPrintSize.SelectedValue.ToString(), out int selectedPrintSizeId)
                     )
 
                 {
@@ -696,7 +699,7 @@ namespace PhotographyAutomation.App.Forms.Factors
             rbRePrintPhotoMultiPhoto.Checked = false;
             rbRePrintPhotoMultiPhoto.CheckState = CheckState.Unchecked;
 
-            if (int.TryParse(cmbOriginalPrintSizes.SelectedValue.ToString(), out var selectedPrintSize))
+            if (int.TryParse(cmbOriginalPrintSize.SelectedValue.ToString(), out var selectedPrintSize))
             {
                 lblPrintSizeMultiPhoto.Text =
                     _listOriginalPrintSizes.SingleOrDefault(x => x.Id == selectedPrintSize)?.Name;
@@ -713,7 +716,7 @@ namespace PhotographyAutomation.App.Forms.Factors
             rbRePrintPhotoLitPrint.Checked = false;
             rbRePrintPhotoLitPrint.CheckState = CheckState.Unchecked;
 
-            if (int.TryParse(cmbOriginalPrintSizes.SelectedValue.ToString(), out var selectedPrintSize))
+            if (int.TryParse(cmbOriginalPrintSize.SelectedValue.ToString(), out var selectedPrintSize))
             {
                 lblPrintSizeLitPrint.Text =
                     _listOriginalPrintSizes.SingleOrDefault(x => x.Id == selectedPrintSize)?.Name;
@@ -729,7 +732,7 @@ namespace PhotographyAutomation.App.Forms.Factors
             rbRePrintPhotoChangingElements.Checked = false;
             rbRePrintPhotoChangingElements.CheckState = CheckState.Unchecked;
 
-            if (int.TryParse(cmbOriginalPrintSizes.SelectedValue.ToString(), out var selectedPrintSize))
+            if (int.TryParse(cmbOriginalPrintSize.SelectedValue.ToString(), out var selectedPrintSize))
             {
                 lblPrintSizeChangingElements.Text =
                     _listOriginalPrintSizes.SingleOrDefault(x => x.Id == selectedPrintSize)?.Name;
@@ -749,15 +752,15 @@ namespace PhotographyAutomation.App.Forms.Factors
             rbRePrintMultiPhoto.Checked = false;
             rbRePrintLitPrint.Checked = false;
 
-            if (cmbRePrintPrintSizes.SelectedIndex == -1) return;
+            if (cmbRePrintPrintSize.SelectedIndex == -1) return;
 
             try
             {
                 var resultSelectedRePrintPrintSizeId =
-                    int.TryParse(cmbRePrintPrintSizes.SelectedValue.ToString(),
+                    int.TryParse(cmbRePrintPrintSize.SelectedValue.ToString(),
                         out var selectedRePrintPrintSizeId);
 
-                if (cmbRePrintPrintSizes.SelectedIndex != -1 && resultSelectedRePrintPrintSizeId)
+                if (cmbRePrintPrintSize.SelectedIndex != -1 && resultSelectedRePrintPrintSizeId)
                 {
                     _selectedRePrintSizeId = selectedRePrintPrintSizeId;
 
@@ -926,7 +929,7 @@ namespace PhotographyAutomation.App.Forms.Factors
             try
             {
                 if (rbRePrintLitPrint.Checked &&
-                    int.TryParse(cmbRePrintPrintSizes.SelectedValue.ToString(), out int selectedPrintSizeId)
+                    int.TryParse(cmbRePrintPrintSize.SelectedValue.ToString(), out int selectedPrintSizeId)
                 )
 
                 {
@@ -989,7 +992,7 @@ namespace PhotographyAutomation.App.Forms.Factors
             
 
 
-            if (int.TryParse(cmbRePrintPrintSizes.SelectedValue.ToString(), out var selectedPrintSize))
+            if (int.TryParse(cmbRePrintPrintSize.SelectedValue.ToString(), out var selectedPrintSize))
             {
                 lblPrintSizeMultiPhoto.Text =
                     _listRePrintPrintSizes.SingleOrDefault(x => x.Id == selectedPrintSize)?.Name;
@@ -1008,7 +1011,7 @@ namespace PhotographyAutomation.App.Forms.Factors
             
 
 
-            if (int.TryParse(cmbRePrintPrintSizes.SelectedValue.ToString(), out var selectedPrintSize))
+            if (int.TryParse(cmbRePrintPrintSize.SelectedValue.ToString(), out var selectedPrintSize))
             {
                 lblPrintSizeLitPrint.Text =
                     _listRePrintPrintSizes.SingleOrDefault(x => x.Id == selectedPrintSize)?.Name;
@@ -1027,7 +1030,7 @@ namespace PhotographyAutomation.App.Forms.Factors
            
 
 
-            if (int.TryParse(cmbRePrintPrintSizes.SelectedValue.ToString(), out var selectedPrintSize))
+            if (int.TryParse(cmbRePrintPrintSize.SelectedValue.ToString(), out var selectedPrintSize))
             {
                 lblPrintSizeChangingElements.Text =
                     _listRePrintPrintSizes.SingleOrDefault(x => x.Id == selectedPrintSize)?.Name;
@@ -1040,7 +1043,7 @@ namespace PhotographyAutomation.App.Forms.Factors
         {
             try
             {
-                if (int.TryParse(cmbRePrintPrintSizes.SelectedValue.ToString(), out int selectedPrintSizeId))
+                if (int.TryParse(cmbRePrintPrintSize.SelectedValue.ToString(), out int selectedPrintSizeId))
                 {
                     GetRePrintPrintSizePrice(selectedPrintSizeId);
                 }
@@ -1124,7 +1127,7 @@ namespace PhotographyAutomation.App.Forms.Factors
         }
         private void ResetOriginalPrintControls()
         {
-            cmbOriginalPrintSizes.SelectedIndex = -1;
+            cmbOriginalPrintSize.SelectedIndex = -1;
             rbOriginalMultiPhoto.Checked = false;
             rbOriginalLitPrint.Checked = false;
             chkOriginalHasChangingElements.Checked = false;
@@ -1174,7 +1177,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                 StreamId = currentGuid,
                 FileName = lblPhotoName.Text,
                 IsAccepted = true,
-                PrintSizeId = (int)cmbOriginalPrintSizes.SelectedValue,
+                PrintSizeId = (int)cmbOriginalPrintSize.SelectedValue,
                 RetouchDescription = txtOriginalPhotoRetouchDescription.Text,
                 CreatedDateTime = DateTime.Now,
                 IsFirstprint = true,
@@ -1298,7 +1301,7 @@ namespace PhotographyAutomation.App.Forms.Factors
             //cmbRePrintSequence.SelectedIndex = -1;
             chkIsActiveRePrint.Checked = false;
 
-            cmbRePrintPrintSizes.SelectedIndex = -1;
+            cmbRePrintPrintSize.SelectedIndex = -1;
             rbRePrintMultiPhoto.Checked = false;
             rbRePrintLitPrint.Checked = false;
             chkRePrintHasChangingElements.Checked = false;
@@ -1344,7 +1347,7 @@ namespace PhotographyAutomation.App.Forms.Factors
                 RePrintSequence = (cmbRePrintSequence.SelectedIndex) + 1,
                 FileName = lblPhotoName.Text,
                 IsAccepted = true,
-                PrintSizeId = (int)cmbRePrintPrintSizes.SelectedValue,
+                PrintSizeId = (int)cmbRePrintPrintSize.SelectedValue,
                 RePrintTotalPrints = iiRePrintPrintCounts.Value,
                 RetouchDescription = txtRePrintPhotoRetouchDescription.Text,
                 CreatedDateTime = DateTime.Now,
@@ -1490,8 +1493,8 @@ namespace PhotographyAutomation.App.Forms.Factors
                 ///////
                 // Original Print
                 //
-                if (cmbOriginalPrintSizes.SelectedValue != null &&
-                    int.TryParse(cmbOriginalPrintSizes.SelectedValue.ToString(), out var ttt))
+                if (cmbOriginalPrintSize.SelectedValue != null &&
+                    int.TryParse(cmbOriginalPrintSize.SelectedValue.ToString(), out var ttt))
                     currentOrderDetails.PrintSizeId = ttt;
 
                 //if (int.TryParse(txtTotalPriceOriginalPrintSize.Text.Replace(",", ""), out var tt))
@@ -1724,10 +1727,10 @@ namespace PhotographyAutomation.App.Forms.Factors
                 ////Original Photo
                 //
                 if (nextOrderDetails.PrintSizeId == 0)
-                    cmbOriginalPrintSizes.SelectedIndex = -1;
+                    cmbOriginalPrintSize.SelectedIndex = -1;
                 else
                 {
-                    cmbOriginalPrintSizes.SelectedValue = nextOrderDetails.PrintSizeId;
+                    cmbOriginalPrintSize.SelectedValue = nextOrderDetails.PrintSizeId;
                     cmbOriginalPrintSize_SelectedIndexChanged(null, null);
                 }
 
@@ -2231,10 +2234,10 @@ namespace PhotographyAutomation.App.Forms.Factors
                 ////Original Photo
                 //
                 if (previousOrderDetails.PrintSizeId == 0)
-                    cmbOriginalPrintSizes.SelectedIndex = -1;
+                    cmbOriginalPrintSize.SelectedIndex = -1;
                 else
                 {
-                    cmbOriginalPrintSizes.SelectedValue = previousOrderDetails.PrintSizeId;
+                    cmbOriginalPrintSize.SelectedValue = previousOrderDetails.PrintSizeId;
                     cmbOriginalPrintSize_SelectedIndexChanged(null, null);
                 }
 
@@ -2494,6 +2497,335 @@ namespace PhotographyAutomation.App.Forms.Factors
             txtTotalPriceOriginal.Text = CalculateOriginalPrintTotalPrice().ToString("N0");
         }
 
-       
+
+
+        private bool DowloadOrderPhotos(string photoPath, string orderCode)
+        {
+            bool resultDownload = false;
+            string tempPath = System.IO.Path.GetTempPath();
+
+            if (OrderDownloadedBefore(tempPath, orderCode) == false)
+            {
+               resultDownload = DownloadPhotos(tempPath, photoPath, orderCode);
+            }
+            else
+            {
+                MessageBox.Show(@"قبلا این عکس ها در مسیر انتخابی دریافت شده است.", @"", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            return resultDownload;
+        }
+        private bool OrderDownloadedBefore(string tempPath, string orderCode)
+        {
+            bool result = false;
+
+            string downloadPath = tempPath + "\\" + "Orders" + "\\" + orderCode;
+            if (Directory.Exists(downloadPath))
+            {
+                DirectoryInfo directoryInfo = new DirectoryInfo(downloadPath);
+                var filesOfDirectory = directoryInfo.GetFiles().ToList();
+                if (filesOfDirectory.Any())
+                {
+                    //اگر تعداد فایل های موجود در دایرکتوری فوق با 
+                    //تعداد اصلی فایل ها یکی بود نتیجه را ترو برگردون
+                    //در غیر این صورت عکس های داخل دایرکتوری را پاک کن و دوباره دانلود کن
+                    result = true;
+                }
+            }
+
+            return result;
+        }
+        private static bool DownloadPhotos(string selectedPath, string photoPath, string orderCode)
+        {
+            bool result = false;
+            try
+            {
+                using (var db = new UnitOfWork())
+                {
+                    List<Guid> fileStreamIdList = db.PhotoRepository.GetListOfOrderFilesReturnStreamIds(photoPath);
+                    int counter = 0;
+                    if (fileStreamIdList != null)
+                    {
+                        var totalFiles = fileStreamIdList.Count;
+                        foreach (var guid in fileStreamIdList)
+                        {
+                            var file = db.PhotoRepository.DownloadOrderPhotos(guid);
+                            if (file != null)
+                            {
+                            RetryCreateFolders:
+                                var directoryPathOrders = CreateOrderDirectory(selectedPath);
+
+                                var directoryPathOrderCode = CreateOrderCodeDirectory(orderCode, directoryPathOrders);
+                                if (directoryPathOrders == null || directoryPathOrderCode == null)
+                                {
+                                    DialogResult drCreateOrderFolders = MessageBox.Show(
+                                        @"خطا در ساخت فولدر های مربوط به سفارش." +
+                                        Environment.NewLine +
+                                        @" لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.",
+                                        @"",
+                                        MessageBoxButtons.RetryCancel,
+                                        MessageBoxIcon.Error,
+                                        MessageBoxDefaultButton.Button1);
+                                    if (drCreateOrderFolders == DialogResult.Retry)
+                                        goto RetryCreateFolders;
+                                    else
+                                        return false;
+                                }
+
+                                string fileNameAndPath = directoryPathOrderCode + file.name;
+
+                                bool fileExists = File.Exists(fileNameAndPath);
+
+                                DialogResult dr = DialogResult.None;
+                                if (fileExists)
+                                {
+                                    long length = new FileInfo(fileNameAndPath).Length;
+
+                                    Debug.Assert(file.fileSize != null, "file.fileSize != null");
+                                    if (length == file.fileSize.Value)
+                                    {
+                                        dr = MessageBox.Show(
+                                            $@"فایل  {file.name}  قبلا در سیستم ثبت شده است. آیا می خواهید بازنویسی شود؟  " +
+                                            Environment.NewLine +
+                                            @"در صورت تایید محتوای فایل قبلی از بین می رود." +
+                                            Environment.NewLine +
+                                            @"در صورت انصراف، کل فرایند دریافت فایل ها متوقف خواهد شد.",
+                                            @"تائید بازنویسی فایل",
+                                            MessageBoxButtons.YesNoCancel,
+                                            MessageBoxIcon.Warning,
+                                            MessageBoxDefaultButton.Button1);
+                                    }
+                                    else
+                                    {
+                                        dr = MessageBox.Show(
+                                            @"فایلی با همین نام ولی با حجم متفاوت در مسیر دریافت عکس ها وجود دارد. " +
+                                            Environment.NewLine +
+                                            @"آیا می خواهید فایل روی سیستم شما بازنویسی شود؟" +
+                                            @" در صورت بازنویسی محتوای قبلی فایل از بین خواهد رفت." +
+                                            Environment.NewLine +
+                                            @"در صورت انصراف، کل فرایند دریافت فایل ها متوقف خواهد شد.",
+                                            @"وجود عکس هم نام با سایز متفاوت در مسیر دریافت عکس ها",
+                                            MessageBoxButtons.YesNoCancel,
+                                            MessageBoxIcon.Warning,
+                                            MessageBoxDefaultButton.Button1);
+                                    }
+                                }
+                                else
+                                {
+                                    using (var fileStream = new FileStream(fileNameAndPath, FileMode.CreateNew,
+                                        FileAccess.Write))
+                                    {
+                                        file.fileStream.WriteTo(fileStream);
+                                        if (fileStream.Length == file.fileStream.Length)
+                                        {
+                                            fileStream.Flush();
+                                            fileStream.Close();
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show(
+                                                $@"ذخیره فایل با نام {file.name} " +
+                                                @" با مشکل مواجه شد. حجم فایل سرور با فایل ذخیره شده تطابق ندارد.",
+                                                @"خطا در ذخیره فایل در سیستم کاربر",
+                                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
+                                    }
+                                }
+
+                                if (dr == DialogResult.Yes)
+                                {
+                                    using (var fileStream = new FileStream(fileNameAndPath, FileMode.Create,
+                                        FileAccess.Write))
+                                    {
+                                        file.fileStream.WriteTo(fileStream);
+                                        if (fileStream.Length == file.fileStream.Length)
+                                        {
+                                            fileStream.Flush();
+                                            fileStream.Close();
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show(
+                                                $@"ذخیره فایل با نام {file.name} " +
+                                                @" با مشکل مواجه شد. حجم فایل سرور با فایل ذخیره شده تطابق ندارد.",
+                                                @"خطا در ذخیره فایل در سیستم کاربر",
+                                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
+                                    }
+                                }
+                                else if (dr == DialogResult.Cancel)
+                                {
+                                    break;
+                                }
+
+                                counter++;
+                            }
+                        }
+
+                        if (totalFiles > 0 && counter > 0 && counter == totalFiles)
+                            result = true;
+                    }
+                }
+            }
+
+            #region catch
+
+            catch (NotSupportedException notSupportedException)
+            {
+                MessageBox.Show(notSupportedException.Message);
+                return false;
+            }
+            catch (IOException ioException)
+            {
+                MessageBox.Show(ioException.Message);
+                return false;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+                return false;
+            }
+
+            #endregion
+
+            return result;
+        }
+        private static string CreateOrderDirectory(string selectedPath)
+        {
+            try
+            {
+                string directoryPathOrders = selectedPath + "\\" + "Orders";
+                bool folderExistsOrders = Directory.Exists(directoryPathOrders);
+                if (!folderExistsOrders)
+                    Directory.CreateDirectory(directoryPathOrders);
+                return directoryPathOrders;
+            }
+
+            #region catch
+
+            catch (IOException ioException)
+            {
+                MessageBox.Show(@"ioException: " + Environment.NewLine +
+                                ioException.Message);
+                return null;
+            }
+            catch (UnauthorizedAccessException accessException)
+            {
+                MessageBox.Show(@"accessException: " + Environment.NewLine +
+                                accessException.Message);
+                return null;
+            }
+            catch (ArgumentException argumentException)
+            {
+                MessageBox.Show(@"argumentException: " + Environment.NewLine +
+                                argumentException.Message);
+                return null;
+            }
+            catch (NotSupportedException notSupportedException)
+            {
+                MessageBox.Show(@"notSupportedException: " + Environment.NewLine +
+                                notSupportedException.Message);
+                return null;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(@"exception: " + Environment.NewLine +
+                                exception.Message);
+                return null;
+            }
+
+            #endregion
+        }
+        private static string CreateOrderCodeDirectory(string orderCode, string directoryPathOrders)
+        {
+            try
+            {
+                string directoryPathOrderCode = directoryPathOrders + "\\" + orderCode + "\\";
+                bool folderExistsOrderCode = Directory.Exists(directoryPathOrderCode);
+                if (!folderExistsOrderCode)
+                    Directory.CreateDirectory(directoryPathOrderCode);
+                return directoryPathOrderCode;
+            }
+
+            #region catch
+
+            catch (IOException ioException)
+            {
+                MessageBox.Show(@"ioException: " + Environment.NewLine +
+                                ioException.Message);
+                return null;
+            }
+            catch (UnauthorizedAccessException accessException)
+            {
+                MessageBox.Show(@"accessException: " + Environment.NewLine +
+                                accessException.Message);
+                return null;
+            }
+            catch (ArgumentException argumentException)
+            {
+                MessageBox.Show(@"argumentException: " + Environment.NewLine +
+                                argumentException.Message);
+                return null;
+            }
+            catch (NotSupportedException notSupportedException)
+            {
+                MessageBox.Show(@"notSupportedException: " + Environment.NewLine +
+                                notSupportedException.Message);
+                return null;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(@"exception: " + Environment.NewLine +
+                                exception.Message);
+                return null;
+            }
+
+            #endregion
+        }
+
+
+        private void btnDownloadAllPhotosChangingElements_Click(object sender, EventArgs e)
+        {
+            //چک کن ببین قبلا همه عکس ها دانلود شده است یا نه. در صورتی که دانلود نشده است دانلود در یک فولدر 
+            //temp انجام شود و بعد از بسته شدن فرم هم این فولدر از سیستم حذف شود.
+
+
+            //photoPath= مسیر ذخیره عکس ها در سرور
+            bool resultDownload = DowloadOrderPhotos(photoPath, _orderPrintViewModel.OrderCode);
+            if (resultDownload)
+            {
+                //Show all Files In The DataGridView
+            }
+        }
+        private void btnDownloadSelectedPhotosChangingElements_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+        private void btnDownloadAllPhotosMultiPhoto_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void btnDownloadSelectedPhotosMultiPhoto_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+        private void btnDownloadAllPhotosLitPrint_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void btnDownloadSelectedPhotosLitPrint_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void buttonX1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
