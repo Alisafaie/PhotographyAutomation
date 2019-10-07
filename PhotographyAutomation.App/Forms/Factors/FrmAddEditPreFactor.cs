@@ -401,7 +401,6 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         #region Original Print
 
-
         private void cmbOriginalPrintSize_SelectedIndexChanged(object sender, EventArgs e)
         {
             chkHasOriginalPrintService.Checked = false;
@@ -689,15 +688,52 @@ namespace PhotographyAutomation.App.Forms.Factors
         }
         private void BtnOriginalShowFrmAddEditMutiPhotos_Click(object sender, EventArgs e)
         {
+            tabControlPrintSizeAndServices.SelectedTab = tabPageMultiPhoto;
+
+            rbOriginalPhotoMultiPhoto.Checked = true;
+            rbOriginalPhotoMultiPhoto.CheckState = CheckState.Checked;
+
+            rbRePrintPhotoMultiPhoto.Checked = false;
+            rbRePrintPhotoMultiPhoto.CheckState = CheckState.Unchecked;
+
+            if (int.TryParse(cmbOriginalPrintSizes.SelectedValue.ToString(), out var selectedPrintSize))
+            {
+                lblPrintSizeMultiPhoto.Text =
+                    _listOriginalPrintSizes.SingleOrDefault(x => x.Id == selectedPrintSize)?.Name;
+            }
 
         }
         private void BtnOriginalShowFrmAddEditLitPrint_Click(object sender, EventArgs e)
         {
+            tabControlPrintSizeAndServices.SelectedTab = tabPageLitPrint;
 
+            rbOriginalPhotoLitPrint.Checked = true;
+            rbOriginalPhotoLitPrint.CheckState = CheckState.Checked;
+
+            rbRePrintPhotoLitPrint.Checked = false;
+            rbRePrintPhotoLitPrint.CheckState = CheckState.Unchecked;
+
+            if (int.TryParse(cmbOriginalPrintSizes.SelectedValue.ToString(), out var selectedPrintSize))
+            {
+                lblPrintSizeLitPrint.Text =
+                    _listOriginalPrintSizes.SingleOrDefault(x => x.Id == selectedPrintSize)?.Name;
+            }
         }
         private void BtnOriginalChangingElements_Click(object sender, EventArgs e)
         {
+            tabControlPrintSizeAndServices.SelectedTab = tabPageChangingElements;
 
+            rbOriginalPhotoChangingElements.Checked = true;
+            rbOriginalPhotoChangingElements.CheckState = CheckState.Checked;
+
+            rbRePrintPhotoChangingElements.Checked = false;
+            rbRePrintPhotoChangingElements.CheckState = CheckState.Unchecked;
+
+            if (int.TryParse(cmbOriginalPrintSizes.SelectedValue.ToString(), out var selectedPrintSize))
+            {
+                lblPrintSizeChangingElements.Text =
+                    _listOriginalPrintSizes.SingleOrDefault(x => x.Id == selectedPrintSize)?.Name;
+            }
         }
 
 
@@ -942,15 +978,60 @@ namespace PhotographyAutomation.App.Forms.Factors
         }
         private void btnRePrintShowFrmAddEditMutiPhotos_Click(object sender, EventArgs e)
         {
+            tabControlPrintSizeAndServices.SelectedTab = tabPageMultiPhoto;
 
+            rbRePrintPhotoMultiPhoto.Checked = true;
+            rbRePrintPhotoMultiPhoto.CheckState = CheckState.Checked;
+
+            rbOriginalPhotoMultiPhoto.Checked = false;
+            rbOriginalPhotoMultiPhoto.CheckState = CheckState.Unchecked;
+
+            
+
+
+            if (int.TryParse(cmbRePrintPrintSizes.SelectedValue.ToString(), out var selectedPrintSize))
+            {
+                lblPrintSizeMultiPhoto.Text =
+                    _listRePrintPrintSizes.SingleOrDefault(x => x.Id == selectedPrintSize)?.Name;
+            }
         }
         private void btnRePrintShowFrmAddEditLitPrint_Click(object sender, EventArgs e)
         {
+            tabControlPrintSizeAndServices.SelectedTab = tabPageLitPrint;
 
+            rbRePrintPhotoLitPrint.Checked = true;
+            rbRePrintPhotoLitPrint.CheckState = CheckState.Checked;
+
+            rbOriginalPhotoLitPrint.Checked = false;
+            rbOriginalPhotoLitPrint.CheckState = CheckState.Unchecked;
+
+            
+
+
+            if (int.TryParse(cmbRePrintPrintSizes.SelectedValue.ToString(), out var selectedPrintSize))
+            {
+                lblPrintSizeLitPrint.Text =
+                    _listRePrintPrintSizes.SingleOrDefault(x => x.Id == selectedPrintSize)?.Name;
+            }
         }
         private void btnRePrintChangingElements_Click(object sender, EventArgs e)
         {
+            tabControlPrintSizeAndServices.SelectedTab = tabPageChangingElements;
 
+            rbRePrintPhotoChangingElements.Checked = true;
+            rbRePrintPhotoChangingElements.CheckState = CheckState.Checked;
+
+            rbOriginalPhotoChangingElements.Checked = false;
+            rbOriginalPhotoChangingElements.CheckState = CheckState.Unchecked;
+
+           
+
+
+            if (int.TryParse(cmbRePrintPrintSizes.SelectedValue.ToString(), out var selectedPrintSize))
+            {
+                lblPrintSizeChangingElements.Text =
+                    _listRePrintPrintSizes.SingleOrDefault(x => x.Id == selectedPrintSize)?.Name;
+            }
         }
 
 
@@ -1120,8 +1201,8 @@ namespace PhotographyAutomation.App.Forms.Factors
             //اگر وجود دارد پیامی نشان دهد و آن را در صورت تائید آپدیت کند
 
             var check = OrderDetailsList
-                        .SingleOrDefault(x => x.StreamId == orderItem.StreamId && 
-                                              x.IsFirstprint == orderItem.IsFirstprint && 
+                        .SingleOrDefault(x => x.StreamId == orderItem.StreamId &&
+                                              x.IsFirstprint == orderItem.IsFirstprint &&
                                               x.PrintSizeId > 0);
 
             var itemIndex = OrderDetailsList.FindIndex(x => x.StreamId == orderItem.StreamId);
@@ -2412,5 +2493,7 @@ namespace PhotographyAutomation.App.Forms.Factors
         {
             txtTotalPriceOriginal.Text = CalculateOriginalPrintTotalPrice().ToString("N0");
         }
+
+       
     }
 }
