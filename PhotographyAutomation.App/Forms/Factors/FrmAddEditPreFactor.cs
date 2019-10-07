@@ -536,7 +536,6 @@ namespace PhotographyAutomation.App.Forms.Factors
                 txtTotalPriceOriginalServices.Text = null;
                 txtTotalPriceOriginalServices.WatermarkText = "هزینه خدمات (ريال)";
             }
-
         }
         private void cmbOriginalPrintService_EnabledChanged(object sender, EventArgs e)
         {
@@ -2393,13 +2392,6 @@ namespace PhotographyAutomation.App.Forms.Factors
 
 
         #endregion
-
-
-
-        private void cmbRePrintPrintServices_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
 
 

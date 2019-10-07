@@ -30,16 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAddEditPreFactor));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle74 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle75 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle76 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle77 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle78 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle79 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle80 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle71 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle72 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle73 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.منو_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.نوسازی_تمامی_عکس_های_انتخابی_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,6 +63,22 @@
             this.bgWorkerLoadPicture = new System.ComponentModel.BackgroundWorker();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
+            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.datePickerOrderDate = new FreeControls.PersianDateTimePicker();
+            this.txtPhotographyType = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtCustomerName = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtOrderCodeCustomerIdBookingId = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtOrderCodeDate = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtOrderPrintCodeDate = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtOrderPrintCodeCustomerId = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtOrderPrintCodeOrderId = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.circularProgress = new DevComponents.DotNetBar.Controls.CircularProgress();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.txtBriefPrintServices = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX9 = new DevComponents.DotNetBar.LabelX();
@@ -159,12 +175,21 @@
             this.tabPageChangingElements = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.splitContainerChangingElements = new System.Windows.Forms.SplitContainer();
+            this.dgvChangingElements = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.clmStreamId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmIsSelected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.clmPhoto = new System.Windows.Forms.DataGridViewImageColumn();
+            this.clmPhotoId = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.clmDescriptions = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtDescriptionChangingElements = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.txtRePrintSequenceChangingElements = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.label8 = new System.Windows.Forms.Label();
-            this.rbRePrintPhotoChangingElements = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.rbOriginalPhotoChangingElements = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.rbOriginalPhotoChangingElements = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.rbRePrintPhotoChangingElements = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.btnDownloadSelectedPhotosChangingElements = new DevComponents.DotNetBar.ButtonX();
             this.btnDownloadAllPhotosChangingElements = new DevComponents.DotNetBar.ButtonX();
             this.circularProgressChangingElements = new DevComponents.DotNetBar.Controls.CircularProgress();
@@ -174,14 +199,25 @@
             this.tabPageMultiPhoto = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.splitContainerMultiPhoto = new System.Windows.Forms.SplitContainer();
+            this.dgvMultiPhoto = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtDescriptionMultiPhoto = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.txtRePrintSequenceMultiPhoto = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.label3 = new System.Windows.Forms.Label();
-            this.circularProgressMultiPhoto = new DevComponents.DotNetBar.Controls.CircularProgress();
-            this.rbRePrintPhotoMultiPhoto = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.rbOriginalPhotoMultiPhoto = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.btnCancelMultiPhoto = new DevComponents.DotNetBar.ButtonX();
             this.label1 = new System.Windows.Forms.Label();
+            this.rbOriginalPhotoMultiPhoto = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.rbRePrintPhotoMultiPhoto = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.circularProgressMultiPhoto = new DevComponents.DotNetBar.Controls.CircularProgress();
+            this.btnCancelMultiPhoto = new DevComponents.DotNetBar.ButtonX();
             this.btnReloadMultiPhoto = new DevComponents.DotNetBar.ButtonX();
             this.btnDownloadSelectedPhotosMultiPhoto = new DevComponents.DotNetBar.ButtonX();
             this.btnDownloadAllPhotosMultiPhoto = new DevComponents.DotNetBar.ButtonX();
@@ -189,7 +225,17 @@
             this.tabPageLitPrint = new System.Windows.Forms.TabPage();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.betterThumbnailBrowserLitPrint = new ComponentOwl.BetterThumbnailBrowser.BetterThumbnailBrowser();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtRePrintSequenceLitPrint = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label4 = new System.Windows.Forms.Label();
+            this.rbRePrintPhotoLitPrint = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.rbOriginalPhotoLitPrint = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.btnDownloadSelectedPhotosLitPrint = new DevComponents.DotNetBar.ButtonX();
             this.btnDownloadAllPhotosLitPrint = new DevComponents.DotNetBar.ButtonX();
             this.circularProgressLitPrint = new DevComponents.DotNetBar.Controls.CircularProgress();
@@ -205,52 +251,6 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.splitContainerChangingElements = new System.Windows.Forms.SplitContainer();
-            this.dgvChangingElements = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.txtDescriptionChangingElements = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.splitContainerMultiPhoto = new System.Windows.Forms.SplitContainer();
-            this.txtDescriptionMultiPhoto = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.txtRePrintSequenceLitPrint = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.label4 = new System.Windows.Forms.Label();
-            this.rbRePrintPhotoLitPrint = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.rbOriginalPhotoLitPrint = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.label6 = new System.Windows.Forms.Label();
-            this.betterThumbnailBrowserLitPrint = new ComponentOwl.BetterThumbnailBrowser.BetterThumbnailBrowser();
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
-            this.datePickerOrderDate = new FreeControls.PersianDateTimePicker();
-            this.circularProgress = new DevComponents.DotNetBar.Controls.CircularProgress();
-            this.txtPhotographyType = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtCustomerName = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtOrderPrintCodeDate = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtOrderPrintCodeCustomerId = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtOrderPrintCodeOrderId = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtOrderCodeCustomerIdBookingId = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtOrderCodeDate = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.clmStreamId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmIsSelected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.clmPhoto = new System.Windows.Forms.DataGridViewImageColumn();
-            this.clmPhotoId = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.clmDescriptions = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvMultiPhoto = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panelEx1.SuspendLayout();
@@ -275,31 +275,31 @@
             this.tabPageChangingElements.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.tabPageMultiPhoto.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.panel8.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.tabPageLitPrint.SuspendLayout();
-            this.groupBox10.SuspendLayout();
-            this.panel10.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.tabPageOrderDetails.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvOrderDetails)).BeginInit();
-            this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerChangingElements)).BeginInit();
             this.splitContainerChangingElements.Panel1.SuspendLayout();
             this.splitContainerChangingElements.Panel2.SuspendLayout();
             this.splitContainerChangingElements.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChangingElements)).BeginInit();
-            this.panel7.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.tabPageMultiPhoto.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMultiPhoto)).BeginInit();
             this.splitContainerMultiPhoto.Panel1.SuspendLayout();
             this.splitContainerMultiPhoto.Panel2.SuspendLayout();
             this.splitContainerMultiPhoto.SuspendLayout();
-            this.panel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.betterThumbnailBrowserLitPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMultiPhoto)).BeginInit();
+            this.panel7.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.tabPageLitPrint.SuspendLayout();
+            this.groupBox10.SuspendLayout();
+            this.panel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.betterThumbnailBrowserLitPrint)).BeginInit();
+            this.panel9.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.tabPageOrderDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrderDetails)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -487,6 +487,262 @@
             this.panelEx1.Style.GradientAngle = 90;
             this.panelEx1.TabIndex = 8;
             // 
+            // textBoxX1
+            // 
+            this.textBoxX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxX1.BackColor = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.textBoxX1.Border.Class = "TextBoxBorder";
+            this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX1.Enabled = false;
+            this.textBoxX1.Location = new System.Drawing.Point(251, 37);
+            this.textBoxX1.Name = "textBoxX1";
+            this.textBoxX1.PreventEnterBeep = true;
+            this.textBoxX1.ReadOnly = true;
+            this.textBoxX1.Size = new System.Drawing.Size(167, 21);
+            this.textBoxX1.TabIndex = 186;
+            this.textBoxX1.TabStop = false;
+            // 
+            // label14
+            // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(424, 41);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(88, 13);
+            this.label14.TabIndex = 185;
+            this.label14.Text = "وضعیت سفارش :";
+            // 
+            // label13
+            // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(436, 14);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(76, 13);
+            this.label13.TabIndex = 184;
+            this.label13.Text = "تاریخ عکاسی :";
+            // 
+            // datePickerOrderDate
+            // 
+            this.datePickerOrderDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.datePickerOrderDate.BackColor = System.Drawing.Color.White;
+            this.datePickerOrderDate.Enabled = false;
+            this.datePickerOrderDate.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.datePickerOrderDate.Location = new System.Drawing.Point(251, 13);
+            this.datePickerOrderDate.Name = "datePickerOrderDate";
+            this.datePickerOrderDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.datePickerOrderDate.ShowTime = false;
+            this.datePickerOrderDate.Size = new System.Drawing.Size(167, 18);
+            this.datePickerOrderDate.TabIndex = 0;
+            this.datePickerOrderDate.TabStop = false;
+            this.datePickerOrderDate.Text = "persianDateTimePicker1";
+            this.datePickerOrderDate.Value = ((FreeControls.PersianDate)(resources.GetObject("datePickerOrderDate.Value")));
+            // 
+            // txtPhotographyType
+            // 
+            this.txtPhotographyType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPhotographyType.BackColor = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.txtPhotographyType.Border.Class = "TextBoxBorder";
+            this.txtPhotographyType.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtPhotographyType.Enabled = false;
+            this.txtPhotographyType.Location = new System.Drawing.Point(568, 11);
+            this.txtPhotographyType.Name = "txtPhotographyType";
+            this.txtPhotographyType.PreventEnterBeep = true;
+            this.txtPhotographyType.ReadOnly = true;
+            this.txtPhotographyType.Size = new System.Drawing.Size(167, 21);
+            this.txtPhotographyType.TabIndex = 0;
+            this.txtPhotographyType.TabStop = false;
+            // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(741, 13);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(70, 13);
+            this.label12.TabIndex = 183;
+            this.label12.Text = "نوع عکاسی :";
+            // 
+            // txtCustomerName
+            // 
+            this.txtCustomerName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCustomerName.BackColor = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.txtCustomerName.Border.Class = "TextBoxBorder";
+            this.txtCustomerName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtCustomerName.Enabled = false;
+            this.txtCustomerName.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.txtCustomerName.FocusHighlightEnabled = true;
+            this.txtCustomerName.Location = new System.Drawing.Point(890, 11);
+            this.txtCustomerName.Name = "txtCustomerName";
+            this.txtCustomerName.PreventEnterBeep = true;
+            this.txtCustomerName.ReadOnly = true;
+            this.txtCustomerName.Size = new System.Drawing.Size(167, 21);
+            this.txtCustomerName.TabIndex = 0;
+            this.txtCustomerName.TabStop = false;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(1085, 13);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(67, 13);
+            this.label11.TabIndex = 182;
+            this.label11.Text = "نام مشتری :";
+            // 
+            // txtOrderCodeCustomerIdBookingId
+            // 
+            this.txtOrderCodeCustomerIdBookingId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtOrderCodeCustomerIdBookingId.BackColor = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.txtOrderCodeCustomerIdBookingId.Border.Class = "TextBoxBorder";
+            this.txtOrderCodeCustomerIdBookingId.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtOrderCodeCustomerIdBookingId.Enabled = false;
+            this.txtOrderCodeCustomerIdBookingId.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.txtOrderCodeCustomerIdBookingId.FocusHighlightEnabled = true;
+            this.txtOrderCodeCustomerIdBookingId.Location = new System.Drawing.Point(968, 37);
+            this.txtOrderCodeCustomerIdBookingId.MaxLength = 6;
+            this.txtOrderCodeCustomerIdBookingId.Name = "txtOrderCodeCustomerIdBookingId";
+            this.txtOrderCodeCustomerIdBookingId.PreventEnterBeep = true;
+            this.txtOrderCodeCustomerIdBookingId.ReadOnly = true;
+            this.txtOrderCodeCustomerIdBookingId.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtOrderCodeCustomerIdBookingId.Size = new System.Drawing.Size(89, 21);
+            this.txtOrderCodeCustomerIdBookingId.TabIndex = 180;
+            this.txtOrderCodeCustomerIdBookingId.TabStop = false;
+            // 
+            // txtOrderCodeDate
+            // 
+            this.txtOrderCodeDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtOrderCodeDate.BackColor = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.txtOrderCodeDate.Border.Class = "TextBoxBorder";
+            this.txtOrderCodeDate.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtOrderCodeDate.Enabled = false;
+            this.txtOrderCodeDate.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.txtOrderCodeDate.FocusHighlightEnabled = true;
+            this.txtOrderCodeDate.Location = new System.Drawing.Point(890, 37);
+            this.txtOrderCodeDate.MaxLength = 7;
+            this.txtOrderCodeDate.Name = "txtOrderCodeDate";
+            this.txtOrderCodeDate.PreventEnterBeep = true;
+            this.txtOrderCodeDate.ReadOnly = true;
+            this.txtOrderCodeDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtOrderCodeDate.Size = new System.Drawing.Size(74, 21);
+            this.txtOrderCodeDate.TabIndex = 179;
+            this.txtOrderCodeDate.TabStop = false;
+            // 
+            // txtOrderPrintCodeDate
+            // 
+            this.txtOrderPrintCodeDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtOrderPrintCodeDate.BackColor = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.txtOrderPrintCodeDate.Border.Class = "TextBoxBorder";
+            this.txtOrderPrintCodeDate.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtOrderPrintCodeDate.Enabled = false;
+            this.txtOrderPrintCodeDate.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.txtOrderPrintCodeDate.FocusHighlightEnabled = true;
+            this.txtOrderPrintCodeDate.Location = new System.Drawing.Point(568, 37);
+            this.txtOrderPrintCodeDate.MaxLength = 7;
+            this.txtOrderPrintCodeDate.Name = "txtOrderPrintCodeDate";
+            this.txtOrderPrintCodeDate.PreventEnterBeep = true;
+            this.txtOrderPrintCodeDate.ReadOnly = true;
+            this.txtOrderPrintCodeDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtOrderPrintCodeDate.Size = new System.Drawing.Size(65, 21);
+            this.txtOrderPrintCodeDate.TabIndex = 174;
+            this.txtOrderPrintCodeDate.TabStop = false;
+            // 
+            // txtOrderPrintCodeCustomerId
+            // 
+            this.txtOrderPrintCodeCustomerId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtOrderPrintCodeCustomerId.BackColor = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.txtOrderPrintCodeCustomerId.Border.Class = "TextBoxBorder";
+            this.txtOrderPrintCodeCustomerId.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtOrderPrintCodeCustomerId.Enabled = false;
+            this.txtOrderPrintCodeCustomerId.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.txtOrderPrintCodeCustomerId.FocusHighlightEnabled = true;
+            this.txtOrderPrintCodeCustomerId.Location = new System.Drawing.Point(689, 37);
+            this.txtOrderPrintCodeCustomerId.MaxLength = 7;
+            this.txtOrderPrintCodeCustomerId.Name = "txtOrderPrintCodeCustomerId";
+            this.txtOrderPrintCodeCustomerId.PreventEnterBeep = true;
+            this.txtOrderPrintCodeCustomerId.ReadOnly = true;
+            this.txtOrderPrintCodeCustomerId.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtOrderPrintCodeCustomerId.Size = new System.Drawing.Size(45, 21);
+            this.txtOrderPrintCodeCustomerId.TabIndex = 177;
+            this.txtOrderPrintCodeCustomerId.TabStop = false;
+            // 
+            // txtOrderPrintCodeOrderId
+            // 
+            this.txtOrderPrintCodeOrderId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtOrderPrintCodeOrderId.BackColor = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.txtOrderPrintCodeOrderId.Border.Class = "TextBoxBorder";
+            this.txtOrderPrintCodeOrderId.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtOrderPrintCodeOrderId.Enabled = false;
+            this.txtOrderPrintCodeOrderId.FocusHighlightColor = System.Drawing.SystemColors.Info;
+            this.txtOrderPrintCodeOrderId.FocusHighlightEnabled = true;
+            this.txtOrderPrintCodeOrderId.Location = new System.Drawing.Point(638, 37);
+            this.txtOrderPrintCodeOrderId.MaxLength = 6;
+            this.txtOrderPrintCodeOrderId.Name = "txtOrderPrintCodeOrderId";
+            this.txtOrderPrintCodeOrderId.PreventEnterBeep = true;
+            this.txtOrderPrintCodeOrderId.ReadOnly = true;
+            this.txtOrderPrintCodeOrderId.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtOrderPrintCodeOrderId.Size = new System.Drawing.Size(46, 21);
+            this.txtOrderPrintCodeOrderId.TabIndex = 176;
+            this.txtOrderPrintCodeOrderId.TabStop = false;
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(1063, 40);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(89, 13);
+            this.label10.TabIndex = 173;
+            this.label10.Text = "شناسه سفارش :";
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(740, 40);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(71, 13);
+            this.label7.TabIndex = 173;
+            this.label7.Text = "شناسه چاپ :";
+            // 
+            // circularProgress
+            // 
+            // 
+            // 
+            // 
+            this.circularProgress.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.circularProgress.Location = new System.Drawing.Point(12, 11);
+            this.circularProgress.Name = "circularProgress";
+            this.circularProgress.ProgressColor = System.Drawing.Color.RoyalBlue;
+            this.circularProgress.Size = new System.Drawing.Size(30, 30);
+            this.circularProgress.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
+            this.circularProgress.TabIndex = 109;
+            this.circularProgress.TabStop = false;
+            // 
             // panelEx2
             // 
             this.panelEx2.CanvasColor = System.Drawing.SystemColors.Control;
@@ -592,6 +848,8 @@
             this.txtOrderDescriptions.PreventEnterBeep = true;
             this.txtOrderDescriptions.Size = new System.Drawing.Size(450, 48);
             this.txtOrderDescriptions.TabIndex = 19;
+            this.txtOrderDescriptions.Enter += new System.EventHandler(this.Txt_TypeFarsi_Enter);
+            this.txtOrderDescriptions.Leave += new System.EventHandler(this.Txt_TypeFarsi_Leave);
             // 
             // labelX6
             // 
@@ -761,6 +1019,7 @@
             this.btnMagnifyPhoto.TabIndex = 134;
             this.btnMagnifyPhoto.TabStop = false;
             this.btnMagnifyPhoto.UseVisualStyleBackColor = false;
+            this.btnMagnifyPhoto.Click += new System.EventHandler(this.btnMagnifyPhoto_Click);
             // 
             // lblPhotoName
             // 
@@ -922,6 +1181,8 @@
             this.txtOriginalPhotoRetouchDescription.Size = new System.Drawing.Size(818, 60);
             this.txtOriginalPhotoRetouchDescription.TabIndex = 262;
             this.txtOriginalPhotoRetouchDescription.WatermarkText = "توضیحات رتوش و چاپ";
+            this.txtOriginalPhotoRetouchDescription.Enter += new System.EventHandler(this.Txt_TypeFarsi_Enter);
+            this.txtOriginalPhotoRetouchDescription.Leave += new System.EventHandler(this.Txt_TypeFarsi_Leave);
             // 
             // labelX7
             // 
@@ -932,7 +1193,7 @@
             // 
             this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX7.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelX7.Location = new System.Drawing.Point(434, 50);
+            this.labelX7.Location = new System.Drawing.Point(408, 50);
             this.labelX7.Name = "labelX7";
             this.labelX7.Size = new System.Drawing.Size(64, 16);
             this.labelX7.TabIndex = 261;
@@ -947,7 +1208,7 @@
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelX1.Location = new System.Drawing.Point(426, 78);
+            this.labelX1.Location = new System.Drawing.Point(400, 78);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(72, 16);
             this.labelX1.TabIndex = 261;
@@ -962,7 +1223,7 @@
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelX3.Location = new System.Drawing.Point(430, 164);
+            this.labelX3.Location = new System.Drawing.Point(404, 164);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(68, 16);
             this.labelX3.TabIndex = 260;
@@ -977,7 +1238,7 @@
             // 
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelX5.Location = new System.Drawing.Point(442, 107);
+            this.labelX5.Location = new System.Drawing.Point(416, 107);
             this.labelX5.Name = "labelX5";
             this.labelX5.Size = new System.Drawing.Size(56, 16);
             this.labelX5.TabIndex = 259;
@@ -997,6 +1258,7 @@
             this.btnCancelOriginalPhotoOrderPrint.SymbolSize = 10F;
             this.btnCancelOriginalPhotoOrderPrint.TabIndex = 4;
             this.btnCancelOriginalPhotoOrderPrint.Text = "حذف";
+            this.btnCancelOriginalPhotoOrderPrint.Click += new System.EventHandler(this.BtnCancelPhotoOrderPrint_Click);
             // 
             // btnReloadOriginalPhotoPrintOrder
             // 
@@ -1012,6 +1274,7 @@
             this.btnReloadOriginalPhotoPrintOrder.SymbolSize = 10F;
             this.btnReloadOriginalPhotoPrintOrder.TabIndex = 3;
             this.btnReloadOriginalPhotoPrintOrder.Text = "تعریف مجدد";
+            this.btnReloadOriginalPhotoPrintOrder.Click += new System.EventHandler(this.btnReloadOriginalPhotoPrintOrder_Click);
             // 
             // txtOriginalLitPrintPrice
             // 
@@ -1021,7 +1284,7 @@
             // 
             this.txtOriginalLitPrintPrice.Border.Class = "TextBoxBorder";
             this.txtOriginalLitPrintPrice.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtOriginalLitPrintPrice.Location = new System.Drawing.Point(301, 105);
+            this.txtOriginalLitPrintPrice.Location = new System.Drawing.Point(277, 105);
             this.txtOriginalLitPrintPrice.Name = "txtOriginalLitPrintPrice";
             this.txtOriginalLitPrintPrice.PreventEnterBeep = true;
             this.txtOriginalLitPrintPrice.ReadOnly = true;
@@ -1049,6 +1312,7 @@
             this.txtTotalPriceOriginalLitPrint.TabStop = false;
             this.txtTotalPriceOriginalLitPrint.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtTotalPriceOriginalLitPrint.WatermarkText = "هزینه لیت پرینت (ريال)";
+            this.txtTotalPriceOriginalLitPrint.TextChanged += new System.EventHandler(this.txtTotalPriceOriginalLitPrint_TextChanged);
             // 
             // btnOkOriginalPrint
             // 
@@ -1064,6 +1328,7 @@
             this.btnOkOriginalPrint.SymbolSize = 10F;
             this.btnOkOriginalPrint.TabIndex = 2;
             this.btnOkOriginalPrint.Text = "تائید";
+            this.btnOkOriginalPrint.Click += new System.EventHandler(this.btnOkOriginalPrint_Click);
             // 
             // txtOriginalMutiPhotoSelectedPhotos
             // 
@@ -1073,7 +1338,7 @@
             // 
             this.txtOriginalMutiPhotoSelectedPhotos.Border.Class = "TextBoxBorder";
             this.txtOriginalMutiPhotoSelectedPhotos.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtOriginalMutiPhotoSelectedPhotos.Location = new System.Drawing.Point(235, 76);
+            this.txtOriginalMutiPhotoSelectedPhotos.Location = new System.Drawing.Point(211, 76);
             this.txtOriginalMutiPhotoSelectedPhotos.Name = "txtOriginalMutiPhotoSelectedPhotos";
             this.txtOriginalMutiPhotoSelectedPhotos.PreventEnterBeep = true;
             this.txtOriginalMutiPhotoSelectedPhotos.ReadOnly = true;
@@ -1091,7 +1356,7 @@
             // 
             this.txtOriginalMultiPhotoPrice.Border.Class = "TextBoxBorder";
             this.txtOriginalMultiPhotoPrice.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtOriginalMultiPhotoPrice.Location = new System.Drawing.Point(301, 76);
+            this.txtOriginalMultiPhotoPrice.Location = new System.Drawing.Point(277, 76);
             this.txtOriginalMultiPhotoPrice.Name = "txtOriginalMultiPhotoPrice";
             this.txtOriginalMultiPhotoPrice.PreventEnterBeep = true;
             this.txtOriginalMultiPhotoPrice.ReadOnly = true;
@@ -1119,6 +1384,7 @@
             this.txtTotalPriceOriginalMutiPhoto.TabStop = false;
             this.txtTotalPriceOriginalMutiPhoto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtTotalPriceOriginalMutiPhoto.WatermarkText = "هزینه دورچین (ريال)";
+            this.txtTotalPriceOriginalMutiPhoto.TextChanged += new System.EventHandler(this.txtTotalPriceOriginalMutiPhoto_TextChanged);
             // 
             // txtOriginalServicePrice
             // 
@@ -1128,7 +1394,7 @@
             // 
             this.txtOriginalServicePrice.Border.Class = "TextBoxBorder";
             this.txtOriginalServicePrice.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtOriginalServicePrice.Location = new System.Drawing.Point(301, 162);
+            this.txtOriginalServicePrice.Location = new System.Drawing.Point(277, 162);
             this.txtOriginalServicePrice.Name = "txtOriginalServicePrice";
             this.txtOriginalServicePrice.PreventEnterBeep = true;
             this.txtOriginalServicePrice.ReadOnly = true;
@@ -1157,6 +1423,7 @@
             this.rbOriginalLitPrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.rbOriginalLitPrint.TabIndex = 3;
             this.rbOriginalLitPrint.Text = ": چاپ لیت";
+            this.rbOriginalLitPrint.CheckedChanged += new System.EventHandler(this.RbOriginalLitPrint_CheckedChanged);
             // 
             // txtTotalPriceOriginalServices
             // 
@@ -1175,6 +1442,7 @@
             this.txtTotalPriceOriginalServices.TabStop = false;
             this.txtTotalPriceOriginalServices.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtTotalPriceOriginalServices.WatermarkText = "هزینه خدمات (ريال)";
+            this.txtTotalPriceOriginalServices.TextChanged += new System.EventHandler(this.txtTotalPriceOriginalServices_TextChanged);
             // 
             // txtTotalPriceOriginal
             // 
@@ -1205,6 +1473,8 @@
             this.cmbOriginalPrintServices.Name = "cmbOriginalPrintServices";
             this.cmbOriginalPrintServices.Size = new System.Drawing.Size(134, 21);
             this.cmbOriginalPrintServices.TabIndex = 6;
+            this.cmbOriginalPrintServices.SelectedIndexChanged += new System.EventHandler(this.cmbOriginalPrintServices_SelectedIndexChanged);
+            this.cmbOriginalPrintServices.EnabledChanged += new System.EventHandler(this.cmbOriginalPrintService_EnabledChanged);
             // 
             // chkHasOriginalPrintService
             // 
@@ -1221,6 +1491,7 @@
             this.chkHasOriginalPrintService.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.chkHasOriginalPrintService.TabIndex = 5;
             this.chkHasOriginalPrintService.Text = ": خدمات چاپ";
+            this.chkHasOriginalPrintService.CheckedChanged += new System.EventHandler(this.chkHasOriginalPrintService_CheckedChanged);
             // 
             // chkOriginalHasChangingElements
             // 
@@ -1236,6 +1507,7 @@
             this.chkOriginalHasChangingElements.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.chkOriginalHasChangingElements.TabIndex = 7;
             this.chkOriginalHasChangingElements.Text = ": تغییر المان";
+            this.chkOriginalHasChangingElements.CheckedChanged += new System.EventHandler(this.ChkOriginalHasChangingElements_CheckedChanged);
             // 
             // btnOriginalShowFrmAddEditLitPrint
             // 
@@ -1251,6 +1523,7 @@
             this.btnOriginalShowFrmAddEditLitPrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnOriginalShowFrmAddEditLitPrint.TabIndex = 4;
             this.btnOriginalShowFrmAddEditLitPrint.Text = "انتخاب عکس لیت";
+            this.btnOriginalShowFrmAddEditLitPrint.Click += new System.EventHandler(this.BtnOriginalShowFrmAddEditLitPrint_Click);
             // 
             // rbOriginalMultiPhoto
             // 
@@ -1268,6 +1541,7 @@
             this.rbOriginalMultiPhoto.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.rbOriginalMultiPhoto.TabIndex = 1;
             this.rbOriginalMultiPhoto.Text = ": دورچین";
+            this.rbOriginalMultiPhoto.CheckedChanged += new System.EventHandler(this.RbOriginalMultiPhoto_CheckedChanged);
             // 
             // btnOriginalCustomPrintSize
             // 
@@ -1282,6 +1556,7 @@
             this.btnOriginalCustomPrintSize.SymbolSize = 10F;
             this.btnOriginalCustomPrintSize.TabIndex = 1;
             this.btnOriginalCustomPrintSize.Text = "اندازه خاص";
+            this.btnOriginalCustomPrintSize.Click += new System.EventHandler(this.BtnOriginalCustomPrintSize_Click);
             // 
             // labelX23
             // 
@@ -1311,6 +1586,7 @@
             this.btnOriginalShowFrmAddEditMutiPhotos.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnOriginalShowFrmAddEditMutiPhotos.TabIndex = 2;
             this.btnOriginalShowFrmAddEditMutiPhotos.Text = "انتخاب عکس دورچین";
+            this.btnOriginalShowFrmAddEditMutiPhotos.Click += new System.EventHandler(this.BtnOriginalShowFrmAddEditMutiPhotos_Click);
             // 
             // btnOriginalChangingElements
             // 
@@ -1327,6 +1603,7 @@
             this.btnOriginalChangingElements.SymbolSize = 10F;
             this.btnOriginalChangingElements.TabIndex = 8;
             this.btnOriginalChangingElements.Text = "انتخاب عکس ها";
+            this.btnOriginalChangingElements.Click += new System.EventHandler(this.BtnOriginalChangingElements_Click);
             // 
             // cmbOriginalPrintSizes
             // 
@@ -1347,7 +1624,7 @@
             // 
             this.txtOriginalMinimumOrder.Border.Class = "TextBoxBorder";
             this.txtOriginalMinimumOrder.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtOriginalMinimumOrder.Location = new System.Drawing.Point(301, 48);
+            this.txtOriginalMinimumOrder.Location = new System.Drawing.Point(277, 48);
             this.txtOriginalMinimumOrder.Name = "txtOriginalMinimumOrder";
             this.txtOriginalMinimumOrder.PreventEnterBeep = true;
             this.txtOriginalMinimumOrder.ReadOnly = true;
@@ -1375,6 +1652,7 @@
             this.txtTotalPriceOriginalPrintSize.TabStop = false;
             this.txtTotalPriceOriginalPrintSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtTotalPriceOriginalPrintSize.WatermarkText = "هزینه چاپ (ريال)";
+            this.txtTotalPriceOriginalPrintSize.TextChanged += new System.EventHandler(this.txtTotalPriceOriginalPrintSize_TextChanged);
             // 
             // tabPageRePrint
             // 
@@ -1440,7 +1718,7 @@
             // 
             // 
             this.chkIsActiveRePrint.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.chkIsActiveRePrint.Location = new System.Drawing.Point(301, 20);
+            this.chkIsActiveRePrint.Location = new System.Drawing.Point(277, 20);
             this.chkIsActiveRePrint.Name = "chkIsActiveRePrint";
             this.chkIsActiveRePrint.Size = new System.Drawing.Size(119, 23);
             this.chkIsActiveRePrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1464,6 +1742,8 @@
             this.txtRePrintPhotoRetouchDescription.Size = new System.Drawing.Size(818, 60);
             this.txtRePrintPhotoRetouchDescription.TabIndex = 13;
             this.txtRePrintPhotoRetouchDescription.WatermarkText = "توضیحات رتوش و چاپ";
+            this.txtRePrintPhotoRetouchDescription.Enter += new System.EventHandler(this.Txt_TypeFarsi_Enter);
+            this.txtRePrintPhotoRetouchDescription.Leave += new System.EventHandler(this.Txt_TypeFarsi_Leave);
             // 
             // btnCancelRePrintPhotoOrderPrint
             // 
@@ -1479,6 +1759,7 @@
             this.btnCancelRePrintPhotoOrderPrint.SymbolSize = 10F;
             this.btnCancelRePrintPhotoOrderPrint.TabIndex = 16;
             this.btnCancelRePrintPhotoOrderPrint.Text = "حذف";
+            this.btnCancelRePrintPhotoOrderPrint.Click += new System.EventHandler(this.btnCancelRePrintPhotoOrderPrint_Click);
             // 
             // btnReloadRePrintPhotoPrintOrder
             // 
@@ -1494,6 +1775,7 @@
             this.btnReloadRePrintPhotoPrintOrder.SymbolSize = 10F;
             this.btnReloadRePrintPhotoPrintOrder.TabIndex = 15;
             this.btnReloadRePrintPhotoPrintOrder.Text = "تعریف مجدد";
+            this.btnReloadRePrintPhotoPrintOrder.Click += new System.EventHandler(this.btnReloadRePrintPhotoPrintOrder_Click);
             // 
             // btnOKRePrint
             // 
@@ -1509,6 +1791,7 @@
             this.btnOKRePrint.SymbolSize = 10F;
             this.btnOKRePrint.TabIndex = 14;
             this.btnOKRePrint.Text = "تائید";
+            this.btnOKRePrint.Click += new System.EventHandler(this.BtnOKRePrint_Click);
             // 
             // labelX10
             // 
@@ -1519,7 +1802,7 @@
             // 
             this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX10.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelX10.Location = new System.Drawing.Point(434, 50);
+            this.labelX10.Location = new System.Drawing.Point(408, 50);
             this.labelX10.Name = "labelX10";
             this.labelX10.Size = new System.Drawing.Size(64, 16);
             this.labelX10.TabIndex = 21;
@@ -1533,7 +1816,7 @@
             // 
             this.txtRePrintTotalPrintCounts.Border.Class = "TextBoxBorder";
             this.txtRePrintTotalPrintCounts.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtRePrintTotalPrintCounts.Location = new System.Drawing.Point(186, 48);
+            this.txtRePrintTotalPrintCounts.Location = new System.Drawing.Point(162, 48);
             this.txtRePrintTotalPrintCounts.Name = "txtRePrintTotalPrintCounts";
             this.txtRePrintTotalPrintCounts.PreventEnterBeep = true;
             this.txtRePrintTotalPrintCounts.ReadOnly = true;
@@ -1552,7 +1835,7 @@
             // 
             this.txtRePrintMultiPhotoSelectedPhotos.Border.Class = "TextBoxBorder";
             this.txtRePrintMultiPhotoSelectedPhotos.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtRePrintMultiPhotoSelectedPhotos.Location = new System.Drawing.Point(235, 76);
+            this.txtRePrintMultiPhotoSelectedPhotos.Location = new System.Drawing.Point(211, 76);
             this.txtRePrintMultiPhotoSelectedPhotos.Name = "txtRePrintMultiPhotoSelectedPhotos";
             this.txtRePrintMultiPhotoSelectedPhotos.PreventEnterBeep = true;
             this.txtRePrintMultiPhotoSelectedPhotos.ReadOnly = true;
@@ -1570,7 +1853,7 @@
             // 
             this.txtRePrintLitPrintPrice.Border.Class = "TextBoxBorder";
             this.txtRePrintLitPrintPrice.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtRePrintLitPrintPrice.Location = new System.Drawing.Point(301, 105);
+            this.txtRePrintLitPrintPrice.Location = new System.Drawing.Point(277, 105);
             this.txtRePrintLitPrintPrice.Name = "txtRePrintLitPrintPrice";
             this.txtRePrintLitPrintPrice.PreventEnterBeep = true;
             this.txtRePrintLitPrintPrice.ReadOnly = true;
@@ -1589,7 +1872,7 @@
             // 
             this.txtRePrintMinimumOrder.Border.Class = "TextBoxBorder";
             this.txtRePrintMinimumOrder.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtRePrintMinimumOrder.Location = new System.Drawing.Point(301, 48);
+            this.txtRePrintMinimumOrder.Location = new System.Drawing.Point(277, 48);
             this.txtRePrintMinimumOrder.Name = "txtRePrintMinimumOrder";
             this.txtRePrintMinimumOrder.PreventEnterBeep = true;
             this.txtRePrintMinimumOrder.ReadOnly = true;
@@ -1608,7 +1891,7 @@
             // 
             this.txtRePrintMultiPhotoPrice.Border.Class = "TextBoxBorder";
             this.txtRePrintMultiPhotoPrice.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtRePrintMultiPhotoPrice.Location = new System.Drawing.Point(301, 76);
+            this.txtRePrintMultiPhotoPrice.Location = new System.Drawing.Point(277, 76);
             this.txtRePrintMultiPhotoPrice.Name = "txtRePrintMultiPhotoPrice";
             this.txtRePrintMultiPhotoPrice.PreventEnterBeep = true;
             this.txtRePrintMultiPhotoPrice.ReadOnly = true;
@@ -1627,7 +1910,7 @@
             // 
             this.txtRePrintServicePrice.Border.Class = "TextBoxBorder";
             this.txtRePrintServicePrice.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtRePrintServicePrice.Location = new System.Drawing.Point(301, 162);
+            this.txtRePrintServicePrice.Location = new System.Drawing.Point(277, 162);
             this.txtRePrintServicePrice.Name = "txtRePrintServicePrice";
             this.txtRePrintServicePrice.PreventEnterBeep = true;
             this.txtRePrintServicePrice.ReadOnly = true;
@@ -1648,7 +1931,7 @@
             this.iiRePrintServiceCounts.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.iiRePrintServiceCounts.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.iiRePrintServiceCounts.Enabled = false;
-            this.iiRePrintServiceCounts.Location = new System.Drawing.Point(235, 162);
+            this.iiRePrintServiceCounts.Location = new System.Drawing.Point(211, 162);
             this.iiRePrintServiceCounts.MaxValue = 1000;
             this.iiRePrintServiceCounts.MinValue = 0;
             this.iiRePrintServiceCounts.Name = "iiRePrintServiceCounts";
@@ -1665,13 +1948,14 @@
             this.iiRePrintPrintCounts.BackgroundStyle.Class = "DateTimeInputBackground";
             this.iiRePrintPrintCounts.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.iiRePrintPrintCounts.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.iiRePrintPrintCounts.Location = new System.Drawing.Point(235, 48);
+            this.iiRePrintPrintCounts.Location = new System.Drawing.Point(211, 48);
             this.iiRePrintPrintCounts.MaxValue = 1000;
             this.iiRePrintPrintCounts.MinValue = 0;
             this.iiRePrintPrintCounts.Name = "iiRePrintPrintCounts";
             this.iiRePrintPrintCounts.ShowUpDown = true;
             this.iiRePrintPrintCounts.Size = new System.Drawing.Size(60, 21);
             this.iiRePrintPrintCounts.TabIndex = 3;
+            this.iiRePrintPrintCounts.ValueChanged += new System.EventHandler(this.iiRePrintPrintCounts_ValueChanged);
             // 
             // labelX17
             // 
@@ -1682,7 +1966,7 @@
             // 
             this.labelX17.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX17.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelX17.Location = new System.Drawing.Point(426, 78);
+            this.labelX17.Location = new System.Drawing.Point(400, 78);
             this.labelX17.Name = "labelX17";
             this.labelX17.Size = new System.Drawing.Size(72, 16);
             this.labelX17.TabIndex = 22;
@@ -1697,7 +1981,7 @@
             // 
             this.labelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX16.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelX16.Location = new System.Drawing.Point(430, 164);
+            this.labelX16.Location = new System.Drawing.Point(404, 164);
             this.labelX16.Name = "labelX16";
             this.labelX16.Size = new System.Drawing.Size(68, 16);
             this.labelX16.TabIndex = 24;
@@ -1712,7 +1996,7 @@
             // 
             this.labelX15.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX15.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelX15.Location = new System.Drawing.Point(442, 107);
+            this.labelX15.Location = new System.Drawing.Point(416, 107);
             this.labelX15.Name = "labelX15";
             this.labelX15.Size = new System.Drawing.Size(56, 16);
             this.labelX15.TabIndex = 23;
@@ -1769,6 +2053,7 @@
             this.chkRePrintHasChangingElements.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.chkRePrintHasChangingElements.TabIndex = 8;
             this.chkRePrintHasChangingElements.Text = ": تغییر المان";
+            this.chkRePrintHasChangingElements.CheckedChanged += new System.EventHandler(this.chkRePrintHasChangingElements_CheckedChanged);
             // 
             // chkHasRePrintPrintService
             // 
@@ -1785,6 +2070,7 @@
             this.chkHasRePrintPrintService.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.chkHasRePrintPrintService.TabIndex = 10;
             this.chkHasRePrintPrintService.Text = ": خدمات چاپ";
+            this.chkHasRePrintPrintService.CheckedChanged += new System.EventHandler(this.chkHasRePrintPrintService_CheckedChanged);
             // 
             // cmbRePrintPrintServices
             // 
@@ -1796,6 +2082,8 @@
             this.cmbRePrintPrintServices.Name = "cmbRePrintPrintServices";
             this.cmbRePrintPrintServices.Size = new System.Drawing.Size(134, 21);
             this.cmbRePrintPrintServices.TabIndex = 11;
+            this.cmbRePrintPrintServices.SelectedValueChanged += new System.EventHandler(this.cmbRePrintPrintServices_SelectedValueChanged);
+            this.cmbRePrintPrintServices.EnabledChanged += new System.EventHandler(this.cmbRePrintPrintServices_EnabledChanged);
             // 
             // rbRePrintLitPrint
             // 
@@ -1815,6 +2103,7 @@
             this.rbRePrintLitPrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.rbRePrintLitPrint.TabIndex = 6;
             this.rbRePrintLitPrint.Text = ": چاپ لیت";
+            this.rbRePrintLitPrint.CheckedChanged += new System.EventHandler(this.RbRePrintLitPrint_CheckedChanged);
             // 
             // btnRePrintShowFrmAddEditLitPrint
             // 
@@ -1830,6 +2119,7 @@
             this.btnRePrintShowFrmAddEditLitPrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnRePrintShowFrmAddEditLitPrint.TabIndex = 7;
             this.btnRePrintShowFrmAddEditLitPrint.Text = "انتخاب عکس لیت";
+            this.btnRePrintShowFrmAddEditLitPrint.Click += new System.EventHandler(this.btnRePrintShowFrmAddEditLitPrint_Click);
             // 
             // btnRePrintCustomPrintSize
             // 
@@ -1844,6 +2134,7 @@
             this.btnRePrintCustomPrintSize.SymbolSize = 10F;
             this.btnRePrintCustomPrintSize.TabIndex = 30;
             this.btnRePrintCustomPrintSize.Text = "اندازه خاص";
+            this.btnRePrintCustomPrintSize.CheckedChanged += new System.EventHandler(this.btnRePrintCustomPrintSize_Click);
             // 
             // txtTotalPriceRePrintLitPrint
             // 
@@ -1896,6 +2187,7 @@
             this.btnRePrintChangingElements.SymbolSize = 10F;
             this.btnRePrintChangingElements.TabIndex = 9;
             this.btnRePrintChangingElements.Text = "انتخاب عکس ها";
+            this.btnRePrintChangingElements.Click += new System.EventHandler(this.btnRePrintChangingElements_Click);
             // 
             // txtTotalPriceRePrintPrintSize
             // 
@@ -1931,6 +2223,7 @@
             this.rbRePrintMultiPhoto.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.rbRePrintMultiPhoto.TabIndex = 4;
             this.rbRePrintMultiPhoto.Text = ": دورچین";
+            this.rbRePrintMultiPhoto.CheckedChanged += new System.EventHandler(this.RbRePrintMultiPhoto_CheckedChanged);
             // 
             // btnRePrintShowFrmAddEditMutiPhotos
             // 
@@ -1946,6 +2239,7 @@
             this.btnRePrintShowFrmAddEditMutiPhotos.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnRePrintShowFrmAddEditMutiPhotos.TabIndex = 5;
             this.btnRePrintShowFrmAddEditMutiPhotos.Text = "انتخاب عکس دورچین";
+            this.btnRePrintShowFrmAddEditMutiPhotos.Click += new System.EventHandler(this.btnRePrintShowFrmAddEditMutiPhotos_Click);
             // 
             // cmbRePrintPrintSizes
             // 
@@ -1957,6 +2251,7 @@
             this.cmbRePrintPrintSizes.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cmbRePrintPrintSizes.Size = new System.Drawing.Size(134, 21);
             this.cmbRePrintPrintSizes.TabIndex = 2;
+            this.cmbRePrintPrintSizes.SelectedIndexChanged += new System.EventHandler(this.cmbRePrintSize_SelectedIndexChanged);
             // 
             // labelX25
             // 
@@ -1997,7 +2292,7 @@
             // 
             // 
             this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX8.Location = new System.Drawing.Point(456, 23);
+            this.labelX8.Location = new System.Drawing.Point(430, 23);
             this.labelX8.Name = "labelX8";
             this.labelX8.Size = new System.Drawing.Size(42, 16);
             this.labelX8.TabIndex = 20;
@@ -2049,19 +2344,146 @@
             this.panel6.Size = new System.Drawing.Size(831, 227);
             this.panel6.TabIndex = 164;
             // 
-            // panel3
+            // splitContainerChangingElements
             // 
-            this.panel3.Controls.Add(this.btnDownloadSelectedPhotosChangingElements);
-            this.panel3.Controls.Add(this.btnDownloadAllPhotosChangingElements);
-            this.panel3.Controls.Add(this.circularProgressChangingElements);
-            this.panel3.Controls.Add(this.btnCancelChangingElements);
-            this.panel3.Controls.Add(this.btnReLoadChangingElements);
-            this.panel3.Controls.Add(this.btnAcceptChangingElements);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(3, 244);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(831, 74);
-            this.panel3.TabIndex = 163;
+            this.splitContainerChangingElements.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerChangingElements.IsSplitterFixed = true;
+            this.splitContainerChangingElements.Location = new System.Drawing.Point(0, 25);
+            this.splitContainerChangingElements.Name = "splitContainerChangingElements";
+            // 
+            // splitContainerChangingElements.Panel1
+            // 
+            this.splitContainerChangingElements.Panel1.Controls.Add(this.dgvChangingElements);
+            this.splitContainerChangingElements.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            // 
+            // splitContainerChangingElements.Panel2
+            // 
+            this.splitContainerChangingElements.Panel2.Controls.Add(this.txtDescriptionChangingElements);
+            this.splitContainerChangingElements.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.splitContainerChangingElements.Size = new System.Drawing.Size(831, 202);
+            this.splitContainerChangingElements.SplitterDistance = 606;
+            this.splitContainerChangingElements.TabIndex = 165;
+            // 
+            // dgvChangingElements
+            // 
+            this.dgvChangingElements.AllowUserToAddRows = false;
+            this.dgvChangingElements.AllowUserToDeleteRows = false;
+            this.dgvChangingElements.BackgroundColor = System.Drawing.Color.GhostWhite;
+            this.dgvChangingElements.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvChangingElements.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvChangingElements.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvChangingElements.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clmStreamId,
+            this.clmIsSelected,
+            this.clmPhoto,
+            this.clmPhotoId,
+            this.clmDescriptions});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvChangingElements.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvChangingElements.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvChangingElements.EnableHeadersVisualStyles = false;
+            this.dgvChangingElements.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.dgvChangingElements.Location = new System.Drawing.Point(0, 0);
+            this.dgvChangingElements.MultiSelect = false;
+            this.dgvChangingElements.Name = "dgvChangingElements";
+            this.dgvChangingElements.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvChangingElements.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvChangingElements.RowHeadersVisible = false;
+            this.dgvChangingElements.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvChangingElements.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvChangingElements.Size = new System.Drawing.Size(606, 202);
+            this.dgvChangingElements.TabIndex = 158;
+            this.dgvChangingElements.UseCustomBackgroundColor = true;
+            // 
+            // clmStreamId
+            // 
+            this.clmStreamId.HeaderText = "StreamId";
+            this.clmStreamId.Name = "clmStreamId";
+            this.clmStreamId.ReadOnly = true;
+            this.clmStreamId.Visible = false;
+            // 
+            // clmIsSelected
+            // 
+            this.clmIsSelected.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.clmIsSelected.HeaderText = "انتخاب";
+            this.clmIsSelected.Name = "clmIsSelected";
+            this.clmIsSelected.ReadOnly = true;
+            this.clmIsSelected.Width = 42;
+            // 
+            // clmPhoto
+            // 
+            this.clmPhoto.HeaderText = "تصویر";
+            this.clmPhoto.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.clmPhoto.Name = "clmPhoto";
+            this.clmPhoto.ReadOnly = true;
+            this.clmPhoto.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // clmPhotoId
+            // 
+            this.clmPhotoId.HeaderText = "نام تصویر";
+            this.clmPhotoId.Name = "clmPhotoId";
+            this.clmPhotoId.ReadOnly = true;
+            // 
+            // clmDescriptions
+            // 
+            this.clmDescriptions.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmDescriptions.HeaderText = "توضیحات";
+            this.clmDescriptions.Name = "clmDescriptions";
+            this.clmDescriptions.ReadOnly = true;
+            this.clmDescriptions.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clmDescriptions.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // txtDescriptionChangingElements
+            // 
+            // 
+            // 
+            // 
+            this.txtDescriptionChangingElements.Border.Class = "TextBoxBorder";
+            this.txtDescriptionChangingElements.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtDescriptionChangingElements.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtDescriptionChangingElements.Location = new System.Drawing.Point(0, 0);
+            this.txtDescriptionChangingElements.MaxLength = 4000;
+            this.txtDescriptionChangingElements.Multiline = true;
+            this.txtDescriptionChangingElements.Name = "txtDescriptionChangingElements";
+            this.txtDescriptionChangingElements.PreventEnterBeep = true;
+            this.txtDescriptionChangingElements.Size = new System.Drawing.Size(221, 202);
+            this.txtDescriptionChangingElements.TabIndex = 158;
+            this.txtDescriptionChangingElements.WatermarkText = "توضیحات تغییر المان";
+            this.txtDescriptionChangingElements.Enter += new System.EventHandler(this.Txt_TypeFarsi_Enter);
+            this.txtDescriptionChangingElements.Leave += new System.EventHandler(this.Txt_TypeFarsi_Leave);
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.txtRePrintSequenceChangingElements);
+            this.panel5.Controls.Add(this.label9);
+            this.panel5.Controls.Add(this.label8);
+            this.panel5.Controls.Add(this.rbOriginalPhotoChangingElements);
+            this.panel5.Controls.Add(this.rbRePrintPhotoChangingElements);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(831, 25);
+            this.panel5.TabIndex = 164;
             // 
             // txtRePrintSequenceChangingElements
             // 
@@ -2071,37 +2493,31 @@
             // 
             this.txtRePrintSequenceChangingElements.Border.Class = "TextBoxBorder";
             this.txtRePrintSequenceChangingElements.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtRePrintSequenceChangingElements.Location = new System.Drawing.Point(351, 2);
+            this.txtRePrintSequenceChangingElements.Location = new System.Drawing.Point(339, 2);
             this.txtRePrintSequenceChangingElements.Name = "txtRePrintSequenceChangingElements";
             this.txtRePrintSequenceChangingElements.PreventEnterBeep = true;
             this.txtRePrintSequenceChangingElements.Size = new System.Drawing.Size(135, 21);
             this.txtRePrintSequenceChangingElements.TabIndex = 173;
             // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(765, 5);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(59, 13);
+            this.label9.TabIndex = 169;
+            this.label9.Text = "نوع عکس :";
+            // 
             // label8
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(491, 5);
+            this.label8.Location = new System.Drawing.Point(480, 5);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(90, 13);
             this.label8.TabIndex = 172;
             this.label8.Text = "ترتیب اضافه چاپ :";
-            // 
-            // rbRePrintPhotoChangingElements
-            // 
-            this.rbRePrintPhotoChangingElements.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rbRePrintPhotoChangingElements.AutoSize = true;
-            // 
-            // 
-            // 
-            this.rbRePrintPhotoChangingElements.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.rbRePrintPhotoChangingElements.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
-            this.rbRePrintPhotoChangingElements.Location = new System.Drawing.Point(619, 5);
-            this.rbRePrintPhotoChangingElements.Name = "rbRePrintPhotoChangingElements";
-            this.rbRePrintPhotoChangingElements.Size = new System.Drawing.Size(70, 16);
-            this.rbRePrintPhotoChangingElements.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.rbRePrintPhotoChangingElements.TabIndex = 170;
-            this.rbRePrintPhotoChangingElements.Text = "اضافه چاپ";
             // 
             // rbOriginalPhotoChangingElements
             // 
@@ -2119,15 +2535,35 @@
             this.rbOriginalPhotoChangingElements.TabIndex = 171;
             this.rbOriginalPhotoChangingElements.Text = "اصل چاپ";
             // 
-            // label9
+            // rbRePrintPhotoChangingElements
             // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(766, 5);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(59, 13);
-            this.label9.TabIndex = 169;
-            this.label9.Text = "نوع عکس :";
+            this.rbRePrintPhotoChangingElements.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rbRePrintPhotoChangingElements.AutoSize = true;
+            // 
+            // 
+            // 
+            this.rbRePrintPhotoChangingElements.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.rbRePrintPhotoChangingElements.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
+            this.rbRePrintPhotoChangingElements.Location = new System.Drawing.Point(619, 5);
+            this.rbRePrintPhotoChangingElements.Name = "rbRePrintPhotoChangingElements";
+            this.rbRePrintPhotoChangingElements.Size = new System.Drawing.Size(70, 16);
+            this.rbRePrintPhotoChangingElements.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.rbRePrintPhotoChangingElements.TabIndex = 170;
+            this.rbRePrintPhotoChangingElements.Text = "اضافه چاپ";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btnDownloadSelectedPhotosChangingElements);
+            this.panel3.Controls.Add(this.btnDownloadAllPhotosChangingElements);
+            this.panel3.Controls.Add(this.circularProgressChangingElements);
+            this.panel3.Controls.Add(this.btnCancelChangingElements);
+            this.panel3.Controls.Add(this.btnReLoadChangingElements);
+            this.panel3.Controls.Add(this.btnAcceptChangingElements);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(3, 244);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(831, 74);
+            this.panel3.TabIndex = 163;
             // 
             // btnDownloadSelectedPhotosChangingElements
             // 
@@ -2252,20 +2688,168 @@
             this.panel8.Size = new System.Drawing.Size(831, 227);
             this.panel8.TabIndex = 160;
             // 
-            // panel2
+            // splitContainerMultiPhoto
             // 
-            this.panel2.Controls.Add(this.circularProgressMultiPhoto);
-            this.panel2.Controls.Add(this.btnCancelMultiPhoto);
-            this.panel2.Controls.Add(this.btnReloadMultiPhoto);
-            this.panel2.Controls.Add(this.btnDownloadSelectedPhotosMultiPhoto);
-            this.panel2.Controls.Add(this.btnDownloadAllPhotosMultiPhoto);
-            this.panel2.Controls.Add(this.btnAcceptMultiPhoto);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(3, 244);
-            this.panel2.Name = "panel2";
-            this.panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.panel2.Size = new System.Drawing.Size(831, 74);
-            this.panel2.TabIndex = 159;
+            this.splitContainerMultiPhoto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerMultiPhoto.IsSplitterFixed = true;
+            this.splitContainerMultiPhoto.Location = new System.Drawing.Point(0, 25);
+            this.splitContainerMultiPhoto.Name = "splitContainerMultiPhoto";
+            // 
+            // splitContainerMultiPhoto.Panel1
+            // 
+            this.splitContainerMultiPhoto.Panel1.Controls.Add(this.dgvMultiPhoto);
+            this.splitContainerMultiPhoto.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            // 
+            // splitContainerMultiPhoto.Panel2
+            // 
+            this.splitContainerMultiPhoto.Panel2.Controls.Add(this.txtDescriptionMultiPhoto);
+            this.splitContainerMultiPhoto.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.splitContainerMultiPhoto.Size = new System.Drawing.Size(831, 202);
+            this.splitContainerMultiPhoto.SplitterDistance = 606;
+            this.splitContainerMultiPhoto.TabIndex = 160;
+            // 
+            // dgvMultiPhoto
+            // 
+            this.dgvMultiPhoto.AllowUserToAddRows = false;
+            this.dgvMultiPhoto.AllowUserToDeleteRows = false;
+            this.dgvMultiPhoto.BackgroundColor = System.Drawing.Color.GhostWhite;
+            this.dgvMultiPhoto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMultiPhoto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvMultiPhoto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMultiPhoto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewCheckBoxColumn1,
+            this.dataGridViewImageColumn1,
+            this.dataGridViewCheckBoxColumn2,
+            this.dataGridViewTextBoxColumn2});
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvMultiPhoto.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvMultiPhoto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvMultiPhoto.EnableHeadersVisualStyles = false;
+            this.dgvMultiPhoto.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.dgvMultiPhoto.Location = new System.Drawing.Point(0, 0);
+            this.dgvMultiPhoto.MultiSelect = false;
+            this.dgvMultiPhoto.Name = "dgvMultiPhoto";
+            this.dgvMultiPhoto.ReadOnly = true;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMultiPhoto.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvMultiPhoto.RowHeadersVisible = false;
+            this.dgvMultiPhoto.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvMultiPhoto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvMultiPhoto.Size = new System.Drawing.Size(606, 202);
+            this.dgvMultiPhoto.TabIndex = 159;
+            this.dgvMultiPhoto.UseCustomBackgroundColor = true;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "StreamId";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dataGridViewCheckBoxColumn1.HeaderText = "انتخاب";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn1.Width = 42;
+            // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.HeaderText = "تصویر";
+            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.ReadOnly = true;
+            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dataGridViewCheckBoxColumn2
+            // 
+            this.dataGridViewCheckBoxColumn2.HeaderText = "نام تصویر";
+            this.dataGridViewCheckBoxColumn2.Name = "dataGridViewCheckBoxColumn2";
+            this.dataGridViewCheckBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.HeaderText = "توضیحات";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // txtDescriptionMultiPhoto
+            // 
+            // 
+            // 
+            // 
+            this.txtDescriptionMultiPhoto.Border.Class = "TextBoxBorder";
+            this.txtDescriptionMultiPhoto.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtDescriptionMultiPhoto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtDescriptionMultiPhoto.Location = new System.Drawing.Point(0, 0);
+            this.txtDescriptionMultiPhoto.MaxLength = 4000;
+            this.txtDescriptionMultiPhoto.Multiline = true;
+            this.txtDescriptionMultiPhoto.Name = "txtDescriptionMultiPhoto";
+            this.txtDescriptionMultiPhoto.PreventEnterBeep = true;
+            this.txtDescriptionMultiPhoto.Size = new System.Drawing.Size(221, 202);
+            this.txtDescriptionMultiPhoto.TabIndex = 157;
+            this.txtDescriptionMultiPhoto.WatermarkText = "توضیحات دورچین";
+            this.txtDescriptionMultiPhoto.Enter += new System.EventHandler(this.Txt_TypeFarsi_Enter);
+            this.txtDescriptionMultiPhoto.Leave += new System.EventHandler(this.Txt_TypeFarsi_Leave);
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.label16);
+            this.panel7.Controls.Add(this.label15);
+            this.panel7.Controls.Add(this.txtRePrintSequenceMultiPhoto);
+            this.panel7.Controls.Add(this.label3);
+            this.panel7.Controls.Add(this.label1);
+            this.panel7.Controls.Add(this.rbOriginalPhotoMultiPhoto);
+            this.panel7.Controls.Add(this.rbRePrintPhotoMultiPhoto);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel7.Location = new System.Drawing.Point(0, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(831, 25);
+            this.panel7.TabIndex = 0;
+            // 
+            // label16
+            // 
+            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label16.Location = new System.Drawing.Point(168, 6);
+            this.label16.Name = "label16";
+            this.label16.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label16.Size = new System.Drawing.Size(53, 13);
+            this.label16.TabIndex = 31;
+            this.label16.Text = "---";
+            // 
+            // label15
+            // 
+            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(225, 6);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(60, 13);
+            this.label15.TabIndex = 30;
+            this.label15.Text = "اندازه چاپ :";
             // 
             // txtRePrintSequenceMultiPhoto
             // 
@@ -2291,37 +2875,15 @@
             this.label3.TabIndex = 28;
             this.label3.Text = "ترتیب اضافه چاپ :";
             // 
-            // circularProgressMultiPhoto
+            // label1
             // 
-            this.circularProgressMultiPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.circularProgressMultiPhoto.AntiAlias = false;
-            // 
-            // 
-            // 
-            this.circularProgressMultiPhoto.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.circularProgressMultiPhoto.Location = new System.Drawing.Point(499, 7);
-            this.circularProgressMultiPhoto.Name = "circularProgressMultiPhoto";
-            this.circularProgressMultiPhoto.ProgressColor = System.Drawing.Color.RoyalBlue;
-            this.circularProgressMultiPhoto.Size = new System.Drawing.Size(20, 20);
-            this.circularProgressMultiPhoto.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
-            this.circularProgressMultiPhoto.TabIndex = 164;
-            this.circularProgressMultiPhoto.TabStop = false;
-            // 
-            // rbRePrintPhotoMultiPhoto
-            // 
-            this.rbRePrintPhotoMultiPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rbRePrintPhotoMultiPhoto.AutoSize = true;
-            // 
-            // 
-            // 
-            this.rbRePrintPhotoMultiPhoto.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.rbRePrintPhotoMultiPhoto.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
-            this.rbRePrintPhotoMultiPhoto.Location = new System.Drawing.Point(619, 5);
-            this.rbRePrintPhotoMultiPhoto.Name = "rbRePrintPhotoMultiPhoto";
-            this.rbRePrintPhotoMultiPhoto.Size = new System.Drawing.Size(70, 16);
-            this.rbRePrintPhotoMultiPhoto.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.rbRePrintPhotoMultiPhoto.TabIndex = 26;
-            this.rbRePrintPhotoMultiPhoto.Text = "اضافه چاپ";
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(765, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 13);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "نوع عکس :";
             // 
             // rbOriginalPhotoMultiPhoto
             // 
@@ -2339,6 +2901,53 @@
             this.rbOriginalPhotoMultiPhoto.TabIndex = 27;
             this.rbOriginalPhotoMultiPhoto.Text = "اصل چاپ";
             // 
+            // rbRePrintPhotoMultiPhoto
+            // 
+            this.rbRePrintPhotoMultiPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rbRePrintPhotoMultiPhoto.AutoSize = true;
+            // 
+            // 
+            // 
+            this.rbRePrintPhotoMultiPhoto.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.rbRePrintPhotoMultiPhoto.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
+            this.rbRePrintPhotoMultiPhoto.Location = new System.Drawing.Point(619, 5);
+            this.rbRePrintPhotoMultiPhoto.Name = "rbRePrintPhotoMultiPhoto";
+            this.rbRePrintPhotoMultiPhoto.Size = new System.Drawing.Size(70, 16);
+            this.rbRePrintPhotoMultiPhoto.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.rbRePrintPhotoMultiPhoto.TabIndex = 26;
+            this.rbRePrintPhotoMultiPhoto.Text = "اضافه چاپ";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.circularProgressMultiPhoto);
+            this.panel2.Controls.Add(this.btnCancelMultiPhoto);
+            this.panel2.Controls.Add(this.btnReloadMultiPhoto);
+            this.panel2.Controls.Add(this.btnDownloadSelectedPhotosMultiPhoto);
+            this.panel2.Controls.Add(this.btnDownloadAllPhotosMultiPhoto);
+            this.panel2.Controls.Add(this.btnAcceptMultiPhoto);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(3, 244);
+            this.panel2.Name = "panel2";
+            this.panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.panel2.Size = new System.Drawing.Size(831, 74);
+            this.panel2.TabIndex = 159;
+            // 
+            // circularProgressMultiPhoto
+            // 
+            this.circularProgressMultiPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.circularProgressMultiPhoto.AntiAlias = false;
+            // 
+            // 
+            // 
+            this.circularProgressMultiPhoto.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.circularProgressMultiPhoto.Location = new System.Drawing.Point(499, 7);
+            this.circularProgressMultiPhoto.Name = "circularProgressMultiPhoto";
+            this.circularProgressMultiPhoto.ProgressColor = System.Drawing.Color.RoyalBlue;
+            this.circularProgressMultiPhoto.Size = new System.Drawing.Size(20, 20);
+            this.circularProgressMultiPhoto.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
+            this.circularProgressMultiPhoto.TabIndex = 164;
+            this.circularProgressMultiPhoto.TabStop = false;
+            // 
             // btnCancelMultiPhoto
             // 
             this.btnCancelMultiPhoto.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -2353,16 +2962,6 @@
             this.btnCancelMultiPhoto.SymbolSize = 10F;
             this.btnCancelMultiPhoto.TabIndex = 162;
             this.btnCancelMultiPhoto.Text = "انصراف";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(765, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 13);
-            this.label1.TabIndex = 25;
-            this.label1.Text = "نوع عکس :";
             // 
             // btnReloadMultiPhoto
             // 
@@ -2456,6 +3055,118 @@
             this.panel10.Size = new System.Drawing.Size(831, 227);
             this.panel10.TabIndex = 162;
             // 
+            // betterThumbnailBrowserLitPrint
+            // 
+            this.betterThumbnailBrowserLitPrint.ContextMenuStripPlacement = ComponentOwl.BetterThumbnailBrowser.BetterListViewContextMenuPlacement.Default;
+            this.betterThumbnailBrowserLitPrint.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.betterThumbnailBrowserLitPrint.LoadingThreadPriority = System.Threading.ThreadPriority.BelowNormal;
+            this.betterThumbnailBrowserLitPrint.Location = new System.Drawing.Point(0, 25);
+            this.betterThumbnailBrowserLitPrint.Name = "betterThumbnailBrowserLitPrint";
+            this.betterThumbnailBrowserLitPrint.Size = new System.Drawing.Size(831, 202);
+            this.betterThumbnailBrowserLitPrint.SupportedExtensions = "BMP;GIF;JIF;JPE;JPEG;JPG;PNG;TIF;TIFF";
+            this.betterThumbnailBrowserLitPrint.TabIndex = 156;
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.label17);
+            this.panel9.Controls.Add(this.label18);
+            this.panel9.Controls.Add(this.txtRePrintSequenceLitPrint);
+            this.panel9.Controls.Add(this.label4);
+            this.panel9.Controls.Add(this.rbRePrintPhotoLitPrint);
+            this.panel9.Controls.Add(this.rbOriginalPhotoLitPrint);
+            this.panel9.Controls.Add(this.label6);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel9.Location = new System.Drawing.Point(0, 0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(831, 25);
+            this.panel9.TabIndex = 0;
+            // 
+            // label17
+            // 
+            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label17.Location = new System.Drawing.Point(168, 6);
+            this.label17.Name = "label17";
+            this.label17.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label17.Size = new System.Drawing.Size(53, 13);
+            this.label17.TabIndex = 36;
+            this.label17.Text = "100x200";
+            // 
+            // label18
+            // 
+            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(225, 6);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(60, 13);
+            this.label18.TabIndex = 35;
+            this.label18.Text = "اندازه چاپ :";
+            // 
+            // txtRePrintSequenceLitPrint
+            // 
+            this.txtRePrintSequenceLitPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.txtRePrintSequenceLitPrint.Border.Class = "TextBoxBorder";
+            this.txtRePrintSequenceLitPrint.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtRePrintSequenceLitPrint.Location = new System.Drawing.Point(339, 2);
+            this.txtRePrintSequenceLitPrint.Name = "txtRePrintSequenceLitPrint";
+            this.txtRePrintSequenceLitPrint.PreventEnterBeep = true;
+            this.txtRePrintSequenceLitPrint.Size = new System.Drawing.Size(135, 21);
+            this.txtRePrintSequenceLitPrint.TabIndex = 34;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(480, 5);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(90, 13);
+            this.label4.TabIndex = 33;
+            this.label4.Text = "ترتیب اضافه چاپ :";
+            // 
+            // rbRePrintPhotoLitPrint
+            // 
+            this.rbRePrintPhotoLitPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rbRePrintPhotoLitPrint.AutoSize = true;
+            // 
+            // 
+            // 
+            this.rbRePrintPhotoLitPrint.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.rbRePrintPhotoLitPrint.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
+            this.rbRePrintPhotoLitPrint.Location = new System.Drawing.Point(619, 5);
+            this.rbRePrintPhotoLitPrint.Name = "rbRePrintPhotoLitPrint";
+            this.rbRePrintPhotoLitPrint.Size = new System.Drawing.Size(70, 16);
+            this.rbRePrintPhotoLitPrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.rbRePrintPhotoLitPrint.TabIndex = 31;
+            this.rbRePrintPhotoLitPrint.Text = "اضافه چاپ";
+            // 
+            // rbOriginalPhotoLitPrint
+            // 
+            this.rbOriginalPhotoLitPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rbOriginalPhotoLitPrint.AutoSize = true;
+            // 
+            // 
+            // 
+            this.rbOriginalPhotoLitPrint.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.rbOriginalPhotoLitPrint.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
+            this.rbOriginalPhotoLitPrint.Location = new System.Drawing.Point(696, 5);
+            this.rbOriginalPhotoLitPrint.Name = "rbOriginalPhotoLitPrint";
+            this.rbOriginalPhotoLitPrint.Size = new System.Drawing.Size(64, 16);
+            this.rbOriginalPhotoLitPrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.rbOriginalPhotoLitPrint.TabIndex = 32;
+            this.rbOriginalPhotoLitPrint.Text = "اصل چاپ";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(765, 5);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(59, 13);
+            this.label6.TabIndex = 30;
+            this.label6.Text = "نوع عکس :";
+            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.buttonX1);
@@ -2470,6 +3181,21 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(831, 74);
             this.panel4.TabIndex = 161;
+            // 
+            // buttonX1
+            // 
+            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX1.Location = new System.Drawing.Point(3, 4);
+            this.buttonX1.Name = "buttonX1";
+            this.buttonX1.Size = new System.Drawing.Size(93, 23);
+            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX1.Symbol = "";
+            this.buttonX1.SymbolColor = System.Drawing.Color.SteelBlue;
+            this.buttonX1.SymbolSize = 12F;
+            this.buttonX1.TabIndex = 165;
+            this.buttonX1.Text = "پیش نمایش";
             // 
             // btnDownloadSelectedPhotosLitPrint
             // 
@@ -2577,20 +3303,20 @@
             // 
             this.dgvOrderDetails.AllowUserToAddRows = false;
             this.dgvOrderDetails.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle74.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvOrderDetails.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle74;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvOrderDetails.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvOrderDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvOrderDetails.BackgroundColor = System.Drawing.Color.GhostWhite;
             this.dgvOrderDetails.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvOrderDetails.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            dataGridViewCellStyle75.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle75.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle75.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle75.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle75.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle75.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle75.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvOrderDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle75;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOrderDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvOrderDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrderDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmRowNumber,
@@ -2600,28 +3326,28 @@
             this.Column4,
             this.Column5,
             this.Column6});
-            dataGridViewCellStyle76.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle76.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle76.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle76.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle76.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle76.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle76.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvOrderDetails.DefaultCellStyle = dataGridViewCellStyle76;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvOrderDetails.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgvOrderDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvOrderDetails.EnableHeadersVisualStyles = false;
             this.dgvOrderDetails.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.dgvOrderDetails.Location = new System.Drawing.Point(3, 3);
             this.dgvOrderDetails.Name = "dgvOrderDetails";
             this.dgvOrderDetails.ReadOnly = true;
-            dataGridViewCellStyle77.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle77.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle77.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle77.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle77.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle77.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle77.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvOrderDetails.RowHeadersDefaultCellStyle = dataGridViewCellStyle77;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOrderDetails.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvOrderDetails.RowHeadersVisible = false;
             this.dgvOrderDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOrderDetails.Size = new System.Drawing.Size(837, 321);
@@ -2671,689 +3397,6 @@
             this.Column6.HeaderText = "دورچین";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.txtRePrintSequenceChangingElements);
-            this.panel5.Controls.Add(this.label9);
-            this.panel5.Controls.Add(this.label8);
-            this.panel5.Controls.Add(this.rbOriginalPhotoChangingElements);
-            this.panel5.Controls.Add(this.rbRePrintPhotoChangingElements);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(831, 25);
-            this.panel5.TabIndex = 164;
-            // 
-            // splitContainerChangingElements
-            // 
-            this.splitContainerChangingElements.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerChangingElements.IsSplitterFixed = true;
-            this.splitContainerChangingElements.Location = new System.Drawing.Point(0, 25);
-            this.splitContainerChangingElements.Name = "splitContainerChangingElements";
-            // 
-            // splitContainerChangingElements.Panel1
-            // 
-            this.splitContainerChangingElements.Panel1.Controls.Add(this.dgvChangingElements);
-            this.splitContainerChangingElements.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            // 
-            // splitContainerChangingElements.Panel2
-            // 
-            this.splitContainerChangingElements.Panel2.Controls.Add(this.txtDescriptionChangingElements);
-            this.splitContainerChangingElements.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.splitContainerChangingElements.Size = new System.Drawing.Size(831, 202);
-            this.splitContainerChangingElements.SplitterDistance = 606;
-            this.splitContainerChangingElements.TabIndex = 165;
-            // 
-            // dgvChangingElements
-            // 
-            this.dgvChangingElements.AllowUserToAddRows = false;
-            this.dgvChangingElements.AllowUserToDeleteRows = false;
-            this.dgvChangingElements.BackgroundColor = System.Drawing.Color.GhostWhite;
-            this.dgvChangingElements.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle78.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle78.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle78.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle78.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle78.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle78.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle78.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvChangingElements.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle78;
-            this.dgvChangingElements.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvChangingElements.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clmStreamId,
-            this.clmIsSelected,
-            this.clmPhoto,
-            this.clmPhotoId,
-            this.clmDescriptions});
-            dataGridViewCellStyle79.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle79.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle79.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle79.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle79.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle79.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle79.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvChangingElements.DefaultCellStyle = dataGridViewCellStyle79;
-            this.dgvChangingElements.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvChangingElements.EnableHeadersVisualStyles = false;
-            this.dgvChangingElements.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.dgvChangingElements.Location = new System.Drawing.Point(0, 0);
-            this.dgvChangingElements.MultiSelect = false;
-            this.dgvChangingElements.Name = "dgvChangingElements";
-            this.dgvChangingElements.ReadOnly = true;
-            dataGridViewCellStyle80.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle80.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle80.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle80.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle80.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle80.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle80.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvChangingElements.RowHeadersDefaultCellStyle = dataGridViewCellStyle80;
-            this.dgvChangingElements.RowHeadersVisible = false;
-            this.dgvChangingElements.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvChangingElements.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvChangingElements.Size = new System.Drawing.Size(606, 202);
-            this.dgvChangingElements.TabIndex = 158;
-            this.dgvChangingElements.UseCustomBackgroundColor = true;
-            // 
-            // txtDescriptionChangingElements
-            // 
-            // 
-            // 
-            // 
-            this.txtDescriptionChangingElements.Border.Class = "TextBoxBorder";
-            this.txtDescriptionChangingElements.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtDescriptionChangingElements.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDescriptionChangingElements.Location = new System.Drawing.Point(0, 0);
-            this.txtDescriptionChangingElements.MaxLength = 4000;
-            this.txtDescriptionChangingElements.Multiline = true;
-            this.txtDescriptionChangingElements.Name = "txtDescriptionChangingElements";
-            this.txtDescriptionChangingElements.PreventEnterBeep = true;
-            this.txtDescriptionChangingElements.Size = new System.Drawing.Size(221, 202);
-            this.txtDescriptionChangingElements.TabIndex = 158;
-            this.txtDescriptionChangingElements.WatermarkText = "توضیحات تغییر المان";
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.label16);
-            this.panel7.Controls.Add(this.label15);
-            this.panel7.Controls.Add(this.txtRePrintSequenceMultiPhoto);
-            this.panel7.Controls.Add(this.label3);
-            this.panel7.Controls.Add(this.label1);
-            this.panel7.Controls.Add(this.rbOriginalPhotoMultiPhoto);
-            this.panel7.Controls.Add(this.rbRePrintPhotoMultiPhoto);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel7.Location = new System.Drawing.Point(0, 0);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(831, 25);
-            this.panel7.TabIndex = 0;
-            // 
-            // splitContainerMultiPhoto
-            // 
-            this.splitContainerMultiPhoto.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerMultiPhoto.IsSplitterFixed = true;
-            this.splitContainerMultiPhoto.Location = new System.Drawing.Point(0, 25);
-            this.splitContainerMultiPhoto.Name = "splitContainerMultiPhoto";
-            // 
-            // splitContainerMultiPhoto.Panel1
-            // 
-            this.splitContainerMultiPhoto.Panel1.Controls.Add(this.dgvMultiPhoto);
-            this.splitContainerMultiPhoto.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            // 
-            // splitContainerMultiPhoto.Panel2
-            // 
-            this.splitContainerMultiPhoto.Panel2.Controls.Add(this.txtDescriptionMultiPhoto);
-            this.splitContainerMultiPhoto.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.splitContainerMultiPhoto.Size = new System.Drawing.Size(831, 202);
-            this.splitContainerMultiPhoto.SplitterDistance = 606;
-            this.splitContainerMultiPhoto.TabIndex = 160;
-            // 
-            // txtDescriptionMultiPhoto
-            // 
-            // 
-            // 
-            // 
-            this.txtDescriptionMultiPhoto.Border.Class = "TextBoxBorder";
-            this.txtDescriptionMultiPhoto.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtDescriptionMultiPhoto.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDescriptionMultiPhoto.Location = new System.Drawing.Point(0, 0);
-            this.txtDescriptionMultiPhoto.MaxLength = 4000;
-            this.txtDescriptionMultiPhoto.Multiline = true;
-            this.txtDescriptionMultiPhoto.Name = "txtDescriptionMultiPhoto";
-            this.txtDescriptionMultiPhoto.PreventEnterBeep = true;
-            this.txtDescriptionMultiPhoto.Size = new System.Drawing.Size(221, 202);
-            this.txtDescriptionMultiPhoto.TabIndex = 157;
-            this.txtDescriptionMultiPhoto.WatermarkText = "توضیحات دورچین";
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.label17);
-            this.panel9.Controls.Add(this.label18);
-            this.panel9.Controls.Add(this.txtRePrintSequenceLitPrint);
-            this.panel9.Controls.Add(this.label4);
-            this.panel9.Controls.Add(this.rbRePrintPhotoLitPrint);
-            this.panel9.Controls.Add(this.rbOriginalPhotoLitPrint);
-            this.panel9.Controls.Add(this.label6);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel9.Location = new System.Drawing.Point(0, 0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(831, 25);
-            this.panel9.TabIndex = 0;
-            // 
-            // txtRePrintSequenceLitPrint
-            // 
-            this.txtRePrintSequenceLitPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.txtRePrintSequenceLitPrint.Border.Class = "TextBoxBorder";
-            this.txtRePrintSequenceLitPrint.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtRePrintSequenceLitPrint.Location = new System.Drawing.Point(351, 2);
-            this.txtRePrintSequenceLitPrint.Name = "txtRePrintSequenceLitPrint";
-            this.txtRePrintSequenceLitPrint.PreventEnterBeep = true;
-            this.txtRePrintSequenceLitPrint.Size = new System.Drawing.Size(135, 21);
-            this.txtRePrintSequenceLitPrint.TabIndex = 34;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(492, 5);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(90, 13);
-            this.label4.TabIndex = 33;
-            this.label4.Text = "ترتیب اضافه چاپ :";
-            // 
-            // rbRePrintPhotoLitPrint
-            // 
-            this.rbRePrintPhotoLitPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rbRePrintPhotoLitPrint.AutoSize = true;
-            // 
-            // 
-            // 
-            this.rbRePrintPhotoLitPrint.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.rbRePrintPhotoLitPrint.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
-            this.rbRePrintPhotoLitPrint.Location = new System.Drawing.Point(619, 5);
-            this.rbRePrintPhotoLitPrint.Name = "rbRePrintPhotoLitPrint";
-            this.rbRePrintPhotoLitPrint.Size = new System.Drawing.Size(70, 16);
-            this.rbRePrintPhotoLitPrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.rbRePrintPhotoLitPrint.TabIndex = 31;
-            this.rbRePrintPhotoLitPrint.Text = "اضافه چاپ";
-            // 
-            // rbOriginalPhotoLitPrint
-            // 
-            this.rbOriginalPhotoLitPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rbOriginalPhotoLitPrint.AutoSize = true;
-            // 
-            // 
-            // 
-            this.rbOriginalPhotoLitPrint.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.rbOriginalPhotoLitPrint.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton;
-            this.rbOriginalPhotoLitPrint.Location = new System.Drawing.Point(696, 5);
-            this.rbOriginalPhotoLitPrint.Name = "rbOriginalPhotoLitPrint";
-            this.rbOriginalPhotoLitPrint.Size = new System.Drawing.Size(64, 16);
-            this.rbOriginalPhotoLitPrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.rbOriginalPhotoLitPrint.TabIndex = 32;
-            this.rbOriginalPhotoLitPrint.Text = "اصل چاپ";
-            // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(766, 5);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(59, 13);
-            this.label6.TabIndex = 30;
-            this.label6.Text = "نوع عکس :";
-            // 
-            // betterThumbnailBrowserLitPrint
-            // 
-            this.betterThumbnailBrowserLitPrint.ContextMenuStripPlacement = ComponentOwl.BetterThumbnailBrowser.BetterListViewContextMenuPlacement.Default;
-            this.betterThumbnailBrowserLitPrint.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.betterThumbnailBrowserLitPrint.LoadingThreadPriority = System.Threading.ThreadPriority.BelowNormal;
-            this.betterThumbnailBrowserLitPrint.Location = new System.Drawing.Point(0, 25);
-            this.betterThumbnailBrowserLitPrint.Name = "betterThumbnailBrowserLitPrint";
-            this.betterThumbnailBrowserLitPrint.Size = new System.Drawing.Size(831, 202);
-            this.betterThumbnailBrowserLitPrint.SupportedExtensions = "BMP;GIF;JIF;JPE;JPEG;JPG;PNG;TIF;TIFF";
-            this.betterThumbnailBrowserLitPrint.TabIndex = 156;
-            // 
-            // buttonX1
-            // 
-            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Location = new System.Drawing.Point(3, 4);
-            this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(93, 23);
-            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX1.Symbol = "";
-            this.buttonX1.SymbolColor = System.Drawing.Color.SteelBlue;
-            this.buttonX1.SymbolSize = 12F;
-            this.buttonX1.TabIndex = 165;
-            this.buttonX1.Text = "پیش نمایش";
-            // 
-            // datePickerOrderDate
-            // 
-            this.datePickerOrderDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.datePickerOrderDate.BackColor = System.Drawing.Color.White;
-            this.datePickerOrderDate.Enabled = false;
-            this.datePickerOrderDate.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.datePickerOrderDate.Location = new System.Drawing.Point(251, 13);
-            this.datePickerOrderDate.Name = "datePickerOrderDate";
-            this.datePickerOrderDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.datePickerOrderDate.ShowTime = false;
-            this.datePickerOrderDate.Size = new System.Drawing.Size(167, 18);
-            this.datePickerOrderDate.TabIndex = 0;
-            this.datePickerOrderDate.TabStop = false;
-            this.datePickerOrderDate.Text = "persianDateTimePicker1";
-            this.datePickerOrderDate.Value = ((FreeControls.PersianDate)(resources.GetObject("datePickerOrderDate.Value")));
-            // 
-            // circularProgress
-            // 
-            // 
-            // 
-            // 
-            this.circularProgress.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.circularProgress.Location = new System.Drawing.Point(12, 11);
-            this.circularProgress.Name = "circularProgress";
-            this.circularProgress.ProgressColor = System.Drawing.Color.RoyalBlue;
-            this.circularProgress.Size = new System.Drawing.Size(30, 30);
-            this.circularProgress.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
-            this.circularProgress.TabIndex = 109;
-            this.circularProgress.TabStop = false;
-            // 
-            // txtPhotographyType
-            // 
-            this.txtPhotographyType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPhotographyType.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.txtPhotographyType.Border.Class = "TextBoxBorder";
-            this.txtPhotographyType.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtPhotographyType.Enabled = false;
-            this.txtPhotographyType.Location = new System.Drawing.Point(568, 11);
-            this.txtPhotographyType.Name = "txtPhotographyType";
-            this.txtPhotographyType.PreventEnterBeep = true;
-            this.txtPhotographyType.ReadOnly = true;
-            this.txtPhotographyType.Size = new System.Drawing.Size(167, 21);
-            this.txtPhotographyType.TabIndex = 0;
-            this.txtPhotographyType.TabStop = false;
-            // 
-            // txtCustomerName
-            // 
-            this.txtCustomerName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCustomerName.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.txtCustomerName.Border.Class = "TextBoxBorder";
-            this.txtCustomerName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtCustomerName.Enabled = false;
-            this.txtCustomerName.FocusHighlightColor = System.Drawing.SystemColors.Info;
-            this.txtCustomerName.FocusHighlightEnabled = true;
-            this.txtCustomerName.Location = new System.Drawing.Point(890, 11);
-            this.txtCustomerName.Name = "txtCustomerName";
-            this.txtCustomerName.PreventEnterBeep = true;
-            this.txtCustomerName.ReadOnly = true;
-            this.txtCustomerName.Size = new System.Drawing.Size(167, 21);
-            this.txtCustomerName.TabIndex = 0;
-            this.txtCustomerName.TabStop = false;
-            // 
-            // label7
-            // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(740, 40);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(71, 13);
-            this.label7.TabIndex = 173;
-            this.label7.Text = "شناسه چاپ :";
-            // 
-            // txtOrderPrintCodeDate
-            // 
-            this.txtOrderPrintCodeDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtOrderPrintCodeDate.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.txtOrderPrintCodeDate.Border.Class = "TextBoxBorder";
-            this.txtOrderPrintCodeDate.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtOrderPrintCodeDate.Enabled = false;
-            this.txtOrderPrintCodeDate.FocusHighlightColor = System.Drawing.SystemColors.Info;
-            this.txtOrderPrintCodeDate.FocusHighlightEnabled = true;
-            this.txtOrderPrintCodeDate.Location = new System.Drawing.Point(568, 37);
-            this.txtOrderPrintCodeDate.MaxLength = 7;
-            this.txtOrderPrintCodeDate.Name = "txtOrderPrintCodeDate";
-            this.txtOrderPrintCodeDate.PreventEnterBeep = true;
-            this.txtOrderPrintCodeDate.ReadOnly = true;
-            this.txtOrderPrintCodeDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtOrderPrintCodeDate.Size = new System.Drawing.Size(65, 21);
-            this.txtOrderPrintCodeDate.TabIndex = 174;
-            this.txtOrderPrintCodeDate.TabStop = false;
-            // 
-            // txtOrderPrintCodeCustomerId
-            // 
-            this.txtOrderPrintCodeCustomerId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtOrderPrintCodeCustomerId.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.txtOrderPrintCodeCustomerId.Border.Class = "TextBoxBorder";
-            this.txtOrderPrintCodeCustomerId.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtOrderPrintCodeCustomerId.Enabled = false;
-            this.txtOrderPrintCodeCustomerId.FocusHighlightColor = System.Drawing.SystemColors.Info;
-            this.txtOrderPrintCodeCustomerId.FocusHighlightEnabled = true;
-            this.txtOrderPrintCodeCustomerId.Location = new System.Drawing.Point(689, 37);
-            this.txtOrderPrintCodeCustomerId.MaxLength = 7;
-            this.txtOrderPrintCodeCustomerId.Name = "txtOrderPrintCodeCustomerId";
-            this.txtOrderPrintCodeCustomerId.PreventEnterBeep = true;
-            this.txtOrderPrintCodeCustomerId.ReadOnly = true;
-            this.txtOrderPrintCodeCustomerId.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtOrderPrintCodeCustomerId.Size = new System.Drawing.Size(45, 21);
-            this.txtOrderPrintCodeCustomerId.TabIndex = 177;
-            this.txtOrderPrintCodeCustomerId.TabStop = false;
-            // 
-            // txtOrderPrintCodeOrderId
-            // 
-            this.txtOrderPrintCodeOrderId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtOrderPrintCodeOrderId.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.txtOrderPrintCodeOrderId.Border.Class = "TextBoxBorder";
-            this.txtOrderPrintCodeOrderId.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtOrderPrintCodeOrderId.Enabled = false;
-            this.txtOrderPrintCodeOrderId.FocusHighlightColor = System.Drawing.SystemColors.Info;
-            this.txtOrderPrintCodeOrderId.FocusHighlightEnabled = true;
-            this.txtOrderPrintCodeOrderId.Location = new System.Drawing.Point(638, 37);
-            this.txtOrderPrintCodeOrderId.MaxLength = 6;
-            this.txtOrderPrintCodeOrderId.Name = "txtOrderPrintCodeOrderId";
-            this.txtOrderPrintCodeOrderId.PreventEnterBeep = true;
-            this.txtOrderPrintCodeOrderId.ReadOnly = true;
-            this.txtOrderPrintCodeOrderId.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtOrderPrintCodeOrderId.Size = new System.Drawing.Size(46, 21);
-            this.txtOrderPrintCodeOrderId.TabIndex = 176;
-            this.txtOrderPrintCodeOrderId.TabStop = false;
-            // 
-            // label10
-            // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(1063, 40);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(89, 13);
-            this.label10.TabIndex = 173;
-            this.label10.Text = "شناسه سفارش :";
-            // 
-            // txtOrderCodeCustomerIdBookingId
-            // 
-            this.txtOrderCodeCustomerIdBookingId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtOrderCodeCustomerIdBookingId.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.txtOrderCodeCustomerIdBookingId.Border.Class = "TextBoxBorder";
-            this.txtOrderCodeCustomerIdBookingId.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtOrderCodeCustomerIdBookingId.Enabled = false;
-            this.txtOrderCodeCustomerIdBookingId.FocusHighlightColor = System.Drawing.SystemColors.Info;
-            this.txtOrderCodeCustomerIdBookingId.FocusHighlightEnabled = true;
-            this.txtOrderCodeCustomerIdBookingId.Location = new System.Drawing.Point(968, 37);
-            this.txtOrderCodeCustomerIdBookingId.MaxLength = 6;
-            this.txtOrderCodeCustomerIdBookingId.Name = "txtOrderCodeCustomerIdBookingId";
-            this.txtOrderCodeCustomerIdBookingId.PreventEnterBeep = true;
-            this.txtOrderCodeCustomerIdBookingId.ReadOnly = true;
-            this.txtOrderCodeCustomerIdBookingId.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtOrderCodeCustomerIdBookingId.Size = new System.Drawing.Size(89, 21);
-            this.txtOrderCodeCustomerIdBookingId.TabIndex = 180;
-            this.txtOrderCodeCustomerIdBookingId.TabStop = false;
-            // 
-            // txtOrderCodeDate
-            // 
-            this.txtOrderCodeDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtOrderCodeDate.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.txtOrderCodeDate.Border.Class = "TextBoxBorder";
-            this.txtOrderCodeDate.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtOrderCodeDate.Enabled = false;
-            this.txtOrderCodeDate.FocusHighlightColor = System.Drawing.SystemColors.Info;
-            this.txtOrderCodeDate.FocusHighlightEnabled = true;
-            this.txtOrderCodeDate.Location = new System.Drawing.Point(890, 37);
-            this.txtOrderCodeDate.MaxLength = 7;
-            this.txtOrderCodeDate.Name = "txtOrderCodeDate";
-            this.txtOrderCodeDate.PreventEnterBeep = true;
-            this.txtOrderCodeDate.ReadOnly = true;
-            this.txtOrderCodeDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtOrderCodeDate.Size = new System.Drawing.Size(74, 21);
-            this.txtOrderCodeDate.TabIndex = 179;
-            this.txtOrderCodeDate.TabStop = false;
-            // 
-            // label11
-            // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(1085, 13);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(67, 13);
-            this.label11.TabIndex = 182;
-            this.label11.Text = "نام مشتری :";
-            // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(741, 13);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(70, 13);
-            this.label12.TabIndex = 183;
-            this.label12.Text = "نوع عکاسی :";
-            // 
-            // label13
-            // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(436, 14);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(76, 13);
-            this.label13.TabIndex = 184;
-            this.label13.Text = "تاریخ عکاسی :";
-            // 
-            // label14
-            // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(424, 41);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(88, 13);
-            this.label14.TabIndex = 185;
-            this.label14.Text = "وضعیت سفارش :";
-            // 
-            // textBoxX1
-            // 
-            this.textBoxX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxX1.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.textBoxX1.Border.Class = "TextBoxBorder";
-            this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX1.Enabled = false;
-            this.textBoxX1.Location = new System.Drawing.Point(251, 37);
-            this.textBoxX1.Name = "textBoxX1";
-            this.textBoxX1.PreventEnterBeep = true;
-            this.textBoxX1.ReadOnly = true;
-            this.textBoxX1.Size = new System.Drawing.Size(167, 21);
-            this.textBoxX1.TabIndex = 186;
-            this.textBoxX1.TabStop = false;
-            // 
-            // clmStreamId
-            // 
-            this.clmStreamId.HeaderText = "StreamId";
-            this.clmStreamId.Name = "clmStreamId";
-            this.clmStreamId.ReadOnly = true;
-            this.clmStreamId.Visible = false;
-            // 
-            // clmIsSelected
-            // 
-            this.clmIsSelected.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.clmIsSelected.HeaderText = "انتخاب";
-            this.clmIsSelected.Name = "clmIsSelected";
-            this.clmIsSelected.ReadOnly = true;
-            this.clmIsSelected.Width = 42;
-            // 
-            // clmPhoto
-            // 
-            this.clmPhoto.HeaderText = "تصویر";
-            this.clmPhoto.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.clmPhoto.Name = "clmPhoto";
-            this.clmPhoto.ReadOnly = true;
-            this.clmPhoto.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // clmPhotoId
-            // 
-            this.clmPhotoId.HeaderText = "نام تصویر";
-            this.clmPhotoId.Name = "clmPhotoId";
-            this.clmPhotoId.ReadOnly = true;
-            // 
-            // clmDescriptions
-            // 
-            this.clmDescriptions.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmDescriptions.HeaderText = "توضیحات";
-            this.clmDescriptions.Name = "clmDescriptions";
-            this.clmDescriptions.ReadOnly = true;
-            this.clmDescriptions.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.clmDescriptions.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dgvMultiPhoto
-            // 
-            this.dgvMultiPhoto.AllowUserToAddRows = false;
-            this.dgvMultiPhoto.AllowUserToDeleteRows = false;
-            this.dgvMultiPhoto.BackgroundColor = System.Drawing.Color.GhostWhite;
-            this.dgvMultiPhoto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle71.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle71.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle71.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle71.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle71.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle71.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle71.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMultiPhoto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle71;
-            this.dgvMultiPhoto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMultiPhoto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewCheckBoxColumn1,
-            this.dataGridViewImageColumn1,
-            this.dataGridViewCheckBoxColumn2,
-            this.dataGridViewTextBoxColumn2});
-            dataGridViewCellStyle72.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle72.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle72.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle72.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle72.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle72.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle72.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvMultiPhoto.DefaultCellStyle = dataGridViewCellStyle72;
-            this.dgvMultiPhoto.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvMultiPhoto.EnableHeadersVisualStyles = false;
-            this.dgvMultiPhoto.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.dgvMultiPhoto.Location = new System.Drawing.Point(0, 0);
-            this.dgvMultiPhoto.MultiSelect = false;
-            this.dgvMultiPhoto.Name = "dgvMultiPhoto";
-            this.dgvMultiPhoto.ReadOnly = true;
-            dataGridViewCellStyle73.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle73.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle73.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle73.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle73.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle73.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle73.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMultiPhoto.RowHeadersDefaultCellStyle = dataGridViewCellStyle73;
-            this.dgvMultiPhoto.RowHeadersVisible = false;
-            this.dgvMultiPhoto.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvMultiPhoto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMultiPhoto.Size = new System.Drawing.Size(606, 202);
-            this.dgvMultiPhoto.TabIndex = 159;
-            this.dgvMultiPhoto.UseCustomBackgroundColor = true;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "StreamId";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dataGridViewCheckBoxColumn1.HeaderText = "انتخاب";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn1.Width = 42;
-            // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.HeaderText = "تصویر";
-            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.ReadOnly = true;
-            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewCheckBoxColumn2
-            // 
-            this.dataGridViewCheckBoxColumn2.HeaderText = "نام تصویر";
-            this.dataGridViewCheckBoxColumn2.Name = "dataGridViewCheckBoxColumn2";
-            this.dataGridViewCheckBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.HeaderText = "توضیحات";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // label15
-            // 
-            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(225, 6);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(60, 13);
-            this.label15.TabIndex = 30;
-            this.label15.Text = "اندازه چاپ :";
-            // 
-            // label16
-            // 
-            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label16.Location = new System.Drawing.Point(168, 6);
-            this.label16.Name = "label16";
-            this.label16.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label16.Size = new System.Drawing.Size(53, 13);
-            this.label16.TabIndex = 31;
-            this.label16.Text = "100x200";
-            // 
-            // label17
-            // 
-            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label17.Location = new System.Drawing.Point(168, 6);
-            this.label17.Name = "label17";
-            this.label17.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label17.Size = new System.Drawing.Size(53, 13);
-            this.label17.TabIndex = 36;
-            this.label17.Text = "100x200";
-            // 
-            // label18
-            // 
-            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(225, 6);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(60, 13);
-            this.label18.TabIndex = 35;
-            this.label18.Text = "اندازه چاپ :";
             // 
             // FrmAddEditPreFactor
             // 
@@ -3408,34 +3451,34 @@
             this.tabPageChangingElements.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.tabPageMultiPhoto.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.panel8.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.tabPageLitPrint.ResumeLayout(false);
-            this.groupBox10.ResumeLayout(false);
-            this.panel10.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.tabPageOrderDetails.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvOrderDetails)).EndInit();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.splitContainerChangingElements.Panel1.ResumeLayout(false);
             this.splitContainerChangingElements.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerChangingElements)).EndInit();
             this.splitContainerChangingElements.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvChangingElements)).EndInit();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.tabPageMultiPhoto.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
             this.splitContainerMultiPhoto.Panel1.ResumeLayout(false);
             this.splitContainerMultiPhoto.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMultiPhoto)).EndInit();
             this.splitContainerMultiPhoto.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMultiPhoto)).EndInit();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.tabPageLitPrint.ResumeLayout(false);
+            this.groupBox10.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.betterThumbnailBrowserLitPrint)).EndInit();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.betterThumbnailBrowserLitPrint)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMultiPhoto)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.tabPageOrderDetails.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrderDetails)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

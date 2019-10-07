@@ -127,46 +127,46 @@
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAU
-        CQAAAk1TRnQBSQFMAgEBAgEAAfABAAHwAQABEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
-        AwABEAMAAQEBAAEgBgABEBoAA0kBhwNeAc4DXAHRA1wB0QNcAdEDXAHRA1wB0QNcAc8DUAGeAx8BLBAA
-        Aw0BEgELAZgB9QH/AVoCYAHeAVoCXwHbAVoCXwHbAVoCXwHbAVoCXwHbAVsCYQHhAQsBmAH1Af8DHAEn
-        nAADKgFBAdsB3AHeAf8DzAH/A9MB/wPdAf8D6AH/A/MB/wP7Af8D/gH/AV4BWQFWAf8DZAHxAy8BSgwA
-        AV0CYQHiA0IBdBQAAx0BKgELAZgB9QH/AQsBmAH1Af+cAAMzAVMB1ALVAf8DzAH/A9MB/wPdAf8D5wH/
-        A/EB/wP2Af8D9AH/AV0BWQFXAf8C7QHuAf8BwQG+AbwB/wM4AV4IAAFZAmcB8gM3AVsUAAMfASwBCwGY
-        AfUB/wELAZgB9QH/AQsBmAH1Af8DHAEnlAADMwFSAdUB1gHXAf8DzAH/A9MB/wPdAf8D5gH/A/EB/wP3
-        Af8C+QH6Af8BjAGEAV8B/wP9Af8D4QH/AYMBggGBAfsDKwFCBAABUwJkAfEDOAFcFAADHwEsAQsBmAH1
-        Af8BCwGYAfUB/wELAZgB9QH/AQsBmAH1Af+UAAMzAVIB1gHXAdgB/wPMAf8D0gH/A9sB/wPlAf8D7gH/
-        A/YB/wH7AfoB+AH/AR0BpAHxAf8B2AHSAcwB/wHoAecB5QH/AdACzwH/A1wB6gMSARkBUwJkAfEDOAFc
-        FAADCQEMAQsBmAH1Af8BCwGYAfUB/wELAZgB9QH/AQsBmAH1Af8BCwGYAfUB/wMBAQKMAAMzAVIB1wLY
-        Af8DzAH/A84B/wPYAf8D4QH/A+wB/wPyAf8C+wH2Af8BAAGfAfcC/wH+AfkJ/wHdAdsB2QH/AzUBWAFT
-        AmQB8QM4AVwPAAEBAzIBUBQAAQsBmAH1Af8DAwEEjAADMwFSAdgB2QHaAf8D1AH/A9sB/wPiAf8B7gHo
-        AeQB/wGLAb0B4AH/Ad0B2AHTAf8B/AH5AfUB/wEAAZcB+wH/AfcB7wHsAf8B/QH8AfcB/wFZAbMB3gH/
-        AvkB+AH/AzsBZQFTAmQB8QM4AVwQAANIAYUBXwJMAfMDQwF4DAABCwGYAfUB/wMDAQSMAAMzAVIE/wP2
-        Af8D8wH/A+8B/wPsAf8BwwHgAe4B/wEAAbAB8QH/AbABpAGjAf8BAAGuAv8B4gHQAckB/wEAAZ8B8AH/
-        AeQB7QHxAf8B7gHvAfAB/wM7AWUBUwJkAfEDOAFcFAABYAJbAdYDOwFkAU4BEAEKAf8DKAE9BAABCwGY
-        AfUB/wMDAQSMAAMzAVIE/wP4Af8D9wH/A/YB/wHzAvIB/wH0AewB5gH/ATcBtwHlAf8BAAHEAfoB/wEA
-        AcUC/wEAAbsB+wH/AV8BtgHbAf8B6gHmAeIB/wHqAesB7AH/AzoBYgFTAmQB8QM4AVwUAAMVAR0BTgEQ
-        AQoB/wFOARABCgH/AU4BEAEKAf8DOwFkAxwBKAMKAQ6MAAMzAVIE/wH6AvkB/wHgAe0B+gH/ATABqAHk
-        Af8BFgG3AdQB/wEvAdwB9gH/AT4B5AL/AUgB7AL/ATwB5gL/ASgB4wL/AQEBzQL/AQQBugHiAf8BHQGk
-        AcMB/wJUAVYBqwFTAmQB8QM4AVwXAAEBAU4BEAEKAf8BTgEQAQoB/wFOARABCgH/AU4BEAEKAf8DLgFH
-        kAADMwFSBP8D+wH/AfwB+wH6Af8C/AH4Af8B6AHvAfcB/wHLAekB9gH/AYIByQHxAf8BngH8Av8BhwH1
-        Av8BSQH0Av8BTwGaAbUB/wGyAdEB4gH/AdAB1AHcAf8DOwFjAVMCZAHxAzgBXBgAAxoBJQFOARABCgH/
-        AU4BEAEKAf8BTgEQAQoB/wFOARABCgH/AzsBZIwAAzMBUgT/A/0B/wP7Af8D+gH/A/gB/wH+AfoB9wH/
-        AVQB8gH9Af8BLAHHAfgB/wGqA/8BGwHLAfAB/wEMAcsB8gH/AdMBzAHIAf8B2QHaAdsB/wM7AWUBUwJk
-        AfEDOAFcHAADGgEkAU4BEAEKAf8BTgEQAQoB/wFOARABCgH/AU4BEAEKAf8DLgFHiAADMwFSCP8D/QH/
-        A/wB/wL8AfoB/wE3AbcB+AH/Ac8B6AH4Af8B4QHtAfUB/wFLAfcC/wH1AeoB5wH/AZoB1AHuAf8BXgGz
-        AdUB/wHgAeEB4gH/AzsBZAFTAmQB8QM4AVwgAAMaASUBTgEQAQoB/wFOARABCgH/AU4BEAEKAf8BTgEQ
-        AQoB/wM7AWSEAAMzAVIM/wP+Af8C+wH8Av8B/gH6Af8D+QH/Af0B+wH3Af8BBQGmAfgB/wH4AfUB7wH/
-        AekC6gH/Ae8B6QHkAf8B4gHjAeQB/wMyAVEBTgJdAfADNwFbJAADGgEkAU4BEAEKAf8BTgEQAQoB/wFO
-        ARABCgH/AU4BEAEKAf+EAAMHAQoDYgH2AdwB2QHXAf8B2wHYAdYB/wHbAdgB1gH/AdoB2AHVAf8B2gHX
-        AdUB/wHZAdcB1AH/AdwB1QHRAf8BAAGMAdwB/wHUAdEBzwH/Ac0BywHJAf8BxgHEAcIB/wNgAesDAwEE
-        AzsBZAFXAl8B6AM7AWUDOwFlAzsBZQM7AWUDOwFlAzsBZQM7AWUDOwFlAzsBZQErAiwBQwMaASUBTgER
-        AQwB/wFOARABCgH/AU4BEAEKAf+oAAM7AWUYAAM5AV8BXgJlAeUDXwHgA18B4ANfAeADXwHgA18B4ANf
-        AeADXwHgA18B4AFYAloBwAQAAxABFgFkAlwB5wM4AV6AAAFCAU0BPgcAAT4DAAEoAwABQAMAARADAAEB
-        AQABAQUAAYAXAAP/AQABwAEPAQABPwQAAYABBwE+AT8EAAGAAQMBPgEPBAABgAEBAT4BDwQAAYABAAE+
-        AQMEAAGAAQABOQHzBAABgAEAATwBcwQAAYABAAE+ARMEAAGAAQABPgEDBAABgAEAAT4BBwQAAYABAAE/
-        AQMEAAGAAQABPwGBBAABgAEAAT8BwAQAAYABAAE/AeAEAAGABwAB/wHfAYABCAQACw==
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAS
+        CQAAAk1TRnQBSQFMAgEBAgIAAQEBAAEBARABAAEQAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABQAMA
+        ARADAAEBAQABIAYAARAaAANJAYcDXgHOA1wB0QNcAdEDXAHRA1wB0QNcAdEDXAHPA1ABngMfASwQAAMN
+        ARIBCQGYAfUB/wFaAmAB3gFaAl8B2wFaAl8B2wFaAl8B2wFaAl8B2wFbAmEB4QEJAZgB9QH/AxwBJ5wA
+        AyoBQQHbAdwB3gH/A8wB/wPTAf8D3QH/A+gB/wPzAf8D+wH/A/4B/wFcAVcBVAH/A2QB8QMvAUoMAAFd
+        AmEB4gNCAXQUAAMdASoBCQGYAfUB/wEJAZgB9QH/nAADMwFTAdQC1QH/A8wB/wPTAf8D3QH/A+cB/wPx
+        Af8D9gH/A/QB/wFbAVcBVQH/Au0B7gH/AcEBvgG8Af8DOAFeCAABWQJnAfIDNwFbFAADHwEsAQkBmAH1
+        Af8BCQGYAfUB/wEJAZgB9QH/AxwBJ5QAAzMBUgHVAdYB1wH/A8wB/wPTAf8D3QH/A+YB/wPxAf8D9wH/
+        AvkB+gH/AYwBhAFdAf8D/QH/A+EB/wGBAYABfwH7AysBQgQAAVMCZAHxAzgBXBQAAx8BLAEJAZgB9QH/
+        AQkBmAH1Af8BCQGYAfUB/wEJAZgB9QH/lAADMwFSAdYB1wHYAf8DzAH/A9IB/wPbAf8D5QH/A+4B/wP2
+        Af8B+wH6AfgB/wEbAaQB8QH/AdgB0gHMAf8B6AHnAeUB/wHQAs8B/wNcAeoDEgEZAVMCZAHxAzgBXBQA
+        AwkBDAEJAZgB9QH/AQkBmAH1Af8BCQGYAfUB/wEJAZgB9QH/AQkBmAH1Af8DAQECjAADMwFSAdcC2AH/
+        A8wB/wPOAf8D2AH/A+EB/wPsAf8D8gH/AvsB9gH/AQABnwH3Av8B/gH5Cf8B3QHbAdkB/wM1AVgBUwJk
+        AfEDOAFcDwABAQMyAVAUAAEJAZgB9QH/AwMBBIwAAzMBUgHYAdkB2gH/A9QB/wPbAf8D4gH/Ae4B6AHk
+        Af8BiwG9AeAB/wHdAdgB0wH/AfwB+QH1Af8BAAGXAfsB/wH3Ae8B7AH/Af0B/AH3Af8BVwGzAd4B/wL5
+        AfgB/wM7AWUBUwJkAfEDOAFcEAADSAGFAV8CTAHzA0MBeAwAAQkBmAH1Af8DAwEEjAADMwFSBP8D9gH/
+        A/MB/wPvAf8D7AH/AcMB4AHuAf8BAAGwAfEB/wGwAaQBowH/AQABrgL/AeIB0AHJAf8BAAGfAfAB/wHk
+        Ae0B8QH/Ae4B7wHwAf8DOwFlAVMCZAHxAzgBXBQAAWACWwHWAzsBZAFMAQ4BCAH/AygBPQQAAQkBmAH1
+        Af8DAwEEjAADMwFSBP8D+AH/A/cB/wP2Af8B8wLyAf8B9AHsAeYB/wE1AbcB5QH/AQABxAH6Af8BAAHF
+        Av8BAAG7AfsB/wFdAbYB2wH/AeoB5gHiAf8B6gHrAewB/wM6AWIBUwJkAfEDOAFcFAADFQEdAUwBDgEI
+        Af8BTAEOAQgB/wFMAQ4BCAH/AzsBZAMcASgDCgEOjAADMwFSBP8B+gL5Af8B4AHtAfoB/wEuAagB5AH/
+        ARQBtwHUAf8BLQHcAfYB/wE8AeQC/wFGAewC/wE6AeYC/wEmAeMC/wEAAc0C/wECAboB4gH/ARsBpAHD
+        Af8CVAFWAasBUwJkAfEDOAFcFwABAQFMAQ4BCAH/AUwBDgEIAf8BTAEOAQgB/wFMAQ4BCAH/Ay4BR5AA
+        AzMBUgT/A/sB/wH8AfsB+gH/AvwB+AH/AegB7wH3Af8BywHpAfYB/wGCAckB8QH/AZ4B/AL/AYcB9QL/
+        AUcB9AL/AU0BmgG1Af8BsgHRAeIB/wHQAdQB3AH/AzsBYwFTAmQB8QM4AVwYAAMaASUBTAEOAQgB/wFM
+        AQ4BCAH/AUwBDgEIAf8BTAEOAQgB/wM7AWSMAAMzAVIE/wP9Af8D+wH/A/oB/wP4Af8B/gH6AfcB/wFS
+        AfIB/QH/ASoBxwH4Af8BqgP/ARkBywHwAf8BCgHLAfIB/wHTAcwByAH/AdkB2gHbAf8DOwFlAVMCZAHx
+        AzgBXBwAAxoBJAFMAQ4BCAH/AUwBDgEIAf8BTAEOAQgB/wFMAQ4BCAH/Ay4BR4gAAzMBUgj/A/0B/wP8
+        Af8C/AH6Af8BNQG3AfgB/wHPAegB+AH/AeEB7QH1Af8BSQH3Av8B9QHqAecB/wGaAdQB7gH/AVwBswHV
+        Af8B4AHhAeIB/wM7AWQBUwJkAfEDOAFcIAADGgElAUwBDgEIAf8BTAEOAQgB/wFMAQ4BCAH/AUwBDgEI
+        Af8DOwFkhAADMwFSDP8D/gH/AvsB/AL/Af4B+gH/A/kB/wH9AfsB9wH/AQMBpgH4Af8B+AH1Ae8B/wHp
+        AuoB/wHvAekB5AH/AeIB4wHkAf8DMgFRAU4CXQHwAzcBWyQAAxoBJAFMAQ4BCAH/AUwBDgEIAf8BTAEO
+        AQgB/wFMAQ4BCAH/hAADBwEKA2IB9gHcAdkB1wH/AdsB2AHWAf8B2wHYAdYB/wHaAdgB1QH/AdoB1wHV
+        Af8B2QHXAdQB/wHcAdUB0QH/AQABjAHcAf8B1AHRAc8B/wHNAcsByQH/AcYBxAHCAf8DYAHrAwMBBAM7
+        AWQBVwJfAegDOwFlAzsBZQM7AWUDOwFlAzsBZQM7AWUDOwFlAzsBZQM7AWUBKwIsAUMDGgElAUwBDwEK
+        Af8BTAEOAQgB/wFMAQ4BCAH/qAADOwFlGAADOQFfAV4CZQHlA18B4ANfAeADXwHgA18B4ANfAeADXwHg
+        A18B4ANfAeABWAJaAcAEAAMQARYBZAJcAecDOAFegAABQgFNAT4HAAE+AwABKAMAAUADAAEQAwABAQEA
+        AQEFAAGAFwAD/wEAAcABDwEAAT8EAAGAAQcBPgE/BAABgAEDAT4BDwQAAYABAQE+AQ8EAAGAAQABPgED
+        BAABgAEAATkB8wQAAYABAAE8AXMEAAGAAQABPgETBAABgAEAAT4BAwQAAYABAAE+AQcEAAGAAQABPwED
+        BAABgAEAAT8BgQQAAYABAAE/AcAEAAGAAQABPwHgBAABgAcAAf8B3wGAAQgEAAs=
 </value>
   </data>
   <metadata name="styleManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -175,32 +175,65 @@
   <metadata name="highlighter1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>386, 9</value>
   </metadata>
+  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>42</value>
   </metadata>
-  <metadata name="dataGridViewTextBoxColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="label5.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="dataGridViewCheckBoxColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="circularProgressPictures.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="dataGridViewImageColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="pictureBoxIsAccepted.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="dataGridViewCheckBoxColumn2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="btnMagnifyPhoto.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="dataGridViewTextBoxColumn2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="lblPhotoName.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>569, 9</value>
+  <metadata name="lblTotalPhotos.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
-  <metadata name="bgWorkerLoadPicture.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 9</value>
+  <metadata name="label2.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>488, 9</value>
+  <metadata name="lblCurrentPhoto.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="btnNextPhoto.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="btnPreviousPhoto.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="txtOriginalPhotoRetouchDescription.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="btnCancelOriginalPhotoOrderPrint.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="btnReloadOriginalPhotoPrintOrder.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="txtTotalPriceOriginalLitPrint.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="btnOkOriginalPrint.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="txtTotalPriceOriginalMutiPhoto.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="txtTotalPriceOriginalServices.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="txtTotalPriceOriginal.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnOriginalShowFrmAddEditLitPrint.HoverImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -233,6 +266,9 @@
         RJCP9RgAhNFGtxBq24UAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="btnOriginalCustomPrintSize.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="btnOriginalCustomPrintSize.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -273,6 +309,33 @@
         RJCP9RgAhNFGtxBq24UAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="txtTotalPriceOriginalPrintSize.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="txtRePrintPhotoRetouchDescription.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="btnCancelRePrintPhotoOrderPrint.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="btnReloadRePrintPhotoPrintOrder.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="btnOKRePrint.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="txtTotalPriceRePrintServices.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="txtTotalPriceRePrint.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="cmbRePrintPrintServices.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="btnRePrintShowFrmAddEditLitPrint.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="btnRePrintShowFrmAddEditLitPrint.HoverImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
@@ -303,6 +366,9 @@
         RJCP9RgAhNFGtxBq24UAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="btnRePrintCustomPrintSize.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="btnRePrintCustomPrintSize.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -313,6 +379,21 @@
         cg8NZjFFE4mc4wkvTj/4jrqu1QlyZeczTJsP6OXtLWXo0scSBH/OeGRrjf+hggAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="txtTotalPriceRePrintLitPrint.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="txtTotalPriceRePrintMutiPhoto.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="btnRePrintChangingElements.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="txtTotalPriceRePrintPrintSize.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="btnRePrintShowFrmAddEditMutiPhotos.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="btnRePrintShowFrmAddEditMutiPhotos.HoverImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
@@ -343,6 +424,159 @@
         RJCP9RgAhNFGtxBq24UAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="cmbRePrintPrintSizes.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="cmbRePrintSequence.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="clmStreamId.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="clmIsSelected.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="clmPhoto.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="clmPhotoId.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="clmDescriptions.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="txtRePrintSequenceChangingElements.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label9.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label8.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="rbOriginalPhotoChangingElements.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="rbRePrintPhotoChangingElements.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="btnDownloadSelectedPhotosChangingElements.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="btnDownloadAllPhotosChangingElements.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="circularProgressChangingElements.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="btnCancelChangingElements.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="btnReLoadChangingElements.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="btnAcceptChangingElements.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dataGridViewTextBoxColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dataGridViewCheckBoxColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dataGridViewImageColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dataGridViewCheckBoxColumn2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dataGridViewTextBoxColumn2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="panel7.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label16.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label15.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="txtRePrintSequenceMultiPhoto.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label3.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="rbOriginalPhotoMultiPhoto.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="rbRePrintPhotoMultiPhoto.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="circularProgressMultiPhoto.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="btnCancelMultiPhoto.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="btnReloadMultiPhoto.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="btnDownloadSelectedPhotosMultiPhoto.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="btnDownloadAllPhotosMultiPhoto.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="btnAcceptMultiPhoto.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label17.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label18.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="txtRePrintSequenceLitPrint.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label4.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="rbRePrintPhotoLitPrint.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="rbOriginalPhotoLitPrint.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label6.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="buttonX1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="btnDownloadSelectedPhotosLitPrint.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="btnDownloadAllPhotosLitPrint.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="circularProgressLitPrint.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="btnCancelLitPrint.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="btnReLoadLitPrint.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="btnAcceptLitPrint.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="clmRowNumber.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -364,19 +598,34 @@
   <metadata name="Column6.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="clmStreamId.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="txtBriefPrintServices.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="clmIsSelected.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="labelX9.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="clmPhoto.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="labelX43.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="clmPhotoId.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="chkOkBeforePrint.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="clmDescriptions.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="txtOrderDescriptions.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="labelX6.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="textBoxX1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label14.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label13.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="datePickerOrderDate.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="datePickerOrderDate.Value" mimetype="application/x-microsoft.net.object.binary.base64">
@@ -394,4 +643,46 @@
         2KjZh9mF2YYGGAAAAArYp9iz2YHZhtivCw==
 </value>
   </data>
+  <metadata name="txtPhotographyType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label12.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="txtCustomerName.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label11.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="txtOrderCodeCustomerIdBookingId.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="txtOrderCodeDate.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="txtOrderPrintCodeDate.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="txtOrderPrintCodeCustomerId.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="txtOrderPrintCodeOrderId.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label10.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label7.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>569, 9</value>
+  </metadata>
+  <metadata name="bgWorkerLoadPicture.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 9</value>
+  </metadata>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>488, 9</value>
+  </metadata>
 </root>
