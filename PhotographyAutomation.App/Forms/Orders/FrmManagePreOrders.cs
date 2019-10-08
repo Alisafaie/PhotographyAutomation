@@ -2154,7 +2154,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                         frm.CustomerName = selectedRow.Cells["clmCustomerFullName"].Value.ToString();
                         frm.PhotographyDate = selectedRow.Cells["clmDate"].Value.ToString();
                         frm.OrderStatus = selectedRow.Cells["clmStatusName"].Value.ToString();
-
+                        frm.ParentPathLocator = parentPathLocator;
                         frm.ShowDialog();
                     }
 

@@ -10,8 +10,7 @@
 namespace PhotographyAutomation.DateLayer.Models
 {
     using System;
-    using System.Collections.Generic;
-    
+
     public partial class View_GetDocumentsFolders
     {
         public System.Guid StreamId { get; set; }

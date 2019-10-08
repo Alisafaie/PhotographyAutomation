@@ -37,6 +37,7 @@ namespace PhotographyAutomation.App.Forms.Orders
         //public int BookingId = 0;
         public int CustomerId = 0;
         public int OrderId = 0;
+        public string ParentPathLocator;
 
 
         public string CustomerName;
@@ -100,8 +101,8 @@ namespace PhotographyAutomation.App.Forms.Orders
             var loc = x.PointToScreen(Point.Empty);
 
             MouseSilulator.MoveCursorToPoint(loc.X + 6, loc.Y + 6);
-            MouseSilulator.DoMouseClick();
-            MouseSilulator.DoMouseClick();
+            MouseSilulator.DoMouseClick(); //Do Click
+            MouseSilulator.DoMouseClick(); //Do UnClick
         }
 
         private void FrmUploadSelectedPhotos_FormClosed(object sender, FormClosedEventArgs e)
@@ -618,6 +619,7 @@ namespace PhotographyAutomation.App.Forms.Orders
                                         frmPreFactor.IsNewPreFactor = true;
                                         frmPreFactor.FileStreamsGuids = streamIdsToUploadList;
                                         frmPreFactor.OrderDetailsList = orderDetailsList;
+                                        frmPreFactor.ParentPathLocator = ParentPathLocator;
                                         //Hide();
                                         frmPreFactor.ShowDialog();
                                         DialogResult = DialogResult.OK;
