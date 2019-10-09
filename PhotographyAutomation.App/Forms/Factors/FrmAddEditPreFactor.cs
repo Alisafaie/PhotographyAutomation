@@ -4,6 +4,7 @@ using PhotographyAutomation.App.Forms.PrintSizeAndServices;
 using PhotographyAutomation.Business.OrderDetails;
 using PhotographyAutomation.DateLayer.Context;
 using PhotographyAutomation.DateLayer.Models;
+using PhotographyAutomation.Utilities;
 using PhotographyAutomation.Utilities.Convertor;
 using PhotographyAutomation.ViewModels.Document;
 using PhotographyAutomation.ViewModels.OrderPrint;
@@ -38,6 +39,11 @@ namespace PhotographyAutomation.App.Forms.Factors
         private int _selectedOriginalSizeId;
         private int _selectedRePrintSizeId;
 
+        private bool _downloadAllFilesChangingElements = false;
+        private bool _downloadSelectedfilesChangingElements = false;
+
+        private bool _photosDownloaded = false;
+
         private OrderPrintViewModel _orderPrintViewModel;
 
         private static List<PrintSizesViewModel> _listOriginalPrintSizes;
@@ -63,6 +69,12 @@ namespace PhotographyAutomation.App.Forms.Factors
             WorkerReportsProgress = false
         };
 
+        private readonly BackgroundWorker _bgWorkerDownloadPhotos = new BackgroundWorker
+        {
+            WorkerReportsProgress = false,
+            WorkerSupportsCancellation = false
+        };
+
         #endregion
 
 
@@ -75,7 +87,15 @@ namespace PhotographyAutomation.App.Forms.Factors
 
             _bgWorkerLoadPrintSizeAndServicesInfo.DoWork += _bgWorkerLoadPrintSizeAndServicesInfo_DoWork;
             _bgWorkerLoadPrintSizeAndServicesInfo.RunWorkerCompleted += _bgWorkerLoadPrintSizeAndServicesInfo_RunWorkerCompleted;
+
+            _bgWorkerDownloadPhotos.DoWork += _bgWorkerDownloadPhotos_DoWork;
+            _bgWorkerDownloadPhotos.RunWorkerCompleted += _bgWorkerDownloadPhotos_RunWorkerCompleted;
         }
+
+
+
+
+
         private void FrmAddEditPreFactor_Load(object sender, EventArgs e)
         {
             try
@@ -103,6 +123,16 @@ namespace PhotographyAutomation.App.Forms.Factors
                         @"لطفا دوباره تلاش کنید و در صورت تکرار با مدیر سیستم تماس بگیرید.");
                     throw exception;
                 }
+
+                var dr = MessageBox.Show(
+                    @"آیا مایل هستید عکس های مشتری در پس زمینه دانلود گردد؟",
+                    @"دانلود عکس ها در پس زمینه",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1,
+                    MessageBoxOptions.RightAlign);
+                if (dr == DialogResult.Yes)
+                {
+                    DownloadPhotosInBackground();
+                }
             }
             catch (Exception exception)
             {
@@ -115,6 +145,75 @@ namespace PhotographyAutomation.App.Forms.Factors
             }
         }
 
+        private void DownloadPhotosInBackground()
+        {
+            _bgWorkerDownloadPhotos.RunWorkerAsync();
+            circularProgressDownloadPhotos.IsRunning = _bgWorkerDownloadPhotos.IsBusy;
+        }
+        private void _bgWorkerDownloadPhotos_DoWork(object sender, DoWorkEventArgs e)
+        {
+            FolderHelper folderHelper = new FolderHelper();
+            FileHelper fileHelper = new FileHelper();
+
+            // 1 Temp Folder
+            DirectoryInfo tempFolder = folderHelper.GetTempPathOfCurrentUser();
+
+
+            // 2 Orders Folder
+            string orderPath = Path.Combine(tempFolder.FullName, "Orders");
+            DirectoryInfo ordersDirectoryInfo = null;
+            bool resultCreateOrderFolder = true;
+            if (folderHelper.IsFolderExists(orderPath) == false)
+            {
+                if (folderHelper.CreateFolder(tempFolder.FullName, "Orders") is DirectoryInfo ordersDirInfo)
+                {
+                    ordersDirectoryInfo = ordersDirInfo;
+                }
+                else
+                {
+                    resultCreateOrderFolder = false;
+                }
+            }
+            else
+            {
+                ordersDirectoryInfo = new DirectoryInfo(Path.Combine(tempFolder.FullName, "Orders"));
+            }
+
+            if (resultCreateOrderFolder == false) return;
+
+            // 3 OrderCode Folder
+            string orderCodePath = Path.Combine(ordersDirectoryInfo.FullName, _orderPrintViewModel.OrderCode);
+            DirectoryInfo orderCodeDirectoryInfo = null;
+            bool resultCreateOrderCodeDirectory = true;
+            if (folderHelper.IsFolderExists(orderCodePath) == false)
+            {
+                if (folderHelper.CreateFolder(ordersDirectoryInfo.FullName, _orderPrintViewModel.OrderCode) is
+                    DirectoryInfo orderCodeDirInfo)
+                {
+                    orderCodeDirectoryInfo = orderCodeDirInfo;
+                }
+                else
+                {
+                    resultCreateOrderCodeDirectory = false;
+                }
+            }
+            else
+            {
+                orderCodeDirectoryInfo =
+                    new DirectoryInfo(Path.Combine(ordersDirectoryInfo.FullName, _orderPrintViewModel.OrderCode));
+            }
+
+            if (resultCreateOrderCodeDirectory == false) return;
+
+            // 4 Orderprint Folder
+
+            
+
+        }
+        private void _bgWorkerDownloadPhotos_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            circularProgressDownloadPhotos.IsRunning = _bgWorkerDownloadPhotos.IsBusy;
+        }
 
         #endregion
 
@@ -2501,25 +2600,56 @@ namespace PhotographyAutomation.App.Forms.Factors
 
         private void btnDownloadAllPhotosChangingElements_Click(object sender, EventArgs e)
         {
+            _downloadAllFilesChangingElements = true;
+
             //چک کن ببین قبلا همه عکس ها دانلود شده است یا نه. در صورتی که دانلود نشده است دانلود در یک فولدر 
             //temp انجام شود و بعد از بسته شدن فرم هم این فولدر از سیستم حذف شود.
 
             //check there is any folder in temp with the name of order code
 
-            #region variables
-            //string tempPath = Path.GetTempPath();
-            string orderCode = _orderPrintViewModel.OrderCode;
+            FolderHelper folderHelper = new FolderHelper();
 
-            //string orderPath = tempPath + "\\" + orderCode;
-            string orderCodePath = Path.Combine(Path.GetTempPath(), orderCode);
+            string tempFolderPath = folderHelper.GetTempPathOfCurrentUser().FullName;
+            string orderFolderPath = Path.Combine(tempFolderPath, "Orders");
+            bool isOrderFolderExists = folderHelper.IsFolderExists(orderFolderPath);
 
-            //string allPhotosDownloadPath = tempPath + "\\" + orderCode + "\\" + "All Photos";
-            string allPhotosDownloadPath = Path.Combine(Path.GetTempPath(), orderCodePath, @"All Photos\");
+            if (isOrderFolderExists)
+            {
+                var orderFolderHasFiles = folderHelper.IsFolderHasFiles(orderFolderPath);
+                if (orderFolderHasFiles)
+                {
+                    bool deleteFilesInOrderFolder = folderHelper.DeleteFilesInFolder(orderFolderPath);
+                    if (deleteFilesInOrderFolder)
+                    {
+                        string orderNumberFolderPath = Path.Combine(orderFolderPath, _orderPrintViewModel.OrderCode);
+                        bool isOrderNumberFolderExists = folderHelper.IsFolderExists(orderNumberFolderPath);
+                        if (isOrderNumberFolderExists)
+                        {
+                            if (_downloadAllFilesChangingElements)
+                            {
+                                string orderNumberAllPhotosFolderPath = Path.Combine(orderNumberFolderPath, "All-Photos");
+                                bool isAllPhotosFolderExists =
+                                    folderHelper.IsFolderExists(orderNumberAllPhotosFolderPath);
+                                if (isAllPhotosFolderExists)
+                                {
 
-            //string selectedPhotosDownloadPath = tempPath + "\\" + orderCode + "\\" + "SelectedPhotos";
-            string selectedPhotosDownloadPath = Path.Combine(Path.GetTempPath(), orderCodePath, @"SelectedPhotos\");
-            
-            #endregion
+                                }
+                            }
+                            else if (_downloadSelectedfilesChangingElements)
+                            {
+
+                            }
+                        }
+                    }
+                    else
+                    {
+                        throw new IOException("خطا در حذف فایل های داخل فولدر سفارشات");
+                    }
+                }
+            }
+
+            Console.Read();
+
 
             //if (Directory.Exists(orderCodePath))
             //{
@@ -2611,10 +2741,10 @@ namespace PhotographyAutomation.App.Forms.Factors
                             var file = db.PhotoRepository.DownloadOrderPhotos(guid);
                             if (file != null)
                             {
-                            //RetryCreateFolders:
+                                //RetryCreateFolders:
                                 //var directoryPathOrders = CreateOrderDirectory(selectedPath);
                                 //var directoryPathOrderCode = CreateOrderCodeDirectory(orderCode, directoryPathOrders);
-                                
+
                                 //if (directoryPathOrders == null || directoryPathOrderCode == null)
                                 //{
                                 //    DialogResult drCreateOrderFolders = MessageBox.Show(
@@ -2633,7 +2763,7 @@ namespace PhotographyAutomation.App.Forms.Factors
 
                                 //string fileNameAndPath = directoryPathOrderCode + file.name;
                                 //string fileNameAndPath = selectedPath + file.name;
-                                string fileNameAndPath=Path.Combine(selectedPath, file.name);
+                                string fileNameAndPath = Path.Combine(selectedPath, file.name);
 
                                 bool fileExists = File.Exists(fileNameAndPath);
 
@@ -2847,9 +2977,9 @@ namespace PhotographyAutomation.App.Forms.Factors
         }
 
 
-        
 
-        
+
+
 
         private void btnDownloadSelectedPhotosChangingElements_Click(object sender, EventArgs e)
         {

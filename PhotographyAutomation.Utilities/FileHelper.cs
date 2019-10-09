@@ -27,5 +27,35 @@ namespace PhotographyAutomation.Utilities
                 throw;
             }
         }
+
+        public bool DeleteFiles(string[] files)
+        {
+            if (files.Length > 0)
+            {
+                FileInfo fileInfo = new FileInfo(files[0]);
+                string parentFolderPath = string.Empty;
+                if (fileInfo.Directory != null)
+                {
+                    parentFolderPath = fileInfo.Directory.FullName;
+                }
+
+                foreach (var file in files)
+                {
+                    if (File.Exists(file))
+                    {
+                        File.Delete(file);
+                    }
+                }
+
+                if (Directory.Exists(parentFolderPath))
+                {
+                    string[] filesAfterDelete = Directory.GetFiles(parentFolderPath);
+                    if (filesAfterDelete.Length == 0)
+                        return true;
+                    return false;
+                }
+            }
+            throw new IOException("فولدر مورد نظر وجود ندارد.");
+        }
     }
 }

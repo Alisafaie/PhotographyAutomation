@@ -33,16 +33,14 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.منو_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.نوسازی_تمامی_عکس_های_انتخابی_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.پیشفاکتورToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ثبت_پیش_فاکتور_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.انصراف_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -176,6 +174,12 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.dgvChangingElements = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.clmStreamId_ChE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmIsSelected_ChE = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.clmPhoto_ChE = new System.Windows.Forms.DataGridViewImageColumn();
+            this.clmPhotoFileName_ChE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmBtnShowPhotoPreview_ChE = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.clmDescriptions_ChE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel5 = new System.Windows.Forms.Panel();
             this.lblPrintSizeChangingElements = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -195,6 +199,13 @@
             this.tabPageMultiPhoto = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.dgvMultiPhoto = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.clmStreamId_MPh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmIsSelected_MPh = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.clmPhoto_MPh = new System.Windows.Forms.DataGridViewImageColumn();
+            this.clmPhotoFileName_MPh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmBtnShowPhotoPreview_MPh = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.clmDescriptions_MPh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel7 = new System.Windows.Forms.Panel();
             this.lblPrintSizeMultiPhoto = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -241,19 +252,10 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvMultiPhoto = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.clmStreamId_ChE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmIsSelected_ChE = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.clmPhoto_ChE = new System.Windows.Forms.DataGridViewImageColumn();
-            this.clmPhotoFileName_ChE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmBtnShowPhotoPreview_ChE = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.clmDescriptions_ChE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmStreamId_MPh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmIsSelected_MPh = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.clmPhoto_MPh = new System.Windows.Forms.DataGridViewImageColumn();
-            this.clmPhotoFileName_MPh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmBtnShowPhotoPreview_MPh = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.clmDescriptions_MPh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.امکانات_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.حذف_عکسهای_فولدر_Temp_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.نوسازی_تمامی_عکس_های_انتخابی_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.circularProgressDownloadPhotos = new DevComponents.DotNetBar.Controls.CircularProgress();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panelEx1.SuspendLayout();
@@ -284,6 +286,7 @@
             this.tabPageMultiPhoto.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMultiPhoto)).BeginInit();
             this.panel7.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabPageLitPrint.SuspendLayout();
@@ -294,34 +297,19 @@
             this.panel4.SuspendLayout();
             this.tabPageOrderDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrderDetails)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMultiPhoto)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.منو_ToolStripMenuItem,
+            this.امکانات_ToolStripMenuItem,
             this.پیشفاکتورToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1161, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // منو_ToolStripMenuItem
-            // 
-            this.منو_ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.نوسازی_تمامی_عکس_های_انتخابی_ToolStripMenuItem});
-            this.منو_ToolStripMenuItem.Name = "منو_ToolStripMenuItem";
-            this.منو_ToolStripMenuItem.Size = new System.Drawing.Size(34, 20);
-            this.منو_ToolStripMenuItem.Text = "منو";
-            // 
-            // نوسازی_تمامی_عکس_های_انتخابی_ToolStripMenuItem
-            // 
-            this.نوسازی_تمامی_عکس_های_انتخابی_ToolStripMenuItem.Name = "نوسازی_تمامی_عکس_های_انتخابی_ToolStripMenuItem";
-            this.نوسازی_تمامی_عکس_های_انتخابی_ToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
-            this.نوسازی_تمامی_عکس_های_انتخابی_ToolStripMenuItem.Text = "نوسازی تمامی عکس های انتخابی";
             // 
             // پیشفاکتورToolStripMenuItem
             // 
@@ -335,13 +323,13 @@
             // ثبت_پیش_فاکتور_ToolStripMenuItem
             // 
             this.ثبت_پیش_فاکتور_ToolStripMenuItem.Name = "ثبت_پیش_فاکتور_ToolStripMenuItem";
-            this.ثبت_پیش_فاکتور_ToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.ثبت_پیش_فاکتور_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ثبت_پیش_فاکتور_ToolStripMenuItem.Text = "ثبت پیش فاکتور";
             // 
             // انصراف_ToolStripMenuItem
             // 
             this.انصراف_ToolStripMenuItem.Name = "انصراف_ToolStripMenuItem";
-            this.انصراف_ToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.انصراف_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.انصراف_ToolStripMenuItem.Text = "انصراف";
             // 
             // imageList1
@@ -466,6 +454,7 @@
             this.panelEx1.Controls.Add(this.txtOrderPrintCodeOrderId);
             this.panelEx1.Controls.Add(this.label10);
             this.panelEx1.Controls.Add(this.label7);
+            this.panelEx1.Controls.Add(this.circularProgressDownloadPhotos);
             this.panelEx1.Controls.Add(this.circularProgress);
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -730,10 +719,10 @@
             // 
             // 
             this.circularProgress.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.circularProgress.Location = new System.Drawing.Point(12, 11);
+            this.circularProgress.Location = new System.Drawing.Point(3, 0);
             this.circularProgress.Name = "circularProgress";
             this.circularProgress.ProgressColor = System.Drawing.Color.RoyalBlue;
-            this.circularProgress.Size = new System.Drawing.Size(30, 30);
+            this.circularProgress.Size = new System.Drawing.Size(21, 27);
             this.circularProgress.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.circularProgress.TabIndex = 109;
             this.circularProgress.TabStop = false;
@@ -1279,7 +1268,7 @@
             // 
             this.txtOriginalLitPrintPrice.Border.Class = "TextBoxBorder";
             this.txtOriginalLitPrintPrice.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtOriginalLitPrintPrice.Location = new System.Drawing.Point(290, 105);
+            this.txtOriginalLitPrintPrice.Location = new System.Drawing.Point(277, 105);
             this.txtOriginalLitPrintPrice.Name = "txtOriginalLitPrintPrice";
             this.txtOriginalLitPrintPrice.PreventEnterBeep = true;
             this.txtOriginalLitPrintPrice.ReadOnly = true;
@@ -1333,7 +1322,7 @@
             // 
             this.txtOriginalMutiPhotoSelectedPhotos.Border.Class = "TextBoxBorder";
             this.txtOriginalMutiPhotoSelectedPhotos.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtOriginalMutiPhotoSelectedPhotos.Location = new System.Drawing.Point(224, 76);
+            this.txtOriginalMutiPhotoSelectedPhotos.Location = new System.Drawing.Point(211, 76);
             this.txtOriginalMutiPhotoSelectedPhotos.Name = "txtOriginalMutiPhotoSelectedPhotos";
             this.txtOriginalMutiPhotoSelectedPhotos.PreventEnterBeep = true;
             this.txtOriginalMutiPhotoSelectedPhotos.ReadOnly = true;
@@ -1351,7 +1340,7 @@
             // 
             this.txtOriginalMultiPhotoPrice.Border.Class = "TextBoxBorder";
             this.txtOriginalMultiPhotoPrice.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtOriginalMultiPhotoPrice.Location = new System.Drawing.Point(290, 76);
+            this.txtOriginalMultiPhotoPrice.Location = new System.Drawing.Point(277, 76);
             this.txtOriginalMultiPhotoPrice.Name = "txtOriginalMultiPhotoPrice";
             this.txtOriginalMultiPhotoPrice.PreventEnterBeep = true;
             this.txtOriginalMultiPhotoPrice.ReadOnly = true;
@@ -1389,7 +1378,7 @@
             // 
             this.txtOriginalServicePrice.Border.Class = "TextBoxBorder";
             this.txtOriginalServicePrice.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtOriginalServicePrice.Location = new System.Drawing.Point(290, 162);
+            this.txtOriginalServicePrice.Location = new System.Drawing.Point(277, 162);
             this.txtOriginalServicePrice.Name = "txtOriginalServicePrice";
             this.txtOriginalServicePrice.PreventEnterBeep = true;
             this.txtOriginalServicePrice.ReadOnly = true;
@@ -1561,7 +1550,7 @@
             // 
             // 
             this.labelX23.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX23.Location = new System.Drawing.Point(756, 50);
+            this.labelX23.Location = new System.Drawing.Point(772, 50);
             this.labelX23.Name = "labelX23";
             this.labelX23.Size = new System.Drawing.Size(56, 16);
             this.labelX23.TabIndex = 213;
@@ -1620,7 +1609,7 @@
             // 
             this.txtOriginalMinimumOrder.Border.Class = "TextBoxBorder";
             this.txtOriginalMinimumOrder.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtOriginalMinimumOrder.Location = new System.Drawing.Point(290, 48);
+            this.txtOriginalMinimumOrder.Location = new System.Drawing.Point(277, 48);
             this.txtOriginalMinimumOrder.Name = "txtOriginalMinimumOrder";
             this.txtOriginalMinimumOrder.PreventEnterBeep = true;
             this.txtOriginalMinimumOrder.ReadOnly = true;
@@ -1714,7 +1703,7 @@
             // 
             // 
             this.chkIsActiveRePrint.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.chkIsActiveRePrint.Location = new System.Drawing.Point(290, 20);
+            this.chkIsActiveRePrint.Location = new System.Drawing.Point(277, 20);
             this.chkIsActiveRePrint.Name = "chkIsActiveRePrint";
             this.chkIsActiveRePrint.Size = new System.Drawing.Size(119, 23);
             this.chkIsActiveRePrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1798,7 +1787,7 @@
             // 
             this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX10.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelX10.Location = new System.Drawing.Point(409, 50);
+            this.labelX10.Location = new System.Drawing.Point(410, 50);
             this.labelX10.Name = "labelX10";
             this.labelX10.Size = new System.Drawing.Size(64, 16);
             this.labelX10.TabIndex = 21;
@@ -1812,7 +1801,7 @@
             // 
             this.txtRePrintTotalPrintCounts.Border.Class = "TextBoxBorder";
             this.txtRePrintTotalPrintCounts.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtRePrintTotalPrintCounts.Location = new System.Drawing.Point(175, 48);
+            this.txtRePrintTotalPrintCounts.Location = new System.Drawing.Point(162, 48);
             this.txtRePrintTotalPrintCounts.Name = "txtRePrintTotalPrintCounts";
             this.txtRePrintTotalPrintCounts.PreventEnterBeep = true;
             this.txtRePrintTotalPrintCounts.ReadOnly = true;
@@ -1831,7 +1820,7 @@
             // 
             this.txtRePrintMultiPhotoSelectedPhotos.Border.Class = "TextBoxBorder";
             this.txtRePrintMultiPhotoSelectedPhotos.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtRePrintMultiPhotoSelectedPhotos.Location = new System.Drawing.Point(224, 76);
+            this.txtRePrintMultiPhotoSelectedPhotos.Location = new System.Drawing.Point(211, 76);
             this.txtRePrintMultiPhotoSelectedPhotos.Name = "txtRePrintMultiPhotoSelectedPhotos";
             this.txtRePrintMultiPhotoSelectedPhotos.PreventEnterBeep = true;
             this.txtRePrintMultiPhotoSelectedPhotos.ReadOnly = true;
@@ -1849,7 +1838,7 @@
             // 
             this.txtRePrintLitPrintPrice.Border.Class = "TextBoxBorder";
             this.txtRePrintLitPrintPrice.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtRePrintLitPrintPrice.Location = new System.Drawing.Point(290, 105);
+            this.txtRePrintLitPrintPrice.Location = new System.Drawing.Point(277, 105);
             this.txtRePrintLitPrintPrice.Name = "txtRePrintLitPrintPrice";
             this.txtRePrintLitPrintPrice.PreventEnterBeep = true;
             this.txtRePrintLitPrintPrice.ReadOnly = true;
@@ -1868,7 +1857,7 @@
             // 
             this.txtRePrintMinimumOrder.Border.Class = "TextBoxBorder";
             this.txtRePrintMinimumOrder.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtRePrintMinimumOrder.Location = new System.Drawing.Point(290, 48);
+            this.txtRePrintMinimumOrder.Location = new System.Drawing.Point(277, 48);
             this.txtRePrintMinimumOrder.Name = "txtRePrintMinimumOrder";
             this.txtRePrintMinimumOrder.PreventEnterBeep = true;
             this.txtRePrintMinimumOrder.ReadOnly = true;
@@ -1887,7 +1876,7 @@
             // 
             this.txtRePrintMultiPhotoPrice.Border.Class = "TextBoxBorder";
             this.txtRePrintMultiPhotoPrice.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtRePrintMultiPhotoPrice.Location = new System.Drawing.Point(290, 76);
+            this.txtRePrintMultiPhotoPrice.Location = new System.Drawing.Point(277, 76);
             this.txtRePrintMultiPhotoPrice.Name = "txtRePrintMultiPhotoPrice";
             this.txtRePrintMultiPhotoPrice.PreventEnterBeep = true;
             this.txtRePrintMultiPhotoPrice.ReadOnly = true;
@@ -1906,7 +1895,7 @@
             // 
             this.txtRePrintServicePrice.Border.Class = "TextBoxBorder";
             this.txtRePrintServicePrice.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtRePrintServicePrice.Location = new System.Drawing.Point(290, 162);
+            this.txtRePrintServicePrice.Location = new System.Drawing.Point(277, 162);
             this.txtRePrintServicePrice.Name = "txtRePrintServicePrice";
             this.txtRePrintServicePrice.PreventEnterBeep = true;
             this.txtRePrintServicePrice.ReadOnly = true;
@@ -1927,7 +1916,7 @@
             this.iiRePrintServiceCounts.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.iiRePrintServiceCounts.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.iiRePrintServiceCounts.Enabled = false;
-            this.iiRePrintServiceCounts.Location = new System.Drawing.Point(224, 162);
+            this.iiRePrintServiceCounts.Location = new System.Drawing.Point(211, 162);
             this.iiRePrintServiceCounts.MaxValue = 1000;
             this.iiRePrintServiceCounts.MinValue = 0;
             this.iiRePrintServiceCounts.Name = "iiRePrintServiceCounts";
@@ -1944,7 +1933,7 @@
             this.iiRePrintPrintCounts.BackgroundStyle.Class = "DateTimeInputBackground";
             this.iiRePrintPrintCounts.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.iiRePrintPrintCounts.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.iiRePrintPrintCounts.Location = new System.Drawing.Point(224, 48);
+            this.iiRePrintPrintCounts.Location = new System.Drawing.Point(211, 48);
             this.iiRePrintPrintCounts.MaxValue = 1000;
             this.iiRePrintPrintCounts.MinValue = 0;
             this.iiRePrintPrintCounts.Name = "iiRePrintPrintCounts";
@@ -1977,7 +1966,7 @@
             // 
             this.labelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX16.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelX16.Location = new System.Drawing.Point(404, 164);
+            this.labelX16.Location = new System.Drawing.Point(406, 164);
             this.labelX16.Name = "labelX16";
             this.labelX16.Size = new System.Drawing.Size(68, 16);
             this.labelX16.TabIndex = 24;
@@ -1992,7 +1981,7 @@
             // 
             this.labelX15.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX15.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelX15.Location = new System.Drawing.Point(419, 107);
+            this.labelX15.Location = new System.Drawing.Point(418, 107);
             this.labelX15.Name = "labelX15";
             this.labelX15.Size = new System.Drawing.Size(56, 16);
             this.labelX15.TabIndex = 23;
@@ -2258,7 +2247,7 @@
             // 
             this.labelX25.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX25.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelX25.Location = new System.Drawing.Point(783, 23);
+            this.labelX25.Location = new System.Drawing.Point(793, 23);
             this.labelX25.Name = "labelX25";
             this.labelX25.Size = new System.Drawing.Size(35, 16);
             this.labelX25.TabIndex = 18;
@@ -2288,7 +2277,7 @@
             // 
             // 
             this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX8.Location = new System.Drawing.Point(440, 23);
+            this.labelX8.Location = new System.Drawing.Point(432, 23);
             this.labelX8.Name = "labelX8";
             this.labelX8.Size = new System.Drawing.Size(42, 16);
             this.labelX8.TabIndex = 20;
@@ -2302,7 +2291,7 @@
             // 
             // 
             this.labelX21.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX21.Location = new System.Drawing.Point(756, 50);
+            this.labelX21.Location = new System.Drawing.Point(772, 50);
             this.labelX21.Name = "labelX21";
             this.labelX21.Size = new System.Drawing.Size(56, 16);
             this.labelX21.TabIndex = 19;
@@ -2391,6 +2380,52 @@
             this.dgvChangingElements.Size = new System.Drawing.Size(831, 202);
             this.dgvChangingElements.TabIndex = 165;
             this.dgvChangingElements.UseCustomBackgroundColor = true;
+            // 
+            // clmStreamId_ChE
+            // 
+            this.clmStreamId_ChE.HeaderText = "StreamId";
+            this.clmStreamId_ChE.Name = "clmStreamId_ChE";
+            this.clmStreamId_ChE.ReadOnly = true;
+            this.clmStreamId_ChE.Visible = false;
+            // 
+            // clmIsSelected_ChE
+            // 
+            this.clmIsSelected_ChE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.clmIsSelected_ChE.HeaderText = "انتخاب";
+            this.clmIsSelected_ChE.Name = "clmIsSelected_ChE";
+            this.clmIsSelected_ChE.ReadOnly = true;
+            this.clmIsSelected_ChE.Width = 42;
+            // 
+            // clmPhoto_ChE
+            // 
+            this.clmPhoto_ChE.HeaderText = "تصویر";
+            this.clmPhoto_ChE.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.clmPhoto_ChE.Name = "clmPhoto_ChE";
+            this.clmPhoto_ChE.ReadOnly = true;
+            this.clmPhoto_ChE.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // clmPhotoFileName_ChE
+            // 
+            this.clmPhotoFileName_ChE.HeaderText = "نام تصویر";
+            this.clmPhotoFileName_ChE.Name = "clmPhotoFileName_ChE";
+            this.clmPhotoFileName_ChE.ReadOnly = true;
+            this.clmPhotoFileName_ChE.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clmPhotoFileName_ChE.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // clmBtnShowPhotoPreview_ChE
+            // 
+            this.clmBtnShowPhotoPreview_ChE.HeaderText = "پیش نمایش";
+            this.clmBtnShowPhotoPreview_ChE.Name = "clmBtnShowPhotoPreview_ChE";
+            this.clmBtnShowPhotoPreview_ChE.ReadOnly = true;
+            // 
+            // clmDescriptions_ChE
+            // 
+            this.clmDescriptions_ChE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmDescriptions_ChE.HeaderText = "توضیحات";
+            this.clmDescriptions_ChE.Name = "clmDescriptions_ChE";
+            this.clmDescriptions_ChE.ReadOnly = true;
+            this.clmDescriptions_ChE.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clmDescriptions_ChE.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // panel5
             // 
@@ -2539,7 +2574,7 @@
             this.btnDownloadSelectedPhotosChangingElements.SymbolColor = System.Drawing.Color.SteelBlue;
             this.btnDownloadSelectedPhotosChangingElements.SymbolSize = 12F;
             this.btnDownloadSelectedPhotosChangingElements.TabIndex = 167;
-            this.btnDownloadSelectedPhotosChangingElements.Text = "دریافت عکسهای انتخابی";
+            this.btnDownloadSelectedPhotosChangingElements.Text = "نمایش عکسهای انتخابی";
             this.btnDownloadSelectedPhotosChangingElements.Click += new System.EventHandler(this.btnDownloadSelectedPhotosChangingElements_Click);
             // 
             // btnDownloadAllPhotosChangingElements
@@ -2555,7 +2590,7 @@
             this.btnDownloadAllPhotosChangingElements.SymbolColor = System.Drawing.Color.SteelBlue;
             this.btnDownloadAllPhotosChangingElements.SymbolSize = 11F;
             this.btnDownloadAllPhotosChangingElements.TabIndex = 168;
-            this.btnDownloadAllPhotosChangingElements.Text = "دریافت همه عکس ها";
+            this.btnDownloadAllPhotosChangingElements.Text = "نمایش همه عکس ها";
             this.btnDownloadAllPhotosChangingElements.Click += new System.EventHandler(this.btnDownloadAllPhotosChangingElements_Click);
             // 
             // circularProgressChangingElements
@@ -2650,6 +2685,104 @@
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(831, 227);
             this.panel8.TabIndex = 160;
+            // 
+            // dgvMultiPhoto
+            // 
+            this.dgvMultiPhoto.AllowUserToAddRows = false;
+            this.dgvMultiPhoto.AllowUserToDeleteRows = false;
+            this.dgvMultiPhoto.BackgroundColor = System.Drawing.Color.GhostWhite;
+            this.dgvMultiPhoto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMultiPhoto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvMultiPhoto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMultiPhoto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clmStreamId_MPh,
+            this.clmIsSelected_MPh,
+            this.clmPhoto_MPh,
+            this.clmPhotoFileName_MPh,
+            this.clmBtnShowPhotoPreview_MPh,
+            this.clmDescriptions_MPh});
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvMultiPhoto.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvMultiPhoto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvMultiPhoto.EnableHeadersVisualStyles = false;
+            this.dgvMultiPhoto.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.dgvMultiPhoto.Location = new System.Drawing.Point(0, 25);
+            this.dgvMultiPhoto.MultiSelect = false;
+            this.dgvMultiPhoto.Name = "dgvMultiPhoto";
+            this.dgvMultiPhoto.ReadOnly = true;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMultiPhoto.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvMultiPhoto.RowHeadersVisible = false;
+            this.dgvMultiPhoto.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvMultiPhoto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvMultiPhoto.Size = new System.Drawing.Size(831, 202);
+            this.dgvMultiPhoto.TabIndex = 166;
+            this.dgvMultiPhoto.UseCustomBackgroundColor = true;
+            // 
+            // clmStreamId_MPh
+            // 
+            this.clmStreamId_MPh.HeaderText = "StreamId";
+            this.clmStreamId_MPh.Name = "clmStreamId_MPh";
+            this.clmStreamId_MPh.ReadOnly = true;
+            this.clmStreamId_MPh.Visible = false;
+            // 
+            // clmIsSelected_MPh
+            // 
+            this.clmIsSelected_MPh.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.clmIsSelected_MPh.HeaderText = "انتخاب";
+            this.clmIsSelected_MPh.Name = "clmIsSelected_MPh";
+            this.clmIsSelected_MPh.ReadOnly = true;
+            this.clmIsSelected_MPh.Width = 42;
+            // 
+            // clmPhoto_MPh
+            // 
+            this.clmPhoto_MPh.HeaderText = "تصویر";
+            this.clmPhoto_MPh.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.clmPhoto_MPh.Name = "clmPhoto_MPh";
+            this.clmPhoto_MPh.ReadOnly = true;
+            this.clmPhoto_MPh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // clmPhotoFileName_MPh
+            // 
+            this.clmPhotoFileName_MPh.HeaderText = "نام تصویر";
+            this.clmPhotoFileName_MPh.Name = "clmPhotoFileName_MPh";
+            this.clmPhotoFileName_MPh.ReadOnly = true;
+            this.clmPhotoFileName_MPh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clmPhotoFileName_MPh.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // clmBtnShowPhotoPreview_MPh
+            // 
+            this.clmBtnShowPhotoPreview_MPh.HeaderText = "پیش نمایش";
+            this.clmBtnShowPhotoPreview_MPh.Name = "clmBtnShowPhotoPreview_MPh";
+            this.clmBtnShowPhotoPreview_MPh.ReadOnly = true;
+            // 
+            // clmDescriptions_MPh
+            // 
+            this.clmDescriptions_MPh.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmDescriptions_MPh.HeaderText = "توضیحات";
+            this.clmDescriptions_MPh.Name = "clmDescriptions_MPh";
+            this.clmDescriptions_MPh.ReadOnly = true;
+            this.clmDescriptions_MPh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clmDescriptions_MPh.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // panel7
             // 
@@ -2845,7 +2978,7 @@
             this.btnDownloadSelectedPhotosMultiPhoto.SymbolColor = System.Drawing.Color.SteelBlue;
             this.btnDownloadSelectedPhotosMultiPhoto.SymbolSize = 12F;
             this.btnDownloadSelectedPhotosMultiPhoto.TabIndex = 158;
-            this.btnDownloadSelectedPhotosMultiPhoto.Text = "دریافت عکسهای انتخابی";
+            this.btnDownloadSelectedPhotosMultiPhoto.Text = "نمایش عکسهای انتخابی";
             this.btnDownloadSelectedPhotosMultiPhoto.Click += new System.EventHandler(this.btnDownloadSelectedPhotosMultiPhoto_Click);
             // 
             // btnDownloadAllPhotosMultiPhoto
@@ -2861,7 +2994,7 @@
             this.btnDownloadAllPhotosMultiPhoto.SymbolColor = System.Drawing.Color.SteelBlue;
             this.btnDownloadAllPhotosMultiPhoto.SymbolSize = 11F;
             this.btnDownloadAllPhotosMultiPhoto.TabIndex = 159;
-            this.btnDownloadAllPhotosMultiPhoto.Text = "دریافت همه عکس ها";
+            this.btnDownloadAllPhotosMultiPhoto.Text = "نمایش همه عکس ها";
             this.btnDownloadAllPhotosMultiPhoto.Click += new System.EventHandler(this.btnDownloadAllPhotosMultiPhoto_Click);
             // 
             // btnAcceptMultiPhoto
@@ -3276,149 +3409,40 @@
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             // 
-            // dgvMultiPhoto
+            // امکانات_ToolStripMenuItem
             // 
-            this.dgvMultiPhoto.AllowUserToAddRows = false;
-            this.dgvMultiPhoto.AllowUserToDeleteRows = false;
-            this.dgvMultiPhoto.BackgroundColor = System.Drawing.Color.GhostWhite;
-            this.dgvMultiPhoto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMultiPhoto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvMultiPhoto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMultiPhoto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clmStreamId_MPh,
-            this.clmIsSelected_MPh,
-            this.clmPhoto_MPh,
-            this.clmPhotoFileName_MPh,
-            this.clmBtnShowPhotoPreview_MPh,
-            this.clmDescriptions_MPh});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvMultiPhoto.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvMultiPhoto.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvMultiPhoto.EnableHeadersVisualStyles = false;
-            this.dgvMultiPhoto.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.dgvMultiPhoto.Location = new System.Drawing.Point(0, 25);
-            this.dgvMultiPhoto.MultiSelect = false;
-            this.dgvMultiPhoto.Name = "dgvMultiPhoto";
-            this.dgvMultiPhoto.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMultiPhoto.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvMultiPhoto.RowHeadersVisible = false;
-            this.dgvMultiPhoto.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvMultiPhoto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMultiPhoto.Size = new System.Drawing.Size(831, 202);
-            this.dgvMultiPhoto.TabIndex = 166;
-            this.dgvMultiPhoto.UseCustomBackgroundColor = true;
+            this.امکانات_ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.حذف_عکسهای_فولدر_Temp_ToolStripMenuItem,
+            this.نوسازی_تمامی_عکس_های_انتخابی_ToolStripMenuItem});
+            this.امکانات_ToolStripMenuItem.Name = "امکانات_ToolStripMenuItem";
+            this.امکانات_ToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.امکانات_ToolStripMenuItem.Text = "امکانات";
             // 
-            // clmStreamId_ChE
+            // حذف_عکسهای_فولدر_Temp_ToolStripMenuItem
             // 
-            this.clmStreamId_ChE.HeaderText = "StreamId";
-            this.clmStreamId_ChE.Name = "clmStreamId_ChE";
-            this.clmStreamId_ChE.ReadOnly = true;
-            this.clmStreamId_ChE.Visible = false;
+            this.حذف_عکسهای_فولدر_Temp_ToolStripMenuItem.Name = "حذف_عکسهای_فولدر_Temp_ToolStripMenuItem";
+            this.حذف_عکسهای_فولدر_Temp_ToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.حذف_عکسهای_فولدر_Temp_ToolStripMenuItem.Text = "حذف عکس های فولدر Temp";
             // 
-            // clmIsSelected_ChE
+            // نوسازی_تمامی_عکس_های_انتخابی_ToolStripMenuItem
             // 
-            this.clmIsSelected_ChE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.clmIsSelected_ChE.HeaderText = "انتخاب";
-            this.clmIsSelected_ChE.Name = "clmIsSelected_ChE";
-            this.clmIsSelected_ChE.ReadOnly = true;
-            this.clmIsSelected_ChE.Width = 42;
+            this.نوسازی_تمامی_عکس_های_انتخابی_ToolStripMenuItem.Name = "نوسازی_تمامی_عکس_های_انتخابی_ToolStripMenuItem";
+            this.نوسازی_تمامی_عکس_های_انتخابی_ToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.نوسازی_تمامی_عکس_های_انتخابی_ToolStripMenuItem.Text = "نوسازی تمامی عکس های انتخابی";
             // 
-            // clmPhoto_ChE
+            // circularProgressDownloadPhotos
             // 
-            this.clmPhoto_ChE.HeaderText = "تصویر";
-            this.clmPhoto_ChE.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.clmPhoto_ChE.Name = "clmPhoto_ChE";
-            this.clmPhoto_ChE.ReadOnly = true;
-            this.clmPhoto_ChE.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // clmPhotoFileName_ChE
             // 
-            this.clmPhotoFileName_ChE.HeaderText = "نام تصویر";
-            this.clmPhotoFileName_ChE.Name = "clmPhotoFileName_ChE";
-            this.clmPhotoFileName_ChE.ReadOnly = true;
-            this.clmPhotoFileName_ChE.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.clmPhotoFileName_ChE.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // clmBtnShowPhotoPreview_ChE
-            // 
-            this.clmBtnShowPhotoPreview_ChE.HeaderText = "پیش نمایش";
-            this.clmBtnShowPhotoPreview_ChE.Name = "clmBtnShowPhotoPreview_ChE";
-            this.clmBtnShowPhotoPreview_ChE.ReadOnly = true;
-            // 
-            // clmDescriptions_ChE
-            // 
-            this.clmDescriptions_ChE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmDescriptions_ChE.HeaderText = "توضیحات";
-            this.clmDescriptions_ChE.Name = "clmDescriptions_ChE";
-            this.clmDescriptions_ChE.ReadOnly = true;
-            this.clmDescriptions_ChE.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.clmDescriptions_ChE.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // clmStreamId_MPh
-            // 
-            this.clmStreamId_MPh.HeaderText = "StreamId";
-            this.clmStreamId_MPh.Name = "clmStreamId_MPh";
-            this.clmStreamId_MPh.ReadOnly = true;
-            this.clmStreamId_MPh.Visible = false;
-            // 
-            // clmIsSelected_MPh
-            // 
-            this.clmIsSelected_MPh.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.clmIsSelected_MPh.HeaderText = "انتخاب";
-            this.clmIsSelected_MPh.Name = "clmIsSelected_MPh";
-            this.clmIsSelected_MPh.ReadOnly = true;
-            this.clmIsSelected_MPh.Width = 42;
-            // 
-            // clmPhoto_MPh
-            // 
-            this.clmPhoto_MPh.HeaderText = "تصویر";
-            this.clmPhoto_MPh.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.clmPhoto_MPh.Name = "clmPhoto_MPh";
-            this.clmPhoto_MPh.ReadOnly = true;
-            this.clmPhoto_MPh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // clmPhotoFileName_MPh
-            // 
-            this.clmPhotoFileName_MPh.HeaderText = "نام تصویر";
-            this.clmPhotoFileName_MPh.Name = "clmPhotoFileName_MPh";
-            this.clmPhotoFileName_MPh.ReadOnly = true;
-            this.clmPhotoFileName_MPh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.clmPhotoFileName_MPh.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // clmBtnShowPhotoPreview_MPh
-            // 
-            this.clmBtnShowPhotoPreview_MPh.HeaderText = "پیش نمایش";
-            this.clmBtnShowPhotoPreview_MPh.Name = "clmBtnShowPhotoPreview_MPh";
-            this.clmBtnShowPhotoPreview_MPh.ReadOnly = true;
-            // 
-            // clmDescriptions_MPh
-            // 
-            this.clmDescriptions_MPh.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmDescriptions_MPh.HeaderText = "توضیحات";
-            this.clmDescriptions_MPh.Name = "clmDescriptions_MPh";
-            this.clmDescriptions_MPh.ReadOnly = true;
-            this.clmDescriptions_MPh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.clmDescriptions_MPh.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.circularProgressDownloadPhotos.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.circularProgressDownloadPhotos.Location = new System.Drawing.Point(30, 0);
+            this.circularProgressDownloadPhotos.Name = "circularProgressDownloadPhotos";
+            this.circularProgressDownloadPhotos.ProgressColor = System.Drawing.Color.Violet;
+            this.circularProgressDownloadPhotos.Size = new System.Drawing.Size(21, 27);
+            this.circularProgressDownloadPhotos.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
+            this.circularProgressDownloadPhotos.TabIndex = 109;
+            this.circularProgressDownloadPhotos.TabStop = false;
             // 
             // FrmAddEditPreFactor
             // 
@@ -3480,6 +3504,7 @@
             this.tabPageMultiPhoto.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMultiPhoto)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -3492,7 +3517,6 @@
             this.panel4.ResumeLayout(false);
             this.tabPageOrderDetails.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrderDetails)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMultiPhoto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3503,13 +3527,11 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private DevComponents.DotNetBar.StyleManager styleManager1;
         private DevComponents.DotNetBar.Validator.Highlighter highlighter1;
-        private System.Windows.Forms.ToolStripMenuItem منو_ToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelReceiverOrder;
         private System.ComponentModel.BackgroundWorker bgWorkerLoadPicture;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.ToolStripMenuItem نوسازی_تمامی_عکس_های_انتخابی_ToolStripMenuItem;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ToolStripMenuItem پیشفاکتورToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ثبت_پیش_فاکتور_ToolStripMenuItem;
@@ -3714,5 +3736,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmPhotoFileName_MPh;
         private System.Windows.Forms.DataGridViewButtonColumn clmBtnShowPhotoPreview_MPh;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmDescriptions_MPh;
+        private System.Windows.Forms.ToolStripMenuItem امکانات_ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem حذف_عکسهای_فولدر_Temp_ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem نوسازی_تمامی_عکس_های_انتخابی_ToolStripMenuItem;
+        private DevComponents.DotNetBar.Controls.CircularProgress circularProgressDownloadPhotos;
     }
 }
