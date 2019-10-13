@@ -25,6 +25,9 @@ namespace PhotographyAutomation.App.Forms.Factors
     {
         #region Variables
 
+        private const string AllPhotosFolderPath = "All-Photos";
+        private const string SelectedPhotosFolderPath = "Selected-Photos";
+
         public int OrderId = 0;
         public int CustomerId = 0;
         public int OrderPrintId = 0;
@@ -206,9 +209,160 @@ namespace PhotographyAutomation.App.Forms.Factors
             if (resultCreateOrderCodeDirectory == false) return;
 
             // 4 Orderprint Folder
+            string orderPrintPath = Path.Combine(orderCodeDirectoryInfo.FullName, _orderPrintViewModel.OrderPrintCode);
+            DirectoryInfo orderPrintDirectoryInfo = null;
+            bool resultCreateOrderPrintDirectory = true;
+            if (folderHelper.IsFolderExists(orderPrintPath) == false)
+            {
+                if (folderHelper.CreateFolder(orderCodeDirectoryInfo.FullName, _orderPrintViewModel.OrderPrintCode) is
+                    DirectoryInfo orderPrintDirInfo)
+                {
+                    orderPrintDirectoryInfo = orderPrintDirInfo;
+                }
+                else
+                {
+                    resultCreateOrderPrintDirectory = false;
+                }
+            }
+            else
+            {
+                orderPrintDirectoryInfo = new DirectoryInfo(Path.Combine(orderCodeDirectoryInfo.FullName, _orderPrintViewModel.OrderPrintCode));
+            }
 
-            
+            if (resultCreateOrderPrintDirectory == false) return;
 
+            // 5 Create All Photos Folder
+            string allPhotosPath = Path.Combine(orderPrintDirectoryInfo.FullName, AllPhotosFolderPath);
+            DirectoryInfo allPhotosDirectoryInfo = null;
+            bool resultCreateAllPhotosDirectory = true;
+            if (folderHelper.IsFolderExists(allPhotosPath) == false)
+            {
+                if (folderHelper.CreateFolder(orderPrintDirectoryInfo.FullName, AllPhotosFolderPath) is DirectoryInfo
+                    allPhotosDirInfo)
+                {
+                    allPhotosDirectoryInfo = allPhotosDirInfo;
+                }
+                else
+                {
+                    resultCreateAllPhotosDirectory = false;
+                }
+            }
+            else
+            {
+                allPhotosDirectoryInfo = new DirectoryInfo(Path.Combine(orderPrintDirectoryInfo.FullName, AllPhotosFolderPath));
+            }
+
+            if (resultCreateAllPhotosDirectory == false) return;
+
+            // 6 Create Selected-Photos Folder
+            string selectedPhotosPath = Path.Combine(orderPrintDirectoryInfo.FullName, SelectedPhotosFolderPath);
+            DirectoryInfo selectedPhotosDirectoryInfo = null;
+            bool resultCreateSelectedPhotosDirectory = true;
+            if (folderHelper.IsFolderExists(selectedPhotosPath) == false)
+            {
+                if (folderHelper.CreateFolder(orderPrintDirectoryInfo.FullName, SelectedPhotosFolderPath) is DirectoryInfo
+                    selectedPhotosDirInfo)
+                {
+                    selectedPhotosDirectoryInfo = selectedPhotosDirInfo;
+                }
+                else
+                {
+                    resultCreateSelectedPhotosDirectory = false;
+                }
+            }
+            else
+            {
+                selectedPhotosDirectoryInfo = new DirectoryInfo(Path.Combine(orderPrintDirectoryInfo.FullName, SelectedPhotosFolderPath));
+            }
+
+            if (resultCreateSelectedPhotosDirectory == false) return;
+
+            // 7 Create Folder All-Photos\Thumbnails
+            string allPhotosThumbnailsPath = Path.Combine(allPhotosDirectoryInfo.FullName, "Thumbnails");
+            DirectoryInfo allPhotosThumbnailsDirectoryInfo = null;
+            bool resultCreateAllPhotosThumbnailsDirectory = true;
+            if (folderHelper.IsFolderExists(allPhotosThumbnailsPath) == false)
+            {
+                if (folderHelper.CreateFolder(allPhotosDirectoryInfo.FullName, "Thumbnails") is DirectoryInfo
+                    allPhotosDirInfo)
+                {
+                    allPhotosThumbnailsDirectoryInfo = allPhotosDirInfo;
+                }
+                else
+                {
+                    resultCreateAllPhotosThumbnailsDirectory = false;
+                }
+            }
+            else
+            {
+                allPhotosThumbnailsDirectoryInfo = new DirectoryInfo(Path.Combine(allPhotosDirectoryInfo.FullName, AllPhotosFolderPath));
+            }
+
+            if (resultCreateAllPhotosThumbnailsDirectory == false) return;
+
+            // 8 Create All-Photos\Full-Size Folder
+            string allPhotosFullSizePath = Path.Combine(allPhotosDirectoryInfo.FullName, "Full-Size");
+            DirectoryInfo allPhotosFullSizeDirectoryInfo = null;
+            bool resultCreateAllPhotosFullSizeDirectory = true;
+            if (folderHelper.IsFolderExists(allPhotosFullSizePath) == false)
+            {
+                if (folderHelper.CreateFolder(allPhotosDirectoryInfo.FullName, "Full-Size") is DirectoryInfo
+                    allPhotosDirInfo)
+                {
+                    allPhotosFullSizeDirectoryInfo = allPhotosDirInfo;
+                }
+                else
+                {
+                    resultCreateAllPhotosFullSizeDirectory = false;
+                }
+            }
+            else
+            {
+                allPhotosFullSizeDirectoryInfo = new DirectoryInfo(Path.Combine(allPhotosDirectoryInfo.FullName, AllPhotosFolderPath));
+            }
+
+            if (resultCreateAllPhotosFullSizeDirectory == false) return;
+
+            // 9 Create Selected-Photos\Thumbnails Folder
+            string selectedPhotosThumbnailsPath = Path.Combine(selectedPhotosDirectoryInfo.FullName, "Thumbnails");
+            DirectoryInfo selectedPhotosThumbnailsDirectoryInfo = null;
+            bool resultCreateSelectedPhotosThumbnailsDirectory = true;
+            if (folderHelper.IsFolderExists(selectedPhotosThumbnailsPath) == false)
+            {
+                if (folderHelper.CreateFolder(selectedPhotosDirectoryInfo.FullName, "Thumbnails") is DirectoryInfo
+                    selectedPhotosDirInfo)
+                {
+                    selectedPhotosThumbnailsDirectoryInfo = selectedPhotosDirInfo;
+                }
+                else
+                {
+                    resultCreateSelectedPhotosThumbnailsDirectory = false;
+                }
+            }
+            else
+            {
+                selectedPhotosThumbnailsDirectoryInfo = new DirectoryInfo(Path.Combine(orderPrintDirectoryInfo.FullName, SelectedPhotosFolderPath));
+            }
+            // 10 Create Selected-Photos\Full-Size Folder
+            string selectedPhotosFullSizePath = Path.Combine(selectedPhotosDirectoryInfo.FullName, "Full-Size");
+            DirectoryInfo selectedPhotosFullSizeDirectoryInfo = null;
+            bool resultCreateSelectedPhotosFullSizeDirectory = true;
+            if (folderHelper.IsFolderExists(selectedPhotosFullSizePath) == false)
+            {
+                if (folderHelper.CreateFolder(selectedPhotosDirectoryInfo.FullName, "Full-Size") is DirectoryInfo
+                    selectedPhotosDirInfo)
+                {
+                    selectedPhotosFullSizeDirectoryInfo = selectedPhotosDirInfo;
+                }
+                else
+                {
+                    resultCreateSelectedPhotosFullSizeDirectory = false;
+                }
+            }
+            else
+            {
+                selectedPhotosFullSizeDirectoryInfo = new DirectoryInfo(Path.Combine(orderPrintDirectoryInfo.FullName, SelectedPhotosFolderPath));
+            }
         }
         private void _bgWorkerDownloadPhotos_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
