@@ -82,5 +82,11 @@ namespace PhotographyAutomation.App.Forms
                 frmManagePrintSizeAndServices.ShowDialog();
             }
         }
+
+        private void buttonItem2_Click(object sender, EventArgs e)
+        {
+            var frmTest = new Test.Form1();
+            frmTest.ShowDialog();
+        }
     }
 }

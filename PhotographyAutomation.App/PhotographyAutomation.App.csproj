@@ -212,6 +212,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\PreFactor\ucPhotoOrderProperties.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PreFactor\ucPhotoOrderProperties.Designer.cs">
+      <DependentUpon>ucPhotoOrderProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucSmallPhotoViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucSmallPhotoViewer.Designer.cs">
+      <DependentUpon>ucSmallPhotoViewer.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\PrintSizeAndServices\FrmAddEditPrintServiceName.resx">
       <DependentUpon>FrmAddEditPrintServiceName.cs</DependentUpon>
     </EmbeddedResource>
@@ -286,6 +298,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControls\PreFactor\ucPhotoOrderProperties.resx">
+      <DependentUpon>ucPhotoOrderProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucSmallPhotoViewer.resx">
+      <DependentUpon>ucSmallPhotoViewer.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
